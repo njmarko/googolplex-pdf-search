@@ -1,0 +1,41 @@
+                                                                      Index
+# character, 3                            init , 71
+∼ operator, 14, 75                        int , 75
+% operator, 13–14, 75, 242                invert , 75
+& operator, 14, 75                        ior , 449
+  operator, 13, 14, 75                    isub , 75
+    operator, 75                          iter , 75, 76, 87, 88, 306, 403
+ = operator, 75                           le , 75
++ operator, 13, 14, 75                    len , 75, 76, 79, 95, 403
++= operator, 16, 75                       lshift , 75
+− operator, 13, 75                        lt , 75, 76
+−= operator, 75                           mod , 75
+/ operator, 13, 75                        mul , 74, 75
+// operator, 13–14, 75                    name , 68, 73
+< operator, 13, 15, 75, 76                ne , 75, 76
+<< operator, 14, 75, 413                  neg , 75
+<= operator, 13, 15, 75, 76               next , 75, 79, 87, 88
+= operator, 4                             or , 75, 449
+== operator, 12, 15, 75, 76               pos , 75
+> operator, 13, 15, 75, 76                pow , 75
+>= operator, 13, 15, 75                   radd , 75, 76
+>> operator, 14, 75, 413                  rand , 75
+ˆ operator, 14, 75, 412                   repr , 75
+   abs , 75                               reversed , 75, 295, 427
+   add , 74–76                            rﬂoordiv , 75
+   and , 75                               rlshift , 75
+   bool , 74–76                           rmod , 75
+   call , 75                              rmul , 74, 75
+   contains , 75, 76, 95, 203, 403        ror , 75
+   delitem , 75, 403, 460                 rpow , 75
+   eq , 75, 76                            rrshift , 75
+   ﬂoat , 75                              rshift , 75
+   ﬂoordiv , 75                           rsub , 75
+   ge , 75                                rtruediv , 75
+   getitem , 75, 79, 80, 93, 95, 211,     setitem , 75, 403, 460
+          212, 403, 460                   slots , 99, 261, 287
+   gt , 75                                str , 74, 75, 211, 212
+   hash , 75, 415                         sub , 75
+   iadd , 75                              truediv , 75
+   imul , 75                              xor , 75
+                                      737

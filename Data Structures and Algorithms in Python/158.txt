@@ -1,0 +1,33 @@
+3.4. Simple Justiﬁcation Techniques                                                             137
+  3.4     Simple Justiﬁcation Techniques
+          Sometimes, we will want to make claims about an algorithm, such as showing that
+          it is correct or that it runs fast. In order to rigorously make such claims, we must
+          use mathematical language, and in order to back up such claims, we must justify or
+          prove our statements. Fortunately, there are several simple ways to do this.
+       3.4.1 By Example
+          Some claims are of the generic form, “There is an element x in a set S that has
+          property P.” To justify such a claim, we only need to produce a particular x in S
+          that has property P. Likewise, some hard-to-believe claims are of the generic form,
+          “Every element x in a set S has property P.” To justify that such a claim is false, we
+          only need to produce a particular x from S that does not have property P. Such an
+          instance is called a counterexample.
+          Example 3.17: Professor Amongus claims that every number of the form 2i − 1
+          is a prime, when i is an integer greater than 1. Professor Amongus is wrong.
+          Justiﬁcation: To prove Professor Amongus is wrong, we ﬁnd a counterexample.
+          Fortunately, we need not look too far, for 24 − 1 = 15 = 3 · 5.
+       3.4.2 The “Contra” Attack
+          Another set of justiﬁcation techniques involves the use of the negative. The two
+          primary such methods are the use of the contrapositive and the contradiction. The
+          use of the contrapositive method is like looking through a negative mirror. To
+          justify the statement “if p is true, then q is true,” we establish that “if q is not true,
+          then p is not true” instead. Logically, these two statements are the same, but the
+          latter, which is called the contrapositive of the ﬁrst, may be easier to think about.
+          Example 3.18: Let a and b be integers. If ab is even, then a is even or b is even.
+          Justiﬁcation: To justify this claim, consider the contrapositive, “If a is odd and
+          b is odd, then ab is odd.” So, suppose a = 2 j + 1 and b = 2k + 1, for some integers
+           j and k. Then ab = 4 jk + 2 j + 2k + 1 = 2(2 jk + j + k) + 1; hence, ab is odd.
+               Besides showing a use of the contrapositive justiﬁcation technique, the previous
+          example also contains an application of DeMorgan’s Law. This law helps us deal
+          with negations, for it states that the negation of a statement of the form “p or q” is
+          “not p and not q.” Likewise, it states that the negation of a statement of the form
+          “p and q” is “not p or not q.”

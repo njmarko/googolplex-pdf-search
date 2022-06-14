@@ -1,0 +1,42 @@
+398                                                     Chapter 9. Priority Queues
+    C-9.34 We can represent a path from the root to a given node of a binary tree
+           by means of a binary string, where 0 means “go to the left child” and 1
+           means “go to the right child.” For example, the path from the root to the
+           node storing (8,W ) in the heap of Figure 9.12a is represented by “101.”
+           Design an O(log n)-time algorithm for ﬁnding the last node of a complete
+           binary tree with n nodes, based on the above representation. Show how
+           this algorithm can be used in the implementation of a complete binary tree
+           by means of a linked structure that does not keep a reference to the last
+           node.
+    C-9.35 Given a heap T and a key k, give an algorithm to compute all the entries
+           in T having a key less than or equal to k. For example, given the heap of
+           Figure 9.12a and query k = 7, the algorithm should report the entries with
+           keys 2, 4, 5, 6, and 7 (but not necessarily in this order). Your algorithm
+           should run in time proportional to the number of entries returned, and
+           should not modify the heap
+    C-9.36 Provide a justiﬁcation of the time bounds in Table 9.4.
+    C-9.37 Give an alternative analysis of bottom-up heap construction by showing
+           the following summation is O(1), for any positive integer h:
+                                             h
+                                            ∑    i/2i .
+                                            i=1
+    C-9.38 Suppose two binary trees, T1 and T2 , hold entries satisfying the heap-order
+           property (but not necessarily the complete binary tree property). Describe
+           a method for combining T1 and T2 into a binary tree T , whose nodes hold
+           the union of the entries in T1 and T2 and also satisfy the heap-order prop-
+           erty. Your algorithm should run in time O(h1 + h2 ) where h1 and h2 are
+           the respective heights of T1 and T2 .
+    C-9.39 Implement a heappushpop method for the HeapPriorityQueue class, with
+           semantics akin to that described for the heapq module in Section 9.3.7.
+    C-9.40 Implement a heapreplace method for the HeapPriorityQueue class, with
+           semantics akin to that described for the heapq module in Section 9.3.7.
+    C-9.41 Tamarindo Airlines wants to give a ﬁrst-class upgrade coupon to their top
+           log n frequent ﬂyers, based on the number of miles accumulated, where
+           n is the total number of the airlines’ frequent ﬂyers. The algorithm they
+           currently use, which runs in O(n log n) time, sorts the ﬂyers by the number
+           of miles ﬂown and then scans the sorted list to pick the top log n ﬂyers.
+           Describe an algorithm that identiﬁes the top logn ﬂyers in O(n) time.
+    C-9.42 Explain how the k largest elements from an unordered collection of size n
+           can be found in time O(n + k log n) using a maximum-oriented heap.
+    C-9.43 Explain how the k largest elements from an unordered collection of size n
+           can be found in time O(n log k) using O(k) auxiliary space.

@@ -1,0 +1,39 @@
+14.5. Directed Acyclic Graphs                                                                            655
+ 14.5        Directed Acyclic Graphs
+          Directed graphs without directed cycles are encountered in many applications.
+          Such a directed graph is often referred to as a directed acyclic graph, or DAG,
+          for short. Applications of such graphs include the following:
+               • Prerequisites between courses of a degree program.
+               • Inheritance between classes of an object-oriented program.
+               • Scheduling constraints between the tasks of a project.
+          We explore this latter application further in the following example:
+          Example 14.20: In order to manage a large project, it is convenient to break it up
+          into a collection of smaller tasks. The tasks, however, are rarely independent, be-
+          cause scheduling constraints exist between them. (For example, in a house building
+          project, the task of ordering nails obviously precedes the task of nailing shingles
+          to the roof deck.) Clearly, scheduling constraints cannot have circularities, because
+          they would make the project impossible. (For example, in order to get a job you
+          need to have work experience, but in order to get work experience you need to have
+          a job.) The scheduling constraints impose restrictions on the order in which the
+          tasks can be executed. Namely, if a constraint says that task a must be completed
+          before task b is started, then a must precede b in the order of execution of the tasks.
+          Thus, if we model a feasible set of tasks as vertices of a directed graph, and we
+          place a directed edge from u to v whenever the task for u must be executed before
+          the task for v, then we deﬁne a directed acyclic graph.
+       14.5.1 Topological Ordering
+          The example above motivates the following deﬁnition. Let G          be a directed graph
+                                                          
+          with n vertices. A topological ordering of G is an ordering v1 , . . . ,vn of the vertices
+                                                        it is the case that i < j. That is, a topo-
+              such that for every edge (vi , v j ) of G,
+          of G
+          logical ordering is an ordering such that any directed path in G    traverses vertices in
+          increasing order. Note that a directed graph may have more than one topological
+          ordering. (See Figure 14.12.)
+          Proposition 14.21: G     has a topological ordering if and only if it is acyclic.
+          Justiﬁcation:       The necessity (the “only if” part of the statement) is easy to
+          demonstrate. Suppose G     is topologically ordered. Assume, for the sake of a con-
+                            
+          tradiction, that G has a cycle consisting of edges (vi0 , vi1 ), (vi1 , vi2 ), . . . ,(vik−1 , vi0 ).
+          Because of the topological ordering, we must have i0 < i1 < · · · < ik−1 < i0 , which
+          is clearly impossible. Thus, G  must be acyclic.

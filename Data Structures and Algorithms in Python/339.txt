@@ -1,0 +1,40 @@
+318                                                                     Chapter 8. Trees
+    Python Implementation of a Linked Binary Tree Structure
+    In this section, we deﬁne a concrete LinkedBinaryTree class that implements the
+    binary tree ADT by subclassing the BinaryTree class. Our general approach is very
+    similar to what we used when developing the PositionalList in Section 7.4: We
+    deﬁne a simple, nonpublic Node class to represent a node, and a public Position
+    class that wraps a node. We provide a validate utility for robustly checking the
+    validity of a given position instance when unwrapping it, and a make position
+    utility for wrapping a node as a position to return to a caller.
+         Those deﬁnitions are provided in Code Fragment 8.8. As a formality, the new
+    Position class is declared to inherit immediately from BinaryTree.Position. Tech-
+    nically, the BinaryTree class deﬁnition (see Code Fragment 8.7) does not formally
+    declare such a nested class; it trivially inherits it from Tree.Position. A minor ben-
+    eﬁt from this design is that our position class inherits the ne special method
+    so that syntax p != q is derived appropriately relative to eq .
+         Our class deﬁnition continues, in Code Fragment 8.9, with a constructor and
+    with concrete implementations for the methods that remain abstract in the Tree and
+    BinaryTree classes. The constructor creates an empty tree by initializing root to
+    None and size to zero. These accessor methods are implemented with careful use
+    of the validate and make position utilities to safeguard against boundary cases.
+    Operations for Updating a Linked Binary Tree
+    Thus far, we have provided functionality for examining an existing binary tree.
+    However, the constructor for our LinkedBinaryTree class results in an empty tree
+    and we have not provided any means for changing the structure or content of a tree.
+         We chose not to declare update methods as part of the Tree or BinaryTree ab-
+    stract base classes for several reasons. First, although the principle of encapsula-
+    tion suggests that the outward behaviors of a class need not depend on the internal
+    representation, the efﬁciency of the operations depends greatly upon the representa-
+    tion. We prefer to have each concrete implementation of a tree class offer the most
+    suitable options for updating a tree.
+         The second reason we do not provide update methods in the base class is that
+    we may not want such update methods to be part of a public interface. There are
+    many applications of trees, and some forms of update operations that are suitable
+    for one application may be unacceptable in another. However, if we place an update
+    method in a base class, any class that inherits from that base will inherit the update
+    method. Consider, for example, the possibility of a method T.replace(p, e) that
+    replaces the element stored at position p with another element e. Such a general
+    method may be unacceptable in the context of an arithmetic expression tree (see
+    Example 8.7 on page 312, and a later case study in Section 8.5), because we may
+    want to enforce that internal nodes store only operators as elements.

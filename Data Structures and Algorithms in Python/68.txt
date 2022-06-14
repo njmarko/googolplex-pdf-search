@@ -1,0 +1,36 @@
+1.10. Scopes and Namespaces                                                                    47
+               When an identiﬁer is indicated in a command, Python searches a series of
+          namespaces in the process of name resolution. First, the most locally enclosing
+          scope is searched for a given name. If not found there, the next outer scope is
+          searched, and so on. We will continue our examination of namespaces, in Sec-
+          tion 2.5, when discussing Python’s treatment of object-orientation. We will see
+          that each object has its own namespace to store its attributes, and that classes each
+          have a namespace as well.
+          First-Class Objects
+          In the terminology of programming languages, ﬁrst-class objects are instances of
+          a type that can be assigned to an identiﬁer, passed as a parameter, or returned by
+          a function. All of the data types we introduced in Section 1.2.3, such as int and
+          list, are clearly ﬁrst-class types in Python. In Python, functions and classes are also
+          treated as ﬁrst-class objects. For example, we could write the following:
+          scream = print           # assign name ’scream’ to the function denoted as ’print’
+          scream( Hello )          # call that function
+          In this case, we have not created a new function, we have simply deﬁned scream
+          as an alias for the existing print function. While there is little motivation for pre-
+          cisely this example, it demonstrates the mechanism that is used by Python to al-
+          low one function to be passed as a parameter to another. On page 28, we noted
+          that the built-in function, max, accepts an optional keyword parameter to specify
+          a non-default order when computing a maximum. For example, a caller can use
+          the syntax, max(a, b, key=abs), to determine which value has the larger absolute
+          value. Within the body of that function, the formal parameter, key, is an identiﬁer
+          that will be assigned to the actual parameter, abs.
+               In terms of namespaces, an assignment such as scream = print, introduces the
+          identiﬁer, scream, into the current namespace, with its value being the object that
+          represents the built-in function, print. The same mechanism is applied when a user-
+          deﬁned function is declared. For example, our count function from Section 1.5
+          beings with the following syntax:
+                def count(data, target):
+                  ...
+          Such a declaration introduces the identiﬁer, count, into the current namespace,
+          with the value being a function instance representing its implementation. In similar
+          fashion, the name of a newly deﬁned class is associated with a representation of
+          that class as its value. (Class deﬁnitions will be introduced in the next chapter.)

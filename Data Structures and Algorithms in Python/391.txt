@@ -1,0 +1,36 @@
+370                                                                Chapter 9. Priority Queues
+ 9.3    Heaps
+        The two strategies for implementing a priority queue ADT in the previous section
+        demonstrate an interesting trade-off. When using an unsorted list to store entries,
+        we can perform insertions in O(1) time, but ﬁnding or removing an element with
+        minimum key requires an O(n)-time loop through the entire collection. In contrast,
+        if using a sorted list, we can trivially ﬁnd or remove the minimum element in O(1)
+        time, but adding a new element to the queue may require O(n) time to restore the
+        sorted order.
+             In this section, we provide a more efﬁcient realization of a priority queue using
+        a data structure called a binary heap. This data structure allows us to perform both
+        insertions and removals in logarithmic time, which is a signiﬁcant improvement
+        over the list-based implementations discussed in Section 9.2. The fundamental
+        way the heap achieves this improvement is to use the structure of a binary tree to
+        ﬁnd a compromise between elements being entirely unsorted and perfectly sorted.
+     9.3.1 The Heap Data Structure
+        A heap (see Figure 9.1) is a binary tree T that stores a collection of items at its
+        positions and that satisﬁes two additional properties: a relational property deﬁned
+        in terms of the way keys are stored in T and a structural property deﬁned in terms
+        of the shape of T itself. The relational property is the following:
+        Heap-Order Property: In a heap T , for every position p other than the root, the
+               key stored at p is greater than or equal to the key stored at p’s parent.
+        As a consequence of the heap-order property, the keys encountered on a path from
+        the root to a leaf of T are in nondecreasing order. Also, a minimum key is always
+        stored at the root of T . This makes it easy to locate such an item when min or
+        remove min is called, as it is informally said to be “at the top of the heap” (hence,
+        the name “heap” for the data structure). By the way, the heap data structure deﬁned
+        here has nothing to do with the memory heap (Section 15.1.1) used in the run-time
+        environment supporting a programming language like Python.
+             For the sake of efﬁciency, as will become clear later, we want the heap T to have
+        as small a height as possible. We enforce this requirement by insisting that the heap
+        T satisfy an additional structural property—it must be what we term complete.
+        Complete Binary Tree Property: A heap T with height h is a complete binary tree
+               if levels 0, 1, 2, . . . , h − 1 of T have the maximum number of nodes possible
+               (namely, level i has 2i nodes, for 0 ≤ i ≤ h − 1) and the remaining nodes at
+               level h reside in the leftmost possible positions at that level.

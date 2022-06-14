@@ -1,0 +1,40 @@
+462                                                              Chapter 11. Search Trees
+         The “ﬁrst” position of a binary search tree can be located by starting a walk at
+    the root and continuing to the left child, as long as a left child exists. By symmetry,
+    the last position is reached by repeated steps rightward starting at the root.
+         The successor of a position, after(p), is determined by the following algorithm.
+    Algorithm after(p):
+         if right(p) is not None then {successor is leftmost position in p’s right subtree}
+             walk = right(p)
+             while left(walk) is not None do
+               walk = left(walk)
+             return walk
+         else {successor is nearest ancestor having p in its left subtree}
+             walk = p
+             ancestor = parent(walk)
+             while ancestor is not None and walk == right(ancestor) do
+               walk = ancestor
+               ancestor = parent(walk)
+             return ancestor
+    Code Fragment 11.1: Computing the successor of a position in a binary search tree.
+         The rationale for this process is based purely on the workings of an inorder
+    traversal, given the correspondence of Proposition 11.1. If p has a right subtree,
+    that right subtree is recursively traversed immediately after p is visited, and so the
+    ﬁrst position to be visited after p is the leftmost position within the right subtree.
+    If p does not have a right subtree, then the ﬂow of control of an inorder traversal
+    returns to p’s parent. If p were in the right subtree of that parent, then the parent’s
+    subtree traversal is complete and the ﬂow of control progresses to its parent and
+    so on. Once an ancestor is reached in which the recursion is returning from its
+    left subtree, then that ancestor becomes the next position visited by the inorder
+    traversal, and thus is the successor of p. Notice that the only case in which no such
+    ancestor is found is when p was the rightmost (last) position of the full tree, in
+    which case there is no successor.
+         A symmetric algorithm can be deﬁned to determine the predecessor of a po-
+    sition, before(p). At this point, we note that the running time of single call to
+    after(p) or before(p) is bounded by the height h of the full tree, because it is found
+    after either a single downward walk or a single upward walk. While the worst-case
+    running time is O(h), we note that either of these methods run in O(1) amortized
+    time, in that series of n calls to after(p) starting at the ﬁrst position will execute in a
+    total of O(n) time. We leave a formal justiﬁcation of this fact to Exercise C-11.34,
+    but intuitively the upward and downward paths mimic steps of the inorder traversal
+    (a related argument was made in the justiﬁcation of Proposition 9.3).

@@ -1,0 +1,39 @@
+11.4. Splay Trees                                                                               501
+                When deleting a node w from a splay tree with n keys, the ranks of all the an-
+          cestors of w are decreased. Thus, the total variation of r(T ) caused by the deletion
+          is negative, and we do not need to make any payment to maintain the invariant
+          when a node is deleted. Therefore, we may summarize our amortized analysis in
+          the following proposition (which is sometimes called the “balance proposition” for
+          splay trees):
+          Proposition 11.5: Consider a sequence of m operations on a splay tree, each one
+          a search, insertion, or deletion, starting from a splay tree with zero keys. Also, let
+          ni be the number of keys in the tree after operation i, and n be the total number of
+          insertions. The total running time for performing the sequence of operations is
+                                                              
+                                                       m
+                                            O m + ∑ log ni ,
+                                                      i=1
+          which is O(m log n).
+                In other words, the amortized running time of performing a search, insertion,
+          or deletion in a splay tree is O(log n), where n is the size of the splay tree at the
+          time. Thus, a splay tree can achieve logarithmic-time amortized performance for
+          implementing a sorted map ADT. This amortized performance matches the worst-
+          case performance of AVL trees, (2, 4) trees, and red-black trees, but it does so
+          using a simple binary tree that does not need any extra balance information stored
+          at each of its nodes. In addition, splay trees have a number of other interesting
+          properties that are not shared by these other balanced search trees. We explore one
+          such additional property in the following proposition (which is sometimes called
+          the “Static Optimality” proposition for splay trees):
+          Proposition 11.6: Consider a sequence of m operations on a splay tree, each one
+          a search, insertion, or deletion, starting from a splay tree T with zero keys. Also, let
+           f (i) denote the number of times the entry i is accessed in the splay tree, that is, its
+          frequency, and let n denote the total number of entries. Assuming that each entry is
+          accessed at least once, then the total running time for performing the sequence of
+          operations is
+                                                                     
+                                                 n
+                                      O m + ∑ f (i) log(m/ f (i)) .
+                                               i=1
+                We omit the proof of this proposition, but it is not as hard to justify as one might
+          imagine. The remarkable thing is that this proposition states that the amortized
+          running time of accessing an entry i is O(log(m/ f (i))).

@@ -1,0 +1,38 @@
+1.3. Expressions, Operators, and Precedence                                                    13
+          different objects that happen to have values that are deemed equivalent. The precise
+          notion of equivalence depends on the data type. For example, two strings are con-
+          sidered equivalent if they match character for character. Two sets are equivalent if
+          they have the same contents, irrespective of order. In most programming situations,
+          the equivalence tests == and != are the appropriate operators; use of is and is not
+          should be reserved for situations in which it is necessary to detect true aliasing.
+          Comparison Operators
+          Data types may deﬁne a natural order via the following operators:
+                                       < less than
+                                      <= less than or equal to
+                                       > greater than
+                                      >= greater than or equal to
+          These operators have expected behavior for numeric types, and are deﬁned lexi-
+          cographically, and case-sensitively, for strings. An exception is raised if operands
+          have incomparable types, as with 5 < hello .
+          Arithmetic Operators
+          Python supports the following arithmetic operators:
+                                        + addition
+                                        − subtraction
+                                             multiplication
+                                         / true division
+                                        // integer division
+                                        % the modulo operator
+          The use of addition, subtraction, and multiplication is straightforward, noting that if
+          both operands have type int, then the result is an int as well; if one or both operands
+          have type ﬂoat, the result will be a ﬂoat.
+              Python takes more care in its treatment of division. We ﬁrst consider the case
+          in which both operands have type int, for example, the quantity 27 divided by
+          4. In mathematical notation, 27 ÷ 4 = 6 34 = 6.75. In Python, the / operator
+          designates true division, returning the ﬂoating-point result of the computation.
+          Thus, 27 / 4 results in the ﬂoat value 6.75. Python supports the pair of opera-
+          tors // and % to perform the integral calculations, with expression 27 // 4 evalu-
+          ating to int value 6 (the mathematical ﬂoor of the quotient), and expression 27 % 4
+          evaluating to int value 3, the remainder of the integer division. We note that lan-
+          guages such as C, C++, and Java do not support the // operator; instead, the / op-
+          erator returns the truncated quotient when both operands have integral type, and the
+          result of true division when at least one operand has a ﬂoating-point type.

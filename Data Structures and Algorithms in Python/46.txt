@@ -1,0 +1,36 @@
+1.5. Functions                                                                                 25
+          These assignment statements establish identiﬁer data as an alias for grades and
+          target as a name for the string literal A . (See Figure 1.7.)
+              grades                                  data                              target
+                                   list                               str
+                                    ...                                A
+          Figure 1.7: A portrayal of parameter passing in Python, for the function call
+          count(grades, A ). Identiﬁers data and target are formal parameters deﬁned
+          within the local scope of the count function.
+               The communication of a return value from the function back to the caller is
+          similarly implemented as an assignment. Therefore, with our sample invocation of
+          prizes = count(grades, A ), the identiﬁer prizes in the caller’s scope is assigned
+          to the object that is identiﬁed as n in the return statement within our function body.
+               An advantage to Python’s mechanism for passing information to and from a
+          function is that objects are not copied. This ensures that the invocation of a function
+          is efﬁcient, even in a case where a parameter or return value is a complex object.
+          Mutable Parameters
+          Python’s parameter passing model has additional implications when a parameter is
+          a mutable object. Because the formal parameter is an alias for the actual parameter,
+          the body of the function may interact with the object in ways that change its state.
+          Considering again our sample invocation of the count function, if the body of the
+          function executes the command data.append( F ), the new entry is added to the
+          end of the list identiﬁed as data within the function, which is one and the same as
+          the list known to the caller as grades. As an aside, we note that reassigning a new
+          value to a formal parameter with a function body, such as by setting data = [ ],
+          does not alter the actual parameter; such a reassignment simply breaks the alias.
+               Our hypothetical example of a count method that appends a new element to a
+          list lacks common sense. There is no reason to expect such a behavior, and it would
+          be quite a poor design to have such an unexpected effect on the parameter. There
+          are, however, many legitimate cases in which a function may be designed (and
+          clearly documented) to modify the state of a parameter. As a concrete example,
+          we present the following implementation of a method named scale that’s primary
+          purpose is to multiply all entries of a numeric data set by a given factor.
+                def scale(data, factor):
+                  for j in range(len(data)):
+                    data[j] = factor

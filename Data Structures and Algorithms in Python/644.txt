@@ -1,0 +1,43 @@
+14.1. Graphs                                                                                   623
+               A path is a sequence of alternating vertices and edges that starts at a vertex and
+          ends at a vertex such that each edge is incident to its predecessor and successor
+          vertex. A cycle is a path that starts and ends at the same vertex, and that includes at
+          least one edge. We say that a path is simple if each vertex in the path is distinct, and
+          we say that a cycle is simple if each vertex in the cycle is distinct, except for the
+          ﬁrst and last one. A directed path is a path such that all edges are directed and are
+          traversed along their direction. A directed cycle is similarly deﬁned. For example,
+          in Figure 14.2, (BOS, NW 35, JFK, AA 1387, DFW) is a directed simple path, and
+          (LAX, UA 120, ORD, UA 877, DFW, AA 49, LAX) is a directed simple cycle.
+          Note that a directed graph may have a cycle consisting of two edges with opposite
+          direction between the same pair of vertices, for example (ORD, UA 877, DFW,
+          DL 335, ORD) in Figure 14.2. A directed graph is acyclic if it has no directed
+          cycles. For example, if we were to remove the edge UA 877 from the graph in
+          Figure 14.2, the remaining graph is acyclic. If a graph is simple, we may omit the
+          edges when describing path P or cycle C, as these are well deﬁned, in which case
+          P is a list of adjacent vertices and C is a cycle of adjacent vertices.
+          Example 14.6: Given a graph G representing a city map (see Example 14.3), we
+          can model a couple driving to dinner at a recommended restaurant as traversing a
+          path though G. If they know the way, and do not accidentally go through the same
+          intersection twice, then they traverse a simple path in G. Likewise, we can model
+          the entire trip the couple takes, from their home to the restaurant and back, as a
+          cycle. If they go home from the restaurant in a completely different way than how
+          they went, not even going through the same intersection twice, then their entire
+          round trip is a simple cycle. Finally, if they travel along one-way streets for their
+          entire trip, we can model their night out as a directed cycle.
+               Given vertices u and v of a (directed) graph G, we say that u reaches v, and
+          that v is reachable from u, if G has a (directed) path from u to v. In an undirected
+          graph, the notion of reachability is symmetric, that is to say, u reaches v if an only
+          if v reaches u. However, in a directed graph, it is possible that u reaches v but v does
+          not reach u, because a directed path must be traversed according to the respective
+          directions of the edges. A graph is connected if, for any two vertices, there is a path
+          between them. A directed graph G     is strongly connected if for any two vertices u
+                    
+          and v of G, u reaches v and v reaches u. (See Figure 14.3 for some examples.)
+               A subgraph of a graph G is a graph H whose vertices and edges are subsets of
+          the vertices and edges of G, respectively. A spanning subgraph of G is a subgraph
+          of G that contains all the vertices of the graph G. If a graph G is not connected,
+          its maximal connected subgraphs are called the connected components of G. A
+          forest is a graph without cycles. A tree is a connected forest, that is, a connected
+          graph without cycles. A spanning tree of a graph is a spanning subgraph that is a
+          tree. (Note that this deﬁnition of a tree is somewhat different from the one given in
+          Chapter 8, as there is not necessarily a designated root.)

@@ -1,0 +1,39 @@
+5.7. Exercises                                                                            225
+             R-5.9 Explain the changes that would have to be made to the program of Code
+                   Fragment 5.11 so that it could perform the Caesar cipher for messages
+                   that are written in an alphabet-based language other than English, such as
+                   Greek, Russian, or Hebrew.
+           R-5.10 The constructor for the CaesarCipher class in Code Fragment 5.11 can
+                   be implemented with a two-line body by building the forward and back-
+                   ward strings using a combination of the join method and an appropriate
+                   comprehension syntax. Give such an implementation.
+           R-5.11 Use standard control structures to compute the sum of all numbers in an
+                   n × n data set, represented as a list of lists.
+           R-5.12 Describe how the built-in sum function can be combined with Python’s
+                   comprehension syntax to compute the sum of all numbers in an n × n data
+                   set, represented as a list of lists.
+      Creativity
+           C-5.13 In the experiment of Code Fragment 5.1, we begin with an empty list. If
+                   data were initially constructed with nonempty length, does this affect the
+                   sequence of values at which the underlying array is expanded? Perform
+                   your own experiments, and comment on any relationship you see between
+                   the initial length and the expansion sequence.
+           C-5.14 The shuﬄe method, supported by the random module, takes a Python
+                   list and rearranges it so that every possible ordering is equally likely.
+                   Implement your own version of such a function. You may rely on the
+                   randrange(n) function of the random module, which returns a random
+                   number between 0 and n − 1 inclusive.
+           C-5.15 Consider an implementation of a dynamic array, but instead of copying
+                   the elements into an array of double the size (that is, from N to 2N) when
+                   its capacity is reached, we copy the elements into an array with N/4
+                   additional cells, going from capacity N to capacity N + N/4. Prove that
+                   performing a sequence of n append operations still runs in O(n) time in
+                   this case.
+           C-5.16 Implement a pop method for the DynamicArray class, given in Code Frag-
+                   ment 5.3, that removes the last element of the array, and that shrinks the
+                   capacity, N, of the array by half any time the number of elements in the
+                   array goes below N/4.
+           C-5.17 Prove that when using a dynamic array that grows and shrinks as in the
+                   previous exercise, the following series of 2n operations takes O(n) time:
+                   n append operations on an initially empty array, followed by n pop oper-
+                   ations.

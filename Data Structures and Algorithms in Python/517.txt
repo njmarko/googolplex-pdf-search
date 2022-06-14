@@ -1,0 +1,41 @@
+496                                                                 Chapter 11. Search Trees
+     11.4.3 Python Implementation
+        Although the mathematical analysis of a splay tree’s performance is complex (see
+        Section 11.4.4), the implementation of splay trees is a rather simple adaptation to
+        a standard binary search tree. Code Fragment 11.14 provides a complete imple-
+        mentation of a SplayTreeMap class, based upon the underlying TreeMap class and
+        use of the balancing framework described in Section 11.2.1. It is important to note
+        that our original TreeMap class makes calls to the rebalance access method, not
+        just from within the getitem method, but also during setitem when mod-
+        ifying the value associated with an existing key, and after any map operations that
+        result in a failed search.
+     1 class SplayTreeMap(TreeMap):
+     2    ”””Sorted map implementation using a splay tree.”””
+     3    #--------------------------------- splay operation --------------------------------
+     4    def splay(self, p):
+     5       while p != self.root( ):
+     6          parent = self.parent(p)
+     7          grand = self.parent(parent)
+     8          if grand is None:
+     9             # zig case
+    10             self. rotate(p)
+    11          elif (parent == self.left(grand)) == (p == self.left(parent)):
+    12             # zig-zig case
+    13             self. rotate(parent)                          # move PARENT up
+    14             self. rotate(p)                               # then move p up
+    15          else:
+    16             # zig-zag case
+    17             self. rotate(p)                               # move p up
+    18             self. rotate(p)                               # move p up again
+    19
+    20    #---------------------------- override balancing hooks ----------------------------
+    21    def rebalance insert(self, p):
+    22       self. splay(p)
+    23
+    24    def rebalance delete(self, p):
+    25       if p is not None:
+    26          self. splay(p)
+    27
+    28    def rebalance access(self, p):
+    29       self. splay(p)
+          Code Fragment 11.14: A complete implementation of the SplayTreeMap class.

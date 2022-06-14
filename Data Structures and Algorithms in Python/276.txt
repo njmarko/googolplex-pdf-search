@@ -1,0 +1,21 @@
+Chapter
+   7                                                        Linked Lists
+Contents
+    7.1   Singly Linked Lists . . . . . . . . . . . . . . . . . . . . . . .  256
+         7.1.1 Implementing a Stack with a Singly Linked List . . . . . .    261
+         7.1.2 Implementing a Queue with a Singly Linked List . . . . . .    264
+    7.2   Circularly Linked Lists . . . . . . . . . . . . . . . . . . . . .  266
+         7.2.1 Round-Robin Schedulers . . . . . . . . . . . . . . . . . .    267
+         7.2.2 Implementing a Queue with a Circularly Linked List . . . .    268
+    7.3   Doubly Linked Lists . . . . . . . . . . . . . . . . . . . . . .    270
+         7.3.1 Basic Implementation of a Doubly Linked List . . . . . . .    273
+         7.3.2 Implementing a Deque with a Doubly Linked List . . . . .      275
+    7.4   The Positional List ADT . . . . . . . . . . . . . . . . . . .      277
+         7.4.1 The Positional List Abstract Data Type . . . . . . . . . .    279
+         7.4.2 Doubly Linked List Implementation . . . . . . . . . . . . .   281
+    7.5   Sorting a Positional List . . . . . . . . . . . . . . . . . . . .  285
+    7.6   Case Study: Maintaining Access Frequencies . . . . . . . .         286
+         7.6.1 Using a Sorted List . . . . . . . . . . . . . . . . . . . . . 286
+         7.6.2 Using a List with the Move-to-Front Heuristic . . . . . . .   289
+    7.7   Link-Based vs. Array-Based Sequences . . . . . . . . . . .         292
+    7.8   Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . .  294

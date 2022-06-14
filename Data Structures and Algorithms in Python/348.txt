@@ -1,0 +1,30 @@
+8.3. Implementing Trees                                                                            327
+       8.3.3 Linked Structure for General Trees
+          When representing a binary tree with a linked structure, each node explicitly main-
+          tains ﬁelds left and right as references to individual children. For a general tree,
+          there is no a priori limit on the number of children that a node may have. A natural
+          way to realize a general tree T as a linked structure is to have each node store a
+          single container of references to its children. For example, a children ﬁeld of a
+          node can be a Python list of references to the children of the node (if any). Such a
+          linked representation is schematically illustrated in Figure 8.14.
+                                                                                       New York
+                  parent
+                                   element
+                                                    Baltimore    Chicago    Providence     Seattle
+                 children
+                            (a)                                      (b)
+          Figure 8.14: The linked structure for a general tree: (a) the structure of a node; (b) a
+          larger portion of the data structure associated with a node and its children.
+              Table 8.2 summarizes the performance of the implementation of a general tree
+          using a linked structure. The analysis is left as an exercise (R-8.14), but we note
+          that, by using a collection to store the children of each position p, we can implement
+          children(p) by simply iterating that collection.
+                                                 Operation     Running Time
+                                              len, is empty    O(1)
+                              root, parent, is root, is leaf   O(1)
+                                                children(p)    O(c p + 1)
+                                                   depth(p)    O(d p + 1)
+                                                      height   O(n)
+          Table 8.2: Running times of the accessor methods of an n-node general tree im-
+          plemented with a linked structure. We let c p denote the number of children of a
+          position p. The space usage is O(n).

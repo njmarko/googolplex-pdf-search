@@ -1,0 +1,36 @@
+7.6. Case Study: Maintaining Access Frequencies                                         291
+       1 class FavoritesListMTF(FavoritesList):
+       2    ”””List of elements ordered with move-to-front heuristic.”””
+       3
+       4    # we override move up to provide move-to-front semantics
+       5    def move up(self, p):
+       6      ”””Move accessed item at Position p to front of list.”””
+       7      if p != self. data.ﬁrst( ):
+       8         self. data.add ﬁrst(self. data.delete(p))      # delete/reinsert
+       9
+      10    # we override top because list is no longer sorted
+      11    def top(self, k):
+      12      ”””Generate sequence of top k elements in terms of access count.”””
+      13      if not 1 <= k <= len(self):
+      14         raise ValueError( Illegal value for k )
+      15
+      16      # we begin by making a copy of the original list
+      17      temp = PositionalList( )
+      18      for item in self. data:                  # positional lists support iteration
+      19         temp.add last(item)
+      20
+      21      # we repeatedly ﬁnd, report, and remove element with largest count
+      22      for j in range(k):
+      23         # ﬁnd and report next highest from temp
+      24         highPos = temp.ﬁrst( )
+      25         walk = temp.after(highPos)
+      26         while walk is not None:
+      27           if walk.element( ). count > highPos.element( ). count:
+      28              highPos = walk
+      29           walk = temp.after(walk)
+      30         # we have found the element with highest count
+      31         yield highPos.element( ). value                # report element to user
+      32         temp.delete(highPos)                           # remove from temp list
+          Code Fragment 7.20: Class FavoritesListMTF implementing the move-to-front
+          heuristic. This class extends FavoritesList (Code Fragments 7.18 and 7.19) and
+          overrides methods move up and top.

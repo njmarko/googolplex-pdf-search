@@ -1,0 +1,25 @@
+312                                                                       Chapter 8. Trees
+    Example 8.7: An arithmetic expression can be represented by a binary tree whose
+    leaves are associated with variables or constants, and whose internal nodes are
+    associated with one of the operators +, −, ×, and /. (See Figure 8.8.) Each node
+    in such a tree has a value associated with it.
+        • If a node is leaf, then its value is that of its variable or constant.
+        • If a node is internal, then its value is deﬁned by applying its operation to the
+           values of its children.
+    An arithmetic expression tree is a proper binary tree, since each operator +, −, ×,
+    and / takes exactly two operands. Of course, if we were to allow unary operators,
+    like negation (−), as in “−x,” then we could have an improper binary tree.
+                                                          −
+                                   /                                           +
+                     ×                           +                     ×             6
+              +           3               −            2          3          −
+         3         1                 9         5                         7       4
+    Figure 8.8: A binary tree representing an arithmetic expression. This tree represents
+    the expression ((((3 + 1) × 3)/((9 − 5) + 2)) − ((3 × (7 − 4)) + 6)). The value
+    associated with the internal node labeled “/” is 2.
+    A Recursive Binary Tree Deﬁnition
+    Incidentally, we can also deﬁne a binary tree in a recursive way such that a binary
+    tree is either empty or consists of:
+        • A node r, called the root of T , that stores an element
+        • A binary tree (possibly empty), called the left subtree of T
+        • A binary tree (possibly empty), called the right subtree of T

@@ -1,0 +1,43 @@
+14.7. Minimum Spanning Trees                                                              685
+       1 class Partition:
+       2    ”””Union-ﬁnd structure for maintaining disjoint sets.”””
+       3
+       4    #------------------------- nested Position class -------------------------
+       5    class Position:
+       6           slots = _container , _element , _size , _parent
+       7
+       8       def init (self, container, e):
+       9          ”””Create a new position that is the leader of its own group.”””
+      10          self. container = container           # reference to Partition instance
+      11          self. element = e
+      12          self. size = 1
+      13          self. parent = self                   # convention for a group leader
+      14
+      15       def element(self):
+      16          ”””Return element stored at this position.”””
+      17          return self. element
+      18
+      19    #------------------------- public Partition methods -------------------------
+      20    def make group(self, e):
+      21       ”””Makes a new group containing element e, and returns its Position.”””
+      22       return self.Position(self, e)
+      23
+      24    def ﬁnd(self, p):
+      25       ”””Finds the group containging p and return the position of its leader.”””
+      26       if p. parent != p:
+      27          p. parent = self.ﬁnd(p. parent) # overwrite p. parent after recursion
+      28       return p. parent
+      29
+      30    def union(self, p, q):
+      31       ”””Merges the groups containg elements p and q (if distinct).”””
+      32       a = self.ﬁnd(p)
+      33       b = self.ﬁnd(q)
+      34       if a is not b:                           # only merge if diﬀerent groups
+      35          if a. size > b. size:
+      36             b. parent = a
+      37             a. size += b. size
+      38          else:
+      39             a. parent = b
+      40             b. size += a. size
+          Code Fragment 14.19: Python implementation of a Partition class using union-by-
+          size and path compression.

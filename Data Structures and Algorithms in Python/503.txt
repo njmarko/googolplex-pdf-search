@@ -1,0 +1,40 @@
+482                                                            Chapter 11. Search Trees
+        An immediate consequence of the height-balance property is that a subtree of an
+    AVL tree is itself an AVL tree. The height-balance property has also the important
+    consequence of keeping the height small, as shown in the following proposition.
+    Proposition 11.2: The height of an AVL tree storing n entries is O(log n).
+    Justiﬁcation: Instead of trying to ﬁnd an upper bound on the height of an AVL
+    tree directly, it turns out to be easier to work on the “inverse problem” of ﬁnding a
+    lower bound on the minimum number of nodes n(h) of an AVL tree with height h.
+    We will show that n(h) grows at least exponentially. From this, it will be an easy
+    step to derive that the height of an AVL tree storing n entries is O(log n).
+        We begin by noting that n(1) = 1 and n(2) = 2, because an AVL tree of height
+    1 must have exactly one node and an AVL tree of height 2 must have at least two
+    nodes. Now, an AVL tree with the minimum number of nodes having height h for
+    h ≥ 3, is such that both its subtrees are AVL trees with the minimum number of
+    nodes: one with height h − 1 and the other with height h − 2. Taking the root into
+    account, we obtain the following formula that relates n(h) to n(h − 1) and n(h − 2),
+    for h ≥ 3:
+                                 n(h) = 1 + n(h − 1) + n(h − 2).                    (11.1)
+    At this point, the reader familiar with the properties of Fibonacci progressions (Sec-
+    tion 1.8 and Exercise C-3.49) will already see that n(h) is a function exponential
+    in h. To formalize that observation, we proceed as follows.
+        Formula 11.1 implies that n(h) is a strictly increasing function of h. Thus, we
+    know that n(h − 1) > n(h − 2). Replacing n(h − 1) with n(h − 2) in Formula 11.1
+    and dropping the 1, we get, for h ≥ 3,
+                                       n(h) > 2 · n(h − 2).                         (11.2)
+    Formula 11.2 indicates that n(h) at least doubles each time h increases by 2, which
+    intuitively means that n(h) grows exponentially. To show this fact in a formal way,
+    we apply Formula 11.2 repeatedly, yielding the following series of inequalities:
+                                     n(h) > 2 · n(h − 2)
+                                            > 4 · n(h − 4)
+                                            > 8 · n(h − 6)
+                                                ..
+                                                 .
+                                            > 2i · n(h − 2i).                       (11.3)
+    That is, n(h) > 2i ·n(h− 2i), for any integer i, such that h− 2i ≥ 1. Since we already
+    know the values of n(1) and n(2), we pick i so that h − 2i is equal to either 1 or 2.
+    That is, we pick                            
+                                                h
+                                          i=       − 1.
+                                                2

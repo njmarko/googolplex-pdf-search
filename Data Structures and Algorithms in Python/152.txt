@@ -1,0 +1,40 @@
+3.3. Asymptotic Analysis                                                                     131
+         Revisiting the Problem of Finding the Maximum of a Sequence
+         For our next example, we revisit the ﬁnd max algorithm, given in Code Frag-
+         ment 3.1 on page 123, for ﬁnding the largest value in a sequence. Proposition 3.7
+         on page 125 claimed an O(n) run-time for the ﬁnd max algorithm. Consistent with
+         our earlier analysis of syntax data[0], the initialization uses O(1) time. The loop
+         executes n times, and within each iteration, it performs one comparison and possi-
+         bly one assignment statement (as well as maintenance of the loop variable). Finally,
+         we note that the mechanism for enacting a return statement in Python uses O(1)
+         time. Combining these steps, we have that the ﬁnd max function runs in O(n) time.
+         Further Analysis of the Maximum-Finding Algorithm
+         A more interesting question about ﬁnd max is how many times we might update
+         the current “biggest” value. In the worst case, if the data is given to us in increasing
+         order, the biggest value is reassigned n − 1 times. But what if the input is given
+         to us in random order, with all orders equally likely; what would be the expected
+         number of times we update the biggest value in this case? To answer this question,
+         note that we update the current biggest in an iteration of the loop only if the current
+         element is bigger than all the elements that precede it. If the sequence is given to
+         us in random order, the probability that the jth element is the largest of the ﬁrst j
+         elements is 1/ j (assuming uniqueness). Hence, the expected number of times we
+         update the biggest (including initialization) is Hn = ∑nj=1 1/ j, which is known as
+         the nth Harmonic number. It turns out (see Proposition B.16) that Hn is O(log n).
+         Therefore, the expected number of times the biggest value is updated by ﬁnd max
+         on a randomly ordered sequence is O(log n).
+         Preﬁx Averages
+         The next problem we consider is computing what are known as preﬁx averages
+         of a sequence of numbers. Namely, given a sequence S consisting of n num-
+         bers, we want to compute a sequence A such that A[ j] is the average of elements
+         S[0], . . . , S[ j], for j = 0, . . . , n − 1, that is,
+                                                                 j
+                                                               ∑i=0 S[i]
+                                                      A[ j] =            .
+                                                                 j+1
+         Computing preﬁx averages has many applications in economics and statistics. For
+         example, given the year-by-year returns of a mutual fund, ordered from recent to
+         past, an investor will typically want to see the fund’s average annual returns for the
+         most recent year, the most recent three years, the most recent ﬁve years, and so on.
+         Likewise, given a stream of daily Web usage logs, a Web site manager may wish
+         to track average usage trends over various time periods. We analyze three different
+         implementations that solve this problem but with rather different running times.

@@ -1,0 +1,37 @@
+11.4. Splay Trees                                                                                    499
+          Proposition 11.3: Let δ be the variation of r(T ) caused by a single splaying sub-
+          step (a zig, zig-zig, or zig-zag) for a node x in T . We have the following:
+              • δ ≤ 3(r (x) − r(x)) − 2 if the substep is a zig-zig or zig-zag.
+              • δ ≤ 3(r (x) − r(x)) if the substep is a zig.
+          Justiﬁcation: We use the fact (see Proposition B.1, Appendix A) that, if a > 0,
+          b > 0, and c > a + b,
+                                           log a + log b < 2 log c − 2.                            (11.6)
+          Let us consider the change in r(T ) caused by each type of splaying substep.
+          zig-zig: (Recall Figure 11.16.) Since the size of each node is one more than the
+                 size of its two children, note that only the ranks of x, y, and z change in a
+                 zig-zig operation, where y is the parent of x and z is the parent of y. Also,
+                 r (x) = r(z), r (y) ≤ r (x), and r(x) ≤ r(y). Thus,
+                                   δ = r (x) + r (y) + r (z) − r(x) − r(y) − r(z)
+                                       = r (y) + r (z) − r(x) − r(y)
+                                       ≤ r (x) + r (z) − 2r(x).                                  (11.7)
+                 Note that   n(x) + n (z)  <  n (x). Thus,   r(x) + r (z)  <  2r (x) − 2, as per For-
+                 mula 11.6; that is,
+                                               r (z) < 2r (x) − r(x) − 2.
+                 This inequality and Formula 11.7 imply
+                                      δ ≤ r (x) + (2r (x) − r(x) − 2) − 2r(x)
+                                         ≤ 3(r (x) − r(x)) − 2.
+          zig-zag: (Recall Figure 11.17.) Again, by the deﬁnition of size and rank, only the
+                 ranks of x, y, and z change, where y denotes the parent of x and z denotes the
+                 parent of y. Also, r(x) < r(y) < r(z) = r (x). Thus,
+                                   δ = r (x) + r (y) + r (z) − r(x) − r(y) − r(z)
+                                       = r (y) + r (z) − r(x) − r(y)
+                                       ≤ r (y) + r (z) − 2r(x).                                  (11.8)
+                 Note that  n (y) + n (z)  < n (x); hence,  r (y) + r (z) < 2r (x) − 2, as per For-
+                 mula 11.6. Thus,
+                                 δ ≤ 2r (x) − 2 − 2r(x)
+                                      = 2(r (x) − r(x)) − 2 ≤ 3(r (x) − r(x)) − 2.
+          zig: (Recall Figure 11.18.) In this case, only the ranks of x and y change, where y
+                 denotes the parent of x. Also, r (y) ≤ r(y) and r (x) ≥ r(x). Thus,
+                                          δ = r (y) + r (x) − r(y) − r(x)
+                                               ≤ r (x) − r(x)
+                                               ≤ 3(r (x) − r(x)).

@@ -1,0 +1,42 @@
+5.5. Using Array-Based Sequences                                                            217
+               We can represent a replacement rule using another string to describe the trans-
+          lation. As a concrete example, suppose we are using a Caesar cipher with a three-
+          character rotation. We can precompute a string that represents the replacements
+          that should be used for each character from A to Z. For example, A should be re-
+          placed by D, B replaced by E, and so on. The 26 replacement characters in order
+          are DEFGHIJKLMNOPQRSTUVWXYZABC . We can subsequently use this translation
+          string as a guide to encrypt a message. The remaining challenge is how to quickly
+          locate the replacement for each character of the original message.
+               Fortunately, we can rely on the fact that characters are represented in Unicode
+          by integer code points, and the code points for the uppercase letters of the Latin
+          alphabet are consecutive (for simplicity, we restrict our encryption to uppercase
+          letters). Python supports functions that convert between integer code points and
+          one-character strings. Speciﬁcally, the function ord(c) takes a one-character string
+          as a parameter and returns the integer code point for that character. Conversely, the
+          function chr(j) takes an integer and returns its associated one-character string.
+               In order to ﬁnd a replacement for a character in our Caesar cipher, we need to
+          map the characters A to Z to the respective numbers 0 to 25. The formula for
+          doing that conversion is j = ord(c) − ord( A ). As a sanity check, if character c
+          is A , we have that j = 0. When c is B , we will ﬁnd that its ordinal value is pre-
+          cisely one more than that for A , so their difference is 1. In general, the integer j
+          that results from such a calculation can be used as an index into our precomputed
+          translation string, as illustrated in Figure 5.21.
+            encoder array
+           D E F G H         I  J K L M N O P Q R S T U V W X Y Z A B C
+            0   1  2  3   4 5   6   7  8   9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+                                                    ord( T ) − ord( A )
+                       Using T as an index
+                                                   = 84      − 65            Here is the
+                               In Unicode                               replacement  for T
+                                                   = 19
+          Figure 5.21: Illustrating the use of uppercase characters as indices, in this case to
+          perform the replacement rule for Caesar cipher encryption.
+               In Code Fragment 5.11, we develop a Python class for performing the Caesar
+          cipher with an arbitrary rotational shift, and demonstrate its use. When we run this
+          program (to perform a simple test), we get the following output.
+                 Secret: WKH HDJOH LV LQ SODB; PHHW DW MRH’V.
+                 Message: THE EAGLE IS IN PLAY; MEET AT JOE’S.
+          The constructor for the class builds the forward and backward translation strings for
+          the given rotation. With those in hand, the encryption and decryption algorithms
+          are essentially the same, and so we perform both by means of a nonpublic utility
+          method named transform.

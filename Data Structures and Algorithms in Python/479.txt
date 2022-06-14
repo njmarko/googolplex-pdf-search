@@ -1,0 +1,8 @@
+458                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+ Chapter Notes
+     Hashing is a well-studied technique. The reader interested in further study is encouraged
+     to explore the book by Knuth [65], as well as the book by Vitter and Chen [100]. Skip
+     lists were introduced by Pugh [86]. Our analysis of skip lists is a simpliﬁcation of a pre-
+     sentation given by Motwani and Raghavan [80]. For a more in-depth analysis of skip lists,
+     please see the various research papers on skip lists that have appeared in the data structures
+     literature [59, 81, 84]. Exercise C-10.36 was contributed by James Lee.

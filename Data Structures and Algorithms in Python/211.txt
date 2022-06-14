@@ -1,0 +1,40 @@
+190                                                    Chapter 5. Array-Based Sequences
+    5.2.2 Compact Arrays in Python
+       In the introduction to this section, we emphasized that strings are represented using
+       an array of characters (not an array of references). We will refer to this more direct
+       representation as a compact array because the array is storing the bits that represent
+       the primary data (characters, in the case of strings).
+                                        S A M P L E
+                                         0   1   2   3    4   5
+           Compact arrays have several advantages over referential structures in terms
+       of computing performance. Most signiﬁcantly, the overall memory usage will be
+       much lower for a compact structure because there is no overhead devoted to the
+       explicit storage of the sequence of memory references (in addition to the primary
+       data). That is, a referential structure will typically use 64-bits for the memory
+       address stored in the array, on top of whatever number of bits are used to represent
+       the object that is considered the element. Also, each Unicode character stored in
+       a compact array within a string typically requires 2 bytes. If each character were
+       stored independently as a one-character string, there would be signiﬁcantly more
+       bytes used.
+           As another case study, suppose we wish to store a sequence of one million,
+       64-bit integers. In theory, we might hope to use only 64 million bits. However, we
+       estimate that a Python list will use four to ﬁve times as much memory. Each element
+       of the list will result in a 64-bit memory address being stored in the primary array,
+       and an int instance being stored elsewhere in memory. Python allows you to query
+       the actual number of bytes being used for the primary storage of any object. This
+       is done using the getsizeof function of the sys module. On our system, the size of
+       a typical int object requires 14 bytes of memory (well beyond the 4 bytes needed
+       for representing the actual 64-bit number). In all, the list will be using 18 bytes per
+       entry, rather than the 4 bytes that a compact list of integers would require.
+           Another important advantage to a compact structure for high-performance com-
+       puting is that the primary data are stored consecutively in memory. Note well that
+       this is not the case for a referential structure. That is, even though a list maintains
+       careful ordering of the sequence of memory addresses, where those elements reside
+       in memory is not determined by the list. Because of the workings of the cache and
+       memory hierarchies of computers, it is often advantageous to have data stored in
+       memory near other data that might be used in the same computations.
+           Despite the apparent inefﬁciencies of referential structures, we will generally
+       be content with the convenience of Python’s lists and tuples in this book. The only
+       place in which we consider alternatives will be in Chapter 15, which focuses on
+       the impact of memory usage on data structures and algorithms. Python provides
+       several means for creating compact arrays of various types.

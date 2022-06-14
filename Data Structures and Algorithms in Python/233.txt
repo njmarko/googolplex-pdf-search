@@ -1,0 +1,40 @@
+212                                                 Chapter 5. Array-Based Sequences
+     1 class Scoreboard:
+     2   ”””Fixed-length sequence of high scores in nondecreasing order.”””
+     3
+     4   def init (self, capacity=10):
+     5      ”””Initialize scoreboard with given maximum capacity.
+     6
+     7      All entries are initially None.
+     8      ”””
+     9      self. board = [None] capacity               # reserve space for future scores
+    10      self. n = 0                                 # number of actual entries
+    11
+    12   def getitem (self, k):
+    13      ”””Return entry at index k.”””
+    14      return self. board[k]
+    15
+    16   def str (self):
+    17      ”””Return string representation of the high score list.”””
+    18      return \n .join(str(self. board[j]) for j in range(self. n))
+    19
+    20   def add(self, entry):
+    21      ”””Consider adding entry to high scores.”””
+    22      score = entry.get score( )
+    23
+    24      # Does new entry qualify as a high score?
+    25      # answer is yes if board not full or score is higher than last entry
+    26      good = self. n < len(self. board) or score > self. board[−1].get score( )
+    27
+    28      if good:
+    29         if self. n < len(self. board):              # no score drops from list
+    30            self. n += 1                             # so overall number increases
+    31
+    32         # shift lower scores rightward to make room for new entry
+    33         j = self. n − 1
+    34         while j > 0 and self. board[j−1].get score( ) < score:
+    35            self. board[j] = self. board[j−1]        # shift entry from j-1 to j
+    36            j −= 1                                   # and decrement j
+    37         self. board[j] = entry                      # when done, add new entry
+       Code Fragment 5.8: Python code for a Scoreboard class that maintains an ordered
+       series of scores as GameEntry objects.

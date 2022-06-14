@@ -1,0 +1,42 @@
+10.1. Maps and Dictionaries                                                           409
+       1 class UnsortedTableMap(MapBase):
+       2   ”””Map implementation using an unordered list.”””
+       3
+       4   def init (self):
+       5     ”””Create an empty map.”””
+       6     self. table = [ ]                                        # list of Item’s
+       7
+       8   def getitem (self, k):
+       9     ”””Return value associated with key k (raise KeyError if not found).”””
+      10     for item in self. table:
+      11        if k == item. key:
+      12           return item. value
+      13     raise KeyError( Key Error: + repr(k))
+      14
+      15   def setitem (self, k, v):
+      16     ”””Assign value v to key k, overwriting existing value if present.”””
+      17     for item in self. table:
+      18        if k == item. key:                                    # Found a match:
+      19           item. value = v                                    # reassign value
+      20           return                                             # and quit
+      21     # did not ﬁnd match for key
+      22     self. table.append(self. Item(k,v))
+      23
+      24   def delitem (self, k):
+      25     ”””Remove item associated with key k (raise KeyError if not found).”””
+      26     for j in range(len(self. table)):
+      27        if k == self. table[j]. key:                          # Found a match:
+      28           self. table.pop(j)                                 # remove item
+      29           return                                             # and quit
+      30     raise KeyError( Key Error: + repr(k))
+      31
+      32   def len (self):
+      33     ”””Return number of items in the map.”””
+      34     return len(self. table)
+      35
+      36   def iter (self):
+      37     ”””Generate iteration of the map s keys.”””
+      38     for item in self. table:
+      39        yield item. key                                       # yield the KEY
+         Code Fragment 10.3: An implementation of a map using a Python list as an unsorted
+         table. Parent class MapBase is given in Code Fragment 10.2.

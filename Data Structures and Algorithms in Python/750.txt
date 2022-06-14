@@ -1,0 +1,38 @@
+Appendix B. Useful Mathematical Facts                                                      729
+         Example B.18: Consider an experiment that consists of ﬂipping a coin until it
+         comes up heads. This sample space is inﬁnite, with each outcome being a sequence
+         of i tails followed by a single ﬂip that comes up heads, for i = 1, 2, 3, . . ..
+              A probability space is a sample space S together with a probability function
+         Pr that maps subsets of S to real numbers in the interval [0, 1]. It captures math-
+         ematically the notion of the probability of certain “events” occurring. Formally,
+         each subset A of S is called an event, and the probability function Pr is assumed to
+         possess the following basic properties with respect to events deﬁned from S:
+             1. Pr(∅) = 0.
+             2. Pr(S) = 1.
+             3. 0 ≤ Pr(A) ≤ 1, for any A ⊆ S.
+             4. If A, B ⊆ S and A ∩ B = ∅, then Pr(A ∪ B) = Pr(A) + Pr(B).
+              Two events A and B are independent if
+                                             Pr(A ∩ B) = Pr(A) · Pr(B).
+         A collection of events {A1 , A2 , . . . , An } is mutually independent if
+                          Pr(Ai1 ∩ Ai2 ∩ · · · ∩ Aik ) = Pr(Ai1 ) Pr(Ai2 ) · · · Pr(Aik ).
+         for any subset {Ai1 , Ai2 , . . . , Aik }.
+              The conditional probability that an event A occurs, given an event B, is denoted
+         as Pr(A|B), and is deﬁned as the ratio
+                                                     Pr(A ∩ B)
+                                                               ,
+                                                       Pr(B)
+         assuming that Pr(B) > 0.
+              An elegant way for dealing with events is in terms of random variables. Intu-
+         itively, random variables are variables whose values depend upon the outcome of
+         some experiment. Formally, a random variable is a function X that maps outcomes
+         from some sample space S to real numbers. An indicator random variable is a
+         random variable that maps outcomes to the set {0, 1}. Often in data structure and
+         algorithm analysis we use a random variable X to characterize the running time of
+         a randomized algorithm. In this case, the sample space S is deﬁned by all possible
+         outcomes of the random sources used in the algorithm.
+              We are most interested in the typical, average, or “expected” value of such a
+         random variable. The expected value of a random variable X is deﬁned as
+                                               E(X ) = ∑ x Pr(X = x),
+                                                        x
+         where the summation is deﬁned over the range of X (which in this case is assumed
+         to be discrete).

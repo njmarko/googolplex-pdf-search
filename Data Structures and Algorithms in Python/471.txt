@@ -1,0 +1,34 @@
+450                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.5.3 Implementing Sets, Multisets, and Multimaps
+       Sets
+       Although sets and maps have very different public interfaces, they are really quite
+       similar. A set is simply a map in which keys do not have associated values. Any
+       data structure used to implement a map can be modiﬁed to implement the set ADT
+       with similar performance guarantees. We could trivially adapt any map class by
+       storing set elements as keys, and using None as an irrelevant value, but such an
+       implementation is unnecessarily wasteful. An efﬁcient set implementation should
+       abandon the Item composite that we use in our MapBase class and instead store
+       set elements directly in a data structure.
+       Multisets
+       The same element may occur several times in a multiset. All of the data structures
+       we have seen can be reimplemented to allow for duplicates to appear as separate
+       elements. However, another way to implement a multiset is by using a map in
+       which the map key is a (distinct) element of the multiset, and the associated value
+       is a count of the number of occurrences of that element within the multiset. In fact,
+       that is essentially what we did in Section 10.1.2 when computing the frequency of
+       words within a document.
+            Python’s standard collections module includes a deﬁnition for a class named
+       Counter that is in essence a multiset. Formally, the Counter class is a subclass of
+       dict, with the expectation that values are integers, and with additional functionality
+       like a most common(n) method that returns a list of the n most common elements.
+       The standard iter reports each element only once (since those are formally the
+       keys of the dictionary). There is another method named elements( ) that iterates
+       through the multiset with each element being repeated according to its count.
+       Multimaps
+       Although there is no multimap in Python’s standard libraries, a common imple-
+       mentation approach is to use a standard map in which the value associated with a
+       key is itself a container class storing any number of associated values. We give an
+       example of such a MultiMap class in Code Fragment 10.17. Our implementation
+       uses the standard dict class as the map, and a list of values as a composite value in
+       the dictionary. We have designed the class so that a different map implementation
+       can easily be substituted by overriding the class-level MapType attribute at line 3.

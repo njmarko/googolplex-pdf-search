@@ -1,0 +1,37 @@
+15.1. Memory Management                                                                    703
+      15.1.3 Additional Memory Used by the Python Interpreter
+         We have discussed, in Section 15.1.1, how the Python interpreter allocates memory
+         for objects within a memory heap. However, this is not the only memory that is
+         used when executing a Python program. In this section, we discuss some other
+         important uses of memory.
+         The Run-Time Call Stack
+         Stacks have a most important application to the run-time environment of Python
+         programs. A running Python program has a private stack, known as the call stack
+         or Python interpreter stack, that is used to keep track of the nested sequence of
+         currently active (that is, nonterminated) invocations of functions. Each entry of
+         the stack is a structure known as an activation record or frame, storing important
+         information about an invocation of a function.
+             At the top of the call stack is the activation record of the running call, that is,
+         the function activation that currently has control of the execution. The remaining
+         elements of the stack are activation records of the suspended calls, that is, func-
+         tions that have invoked another function and are currently waiting for that other
+         function to return control when it terminates. The order of the elements in the stack
+         corresponds to the chain of invocations of the currently active functions. When a
+         new function is called, an activation record for that call is pushed onto the stack.
+         When it terminates, its activation record is popped from the stack and the Python
+         interpreter resumes the processing of the previously suspended call.
+             Each activation record includes a dictionary representing the local namespace
+         for the function call. (See Sections 1.10 and 2.5 for further discussion of name-
+         spaces). The namespace maps identiﬁers, which serve as parameters and local
+         variables, to object values, although the objects being referenced still reside in the
+         memory heap. The activation record for a function call also includes a reference to
+         the function deﬁnition itself, and a special variable, known as the program counter,
+         to maintain the address of the statement within the function that is currently exe-
+         cuting. When one function returns control to another, the stored program counter
+         for the suspended function allows the interpreter to properly continue execution of
+         that function.
+         Implementing Recursion
+         One of the beneﬁts of using a stack to implement the nesting of function calls is
+         that it allows programs to use recursion. That is, it allows a function to call it-
+         self, as discussed in Chapter 4. We implicitly described the concept of the call
+         stack and the use of activation records within our portrayal of recursion traces in

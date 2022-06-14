@@ -1,0 +1,41 @@
+636                                                      Chapter 14. Graph Algorithms
+     1 class Graph:
+     2   ”””Representation of a simple graph using an adjacency map.”””
+     3
+     4   def init (self, directed=False):
+     5     ”””Create an empty graph (undirected, by default).
+     6
+     7     Graph is directed if optional paramter is set to True.
+     8     ”””
+     9     self. outgoing = { }
+    10     # only create second map for directed graph; use alias for undirected
+    11     self. incoming = { } if directed else self. outgoing
+    12
+    13   def is directed(self):
+    14     ”””Return True if this is a directed graph; False if undirected.
+    15
+    16     Property is based on the original declaration of the graph, not its contents.
+    17     ”””
+    18     return self. incoming is not self. outgoing # directed if maps are distinct
+    19
+    20   def vertex count(self):
+    21     ”””Return the number of vertices in the graph.”””
+    22     return len(self. outgoing)
+    23
+    24   def vertices(self):
+    25     ”””Return an iteration of all vertices of the graph.”””
+    26     return self. outgoing.keys( )
+    27
+    28   def edge count(self):
+    29     ”””Return the number of edges in the graph.”””
+    30     total = sum(len(self. outgoing[v]) for v in self. outgoing)
+    31     # for undirected graphs, make sure not to double-count edges
+    32     return total if self.is directed( ) else total // 2
+    33
+    34   def edges(self):
+    35     ”””Return a set of all edges of the graph.”””
+    36     result = set( )          # avoid double-reporting edges of undirected graph
+    37     for secondary map in self. outgoing.values( ):
+    38       result.update(secondary map.values( ))          # add edges to resulting set
+    39     return result
+        Code Fragment 14.2: Graph class deﬁnition (continued in Code Fragment 14.3).

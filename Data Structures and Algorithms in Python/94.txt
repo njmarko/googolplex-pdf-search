@@ -1,0 +1,40 @@
+2.3. Class Deﬁnitions                                                                      73
+           Testing the Class
+           In Code Fragment 2.3, we demonstrate some basic usage of the CreditCard class,
+           inserting three cards into a list named wallet. We use loops to make some charges
+           and payments, and use various accessors to print results to the console.
+               These tests are enclosed within a conditional, if name == __main__ :,
+           so that they can be embedded in the source code with the class deﬁnition. Using
+           the terminology of Section 2.2.4, these tests provide method coverage, as each of
+           the methods is called at least once, but it does not provide statement coverage, as
+           there is never a case in which a charge is rejected due to the credit limit. This
+           is not a particular advanced from of testing as the output of the given tests must
+           be manually audited in order to determine whether the class behaved as expected.
+           Python has tools for more formal testing (see discussion of the unittest module
+           in Section 2.2.4), so that resulting values can be automatically compared to the
+           predicted outcomes, with output generated only when an error is detected.
+      53 if name == __main__ :
+      54     wallet = [ ]
+      55     wallet.append(CreditCard( John Bowman , California Savings ,
+      56                                     5391 0375 9387 5309 , 2500) )
+      57     wallet.append(CreditCard( John Bowman , California Federal ,
+      58                                     3485 0399 3395 1954 , 3500) )
+      59     wallet.append(CreditCard( John Bowman , California Finance ,
+      60                                     5391 0375 9387 5309 , 5000) )
+      61
+      62     for val in range(1, 17):
+      63        wallet[0].charge(val)
+      64        wallet[1].charge(2 val)
+      65        wallet[2].charge(3 val)
+      66
+      67     for c in range(3):
+      68        print( Customer = , wallet[c].get customer( ))
+      69        print( Bank = , wallet[c].get bank( ))
+      70        print( Account = , wallet[c].get account( ))
+      71        print( Limit = , wallet[c].get limit( ))
+      72        print( Balance = , wallet[c].get balance( ))
+      73        while wallet[c].get balance( ) > 100:
+      74          wallet[c].make payment(100)
+      75          print( New balance = , wallet[c].get balance( ))
+      76        print( )
+                            Code Fragment 2.3: Testing the CreditCard class.

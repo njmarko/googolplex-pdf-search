@@ -1,0 +1,35 @@
+670                                                       Chapter 14. Graph Algorithms
+ 14.7   Minimum Spanning Trees
+      Suppose we wish to connect all the computers in a new ofﬁce building using the
+      least amount of cable. We can model this problem using an undirected, weighted
+      graph G whose vertices represent the computers, and whose edges represent all
+      the possible pairs (u, v) of computers, where the weight w(u, v) of edge (u, v) is
+      equal to the amount of cable needed to connect computer u to computer v. Rather
+      than computing a shortest-path tree from some particular vertex v, we are interested
+      instead in ﬁnding a tree T that contains all the vertices of G and has the minimum
+      total weight over all such trees. Algorithms for ﬁnding such a tree are the focus of
+      this section.
+      Problem Deﬁnition
+      Given an undirected, weighted graph G, we are interested in ﬁnding a tree T that
+      contains all the vertices in G and minimizes the sum
+                                     w(T ) =      ∑      w(u, v).
+                                             (u, v) in T
+          A tree, such as this, that contains every vertex of a connected graph G is said to
+      be a spanning tree, and the problem of computing a spanning tree T with smallest
+      total weight is known as the minimum spanning tree (or MST) problem.
+          The development of efﬁcient algorithms for the minimum spanning tree prob-
+      lem predates the modern notion of computer science itself. In this section, we
+      discuss two classic algorithms for solving the MST problem. These algorithms
+      are both applications of the greedy method, which, as was discussed brieﬂy in the
+      previous section, is based on choosing objects to join a growing collection by it-
+      eratively picking an object that minimizes some cost function. The ﬁrst algorithm
+      we discuss is the Prim-Jarnı́k algorithm, which grows the MST from a single root
+      vertex, much in the same way as Dijkstra’s shortest-path algorithm. The second
+      algorithm we discuss is Kruskal’s algorithm, which “grows” the MST in clusters
+      by considering edges in nondecreasing order of their weights.
+          In order to simplify the description of the algorithms, we assume, in the follow-
+      ing, that the input graph G is undirected (that is, all its edges are undirected) and
+      simple (that is, it has no self-loops and no parallel edges). Hence, we denote the
+      edges of G as unordered vertex pairs (u, v).
+          Before we discuss the details of these algorithms, however, let us give a crucial
+      fact about minimum spanning trees that forms the basis of the algorithms.

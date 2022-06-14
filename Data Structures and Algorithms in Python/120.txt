@@ -1,0 +1,38 @@
+2.5. Namespaces and Object-Orientation                                                      99
+         node class. These two structures rely on different node deﬁnitions, and by nesting
+         those within the respective container classes, we avoid ambiguity.
+              Another advantage of one class being nested as a member of another is that it
+         allows for a more advanced form of inheritance in which a subclass of the outer
+         class overrides the deﬁnition of its nested class. We will make use of that technique
+         in Section 11.2.1 when specializing the nodes of a tree structure.
+         Dictionaries and the            slots     Declaration
+         By default, Python represents each namespace with an instance of the built-in dict
+         class (see Section 1.2.3) that maps identifying names in that scope to the associated
+         objects. While a dictionary structure supports relatively efﬁcient name lookups,
+         it requires additional memory usage beyond the raw data that it stores (we will
+         explore the data structure used to implement dictionaries in Chapter 10).
+              Python provides a more direct mechanism for representing instance namespaces
+         that avoids the use of an auxiliary dictionary. To use the streamlined representation
+         for all instances of a class, that class deﬁnition must provide a class-level member
+         named slots that is assigned to a ﬁxed sequence of strings that serve as names
+         for instance variables. For example, with our CreditCard class, we would declare
+         the following:
+         class CreditCard:
+               slots = _customer , _bank , _account , _balance , _limit
+         In this example, the right-hand side of the assignment is technically a tuple (see
+         discussion of automatic packing of tuples in Section 1.9.3).
+              When inheritance is used, if the base class declares slots , a subclass must
+         also declare slots to avoid creation of instance dictionaries. The declaration
+         in the subclass should only include names of supplemental methods that are newly
+         introduced. For example, our PredatoryCreditCard declaration would include the
+         following declaration:
+         class PredatoryCreditCard(CreditCard):
+               slots = _apr                          # in addition to the inherited members
+              We could choose to use the slots declaration to streamline every class in
+         this book. However, we do not do so because such rigor would be atypical for
+         Python programs. With that said, there are a few classes in this book for which
+         we expect to have a large number of instances, each representing a lightweight
+         construct. For example, when discussing nested classes, we suggest linked lists
+         and trees as data structures that are often comprised of a large number of individual
+         nodes. To promote greater efﬁciency in memory usage, we will use an explicit
+            slots declaration in any nested classes for which we expect many instances.

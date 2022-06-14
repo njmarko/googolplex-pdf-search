@@ -1,0 +1,38 @@
+13.6. Exercises                                                                            617
+          P-13.48 Perform an experimental analysis of the efﬁciency (number of character
+                  comparisons performed) of the brute-force and KMP pattern-matching al-
+                  gorithms for varying-length patterns.
+          P-13.49 Perform an experimental analysis of the efﬁciency (number of charac-
+                  ter comparisons performed) of the brute-force and Boyer-Moore pattern-
+                  matching algorithms for varying-length patterns.
+          P-13.50 Perform an experimental comparison of the relative speeds of the brute-
+                  force, KMP, and Boyer-Moore pattern-matching algorithms. Document
+                  the relative running times on large text documents that are then searched
+                  using varying-length patterns.
+          P-13.51 Experiment with the efﬁciency of the ﬁnd method of Python’s str class
+                  and develop a hypothesis about which pattern-matching algorithm it uses.
+                  Try using inputs that are likely to cause both best-case and worst-case
+                  running times for various algorithms. Describe your experiments and your
+                  conclusions.
+          P-13.52 Implement a compression and decompression scheme that is based on
+                  Huffman coding.
+          P-13.53 Create a class that implements a standard trie for a set of ASCII strings.
+                  The class should have a constructor that takes a list of strings as an argu-
+                  ment, and the class should have a method that tests whether a given string
+                  is stored in the trie.
+          P-13.54 Create a class that implements a compressed trie for a set of ASCII strings.
+                  The class should have a constructor that takes a list of strings as an argu-
+                  ment, and the class should have a method that tests whether a given string
+                  is stored in the trie.
+          P-13.55 Create a class that implements a preﬁx trie for an ASCII string. The class
+                  should have a constructor that takes a string as an argument, and a method
+                  for pattern matching on the string.
+          P-13.56 Implement the simpliﬁed search engine described in Section 13.5.4 for
+                  the pages of a small Web site. Use all the words in the pages of the site
+                  as index terms, excluding stop words such as articles, prepositions, and
+                  pronouns.
+          P-13.57 Implement a search engine for the pages of a small Web site by adding
+                  a page-ranking feature to the simpliﬁed search engine described in Sec-
+                  tion 13.5.4. Your page-ranking feature should return the most relevant
+                  pages ﬁrst. Use all the words in the pages of the site as index terms, ex-
+                  cluding stop words, such as articles, prepositions, and pronouns.

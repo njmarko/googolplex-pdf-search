@@ -1,0 +1,38 @@
+144                                                        Chapter 3. Algorithm Analysis
+       R-3.32 Given an n-element sequence S, Algorithm D calls Algorithm E on each
+               element S[i]. Algorithm E runs in O(i) time when it is called on element
+               S[i]. What is the worst-case running time of Algorithm D?
+       R-3.33 Al and Bob are arguing about their algorithms. Al claims his O(n log n)-
+               time method is always faster than Bob’s O(n2 )-time method. To settle the
+               issue, they perform a set of experiments. To Al’s dismay, they ﬁnd that if
+               n < 100, the O(n2 )-time algorithm runs faster, and only when n ≥ 100 is
+               the O(n log n)-time one better. Explain how this is possible.
+       R-3.34 There is a well-known city (which will go nameless here) whose inhabi-
+               tants have the reputation of enjoying a meal only if that meal is the best
+               they have ever experienced in their life. Otherwise, they hate it. Assum-
+               ing meal quality is distributed uniformly across a person’s life, describe
+               the expected number of times inhabitants of this city are happy with their
+               meals?
+    Creativity
+       C-3.35 Assuming it is possible to sort n numbers in O(n log n) time, show that it
+               is possible to solve the three-way set disjointness problem in O(n log n)
+               time.
+       C-3.36 Describe an efﬁcient algorithm for ﬁnding the ten largest elements in a
+               sequence of size n. What is the running time of your algorithm?
+       C-3.37 Give an example of a positive function f (n) such that f (n) is neither O(n)
+               nor Ω(n).
+       C-3.38 Show that ∑ni=1 i2 is O(n3 ).
+       C-3.39 Show that ∑ni=1 i/2i < 2. (Hint: Try to bound this sum term by term with
+               a geometric progression.)
+       C-3.40 Show that logb f (n) is Θ(log f (n)) if b > 1 is a constant.
+       C-3.41 Describe an algorithm for ﬁnding both the minimum and maximum of n
+               numbers using fewer than 3n/2 comparisons. (Hint: First, construct a
+               group of candidate minimums and a group of candidate maximums.)
+       C-3.42 Bob built a Web site and gave the URL only to his n friends, which he
+               numbered from 1 to n. He told friend number i that he/she can visit the
+               Web site at most i times. Now Bob has a counter, C, keeping track of the
+               total number of visits to the site (but not the identities of who visits). What
+               is the minimum value for C such that Bob can know that one of his friends
+               has visited his/her maximum allowed number of times?
+       C-3.43 Draw a visual justiﬁcation of Proposition 3.3 analogous to that of Fig-
+               ure 3.3(b) for the case when n is odd.

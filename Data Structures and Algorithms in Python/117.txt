@@ -1,0 +1,38 @@
+96                                            Chapter 2. Object-Oriented Programming
+ 2.5    Namespaces and Object-Orientation
+        A namespace is an abstraction that manages all of the identiﬁers that are deﬁned in
+        a particular scope, mapping each name to its associated value. In Python, functions,
+        classes, and modules are all ﬁrst-class objects, and so the “value” associated with
+        an identiﬁer in a namespace may in fact be a function, class, or module.
+            In Section 1.10 we explored Python’s use of namespaces to manage identiﬁers
+        that are deﬁned with global scope, versus those deﬁned within the local scope of
+        a function call. In this section, we discuss the important role of namespaces in
+        Python’s management of object-orientation.
+     2.5.1 Instance and Class Namespaces
+        We begin by exploring what is known as the instance namespace, which man-
+        ages attributes speciﬁc to an individual object. For example, each instance of our
+        CreditCard class maintains a distinct balance, a distinct account number, a distinct
+        credit limit, and so on (even though some instances may coincidentally have equiv-
+        alent balances, or equivalent credit limits). Each credit card will have a dedicated
+        instance namespace to manage such values.
+            There is a separate class namespace for each class that has been deﬁned. This
+        namespace is used to manage members that are to be shared by all instances of
+        a class, or used without reference to any particular instance. For example, the
+        make payment method of the CreditCard class from Section 2.3 is not stored
+        independently by each instance of that class. That member function is stored
+        within the namespace of the CreditCard class. Based on our deﬁnition from Code
+        Fragments 2.1 and 2.2, the CreditCard class namespace includes the functions:
+           init , get customer, get bank, get account, get balance, get limit, charge,
+        and make payment. Our PredatoryCreditCard class has its own namespace, con-
+        taining the three methods we deﬁned for that subclass:          init , charge, and
+        process month.
+            Figure 2.8 provides a portrayal of three such namespaces: a class namespace
+        containing methods of the CreditCard class, another class namespace with meth-
+        ods of the PredatoryCreditCard class, and ﬁnally a single instance namespace for
+        a sample instance of the PredatoryCreditCard class. We note that there are two
+        different deﬁnitions of a function named charge, one in the CreditCard class, and
+        then the overriding method in the PredatoryCreditCard class. In similar fashion,
+        there are two distinct init implementations. However, process month is a
+        name that is only deﬁned within the scope of the PredatoryCreditCard class. The
+        instance namespace includes all data members for the instance (including the apr
+        member that is established by the PredatoryCreditCard constructor).

@@ -1,0 +1,30 @@
+510                                                              Chapter 11. Search Trees
+                             12                                           12
+                                                              u
+                5 10                    15                     10                      15
+                                                     5
+       4                                         w         6    s
+                6 8       11     13 14      17                  8      11        13 14    17
+                       (a)                                           (b)
+                                                                                12
+                            12
+                 u                                                           11
+               6 10                    15                    6 10                      15
+    w              s
+      5          8       11     13 14      17      5          8                  13 14    17
+                       (c)                                           (d)
+                            11                                        11
+                 u                                         u
+               6        10             15                 6                         15
+                             w                                   w
+      5          8              13 14      17          5      8 10          13 14      17
+                       (e)                                           (f )
+                        11                                            11
+             6                      15                     6                        15
+                        13
+          5      8 10           14     17              5      8 10              14     17
+                       (g)                                           (h)
+        Figure 11.28: A sequence of removals from a (2, 4) tree: (a) removal of 4, causing
+        an underﬂow; (b) a transfer operation; (c) after the transfer operation; (d) removal
+        of 12, causing an underﬂow; (e) a fusion operation; (f ) after the fusion operation;
+        (g) removal of 13; (h) after removing 13.

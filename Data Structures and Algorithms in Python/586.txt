@@ -1,0 +1,37 @@
+12.4. Studying Sorting through an Algorithmic Lens                                                    565
+               It is easy to see that bucket-sort runs in O(n + N) time and uses O(n + N)
+          space. Hence, bucket-sort is efﬁcient when the range N of values for the keys is
+          small compared to the sequence size n, say N = O(n) or N = O(n log n). Still, its
+          performance deteriorates as N grows compared to n.
+               An important property of the bucket-sort algorithm is that it works correctly
+          even if there are many different elements with the same key. Indeed, we described
+          it in a way that anticipates such occurrences.
+          Stable Sorting
+          When sorting key-value pairs, an important issue is how equal keys are handled. Let
+          S = ((k0 , v0 ), . . . , (kn−1 , vn−1 )) be a sequence of such entries. We say that a sorting
+          algorithm is stable if, for any two entries (ki , vi ) and (k j , v j ) of S such that ki = k j
+          and (ki , vi ) precedes (k j , v j ) in S before sorting (that is, i < j), entry (ki , vi ) also
+          precedes entry (k j , v j ) after sorting. Stability is important for a sorting algorithm
+          because applications may want to preserve the initial order of elements with the
+          same key.
+               Our informal description of bucket-sort in Code Fragment 12.7 guarantees sta-
+          bility as long as we ensure that all sequences act as queues, with elements processed
+          and removed from the front of a sequence and inserted at the back. That is, when
+          initially placing elements of S into buckets, we should process S from front to back,
+          and add each element to the end of its bucket. Subsequently, when transferring el-
+          ements from the buckets back to S, we should process each B[i] from front to back,
+          with those elements added to the end of S.
+          Radix-Sort
+          One of the reasons that stable sorting is so important is that it allows the bucket-sort
+          approach to be applied to more general contexts than to sort integers. Suppose, for
+          example, that we want to sort entries with keys that are pairs (k, l), where k and l
+          are integers in the range [0, N − 1], for some integer N ≥ 2. In a context such as this,
+          it is common to deﬁne an order on these keys using the lexicographic (dictionary)
+          convention, where (k1 , l1 ) < (k2 , l2 ) if k1 < k2 or if k1 = k2 and l1 < l2 (see page 15).
+          This is a pairwise version of the lexicographic comparison function, which can be
+          applied to equal-length character strings, or to tuples of length d.
+               The radix-sort algorithm sorts a sequence S of entries with keys that are pairs,
+          by applying a stable bucket-sort on the sequence twice; ﬁrst using one component
+          of the pair as the key when ordering and then using the second component. But
+          which order is correct? Should we ﬁrst sort on the k’s (the ﬁrst component) and
+          then on the l’s (the second component), or should it be the other way around?

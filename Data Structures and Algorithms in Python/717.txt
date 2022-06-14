@@ -1,0 +1,37 @@
+696                                                         Chapter 14. Graph Algorithms
+     P-14.81 Write a program that builds the routing tables for the nodes in a computer
+                network, based on shortest-path routing, where path distance is measured
+                by hop count, that is, the number of edges in a path. The input for this
+                problem is the connectivity information for all the nodes in the network,
+                as in the following example:
+                         241.12.31.14 : 241.12.31.15 241.12.31.18 241.12.31.19
+                which indicates three network nodes that are connected to 241.12.31.14,
+                that is, three nodes that are one hop away. The routing table for the node at
+                address A is a set of pairs (B,C), which indicates that, to route a message
+                from A to B, the next node to send to (on the shortest path from A to B)
+                is C. Your program should output the routing table for each node in the
+                network, given an input list of node connectivity lists, each of which is
+                input in the syntax as shown above, one per line.
+ Chapter Notes
+     The depth-ﬁrst search method is a part of the “folklore” of computer science, but Hopcroft
+     and Tarjan [52, 94] are the ones who showed how useful this algorithm is for solving
+     several different graph problems. Knuth [64] discusses the topological sorting problem.
+     The simple linear-time algorithm that we describe for determining if a directed graph is
+     strongly connected is due to Kosaraju. The Floyd-Warshall algorithm appears in a paper
+     by Floyd [38] and is based upon a theorem of Warshall [102].
+          The ﬁrst known minimum spanning tree algorithm is due to Barůvka [9], and was
+     published in 1926. The Prim-Jarnı́k algorithm was ﬁrst published in Czech by Jarnı́k [55]
+     in 1930 and in English in 1957 by Prim [85]. Kruskal published his minimum spanning
+     tree algorithm in 1956 [67]. The reader interested in further study of the history of the
+     minimum spanning tree problem is referred to the paper by Graham and Hell [47]. The
+     current asymptotically fastest minimum spanning tree algorithm is a randomized method
+     of Karger, Klein, and Tarjan [57] that runs in O(m) expected time. Dijkstra [35] published
+     his single-source, shortest-path algorithm in 1959. The running time for the Prim-Jarnı́k
+     algorithm, and also that of Dijkstra’s algorithm, can actually be improved to be O(n log n +
+     m) by implementing the queue Q with either of two more sophisticated data structures, the
+     “Fibonacci Heap” [40] or the “Relaxed Heap” [37].
+          To learn about different algorithms for drawing graphs, please see the book chapter by
+     Tamassia and Liotta [92] and the book by Di Battista, Eades, Tamassia and Tollis [34]. The
+     reader interested in further study of graph algorithms is referred to the books by Ahuja,
+     Magnanti, and Orlin [7], Cormen, Leiserson, Rivest and Stein [29], Mehlhorn [77], and
+     Tarjan [95], and the book chapter by van Leeuwen [98].

@@ -1,0 +1,26 @@
+Chapter
+ 14                                              Graph Algorithms
+Contents
+    14.1 Graphs . . . . . . . . . . . . . . . . . . . . . . .     . . . . . .  620
+         14.1.1 The Graph ADT . . . . . . . . . . . . . . . .    . . . . . . . 626
+    14.2 Data Structures for Graphs . . . . . . . . . . . .      . . . . . .   627
+         14.2.1 Edge List Structure . . . . . . . . . . . . . .  . . . . . . . 628
+         14.2.2 Adjacency List Structure . . . . . . . . . . .   . . . . . . . 630
+         14.2.3 Adjacency Map Structure . . . . . . . . . . .    . . . . . . . 632
+         14.2.4 Adjacency Matrix Structure . . . . . . . . . .   . . . . . . . 633
+         14.2.5 Python Implementation . . . . . . . . . . . .    . . . . . . . 634
+    14.3 Graph Traversals . . . . . . . . . . . . . . . . . .     . . . . . .  638
+         14.3.1 Depth-First Search . . . . . . . . . . . . . .   . . . . . . . 639
+         14.3.2 DFS Implementation and Extensions . . . . .      . . . . . . . 644
+         14.3.3 Breadth-First Search . . . . . . . . . . . . .   . . . . . . . 648
+    14.4 Transitive Closure . . . . . . . . . . . . . . . . .     . . . . . .  651
+    14.5 Directed Acyclic Graphs . . . . . . . . . . . . . .      . . . . . .  655
+         14.5.1 Topological Ordering . . . . . . . . . . . . .   . . . . . . . 655
+    14.6 Shortest Paths . . . . . . . . . . . . . . . . . . .     . . . . . .  659
+         14.6.1 Weighted Graphs . . . . . . . . . . . . . . .    . . . . . . . 659
+         14.6.2 Dijkstra’s Algorithm . . . . . . . . . . . . . . . . . . . . . 661
+    14.7 Minimum Spanning Trees . . . . . . . . . . . . .         . . . . . .  670
+         14.7.1 Prim-Jarnı́k Algorithm . . . . . . . . . . . .   . . . . . . . 672
+         14.7.2 Kruskal’s Algorithm . . . . . . . . . . . . . .  . . . . . . . 676
+         14.7.3 Disjoint Partitions and Union-Find Structures    . . . . . . . 681
+    14.8 Exercises . . . . . . . . . . . . . . . . . . . . . .    . . . . . .  686

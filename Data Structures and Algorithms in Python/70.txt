@@ -1,0 +1,37 @@
+1.11. Modules and the Import Statement                                                             49
+              It is worth noting that top-level commands with the module source code are
+         executed when the module is ﬁrst imported, almost as if the module were its own
+         script. There is a special construct for embedding commands within the module
+         that will be executed if the module is directly invoked as a script, but not when
+         the module is imported from another script. Such commands should be placed in a
+         body of a conditional statement of the following form,
+               if   name     == __main__ :
+         Using our hypothetical utility.py module as an example, such commands will
+         be executed if the interpreter is started with a command python utility.py, but
+         not when the utility module is imported into another context. This approach is often
+         used to embed what are known as unit tests within the module; we will discuss unit
+         testing further in Section 2.2.4.
+      1.11.1 Existing Modules
+         Table 1.7 provides a summary of a few available modules that are relevant to a
+         study of data structures. We have already discussed the math module brieﬂy. In the
+         remainder of this section, we highlight another module that is particularly important
+         for some of the data structures and algorithms that we will study later in this book.
+                                             Existing Modules
+           Module Name       Description
+           array             Provides compact array storage for primitive types.
+                             Deﬁnes additional data structures and abstract base classes
+           collections
+                             involving collections of objects.
+           copy              Deﬁnes general functions for making copies of objects.
+           heapq             Provides heap-based priority queue functions (see Section 9.3.7).
+           math              Deﬁnes common mathematical constants and functions.
+           os                Provides support for interactions with the operating system.
+           random            Provides random number generation.
+           re                Provides support for processing regular expressions.
+           sys               Provides additional level of interaction with the Python interpreter.
+           time              Provides support for measuring time, or delaying a program.
+         Table 1.7: Some existing Python modules relevant to data structures and algorithms.
+         Pseudo-Random Number Generation
+         Python’s random module provides the ability to generate pseudo-random numbers,
+         that is, numbers that are statistically random (but not necessarily truly random).
+         A pseudo-random number generator uses a deterministic formula to generate the

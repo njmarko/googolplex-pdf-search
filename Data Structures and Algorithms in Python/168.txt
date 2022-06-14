@@ -1,0 +1,14 @@
+Chapter Notes                                                                                     147
+          P-3.57 Perform experimental analysis to test the hypothesis that Python’s sorted
+                   method runs in O(n log n) time on average.
+          P-3.58 For each of the three algorithms, unique1, unique2, and unique3, which
+                   solve the element uniqueness problem, perform an experimental analysis
+                   to determine the largest value of n such that the given algorithm runs in
+                   one minute or less.
+ Chapter Notes
+         The big-Oh notation has prompted several comments about its proper use [19, 49, 63].
+         Knuth [64, 63] deﬁnes it using the notation f (n) = O(g(n)), but says this “equality” is only
+         “one way.” We have chosen to take a more standard view of equality and view the big-Oh
+         notation as a set, following Brassard [19]. The reader interested in studying average-case
+         analysis is referred to the book chapter by Vitter and Flajolet [101]. For some additional
+         mathematical tools, please refer to Appendix B.

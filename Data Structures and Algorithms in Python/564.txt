@@ -1,0 +1,40 @@
+12.2. Merge-Sort                                                                            543
+       12.2.2 Array-Based Implementation of Merge-Sort
+          We begin by focusing on the case when a sequence of items is represented as an
+          (array-based) Python list. The merge function (Code Fragment 12.1) is responsible
+          for the subtask of merging two previously sorted sequences, S1 and S2 , with the
+          output copied into S. We copy one element during each pass of the while loop,
+          conditionally determining whether the next element should be taken from S1 or S2 .
+          The divide-and-conquer merge-sort algorithm is given in Code Fragment 12.2.
+               We illustrate a step of the merge process in Figure 12.5. During the process,
+          index i represents the number of elements of S1 that have been copied to S, while
+          index j represents the number of elements of S2 that have been copied to S. Assum-
+          ing S1 and S2 both have at least one uncopied element, we copy the smaller of the
+          two elements being considered. Since i + j objects have been previously copied,
+          the next element is placed in S[i + j]. (For example, when i + j is 0, the next ele-
+          ment is copied to S[0]). If we reach the end of one of the sequences, we must copy
+          the next element from the other.
+       1 def merge(S1, S2, S):
+       2    ”””Merge two sorted Python lists S1 and S2 into properly sized list S.”””
+       3    i=j=0
+       4    while i + j < len(S):
+       5       if j == len(S2) or (i < len(S1) and S1[i] < S2[j]):
+       6           S[i+j] = S1[i]                # copy ith element of S1 as next item of S
+       7           i += 1
+       8       else:
+       9           S[i+j] = S2[j]                # copy jth element of S2 as next item of S
+      10           j += 1
+          Code Fragment 12.1: An implementation of the merge operation for Python’s array-
+          based list class.
+       0 1   2  3    4  5   6                         0  1  2  3   4  5  6
+    S1 2 5 8 11 12 14 15                          S1 2 5 8 11 12 14 15
+                 i                                             i
+       0 1   2  3    4  5   6                         0  1  2  3   4  5  6
+    S2 3 9 10 18 19 22 25                         S2 3 9 10 18 19 22 25
+             j                                                 j
+       0 1   2  3    4  5   6  7 8 9 10 11 12 13      0  1  2  3   4  5  6   7 8 9 10 11 12 13
+    S  2 3  5   8    9                             S  2  3  5  8   9 10
+                       i+ j                                             i+ j
+                           (a)                                          (b)
+          Figure 12.5: A step in the merge of two sorted arrays for which S2 [ j] < S1 [i]. We
+          show the arrays before the copy step in (a) and after it in (b).

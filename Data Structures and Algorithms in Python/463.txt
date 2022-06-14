@@ -1,0 +1,36 @@
+442                                        Chapter 10. Maps, Hash Tables, and Skip Lists
+        Removal in a Skip List
+        Like the search and insertion algorithms, the removal algorithm for a skip list is
+        quite simple. In fact, it is even easier than the insertion algorithm. That is, to per-
+        form the map operation del M[k] we begin by executing method SkipSearch(k).
+        If the position p stores an entry with key different from k, we raise a KeyError.
+        Otherwise, we remove p and all the positions above p, which are easily accessed
+        by using above operations to climb up the tower of this entry in S starting at posi-
+        tion p. While removing levels of the tower, we reestablish links between the hor-
+        izontal neighbors of each removed position. The removal algorithm is illustrated
+        in Figure 10.13 and a detailed description of it is left as an exercise (R-10.24). As
+        we show in the next subsection, deletion operation in a skip list with n entries has
+        O(log n) expected running time.
+             Before we give this analysis, however, there are some minor improvements to
+        the skip-list data structure we would like to discuss. First, we do not actually need
+        to store references to values at the levels of the skip list above the bottom level,
+        because all that is needed at these levels are references to keys. In fact, we can
+        more efﬁciently represent a tower as a single object, storing the key-value pair,
+        and maintaining j previous references and j next references if the tower reaches
+        level S j . Second, for the horizontal axes, it is possible to keep the list singly linked,
+        storing only the next references. We can perform insertions and removals in strictly
+        a top-down, scan-forward fashion. We explore the details of this optimization in
+        Exercise C-10.44. Neither of these optimizations improve the asymptotic perfor-
+        mance of skip lists by more than a constant factor, but these improvements can,
+        nevertheless, be meaningful in practice. In fact, experimental evidence suggests
+        that optimized skip lists are faster in practice than AVL trees and other balanced
+        search trees, which are discussed in Chapter 11.
+    S5 -∞                                                                                       +∞
+    S4 -∞              17                                                                       +∞
+    S3 -∞              17            25                            42                    55     +∞
+    S2 -∞              17            25     31                     42                    55     +∞
+    S1 -∞      12      17            25     31     38              42     44             55     +∞
+    S0 -∞      12      17     20     25     31     38       39     42     44     50      55     +∞
+        Figure 10.13: Removal of the entry with key 25 from the skip list of Figure 10.12.
+        The positions visited after the search for the position of S0 holding the entry are
+        highlighted. The positions removed are drawn with dashed lines.

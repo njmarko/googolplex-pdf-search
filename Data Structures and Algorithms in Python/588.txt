@@ -1,0 +1,35 @@
+12.5. Comparing Sorting Algorithms                                                          567
+ 12.5       Comparing Sorting Algorithms
+         At this point, it might be useful for us to take a moment and consider all the algo-
+         rithms we have studied in this book to sort an n-element sequence.
+         Considering Running Time and Other Factors
+         We have studied several methods, such as insertion-sort, and selection-sort, that
+         have O(n2 )-time behavior in the average and worst case. We have also studied sev-
+         eral methods with O(n log n)-time behavior, including heap-sort, merge-sort, and
+         quick-sort. Finally, the bucket-sort and radix-sort methods run in linear time for
+         certain types of keys. Certainly, the selection-sort algorithm is a poor choice in any
+         application, since it runs in O(n2 ) time even in the best case. But, of the remaining
+         sorting algorithms, which is the best?
+             As with many things in life, there is no clear “best” sorting algorithm from
+         the remaining candidates. There are trade-offs involving efﬁciency, memory usage,
+         and stability. The sorting algorithm best suited for a particular application depends
+         on the properties of that application. In fact, the default sorting algorithm used
+         by computing languages and systems has evolved greatly over time. We can offer
+         some guidance and observations, therefore, based on the known properties of the
+         “good” sorting algorithms.
+         Insertion-Sort
+         If implemented well, the running time of insertion-sort is O(n + m), where m is
+         the number of inversions (that is, the number of pairs of elements out of order).
+         Thus, insertion-sort is an excellent algorithm for sorting small sequences (say, less
+         than 50 elements), because insertion-sort is simple to program, and small sequences
+         necessarily have few inversions. Also, insertion-sort is quite effective for sorting
+         sequences that are already “almost” sorted. By “almost,” we mean that the number
+         of inversions is small. But the O(n2 )-time performance of insertion-sort makes it a
+         poor choice outside of these special contexts.
+         Heap-Sort
+         Heap-sort, on the other hand, runs in O(n log n) time in the worst case, which is
+         optimal for comparison-based sorting methods. Heap-sort can easily be made to ex-
+         ecute in-place, and is a natural choice on small- and medium-sized sequences, when
+         input data can ﬁt into main memory. However, heap-sort tends to be outperformed
+         by both quick-sort and merge-sort on larger sequences. A standard heap-sort does
+         not provide a stable sort, because of the swapping of elements.

@@ -1,0 +1,38 @@
+298                                                               Chapter 7. Linked Lists
+      P-7.45 An array A is sparse if most of its entries are empty (i.e., None). A list
+               L can be used to implement such an array efﬁciently. In particular, for
+               each nonempty cell A[i], we can store an entry (i, e) in L, where e is the
+               element stored at A[i]. This approach allows us to represent A using O(m)
+               storage, where m is the number of nonempty entries in A. Provide such
+               a SparseArray class that minimally supports methods getitem (j) and
+                  setitem (j, e) to provide standard indexing operations. Analyze the
+               efﬁciency of these methods.
+      P-7.46 Although we have used a doubly linked list to implement the positional
+               list ADT, it is possible to support the ADT with an array-based imple-
+               mentation. The key is to use the composition pattern and store a sequence
+               of position items, where each item stores an element as well as that ele-
+               ment’s current index in the array. Whenever an element’s place in the array
+               is changed, the recorded index in the position must be updated to match.
+               Given a complete class providing such an array-based implementation of
+               the positional list ADT. What is the efﬁciency of the various operations?
+      P-7.47 Implement a CardHand class that supports a person arranging a group of
+               cards in his or her hand. The simulator should represent the sequence of
+               cards using a single positional list ADT so that cards of the same suit are
+               kept together. Implement this strategy by means of four “ﬁngers” into the
+               hand, one for each of the suits of hearts, clubs, spades, and diamonds,
+               so that adding a new card to the person’s hand or playing a correct card
+               from the hand can be done in constant time. The class should support the
+               following methods:
+                   • add card(r, s): Add a new card with rank r and suit s to the hand.
+                   • play(s): Remove and return a card of suit s from the player’s hand;
+                     if there is no card of suit s, then remove and return an arbitrary card
+                     from the hand.
+                   •     iter ( ): Iterate through all cards currently in the hand.
+                   • all of suit(s): Iterate through all cards of suit s that are currently in
+                     the hand.
+ Chapter Notes
+     A view of data structures as collections (and other principles of object-oriented design)
+     can be found in object-oriented design books by Booch [17], Budd [20], Goldberg and
+     Robson [42], and Liskov and Guttag [71]. Our positional list ADT is derived from the
+     “position” abstraction introduced by Aho, Hopcroft, and Ullman [6], and the list ADT of
+     Wood [104]. Implementations of linked lists are discussed by Knuth [64].

@@ -1,0 +1,26 @@
+1.4. Control Flow                                                                          19
+              As a simple example, a robot controller might have the following logic:
+               if door is closed:
+                  open door( )
+               advance( )
+          Notice that the ﬁnal command, advance( ), is not indented and therefore not part of
+          the conditional body. It will be executed unconditionally (although after opening a
+          closed door).
+              We may nest one control structure within another, relying on indentation to
+          make clear the extent of the various bodies. Revisiting our robot example, here is a
+          more complex control that accounts for unlocking a closed door.
+               if door is closed:
+                  if door is locked:
+                     unlock door( )
+                  open door( )
+               advance( )
+          The logic expressed by this example can be diagrammed as a traditional ﬂowchart,
+          as portrayed in Figure 1.6.
+                      False                        True
+                                door is closed
+                                               False                      True
+                                                        door is locked
+                                                                            unlock door( )
+                                                         open door( )
+                                  advance( )
+             Figure 1.6: A ﬂowchart describing the logic of nested conditional statements.

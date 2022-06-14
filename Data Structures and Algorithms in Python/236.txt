@@ -1,0 +1,38 @@
+5.5. Using Array-Based Sequences                                                                               215
+       1 def insertion sort(A):
+       2     ”””Sort list of comparable elements               into nondecreasing order.”””
+       3     for k in range(1, len(A)):                          # from 1 to n-1
+       4        cur = A[k]                                       # current element to be inserted
+       5        j=k                                              # ﬁnd correct index j for current
+       6        while j > 0 and A[j−1] > cur:                    # element A[j-1] must be after current
+       7           A[j] = A[j−1]
+       8           j −= 1
+       9        A[j] = cur                                       # cur is now in the right place
+                 Code Fragment 5.10: Python code for performing insertion-sort on a list.
+          cur          no move
+          C      B C D A E H G F
+                 0   1   2   3 4     5   6   7
+                           no move
+          D      B C D A E H G F
+                 0   1   2   3   4 5     6   7                                     insert
+                               move                           move               A          move
+          A      B C         D E H G F               B      C D E H G F                   B C D E H G F
+                 0   1   2   3   4   5 6     7       0  1   2   3  4  5    6   7     0    1   2  3 4  5    6   7
+                                   no move
+          E      A B C D E H G F
+                 0   1   2   3   4   5   6 7
+                                       no move
+          H      A B C D E H G F
+                 0   1   2   3   4   5   6   7                      G
+                                           move          no move        insert
+          G      A B C D E               H F         A B C D E            H F
+                 0   1   2   3   4   5   6   7       0  1   2   3  4  5    6   7                    F
+                                               move                          move          no move      insert
+          F      A B C D E G                H        A B C D E            G H       A B C D E             G H
+                 0   1   2   3   4   5   6   7       0  1   2   3  4  5    6   7     0    1   2  3 4  5    6   7
+                 A B C D E F G H                    Done!
+                 0   1   2   3   4   5   6   7
+           Figure 5.20: Execution of the insertion-sort algorithm on an array of eight charac-
+           ters. Each row corresponds to an iteration of the outer loop, and each copy of the
+           sequence in a row corresponds to an iteration of the inner loop. The current element
+           that is being inserted is highlighted in the array, and shown as the cur value.

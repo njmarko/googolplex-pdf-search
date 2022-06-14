@@ -1,0 +1,48 @@
+50                                                            Chapter 1. Python Primer
+   next number in a sequence based upon one or more past numbers that it has gen-
+   erated. Indeed, a simple yet popular pseudo-random number generator chooses its
+   next number based solely on the most recently chosen number and some additional
+   parameters using the following formula.
+              next = (a*current + b) % n;
+   where a, b, and n are appropriately chosen integers. Python uses a more advanced
+   technique known as a Mersenne twister. It turns out that the sequences generated
+   by these techniques can be proven to be statistically uniform, which is usually
+   good enough for most applications requiring random numbers, such as games. For
+   applications, such as computer security settings, where one needs unpredictable
+   random sequences, this kind of formula should not be used. Instead, one should
+   ideally sample from a source that is actually random, such as radio static coming
+   from outer space.
+       Since the next number in a pseudo-random generator is determined by the pre-
+   vious number(s), such a generator always needs a place to start, which is called its
+   seed. The sequence of numbers generated for a given seed will always be the same.
+   One common trick to get a different sequence each time a program is run is to use
+   a seed that will be different for each run. For example, we could use some timed
+   input from a user or the current system time in milliseconds.
+       Python’s random module provides support for pseudo-random number gener-
+   ation by deﬁning a Random class; instances of that class serve as generators with
+   independent state. This allows different aspects of a program to rely on their own
+   pseudo-random number generator, so that calls to one generator do not affect the
+   sequence of numbers produced by another. For convenience, all of the methods
+   supported by the Random class are also supported as stand-alone functions of the
+   random module (essentially using a single generator instance for all top-level calls).
+        Syntax                        Description
+                                      Initializes the pseudo-random number generator
+        seed(hashable)
+                                      based upon the hash value of the parameter
+                                      Returns a pseudo-random ﬂoating-point
+        random( )
+                                      value in the interval [0.0, 1.0).
+                                      Returns a pseudo-random integer
+        randint(a,b)
+                                      in the closed interval [a, b].
+                                      Returns a pseudo-random integer in the standard
+        randrange(start, stop, step)
+                                      Python range indicated by the parameters.
+                                      Returns an element of the given sequence
+        choice(seq)
+                                      chosen pseudo-randomly.
+                                      Reorders the elements of the given
+        shuﬄe(seq)
+                                      sequence pseudo-randomly.
+   Table 1.8: Methods supported by instances of the Random class, and as top-level
+   functions of the random module.

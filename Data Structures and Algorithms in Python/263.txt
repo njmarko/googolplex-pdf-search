@@ -1,0 +1,38 @@
+242                                             Chapter 6. Stacks, Queues, and Deques
+    Using an Array Circularly
+    In developing a more robust queue implementation, we allow the front of the queue
+    to drift rightward, and we allow the contents of the queue to “wrap around” the end
+    of an underlying array. We assume that our underlying array has ﬁxed length N
+    that is greater that the actual number of elements in the queue. New elements
+    are enqueued toward the “end” of the current queue, progressing from the front to
+    index N − 1 and continuing at index 0, then 1. Figure 6.6 illustrates such a queue
+    with ﬁrst element E and last element M.
+                I    J K L M                                        E F G H
+                0    1  2                                            f        N −1
+       Figure 6.6: Modeling a queue with a circular array that wraps around the end.
+         Implementing this circular view is not difﬁcult. When we dequeue an element
+    and want to “advance” the front index, we use the arithmetic f = (f + 1) % N. Re-
+    call that the % operator in Python denotes the modulo operator, which is computed
+    by taking the remainder after an integral division. For example, 14 divided by 3 has
+    a quotient of 4 with remainder 2, that is, 14 3 = 4 3 . So in Python, 14 // 3 evaluates
+                                                        2
+    to the quotient 4, while 14 % 3 evaluates to the remainder 2. The modulo operator
+    is ideal for treating an array circularly. As a concrete example, if we have a list
+    of length 10, and a front index 7, we can advance the front by formally computing
+    (7+1) % 10, which is simply 8, as 8 divided by 10 is 0 with a remainder of 8.
+    Similarly, advancing index 8 results in index 9. But when we advance from index 9
+    (the last one in the array), we compute (9+1) % 10, which evaluates to index 0 (as
+    10 divided by 10 has a remainder of zero).
+    A Python Queue Implementation
+    A complete implementation of a queue ADT using a Python list in circular fashion
+    is presented in Code Fragments 6.6 and 6.7. Internally, the queue class maintains
+    the following three instance variables:
+                 data: is a reference to a list instance with a ﬁxed capacity.
+                  size: is an integer representing the current number of elements stored
+                        in the queue (as opposed to the length of the data list).
+                front: is an integer that represents the index within data of the ﬁrst
+                        element of the queue (assuming the queue is not empty).
+    We initially reserve a list of moderate size for storing data, although the queue
+    formally has size zero. As a technicality, we initialize the front index to zero.
+         When front or dequeue are called with no elements in the queue, we raise an
+    instance of the Empty exception, deﬁned in Code Fragment 6.1 for our stack.

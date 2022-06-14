@@ -1,0 +1,40 @@
+11.3. AVL Trees                                                                             483
+          By substituting the above value of i in Formula 11.3, we obtain, for h ≥ 3,
+                                                                    
+                                               h
+                                                  −1            h
+                                 n(h) > 2 2           ·n h−2       +2
+                                                                 2
+                                        ≥ 2 2 −1 n(1)
+                                               h
+                                        ≥ 2 2 −1 .
+                                             h
+                                                                                          (11.4)
+          By taking logarithms of both sides of Formula 11.4, we obtain
+                                                          h
+                                          log(n(h)) >       − 1,
+                                                          2
+          from which we get
+                                          h < 2 log(n(h)) + 2,                            (11.5)
+          which implies that an AVL tree storing n entries has height at most 2 logn + 2.
+              By Proposition 11.2 and the analysis of binary search trees given in Section 11.1,
+          the operation getitem , in a map implemented with an AVL tree, runs in time
+          O(log n), where n is the number of items in the map. Of course, we still have to
+          show how to maintain the height-balance property after an insertion or deletion.
+       11.3.1 Update Operations
+          Given a binary search tree T , we say that a position is balanced if the absolute
+          value of the difference between the heights of its children is at most 1, and we say
+          that it is unbalanced otherwise. Thus, the height-balance property characterizing
+          AVL trees is equivalent to saying that every position is balanced.
+              The insertion and deletion operations for AVL trees begin similarly to the corre-
+          sponding operations for (standard) binary search trees, but with post-processing for
+          each operation to restore the balance of any portions of the tree that are adversely
+          affected by the change.
+          Insertion
+          Suppose that tree T satisﬁes the height-balance property, and hence is an AVL tree,
+          prior to the insertion of a new item. An insertion of a new item in a binary search
+          tree, as described in Section 11.1.3, results in a new node at a leaf position p. This
+          action may violate the height-balance property (see, for example, Figure 11.12a),
+          yet the only positions that may become unbalanced are ancestors of p, because
+          those are the only positions whose subtrees have changed. Therefore, let us de-
+          scribe how to restructure T to ﬁx any unbalance that may have occurred.

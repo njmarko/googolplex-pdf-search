@@ -1,0 +1,37 @@
+722                                          Appendix A. Character Strings in Python
+    Constructing Related Strings
+    Strings in Python are immutable, so none of their methods modify an existing string
+    instance. However, many methods return a newly constructed string that is closely
+    related to an existing one. Table A.2 provides a summary of such methods, includ-
+    ing those that replace a given pattern with another, that vary the case of alphabetic
+    characters, that produce a ﬁxed-width string with desired justiﬁcation, and that pro-
+    duce a copy of a string with extraneous characters stripped from either end.
+      Calling Syntax         Description
+      s.replace(old, new)    Return a copy of s with all occurrences of old replaced by new
+      s.capitalize( )        Return a copy of s with its ﬁrst character having uppercase
+      s.upper( )             Return a copy of s with all alphabetic characters in uppercase
+      s.lower( )             Return a copy of s with all alphabetic characters in lowercase
+      s.center(width)        Return a copy of s, padded to width, centered among spaces
+      s.ljust(width)         Return a copy of s, padded to width with trailing spaces
+      s.rjust(width)         Return a copy of s, padded to width with leading spaces
+      s.zﬁll(width)          Return a copy of s, padded to width with leading zeros
+      s.strip( )             Return a copy of s, with leading and trailing whitespace removed
+      s.lstrip( )            Return a copy of s, with leading whitespace removed
+      s.rstrip( )            Return a copy of s, with trailing whitespace removed
+                     Table A.2: String methods that produce related strings.
+          Several of these methods accept optional parameters not detailed in the table.
+    For example, the replace method replaces all nonoverlapping occurrences of the old
+    pattern by default, but an optional parameter can limit the number of replacements
+    that are performed. The methods that center or justify a text use spaces as the
+    default ﬁll character when padding, but an alternate ﬁll character can be speciﬁed
+    as an optional parameter. Similarly, all variants of the strip methods remove leading
+    and trailing whitespace by default, but an optional string parameter designates the
+    choice of characters that should be removed from the ends.
+    Testing Boolean Conditions
+    Table A.3 includes methods that test for a Boolean property of a string, such as
+    whether it begins or ends with a pattern, or whether its characters qualify as be-
+    ing alphabetic, numeric, whitespace, etc. For the standard ASCII character set,
+    alphabetic characters are the uppercase A–Z, and lowercase a–z, numeric digits are
+    0–9, and whitespace includes the space character, tab character, newline, and car-
+    riage return. Conventions for what are considered alphabetic and numeric character
+    codes are extended to more general Unicode character sets.

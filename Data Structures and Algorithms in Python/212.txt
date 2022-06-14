@@ -1,0 +1,37 @@
+5.2. Low-Level Arrays                                                                        191
+               Primary support for compact arrays is in a module named array. That module
+          deﬁnes a class, also named array, providing compact storage for arrays of primitive
+          data types. A portrayal of such an array of integers is shown in Figure 5.10.
+                               2     3      5      7     11    13   17     19
+                               0     1      2      3      4    5     6     7
+                  Figure 5.10: Integers stored compactly as elements of a Python array.
+               The public interface for the array class conforms mostly to that of a Python list.
+          However, the constructor for the array class requires a type code as a ﬁrst parameter,
+          which is a character that designates the type of data that will be stored in the array.
+          As a tangible example, the type code, i , designates an array of (signed) integers,
+          typically represented using at least 16-bits each. We can declare the array shown in
+          Figure 5.10 as,
+               primes = array( i , [2, 3, 5, 7, 11, 13, 17, 19])
+               The type code allows the interpreter to determine precisely how many bits are
+          needed per element of the array. The type codes supported by the array module,
+          as shown in Table 5.1, are formally based upon the native data types used by the
+          C programming language (the language in which the the most widely used distri-
+          bution of Python is implemented). The precise number of bits for the C data types
+          is system-dependent, but typical ranges are shown in the table.
+                         Code     C Data Type           Typical Number of Bytes
+                           b      signed char           1
+                           B      unsigned char         1
+                           u      Unicode char          2 or 4
+                           h      signed short int      2
+                           H      unsigned short int    2
+                           i      signed int            2 or 4
+                           I      unsigned int          2 or 4
+                           l      signed long int       4
+                           L      unsigned long int     4
+                           f      ﬂoat                  4
+                           d      ﬂoat                  8
+                          Table 5.1: Type codes supported by the array module.
+               The array module does not provide support for making compact arrays of user-
+          deﬁned data types. Compact arrays of such structures can be created with the lower-
+          level support of a module named ctypes. (See Section 5.3.1 for more discussion of
+          the ctypes module.)

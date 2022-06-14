@@ -1,0 +1,56 @@
+14.7. Minimum Spanning Trees                                                                                   679
+                                                                                  2704
+                           2704                                                                         BOS
+                                                BOS                                        867
+                                   867
+                                                                                              849     PVD
+                                      849     PVD                               ORD               144      187
+                                                                                          740
+                         ORD              144      187               1846
+                                  740                                                 621        JFK
+              1846            621        JFK                                                    184
+                                                                                                             1258
+                                                                             802
+                                        184
+                                                     1258 SFO
+                      802                                                           1391         BWI
+   SFO                                                          1464                                     1090
+                            1391         BWI     1090      337
+         1464
+    337                                                                   DFW
+                                                                  1235                           946
+                   DFW                                      LAX
+           1235                          946                                        1121
+     LAX
+                            1121
+                                                                          2342                 MIA
+                   2342                MIA
+                        (m)                                                     (n)
+           Figure 14.24: Example of an execution of Kruskal’s MST algorithm (continued).
+           The edge considered in (n) merges the last two clusters, which concludes this exe-
+           cution of Kruskal’s algorithm. (Continued from Figure 14.23.)
+           The Running Time of Kruskal’s Algorithm
+           There are two primary contributions to the running time of Kruskal’s algorithm.
+           The ﬁrst is the need to consider the edges in nondecreasing order of their weights,
+           and the second is the management of the cluster partition. Analyzing its running
+           time requires that we give more details on its implementation.
+                 The ordering of edges by weight can be implemented in O(m log m), either by
+           use of a sorting algorithm or a priority queue Q. If that queue is implemented with
+           a heap, we can initialize Q in O(m log m) time by repeated insertions, or in O(m)
+           time using bottom-up heap construction (see Section 9.3.6), and the subsequent
+           calls to remove min each run in O(log m) time, since the queue has size O(m). We
+           note that since m is O(n2 ) for a simple graph, O(log m) is the same as O(log n).
+           Therefore, the running time due to the ordering of edges is O(m log n).
+                 The remaining task is the management of clusters. To implement Kruskal’s
+           algorithm, we must be able to ﬁnd the clusters for vertices u and v that are endpoints
+           of an edge e, to test whether those two clusters are distinct, and if so, to merge
+           those two clusters into one. None of the data structures we have studied thus far
+           are well suited for this task. However, we conclude this chapter by formalizing
+           the problem of managing disjoint partitions, and introducing efﬁcient union-ﬁnd
+           data structures. In the context of Kruskal’s algorithm, we perform at most 2m
+           ﬁnd operations and n − 1 union operations. We will see that a simple union-ﬁnd
+           structure can perform that combination of operations in O(m + n log n) time (see
+           Proposition 14.26), and a more advanced structure can support an even faster time.
+                 For a connected graph, m ≥ n − 1, and therefore, the bound of O(m log n) time
+           for ordering the edges dominates the time for managing the clusters. We conclude
+           that the running time of Kruskal’s algorithm is O(m log n).

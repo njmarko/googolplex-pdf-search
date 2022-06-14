@@ -1,0 +1,33 @@
+11.3. AVL Trees                                                                            485
+                                                  h+2
+                                                            h+1
+                                 h              z
+                                                     h
+                                                              y         h
+                                          h−1        x     h−1
+                                T1
+                                                                       T4
+                                              T2          T3
+                                                    (a)
+                                                  h+3
+                                                            h+2
+                                 h              z
+                                                   h+1
+                                                              y         h
+                                          h−1        x     h
+                                T1
+                                                                       T4
+                                              T2
+                                                          T3
+                                                    (b)
+                                                       h+2
+                                    h+1                         h+1
+                                                     x
+                               h      z       h−1          h      y       h
+                                             T2
+                               T1                          T3           T4
+                                                    (c)
+         Figure 11.13: Rebalancing of a subtree during a typical insertion into an AVL tree:
+         (a) before the insertion; (b) after an insertion in subtree T3 causes imbalance at z;
+         (c) after restoring balance with trinode restructuring. Notice that the overall height
+         of the subtree after the insertion is the same as before the insertion.

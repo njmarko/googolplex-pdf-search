@@ -1,0 +1,33 @@
+11.3. AVL Trees                                                                              487
+         Performance of AVL Trees
+         By Proposition 11.2, the height of an AVL tree with n items is guaranteed to be
+         O(log n). Because the standard binary search tree operation had running times
+         bounded by the height (see Table 11.1), and because the additional work in main-
+         taining balance factors and restructuring an AVL tree can be bounded by the length
+         of a path in the tree, the traditional map operations run in worst-case logarithmic
+         time with an AVL tree. We summarize these results in Table 11.2, and illustrate
+         this performance in Figure 11.15.
+                                                                Operation      Running Time
+                                                                     k in T    O(log n)
+                                                                   T[k] = v    O(log n)
+                                                   T.delete(p), del T[k]       O(log n)
+                                                       T.ﬁnd position(k)       O(log n)
+                    T.ﬁrst( ), T.last( ), T.ﬁnd min( ), T.ﬁnd max( )           O(log n)
+                                               T.before(p), T.after(p)         O(log n)
+               T.ﬁnd lt(k), T.ﬁnd le(k), T.ﬁnd gt(k), T.ﬁnd ge(k)              O(log n)
+                                             T.ﬁnd range(start, stop)          O(s + log n)
+                                                    iter(T), reversed(T)       O(n)
+         Table 11.2: Worst-case running times of operations for an n-item sorted map real-
+         ized as an AVL tree T, with s denoting the number of items reported by ﬁnd range.
+                    Height                                                    Time per level
+                                                                                  O(1)
+                               AVL Tree T:
+                                                                                  O(1)
+                   O(log n)                 down phase
+                                                                                  O(1)
+                                                          up phase
+                                                                 Worst-case time:O(log n)
+         Figure 11.15: Illustrating the running time of searches and updates in an AVL tree.
+         The time performance is O(1) per level, broken into a down phase, which typi-
+         cally involves searching, and an up phase, which typically involves updating height
+         values and performing local trinode restructurings (rotations).

@@ -1,0 +1,38 @@
+374                                                          Chapter 9. Priority Queues
+    Removing the Item with Minimum Key
+    Let us now turn to method remove min of the priority queue ADT. We know that
+    an entry with the smallest key is stored at the root r of T (even if there is more than
+    one entry with smallest key). However, in general we cannot simply delete node r,
+    because this would leave two disconnected subtrees.
+        Instead, we ensure that the shape of the heap respects the complete binary tree
+    property by deleting the leaf at the last position p of T , deﬁned as the rightmost
+    position at the bottommost level of the tree. To preserve the item from the last
+    position p, we copy it to the root r (in place of the item with minimum key that is
+    being removed by the operation). Figure 9.3a and b illustrates an example of these
+    steps, with minimal item (4,C) being removed from the root and replaced by item
+    (13,W ) from the last position. The node at the last position is removed from the
+    tree.
+    Down-Heap Bubbling After a Removal
+    We are not yet done, however, for even though T is now complete, it likely violates
+    the heap-order property. If T has only one node (the root), then the heap-order
+    property is trivially satisﬁed and the algorithm terminates. Otherwise, we distin-
+    guish two cases, where p initially denotes the root of T :
+        • If p has no right child, let c be the left child of p.
+        • Otherwise (p has both children), let c be a child of p with minimal key.
+    If key k p ≤ kc , the heap-order property is satisﬁed and the algorithm terminates. If
+    instead k p > kc , then we need to restore the heap-order property. This can be locally
+    achieved by swapping the entries stored at p and c. (See Figure 9.3c and d.) It is
+    worth noting that when p has two children, we intentionally consider the smaller
+    key of the two children. Not only is the key of c smaller than that of p, it is at
+    least as small as the key at c’s sibling. This ensures that the heap-order property is
+    locally restored when that smaller key is promoted above the key that had been at
+    p and that at c’s sibling.
+        Having restored the heap-order property for node p relative to its children, there
+    may be a violation of this property at c; hence, we may have to continue swapping
+    down T until no violation of the heap-order property occurs. (See Figure 9.3e–h.)
+    This downward swapping process is called down-heap bubbling. A swap either
+    resolves the violation of the heap-order property or propagates it one level down in
+    the heap. In the worst case, an entry moves all the way down to the bottom level.
+    (See Figure 9.3.) Thus, the number of swaps performed in the execution of method
+    remove min is, in the worst case, equal to the height of heap T , that is, it is log n
+    by Proposition 9.2.

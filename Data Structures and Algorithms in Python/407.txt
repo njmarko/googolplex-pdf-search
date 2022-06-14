@@ -1,0 +1,35 @@
+386                                                              Chapter 9. Priority Queues
+         apple < banana . Suppose that we have an application in which we have a
+       list of strings that are all known to represent integral values (e.g., 12 ), and our
+       goal is to sort the strings according to those integral values.
+            In Python, the standard approach for customizing the order for a sorting algo-
+       rithm is to provide, as an optional parameter to the sorting function, an object that
+       is itself a one-parameter function that computes a key for a given element. (See
+       Sections 1.5 and 1.10 for a discussion of this approach in the context of the built-
+       in max function.) For example, with a list of (numeric) strings, we might wish
+       to use the value of int(s) as a key for a string s of the list. In this case, the con-
+       structor for the int class can serve as the one-parameter function for computing a
+       key. In that way, the string 4 will be ordered before string 12 because its key
+       int( 4 ) < int( 12 ). We leave it as an exercise to support such an optional key
+       parameter for the pq sort function. (See Exercise C-9.46.)
+    9.4.1 Selection-Sort and Insertion-Sort
+       Our pq sort function works correctly given any valid implementation of the pri-
+       ority queue class. However, the running time of the sorting algorithm depends
+       on the running times of the operations add and remove min for the given priority
+       queue class. We next discuss a choice of priority queue implementations that in
+       effect cause the pq sort computation to behave as one of several classic sorting
+       algorithms.
+       Selection-Sort
+       If we implement P with an unsorted list, then Phase 1 of pq sort takes O(n) time,
+       for we can add each element in O(1) time. In Phase 2, the running time of each
+       remove min operation is proportional to the size of P. Thus, the bottleneck com-
+       putation is the repeated “selection” of the minimum element in Phase 2. For this
+       reason, this algorithm is better known as selection-sort. (See Figure 9.7.)
+            As noted above, the bottleneck is in Phase 2 where we repeatedly remove an
+       entry with smallest key from the priority queue P. The size of P starts at n and
+       incrementally decreases with each remove min until it becomes 0. Thus, the ﬁrst
+       operation takes time O(n), the second one takes time O(n − 1), and so on. There-
+       fore, the total time needed for the second phase is
+                              O (n + (n − 1) + · · · + 2 + 1) = O (∑ni=1 i) .
+       By Proposition 3.3, we have ∑ni=1 i = n(n + 1)/2. Thus, Phase 2 takes time O(n2 ),
+       as does the entire selection-sort algorithm.

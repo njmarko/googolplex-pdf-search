@@ -1,0 +1,40 @@
+9.2. Implementing a Priority Queue                                                    369
+       1 class SortedPriorityQueue(PriorityQueueBase): # base class deﬁnes Item
+       2   ”””A min-oriented priority queue implemented with a sorted list.”””
+       3
+       4   def init (self):
+       5      ”””Create a new empty Priority Queue.”””
+       6      self. data = PositionalList( )
+       7
+       8   def len (self):
+       9      ”””Return the number of items in the priority queue.”””
+      10      return len(self. data)
+      11
+      12   def add(self, key, value):
+      13      ”””Add a key-value pair.”””
+      14      newest = self. Item(key, value)                 # make new item instance
+      15      walk = self. data.last( )           # walk backward looking for smaller key
+      16      while walk is not None and newest < walk.element( ):
+      17         walk = self. data.before(walk)
+      18      if walk is None:
+      19         self. data.add ﬁrst(newest)                  # new key is smallest
+      20      else:
+      21         self. data.add after(walk, newest)           # newest goes after walk
+      22
+      23   def min(self):
+      24      ”””Return but do not remove (k,v) tuple with minimum key.”””
+      25      if self.is empty( ):
+      26         raise Empty( Priority queue is empty. )
+      27      p = self. data.ﬁrst( )
+      28      item = p.element( )
+      29      return (item. key, item. value)
+      30
+      31   def remove min(self):
+      32      ”””Remove and return (k,v) tuple with minimum key.”””
+      33      if self.is empty( ):
+      34         raise Empty( Priority queue is empty. )
+      35      item = self. data.delete(self. data.ﬁrst( ))
+      36      return (item. key, item. value)
+          Code Fragment 9.3: An implementation of a priority queue using a sorted list.
+          The parent class PriorityQueueBase is given in Code Fragment 9.1, and the
+          PositionalList class is from Section 7.4.

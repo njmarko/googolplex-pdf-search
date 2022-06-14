@@ -1,0 +1,37 @@
+62                                              Chapter 2. Object-Oriented Programming
+ 2.2    Software Development
+        Traditional software development involves several phases. Three major steps are:
+           1. Design
+           2. Implementation
+           3. Testing and Debugging
+        In this section, we brieﬂy discuss the role of these phases, and we introduce sev-
+        eral good practices for programming in Python, including coding style, naming
+        conventions, formal documentation, and unit testing.
+     2.2.1 Design
+        For object-oriented programming, the design step is perhaps the most important
+        phase in the process of developing software. For it is in the design step that we
+        decide how to divide the workings of our program into classes, we decide how
+        these classes will interact, what data each will store, and what actions each will
+        perform. Indeed, one of the main challenges that beginning programmers face is
+        deciding what classes to deﬁne to do the work of their program. While general
+        prescriptions are hard to come by, there are some rules of thumb that we can apply
+        when determining how to design our classes:
+            • Responsibilities: Divide the work into different actors, each with a different
+               responsibility. Try to describe responsibilities using action verbs. These
+               actors will form the classes for the program.
+            • Independence: Deﬁne the work for each class to be as independent from
+               other classes as possible. Subdivide responsibilities between classes so that
+               each class has autonomy over some aspect of the program. Give data (as in-
+               stance variables) to the class that has jurisdiction over the actions that require
+               access to this data.
+            • Behaviors: Deﬁne the behaviors for each class carefully and precisely, so
+               that the consequences of each action performed by a class will be well un-
+               derstood by other classes that interact with it. These behaviors will deﬁne
+               the methods that this class performs, and the set of behaviors for a class are
+               the interface to the class, as these form the means for other pieces of code to
+               interact with objects from the class.
+        Deﬁning the classes, together with their instance variables and methods, are key
+        to the design of an object-oriented program. A good programmer will naturally
+        develop greater skill in performing these tasks over time, as experience teaches
+        him or her to notice patterns in the requirements of a program that match patterns
+        that he or she has seen before.

@@ -1,0 +1,39 @@
+10.5. Sets, Multisets, and Multimaps                                                           449
+             def or (self, other):                      # supports syntax S | T
+                ”””Return a new set that is the union of two existing sets.”””
+                result = type(self)( )                  # create new instance of concrete class
+                for e in self:
+                  result.add(e)
+                for e in other:
+                  result.add(e)
+                return result
+           Code Fragment 10.15: An implementation of the MutableSet.                 or    method,
+           which computes the union of two existing sets.
+               An implementation of the behavior that computes a new set as a union of two
+           others is given in the form of the or special method, in Code Fragment 10.15.
+           An important subtlety in this implementation is the instantiation of the resulting
+           set. Since the MutableSet class is designed as an abstract base class, instances
+           must belong to a concrete subclass. When computing the union of two such con-
+           crete instances, the result should presumably be an instance of the same class as the
+           operands. The function type(self) returns a reference to the actual class of the in-
+           stance identiﬁed as self, and the subsequent parentheses in expression type(self)( )
+           call the default constructor for that class.
+               In terms of efﬁciency, we analyze such set operations while letting n denote
+           the size of S and m denote the size of set T for an operation such as S | T. If
+           the concrete sets are implemented with hashing, the expected running time of the
+           implementation in Code Fragment 10.15 is O(m + n), because it loops over both
+           sets, performing constant-time operations in the form of a containment check and
+           a possible insertion into the result.
+               Our implementation of the in-place version of a union is given in Code Frag-
+           ment 10.16, in the form of the ior special method that supports syntax S |= T.
+           Notice that in this case, we do not create a new set instance, instead we modify and
+           return the existing set, after updating its contents to reﬂect the union operation. The
+           in-place version of the union has expected running time O(m) where m is the size
+           of the second set, because we only have to loop through that second set.
+             def ior (self, other):              # supports syntax S |= T
+                ”””Modify this set to be the union of itself an another set.”””
+                for e in other:
+                  self.add(e)
+                return self                      # technical requirement of in-place operator
+           Code Fragment 10.16: An implementation of the MutableSet.                ior    method,
+           which performs an in-place union of one set with another.

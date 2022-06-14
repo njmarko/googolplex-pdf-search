@@ -1,0 +1,27 @@
+58                                           Chapter 2. Object-Oriented Programming
+      Adaptability
+      Modern software applications, such as Web browsers and Internet search engines,
+      typically involve large programs that are used for many years. Software, there-
+      fore, needs to be able to evolve over time in response to changing conditions in its
+      environment. Thus, another important goal of quality software is that it achieves
+      adaptability (also called evolvability). Related to this concept is portability, which
+      is the ability of software to run with minimal change on different hardware and
+      operating system platforms. An advantage of writing software in Python is the
+      portability provided by the language itself.
+      Reusability
+      Going hand in hand with adaptability is the desire that software be reusable, that
+      is, the same code should be usable as a component of different systems in various
+      applications. Developing quality software can be an expensive enterprise, and its
+      cost can be offset somewhat if the software is designed in a way that makes it easily
+      reusable in future applications. Such reuse should be done with care, however, for
+      one of the major sources of software errors in the Therac-25 came from inappropri-
+      ate reuse of Therac-20 software (which was not object-oriented and not designed
+      for the hardware platform used with the Therac-25).
+   2.1.2 Object-Oriented Design Principles
+      Chief among the principles of the object-oriented approach, which are intended to
+      facilitate the goals outlined above, are the following (see Figure 2.2):
+           • Modularity
+           • Abstraction
+           • Encapsulation
+             Modularity                    Abstraction                 Encapsulation
+                         Figure 2.2: Principles of object-oriented design.

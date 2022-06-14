@@ -1,0 +1,40 @@
+354                                                                      Chapter 8. Trees
+       R-8.22 In what order are positions visited during a postorder traversal of the tree
+               of Figure 8.8?
+       R-8.23 Let T be an ordered tree with more than one node. Is it possible that the
+               preorder traversal of T visits the nodes in the same order as the postorder
+               traversal of T ? If so, give an example; otherwise, explain why this cannot
+               occur. Likewise, is it possible that the preorder traversal of T visits the
+               nodes in the reverse order of the postorder traversal of T ? If so, give an
+               example; otherwise, explain why this cannot occur.
+       R-8.24 Answer the previous question for the case when T is a proper binary tree
+               with more than one node.
+       R-8.25 Consider the example of a breadth-ﬁrst traversal given in Figure 8.17.
+               Using the annotated numbers from that ﬁgure, describe the contents of
+               the queue before each pass of the while loop in Code Fragment 8.14. To
+               get started, the queue has contents {1} before the ﬁrst pass, and contents
+               {2, 3, 4} before the second pass.
+       R-8.26 The collections.deque class supports an extend method that adds a col-
+               lection of elements to the end of the queue at once. Reimplement the
+               breadthﬁrst method of the Tree class to take advantage of this feature.
+       R-8.27 Give the output of the function parenthesize(T, T.root( )), as described
+               in Code Fragment 8.25, when T is the tree of Figure 8.8.
+       R-8.28 What is the running time of parenthesize(T, T.root( )), as given in Code
+               Fragment 8.25, for a tree T with n nodes?
+       R-8.29 Describe, in pseudo-code, an algorithm for computing the number of de-
+               scendants of each node of a binary tree. The algorithm should be based
+               on the Euler tour traversal.
+       R-8.30 The build expression tree method of the ExpressionTree class requires
+               input that is an iterable of string tokens. We used a convenient exam-
+               ple, (((3+1)x4)/((9-5)+2)) , in which each character is its own to-
+               ken, so that the string itself sufﬁced as input to build expression tree.
+               In general, a string, such as (35 + 14) , must be explicitly tokenized
+               into list [ ( , 35 , + , 14 , ) ] so as to ignore whitespace and to
+               recognize multidigit numbers as a single token. Write a utility method,
+               tokenize(raw), that returns such a list of tokens for a raw string.
+    Creativity
+       C-8.31 Deﬁne the internal path length, I(T ), of a tree T to be the sum of the
+               depths of all the internal positions in T . Likewise, deﬁne the external path
+               length, E(T ), of a tree T to be the sum of the depths of all the external
+               positions in T . Show that if T is a proper binary tree with n positions, then
+               E(T ) = I(T ) + n − 1.

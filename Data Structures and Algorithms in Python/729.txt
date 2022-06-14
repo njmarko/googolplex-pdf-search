@@ -1,0 +1,34 @@
+708                                       Chapter 15. Memory Management and B-Trees
+                                                                A block on disk
+              A block in the external memory address space
+               0 1 2 3 ... 1024 ...  2048 ...
+                              Figure 15.2: Blocks in external memory.
+         When implemented with caching and blocking, virtual memory often allows
+    us to perceive secondary-level memory as being faster than it really is. There is
+    still a problem, however. Primary-level memory is much smaller than secondary-
+    level memory. Moreover, because memory systems use blocking, any program
+    of substance will likely reach a point where it requests data from secondary-level
+    memory, but the primary memory is already full of blocks. In order to fulﬁll the
+    request and maintain our use of caching and blocking, we must remove some block
+    from primary memory to make room for a new block from secondary memory in
+    this case. Deciding which block to evict brings up a number of interesting data
+    structure and algorithm design issues.
+    Caching in Web Browsers
+    For motivation, we consider a related problem that arises when revisiting informa-
+    tion presented in Web pages. To exploit temporal locality of reference, it is often
+    advantageous to store copies of Web pages in a cache memory, so these pages
+    can be quickly retrieved when requested again. This effectively creates a two-level
+    memory hierarchy, with the cache serving as the smaller, quicker internal memory,
+    and the network being the external memory. In particular, suppose we have a cache
+    memory that has m “slots” that can contain Web pages. We assume that a Web page
+    can be placed in any slot of the cache. This is known as a fully associative cache.
+         As a browser executes, it requests different Web pages. Each time the browser
+    requests such a Web page p, the browser determines (using a quick test) if p is
+    unchanged and currently contained in the cache. If p is contained in the cache,
+    then the browser satisﬁes the request using the cached copy. If p is not in the
+    cache, however, the page for p is requested over the Internet and transferred into
+    the cache. If one of the m slots in the cache is available, then the browser assigns
+    p to one of the empty slots. But if all the m cells of the cache are occupied, then
+    the computer must determine which previously viewed Web page to evict before
+    bringing in p to take its place. There are, of course, many different policies that can
+    be used to determine the page to evict.

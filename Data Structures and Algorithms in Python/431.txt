@@ -1,0 +1,34 @@
+410                                    Chapter 10. Maps, Hash Tables, and Skip Lists
+ 10.2    Hash Tables
+      In this section, we introduce one of the most practical data structures for imple-
+      menting a map, and the one that is used by Python’s own implementation of the
+      dict class. This structure is known as a hash table.
+          Intuitively, a map M supports the abstraction of using keys as indices with a
+      syntax such as M[k]. As a mental warm-up, consider a restricted setting in which
+      a map with n items uses keys that are known to be integers in a range from 0 to
+      N − 1 for some N ≥ n. In this case, we can represent the map using a lookup table
+      of length N, as diagrammed in Figure 10.3.
+          0        1      2        3     4      5         6     7      8        9      10
+                  D               Z                      C     Q
+      Figure 10.3: A lookup table with length 11 for a map containing items (1,D), (3,Z),
+      (6,C), and (7,Q).
+          In this representation, we store the value associated with key k at index k of the
+      table (presuming that we have a distinct way to represent an empty slot). Basic map
+      operations of getitem , setitem , and delitem can be implemented in
+      O(1) worst-case time.
+          There are two challenges in extending this framework to the more general set-
+      ting of a map. First, we may not wish to devote an array of length N if it is the case
+      that N  n. Second, we do not in general require that a map’s keys be integers.
+      The novel concept for a hash table is the use of a hash function to map general
+      keys to corresponding indices in a table. Ideally, keys will be well distributed in the
+      range from 0 to N − 1 by a hash function, but in practice there may be two or more
+      distinct keys that get mapped to the same index. As a result, we will conceptualize
+      our table as a bucket array, as shown in Figure 10.4, in which each bucket may
+      manage a collection of items that are sent to a speciﬁc index by the hash function.
+      (To save space, an empty bucket may be replaced by None.)
+          0        1      2        3     4      5         6     7      8        9      10
+                 (1,D)          (25,C)                  (6,A) (7,Q)
+                                 (3,F)                 (39,C)
+                                (14,Z)
+      Figure 10.4: A bucket array of capacity 11 with items (1,D), (25,C), (3,F), (14,Z),
+      (6,A), (39,C), and (7,Q), using a simple hash function.

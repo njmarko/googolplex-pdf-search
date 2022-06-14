@@ -1,0 +1,32 @@
+14.6. Shortest Paths                                                                         665
+                                            the ﬁrst “wrong” vertex picked
+                               C                                             z picked implies
+                                                                             that D[z] ≤ D[y]
+                                                                      z
+                                                              D[z] > d(s, z)
+                       s
+                            P     D[x] = d(s, x)
+                                                         y
+                                        x        D[y] = d(s, y)
+            Figure 14.18: A schematic illustration for the justiﬁcation of Proposition 14.23.
+          Moreover, D[x] = d(s, x), since z is the ﬁrst incorrect vertex. When x was pulled
+          into C, we tested (and possibly updated) D[y] so that we had at that point
+                                D[y] ≤ D[x] + w(x, y) = d(s, x) + w(x, y).
+          But since y is the next vertex on the shortest path from s to z, this implies that
+                                               D[y] = d(s, y).
+          But we are now at the moment when we are picking z, not y, to join C; hence,
+                                                 D[z] ≤ D[y].
+          It should be clear that a subpath of a shortest path is itself a shortest path. Hence,
+          since y is on the shortest path from s to z,
+                                         d(s, y) + d(y, z) = d(s, z).
+          Moreover, d(y, z) ≥ 0 because there are no negative-weight edges. Therefore,
+                            D[z] ≤ D[y] = d(s, y) ≤ d(s, y) + d(y, z) = d(s, z).
+          But this contradicts the deﬁnition of z; hence, there can be no such vertex z.
+          The Running Time of Dijkstra’s Algorithm
+          In this section, we analyze the time complexity of Dijkstra’s algorithm. We denote
+          with n and m the number of vertices and edges of the input graph G, respectively.
+          We assume that the edge weights can be added and compared in constant time.
+          Because of the high level of the description we gave for Dijkstra’s algorithm in
+          Code Fragment 14.12, analyzing its running time requires that we give more details
+          on its implementation. Speciﬁcally, we should indicate the data structures used and
+          how they are implemented.

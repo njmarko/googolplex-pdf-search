@@ -1,0 +1,36 @@
+294                                                                   Chapter 7. Linked Lists
+ 7.8    Exercises
+        For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+     Reinforcement
+          R-7.1 Give an algorithm for ﬁnding the second-to-last node in a singly linked
+                  list in which the last node is indicated by a next reference of None.
+          R-7.2 Describe a good algorithm for concatenating two singly linked lists L and
+                  M, given only references to the ﬁrst node of each list, into a single list L
+                  that contains all the nodes of L followed by all the nodes of M.
+          R-7.3 Describe a recursive algorithm that counts the number of nodes in a singly
+                  linked list.
+          R-7.4 Describe in detail how to swap two nodes x and y (and not just their con-
+                  tents) in a singly linked list L given references only to x and y. Repeat
+                  this exercise for the case when L is a doubly linked list. Which algorithm
+                  takes more time?
+          R-7.5 Implement a function that counts the number of nodes in a circularly
+                  linked list.
+          R-7.6 Suppose that x and y are references to nodes of circularly linked lists,
+                  although not necessarily the same list. Describe a fast algorithm for telling
+                  if x and y belong to the same list.
+          R-7.7 Our CircularQueue class of Section 7.2.2 provides a rotate( ) method that
+                  has semantics equivalent to Q.enqueue(Q.dequeue( )), for a nonempty
+                  queue. Implement such a method for the LinkedQueue class of Sec-
+                  tion 7.1.2 without the creation of any new nodes.
+          R-7.8 Describe a nonrecursive method for ﬁnding, by link hopping, the middle
+                  node of a doubly linked list with header and trailer sentinels. In the case
+                  of an even number of nodes, report the node slightly left of center as the
+                  “middle.” (Note: This method must only use link hopping; it cannot use a
+                  counter.) What is the running time of this method?
+          R-7.9 Give a fast algorithm for concatenating two doubly linked lists L and M,
+                  with header and trailer sentinel nodes, into a single list L .
+         R-7.10 There seems to be some redundancy in the repertoire of the positional
+                  list ADT, as the operation L.add ﬁrst(e) could be enacted by the alter-
+                  native L.add before(L.ﬁrst( ), e). Likewise, L.add last(e) might be per-
+                  formed as L.add after(L.last( ), e). Explain why the methods add ﬁrst
+                  and add last are necessary.

@@ -1,0 +1,39 @@
+9.4. Sorting with a Priority Queue                                                           385
+  9.4      Sorting with a Priority Queue
+           In deﬁning the priority queue ADT, we noted that any type of object can be used as
+           a key, but that any pair of keys must be comparable to each other, and that the set
+           of keys be naturally ordered. In Python, it is common to rely on the < operator to
+           deﬁne such an order, in which case the following properties must be satisﬁed:
+                • Irreﬂexive property: k < k.
+                • Transitive property: if k1 < k2 and k2 < k3 , then k1 < k3 .
+           Formally, such a relationship deﬁnes what is known as a strict weak order, as it
+           allows for keys to be considered equal to each other, but the broader equivalence
+           classes are totally ordered, as they can be uniquely arranged from smallest to largest
+           due to the transitive property.
+                As our ﬁrst application of priority queues, we demonstrate how they can be
+           used to sort a collection C of comparable elements. That is, we can produce a
+           sequence of elements of C in increasing order (or at least in nondecreasing order if
+           there are duplicates). The algorithm is quite simple—we insert all elements into an
+           initially empty priority queue, and then we repeatedly call remove min to retrieve
+           the elements in nondecreasing order.
+                An implementation of this algorithm is given in Code Fragment 9.7, assuming
+           that C is a positional list. (See Chapter 7.4.) We use an original element of the
+           collection as both a key and value when calling P.add(element, element).
+       1 def pq sort(C):
+       2     ”””Sort a collection of elements stored in a positional list.”””
+       3     n = len(C)
+       4     P = PriorityQueue( )
+       5     for j in range(n):
+       6        element = C.delete(C.ﬁrst( ))
+       7        P.add(element, element)             # use element as key and value
+       8     for j in range(n):
+       9        (k,v) = P.remove min( )
+      10        C.add last(v)                       # store smallest remaining element in C
+           Code Fragment 9.7: An implementation of the pq sort function, assuming an ap-
+           propriate implementation of a PriorityQueue class. Note that each element of the
+           input list C serves as its own key in the priority queue P.
+                With a minor modiﬁcation to this code, we can provide more general sup-
+           port, sorting elements according to an ordering other than the default. For exam-
+           ple, when working with strings, the < operator deﬁnes a lexicographic ordering,
+           which is an extension of the alphabetic ordering to Unicode. For example, we have
+           that 12 < 4 because of the order of the ﬁrst character of each string, just as

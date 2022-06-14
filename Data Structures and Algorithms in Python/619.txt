@@ -1,0 +1,36 @@
+598                                                              Chapter 13. Text Processing
+    Applying Dynamic Programming to the LCS Problem
+    Recall that in the LCS problem, we are given two character strings, X and Y , of
+    length n and m, respectively, and are asked to ﬁnd a longest string S that is a sub-
+    sequence of both X and Y . Since X and Y are character strings, we have a natural
+    set of indices with which to deﬁne subproblems—indices into the strings X and Y .
+    Let us deﬁne a subproblem, therefore, as that of computing the value L j,k , which
+    we will use to denote the length of a longest string that is a subsequence of both
+    preﬁxes X [0 : j] and Y [0 : k]. This deﬁnition allows us to rewrite L j,k in terms of
+    optimal subproblem solutions. This deﬁnition depends on which of two cases we
+    are in. (See Figure 13.7.)
+                     L10,12 = 1 + L9,11                    L9,11 = max(L9,10 , L8,11 )
+                    0 1 2 3 4 5 6 7 8 9                         0 1 2 3 4 5 6 7 8
+              X=GT T CC TAA TA                            X=GT T C CTAA T
+              Y= CGATAAT TGAGA                            Y= CGATAAT TGAG
+                    0 1 2 3 4 5 6 7 8 9 10 11                   0 1 2 3 4 5 6 7 8 9 10
+                             (a)                                        (b)
+    Figure 13.7: The two cases in the longest common subsequence algorithm for com-
+    puting L j,k : (a) x j−1 = yk−1 ; (b) x j−1 = yk−1 .
+        • x j−1 = yk−1 . In this case, we have a match between the last character of
+           X [0 : j] and the last character of Y [0 : k]. We claim that this character be-
+           longs to a longest common subsequence of X [0 : j] and Y [0 : k]. To justify
+           this claim, let us suppose it is not true. There has to be some longest com-
+           mon subsequence xa1 xa2 . . . xac = yb1 yb2 . . . ybc . If xac = x j−1 or ybc = yk−1 ,
+           then we get the same sequence by setting ac = j − 1 and bc = k − 1. Alter-
+           nately, if xac = x j−1 and ybc = yk−1 , then we can get an even longer common
+           subsequence by adding x j−1 = yk−1 to the end. Thus, a longest common
+           subsequence of X [0 : j] and Y [0 : k] ends with x j−1 . Therefore, we set
+                                    L j,k = 1 + L j−1,k−1  if x j−1 = yk−1 .
+        • x j−1 = yk−1 . In this case, we cannot have a common subsequence that in-
+           cludes both x j−1 and yk−1 . That is, we can have a common subsequence end
+           with x j−1 or one that ends with yk−1 (or possibly neither), but certainly not
+           both. Therefore, we set
+                              L j,k = max{L j−1,k , L j,k−1 } if x j−1 = yk−1 .
+    We note that because slice Y [0 : 0] is the empty string, L j,0 = 0 for j = 0, 1, . . . , n;
+    similarly, because slice X [0 : 0] is the empty string, L0,k = 0 for k = 0, 1, . . . , m.

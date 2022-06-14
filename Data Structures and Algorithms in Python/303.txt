@@ -1,0 +1,37 @@
+282                                                                  Chapter 7. Linked Lists
+     1 class PositionalList( DoublyLinkedBase):
+     2   ”””A sequential container of elements allowing positional access.”””
+     3
+     4   #-------------------------- nested Position class --------------------------
+     5   class Position:
+     6     ”””An abstraction representing the location of a single element.”””
+     7
+     8     def init (self, container, node):
+     9        ”””Constructor should not be invoked by user.”””
+    10        self. container = container
+    11        self. node = node
+    12
+    13     def element(self):
+    14        ”””Return the element stored at this Position.”””
+    15        return self. node. element
+    16
+    17     def eq (self, other):
+    18        ”””Return True if other is a Position representing the same location.”””
+    19        return type(other) is type(self) and other. node is self. node
+    20
+    21     def ne (self, other):
+    22        ”””Return True if other does not represent the same location.”””
+    23        return not (self == other)                 # opposite of eq
+    24
+    25   #------------------------------- utility method -------------------------------
+    26   def validate(self, p):
+    27     ”””Return position s node, or raise appropriate error if invalid.”””
+    28     if not isinstance(p, self.Position):
+    29        raise TypeError( p must be proper Position type )
+    30     if p. container is not self:
+    31        raise ValueError( p does not belong to this container )
+    32     if p. node. next is None:                     # convention for deprecated nodes
+    33        raise ValueError( p is no longer valid )
+    34     return p. node
+       Code Fragment 7.14: A PositionalList class based on a doubly linked list. (Contin-
+       ues in Code Fragments 7.15 and 7.16.)

@@ -1,0 +1,39 @@
+218                                              Chapter 5. Array-Based Sequences
+     1 class CaesarCipher:
+     2   ”””Class for doing encryption and decryption using a Caesar cipher.”””
+     3
+     4   def init (self, shift):
+     5     ”””Construct Caesar cipher using given integer shift for rotation.”””
+     6     encoder = [None] 26                            # temp array for encryption
+     7     decoder = [None] 26                            # temp array for decryption
+     8     for k in range(26):
+     9        encoder[k] = chr((k + shift) % 26 + ord( A ))
+    10        decoder[k] = chr((k − shift) % 26 + ord( A ))
+    11     self. forward = .join(encoder)                 # will store as string
+    12     self. backward = .join(decoder)                # since ﬁxed
+    13
+    14   def encrypt(self, message):
+    15     ”””Return string representing encripted message.”””
+    16     return self. transform(message, self. forward)
+    17
+    18   def decrypt(self, secret):
+    19     ”””Return decrypted message given encrypted secret.”””
+    20     return self. transform(secret, self. backward)
+    21
+    22   def transform(self, original, code):
+    23     ”””Utility to perform transformation based on given code string.”””
+    24     msg = list(original)
+    25     for k in range(len(msg)):
+    26        if msg[k].isupper( ):
+    27           j = ord(msg[k]) − ord( A )               # index from 0 to 25
+    28           msg[k] = code[j]                         # replace this character
+    29     return .join(msg)
+    30
+    31 if name == __main__ :
+    32   cipher = CaesarCipher(3)
+    33   message = "THE EAGLE IS IN PLAY; MEET AT JOE S."
+    34   coded = cipher.encrypt(message)
+    35   print( Secret: , coded)
+    36   answer = cipher.decrypt(coded)
+    37   print( Message: , answer)
+               Code Fragment 5.11: A complete Python class for the Caesar cipher.

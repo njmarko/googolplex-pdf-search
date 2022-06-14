@@ -1,0 +1,41 @@
+13.4. Text Compression and the Greedy Method                                                  601
+ 13.4         Text Compression and the Greedy Method
+           In this section, we consider an important text-processing task, text compression.
+           In this problem, we are given a string X deﬁned over some alphabet, such as the
+           ASCII or Unicode character sets, and we want to efﬁciently encode X into a small
+           binary string Y (using only the characters 0 and 1). Text compression is useful in
+           any situation where we wish to reduce bandwidth for digital communications, so
+           as to minimize the time needed to transmit our text. Likewise, text compression is
+           useful for storing large documents more efﬁciently, so as to allow a ﬁxed-capacity
+           storage device to contain as many documents as possible.
+                The method for text compression explored in this section is the Huffman code.
+           Standard encoding schemes, such as ASCII, use ﬁxed-length binary strings to en-
+           code characters (with 7 or 8 bits in the traditional or extended ASCII systems,
+           respectively). The Unicode system was originally proposed as a 16-bit ﬁxed-
+           length representation, although common encodings reduce the space usage by al-
+           lowing common groups of characters, such as those from the ASCII system, with
+           fewer bits. The Huffman code saves space over a ﬁxed-length encoding by using
+           short code-word strings to encode high-frequency characters and long code-word
+           strings to encode low-frequency characters. Furthermore, the Huffman code uses
+           a variable-length encoding speciﬁcally optimized for a given string X over any al-
+           phabet. The optimization is based on the use of character frequencies, where we
+           have, for each character c, a count f (c) of the number of times c appears in the
+           string X .
+                To encode the string X , we convert each character in X to a variable-length
+           code-word, and we concatenate all these code-words in order to produce the en-
+           coding Y for X . In order to avoid ambiguities, we insist that no code-word in our
+           encoding be a preﬁx of another code-word in our encoding. Such a code is called
+           a preﬁx code, and it simpliﬁes the decoding of Y to retrieve X . (See Figure 13.9.)
+           Even with this restriction, the savings produced by a variable-length preﬁx code
+           can be signiﬁcant, particularly if there is a wide variance in character frequencies
+           (as is the case for natural language text in almost every written language).
+                Huffman’s algorithm for producing an optimal variable-length preﬁx code for
+           X is based on the construction of a binary tree T that represents the code. Each
+           edge in T represents a bit in a code-word, with an edge to a left child representing
+           a “0” and an edge to a right child representing a “1.” Each leaf v is associated
+           with a speciﬁc character, and the code-word for that character is deﬁned by the
+           sequence of bits associated with the edges in the path from the root of T to v. (See
+           Figure 13.9.) Each leaf v has a frequency, f (v), which is simply the frequency in
+           X of the character associated with v. In addition, we give each internal node v in T
+           a frequency, f (v), that is the sum of the frequencies of all the leaves in the subtree
+           rooted at v.

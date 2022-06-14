@@ -1,0 +1,20 @@
+618                                                            Chapter 13. Text Processing
+ Chapter Notes
+     The KMP algorithm is described by Knuth, Morris, and Pratt in their journal article [66],
+     and Boyer and Moore describe their algorithm in a journal article published the same
+     year [18]. In their article, however, Knuth et al. [66] also prove that the Boyer-Moore
+     algorithm runs in linear time. More recently, Cole [27] shows that the Boyer-Moore algo-
+     rithm makes at most 3n character comparisons in the worst case, and this bound is tight.
+     All of the algorithms discussed above are also discussed in the book chapter by Aho [4],
+     albeit in a more theoretical framework, including the methods for regular-expression pat-
+     tern matching. The reader interested in further study of string pattern-matching algorithms
+     is referred to the book by Stephen [90] and the book chapters by Aho [4], and Crochemore
+     and Lecroq [30].
+          Dynamic programming was developed in the operations research community and for-
+     malized by Bellman [13].
+          The trie was invented by Morrison [79] and is discussed extensively in the classic
+     Sorting and Searching book by Knuth [65]. The name “Patricia” is short for “Practical
+     Algorithm to Retrieve Information Coded in Alphanumeric” [79]. McCreight [73] shows
+     how to construct sufﬁx tries in linear time. An introduction to the ﬁeld of information
+     retrieval, which includes a discussion of search engines for the Web, is provided in the
+     book by Baeza-Yates and Ribeiro-Neto [8].

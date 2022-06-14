@@ -1,0 +1,37 @@
+9.2. Implementing a Priority Queue                                                          365
+  9.2     Implementing a Priority Queue
+          In this section, we show how to implement a priority queue by storing its entries in
+          a positional list L. (See Section 7.4.) We provide two realizations, depending on
+          whether or not we keep the entries in L sorted by key.
+       9.2.1 The Composition Design Pattern
+          One challenge in implementing a priority queue is that we must keep track of both
+          an element and its key, even as items are relocated within our data structure. This
+          is reminiscent of a case study from Section 7.6 in which we maintain access counts
+          with each element. In that setting, we introduced the composition design pattern,
+          deﬁning an Item class that assured that each element remained paired with its
+          associated count in our primary data structure.
+               For priority queues, we will use composition to store items internally as pairs
+          consisting of a key k and a value v. To implement this concept for all priority queue
+          implementations, we provide a PriorityQueueBase class (see Code Fragment 9.1)
+          that includes a deﬁnition for a nested class named Item. We deﬁne the syntax
+          a < b, for item instances a and b, to be based upon the keys.
+       1 class PriorityQueueBase:
+       2    ”””Abstract base class for a priority queue.”””
+       3
+       4    class Item:
+       5       ”””Lightweight composite to store priority queue items.”””
+       6          slots = _key , _value
+       7
+       8       def init (self, k, v):
+       9         self. key = k
+      10         self. value = v
+      11
+      12       def lt (self, other):
+      13         return self. key < other. key          # compare items based on their keys
+      14
+      15    def is empty(self):                    # concrete method assuming abstract len
+      16       ”””Return True if the priority queue is empty.”””
+      17       return len(self) == 0
+          Code Fragment 9.1: A PriorityQueueBase class with a nested Item class that com-
+          poses a key and a value into a single object. For convenience, we provide a concrete
+          implementation of is empty that is based on a presumed len impelementation.

@@ -1,0 +1,39 @@
+vi                                                                                 Preface
+   Book Features
+     This book is based upon the book Data Structures and Algorithms in Java by
+     Goodrich and Tamassia, and the related Data Structures and Algorithms in C++
+     by Goodrich, Tamassia, and Mount. However, this book is not simply a translation
+     of those other books to Python. In adapting the material for this book, we have
+     signiﬁcantly redesigned the organization and content of the book as follows:
+         • The code base has been entirely redesigned to take advantage of the features
+            of Python, such as use of generators for iterating elements of a collection.
+         • Many algorithms that were presented as pseudo-code in the Java and C++
+            versions are directly presented as complete Python code.
+         • In general, ADTs are deﬁned to have consistent interface with Python’s built-
+            in data types and those in Python’s collections module.
+         • Chapter 5 provides an in-depth exploration of the dynamic array-based un-
+            derpinnings of Python’s built-in list, tuple, and str classes. New Appendix A
+            serves as an additional reference regarding the functionality of the str class.
+         • Over 450 illustrations have been created or revised.
+         • New and revised exercises bring the overall total number to 750.
+   Online Resources
+     This book is accompanied by an extensive set of online resources, which can be
+     found at the following Web site:
+                             www.wiley.com/college/goodrich
+         Students are encouraged to use this site along with the book, to help with exer-
+     cises and increase understanding of the subject. Instructors are likewise welcome
+     to use the site to help plan, organize, and present their course materials. Included
+     on this Web site is a collection of educational aids that augment the topics of this
+     book, for both students and instructors. Because of their added value, some of these
+     online resources are password protected.
+         For all readers, and especially for students, we include the following resources:
+         • All the Python source code presented in this book.
+         • PDF handouts of Powerpoint slides (four-per-page) provided to instructors.
+         • A database of hints to all exercises, indexed by problem number.
+     For instructors using this book, we include the following additional teaching aids:
+         • Solutions to hundreds of the book’s exercises.
+         • Color versions of all ﬁgures and illustrations from the book.
+         • Slides in Powerpoint and PDF (one-per-page) format.
+     The slides are fully editable, so as to allow an instructor using this book full free-
+     dom in customizing his or her presentations. All the online resources are provided
+     at no extra charge to any instructor adopting this book for his or her course.

@@ -1,0 +1,40 @@
+702                                  Chapter 15. Memory Management and B-Trees
+    The Mark-Sweep Algorithm
+    In the mark-sweep garbage collection algorithm, we associate a “mark” bit with
+    each object that identiﬁes whether that object is live. When we determine at some
+    point that garbage collection is needed, we suspend all other activity and clear
+    the mark bits of all the objects currently allocated in the memory heap. We then
+    trace through the active namespaces and we mark all the root objects as “live.” We
+    must then determine all the other live objects—the ones that are reachable from the
+    root objects. To do this efﬁciently, we can perform a depth-ﬁrst search (see Sec-
+    tion 14.3.1) on the directed graph that is deﬁned by objects reference other objects.
+    In this case, each object in the memory heap is viewed as a vertex in a directed
+    graph, and the reference from one object to another is viewed as a directed edge.
+    By performing a directed DFS from each root object, we can correctly identify and
+    mark each live object. This process is known as the “mark” phase. Once this pro-
+    cess has completed, we then scan through the memory heap and reclaim any space
+    that is being used for an object that has not been marked. At this time, we can also
+    optionally coalesce all the allocated space in the memory heap into a single block,
+    thereby eliminating external fragmentation for the time being. This scanning and
+    reclamation process is known as the “sweep” phase, and when it completes, we
+    resume running the suspended program. Thus, the mark-sweep garbage collec-
+    tion algorithm will reclaim unused space in time proportional to the number of live
+    objects and their references plus the size of the memory heap.
+    Performing DFS In-Place
+    The mark-sweep algorithm correctly reclaims unused space in the memory heap,
+    but there is an important issue we must face during the mark phase. Since we are
+    reclaiming memory space at a time when available memory is scarce, we must take
+    care not to use extra space during the garbage collection itself. The trouble is that
+    the DFS algorithm, in the recursive way we have described it in Section 14.3.1, can
+    use space proportional to the number of vertices in the graph. In the case of garbage
+    collection, the vertices in our graph are the objects in the memory heap; hence, we
+    probably do not have this much memory to use. So our only alternative is to ﬁnd a
+    way to perform DFS in-place rather than recursively, that is, we must perform DFS
+    using only a constant amount of additional storage.
+        The main idea for performing DFS in-place is to simulate the recursion stack
+    using the edges of the graph (which in the case of garbage collection correspond
+    to object references). When we traverse an edge from a visited vertex v to a new
+    vertex w, we change the edge (v, w) stored in v’s adjacency list to point back to v’s
+    parent in the DFS tree. When we return back to v (simulating the return from the
+    “recursive” call at w), we can then switch the edge we modiﬁed to point back to w,
+    assuming we have some way to identify which edge we need to change back.

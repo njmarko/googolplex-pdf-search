@@ -1,0 +1,36 @@
+7.4. The Positional List ADT                                                                    283
+      35    #------------------------------- utility method -------------------------------
+      36    def make position(self, node):
+      37       ”””Return Position instance for given node (or None if sentinel).”””
+      38       if node is self. header or node is self. trailer:
+      39          return None                                                 # boundary violation
+      40       else:
+      41          return self.Position(self, node)                            # legitimate position
+      42
+      43    #------------------------------- accessors -------------------------------
+      44    def ﬁrst(self):
+      45       ”””Return the ﬁrst Position in the list (or None if list is empty).”””
+      46       return self. make position(self. header. next)
+      47
+      48    def last(self):
+      49       ”””Return the last Position in the list (or None if list is empty).”””
+      50       return self. make position(self. trailer. prev)
+      51
+      52    def before(self, p):
+      53       ”””Return the Position just before Position p (or None if p is ﬁrst).”””
+      54       node = self. validate(p)
+      55       return self. make position(node. prev)
+      56
+      57    def after(self, p):
+      58       ”””Return the Position just after Position p (or None if p is last).”””
+      59       node = self. validate(p)
+      60       return self. make position(node. next)
+      61
+      62    def iter (self):
+      63       ”””Generate a forward iteration of the elements of the list.”””
+      64       cursor = self.ﬁrst( )
+      65       while cursor is not None:
+      66          yield cursor.element( )
+      67          cursor = self.after(cursor)
+          Code Fragment 7.15: A PositionalList class based on a doubly linked list. (Contin-
+          ued from Code Fragment 7.14; continues in Code Fragment 7.16.)

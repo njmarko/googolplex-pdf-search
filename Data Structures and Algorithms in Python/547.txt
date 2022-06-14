@@ -1,0 +1,40 @@
+526                                                                Chapter 11. Search Trees
+    10   #------------------------- positional-based utility methods -------------------------
+    11   # we consider a nonexistent child to be trivially black
+    12   def set red(self, p): p. node. red = True
+    13   def set black(self, p): p. node. red = False
+    14   def set color(self, p, make red): p. node. red = make red
+    15   def is red(self, p): return p is not None and p. node. red
+    16   def is red leaf(self, p): return self. is red(p) and self.is leaf(p)
+    17
+    18   def get red child(self, p):
+    19     ”””Return a red child of p (or None if no such child).”””
+    20     for child in (self.left(p), self.right(p)):
+    21        if self. is red(child):
+    22           return child
+    23     return None
+    24
+    25   #------------------------- support for insertions -------------------------
+    26   def rebalance insert(self, p):
+    27     self. resolve red(p)                                # new node is always red
+    28
+    29   def resolve red(self, p):
+    30     if self.is root(p):
+    31        self. set black(p)                               # make root black
+    32     else:
+    33        parent = self.parent(p)
+    34        if self. is red(parent):                         # double red problem
+    35           uncle = self.sibling(parent)
+    36           if not self. is red(uncle):                   # Case 1: misshapen 4-node
+    37              middle = self. restructure(p)              # do trinode restructuring
+    38              self. set black(middle)                    # and then ﬁx colors
+    39              self. set red(self.left(middle))
+    40              self. set red(self.right(middle))
+    41           else:                                         # Case 2: overfull 5-node
+    42              grand = self.parent(parent)
+    43              self. set red(grand)                       # grandparent becomes red
+    44              self. set black(self.left(grand))          # its children become black
+    45              self. set black(self.right(grand))
+    46              self. resolve red(grand)                   # recur at red grandparent
+       Code Fragment 11.16: Continuation of the RedBlackTreeMap class. (Continued
+       from Code Fragment 11.15, and concluded in Code Fragment 11.17.)

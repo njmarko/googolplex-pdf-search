@@ -1,0 +1,37 @@
+3.3. Asymptotic Analysis                                                                    123
+  3.3    Asymptotic Analysis
+         In algorithm analysis, we focus on the growth rate of the running time as a function
+         of the input size n, taking a “big-picture” approach. For example, it is often enough
+         just to know that the running time of an algorithm grows proportionally to n.
+             We analyze algorithms using a mathematical notation for functions that disre-
+         gards constant factors. Namely, we characterize the running times of algorithms
+         by using functions that map the size of the input, n, to values that correspond to
+         the main factor that determines the growth rate in terms of n. This approach re-
+         ﬂects that each basic step in a pseudo-code description or a high-level language
+         implementation may correspond to a small number of primitive operations. Thus,
+         we can perform an analysis of an algorithm by estimating the number of primitive
+         operations executed up to a constant factor, rather than getting bogged down in
+         language-speciﬁc or hardware-speciﬁc analysis of the exact number of operations
+         that execute on the computer.
+             As a tangible example, we revisit the goal of ﬁnding the largest element of a
+         Python list; we ﬁrst used this example when introducing for loops on page 21 of
+         Section 1.4.2. Code Fragment 3.1 presents a function named ﬁnd max for this task.
+       1 def ﬁnd max(data):
+       2   ”””Return the maximum element from a nonempty Python list.”””
+       3   biggest = data[0]                       # The initial value to beat
+       4   for val in data:                        # For each value:
+       5      if val > biggest                     # if it is greater than the best so far,
+       6         biggest = val                     # we have found a new best (so far)
+       7   return biggest                          # When loop ends, biggest is the max
+           Code Fragment 3.1: A function that returns the maximum value of a Python list.
+             This is a classic example of an algorithm with a running time that grows pro-
+         portional to n, as the loop executes once for each data element, with some ﬁxed
+         number of primitive operations executing for each pass. In the remainder of this
+         section, we provide a framework to formalize this claim.
+      3.3.1 The “Big-Oh” Notation
+         Let f (n) and g(n) be functions mapping positive integers to positive real numbers.
+         We say that f (n) is O(g(n)) if there is a real constant c > 0 and an integer constant
+         n0 ≥ 1 such that
+                                       f (n) ≤ cg(n), for n ≥ n0 .
+         This deﬁnition is often referred to as the “big-Oh” notation, for it is sometimes pro-
+         nounced as “ f (n) is big-Oh of g(n).” Figure 3.5 illustrates the general deﬁnition.

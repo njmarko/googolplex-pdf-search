@@ -1,0 +1,36 @@
+11.1. Binary Search Trees                                                                        463
+       11.1.2 Searches
+          The most important consequence of the structural property of a binary search tree
+          is its namesake search algorithm. We can attempt to locate a particular key in a
+          binary search tree by viewing it as a decision tree (recall Figure 8.7). In this case,
+          the question asked at each position p is whether the desired key k is less than, equal
+          to, or greater than the key stored at position p, which we denote as p.key( ). If the
+          answer is “less than,” then the search continues in the left subtree. If the answer
+          is “equal,” then the search terminates successfully. If the answer is “greater than,”
+          then the search continues in the right subtree. Finally, if we reach an empty subtree,
+          then the search terminates unsuccessfully. (See Figure 11.2.)
+                                 44                                        44
+                      17                      88              17                        88
+                8            32        65           97   8           32          65           97
+                         28         54     82    93              28           54     82    93
+                            29          76                          29            76
+                                           80                                        80
+                                (a)                                       (b)
+          Figure 11.2: (a) A successful search for key 65 in a binary search tree; (b) an
+          unsuccessful search for key 68 that terminates because there is no subtree to the
+          left of the key 76.
+               We describe this approach in Code Fragment 11.2. If key k occurs in a subtree
+          rooted at p, a call to TreeSearch(T, p, k) results in the position at which the key
+          is found; in this case, the getitem map operation would return the associated
+          value at that position. In the event of an unsuccessful search, the TreeSearch al-
+          gorithm returns the ﬁnal position explored on the search path (which we will later
+          make use of when determining where to insert a new item in a search tree).
+          Algorithm TreeSearch(T, p, k):
+               if k == p.key() then
+                  return p                                                    {successful search}
+               else if k < p.key() and T.left(p) is not None then
+                  return TreeSearch(T, T.left(p), k)                      {recur on left subtree}
+               else if k > p.key() and T.right(p) is not None then
+                  return TreeSearch(T, T.right(p), k)                   {recur on right subtree}
+               return p                                                    {unsuccessful search}
+                      Code Fragment 11.2: Recursive search in a binary search tree.

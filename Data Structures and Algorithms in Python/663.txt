@@ -1,0 +1,40 @@
+642                                                     Chapter 14. Graph Algorithms
+    Properties of a Depth-First Search
+    There are a number of observations that we can make about the depth-ﬁrst search
+    algorithm, many of which derive from the way the DFS algorithm partitions the
+    edges of a graph G into groups. We begin with the most signiﬁcant property.
+    Proposition 14.12: Let G be an undirected graph on which a DFS traversal start-
+    ing at a vertex s has been performed. Then the traversal visits all vertices in the
+    connected component of s, and the discovery edges form a spanning tree of the
+    connected component of s.
+    Justiﬁcation: Suppose there is at least one vertex w in s’s connected component
+    not visited, and let v be the ﬁrst unvisited vertex on some path from s to w (we may
+    have v = w). Since v is the ﬁrst unvisited vertex on this path, it has a neighbor u
+    that was visited. But when we visited u, we must have considered the edge (u, v);
+    hence, it cannot be correct that v is unvisited. Therefore, there are no unvisited
+    vertices in s’s connected component.
+        Since we only follow a discovery edge when we go to an unvisited vertex, we
+    will never form a cycle with such edges. Therefore, the discovery edges form a
+    connected subgraph without cycles, hence a tree. Moreover, this is a spanning
+    tree because, as we have just seen, the depth-ﬁrst search visits each vertex in the
+    connected component of s.
+    Proposition 14.13: Let G      be a directed graph. Depth-ﬁrst search on G  starting at
+                                          
+    a vertex s visits all the vertices of G that are reachable from s. Also, the DFS tree
+    contains directed paths from s to every vertex reachable from s.
+    Justiﬁcation: Let Vs be the subset of vertices of G       visited by DFS starting at
+    vertex s. We want to show that Vs contains s and every vertex reachable from s
+    belongs to Vs . Suppose now, for the sake of a contradiction, that there is a vertex w
+    reachable from s that is not in Vs . Consider a directed path from s to w, and let (u, v)
+    be the ﬁrst edge on such a path taking us out of Vs , that is, u is in Vs but v is not
+    in Vs . When DFS reaches u, it explores all the outgoing edges of u, and thus must
+    reach also vertex v via edge (u, v). Hence, v should be in Vs , and we have obtained
+    a contradiction. Therefore, Vs must contain every vertex reachable from s.
+        We prove the second fact by induction on the steps of the algorithm. We claim
+    that each time a discovery edge (u, v) is identiﬁed, there exists a directed path from
+    s to v in the DFS tree. Since u must have previously been discovered, there exists
+    a path from s to u, so by appending the edge (u, v) to that path, we have a directed
+    path from s to v.
+        Note that since back edges always connect a vertex v to a previously visited
+    vertex u, each back edge implies a cycle in G, consisting of the discovery edges
+    from u to v plus the back edge (u, v).

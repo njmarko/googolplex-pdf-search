@@ -1,0 +1,31 @@
+11.5. (2,4) Trees                                                                            505
+       11.5.2 (2,4)-Tree Operations
+            A multiway search tree that keeps the secondary data structures stored at each node
+            small and also keeps the primary multiway tree balanced is the (2, 4) tree, which is
+            sometimes called a 2-4 tree or 2-3-4 tree. This data structure achieves these goals
+            by maintaining two simple properties (see Figure 11.24):
+            Size Property: Every internal node has at most four children.
+            Depth Property: All the external nodes have the same depth.
+                                                               12
+                                           5 10                                 15
+                          3 4             6 7 8            11          13 14        17
+                                          Figure 11.24: A (2, 4) tree.
+                Again, we assume that external nodes are empty and, for the sake of simplicity,
+            we describe our search and update methods assuming that external nodes are real
+            nodes, although this latter requirement is not strictly needed.
+                Enforcing the size property for (2, 4) trees keeps the nodes in the multiway
+            search tree simple. It also gives rise to the alternative name “2-3-4 tree,” since it
+            implies that each internal node in the tree has 2, 3, or 4 children. Another implica-
+            tion of this rule is that we can represent the secondary map stored at each internal
+            node using an unordered list or an ordered array, and still achieve O(1)-time perfor-
+            mance for all operations (since dmax = 4). The depth property, on the other hand,
+            enforces an important bound on the height of a (2, 4) tree.
+            Proposition 11.8: The height of a (2, 4) tree storing n items is O(log n).
+            Justiﬁcation: Let h be the height of a (2, 4) tree T storing n items. We justify
+            the proposition by showing the claim
+                                        1
+                                          log(n + 1) ≤ h ≤ log(n + 1).                     (11.9)
+                                        2
+                To justify this claim note ﬁrst that, by the size property, we can have at most
+            4 nodes at depth 1, at most 42 nodes at depth 2, and so on. Thus, the number of
+            external nodes in T is at most 4h . Likewise, by the depth property and the deﬁnition

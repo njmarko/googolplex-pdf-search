@@ -1,0 +1,25 @@
+11.1. Binary Search Trees                                                                         467
+                                44                                           44
+                  17                          88                17                         88
+                            p                                          r
+             8           32            65            97   8           28            65            97
+                      r
+                     28            54      82     93                     29     54      82     93
+                        29              76                                           76
+                                     68    80                                     68    80
+                               (a)                                          (b)
+          Figure 11.5: Deletion from the binary search tree of Figure 11.4b, where the item
+          to delete (with key 32) is stored at a position p with one child r : (a) before the
+          deletion; (b) after the deletion.
+                                44                                           44
+                                                 p                                            p
+                  17                          88                17                         82
+             8           28            65            97   8           28            65            97
+                                            r                                            r
+                            29     54      82     93                     29     54      76     93
+                                        76                                           68    80
+                                     68    80
+                               (a)                                          (b)
+          Figure 11.6: Deletion from the binary search tree of Figure 11.5b, where the item
+          to delete (with key 88) is stored at a position p with two children, and replaced by
+          its predecessor r : (a) before the deletion; (b) after the deletion.

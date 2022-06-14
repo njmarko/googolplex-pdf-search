@@ -1,0 +1,54 @@
+664                                                                       Chapter 14. Graph Algorithms
+                                                     371                                                        371
+                               2704                                                      2704
+                                                    BOS                                                        BOS
+                                       867                                                        867    328
+                                              328
+                          621                                                        621
+                                          849     PVD                                                849     PVD
+                           ORD                                                        ORD                144       187
+                                      740     144       187                                      740
+              1846                                                         1846              621
+                                  621        JFK                                                        JFK    184
+  2467                                              184        2467
+                                                          1258                                                       1258
+                                            184                                    802                 184
+                        802                                     SFO
+   SFO
+                                1391         BWI                                           1391         BWI     1090
+         1464                                        1090             1464                        0
+                                       0                          337
+     337
+                    DFW 1423                                                    DFW 1423
+                                             946                        1235                            946
+           1235                                                   LAX
+     LAX                                                                                   1121
+                                1121
+    2658                                                         2658
+                     2342                  MIA                                  2342                  MIA
+                                              946                                                        946
+                           (i)                                                         (j)
+           Figure 14.17: An example execution of Dijkstra’s algorithm. (Continued from Fig-
+           ure 14.16.)
+           Why It Works
+           The interesting aspect of the Dijkstra algorithm is that, at the moment a vertex u
+           is pulled into C, its label D[u] stores the correct length of a shortest path from v
+           to u. Thus, when the algorithm terminates, it will have computed the shortest-path
+           distance from s to every vertex of G. That is, it will have solved the single-source
+           shortest-path problem.
+                 It is probably not immediately clear why Dijkstra’s algorithm correctly ﬁnds the
+           shortest path from the start vertex s to each other vertex u in the graph. Why is it
+           that the distance from s to u is equal to the value of the label D[u] at the time vertex
+           u is removed from the priority queue Q and added to the cloud C? The answer
+           to this question depends on there being no negative-weight edges in the graph, for
+           it allows the greedy method to work correctly, as we show in the proposition that
+           follows.
+           Proposition 14.23: In Dijkstra’s algorithm, whenever a vertex v is pulled into the
+           cloud, the label D[v] is equal to d(s, v), the length of a shortest path from s to v.
+           Justiﬁcation:                Suppose that D[v] > d(s, v) for some vertex v in V , and let z
+           be the ﬁrst vertex the algorithm pulled into the cloud C (that is, removed from
+           Q) such that D[z] > d(s, z). There is a shortest path P from s to z (for otherwise
+           d(s, z) = ∞ = D[z]). Let us therefore consider the moment when z is pulled into
+           C, and let y be the ﬁrst vertex of P (when going from s to z) that is not in C at this
+           moment. Let x be the predecessor of y in path P (note that we could have x = s).
+           (See Figure 14.18.) We know, by our choice of y, that x is already in C at this point.

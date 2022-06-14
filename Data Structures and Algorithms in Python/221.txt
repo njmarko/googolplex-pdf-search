@@ -1,0 +1,49 @@
+200                                                     Chapter 5. Array-Based Sequences
+         Using a ﬁxed increment for each resize, and thus an arithmetic progression of
+    intermediate array sizes, results in an overall time that is quadratic in the number
+    of operations, as shown in the following proposition. Intuitively, even an increase
+    in 1000 cells per resize will become insigniﬁcant for large data sets.
+    Proposition 5.2: Performing a series of n append operations on an initially empty
+    dynamic array using a ﬁxed increment with each resize takes Ω(n2 ) time.
+    Justiﬁcation: Let c > 0 represent the ﬁxed increment in capacity that is used for
+    each resize event. During the series of n append operations, time will have been
+    spent initializing arrays of size c, 2c, 3c, . . . , mc for m = n/c, and therefore, the
+    overall time would be proportional to c + 2c + 3c + · · · + mc. By Proposition 3.3,
+    this sum is
+                                                            c ( c + 1)
+                                                            n n
+                    m            m
+                                          m(m + 1)                       n2
+                   ∑   ci = c · ∑   i = c
+                                             2
+                                                        ≥ c
+                                                                 2
+                                                                       ≥
+                                                                         2c
+                                                                            .
+                   i=1          i=1
+    Therefore, performing the n append operations takes Ω(n2 ) time.
+         A lesson to be learned from Propositions 5.1 and 5.2 is that a subtle difference in
+    an algorithm design can produce drastic differences in the asymptotic performance,
+    and that a careful analysis can provide important insights into the design of a data
+    structure.
+    Memory Usage and Shrinking an Array
+    Another consequence of the rule of a geometric increase in capacity when append-
+    ing to a dynamic array is that the ﬁnal array size is guaranteed to be proportional to
+    the overall number of elements. That is, the data structure uses O(n) memory. This
+    is a very desirable property for a data structure.
+         If a container, such as a Python list, provides operations that cause the removal
+    of one or more elements, greater care must be taken to ensure that a dynamic array
+    guarantees O(n) memory usage. The risk is that repeated insertions may cause the
+    underlying array to grow arbitrarily large, and that there will no longer be a propor-
+    tional relationship between the actual number of elements and the array capacity
+    after many elements are removed.
+         A robust implementation of such a data structure will shrink the underlying
+    array, on occasion, while maintaining the O(1) amortized bound on individual op-
+    erations. However, care must be taken to ensure that the structure cannot rapidly
+    oscillate between growing and shrinking the underlying array, in which case the
+    amortized bound would not be achieved. In Exercise C-5.16, we explore a strategy
+    in which the array capacity is halved whenever the number of actual element falls
+    below one fourth of that capacity, thereby guaranteeing that the array capacity is at
+    most four times the number of elements; we explore the amortized analysis of such
+    a strategy in Exercises C-5.17 and C-5.18.

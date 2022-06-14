@@ -1,0 +1,36 @@
+206                                                   Chapter 5. Array-Based Sequences
+       Removing Elements from a List
+       Python’s list class offers several ways to remove an element from a list. A call to
+       pop( ) removes the last element from a list. This is most efﬁcient, because all other
+       elements remain in their original location. This is effectively an O(1) operation,
+       but the bound is amortized because Python will occasionally shrink the underlying
+       dynamic array to conserve memory.
+           The parameterized version, pop(k), removes the element that is at index k < n
+       of a list, shifting all subsequent elements leftward to ﬁll the gap that results from
+       the removal. The efﬁciency of this operation is O(n − k), as the amount of shifting
+       depends upon the choice of index k, as illustrated in Figure 5.17. Note well that this
+       implies that pop(0) is the most expensive call, using Ω(n) time. (see experiments
+       in Exercise R-5.8.)
+                           0    1   2       k              n−1
+                  Figure 5.17: Removing an element at index k of a dynamic array.
+           The list class offers another method, named remove, that allows the caller to
+       specify the value that should be removed (not the index at which it resides). For-
+       mally, it removes only the ﬁrst occurrence of such a value from a list, or raises a
+       ValueError if no such value is found. An implementation of such behavior is given
+       in Code Fragment 5.6, again using our DynamicArray class for illustration.
+           Interestingly, there is no “efﬁcient” case for remove; every call requires Ω(n)
+       time. One part of the process searches from the beginning until ﬁnding the value at
+       index k, while the rest iterates from k to the end in order to shift elements leftward.
+       This linear behavior can be observed experimentally (see Exercise C-5.24).
+     1   def remove(self, value):
+     2      ”””Remove ﬁrst occurrence of value (or raise ValueError).”””
+     3      # note: we do not consider shrinking the dynamic array in this version
+     4      for k in range(self. n):
+     5        if self. A[k] == value:                          # found a match!
+     6           for j in range(k, self. n − 1):               # shift others to ﬁll gap
+     7              self. A[j] = self. A[j+1]
+     8           self. A[self. n − 1] = None                   # help garbage collection
+     9           self. n −= 1                                  # we have one less item
+    10           return                                        # exit immediately
+    11      raise ValueError( value not found )                # only reached if no match
+          Code Fragment 5.6: Implementation of remove for our DynamicArray class.

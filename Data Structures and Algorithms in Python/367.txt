@@ -1,0 +1,39 @@
+346                                                                           Chapter 8. Trees
+     The Euler Tour Traversal of a Binary Tree
+       In Section 8.4.6, we introduced the concept of an Euler tour traversal of a general
+       graph, using the template method pattern in designing the EulerTour class. That
+       class provided methods hook previsit and hook postvisit that could be overrid-
+       den to customize a tour. In Code Fragment 8.33 we provide a BinaryEulerTour
+       specialization that includes an additional hook invisit that is called once for each
+       position—after its left subtree is traversed, but before its right subtree is traversed.
+           Our implementation of BinaryEulerTour replaces the original tour utility to
+       specialize to the case in which a node has at most two children. If a node has only
+       one child, a tour differentiates between whether that is a left child or a right child,
+       with the “in visit” taking place after the visit of a sole left child, but before the visit
+       of a sole right child. In the case of a leaf, the three hooks are called in succession.
+     1 class BinaryEulerTour(EulerTour):
+     2   ”””Abstract base class for performing Euler tour of a binary tree.
+     3
+     4   This version includes an additional hook invisit that is called after the tour
+     5   of the left subtree (if any), yet before the tour of the right subtree (if any).
+     6
+     7   Note: Right child is always assigned index 1 in path, even if no left sibling.
+     8   ”””
+     9   def tour(self, p, d, path):
+    10      results = [None, None]                 # will update with results of recursions
+    11      self. hook previsit(p, d, path)                              # ”pre visit” for p
+    12      if self. tree.left(p) is not None:                           # consider left child
+    13         path.append(0)
+    14         results[0] = self. tour(self. tree.left(p), d+1, path)
+    15         path.pop( )
+    16      self. hook invisit(p, d, path)                               # ”in visit” for p
+    17      if self. tree.right(p) is not None:                          # consider right child
+    18         path.append(1)
+    19         results[1] = self. tour(self. tree.right(p), d+1, path)
+    20         path.pop( )
+    21      answer = self. hook postvisit(p, d, path, results)                 # ”post visit” p
+    22      return answer
+    23
+    24   def hook invisit(self, p, d, path): pass                        # can be overridden
+       Code Fragment 8.33: A BinaryEulerTour base class providing a specialized tour for
+       binary trees. The original EulerTour base class was given in Code Fragment 8.28.

@@ -1,0 +1,44 @@
+358                                                                  Chapter 8. Trees
+                                                                Sales (
+                   Sales                                          Domestic
+                                                                  International (
+                                                                     Canada
+                                                                     S. America
+          Domestic       International
+                                                                     Overseas (
+                                                                        Africa
+                                                                        Europe
+             Canada     S. America     Overseas                         Asia
+                                                                        Australia
+                                                                     )
+                                                                  )
+                          Africa    Europe    Asia   Australia  )
+                                    (a)                                 (b)
+         Figure 8.24: (a) Tree T ; (b) indented parenthetic representation of T .
+    C-8.56 The indented parenthetic representation of a tree T is a variation of the
+           parenthetic representation of T (see Code Fragment 8.25) that uses inden-
+           tation and line breaks as illustrated in Figure 8.24. Give an algorithm that
+           prints this representation of a tree.
+    C-8.57 Let T be a binary tree with n positions. Deﬁne a Roman position to be
+           a position p in T , such that the number of descendants in p’s left subtree
+           differ from the number of descendants in p’s right subtree by at most 5.
+           Describe a linear-time method for ﬁnding each position p of T , such that
+           p is not a Roman position, but all of p’s descendants are Roman.
+    C-8.58 Let T be a tree with n positions. Deﬁne the lowest common ancestor
+           (LCA) between two positions p and q as the lowest position in T that has
+           both p and q as descendants (where we allow a position to be a descendant
+           of itself ). Given two positions p and q, describe an efﬁcient algorithm for
+           ﬁnding the LCA of p and q. What is the running time of your algorithm?
+    C-8.59 Let T be a binary tree with n positions, and, for any position p in T , let d p
+           denote the depth of p in T . The distance between two positions p and q
+           in T is d p + dq − 2da , where a is the lowest common ancestor (LCA) of p
+           and q. The diameter of T is the maximum distance between two positions
+           in T . Describe an efﬁcient algorithm for ﬁnding the diameter of T . What
+           is the running time of your algorithm?
+    C-8.60 Suppose each position p of a binary tree T is labeled with its value f (p) in
+           a level numbering of T . Design a fast method for determining f (a) for the
+           lowest common ancestor (LCA), a, of two positions p and q in T , given
+            f (p) and f (q). You do not need to ﬁnd position a, just value f (a).
+    C-8.61 Give an alternative implementation of the build expression tree method
+           of the ExpressionTree class that relies on recursion to perform an implicit
+           Euler tour of the tree that is being built.

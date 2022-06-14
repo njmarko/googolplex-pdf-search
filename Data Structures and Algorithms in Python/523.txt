@@ -1,0 +1,36 @@
+502                                                                     Chapter 11. Search Trees
+ 11.5     (2,4) Trees
+       In this section, we consider a data structure known as a (2,4) tree. It is a particular
+       example of a more general structure known as a multiway search tree, in which
+       internal nodes may have more than two children. Other forms of multiway search
+       trees will be discussed in Section 15.3.
+    11.5.1 Multiway Search Trees
+       Recall that general trees are deﬁned so that internal nodes may have many children.
+       In this section, we discuss how general trees can be used as multiway search trees.
+       Map items stored in a search tree are pairs of the form (k, v), where k is the key and
+       v is the value associated with the key.
+       Deﬁnition of a Multiway Search Tree
+       Let w be a node of an ordered tree. We say that w is a d-node if w has d children.
+       We deﬁne a multiway search tree to be an ordered tree T that has the following
+       properties, which are illustrated in Figure 11.23a:
+            • Each internal node of T has at least two children. That is, each internal node
+              is a d-node such that d ≥ 2.
+            • Each internal d-node w of T with children c1 , . . . , cd stores an ordered set of
+              d − 1 key-value pairs (k1 , v1 ), . . ., (kd−1 , vd−1 ), where k1 ≤ · · · ≤ kd−1 .
+            • Let us conventionally deﬁne k0 = −∞ and kd = +∞. For each item (k, v)
+              stored at a node in the subtree of w rooted at ci , i = 1, . . . , d, we have that
+              ki−1 ≤ k ≤ ki .
+       That is, if we think of the set of keys stored at w as including the special ﬁctitious
+       keys k0 = −∞ and kd = +∞, then a key k stored in the subtree of T rooted at a
+       child node ci must be “in between” two keys stored at w. This simple viewpoint
+       gives rise to the rule that a d-node stores d − 1 regular keys, and it also forms the
+       basis of the algorithm for searching in a multiway search tree.
+            By the above deﬁnition, the external nodes of a multiway search do not store
+       any data and serve only as “placeholders.” These external nodes can be efﬁciently
+       represented by None references, as has been our convention with binary search
+       trees (Section 11.1). However, for the sake of exposition, we will discuss these
+       as actual nodes that do not store anything. Based on this deﬁnition, there is an
+       interesting relationship between the number of key-value pairs and the number of
+       external nodes in a multiway search tree.
+       Proposition 11.7: An n-item multiway search tree has n + 1 external nodes.
+            We leave the justiﬁcation of this proposition as an exercise (C-11.52).

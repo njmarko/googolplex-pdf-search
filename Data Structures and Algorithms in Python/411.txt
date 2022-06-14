@@ -1,0 +1,37 @@
+390                                                            Chapter 9. Priority Queues
+ 9.5    Adaptable Priority Queues
+        The methods of the priority queue ADT given in Section 9.1.2 are sufﬁcient for
+        most basic applications of priority queues, such as sorting. However, there are
+        situations in which additional methods would be useful, as shown by the scenarios
+        below involving the standby airline passenger application.
+            • A standby passenger with a pessimistic attitude may become tired of waiting
+               and decide to leave ahead of the boarding time, requesting to be removed
+               from the waiting list. Thus, we would like to remove from the priority queue
+               the entry associated with this passenger. Operation remove min does not
+               sufﬁce since the passenger leaving does not necessarily have ﬁrst priority.
+               Instead, we want a new operation, remove, that removes an arbitrary entry.
+            • Another standby passenger ﬁnds her gold frequent-ﬂyer card and shows it to
+               the agent. Thus, her priority has to be modiﬁed accordingly. To achieve this
+               change of priority, we would like to have a new operation update allowing
+               us to replace the key of an existing entry with a new key.
+        We will see another application of adaptable priority queues when implementing
+        certain graph algorithms in Sections 14.6.2 and 14.7.1.
+            In this section, we develop an adaptable priority queue ADT and demonstrate
+        how to implement this abstraction as an extension to our heap-based priority queue.
+     9.5.1 Locators
+        In order to implement methods update and remove efﬁciently, we need a mecha-
+        nism for ﬁnding a user’s element within a priority queue that avoids performing a
+        linear search through the entire collection. To support our goal, when a new ele-
+        ment is added to the priority queue, we return a special object known as a locator to
+        the caller. We then require the user to provide an appropriate locator as a parameter
+        when invoking the update or remove method, as follows, for a priority queue P:
+        P.update(loc, k, v): Replace key and value for the item identiﬁed by locator loc.
+              P.remove(loc): Remove the item identiﬁed by locator loc from the priority
+                                  queue and return its (key,value) pair.
+            The locator abstraction is somewhat akin to the Position abstraction used in our
+        positional list ADT from Section 7.4, and our tree ADT from Chapter 8. However,
+        we differentiate between a locator and a position because a locator for a priority
+        queue does not represent a tangible placement of an element within the structure.
+        In our priority queue, an element may be relocated within our data structure during
+        an operation that does not seem directly relevant to that element. A locator for an
+        item will remain valid, as long as that item remains somewhere in the queue.

@@ -1,0 +1,33 @@
+15.2. Memory Hierarchies and Caching                                                        705
+ 15.2       Memory Hierarchies and Caching
+         With the increased use of computing in society, software applications must man-
+         age extremely large data sets. Such applications include the processing of online
+         ﬁnancial transactions, the organization and maintenance of databases, and analy-
+         ses of customers’ purchasing histories and preferences. The amount of data can be
+         so large that the overall performance of algorithms and data structures sometimes
+         depends more on the time to access the data than on the speed of the CPU.
+      15.2.1 Memory Systems
+         In order to accommodate large data sets, computers have a hierarchy of differ-
+         ent kinds of memories, which vary in terms of their size and distance from the
+         CPU. Closest to the CPU are the internal registers that the CPU itself uses. Ac-
+         cess to such locations is very fast, but there are relatively few such locations. At
+         the second level in the hierarchy are one or more memory caches. This memory
+         is considerably larger than the register set of a CPU, but accessing it takes longer.
+         At the third level in the hierarchy is the internal memory, which is also known as
+         main memory or core memory. The internal memory is considerably larger than
+         the cache memory, but also requires more time to access. Another level in the hi-
+         erarchy is the external memory, which usually consists of disks, CD drives, DVD
+         drives, and/or tapes. This memory is very large, but it is also very slow. Data stored
+         through an external network can be viewed as yet another level in this hierarchy,
+         with even greater storage capacity, but even slower access. Thus, the memory hi-
+         erarchy for computers can be viewed as consisting of ﬁve or more levels, each of
+         which is larger and slower than the previous level. (See Figure 15.1.) During the
+         execution of a program, data is routinely copied from one level of the hierarchy to
+         a neighboring level, and these transfers can become a computational bottleneck.
+                                          Network Storage                       Faster
+                                          External Memory
+                                          Internal Memory
+                                                Caches
+                 Bigger                        Registers
+                                                  CPU
+                                  Figure 15.1: The memory hierarchy.

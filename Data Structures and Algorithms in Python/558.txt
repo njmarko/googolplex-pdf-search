@@ -1,0 +1,41 @@
+12.1. Why Study Sorting Algorithms?                                                                      537
+ 12.1       Why Study Sorting Algorithms?
+         Much of this chapter focuses on algorithms for sorting a collection of objects.
+         Given a collection, the goal is to rearrange the elements so that they are ordered
+         from smallest to largest (or to produce a new copy of the sequence with such an
+         order). As we did when studying priority queues (see Section 9.4), we assume that
+         such a consistent order exists. In Python, the natural order of objects is typically1
+         deﬁned using the < operator having following properties:
+               • Irreﬂexive property: k < k.
+               • Transitive property: if k1 < k2 and k2 < k3 , then k1 < k3 .
+         The transitive property is important as it allows us to infer the outcome of certain
+         comparisons without taking the time to perform those comparisons, thereby leading
+         to more efﬁcient algorithms.
+               Sorting is among the most important, and well studied, of computing problems.
+         Data sets are often stored in sorted order, for example, to allow for efﬁcient searches
+         with the binary search algorithm (see Section 4.1.3). Many advanced algorithms
+         for a variety of problems rely on sorting as a subroutine.
+               Python has built-in support for sorting data, in the form of the sort method of
+         the list class that rearranges the contents of a list, and the built-in sorted function
+         that produces a new list containing the elements of an arbitrary collection in sorted
+         order. Those built-in functions use advanced algorithms (some of which we will
+         describe in this chapter), and they are highly optimized. A programmer should
+         typically rely on calls to the built-in sorting functions, as it is rare to have a special
+         enough circumstance to warrant implementing a sorting algorithm from scratch.
+               With that said, it remains important to have a deep understanding of sorting
+         algorithms. Most immediately, when calling the built-in function, it is good to
+         know what to expect in terms of efﬁciency and how that may depend upon the
+         initial order of elements or the type of objects that are being sorted. More generally,
+         the ideas and approaches that have led to advances in the development of sorting
+         algorithm carry over to algorithm development in many other areas of computing.
+               We have introduced several sorting algorithms already in this book:
+               • Insertion-sort (see Sections 5.5.2, 7.5, and 9.4.1)
+               • Selection-sort (see Section 9.4.1)
+               • Bubble-sort (see Exercise C-7.38)
+               • Heap-sort (see Section 9.4.2)
+               In this chapter, we present four other sorting algorithms, called merge-sort,
+         quick-sort, bucket-sort, and radix-sort, and then discuss the advantages and disad-
+         vantages of the various algorithms in Section 12.5.
+             1
+               In Section 12.6.1, we will explore another technique used in Python for sorting data according
+         to an order other than the natural order deﬁned by the < operator.

@@ -1,0 +1,61 @@
+14.4. Transitive Closure                                                                                  653
+                                               v7                                                          v7
+                                           BOS                                                        BOS
+                      v4                                                          v4
+                          ORD                                                        ORD
+                                       JFK                                                        JFK
+ v2                                                     v2
+                                            v6                                                         v6
+     SFO                                                    SFO
+                   DFW                                                        DFW
+       LAX                                                    LAX
+                    v3                                                         v3
+    v1                                                     v1
+                                     MIA                                                        MIA
+                                     v5                                                        v5
+                      (a)                                                         (b)
+                                               v7                                                          v7
+                                           BOS                                                        BOS
+                      v4                                                          v4
+                          ORD                                                        ORD
+                                       JFK                                                        JFK
+ v2                                                     v2
+                                            v6                                                         v6
+     SFO                                                    SFO
+                   DFW                                                        DFW
+       LAX                                                    LAX
+                    v3                                                         v3
+    v1                                                     v1
+                                     MIA                                                        MIA
+                                     v5                                                        v5
+                      (c)                                                         (d)
+                                                                                                           v7
+                                               v7                                                    BOS
+                                           BOS                                   v4
+                      v4                                                             ORD
+                          ORD
+                                                                                                 JFK
+                                       JFK             v2
+ v2                                                                                                    v6
+                                            v6              SFO
+     SFO
+                                                                              DFW
+                   DFW                                        LAX
+       LAX                                                                     v3
+                    v3                                     v1
+    v1                                                                                         MIA
+                                     MIA
+                                                                                               v5
+                                     v5
+                      (e)                                                         (f )
+           Figure 14.11: Sequence of directed graphs computed by the Floyd-Warshall algo-
+           rithm: (a) initial directed graph G    =G
+                                                     0 and numbering of the vertices; (b) directed
+                                             
+           graph G1 ; (c) G2 ; (d) G3 ; (e) G4 ; (f ) G 5 . Note that G  5 = G     6 = G
+                                                                                           7 . If directed
+                  
+           graph Gk−1 has the edges (vi , vk ) and (vk , v j ), but not the edge (vi , v j ), in the draw-
+           ing of directed graph G    k , we show edges (vi , vk ) and (vk , v j ) with dashed lines, and
+           edge (vi , v j ) with a thick line. For example, in (b) existing edges (MIA,LAX) and
+           (LAX,ORD) result in new edge (MIA,ORD).

@@ -1,0 +1,41 @@
+Appendix A. Character Strings in Python                                                            723
+           Calling Syntax           Description
+           s.startswith(pattern)    Return True if pattern is a preﬁx of string s
+           s.endswith(pattern)      Return True if pattern is a sufﬁx of string s
+           s.isspace( )             Return True if all characters of nonempty string are whitespace
+           s.isalpha( )             Return True if all characters of nonempty string are alphabetic
+           s.islower( )             Return True if there are one or more alphabetic characters,
+                                    all of which are lowercased
+           s.isupper( )             Return True if there are one or more alphabetic characters,
+                                    all of which are uppercased
+           s.isdigit( )             Return True if all characters of nonempty string are in 0–9
+           s.isdecimal( )           Return True if all characters of nonempty string represent
+                                    digits 0–9, including Unicode equivalents
+           s.isnumeric( )           Return True if all characters of nonempty string are numeric
+                                    Unicode characters (e.g., 0–9, equivalents, fraction characters)
+           s.isalnum( )             Return True if all characters of nonempty string are either
+                                    alphabetic or numeric (as per above deﬁnitions)
+                        Table A.3: Methods that test Boolean properties of strings.
+         Splitting and Joining Strings
+         Table A.4 describes several important methods of Python’s string class, used to
+         compose a sequence of strings together using a delimiter to separate each pair, or
+         to take an existing string and determine a decomposition of that string based upon
+         existence of a given separating pattern.
+           Calling Syntax         Description
+           sep.join(strings)      Return the composition of the given sequence of strings,
+                                  inserting sep as delimiter between each pair
+           s.splitlines( )        Return a list of substrings of s, as delimited by newlines
+           s.split(sep, count)    Return a list of substrings of s, as delimited by the ﬁrst count
+                                  occurrences of sep. If count is not speciﬁed, split on all
+                                  occurrences. If sep is not speciﬁed, use whitespace as delimiter.
+           s.rsplit(sep, count)   Similar to split, but using the rightmost occurrences of sep
+           s.partition(sep)       Return (head, sep, tail) such that s = head + sep + tail,
+                                  using leftmost occurrence of sep, if any; else return (s, , )
+           s.rpartition(sep)      Return (head, sep, tail) such that s = head + sep + tail,
+                                  using rightmost occurrence of sep, if any; else return ( , , s)
+                           Table A.4: Methods for splitting and joining strings.
+               The join method is used to assemble a string from a series of pieces. An exam-
+         ple of its usage is and .join([ red , green , blue ]), which produces the
+         result red and green and blue . Note well that spaces were embedded in the
+         separator string. In contrast, the command and .join([ red , green , blue ])
+         produces the result redandgreenandblue .

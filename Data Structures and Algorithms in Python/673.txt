@@ -1,0 +1,41 @@
+652                                                                         Chapter 14. Graph Algorithms
+         Proposition 14.18 suggests a simple algorithm for computing the transitive clo-
+    sure of G  that is based on the series of rounds to compute each G                  k . This algorithm
+    is known as the Floyd-Warshall algorithm, and its pseudo-code is given in Code
+    Fragment 14.9. We illustrate an example run of the Floyd-Warshall algorithm in
+    Figure 14.11.
+    Algorithm FloydWarshall(G):              
+         Input: A directed graph G               with n vertices
+         Output: The transitive closure G                 ∗ of G
+          let v1 , v2 , . . . , vn be an arbitrary numbering of the vertices of G        
+          0 = G
+          G        
+          for k = 1 to n do
+             k = G
+             G          k−1
+             for all i, j in {1, . . . , n} with i = j and i, j = k do
+                if both edges (vi , vk ) and (vk , v j ) are in G           k−1 then
+                    add edge (vi , v j ) to G        k (if it is not already present)
+          return Gn 
+    Code Fragment 14.9: Pseudo-code for the Floyd-Warshall algorithm. This algo-
+    rithm computes the transitive closure G                  ∗ of G by incrementally computing a series
+    of directed graphs G               1, . . . , G
+                                  0, G             n , for k = 1, . . . , n.
+         From this pseudo-code, we can easily analyze the running time of the Floyd-
+    Warshall algorithm assuming that the data structure representing G supports meth-
+    ods get edge and insert edge in O(1) time. The main loop is executed n times and
+    the inner loop considers each of O(n2 ) pairs of vertices, performing a constant-time
+    computation for each one. Thus, the total running time of the Floyd-Warshall al-
+    gorithm is O(n3 ). From the description and analysis above we may immediately
+    derive the following proposition.
+    Proposition 14.19: Let G                be a directed graph with n vertices, and let G       be repre-
+    sented by a data structure that supports lookup and update of adjacency information
+    in O(1) time. Then the Floyd-Warshall algorithm computes the transitive closure
+     ∗ of G
+    G        in O(n3 ) time.
+    Performance of the Floyd-Warshall Algorithm
+    Asymptotically, the O(n3 ) running time of the Floyd-Warshall algorithm is no bet-
+    ter than that achieved by repeatedly running DFS, once from each vertex, to com-
+    pute the reachability. However, the Floyd-Warshall algorithm matches the asymp-
+    totic bounds of the repeated DFS when a graph is dense, or when a graph is sparse
+    but represented as an adjacency matrix. (See Exercise R-14.12.)

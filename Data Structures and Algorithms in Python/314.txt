@@ -1,0 +1,34 @@
+7.7. Link-Based vs. Array-Based Sequences                                                   293
+          Advantages of Link-Based Sequences
+             • Link-based structures provide worst-case time bounds for their operations.
+               This is in contrast to the amortized bounds associated with the expansion or
+               contraction of a dynamic array (see Section 5.3).
+               When many individual operations are part of a larger computation, and we
+               only care about the total time of that computation, an amortized bound is as
+               good as a worst-case bound precisely because it gives a guarantee on the sum
+               of the time spent on the individual operations.
+               However, if data structure operations are used in a real-time system that is de-
+               signed to provide more immediate responses (e.g., an operating system, Web
+               server, air trafﬁc control system), a long delay caused by a single (amortized)
+               operation may have an adverse effect.
+             • Link-based structures support O(1)-time insertions and deletions at arbi-
+               trary positions. The ability to perform a constant-time insertion or deletion
+               with the PositionalList class, by using a Position to efﬁciently describe the
+               location of the operation, is perhaps the most signiﬁcant advantage of the
+               linked list.
+               This is in stark contrast to an array-based sequence. Ignoring the issue of
+               resizing an array, inserting or deleting an element from the end of an array-
+               based list can be done in constant time. However, more general insertions and
+               deletions are expensive. For example, with Python’s array-based list class, a
+               call to insert or pop with index k uses O(n − k + 1) time because of the loop
+               to shift all subsequent elements (see Section 5.4).
+               As an example application, consider a text editor that maintains a document
+               as a sequence of characters. Although users often add characters to the end
+               of the document, it is also possible to use the cursor to insert or delete one or
+               more characters at an arbitrary position within the document. If the charac-
+               ter sequence were stored in an array-based sequence (such as a Python list),
+               each such edit operation may require linearly many characters to be shifted,
+               leading to O(n) performance for each edit operation. With a linked-list rep-
+               resentation, an arbitrary edit operation (insertion or deletion of a character
+               at the cursor) can be performed in O(1) worst-case time, assuming we are
+               given a position that represents the location of the cursor.

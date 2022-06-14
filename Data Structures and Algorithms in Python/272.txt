@@ -1,0 +1,39 @@
+6.4. Exercises                                                                               251
+           R-6.11 Give a simple adapter that implements our queue ADT while using a
+                  collections.deque instance for storage.
+           R-6.12 What values are returned during the following sequence of deque ADT op-
+                  erations, on initially empty deque? add ﬁrst(4), add last(8), add last(9),
+                  add ﬁrst(5), back( ), delete ﬁrst( ), delete last( ), add last(7), ﬁrst( ),
+                  last( ), add last(6), delete ﬁrst( ), delete ﬁrst( ).
+           R-6.13 Suppose you have a deque D containing the numbers (1, 2, 3, 4, 5, 6, 7, 8),
+                  in this order. Suppose further that you have an initially empty queue Q.
+                  Give a code fragment that uses only D and Q (and no other variables) and
+                  results in D storing the elements in the order (1, 2, 3, 5, 4, 6, 7, 8).
+           R-6.14 Repeat the previous problem using the deque D and an initially empty
+                  stack S.
+      Creativity
+           C-6.15 Suppose Alice has picked three distinct integers and placed them into a
+                  stack S in random order. Write a short, straight-line piece of pseudo-code
+                  (with no loops or recursion) that uses only one comparison and only one
+                  variable x, yet that results in variable x storing the largest of Alice’s three
+                  integers with probability 2/3. Argue why your method is correct.
+           C-6.16 Modify the ArrayStack implementation so that the stack’s capacity is lim-
+                  ited to maxlen elements, where maxlen is an optional parameter to the
+                  constructor (that defaults to None). If push is called when the stack is at
+                  full capacity, throw a Full exception (deﬁned similarly to Empty).
+           C-6.17 In the previous exercise, we assume that the underlying list is initially
+                  empty. Redo that exercise, this time preallocating an underlying list with
+                  length equal to the stack’s maximum capacity.
+           C-6.18 Show how to use the transfer function, described in Exercise R-6.3, and
+                  two temporary stacks, to replace the contents of a given stack S with those
+                  same elements, but in reversed order.
+           C-6.19 In Code Fragment 6.5 we assume that opening tags in HTML have form
+                  <name>, as with <li>. More generally, HTML allows optional attributes
+                  to be expressed as part of an opening tag. The general form used is
+                  <name attribute1="value1" attribute2="value2">; for example,
+                  a table can be given a border and additional padding by using an opening
+                  tag of <table border="3" cellpadding="5">. Modify Code Frag-
+                  ment 6.5 so that it can properly match tags, even when an opening tag
+                  may include one or more such attributes.
+           C-6.20 Describe a nonrecursive algorithm for enumerating all permutations of the
+                  numbers {1, 2, . . . , n} using an explicit stack.

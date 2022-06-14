@@ -1,0 +1,48 @@
+Index                                                                               743
+      Karger, David, 696                        Liskov, Barbara, 108, 254, 298
+      Karp, Richard, 361                        list
+      KeyboardInterrupt, 33, 83, 303                  of favorites, 286–291
+      KeyError, 33, 34, 83, 303, 403, 404, 422,       positional, 277–285
+                 460                            list class, 7, 9, 202–207
+      keyword parameter, 27                           sort method, 23, 569
+      Klein, Philip, 696                        list comprehension, 43, 207, 209, 221
+      Kleinberg, Jon, 580                       literal, 6
+      Knuth, Donald, 147, 227, 298, 361, 400,   Littman, Michael, 580
+                 458, 535, 580, 618, 696, 719   live objects, 700
+      Knuth-Morris-Pratt algorithm, 590–593     load factor, 417, 420–421
+      Kosaraju, S. Rao, 696                     local scope, 23–25, 46, 96
+      Kruskal’s algorithm, 676–684              locality of reference, 289, 707
+      Kruskal, Joseph, 696                      locator, 390
+                                                log-star function, 684
+      L’Hôpital’s rule, 731                    logarithm function, 115–116, 725
+      Landis, Evgenii, 481, 535                 logical operators, 12
+      Langston, Michael, 580                    longest common subsequence, 597–600
+      last-in, ﬁrst-out (LIFO), 229             looking-glass heuristic, 586
+      lazy evaluation, 39, 80                   lookup table, 410
+      LCS, see longest common subsequence       LookupError, 83, 303
+      leaves, 302                               loop invariant, 140
+      Lecroq, Thierry, 618                      lowest common ancestor, 358
+      Leiserson, Charles, 535, 696              Lutz, Mark, 55
+      len function, 29
+      Lesuisse, R., 182                         Magnanti, Thomas, 696
+      Letscher, David, 55, 108                  main memory, 705
+      level in a tree, 315                      map
+      level numbering, 325, 371                       abstract data type, 402–408
+      lexicographic order, 15, 203, 385, 565          AVL tree, 481–488
+      LIFO, 229                                       binary search tree, 460–479
+      linear exponential, 728                         hash table, 410–426
+      linear function, 117                            red-black tree, 512–525
+      linear probing, 418                             skip list, 437–445
+      linearity of expectation, 573, 730              sorted, 460
+      linked list, 256–293                            (2,4) tree, 502–511
+            doubly linked, 260, 270–276, 281          update operations, 442, 465, 466,
+            singly linked, 256–260                          483, 486
+      linked structure, 317                     MapBase class, 407–408
+      LinkedBinaryTree class, 303, 318–324,     Mapping abstract base class, 406
+                 335, 348                       mark-sweep algorithm, 701, 702
+      LinkedDeque class, 275–276                math module, 28, 49
+      LinkedQueue class, 264–265, 271, 306,     matrix, 219
+                 335                            matrix chain-product, 594–596
+      LinkedStack class, 261–263                max function, 27–29
+      Lins, Rafael, 719                         maximal independent set, 692
+      Liotta, Giuseppe, 361, 696                McCreight, Edward, 618, 719

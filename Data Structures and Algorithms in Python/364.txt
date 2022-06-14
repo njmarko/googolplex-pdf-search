@@ -1,0 +1,43 @@
+8.4. Tree Traversal Algorithms                                                            343
+       1 class EulerTour:
+       2     ”””Abstract base class for performing Euler tour of a tree.
+       3
+       4      hook previsit and hook postvisit may be overridden by subclasses.
+       5     ”””
+       6     def init (self, tree):
+       7       ”””Prepare an Euler tour template for given tree.”””
+       8       self. tree = tree
+       9
+      10     def tree(self):
+      11       ”””Return reference to the tree being traversed.”””
+      12       return self. tree
+      13
+      14     def execute(self):
+      15       ”””Perform the tour and return any result from post visit of root.”””
+      16       if len(self. tree) > 0:
+      17          return self. tour(self. tree.root( ), 0, [ ])        # start the recursion
+      18
+      19     def tour(self, p, d, path):
+      20       ”””Perform tour of subtree rooted at Position p.
+      21
+      22       p          Position of current node being visited
+      23       d          depth of p in the tree
+      24       path       list of indices of children on path from root to p
+      25       ”””
+      26       self. hook previsit(p, d, path)                               # ”pre visit” p
+      27       results = [ ]
+      28       path.append(0)                # add new index to end of path before recursion
+      29       for c in self. tree.children(p):
+      30          results.append(self. tour(c, d+1, path))        # recur on child s subtree
+      31          path[−1] += 1              # increment index
+      32       path.pop( )                   # remove extraneous index from end of path
+      33       answer = self. hook postvisit(p, d, path, results)            # ”post visit” p
+      34       return answer
+      35
+      36     def hook previsit(self, p, d, path):                       # can be overridden
+      37       pass
+      38
+      39     def hook postvisit(self, p, d, path, results):             # can be overridden
+      40       pass
+           Code Fragment 8.28: An EulerTour base class providing a framework for perform-
+           ing Euler tour traversals of a tree.

@@ -1,0 +1,31 @@
+170                                                                    Chapter 4. Recursion
+           A recursive algorithm for computing the sum of a sequence of numbers based
+      on this intuition is implemented in Code Fragment 4.9.
+    1 def linear sum(S, n):
+    2   ”””Return the sum of the ﬁrst n numbers of sequence S.”””
+    3   if n == 0:
+    4      return 0
+    5   else:
+    6      return linear sum(S, n−1) + S[n−1]
+       Code Fragment 4.9: Summing the elements of a sequence using linear recursion.
+           A recursion trace of the linear sum function for a small example is given in
+      Figure 4.10. For an input of size n, the linear sum algorithm makes n + 1 function
+      calls. Hence, it will take O(n) time, because it spends a constant amount of time
+      performing the nonrecursive part of each call. Moreover, we can also see that the
+      memory space used by the algorithm (in addition to the sequence S) is also O(n), as
+      we use a constant amount of memory space for each of the n + 1 activation records
+      in the trace at the time we make the ﬁnal recursive call (with n = 0).
+                                               return 15 + S[4] = 15 + 8 = 23
+                       linear sum(S, 5)
+                                                 return 13 + S[3] = 13 + 2 = 15
+                         linear sum(S, 4)
+                                                   return 7 + S[2] = 7 + 6 = 13
+                           linear sum(S, 3)
+                                                     return 4 + S[1] = 4 + 3 = 7
+                             linear sum(S, 2)
+                                                       return 0 + S[0] = 0 + 4 = 4
+                               linear sum(S, 1)
+                                                         return 0
+                                 linear sum(S, 0)
+      Figure 4.10: Recursion trace for an execution of linear sum(S, 5) with input pa-
+      rameter S = [4, 3, 6, 2, 8].

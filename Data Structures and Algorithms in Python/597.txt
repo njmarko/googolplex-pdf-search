@@ -1,0 +1,41 @@
+576                                                    Chapter 12. Sorting and Selection
+    Creativity
+      C-12.25 Linda claims to have an algorithm that takes an input sequence S and
+               produces an output sequence T that is a sorting of the n elements in S.
+                  a. Give an algorithm, is sorted, that tests in O(n) time if T is sorted.
+                  b. Explain why the algorithm is sorted is not sufﬁcient to prove a par-
+                     ticular output T to Linda’s algorithm is a sorting of S.
+                  c. Describe what additional information Linda’s algorithm could out-
+                     put so that her algorithm’s correctness could be established on any
+                     given S and T in O(n) time.
+      C-12.26 Describe and analyze an efﬁcient method for removing all duplicates from
+               a collection A of n elements.
+      C-12.27 Augment the PositionalList class (see Section 7.4) to support a method
+               named merge with the following behavior. If A and B are PositionalList
+               instances whose elements are sorted, the syntax A.merge(B) should merge
+               all elements of B into A so that A remains sorted and B becomes empty.
+               Your implementation must accomplish the merge by relinking existing
+               nodes; you are not to create any new nodes.
+      C-12.28 Augment the PositionalList class (see Section 7.4) to support a method
+               named sort that sorts the elements of a list by relinking existing nodes;
+               you are not to create any new nodes. You may use your choice of sorting
+               algorithm.
+      C-12.29 Implement a bottom-up merge-sort for a collection of items by placing
+               each item in its own queue, and then repeatedly merging pairs of queues
+               until all items are sorted within a single queue.
+      C-12.30 Modify our in-place quick-sort implementation of Code Fragment 12.6 to
+               be a randomized version of the algorithm, as discussed in Section 12.3.1.
+      C-12.31 Consider a version of deterministic quick-sort where we pick as our pivot
+               the median of the d last elements in the input sequence of n elements, for
+               a ﬁxed, constant odd number d ≥ 3. What is the asymptotic worst-case
+               running time of quick-sort in this case?
+      C-12.32 Another way to analyze randomized quick-sort is to use a recurrence
+               equation. In this case, we let T (n) denote the expected running time
+               of randomized quick-sort, and we observe that, because of the worst-case
+               partitions for good and bad splits, we can write
+                                    1                          1
+                            T (n) ≤   (T (3n/4) + T (n/4)) + (T (n − 1)) + bn,
+                                    2                          2
+               where bn is the time needed to partition a list for a given pivot and concate-
+               nate the result sublists after the recursive calls return. Show, by induction,
+               that T (n) is O(n log n).

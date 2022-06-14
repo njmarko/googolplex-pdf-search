@@ -1,0 +1,41 @@
+596                                                            Chapter 13. Text Processing
+       Designing a Dynamic Programming Algorithm
+       We can therefore characterize the optimal subproblem solution, Ni, j , as
+                             Ni, j = min {Ni,k + Nk+1, j + di dk+1 d j+1 },
+                                    i≤k< j
+       where Ni,i = 0, since no work is needed for a single matrix. That is, Ni, j is the
+       minimum, taken over all possible places to perform the ﬁnal multiplication, of the
+       number of multiplications needed to compute each subexpression plus the number
+       of multiplications needed to perform the ﬁnal matrix multiplication.
+            Notice that there is a sharing of subproblems going on that prevents us from
+       dividing the problem into completely independent subproblems (as we would need
+       to do to apply the divide-and-conquer technique). We can, nevertheless, use the
+       equation for Ni, j to derive an efﬁcient algorithm by computing Ni, j values in a
+       bottom-up fashion, and storing intermediate solutions in a table of Ni, j values. We
+       can begin simply enough by assigning Ni,i = 0 for i = 0, 1, . . . , n − 1. We can then
+       apply the general equation for Ni, j to compute Ni,i+1 values, since they depend only
+       on Ni,i and Ni+1,i+1 values that are available. Given the Ni,i+1 values, we can then
+       compute the Ni,i+2 values, and so on. Therefore, we can build Ni, j values up from
+       previously computed values until we can ﬁnally compute the value of N0,n−1 , which
+       is the number that we are searching for. A Python implementation of this dynamic
+       programming solution is given in Code Fragment 13.5; we use techniques from
+       Section 5.6 for representing a multidimensional table in Python.
+     1 def matrix chain(d):
+     2    ”””d is a list of n+1 numbers such that size of kth matrix is d[k]-by-d[k+1].
+     3
+     4    Return an n-by-n table such that N[i][j] represents the minimum number of
+     5    multiplications needed to compute the product of Ai through Aj inclusive.
+     6    ”””
+     7    n = len(d) − 1                                # number of matrices
+     8    N = [[0] n for i in range(n)]                 # initialize n-by-n result to zero
+     9    for b in range(1, n):                         # number of products in subchain
+    10      for i in range(n−b):                        # start of subchain
+    11        j=i+b                                     # end of subchain
+    12        N[i][j] = min(N[i][k]+N[k+1][j]+d[i] d[k+1] d[j+1] for k in range(i,j))
+    13    return N
+       Code Fragment 13.5: Dynamic programming algorithm for the matrix chain-
+       product problem.
+            Thus, we can compute N0,n−1 with an algorithm that consists primarily of three
+       nested loops (the third of which computes the min term). Each of these loops
+       iterates at most n times per execution, with a constant amount of additional work
+       within. Therefore, the total running time of this algorithm is O(n3 ).

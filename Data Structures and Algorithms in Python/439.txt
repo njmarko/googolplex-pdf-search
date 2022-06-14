@@ -1,0 +1,33 @@
+418                                   Chapter 10. Maps, Hash Tables, and Skip Lists
+    Open Addressing
+    The separate chaining rule has many nice properties, such as affording simple im-
+    plementations of map operations, but it nevertheless has one slight disadvantage:
+    It requires the use of an auxiliary data structure—a list—to hold items with collid-
+    ing keys. If space is at a premium (for example, if we are writing a program for a
+    small handheld device), then we can use the alternative approach of always storing
+    each item directly in a table slot. This approach saves space because no auxiliary
+    structures are employed, but it requires a bit more complexity to deal with colli-
+    sions. There are several variants of this approach, collectively referred to as open
+    addressing schemes, which we discuss next. Open addressing requires that the load
+    factor is always at most 1 and that items are stored directly in the cells of the bucket
+    array itself.
+    Linear Probing and Its Variants
+    A simple method for collision handling with open addressing is linear probing.
+    With this approach, if we try to insert an item (k, v) into a bucket A[ j] that is already
+    occupied, where j = h(k), then we next try A[( j + 1) mod N]. If A[( j + 1) mod N]
+    is also occupied, then we try A[( j + 2) mod N], and so on, until we ﬁnd an empty
+    bucket that can accept the new item. Once this bucket is located, we simply in-
+    sert the item there. Of course, this collision resolution strategy requires that we
+    change the implementation when searching for an existing key—the ﬁrst step of all
+        getitem , setitem , or delitem operations. In particular, to attempt
+    to locate an item with key equal to k, we must examine consecutive slots, starting
+    from A[h(k)], until we either ﬁnd an item with that key or we ﬁnd an empty bucket.
+    (See Figure 10.7.) The name “linear probing” comes from the fact that accessing a
+    cell of the bucket array can be viewed as a “probe.”
+                                            Must probe 4 times
+        New element with                before ﬁnding empty slot
+     key = 15 to be inserted
+                  0    1     2     3     4     5     6      7      8    9      10
+                            13          26     5    37 16                      21
+    Figure 10.7: Insertion into a hash table with integer keys using linear probing. The
+    hash function is h(k) = k mod 11. Values associated with keys are not shown.

@@ -1,0 +1,38 @@
+308                                                                          Chapter 8. Trees
+    40     # ---------- concrete methods implemented in this class ----------
+    41     def is root(self, p):
+    42       ”””Return True if Position p represents the root of the tree.”””
+    43       return self.root( ) == p
+    44
+    45     def is leaf(self, p):
+    46       ”””Return True if Position p does not have any children.”””
+    47       return self.num children(p) == 0
+    48
+    49     def is empty(self):
+    50       ”””Return True if the tree is empty.”””
+    51       return len(self) == 0
+            Code Fragment 8.2: Some concrete methods of our Tree abstract base class.
+     8.1.3 Computing Depth and Height
+        Let p be the position of a node of a tree T . The depth of p is the number of
+        ancestors of p, excluding p itself. For example, in the tree of Figure 8.2, the node
+        storing International has depth 2. Note that this deﬁnition implies that the depth of
+        the root of T is 0. The depth of p can also be recursively deﬁned as follows:
+            • If p is the root, then the depth of p is 0.
+            • Otherwise, the depth of p is one plus the depth of the parent of p.
+        Based on this deﬁnition, we present a simple, recursive algorithm, depth, in Code
+        Fragment 8.3, for computing the depth of a position p in Tree T . This method calls
+        itself recursively on the parent of p, and adds 1 to the value returned.
+    52     def depth(self, p):
+    53       ”””Return the number of levels separating Position p from the root.”””
+    54       if self.is root(p):
+    55          return 0
+    56       else:
+    57          return 1 + self.depth(self.parent(p))
+                          Code Fragment 8.3: Method depth of the Tree class.
+             The running time of T.depth(p) for position p is O(d p + 1), where d p denotes
+        the depth of p in the tree T , because the algorithm performs a constant-time recur-
+        sive step for each ancestor of p. Thus, algorithm T.depth(p) runs in O(n) worst-
+        case time, where n is the total number of positions of T , because a position of T
+        may have depth n − 1 if all nodes form a single branch. Although such a running
+        time is a function of the input size, it is more informative to characterize the running
+        time in terms of the parameter d p , as this parameter may be much smaller than n.

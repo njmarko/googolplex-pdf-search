@@ -1,0 +1,37 @@
+408                                         Chapter 10. Maps, Hash Tables, and Skip Lists
+     1 class MapBase(MutableMapping):
+     2    ”””Our own abstract base class that includes a nonpublic Item class.”””
+     3
+     4    #------------------------------- nested Item class -------------------------------
+     5    class Item:
+     6       ”””Lightweight composite to store key-value pairs as map items.”””
+     7          slots = _key , _value
+     8
+     9       def init (self, k, v):
+    10         self. key = k
+    11         self. value = v
+    12
+    13       def eq (self, other):
+    14         return self. key == other. key         # compare items based on their keys
+    15
+    16       def ne (self, other):
+    17         return not (self == other)             # opposite of eq
+    18
+    19       def lt (self, other):
+    20         return self. key < other. key          # compare items based on their keys
+        Code Fragment 10.2: Extending the MutableMapping abstract base class to provide
+        a nonpublic Item class for use in our various map implementations.
+     10.1.5 Simple Unsorted Map Implementation
+        We demonstrate the use of the MapBase class with a very simple concrete imple-
+        mentation of the map ADT. Code Fragment 10.3 presents an UnsortedTableMap
+        class that relies on storing key-value pairs in arbitrary order within a Python list.
+             An empty table is initialized as self. table within the constructor for our map.
+        When a new key is entered into the map, via line 22 of the setitem method,
+        we create a new instance of the nested Item class, which is inherited from our
+        MapBase class.
+             This list-based map implementation is simple, but it is not particularly efﬁcient.
+        Each of the fundamental methods, getitem , setitem , and delitem ,
+        relies on a for loop to scan the underlying list of items in search of a matching key.
+        In a best-case scenario, such a match may be found near the beginning of the list, in
+        which case the loop terminates; in the worst case, the entire list will be examined.
+        Therefore, each of these methods runs in O(n) time on a map with n items.

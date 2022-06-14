@@ -1,0 +1,33 @@
+7.4. The Positional List ADT                                                                277
+  7.4     The Positional List ADT
+          The abstract data types that we have considered thus far, namely stacks, queues,
+          and double-ended queues, only allow update operations that occur at one end of a
+          sequence or the other. We wish to have a more general abstraction. For example,
+          although we motivated the FIFO semantics of a queue as a model for customers
+          who are waiting to speak with a customer service representative, or fans who are
+          waiting in line to buy tickets to a show, the queue ADT is too limiting. What if
+          a waiting customer decides to hang up before reaching the front of the customer
+          service queue? Or what if someone who is waiting in line to buy tickets allows a
+          friend to “cut” into line at that position? We would like to design an abstract data
+          type that provides a user a way to refer to elements anywhere in a sequence, and to
+          perform arbitrary insertions and deletions.
+              When working with array-based sequences (such as a Python list), integer in-
+          dices provide an excellent means for describing the location of an element, or the
+          location at which an insertion or deletion should take place. However, numeric in-
+          dices are not a good choice for describing positions within a linked list because we
+          cannot efﬁciently access an entry knowing only its index; ﬁnding an element at a
+          given index within a linked list requires traversing the list incrementally from its
+          beginning or end, counting elements as we go.
+              Furthermore, indices are not a good abstraction for describing a local position
+          in some applications, because the index of an entry changes over time due to inser-
+          tions or deletions that happen earlier in the sequence. For example, it may not be
+          convenient to describe the location of a person waiting in line by knowing precisely
+          how far away that person is from the front of the line. We prefer an abstraction, as
+          characterized in Figure 7.14, in which there is some other means for describing
+          a position. We then wish to model situations such as when an identiﬁed person
+          leaves the line before reaching the front, or in which a new person is added to a line
+          immediately behind another identiﬁed person.
+                                                       me
+                       Tickets
+          Figure 7.14: We wish to be able to identify the position of an element in a sequence
+          without the use of an integer index.

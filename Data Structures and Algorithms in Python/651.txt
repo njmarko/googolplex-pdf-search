@@ -1,0 +1,35 @@
+630                                                        Chapter 14. Graph Algorithms
+    14.2.2 Adjacency List Structure
+       In contrast to the edge list representation of a graph, the adjacency list structure
+       groups the edges of a graph by storing them in smaller, secondary containers that
+       are associated with each individual vertex. Speciﬁcally, for each vertex v, we main-
+       tain a collection I(v), called the incidence collection of v, whose entries are edges
+       incident to v. (In the case of a directed graph, outgoing and incoming edges can be
+       respectively stored in two separate collections, Iout (v) and Iin (v).) Traditionally, the
+       incidence collection I(v) for a vertex v is a list, which is why we call this way of
+       representing a graph the adjacency list structure.
+           We require that the primary structure for an adjacency list maintain the col-
+       lection V of vertices in a way so that we can locate the secondary structure I(v)
+       for a given vertex v in O(1) time. This could be done by using a positional list
+       to represent V , with each Vertex instance maintaining a direct reference to its I(v)
+       incidence collection; we illustrate such an adjacency list structure of a graph in Fig-
+       ure 14.5. If vertices can be uniquely numbered from 0 to n − 1, we could instead
+       use a primary array-based structure to access the appropriate secondary lists.
+           The primary beneﬁt of an adjacency list is that the collection I(v) contains ex-
+       actly those edges that should be reported by the method incident edges(v). There-
+       fore, we can implement this method by iterating the edges of I(v) in O(deg(v))
+       time, where deg(v) is the degree of vertex v. This is the best possible outcome for
+       any graph representation, because there are deg(v) edges to be reported.
+                                                              V
+                                                                      u         e g
+                     u
+                 e       g                                            v         e   f
+               v           w           z
+                      f         h                                    w          f g h
+                                                                      z         h
+                          (a)                                              (b)
+       Figure 14.5: (a) An undirected graph G; (b) a schematic representation of the ad-
+       jacency list structure for G. Collection V is the primary list of vertices, and each
+       vertex has an associated list of incident edges. Although not diagrammed as such,
+       we presume that each edge of the graph is represented with a unique Edge instance
+       that maintains references to its endpoint vertices.

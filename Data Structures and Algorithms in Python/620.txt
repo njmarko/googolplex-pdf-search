@@ -1,0 +1,39 @@
+13.3. Dynamic Programming                                                                     599
+         The LCS Algorithm
+          The deﬁnition of L j,k satisﬁes subproblem optimization, for we cannot have a
+          longest common subsequence without also having longest common subsequences
+          for the subproblems. Also, it uses subproblem overlap, because a subproblem so-
+          lution L j,k can be used in several other problems (namely, the problems L j+1,k ,
+          L j,k+1 , and L j+1,k+1 ). Turning this deﬁnition of L j,k into an algorithm is actually
+          quite straightforward. We create an (n + 1) × (m + 1) array, L, deﬁned for 0 ≤ j ≤ n
+          and 0 ≤ k ≤ m. We initialize all entries to 0, in particular so that all entries of the
+          form L j,0 and L0,k are zero. Then, we iteratively build up values in L until we have
+          Ln,m , the length of a longest common subsequence of X and Y . We give a Python
+          implementation of this algorithm in Code Fragment 13.6.
+       1 def LCS(X, Y):
+       2     ”””Return table such that L[j][k] is length of LCS for X[0:j] and Y[0:k].”””
+       3     n, m = len(X), len(Y)                              # introduce convenient notations
+       4     L = [[0] (m+1) for k in range(n+1)]                # (n+1) x (m+1) table
+       5     for j in range(n):
+       6        for k in range(m):
+       7           if X[j] == Y[k]:                             # align this match
+       8              L[j+1][k+1] = L[j][k] + 1
+       9           else:                                        # choose to ignore one character
+      10              L[j+1][k+1] = max(L[j][k+1], L[j+1][k])
+      11     return L
+             Code Fragment 13.6: Dynamic programming algorithm for the LCS problem.
+               The running time of the algorithm of the LCS algorithm is easy to analyze,
+          for it is dominated by two nested for loops, with the outer one iterating n times
+          and the inner one iterating m times. Since the if-statement and assignment inside
+          the loop each requires O(1) primitive operations, this algorithm runs in O(nm)
+          time. Thus, the dynamic programming technique can be applied to the longest
+          common subsequence problem to improve signiﬁcantly over the exponential-time
+          brute-force solution to the LCS problem.
+               The LCS function of Code Fragment 13.6 computes the length of the longest
+          common subsequence (stored as Ln,m ), but not the subsequence itself. Fortunately,
+          it is easy to extract the actual longest common subsequence if given the complete
+          table of L j,k values computed by the LCS function. The solution can be recon-
+          structed back to front by reverse engineering the calculation of length Ln,m . At any
+          position L j,k , if x j = yk , then the length is based on the common subsequence as-
+          sociated with length L j−1,k−1 , followed by common character x j . We can record x j
+          as part of the sequence, and then continue the analysis from L j−1,k−1 . If x j = yk ,

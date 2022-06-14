@@ -1,0 +1,41 @@
+650                                                      Chapter 14. Graph Algorithms
+         When discussing DFS, we described a classiﬁcation of nontree edges being
+    either back edges, which connect a vertex to one of its ancestors, forward edges,
+    which connect a vertex to one of its descendants, or cross edges, which connect a
+    vertex to another vertex that is neither its ancestor nor its descendant. For BFS on
+    an undirected graph, all nontree edges are cross edges (see Exercise C-14.47), and
+    for BFS on a directed graph, all nontree edges are either back edges or cross edges
+    (see Exercise C-14.48).
+         The BFS traversal algorithm has a number of interesting properties, some of
+    which we explore in the proposition that follows. Most notably, a path in a breadth-
+    ﬁrst search tree rooted at vertex s to any other vertex v is guaranteed to be the
+    shortest such path from s to v in terms of the number of edges.
+    Proposition 14.16: Let G be an undirected or directed graph on which a BFS
+    traversal starting at vertex s has been performed. Then
+         • The traversal visits all vertices of G that are reachable from s.
+         • For each vertex v at level i, the path of the BFS tree T between s and v has i
+            edges, and any other path of G from s to v has at least i edges.
+         • If (u, v) is an edge that is not in the BFS tree, then the level number of v can
+            be at most 1 greater than the level number of u.
+         We leave the justiﬁcation of this proposition as an exercise (C-14.50).
+         The analysis of the running time of BFS is similar to the one of DFS, with
+    the algorithm running in O(n + m) time, or more speciﬁcally, in O(ns + ms ) time
+    if ns is the number of vertices reachable from vertex s, and ms ≤ m is the number
+    of incident edges to those vertices. To explore the entire graph, the process can
+    be restarted at another vertex, akin to the DFS complete function of Code Frag-
+    ment 14.7. Also, the actual path from vertex s to vertex v can be reconstructed
+    using the construct path function of Code Fragment 14.6
+    Proposition 14.17: Let G be a graph with n vertices and m edges represented
+    with the adjacency list structure. A BFS traversal of G takes O(n + m) time.
+         Although our implementation of BFS in Code Fragment 14.8 progresses level
+    by level, the BFS algorithm can also be implemented using a single FIFO queue
+    to represent the current fringe of the search. Starting with the source vertex in the
+    queue, we repeatedly remove the vertex from the front of the queue and insert any
+    of its unvisited neighbors to the back of the queue. (See Exercise C-14.51.)
+         In comparing the capabilities of DFS and BFS, both can be used to efﬁciently
+    ﬁnd the set of vertices that are reachable from a given source, and to determine paths
+    to those vertices. However, BFS guarantees that those paths use as few edges as
+    possible. For an undirected graph, both algorithms can be used to test connectivity,
+    to identify connected components, or to locate a cycle. For directed graphs, the
+    DFS algorithm is better suited for certain tasks, such as ﬁnding a directed cycle in
+    the graph, or in identifying the strongly connected components.

@@ -1,0 +1,27 @@
+494                                                                Chapter 11. Search Trees
+    11.4.2 When to Splay
+       The rules that dictate when splaying is performed are as follows:
+           • When searching for key k, if k is found at position p, we splay p, else we
+              splay the leaf position at which the search terminates unsuccessfully. For
+              example, the splaying in Figures 11.19 and 11.20 would be performed after
+              searching successfully for key 14 or unsuccessfully for key 15.
+           • When inserting key k, we splay the newly created internal node where k
+              gets inserted. For example, the splaying in Figures 11.19 and 11.20 would
+              be performed if 14 were the newly inserted key. We show a sequence of
+              insertions in a splay tree in Figure 11.21.
+                       1                     1                                 3
+                                                   3                    1
+                      (a)                      (b)                        (c)
+                           3                    2                       2
+                    1                    1            3          1             3
+                        2                                                          4
+                      (d)                      (e)                        (f )
+                                                      4
+                                                3
+                                           2
+                                       1
+                                               (g)
+       Figure 11.21: A sequence of insertions in a splay tree: (a) initial tree; (b) after
+       inserting 3, but before a zig step; (c) after splaying; (d) after inserting 2, but before
+       a zig-zag step; (e) after splaying; (f ) after inserting 4, but before a zig-zig step;
+       (g) after splaying.

@@ -1,0 +1,39 @@
+15.3. External Searching and B-Trees                                                         711
+ 15.3        External Searching and B-Trees
+          Consider the problem of maintaining a large collection of items that does not ﬁt in
+          main memory, such as a typical database. In this context, we refer to the secondary-
+          memory blocks as disk blocks. Likewise, we refer to the transfer of a block between
+          secondary memory and primary memory as a disk transfer. Recalling the great
+          time difference that exists between main memory accesses and disk accesses, the
+          main goal of maintaining such a collection in external memory is to minimize the
+          number of disk transfers needed to perform a query or update. We refer to this
+          count as the I/O complexity of the algorithm involved.
+          Some Ineﬃcient External-Memory Representations
+          A typical operation we would like to support is the search for a key in a map. If we
+          were to store n items unordered in a doubly linked list, searching for a particular
+          key within the list requires n transfers in the worst case, since each link hop we
+          perform on the linked list might access a different block of memory.
+              We can reduce the number of block transfers by using an array-based sequence.
+          A sequential search of an array can be performed using only O(n/B) block transfers
+          because of spatial locality of reference, where B denotes the number of elements
+          that ﬁt into a block. This is because the block transfer when accessing the ﬁrst
+          element of the array actually retrieves the ﬁrst B elements, and so on with each
+          successive block. It is worth noting that the bound of O(n/B) transfers is only
+          achieved when using a compact array representation (see Section 5.2.2). The
+          standard Python list class is a referential container, and so even though the sequence
+          of references are stored in an array, the actual elements that must be examined
+          during a search are not generally stored sequentially in memory, resulting in n
+          transfers in the worst case.
+              We could alternately store a sequence using a sorted array. In this case, a search
+          performs O(log2 n) transfers, via binary search, which is a nice improvement. But
+          we do not get signiﬁcant beneﬁt from block transfers because each query during
+          a binary search is likely in a different block of the sequence. As usual, update
+          operations are expensive for a sorted array.
+              Since these simple implementations are I/O inefﬁcient, we should consider the
+          logarithmic-time internal-memory strategies that use balanced binary trees (for ex-
+          ample, AVL trees or red-black trees) or other search structures with logarithmic
+          average-case query and update times (for example, skip lists or splay trees). Typi-
+          cally, each node accessed for a query or update in one of these structures will be in
+          a different block. Thus, these methods all require O(log2 n) transfers in the worst
+          case to perform a query or update operation. But we can do better! We can perform
+          map queries and updates using only O(logB n) = O(log n/ log B) transfers.

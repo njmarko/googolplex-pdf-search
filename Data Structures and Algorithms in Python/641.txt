@@ -1,0 +1,34 @@
+620                                                          Chapter 14. Graph Algorithms
+ 14.1   Graphs
+      A graph is a way of representing relationships that exist between pairs of objects.
+      That is, a graph is a set of objects, called vertices, together with a collection of
+      pairwise connections between them, called edges. Graphs have applications in
+      modeling many domains, including mapping, transportation, computer networks,
+      and electrical engineering. By the way, this notion of a “graph” should not be
+      confused with bar charts and function plots, as these kinds of “graphs” are unrelated
+      to the topic of this chapter.
+           Viewed abstractly, a graph G is simply a set V of vertices and a collection E
+      of pairs of vertices from V , called edges. Thus, a graph is a way of representing
+      connections or relationships between pairs of objects from some set V . Incidentally,
+      some books use different terminology for graphs and refer to what we call vertices
+      as nodes and what we call edges as arcs. We use the terms “vertices” and “edges.”
+           Edges in a graph are either directed or undirected. An edge (u, v) is said to
+      be directed from u to v if the pair (u, v) is ordered, with u preceding v. An edge
+      (u, v) is said to be undirected if the pair (u, v) is not ordered. Undirected edges are
+      sometimes denoted with set notation, as {u, v}, but for simplicity we use the pair
+      notation (u, v), noting that in the undirected case (u, v) is the same as (v, u). Graphs
+      are typically visualized by drawing the vertices as ovals or rectangles and the edges
+      as segments or curves connecting pairs of ovals and rectangles. The following are
+      some examples of directed and undirected graphs.
+      Example 14.1: We can visualize collaborations among the researchers of a cer-
+      tain discipline by constructing a graph whose vertices are associated with the re-
+      searchers themselves, and whose edges connect pairs of vertices associated with
+      researchers who have coauthored a paper or book. (See Figure 14.1.) Such edges
+      are undirected because coauthorship is a symmetric relation; that is, if A has coau-
+      thored something with B, then B necessarily has coauthored something with A.
+                           Snoeyink       Garg
+                                        Goldwasser
+                           Goodrich                    Tamassia
+                                          Tollis
+                                          Vitter       Preparata      Chiang
+                     Figure 14.1: Graph of coauthorship among some authors.

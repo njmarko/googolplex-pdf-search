@@ -1,0 +1,40 @@
+1.5. Functions                                                                                23
+  1.5     Functions
+          In this section, we explore the creation of and use of functions in Python. As we
+          did in Section 1.2.2, we draw a distinction between functions and methods. We
+          use the general term function to describe a traditional, stateless function that is in-
+          voked without the context of a particular class or an instance of that class, such as
+          sorted(data). We use the more speciﬁc term method to describe a member function
+          that is invoked upon a speciﬁc object using an object-oriented message passing syn-
+          tax, such as data.sort( ). In this section, we only consider pure functions; methods
+          will be explored with more general object-oriented principles in Chapter 2.
+              We begin with an example to demonstrate the syntax for deﬁning functions in
+          Python. The following function counts the number of occurrences of a given target
+          value within any form of iterable data set.
+               def count(data, target):
+                  n=0
+                  for item in data:
+                    if item == target:                           # found a match
+                       n += 1
+                  return n
+          The ﬁrst line, beginning with the keyword def, serves as the function’s signature.
+          This establishes a new identiﬁer as the name of the function (count, in this exam-
+          ple), and it establishes the number of parameters that it expects, as well as names
+          identifying those parameters (data and target, in this example). Unlike Java and
+          C++, Python is a dynamically typed language, and therefore a Python signature
+          does not designate the types of those parameters, nor the type (if any) of a return
+          value. Those expectations should be stated in the function’s documentation (see
+          Section 2.2.3) and can be enforced within the body of the function, but misuse of a
+          function will only be detected at run-time.
+              The remainder of the function deﬁnition is known as the body of the func-
+          tion. As is the case with control structures in Python, the body of a function is
+          typically expressed as an indented block of code. Each time a function is called,
+          Python creates a dedicated activation record that stores information relevant to the
+          current call. This activation record includes what is known as a namespace (see
+          Section 1.10) to manage all identiﬁers that have local scope within the current call.
+          The namespace includes the function’s parameters and any other identiﬁers that are
+          deﬁned locally within the body of the function. An identiﬁer in the local scope
+          of the function caller has no relation to any identiﬁer with the same name in the
+          caller’s scope (although identiﬁers in different scopes may be aliases to the same
+          object). In our ﬁrst example, the identiﬁer n has scope that is local to the function
+          call, as does the identiﬁer item, which is established as the loop variable.

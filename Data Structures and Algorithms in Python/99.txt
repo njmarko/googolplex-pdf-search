@@ -1,0 +1,41 @@
+78                                          Chapter 2. Object-Oriented Programming
+    1 class Vector:
+    2   ”””Represent a vector in a multidimensional space.”””
+    3
+    4   def init (self, d):
+    5     ”””Create d-dimensional vector of zeros.”””
+    6     self. coords = [0] d
+    7
+    8   def len (self):
+    9     ”””Return the dimension of the vector.”””
+   10     return len(self. coords)
+   11
+   12   def getitem (self, j):
+   13     ”””Return jth coordinate of vector.”””
+   14     return self. coords[j]
+   15
+   16   def setitem (self, j, val):
+   17     ”””Set jth coordinate of vector to given value.”””
+   18     self. coords[j] = val
+   19
+   20   def add (self, other):
+   21     ”””Return sum of two vectors.”””
+   22     if len(self) != len(other):               # relies on len method
+   23        raise ValueError( dimensions must agree )
+   24     result = Vector(len(self))                # start with vector of zeros
+   25     for j in range(len(self)):
+   26        result[j] = self[j] + other[j]
+   27     return result
+   28
+   29   def eq (self, other):
+   30     ”””Return True if vector has same coordinates as other.”””
+   31     return self. coords == other. coords
+   32
+   33   def ne (self, other):
+   34     ”””Return True if vector diﬀers from other.”””
+   35     return not self == other                  # rely on existing eq deﬁnition
+   36
+   37   def str (self):
+   38     ”””Produce string representation of vector.”””
+   39     return < + str(self. coords)[1:−1] + >            # adapt list representation
+                     Code Fragment 2.4: Deﬁnition of a simple Vector class.

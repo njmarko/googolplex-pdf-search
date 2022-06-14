@@ -1,0 +1,25 @@
+14.7. Minimum Spanning Trees                                                               671
+          A Crucial Fact about Minimum Spanning Trees
+          The two MST algorithms we discuss are based on the greedy method, which in this
+          case depends crucially on the following fact. (See Figure 14.19.)
+                               e Belongs to a Minimum Spanning Tree
+                                                    e
+                               V1                                         V2
+                                               min-weight
+                                             “bridge” edge
+             Figure 14.19: An illustration of the crucial fact about minimum spanning trees.
+          Proposition 14.25: Let G be a weighted connected graph, and let V1 and V2 be a
+          partition of the vertices of G into two disjoint nonempty sets. Furthermore, let e be
+          an edge in G with minimum weight from among those with one endpoint in V1 and
+          the other in V2 . There is a minimum spanning tree T that has e as one of its edges.
+          Justiﬁcation: Let T be a minimum spanning tree of G. If T does not contain
+          edge e, the addition of e to T must create a cycle. Therefore, there is some edge
+           f = e of this cycle that has one endpoint in V1 and the other in V2 . Moreover, by
+          the choice of e, w(e) ≤ w( f ). If we remove f from T ∪ {e}, we obtain a spanning
+          tree whose total weight is no more than before. Since T was a minimum spanning
+          tree, this new tree must also be a minimum spanning tree.
+               In fact, if the weights in G are distinct, then the minimum spanning tree is
+          unique; we leave the justiﬁcation of this less crucial fact as an exercise (C-14.65).
+          In addition, note that Proposition 14.25 remains valid even if the graph G con-
+          tains negative-weight edges or negative-weight cycles, unlike the algorithms we
+          presented for shortest paths.

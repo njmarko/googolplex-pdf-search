@@ -1,0 +1,39 @@
+xvi                                                                         Contents
+            10.2.2 Collision-Handling Schemes . . . . . . . . . .    . . . . . . 417
+            10.2.3 Load Factors, Rehashing, and Eﬃciency . . .       . . . . . . 420
+            10.2.4 Python Hash Table Implementation . . . . .        . . . . . . 422
+       10.3 Sorted Maps . . . . . . . . . . . . . . . . . . . . .    . . . . . . 427
+            10.3.1 Sorted Search Tables . . . . . . . . . . . . .    . . . . . . 428
+            10.3.2 Two Applications of Sorted Maps . . . . . .       . . . . . . 434
+       10.4 Skip Lists . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 437
+            10.4.1 Search and Update Operations in a Skip List       . . . . . . 439
+            10.4.2 Probabilistic Analysis of Skip Lists  . . . . .  . . . . . . 443
+       10.5 Sets, Multisets, and Multimaps . . . . . . . . . .       . . . . . . 446
+            10.5.1 The Set ADT . . . . . . . . . . . . . . . . .     . . . . . . 446
+            10.5.2 Python’s MutableSet Abstract Base Class . .       . . . . . . 448
+            10.5.3 Implementing Sets, Multisets, and Multimaps       . . . . . . 450
+       10.6 Exercises . . . . . . . . . . . . . . . . . . . . . . .  . . . . . . 452
+    11 Search Trees                                                              459
+       11.1 Binary Search Trees . . . . . . . . . . . . . .    . . . . . . . . . 460
+            11.1.1 Navigating a Binary Search Tree . . . .     . . . . . . . . . 461
+            11.1.2 Searches . . . . . . . . . . . . . . . . .  . . . . . . . . . 463
+            11.1.3 Insertions and Deletions . . . . . . . . .  . . . . . . . . . 465
+            11.1.4 Python Implementation . . . . . . . . .     . . . . . . . . . 468
+            11.1.5 Performance of a Binary Search Tree . .     . . . . . . . . . 473
+       11.2 Balanced Search Trees . . . . . . . . . . . .      . . . . . . . . . 475
+            11.2.1 Python Framework for Balancing Search       Trees . . . . . . 478
+       11.3 AVL Trees . . . . . . . . . . . . . . . . . . . .  . . . . . . . . . 481
+            11.3.1 Update Operations . . . . . . . . . . .     . . . . . . . . . 483
+            11.3.2 Python Implementation . . . . . . . . .     . . . . . . . . . 488
+       11.4 Splay Trees . . . . . . . . . . . . . . . . . . .  . . . . . . . . . 490
+            11.4.1 Splaying . . . . . . . . . . . . . . . . .  . . . . . . . . . 490
+            11.4.2 When to Splay . . . . . . . . . . . . . .   . . . . . . . . . 494
+            11.4.3 Python Implementation . . . . . . . . .     . . . . . . . . . 496
+            11.4.4 Amortized Analysis of Splaying  . . .      . . . . . . . . . 497
+       11.5 (2,4) Trees . . . . . . . . . . . . . . . . . . .  . . . . . . . . . 502
+            11.5.1 Multiway Search Trees . . . . . . . . .     . . . . . . . . . 502
+            11.5.2 (2,4)-Tree Operations . . . . . . . . . .   . . . . . . . . . 505
+       11.6 Red-Black Trees . . . . . . . . . . . . . . . .    . . . . . . . . . 512
+            11.6.1 Red-Black Tree Operations . . . . . . .     . . . . . . . . . 514
+            11.6.2 Python Implementation . . . . . . . . .     . . . . . . . . . 525
+       11.7 Exercises . . . . . . . . . . . . . . . . . . . .  . . . . . . . . . 528

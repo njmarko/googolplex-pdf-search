@@ -1,0 +1,43 @@
+14.2. Data Structures for Graphs                                                        635
+       1    #------------------------- nested Vertex class -------------------------
+       2    class Vertex:
+       3      ”””Lightweight vertex structure for a graph.”””
+       4         slots = _element
+       5
+       6      def init (self, x):
+       7        ”””Do not call constructor directly. Use Graph s insert vertex(x).”””
+       8        self. element = x
+       9
+      10      def element(self):
+      11        ”””Return element associated with this vertex.”””
+      12        return self. element
+      13
+      14      def hash (self):                  # will allow vertex to be a map/set key
+      15        return hash(id(self))
+      16
+      17    #------------------------- nested Edge class -------------------------
+      18    class Edge:
+      19      ”””Lightweight edge structure for a graph.”””
+      20         slots = _origin , _destination , _element
+      21
+      22      def init (self, u, v, x):
+      23        ”””Do not call constructor directly. Use Graph s insert edge(u,v,x).”””
+      24        self. origin = u
+      25        self. destination = v
+      26        self. element = x
+      27
+      28      def endpoints(self):
+      29        ”””Return (u,v) tuple for vertices u and v.”””
+      30        return (self. origin, self. destination)
+      31
+      32      def opposite(self, v):
+      33        ”””Return the vertex that is opposite v on this edge.”””
+      34        return self. destination if v is self. origin else self. origin
+      35
+      36      def element(self):
+      37        ”””Return element associated with this edge.”””
+      38        return self. element
+      39
+      40      def hash (self):                  # will allow edge to be a map/set key
+      41        return hash( (self. origin, self. destination) )
+           Code Fragment 14.1: Vertex and Edge classes (to be nested within Graph class).

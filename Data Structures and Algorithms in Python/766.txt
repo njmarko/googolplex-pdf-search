@@ -1,0 +1,48 @@
+Index                                                                             745
+      open function, 29, 31                  Perkovic, Ljubomir, 55
+      operand stack, 704                     permutation, 150
+      operators, 12–17                       Peters, Tim, 568
+            arithmetic, 13                   Phillips, Dusty, 108
+            bitwise, 14                      polymorphism, 26, 77, 93
+            chaining, 17                     polynomial function, 119, 146
+            comparisons, 13                  polynomial hash code, 413
+            logical, 12                      portability, 58
+            overloading, 74                  position, 279–281, 305, 438
+            precedence, 17                   positional list, 277–285
+      or operator, 12                             abstract data type, 279–281
+      ord function, 29                       PositionalList class, 281–285, 287, 628
+      order statistic, 571                   positional parameter, 27
+      OrderedDict class, 457                 postﬁx notation, 252, 253, 359
+      Orlin, James, 696                      postorder tree traversal, 329
+      os module, 49, 159, 182, 357           pow function, 29
+      out-degree, 621                        power function, 172
+      outgoing edge, 621                     Pratt, Vaughan, 618
+      overﬂow, 506                           precedence of operators, 17
+      override, 82, 100                      PredatoryCreditCard, 83–86, 96–100,
+                                                        106
+      p-norm, 53                             preﬁx, 583
+      packing a sequence, 44                 preﬁx average, 131–134
+      palindrome, 181, 615                   preﬁx code, 601
+      parameter, 24–28                       preorder tree traversal, 328
+            actual, 24                       Prim, Robert, 696
+            default value, 26                Prim-Jarnik algorithm, 672–675
+            formal, 24                       primitive operations, 113
+            keyword, 27                      print function, 29, 30
+            positional, 27                   priority queue, 363–400
+      parent class, 82                            adaptable, 390–395, 666
+      parent node, 301                            ADT, 364
+      parenthetic string representation, 339      heap implementation, 372–379
+      partial order, 16                           sorted list implementation, 368–369
+      partition, 679, 681–684                     unsorted list implementation,
+      pass statement, 38, 478                           366–367
+      path, 302, 623                         priority search tree, 400
+            compression, 684                 PriorityQueueBase class, 365
+            directed, 623                    private member, 86
+            length, 356, 660                 probability, 728–730
+            simple, 623                      ProbeHashMap class, 425–426
+      pattern matching, 208, 584–593         program counter, 703
+            Boyer-Moore algorithm, 586–589   progression, 87–91, 93
+            brute force, 584–585                  arithmetic, 89, 199–200
+            Knuth-Morris-Pratt algorithm,         Fibonacci, 90–91
+                 590–593                          geometric, 90, 199
+      Patterson, David, 719                  protected member, 86

@@ -1,0 +1,16 @@
+12.2. Merge-Sort                                                                  541
+                       17    31   96  50                             17  31  96   50
+  24  85    63 45                             24   85
+                                                          63 45
+                   (g)                                           (h)
+                       17   31   96   50                             17  31  96   50
+  24  85                                      24   85
+                45                                       63
+           63                                                 45
+                   (i)                                           (j)
+                       17   31   96   50                             17  31  96   50
+  24  85                                       24    45 63   85
+           45   63
+                   (k)                                           (l)
+         Figure 12.3: Visualization of an execution of merge-sort. (Combined with Fig-
+         ures 12.2 and 12.4.)

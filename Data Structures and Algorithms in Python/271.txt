@@ -1,0 +1,38 @@
+250                                                    Chapter 6. Stacks, Queues, and Deques
+ 6.4    Exercises
+        For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+     Reinforcement
+          R-6.1 What values are returned during the following series of stack operations, if
+                  executed upon an initially empty stack? push(5), push(3), pop(), push(2),
+                  push(8), pop(), pop(), push(9), push(1), pop(), push(7), push(6), pop(),
+                  pop(), push(4), pop(), pop().
+          R-6.2 Suppose an initially empty stack S has executed a total of 25 push opera-
+                  tions, 12 top operations, and 10 pop operations, 3 of which raised Empty
+                  errors that were caught and ignored. What is the current size of S?
+          R-6.3 Implement a function with signature transfer(S, T) that transfers all ele-
+                  ments from stack S onto stack T, so that the element that starts at the top
+                  of S is the ﬁrst to be inserted onto T, and the element at the bottom of S
+                  ends up at the top of T.
+          R-6.4 Give a recursive method for removing all the elements from a stack.
+          R-6.5 Implement a function that reverses a list of elements by pushing them onto
+                  a stack in one order, and writing them back to the list in reversed order.
+          R-6.6 Give a precise and complete deﬁnition of the concept of matching for
+                  grouping symbols in an arithmetic expression. Your deﬁnition may be
+                  recursive.
+          R-6.7 What values are returned during the following sequence of queue opera-
+                  tions, if executed on an initially empty queue? enqueue(5), enqueue(3),
+                  dequeue(), enqueue(2), enqueue(8), dequeue(), dequeue(), enqueue(9),
+                  enqueue(1), dequeue(), enqueue(7), enqueue(6), dequeue(), dequeue(),
+                  enqueue(4), dequeue(), dequeue().
+          R-6.8 Suppose an initially empty queue Q has executed a total of 32 enqueue
+                  operations, 10 ﬁrst operations, and 15 dequeue operations, 5 of which
+                  raised Empty errors that were caught and ignored. What is the current
+                  size of Q?
+          R-6.9 Had the queue of the previous problem been an instance of ArrayQueue
+                  that used an initial array of capacity 30, and had its size never been greater
+                  than 30, what would be the ﬁnal value of the front instance variable?
+         R-6.10 Consider what happens if the loop in the ArrayQueue. resize method at
+                  lines 53–55 of Code Fragment 6.7 had been implemented as:
+                       for k in range(self. size):
+                         self. data[k] = old[k]                       # rather than old[walk]
+                  Give a clear explanation of what could go wrong.

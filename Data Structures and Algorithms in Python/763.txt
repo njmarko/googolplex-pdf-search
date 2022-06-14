@@ -1,0 +1,48 @@
+742                                                                          Index
+         directed, 620, 621, 657          I/O complexity, 711
+            acyclic, 655–657              id function, 29
+            strongly connected, 623       identiﬁer, 4
+         mixed, 621                       IDLE, 2
+         reachability, 651–654            immutable type, 7, 11, 415
+         shortest paths, 654              implied method, 76
+         simple, 622                      import statement, 48
+         traversal, 638–650               in operator, 14–15, 75
+         undirected, 620, 621             in-degree, 621
+         weighted, 659–696                in-place algorithm, 389, 396, 559, 702
+    greedy method, 603, 660, 661          incidence collection, 630
+    Guibas, Leonidas, 535                 incident, 621
+    Guttag, John, 108, 254, 298           incoming edges, 621
+                                          independent, 729, 730
+    Harmonic number, 131, 180, 728        index, 186
+    hash code, 411–415                           negative, 14
+         cyclic-shift, 413–414                   zero-indexing, 9, 14
+         polynomial, 413                  IndexError, 20, 33, 34, 83, 232, 303
+    hash function, 415                    induction, 138–139, 162
+    hash table, 410–426                   inﬁx notation, 359
+         clustering, 419                  inheritance, 82–95
+         collision, 411                          multiple, 468
+         collision resolution, 417–419    inorder tree traversal, 331, 335–336, 461,
+         double hashing, 419                          476
+         linear probing, 418              input function, 29, 30–31
+         quadratic probing, 419           insertion-sort, 214–215, 285–286, 387
+    HashMapBase class, 422–423            instance, 57
+    header sentinel, 270                  instantiation, 6
+    heap, 370–384                         int class, 7, 8
+         bottom-up construction, 380–384  integrated development environment, 2
+    heap-sort, 384, 388–389               internal memory, 705
+    HeapPriorityQueue class, 377–378, 382 Internet, 227
+    heapq module, 384                     interpreter, 2
+    height of a tree, 309–310, 474        inversion, 567, 578
+    height-balance property, 481, 483     inverted ﬁle, 456
+    Hell, Pavol, 696                      IOError, 33, 37
+    Hennessy, John, 719                   is not operator, 12
+    heuristic, 289                        is operator, 12, 76
+    hierarchy, 82                         isinstance function, 29, 34
+    Hoare, C. A. R., 580                  isomorphism, 355
+    hook, 342, 468, 478                   iterable type, 9, 21, 35, 39
+    Hopcroft, John, 254, 298, 535, 696    iterator, 39–40, 76, 79, 87
+    Hopper, Grace, 36
+    Horner’s method, 146                  JáJá, Joseph, 361
+    HTML, 236–238, 251, 582               Jarnı́k, Vojtěch, 696
+    Huang, Bing-Chao, 580                 join function of str class, 723
+    Huffman coding, 601–602               Jones, Richard, 719

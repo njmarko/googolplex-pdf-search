@@ -1,0 +1,43 @@
+8.3. Implementing Trees                                                                 323
+     120    def delete(self, p):
+     121      ”””Delete the node at Position p, and replace it with its child, if any.
+     122
+     123      Return the element that had been stored at Position p.
+     124      Raise ValueError if Position p is invalid or p has two children.
+     125      ”””
+     126      node = self. validate(p)
+     127      if self.num children(p) == 2: raise ValueError( p has two children )
+     128      child = node. left if node. left else node. right         # might be None
+     129      if child is not None:
+     130         child. parent = node. parent       # child s grandparent becomes parent
+     131      if node is self. root:
+     132         self. root = child                 # child becomes root
+     133      else:
+     134         parent = node. parent
+     135         if node is parent. left:
+     136            parent. left = child
+     137         else:
+     138            parent. right = child
+     139      self. size −= 1
+     140      node. parent = node                   # convention for deprecated node
+     141      return node. element
+     142
+     143    def attach(self, p, t1, t2):
+     144      ”””Attach trees t1 and t2 as left and right subtrees of external p.”””
+     145      node = self. validate(p)
+     146      if not self.is leaf(p): raise ValueError( position must be leaf )
+     147      if not type(self) is type(t1) is type(t2): # all 3 trees must be same type
+     148         raise TypeError( Tree types must match )
+     149      self. size += len(t1) + len(t2)
+     150      if not t1.is empty( ):             # attached t1 as left subtree of node
+     151         t1. root. parent = node
+     152         node. left = t1. root
+     153         t1. root = None                 # set t1 instance to empty
+     154         t1. size = 0
+     155      if not t2.is empty( ):             # attached t2 as right subtree of node
+     156         t2. root. parent = node
+     157         node. right = t2. root
+     158         t2. root = None                 # set t2 instance to empty
+     159         t2. size = 0
+          Code Fragment 8.11: Nonpublic update methods for the LinkedBinaryTree class
+          (continued from Code Fragment 8.10).

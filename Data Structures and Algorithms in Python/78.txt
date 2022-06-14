@@ -1,0 +1,29 @@
+2.1. Goals, Principles, and Patterns                                                         57
+  2.1     Goals, Principles, and Patterns
+          As the name implies, the main “actors” in the object-oriented paradigm are called
+          objects. Each object is an instance of a class. Each class presents to the outside
+          world a concise and consistent view of the objects that are instances of this class,
+          without going into too much unnecessary detail or giving others access to the inner
+          workings of the objects. The class deﬁnition typically speciﬁes instance variables,
+          also known as data members, that the object contains, as well as the methods, also
+          known as member functions, that the object can execute. This view of computing
+          is intended to fulﬁll several goals and incorporate several design principles, which
+          we discuss in this chapter.
+      2.1.1 Object-Oriented Design Goals
+          Software implementations should achieve robustness, adaptability, and reusabil-
+          ity. (See Figure 2.1.)
+                          Robustness             Adaptability          Reusability
+                               Figure 2.1: Goals of object-oriented design.
+          Robustness
+          Every good programmer wants to develop software that is correct, which means that
+          a program produces the right output for all the anticipated inputs in the program’s
+          application. In addition, we want software to be robust, that is, capable of handling
+          unexpected inputs that are not explicitly deﬁned for its application. For example,
+          if a program is expecting a positive integer (perhaps representing the price of an
+          item) and instead is given a negative integer, then the program should be able to
+          recover gracefully from this error. More importantly, in life-critical applications,
+          where a software error can lead to injury or loss of life, software that is not robust
+          could be deadly. This point was driven home in the late 1980s in accidents involv-
+          ing Therac-25, a radiation-therapy machine, which severely overdosed six patients
+          between 1985 and 1987, some of whom died from complications resulting from
+          their radiation overdose. All six accidents were traced to software errors.

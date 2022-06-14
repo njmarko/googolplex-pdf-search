@@ -1,0 +1,31 @@
+3.3. Asymptotic Analysis                                                                       127
+              The seven functions listed in Section 3.2 are the most common functions used
+         in conjunction with the big-Oh notation to characterize the running times and space
+         usage of algorithms. Indeed, we typically use the names of these functions to refer
+         to the running times of the algorithms they characterize. So, for example, we would
+         say that an algorithm that runs in worst-case time 4n2 + n log n is a quadratic-time
+         algorithm, since it runs in O(n2 ) time. Likewise, an algorithm running in time at
+         most 5n + 20 log n + 4 would be called a linear-time algorithm.
+         Big-Omega
+         Just as the big-Oh notation provides an asymptotic way of saying that a function is
+         “less than or equal to” another function, the following notations provide an asymp-
+         totic way of saying that a function grows at a rate that is “greater than or equal to”
+         that of another.
+              Let f (n) and g(n) be functions mapping positive integers to positive real num-
+         bers. We say that f (n) is Ω(g(n)), pronounced “ f (n) is big-Omega of g(n),” if g(n)
+         is O( f (n)), that is, there is a real constant c > 0 and an integer constant n0 ≥ 1 such
+         that
+                                          f (n) ≥ cg(n), for n ≥ n0 .
+         This deﬁnition allows us to say asymptotically that one function is greater than or
+         equal to another, up to a constant factor.
+         Example 3.15: 3n log n − 2n is Ω(n log n).
+         Justiﬁcation: 3n log n − 2n = n log n + 2n(log n − 1) ≥ n log n for n ≥ 2; hence,
+         we can take c = 1 and n0 = 2 in this case.
+         Big-Theta
+         In addition, there is a notation that allows us to say that two functions grow at the
+         same rate, up to constant factors. We say that f (n) is Θ(g(n)), pronounced “ f (n)
+         is big-Theta of g(n),” if f (n) is O(g(n)) and f (n) is Ω(g(n)) , that is, there are real
+         constants c > 0 and c > 0, and an integer constant n0 ≥ 1 such that
+                                   c g(n) ≤ f (n) ≤ c g(n), for n ≥ n0 .
+         Example 3.16: 3n log n + 4n + 5 log n is Θ(n log n).
+         Justiﬁcation:       3n log n ≤ 3n log n + 4n + 5 log n ≤ (3 + 4 + 5)n log n for n ≥ 2.

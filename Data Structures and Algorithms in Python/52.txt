@@ -1,0 +1,37 @@
+1.6. Simple Input and Output                                                                  31
+              When reading a numeric value from the user, a programmer must use the input
+          function to get the string of characters, and then use the int or ﬂoat syntax to
+          construct the numeric value that character string represents. That is, if a call to
+          response = input( ) reports that the user entered the characters, 2013 , the syntax
+          int(response) could be used to produce the integer value 2013. It is quite common
+          to combine these operations with a syntax such as
+               year = int(input( In what year were you born?                 ))
+          if we assume that the user will enter an appropriate response. (In Section 1.7 we
+          discuss error handling in such a situation.)
+              Because input returns a string as its result, use of that function can be combined
+          with the existing functionality of the string class, as described in Appendix A. For
+          example, if the user enters multiple pieces of information on the same line, it is
+          common to call the split method on the result, as in
+               reply = input( Enter x and y, separated by spaces: )
+               pieces = reply.split( )     # returns a list of strings, as separated by spaces
+               x = ﬂoat(pieces[0])
+               y = ﬂoat(pieces[1])
+          A Sample Program
+          Here is a simple, but complete, program that demonstrates the use of the input
+          and print functions. The tools for formatting the ﬁnal output is discussed in Ap-
+          pendix A.
+               age = int(input( Enter your age in years: ))
+               max heart rate = 206.9 − (0.67 age) # as per Med Sci Sports Exerc.
+               target = 0.65 max heart rate
+               print( Your target fat-burning heart rate is , target)
+       1.6.2 Files
+          Files are typically accessed in Python beginning with a call to a built-in function,
+          named open, that returns a proxy for interactions with the underlying ﬁle. For
+          example, the command, fp = open( sample.txt ), attempts to open a ﬁle named
+          sample.txt, returning a proxy that allows read-only access to the text ﬁle.
+              The open function accepts an optional second parameter that determines the
+          access mode. The default mode is r for reading. Other common modes are w
+          for writing to the ﬁle (causing any existing ﬁle with that name to be overwritten),
+          or a for appending to the end of an existing ﬁle. Although we focus on use of
+          text ﬁles, it is possible to work with binary ﬁles, using access modes such as rb
+          or wb .

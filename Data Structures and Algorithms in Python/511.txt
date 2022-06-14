@@ -1,0 +1,35 @@
+490                                                                  Chapter 11. Search Trees
+ 11.4     Splay Trees
+       The next search tree structure we study is known as a a splay tree. This structure is
+       conceptually quite different from the other balanced search trees we discuss in this
+       chapter, for a splay tree does not strictly enforce a logarithmic upper bound on the
+       height of the tree. In fact, there are no additional height, balance, or other auxiliary
+       data associated with the nodes of this tree.
+           The efﬁciency of splay trees is due to a certain move-to-root operation, called
+       splaying, that is performed at the bottommost position p reached during every in-
+       sertion, deletion, or even a search. (In essence, this is a tree variant of the move-
+       to-front heuristic that we explored for lists in Section 7.6.2.) Intuitively, a splay
+       operation causes more frequently accessed elements to remain nearer to the root,
+       thereby reducing the typical search times. The surprising thing about splaying is
+       that it allows us to guarantee a logarithmic amortized running time, for insertions,
+       deletions, and searches.
+    11.4.1 Splaying
+       Given a node x of a binary search tree T , we splay x by moving x to the root of T
+       through a sequence of restructurings. The particular restructurings we perform are
+       important, for it is not sufﬁcient to move x to the root of T by just any sequence
+       of restructurings. The speciﬁc operation we perform to move x up depends upon
+       the relative positions of x, its parent y, and (if it exists) x’s grandparent z. There are
+       three cases that we consider.
+       zig-zig: The node x and its parent y are both left children or both right children.
+               (See Figure 11.16.) We promote x, making y a child of x and z a child of y,
+               while maintaining the inorder relationships of the nodes in T .
+                       10                                                        30
+                        z     20                                           20     x
+                               y      30                           10       y
+                                       x                            z
+                 T1                                                                     T4
+                       T2                                                        T3
+                               T3           T4               T1           T2
+                             (a)                                          (b)
+       Figure 11.16: Zig-zig: (a) before; (b) after. There is another symmetric conﬁgura-
+       tion where x and y are left children.

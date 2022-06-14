@@ -1,0 +1,43 @@
+276                                                              Chapter 7. Linked Lists
+     1 class LinkedDeque( DoublyLinkedBase):               # note the use of inheritance
+     2   ”””Double-ended queue implementation based on a doubly linked list.”””
+     3
+     4   def ﬁrst(self):
+     5     ”””Return (but do not remove) the element at the front of the deque.”””
+     6     if self.is empty( ):
+     7        raise Empty("Deque is empty")
+     8     return self. header. next. element              # real item just after header
+     9
+    10   def last(self):
+    11     ”””Return (but do not remove) the element at the back of the deque.”””
+    12     if self.is empty( ):
+    13        raise Empty("Deque is empty")
+    14     return self. trailer. prev. element             # real item just before trailer
+    15
+    16   def insert ﬁrst(self, e):
+    17     ”””Add an element to the front of the deque.”””
+    18     self. insert between(e, self. header, self. header. next) # after header
+    19
+    20   def insert last(self, e):
+    21     ”””Add an element to the back of the deque.”””
+    22     self. insert between(e, self. trailer. prev, self. trailer)  # before trailer
+    23
+    24   def delete ﬁrst(self):
+    25     ”””Remove and return the element from the front of the deque.
+    26
+    27     Raise Empty exception if the deque is empty.
+    28     ”””
+    29     if self.is empty( ):
+    30        raise Empty("Deque is empty")
+    31     return self. delete node(self. header. next)          # use inherited method
+    32
+    33   def delete last(self):
+    34     ”””Remove and return the element from the back of the deque.
+    35
+    36     Raise Empty exception if the deque is empty.
+    37     ”””
+    38     if self.is empty( ):
+    39        raise Empty("Deque is empty")
+    40     return self. delete node(self. trailer. prev)         # use inherited method
+       Code Fragment 7.13: Implementation of a LinkedDeque class that inherits from the
+        DoublyLinkedBase class.

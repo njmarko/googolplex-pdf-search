@@ -1,0 +1,27 @@
+8.1. General Trees                                                                                    303
+          Example 8.2: The inheritance relation between classes in a Python program forms
+          a tree when single inheritance is used. For example, in Section 2.4 we provided a
+          summary of the hierarchy for Python’s exception types, as portrayed in Figure 8.4
+          (originally Figure 2.5). The BaseException class is the root of that hierarchy, while
+          all user-deﬁned exception classes should conventionally be declared as descendants
+          of the more speciﬁc Exception class. (See, for example, the Empty class we intro-
+          duced in Code Fragment 6.1 of Chapter 6.)
+                                                   BaseException
+                            SystemExit               Exception          KeyboardInterrupt
+                 ValueError                         LookupError                      ArithmeticError
+                                        IndexError               KeyError           ZeroDivisionError
+                     Figure 8.4: A portion of Python’s hierarchy of exception types.
+               In Python, all classes are organized into a single hierarchy, as there exists a
+          built-in class named object as the ultimate base class. It is a direct or indirect base
+          class of all other types in Python (even if not declared as such when deﬁning a new
+          class). Therefore, the hierarchy pictured in Figure 8.4 is only a portion of Python’s
+          complete class hierarchy.
+               As a preview of the remainder of this chapter, Figure 8.5 portrays our own
+          hierarchy of classes for representing various forms of a tree.
+                                                       Tree
+                                        BinaryTree              LinkedTree
+                          ArrayBinaryTree        LinkedBinaryTree
+          Figure 8.5: Our own inheritance hierarchy for modeling various abstractions and
+          implementations of tree data structures. In the remainder of this chapter, we provide
+          implementations of Tree, BinaryTree, and LinkedBinaryTree classes, and high-
+          level sketches for how LinkedTree and ArrayBinaryTree might be designed.

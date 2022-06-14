@@ -1,0 +1,39 @@
+34                                                                Chapter 1. Python Primer
+           Sending the wrong number, type, or value of parameters to a function is another
+      common cause for an exception. For example, a call to abs( hello ) will raise a
+      TypeError because the parameter is not numeric, and a call to abs(3, 5) will raise
+      a TypeError because one parameter is expected. A ValueError is typically raised
+      when the correct number and type of parameters are sent, but a value is illegitimate
+      for the context of the function. For example, the int constructor accepts a string,
+      as with int( 137 ), but a ValueError is raised if that string does not represent an
+      integer, as with int( 3.14 ) or int( hello ).
+           Python’s sequence types (e.g., list, tuple, and str) raise an IndexError when
+      syntax such as data[k] is used with an integer k that is not a valid index for the given
+      sequence (as described in Section 1.2.3). Sets and dictionaries raise a KeyError
+      when an attempt is made to access a nonexistent element.
+   1.7.1 Raising an Exception
+      An exception is thrown by executing the raise statement, with an appropriate in-
+      stance of an exception class as an argument that designates the problem. For exam-
+      ple, if a function for computing a square root is sent a negative value as a parameter,
+      it can raise an exception with the command:
+           raise ValueError( x cannot be negative )
+      This syntax raises a newly created instance of the ValueError class, with the error
+      message serving as a parameter to the constructor. If this exception is not caught
+      within the body of the function, the execution of the function immediately ceases
+      and the exception is propagated to the calling context (and possibly beyond).
+           When checking the validity of parameters sent to a function, it is customary
+      to ﬁrst verify that a parameter is of an appropriate type, and then to verify that it
+      has an appropriate value. For example, the sqrt function in Python’s math library
+      performs error-checking that might be implemented as follows:
+           def sqrt(x):
+              if not isinstance(x, (int, ﬂoat)):
+                 raise TypeError( x must be numeric )
+              elif x < 0:
+                 raise ValueError( x cannot be negative )
+              # do the real work here...
+      Checking the type of an object can be performed at run-time using the built-in
+      function, isinstance. In simplest form, isinstance(obj, cls) returns True if object,
+      obj, is an instance of class, cls, or any subclass of that type. In the above example, a
+      more general form is used with a tuple of allowable types indicated with the second
+      parameter. After conﬁrming that the parameter is numeric, the function enforces
+      an expectation that the number be nonnegative, raising a ValueError otherwise.

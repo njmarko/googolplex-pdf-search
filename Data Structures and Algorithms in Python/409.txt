@@ -1,0 +1,39 @@
+388                                                                Chapter 9. Priority Queues
+    9.4.2 Heap-Sort
+       As we have previously observed, realizing a priority queue with a heap has the
+       advantage that all the methods in the priority queue ADT run in logarithmic time or
+       better. Hence, this realization is suitable for applications where fast running times
+       are sought for all the priority queue methods. Therefore, let us again consider the
+       pq sort scheme, this time using a heap-based implementation of the priority queue.
+            During Phase 1, the ith add operation takes O(log i) time, since the heap has i
+       entries after the operation is performed. Therefore this phase takes O(n log n) time.
+       (It could be improved to O(n) with the bottom-up heap construction described in
+       Section 9.3.6.)
+            During the second phase of pq sort, the jth remove min operation runs in
+       O(log(n − j + 1)), since the heap has n − j + 1 entries at the time the operation
+       is performed. Summing over all j, this phase takes O(n log n) time, so the entire
+       priority-queue sorting algorithm runs in O(n log n) time when we use a heap to im-
+       plement the priority queue. This sorting algorithm is better known as heap-sort,
+       and its performance is summarized in the following proposition.
+       Proposition 9.4: The heap-sort algorithm sorts a collection C of n elements in
+       O(n log n) time, assuming two elements of C can be compared in O(1) time.
+            Let us stress that the O(n log n) running time of heap-sort is considerably better
+       than the O(n2 ) running time of selection-sort and insertion-sort (Section 9.4.1).
+       Implementing Heap-Sort In-Place
+       If the collection C to be sorted is implemented by means of an array-based se-
+       quence, most notably as a Python list, we can speed up heap-sort and reduce its
+       space requirement by a constant factor using a portion of the list itself to store the
+       heap, thus avoiding the use of an auxiliary heap data structure. This is accomplished
+       by modifying the algorithm as follows:
+           1. We redeﬁne the heap operations to be a maximum-oriented heap, with each
+              position’s key being at least as large as its children. This can be done by
+              recoding the algorithm, or by adjusting the notion of keys to be negatively
+              oriented. At any time during the execution of the algorithm, we use the left
+              portion of C, up to a certain index i − 1, to store the entries of the heap, and
+              the right portion of C, from index i to n − 1, to store the elements of the
+              sequence. Thus, the ﬁrst i elements of C (at indices 0, . . . , i − 1) provide the
+              array-list representation of the heap.
+           2. In the ﬁrst phase of the algorithm, we start with an empty heap and move the
+              boundary between the heap and the sequence from left to right, one step at a
+              time. In step i, for i = 1, . . . , n, we expand the heap by adding the element at
+              index i − 1.

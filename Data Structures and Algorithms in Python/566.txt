@@ -1,0 +1,27 @@
+12.2. Merge-Sort                                                                             545
+              A merge-sort tree T , as portrayed in Figures 12.2 through 12.4, can guide our
+         analysis. Consider a recursive call associated with a node v of the merge-sort tree T .
+         The divide step at node v is straightforward; this step runs in time proportional to
+         the size of the sequence for v, based on the use of slicing to create copies of the two
+         list halves. We have already observed that the merging step also takes time that is
+         linear in the size of the merged sequence. If we let i denote the depth of node v,
+         the time spent at node v is O(n/2i ), since the size of the sequence handled by the
+         recursive call associated with v is equal to n/2i .
+              Looking at the tree T more globally, as shown in Figure 12.6, we see that, given
+         our deﬁnition of “time spent at a node,” the running time of merge-sort is equal to
+         the sum of the times spent at the nodes of T . Observe that T has exactly 2i nodes at
+         depth i. This simple observation has an important consequence, for it implies that
+         the overall time spent at all the nodes of T at depth i is O(2i · n/2i ), which is O(n).
+         By Proposition 12.1, the height of T is log n. Thus, since the time spent at each
+         of the log n + 1 levels of T is O(n), we have the following result:
+         Proposition 12.2: Algorithm merge-sort sorts a sequence S of size n in O(n log n)
+         time, assuming two elements of S can be compared in O(1) time.
+                    Height                                                Time per level
+                                                   n                          O(n)
+                                           n/2            n/2                 O(n)
+                    O(log n)
+                                      n/4      n/4   n/4      n/4             O(n)
+                                                                Total time: O(n log n)
+         Figure 12.6: A visual analysis of the running time of merge-sort. Each node rep-
+         resents the time spent in a particular recursive call, labeled with the size of its
+         subproblem.

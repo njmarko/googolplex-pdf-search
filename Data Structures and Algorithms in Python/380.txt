@@ -1,0 +1,40 @@
+8.6. Exercises                                                                            359
+           C-8.62 Note that the build expression tree function of the ExpressionTree class
+                   is written in such a way that a leaf token can be any string; for exam-
+                   ple, it parses the expression (a*(b+c)) . However, within the evaluate
+                   method, an error would occur when attempting to convert a leaf token to
+                   a number. Modify the evaluate method to accept an optional Python dic-
+                   tionary that can be used to map such string variables to numeric values,
+                   with a syntax such as T.evaluate({ a :3, b :1, c :5}). In this way,
+                   the same algebraic expression can be evaluated using different values.
+           C-8.63 As mentioned in Exercise C-6.22, postﬁx notation is an unambiguous way
+                   of writing an arithmetic expression without parentheses. It is deﬁned so
+                   that if “(exp1 ) op (exp2 )” is a normal (inﬁx) fully parenthesized expres-
+                   sion with operation op, then its postﬁx equivalent is “pexp1 pexp2 op”,
+                   where pexp1 is the postﬁx version of exp1 and pexp2 is the postﬁx ver-
+                   sion of exp2 . The postﬁx version of a single number or variable is just
+                   that number or variable. So, for example, the postﬁx version of the inﬁx
+                   expression “((5 + 2) ∗ (8 − 3))/4” is “5 2 + 8 3 − ∗ 4 /”. Implement a
+                   postﬁx method of the ExpressionTree class of Section 8.5 that produces
+                   the postﬁx notation for the given expression.
+      Projects
+            P-8.64 Implement the binary tree ADT using the array-based representation de-
+                   scribed in Section 8.3.2.
+            P-8.65 Implement the tree ADT using a linked structure as described in Sec-
+                   tion 8.3.3. Provide a reasonable set of update methods for your tree.
+            P-8.66 The memory usage for the LinkedBinaryTree class can be streamlined by
+                   removing the parent reference from each node, and instead having each
+                   Position instance keep a member, path, that is a list of nodes representing
+                   the entire path from the root to that position. (This generally saves mem-
+                   ory because there are typically relatively few stored position instances.)
+                   Reimplement the LinkedBinaryTree class using this strategy.
+            P-8.67 A slicing ﬂoor plan divides a rectangle with horizontal and vertical sides
+                   using horizontal and vertical cuts. (See Figure 8.25a.) A slicing ﬂoor plan
+                   can be represented by a proper binary tree, called a slicing tree, whose
+                   internal nodes represent the cuts, and whose external nodes represent the
+                   basic rectangles into which the ﬂoor plan is decomposed by the cuts. (See
+                   Figure 8.25b.) The compaction problem for a slicing ﬂoor plan is deﬁned
+                   as follows. Assume that each basic rectangle of a slicing ﬂoor plan is
+                   assigned a minimum width w and a minimum height h. The compaction
+                   problem is to ﬁnd the smallest possible height and width for each rectangle
+                   of the slicing ﬂoor plan that is compatible with the minimum dimensions

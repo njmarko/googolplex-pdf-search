@@ -1,0 +1,25 @@
+11.6. Red-Black Trees                                                                            517
+           4                     4                 4                                  7
+                                        7               7                       4          12
+                                                              12
+          (a)                      (b)                 (c)                          (d)
+         7                        7                     7                             7
+     4         12            4          12         4          12              4              12
+                   15                       15  3                15       3       5             15
+          (e)                      (f )                (g)                          (h)
+                        7                                              7
+              4                  12                            4                 14
+         3         5                   15                 3        5        12        15
+                                   14
+                       (i)                                            (j)
+                      7                                              7
+            4                  14                            4                 14
+       3         5         12       15                  3        5        12        15
+                                         18                                             18
+                      (k)                                             (l)
+           Figure 11.35: A sequence of insertions in a red-black tree: (a) initial tree; (b) inser-
+           tion of 7; (c) insertion of 12, which causes a double red; (d) after restructuring; (e)
+           insertion of 15, which causes a double red; (f ) after recoloring (the root remains
+           black); (g) insertion of 3; (h) insertion of 5; (i) insertion of 14, which causes a
+           double red; (j) after restructuring; (k) insertion of 18, which causes a double red;
+           (l) after recoloring. (Continues in Figure 11.36.)

@@ -1,0 +1,41 @@
+718                                  Chapter 15. Memory Management and B-Trees
+    C-15.11 Describe an external-memory data structure to implement the queue ADT
+            so that the total number of disk transfers needed to process a sequence of
+            k enqueue and dequeue operations is O(k/B).
+    C-15.12 Describe an external-memory version of the PositionalList ADT (Sec-
+            tion 7.4), with block size B, such that an iteration of a list of length n is
+            completed using O(n/B) transfers in the worst case, and all other methods
+            of the ADT require only O(1) transfers.
+    C-15.13 Change the rules that deﬁne red-black trees so that each red-black tree T
+            has a corresponding (4, 8) tree, and vice versa.
+    C-15.14 Describe a modiﬁed version of the B-tree insertion algorithm so that each
+            time we create an overﬂow because of a split of a node w, we redistribute
+            keys among all of w’s siblings, so that each sibling holds roughly the same
+            number of keys (possibly cascading the split up to the parent of w). What
+            is the minimum fraction of each block that will always be ﬁlled using this
+            scheme?
+    C-15.15 Another possible external-memory map implementation is to use a skip
+            list, but to collect consecutive groups of O(B) nodes, in individual blocks,
+            on any level in the skip list. In particular, we deﬁne an order-d B-skip
+            list to be such a representation of a skip list structure, where each block
+            contains at least d/2 list nodes and at most d list nodes. Let us also
+            choose d in this case to be the maximum number of list nodes from a level
+            of a skip list that can ﬁt into one block. Describe how we should modify
+            the skip-list insertion and removal algorithms for a B-skip list so that the
+            expected height of the structure is O(log n/ log B).
+    C-15.16 Describe how to use a B-tree to implement the partition (union-ﬁnd) ADT
+            (from Section 14.7.3) so that the union and ﬁnd operations each use at
+            most O(log n/ log B) disk transfers.
+    C-15.17 Suppose we are given a sequence S of n elements with integer keys such
+            that some elements in S are colored “blue” and some elements in S are
+            colored “red.” In addition, say that a red element e pairs with a blue
+            element f if they have the same key value. Describe an efﬁcient external-
+            memory algorithm for ﬁnding all the red-blue pairs in S. How many disk
+            transfers does your algorithm perform?
+    C-15.18 Consider the page caching problem where the memory cache can hold m
+            pages, and we are given a sequence P of n requests taken from a pool
+            of m + 1 possible pages. Describe the optimal strategy for the ofﬂine
+            algorithm and show that it causes at most m + n/m page misses in total,
+            starting from an empty cache.
+    C-15.19 Describe an efﬁcient external-memory algorithm that determines whether
+            an array of n integers contains a value occurring more than n/2 times.

@@ -1,0 +1,20 @@
+9.3. Heaps                                                                                 381
+                                                    16    15    4   12       6   7   23    20
+                         (a)                                           (b)
+        25          9           11        17           15         4            6        17
+     16    15    4    12     6     7   23    20     16    25    9   12      11   7   23    20
+                         (c)                                           (d)
+              5                      8                       4                     6
+        15          4            6        17           15         5            7        17
+     16    25    9    12     11    7   23    20     16    25    9   12      11   8   23    20
+                         (e)                                           (f )
+                          14                                             4
+              4                      6                       5                     6
+        15          5            7        17           15         9            7        17
+     16    25    9    12     11    8   23    20     16    25   14   12      11   8   23    20
+                         (g)                                           (h)
+           Figure 9.5: Bottom-up construction of a heap with 15 entries: (a and b) we begin by
+           constructing 1-entry heaps on the bottom level; (c and d) we combine these heaps
+           into 3-entry heaps, and then (e and f ) 7-entry heaps, until (g and h) we create the
+           ﬁnal heap. The paths of the down-heap bubblings are highlighted in (d, f, and h).
+           For simplicity, we only show the key within each node instead of the entire entry.

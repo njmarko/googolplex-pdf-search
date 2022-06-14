@@ -1,0 +1,41 @@
+100                                           Chapter 2. Object-Oriented Programming
+    2.5.2 Name Resolution and Dynamic Dispatch
+       In the previous section, we discussed various namespaces, and the mechanism for
+       establishing entries in those namespaces. In this section, we examine the process
+       that is used when retrieving a name in Python’s object-oriented framework. When
+       the dot operator syntax is used to access an existing member, such as obj.foo, the
+       Python interpreter begins a name resolution process, described as follows:
+           1. The instance namespace is searched; if the desired name is found, its associ-
+              ated value is used.
+           2. Otherwise the class namespace, for the class to which the instance belongs,
+              is searched; if the name is found, its associated value is used.
+           3. If the name was not found in the immediate class namespace, the search con-
+              tinues upward through the inheritance hierarchy, checking the class name-
+              space for each ancestor (commonly by checking the superclass class, then its
+              superclass class, and so on). The ﬁrst time the name is found, its associate
+              value is used.
+           4. If the name has still not been found, an AttributeError is raised.
+            As a tangible example, let us assume that mycard identiﬁes an instance of the
+       PredatoryCreditCard class. Consider the following possible usage patterns.
+           • mycard. balance (or equivalently, self. balance from within a method body):
+              the balance method is found within the instance namespace for mycard.
+           • mycard.process month( ): the search begins in the instance namespace, but
+              the name process month is not found in that namespace. As a result, the
+              PredatoryCreditCard class namespace is searched; in this case, the name is
+              found and that method is called.
+           • mycard.make payment(200): the search for the name, make payment, fails
+              in the instance namespace and in the PredatoryCreditCard namespace. The
+              name is resolved in the namespace for superclass CreditCard and thus the
+              inherited method is called.
+           • mycard.charge(50): the search for name charge fails in the instance name-
+              space. The next namespace checked is for the PredatoryCreditCard class,
+              because that is the true type of the instance. There is a deﬁnition for a charge
+              function in that class, and so that is the one that is called.
+            In the last case shown, notice that the existence of a charge function in the
+       PredatoryCreditCard class has the effect of overriding the version of that function
+       that exists in the CreditCard namespace. In traditional object-oriented terminol-
+       ogy, Python uses what is known as dynamic dispatch (or dynamic binding) to
+       determine, at run-time, which implementation of a function to call based upon the
+       type of the object upon which it is invoked. This is in contrast to some languages
+       that use static dispatching, making a compile-time decision as to which version of
+       a function to call, based upon the declared type of a variable.

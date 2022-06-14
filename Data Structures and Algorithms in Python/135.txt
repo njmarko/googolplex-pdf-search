@@ -1,0 +1,34 @@
+114                                                               Chapter 3. Algorithm Analysis
+           Focusing on the Worst-Case Input
+             An algorithm may run faster on some inputs than it does on others of the same size.
+             Thus, we may wish to express the running time of an algorithm as the function of
+             the input size obtained by taking the average over all possible inputs of the same
+             size. Unfortunately, such an average-case analysis is typically quite challenging.
+             It requires us to deﬁne a probability distribution on the set of inputs, which is often
+             a difﬁcult task. Figure 3.2 schematically shows how, depending on the input distri-
+             bution, the running time of an algorithm can be anywhere between the worst-case
+             time and the best-case time. For example, what if inputs are really only of types
+             “A” or “D”?
+                  An average-case analysis usually requires that we calculate expected running
+             times based on a given input distribution, which usually involves sophisticated
+             probability theory. Therefore, for the remainder of this book, unless we specify
+             otherwise, we will characterize running times in terms of the worst case, as a func-
+             tion of the input size, n, of the algorithm.
+                  Worst-case analysis is much easier than average-case analysis, as it requires
+             only the ability to identify the worst-case input, which is often simple. Also, this
+             approach typically leads to better algorithms. Making the standard of success for an
+             algorithm to perform well in the worst case necessarily requires that it will do well
+             on every input. That is, designing for the worst case leads to stronger algorithmic
+             “muscles,” much like a track star who always practices by running up an incline.
+                          5 ms                                                 worst-case time
+      Running Time (ms)
+                          4 ms
+                                                                                average-case time?
+                          3 ms
+                                                                                best-case time
+                          2 ms
+                          1 ms
+                                 A   B   C     D       E      F       G
+                                         Input Instance
+             Figure 3.2: The difference between best-case and worst-case time. Each bar repre-
+             sents the running time of some algorithm on a different possible input.

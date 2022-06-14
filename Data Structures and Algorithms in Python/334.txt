@@ -1,0 +1,35 @@
+8.2. Binary Trees                                                                              313
+       8.2.1 The Binary Tree Abstract Data Type
+          As an abstract data type, a binary tree is a specialization of a tree that supports three
+          additional accessor methods:
+                         T.left(p): Return the position that represents the left child of p,
+                                      or None if p has no left child.
+                       T.right(p): Return the position that represents the right child of p,
+                                      or None if p has no right child.
+                      T.sibling(p): Return the position that represents the sibling of p,
+                                      or None if p has no sibling.
+          Just as in Section 8.1.2 for the tree ADT, we do not deﬁne specialized update meth-
+          ods for binary trees here. Instead, we will consider some possible update methods
+          when we describe speciﬁc implementations and applications of binary trees.
+          The BinaryTree Abstract Base Class in Python
+          Just as Tree was deﬁned as an abstract base class in Section 8.1.2, we deﬁne a
+          new BinaryTree class associated with the binary tree ADT. We rely on inheritance
+          to deﬁne the BinaryTree class based upon the existing Tree class. However, our
+          BinaryTree class remains abstract, as we still do not provide complete speciﬁca-
+          tions for how such a structure will be represented internally, nor implementations
+          for some necessary behaviors.
+              Our Python implementation of the BinaryTree class is given in Code Frag-
+          ment 8.7. By using inheritance, a binary tree supports all the functionality that was
+          deﬁned for general trees (e.g., parent, is leaf, root). Our new class also inherits the
+          nested Position class that was originally deﬁned within the Tree class deﬁnition.
+          In addition, the new class provides declarations for new abstract methods left and
+          right that should be supported by concrete subclasses of BinaryTree.
+              Our new class also provides two concrete implementations of methods. The
+          new sibling method is derived from the combination of left, right, and parent. Typ-
+          ically, we identify the sibling of a position p as the “other” child of p’s parent.
+          However, if p is the root, it has no parent, and thus no sibling. Also, p may be the
+          only child of its parent, and thus does not have a sibling.
+              Finally, Code Fragment 8.7 provides a concrete implementation of the children
+          method; this method is abstract in the Tree class. Although we have still not speci-
+          ﬁed how the children of a node will be stored, we derive a generator for the ordered
+          children based upon the implied behavior of abstract methods left and right.

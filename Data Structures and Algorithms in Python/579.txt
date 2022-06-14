@@ -1,0 +1,36 @@
+558                                                        Chapter 12. Sorting and Selection
+        Now consider a recursion trace for randomized quick-sort. This trace deﬁnes a
+    binary tree, T , such that each node in T corresponds to a different recursive call on
+    a subproblem of sorting a portion of the original list.
+        Say that a node v in T is in size group i if the size of v’s subproblem is greater
+    than (3/4)i+1 n and at most (3/4)i n. Let us analyze the expected time spent working
+    on all the subproblems for nodes in size group i. By the linearity of expectation
+    (Proposition B.19), the expected time for working on all these subproblems is the
+    sum of the expected times for each one. Some of these nodes correspond to good
+    calls and some correspond to bad calls. But note that, since a good call occurs with
+    probability 1/2, the expected number of consecutive calls we have to make before
+    getting a good call is 2. Moreover, notice that as soon as we have a good call for
+    a node in size group i, its children will be in size groups higher than i. Thus, for
+    any element x from in the input list, the expected number of nodes in size group i
+    containing x in their subproblems is 2. In other words, the expected total size of all
+    the subproblems in size group i is 2n. Since the nonrecursive work we perform for
+    any subproblem is proportional to its size, this implies that the total expected time
+    spent processing subproblems for nodes in size group i is O(n).
+        The number of size groups is log4/3 n, since repeatedly multiplying by 3/4 is
+    the same as repeatedly dividing by 4/3. That is, the number of size groups is
+    O(log n). Therefore, the total expected running time of randomized quick-sort is
+    O(n log n). (See Figure 12.13.)
+        If fact, we can show that the running time of randomized quick-sort is O(n log n)
+    with high probability. (See Exercise C-12.54.)
+             Number of                                                             Expected time
+             size groups                                                           per size group
+                                                               size group 0
+                                                 s(r)                                   O(n)
+                                                                     size group 1
+                                       s(a)                s(b)                         O(n)
+               O(log n)
+                                                                          size group 2
+                                  s(c)      s(d)      s(e)       s( f )                 O(n)
+                                                         Total expected time: O(n log n)
+    Figure 12.13: A visual time analysis of the quick-sort tree T . Each node is shown
+    labeled with the size of its subproblem.

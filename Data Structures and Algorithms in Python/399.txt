@@ -1,0 +1,38 @@
+378                                                             Chapter 9. Priority Queues
+    40   #------------------------------ public behaviors ------------------------------
+    41   def init (self):
+    42     ”””Create a new empty Priority Queue.”””
+    43     self. data = [ ]
+    44
+    45   def len (self):
+    46     ”””Return the number of items in the priority queue.”””
+    47     return len(self. data)
+    48
+    49   def add(self, key, value):
+    50     ”””Add a key-value pair to the priority queue.”””
+    51     self. data.append(self. Item(key, value))
+    52     self. upheap(len(self. data) − 1)               # upheap newly added position
+    53
+    54   def min(self):
+    55     ”””Return but do not remove (k,v) tuple with minimum key.
+    56
+    57     Raise Empty exception if empty.
+    58     ”””
+    59     if self.is empty( ):
+    60        raise Empty( Priority queue is empty. )
+    61     item = self. data[0]
+    62     return (item. key, item. value)
+    63
+    64   def remove min(self):
+    65     ”””Remove and return (k,v) tuple with minimum key.
+    66
+    67     Raise Empty exception if empty.
+    68     ”””
+    69     if self.is empty( ):
+    70        raise Empty( Priority queue is empty. )
+    71     self. swap(0, len(self. data) − 1)              # put minimum item at the end
+    72     item = self. data.pop( )                        # and remove it from the list;
+    73     self. downheap(0)                               # then ﬁx new root
+    74     return (item. key, item. value)
+       Code Fragment 9.5: An implementation of a priority queue using an array-based
+       heap (continued from Code Fragment 9.4).

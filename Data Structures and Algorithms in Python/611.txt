@@ -1,0 +1,34 @@
+590                                                         Chapter 13. Text Processing
+    13.2.3 The Knuth-Morris-Pratt Algorithm
+       In examining the worst-case performances of the brute-force and Boyer-Moore
+       pattern-matching algorithms on speciﬁc instances of the problem, such as that given
+       in Example 13.1, we should notice a major inefﬁciency. For a certain alignment of
+       the pattern, if we ﬁnd several matching characters but then detect a mismatch, we
+       ignore all the information gained by the successful comparisons after restarting
+       with the next incremental placement of the pattern.
+            The Knuth-Morris-Pratt (or “KMP”) algorithm, discussed in this section, avoids
+       this waste of information and, in so doing, it achieves a running time of O(n + m),
+       which is asymptotically optimal. That is, in the worst case any pattern-matching
+       algorithm will have to examine all the characters of the text and all the characters
+       of the pattern at least once. The main idea of the KMP algorithm is to precom-
+       pute self-overlaps between portions of the pattern so that when a mismatch occurs
+       at one location, we immediately know the maximum amount to shift the pattern
+       before continuing the search. A motivating example is shown in Figure 13.5.
+                 Text:  a t  c  a m a   l  g a m a     ·  ·  ·  ·  ·  ·  ·  ·  ·  · ·
+               Pattern:         a m a   l  g a m a     t  i o   n
+                                             a m a     l  g a m a     t  i  o n
+                                                    a m a    l  g  a m a    t  i  o n
+       Figure 13.5: A motivating example for the Knuth-Morris-Pratt algorithm. If a mis-
+       match occurs at the indicated location, the pattern could be shifted to the second
+       alignment, without explicit need to recheck the partial match with the preﬁx ama.
+       If the mismatched character is not an l, then the next potential alignment of the
+       pattern can take advantage of the common a.
+       The Failure Function
+       To implement the KMP algorithm, we will precompute a failure function, f , that
+       indicates the proper shift of P upon a failed comparison. Speciﬁcally, the failure
+       function f (k) is deﬁned as the length of the longest preﬁx of P that is a sufﬁx
+       of P[1:k+1] (note that we did not include P[0] here, since we will shift at least
+       one unit). Intuitively, if we ﬁnd a mismatch upon character P[k+1], the function
+        f (k) tells us how many of the immediately preceding characters can be reused to
+       restart the pattern. Example 13.2 describes the value of the failure function for the
+       example pattern from Figure 13.5.

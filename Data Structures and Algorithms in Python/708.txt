@@ -1,0 +1,42 @@
+14.8. Exercises                                                                            687
+          R-14.12 Explain why the DFS traversal runs in O(n2 ) time on an n-vertex simple
+                  graph that is represented with the adjacency matrix structure.
+          R-14.13 In order to verify that all of its nontree edges are back edges, redraw the
+                  graph from Figure 14.8b so that the DFS tree edges are drawn with solid
+                  lines and oriented downward, as in a standard portrayal of a tree, and with
+                  all nontree edges drawn using dashed lines.
+          R-14.14 A simple undirected graph is complete if it contains an edge between every
+                  pair of distinct vertices. What does a depth-ﬁrst search tree of a complete
+                  graph look like?
+          R-14.15 Recalling the deﬁnition of a complete graph from Exercise R-14.14, what
+                  does a breadth-ﬁrst search tree of a complete graph look like?
+          R-14.16 Let G be an undirected graph whose vertices are the integers 1 through 8,
+                  and let the adjacent vertices of each vertex be given by the table below:
+                                            vertex adjacent vertices
+                                              1           (2, 3, 4)
+                                              2           (1, 3, 4)
+                                              3           (1, 2, 4)
+                                              4          (1, 2, 3, 6)
+                                              5           (6, 7, 8)
+                                              6           (4, 5, 7)
+                                              7           (5, 6, 8)
+                                              8             (5, 7)
+                  Assume that, in a traversal of G, the adjacent vertices of a given vertex are
+                  returned in the same order as they are listed in the table above.
+                     a. Draw G.
+                     b. Give the sequence of vertices of G visited using a DFS traversal
+                        starting at vertex 1.
+                     c. Give the sequence of vertices visited using a BFS traversal starting
+                        at vertex 1.
+          R-14.17 Draw the transitive closure of the directed graph shown in Figure 14.2.
+          R-14.18 If the vertices of the graph from Figure 14.11 are numbered as (v1 = JFK,
+                  v2 = LAX, v3 = MIA, v4 = BOS, v5 = ORD, v6 = SFO, v7 = DFW), in
+                  what order would edges be added to the transitive closure during the
+                  Floyd-Warshall algorithm?
+          R-14.19 How many edges are in the transitive closure of a graph that consists of a
+                  simple directed path of n vertices?
+          R-14.20 Given an n-node complete binary tree T , rooted at a given position, con-
+                  sider a directed graph G  having the nodes of T as its vertices. For each
+                  parent-child pair in T , create a directed edge in G from the parent to the
+                                                               
+                  child. Show that the transitive closure of G has O(n log n) edges.

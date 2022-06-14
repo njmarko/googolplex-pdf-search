@@ -1,0 +1,38 @@
+13.3. Dynamic Programming                                                                              597
+       13.3.2 DNA and Text Sequence Alignment
+          A common text-processing problem, which arises in genetics and software engi-
+          neering, is to test the similarity between two text strings. In a genetics application,
+          the two strings could correspond to two strands of DNA, for which we want to com-
+          pute similarities. Likewise, in a software engineering application, the two strings
+          could come from two versions of source code for the same program, for which we
+          want to determine changes made from one version to the next. Indeed, determining
+          the similarity between two strings is so common that the Unix and Linux operating
+          systems have a built-in program, named diff, for comparing text ﬁles.
+               Given a string X = x0 x1 x2 · · · xn−1 , a subsequence of X is any string that is of
+          the form xi1 xi2 · · · xik , where i j < i j+1 ; that is, it is a sequence of characters that are
+          not necessarily contiguous but are nevertheless taken in order from X . For example,
+          the string AAAG is a subsequence of the string CGAT AAT T GAGA.
+               The DNA and text similarity problem we address here is the longest common
+          subsequence (LCS) problem. In this problem, we are given two character strings,
+          X = x0 x1 x2 · · · xn−1 and Y = y0 y1 y2 · · · ym−1 , over some alphabet (such as the alpha-
+          bet {A,C, G, T } common in computational genetics) and are asked to ﬁnd a longest
+          string S that is a subsequence of both X and Y . One way to solve the longest
+          common subsequence problem is to enumerate all subsequences of X and take the
+          largest one that is also a subsequence of Y . Since each character of X is either in
+          or not in a subsequence, there are potentially 2n different subsequences of X , each
+          of which requires O(m) time to determine whether it is a subsequence of Y . Thus,
+          this brute-force approach yields an exponential-time algorithm that runs in O(2n m)
+          time, which is very inefﬁcient. Fortunately, the LCS problem is efﬁciently solvable
+          using dynamic programming.
+          The Components of a Dynamic Programming Solution
+          As mentioned above, the dynamic programming technique is used primarily for
+          optimization problems, where we wish to ﬁnd the “best” way of doing something.
+          We can apply the dynamic programming technique in such situations if the problem
+          has certain properties:
+          Simple Subproblems: There has to be some way of repeatedly breaking the global
+                 optimization problem into subproblems. Moreover, there should be a way to
+                 parameterize subproblems with just a few indices, like i, j, k, and so on.
+          Subproblem Optimization: An optimal solution to the global problem must be a
+                 composition of optimal subproblem solutions.
+          Subproblem Overlap: Optimal solutions to unrelated subproblems can contain
+                 subproblems in common.

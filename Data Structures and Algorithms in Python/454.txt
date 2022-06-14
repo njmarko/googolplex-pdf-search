@@ -1,0 +1,41 @@
+10.3. Sorted Maps                                                                              433
+          Analysis
+           We conclude by analyzing the performance of our SortedTableMap implementa-
+           tion. A summary of the running times for all methods of the sorted map ADT
+           (including the traditional map operations) is given in Table 10.3. It should be clear
+           that the len , ﬁnd min, and ﬁnd max methods run in O(1) time, and that iter-
+           ating the keys of the table in either direction can be peformed in O(n) time.
+                The analysis for the various forms of search all depend on the fact that a binary
+           search on a table with n entries runs in O(log n) time. This claim was originally
+           shown as Proposition 4.2 in Section 4.2, and that analysis clearly applies to our
+             ﬁnd index method as well. We therefore claim an O(log n) worst-case running
+           time for methods getitem , ﬁnd lt, ﬁnd gt, ﬁnd le, and ﬁnd ge. Each of these
+           makes a single call to ﬁnd index, followed by a constant number of additional
+           steps to determine the appropriate answer based on the index. The analysis of
+           ﬁnd range is a bit more interesting. It begins with a binary search to ﬁnd the ﬁrst
+           item within the range (if any). After that, it executes a loop that takes O(1) time per
+           iteration to report subsequent values until reaching the end of the range. If there are
+           s items reported in the range, the total running time is O(s + log n).
+                In contrast to the efﬁcient search operations, update operations for a sorted table
+           may take considerable time. Although binary search can help identify the index at
+           which an update occurs, both insertions and deletions require, in the worst case, that
+           linearly many existing elements be shifted in order to maintain the sorted order of
+           the table. Speciﬁcally, the potential call to table.insert from within setitem
+           and table.pop from within delitem lead to O(n) worst-case time. (See the
+           discussion of corresponding operations of the list class in Section 5.4.1.)
+                In conclusion, sorted tables are primarily used in situations where we expect
+           many searches but relatively few updates.
+                                      Operation     Running Time
+                                          len(M)    O(1)
+                                          k in M    O(log n)
+                                       M[k] = v     O(n) worst case; O(log n) if existing k
+                                         del M[k]   O(n) worst case
+                  M.ﬁnd min( ), M.ﬁnd max( )        O(1)
+                    M.ﬁnd lt(k), M.ﬁnd gt(k)
+                                                    O(log n)
+                    M.ﬁnd le(k), M.ﬁnd ge(k)
+                     M.ﬁnd range(start, stop)       O(s + log n) where s items are reported
+                          iter(M), reversed(M)      O(n)
+           Table 10.3: Performance of a sorted map, as implemented with SortedTableMap.
+           We use n to denote the number of items in the map at the time the operation is
+           performed. The space requirement is O(n).

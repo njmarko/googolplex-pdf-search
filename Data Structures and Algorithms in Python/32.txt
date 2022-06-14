@@ -1,0 +1,36 @@
+1.2. Objects in Python                                                                            11
+          The set and frozenset Classes
+          Python’s set class represents the mathematical notion of a set, namely a collection
+          of elements, without duplicates, and without an inherent order to those elements.
+          The major advantage of using a set, as opposed to a list, is that it has a highly
+          optimized method for checking whether a speciﬁc element is contained in the set.
+          This is based on a data structure known as a hash table (which will be the primary
+          topic of Chapter 10). However, there are two important restrictions due to the
+          algorithmic underpinnings. The ﬁrst is that the set does not maintain the elements
+          in any particular order. The second is that only instances of immutable types can be
+          added to a Python set. Therefore, objects such as integers, ﬂoating-point numbers,
+          and character strings are eligible to be elements of a set. It is possible to maintain a
+          set of tuples, but not a set of lists or a set of sets, as lists and sets are mutable. The
+          frozenset class is an immutable form of the set type, so it is legal to have a set of
+          frozensets.
+               Python uses curly braces { and } as delimiters for a set, for example, as {17}
+          or { red , green , blue }. The exception to this rule is that { } does not
+          represent an empty set; for historical reasons, it represents an empty dictionary
+          (see next paragraph). Instead, the constructor syntax set( ) produces an empty set.
+          If an iterable parameter is sent to the constructor, then the set of distinct elements
+          is produced. For example, set( hello ) produces { h , e , l , o }.
+          The dict Class
+          Python’s dict class represents a dictionary, or mapping, from a set of distinct keys
+          to associated values. For example, a dictionary might map from unique student ID
+          numbers, to larger student records (such as the student’s name, address, and course
+          grades). Python implements a dict using an almost identical approach to that of a
+          set, but with storage of the associated values.
+               A dictionary literal also uses curly braces, and because dictionaries were intro-
+          duced in Python prior to sets, the literal form { } produces an empty dictionary.
+          A nonempty dictionary is expressed using a comma-separated series of key:value
+          pairs. For example, the dictionary { ga : Irish , de : German } maps
+            ga to Irish and de to German .
+               The constructor for the dict class accepts an existing mapping as a parameter,
+          in which case it creates a new dictionary with identical associations as the existing
+          one. Alternatively, the constructor accepts a sequence of key-value pairs as a pa-
+          rameter, as in dict(pairs) with pairs = [( ga , Irish ), ( de , German )].

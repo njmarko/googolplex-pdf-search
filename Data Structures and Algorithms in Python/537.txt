@@ -1,0 +1,39 @@
+516                                                          Chapter 11. Search Trees
+    Case 2: The Sibling s of y Is Red. (See Figure 11.34.) In this case, the double red
+          denotes an overﬂow in the corresponding (2, 4) tree T  . To ﬁx the problem,
+          we perform the equivalent of a split operation. Namely, we do a recoloring:
+          we color y and s black and their parent z red (unless z is the root, in which
+          case, it remains black). Notice that unless z is the root, the portion of any
+          path through the affected part of the tree is incident to exactly one black
+          node, both before and after the recoloring. Therefore, the black depth of the
+          tree is unaffected by the recoloring unless z is the root, in which case it is
+          increased by one.
+          However, it is possible that the double-red problem reappears after such a
+          recoloring, albeit higher up in the tree T , since z may have a red parent. If
+          the double-red problem reappears at z, then we repeat the consideration of the
+          two cases at z. Thus, a recoloring either eliminates the double-red problem
+          at node x, or propagates it to the grandparent z of x. We continue going
+          up T performing recolorings until we ﬁnally resolve the double-red problem
+          (with either a ﬁnal recoloring or a trinode restructuring). Thus, the number
+          of recolorings caused by an insertion is no more than half the height of tree
+          T , that is, O(log n) by Proposition 11.9.
+                                                                       z
+                                                                      30
+                                                                 y             s
+                 10 20 30 40
+                                                                 20          40
+                                                              x
+                                                              10
+                                              (a)
+                                                                         z
+                                                                        30
+                      . . . 30 . . .                              y              s
+                                                                  20          40
+                                                               x
+              10 20                40                          10
+                                              (b)
+    Figure 11.34: Recoloring to remedy the double-red problem: (a) before recoloring
+    and the corresponding 5-node in the associated (2, 4) tree before the split; (b) after
+    recoloring and the corresponding nodes in the associated (2, 4) tree after the split.
+        As further examples, Figures 11.35 and 11.36 show a sequence of insertion
+    operations in a red-black tree.

@@ -1,0 +1,42 @@
+10.2. Hash Tables                                                                                  419
+               To implement a deletion, we cannot simply remove a found item from its slot
+          in the array. For example, after the insertion of key 15 portrayed in Figure 10.7,
+          if the item with key 37 were trivially deleted, a subsequent search for 15 would
+          fail because that search would start by probing at index 4, then index 5, and then
+          index 6, at which an empty cell is found. A typical way to get around this difﬁ-
+          culty is to replace a deleted item with a special “available” marker object. With
+          this special marker possibly occupying spaces in our hash table, we modify our
+          search algorithm so that the search for a key k will skip over cells containing the
+          available marker and continue probing until reaching the desired item or an empty
+          bucket (or returning back to where we started from). Additionally, our algorithm
+          for setitem should remember an available cell encountered during the search
+          for k, since this is a valid place to put a new item (k, v), if no existing item is found.
+               Although use of an open addressing scheme can save space, linear probing
+          suffers from an additional disadvantage. It tends to cluster the items of a map into
+          contiguous runs, which may even overlap (particularly if more than half of the cells
+          in the hash table are occupied). Such contiguous runs of occupied hash cells cause
+          searches to slow down considerably.
+               Another open addressing strategy, known as quadratic probing, iteratively tries
+          the buckets A[(h(k) + f (i)) mod N], for i = 0, 1, 2, . . ., where f (i) = i2 , until ﬁnding
+          an empty bucket. As with linear probing, the quadratic probing strategy compli-
+          cates the removal operation, but it does avoid the kinds of clustering patterns that
+          occur with linear probing. Nevertheless, it creates its own kind of clustering, called
+          secondary clustering, where the set of ﬁlled array cells still has a non-uniform
+          pattern, even if we assume that the original hash codes are distributed uniformly.
+          When N is prime and the bucket array is less than half full, the quadratic probing
+          strategy is guaranteed to ﬁnd an empty slot. However, this guarantee is not valid
+          once the table becomes at least half full, or if N is not chosen as a prime number;
+          we explore the cause of this type of clustering in an exercise (C-10.36).
+               An open addressing strategy that does not cause clustering of the kind produced
+          by linear probing or the kind produced by quadratic probing is the double hashing
+          strategy. In this approach, we choose a secondary hash function, h , and if h maps
+          some key k to a bucket A[h(k)] that is already occupied, then we iteratively try
+          the buckets A[(h(k) + f (i)) mod N] next, for i = 1, 2, 3, . . ., where f (i) = i · h (k).
+          In this scheme, the secondary hash function is not allowed to evaluate to zero; a
+          common choice is h (k) = q − (k mod q), for some prime number q < N. Also, N
+          should be a prime.
+               Another approach to avoid clustering with open addressing is to iteratively try
+          buckets A[(h(k) + f (i)) mod N] where f (i) is based on a pseudo-random number
+          generator, providing a repeatable, but somewhat arbitrary, sequence of subsequent
+          probes that depends upon bits of the original hash code. This is the approach cur-
+          rently used by Python’s dictionary class.

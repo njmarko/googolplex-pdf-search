@@ -1,0 +1,42 @@
+430                                       Chapter 10. Maps, Hash Tables, and Skip Lists
+     1 class SortedTableMap(MapBase):
+     2   ”””Map implementation using a sorted table.”””
+     3
+     4   #----------------------------- nonpublic behaviors -----------------------------
+     5   def ﬁnd index(self, k, low, high):
+     6     ”””Return index of the leftmost item with key greater than or equal to k.
+     7
+     8     Return high + 1 if no such item qualiﬁes.
+     9
+    10     That is, j will be returned such that:
+    11          all items of slice table[low:j] have key < k
+    12          all items of slice table[j:high+1] have key >= k
+    13     ”””
+    14     if high < low:
+    15        return high + 1                                       # no element qualiﬁes
+    16     else:
+    17        mid = (low + high) // 2
+    18        if k == self. table[mid]. key:
+    19           return mid                                         # found exact match
+    20        elif k < self. table[mid]. key:
+    21           return self. ﬁnd index(k, low, mid − 1)            # Note: may return mid
+    22        else:
+    23           return self. ﬁnd index(k, mid + 1, high) # answer is right of mid
+    24
+    25   #----------------------------- public behaviors -----------------------------
+    26   def init (self):
+    27     ”””Create an empty map.”””
+    28     self. table = [ ]
+    29
+    30   def len (self):
+    31     ”””Return number of items in the map.”””
+    32     return len(self. table)
+    33
+    34   def getitem (self, k):
+    35     ”””Return value associated with key k (raise KeyError if not found).”””
+    36     j = self. ﬁnd index(k, 0, len(self. table) − 1)
+    37     if j == len(self. table) or self. table[j]. key != k:
+    38        raise KeyError( Key Error: + repr(k))
+    39     return self. table[j]. value
+       Code Fragment 10.8: An implementation of a SortedTableMap class (continued in
+       Code Fragments 10.9 and 10.10).

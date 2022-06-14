@@ -1,0 +1,39 @@
+12.3. Quick-Sort                                                                               557
+       12.3.1 Randomized Quick-Sort
+          One common method for analyzing quick-sort is to assume that the pivot will al-
+          ways divide the sequence in a reasonably balanced manner. We feel such an as-
+          sumption would presuppose knowledge about the input distribution that is typically
+          not available, however. For example, we would have to assume that we will rarely
+          be given “almost” sorted sequences to sort, which are actually common in many
+          applications. Fortunately, this assumption is not needed in order for us to match
+          our intuition to quick-sort’s behavior.
+              In general, we desire some way of getting close to the best-case running time
+          for quick-sort. The way to get close to the best-case running time, of course, is for
+          the pivot to divide the input sequence S almost equally. If this outcome were to
+          occur, then it would result in a running time that is asymptotically the same as the
+          best-case running time. That is, having pivots close to the “middle” of the set of
+          elements leads to an O(n log n) running time for quick-sort.
+          Picking Pivots at Random
+          Since the goal of the partition step of the quick-sort method is to divide the sequence
+          S with sufﬁcient balance, let us introduce randomization into the algorithm and pick
+          as the pivot a random element of the input sequence. That is, instead of picking
+          the pivot as the ﬁrst or last element of S, we pick an element of S at random as the
+          pivot, keeping the rest of the algorithm unchanged. This variation of quick-sort is
+          called randomized quick-sort. The following proposition shows that the expected
+          running time of randomized quick-sort on a sequence with n elements is O(n log n).
+          This expectation is taken over all the possible random choices the algorithm makes,
+          and is independent of any assumptions about the distribution of the possible input
+          sequences the algorithm is likely to be given.
+          Proposition 12.3: The expected running time of randomized quick-sort on a se-
+          quence S of size n is O(n log n).
+          Justiﬁcation: We assume two elements of S can be compared in O(1) time.
+          Consider a single recursive call of randomized quick-sort, and let n denote the size
+          of the input for this call. Say that this call is “good” if the pivot chosen is such that
+          subsequences L and G have size at least n/4 and at most 3n/4 each; otherwise, a
+          call is “bad.”
+              Now, consider the implications of our choosing a pivot uniformly at random.
+          Note that there are n/2 possible good choices for the pivot for any given call of
+          size n of the randomized quick-sort algorithm. Thus, the probability that any call is
+          good is 1/2. Note further that a good call will at least partition a list of size n into
+          two lists of size 3n/4 and n/4, and a bad call could be as bad as producing a single
+          call of size n − 1.

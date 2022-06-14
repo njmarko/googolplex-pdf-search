@@ -1,0 +1,37 @@
+13.1. Abundance of Digitized Text                                                            583
+       13.1.1 Notations for Strings and the Python str Class
+          We use character strings as a model for text when discuss algorithms for text pro-
+          cessing. Character strings can come from a wide variety of sources, including
+          scientiﬁc, linguistic, and Internet applications. Indeed, the following are examples
+          of such strings:
+                                  S = "CGTAAACTGCTTTAATCAAACGC"
+                                 T = "http://www.wiley.com"
+          The ﬁrst string, S, comes from DNA applications, and the second string, T , is the
+          Internet address (URL) for the publisher of this book. We refer to Appendix A for
+          an overview of the operations supported by Python’s str class.
+               To allow fairly general notions of a string in our algorithm descriptions, we
+          only assume that characters of a string come from a known alphabet, which we
+          denote as Σ. For example, in the context of DNA, there are four symbols in the
+          standard alphabet, Σ = {A,C, G, T }. This alphabet Σ can, of course, be a subset of
+          the ASCII or Unicode character sets, but it could also be something more general.
+          Although we assume that an alphabet has a ﬁxed ﬁnite size, denoted as |Σ|, that
+          size can be nontrivial, as with Python’s treatment of the Unicode alphabet, which
+          allows for more than a million distinct characters. We therefore consider the impact
+          of |Σ| in our asymptotic analysis of text-processing algorithms.
+               Several string-processing operations involve breaking large strings into smaller
+          strings. In order to be able to speak about the pieces that result from such oper-
+          ations, we will rely on Python’s indexing and slicing notations. For the sake of
+          notation, we let S denote a string of length n. In that case, we let S[j] refer to the
+          character at index j for 0 ≤ j ≤ n − 1. We let notation S[j:k] for 0 ≤ j ≤ k ≤ n denote
+          the slice (or substring) of S consisting of characters S[j] up to and including S[k−1],
+          but not S[k]. By this deﬁnition, note that substring S[j : j + m] has length m and
+          that substring S[j:j] is trivially the null string, having length 0. In accordance with
+          Python conventions, the substring S[j:k] is also the null string when k < j.
+               In order to distinguish some special kinds of substrings, let us refer to any
+          substring of the form S[0:k] for 0 ≤ k ≤ n as a preﬁx of S; such a preﬁx results in
+          Python when the ﬁrst index is omitted from slice notation, as in S[:k]. Similarly,
+          any substring of the form S[j:n] for 0 ≤ j ≤ n is a sufﬁx of S; such a sufﬁx results
+          in Python when the second index is omitted from slice notation, as in S[j:]. For
+          example, if we again take S to be the string of DNA given above, then "CGTAA" is
+          a preﬁx of S, "CGC" is a sufﬁx of S, and "C" is both a preﬁx and sufﬁx of S. Note
+          that the null string is a preﬁx and a sufﬁx of any string.

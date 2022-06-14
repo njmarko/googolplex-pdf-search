@@ -1,0 +1,11 @@
+ Data Structures and
+Algorithms in Python
+         Michael T. Goodrich
+       Department of Computer Science
+        University of California, Irvine
+            Roberto Tamassia
+       Department of Computer Science
+               Brown University
+        Michael H. Goldwasser
+Department of Mathematics and Computer Science
+             Saint Louis University

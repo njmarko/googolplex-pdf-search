@@ -1,0 +1,40 @@
+10.6. Exercises                                                                            453
+          R-10.12 What is the result of Exercise R-10.9 when collisions are handled by dou-
+                  ble hashing using the secondary hash function h (k) = 7 − (k mod 7)?
+          R-10.13 What is the worst-case time for putting n entries in an initially empty hash
+                  table, with collisions resolved by chaining? What is the best case?
+          R-10.14 Show the result of rehashing the hash table shown in Figure 10.6 into a
+                  table of size 19 using the new hash function h(k) = 3k mod 17.
+          R-10.15 Our HashMapBase class maintains a load factor λ ≤ 0.5. Reimplement
+                  that class to allow the user to specify the maximum load, and adjust the
+                  concrete subclasses accordingly.
+          R-10.16 Give a pseudo-code description of an insertion into a hash table that uses
+                  quadratic probing to resolve collisions, assuming we also use the trick of
+                  replacing deleted entries with a special “deactivated entry” object.
+          R-10.17 Modify our ProbeHashMap to use quadratic probing.
+          R-10.18 Explain why a hash table is not suited to implement a sorted map.
+          R-10.19 Describe how a sorted list implemented as a doubly linked list could be
+                  used to implement the sorted map ADT.
+          R-10.20 What is the worst-case asymptotic running time for performing n deletions
+                  from a SortedTableMap instance that initially contains 2n entries?
+          R-10.21 Consider the following variant of the ﬁnd index method from Code Frag-
+                  ment 10.8, in the context of the SortedTableMap class:
+                    def ﬁnd index(self, k, low, high):
+                       if high < low:
+                          return high + 1
+                       else:
+                          mid = (low + high) // 2
+                          if self. table[mid]. key < k:
+                             return self. ﬁnd index(k, mid + 1, high)
+                          else:
+                             return self. ﬁnd index(k, low, mid − 1)
+                  Does this always produce the same result as the original version? Justify
+                  your answer.
+          R-10.22 What is the expected running time of the methods for maintaining a max-
+                  ima set if we insert n pairs such that each pair has lower cost and perfor-
+                  mance than one before it? What is contained in the sorted map at the end
+                  of this series of operations? What if each pair had a lower cost and higher
+                  performance than the one before it?
+          R-10.23 Draw an example skip list S that results from performing the following
+                  series of operations on the skip list shown in Figure 10.13: del S[38],
+                  S[48] = x , S[24] = y , del S[55]. Record your coin ﬂips, as well.

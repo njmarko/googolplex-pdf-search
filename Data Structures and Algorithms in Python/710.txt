@@ -1,0 +1,40 @@
+14.8. Exercises                                                                                689
+          R-14.28 Describe the meaning of the graphical conventions used in Figure 14.9
+                  illustrating a DFS traversal. What do the line thicknesses signify? What
+                  do the arrows signify? How about dashed lines?
+          R-14.29 Repeat Exercise R-14.28 for Figure 14.8 that illustrates a directed DFS
+                  traversal.
+          R-14.30 Repeat Exercise R-14.28 for Figure 14.10 that illustrates a BFS traversal.
+          R-14.31 Repeat Exercise R-14.28 for Figure 14.11 illustrating the Floyd-Warshall
+                  algorithm.
+          R-14.32 Repeat Exercise R-14.28 for Figure 14.13 that illustrates the topological
+                  sorting algorithm.
+          R-14.33 Repeat Exercise R-14.28 for Figures 14.15 and 14.16 illustrating Dijkstra’s
+                  algorithm.
+          R-14.34 Repeat Exercise R-14.28 for Figures 14.20 and 14.21 that illustrate the
+                  Prim-Jarnı́k algorithm.
+          R-14.35 Repeat Exercise R-14.28 for Figures 14.22 through 14.24 that illustrate
+                  Kruskal’s algorithm.
+          R-14.36 George claims he has a fast way to do path compression in a partition
+                  structure, starting at a position p. He puts p into a list L, and starts follow-
+                  ing parent pointers. Each time he encounters a new position, q, he adds q
+                  to L and updates the parent pointer of each node in L to point to q’s parent.
+                  Show that George’s algorithm runs in Ω(h2 ) time on a path of length h.
+       Creativity
+          C-14.37 Give a Python implementation of the remove vertex(v) method for our
+                  adjacency map implementation of Section 14.2.5, making sure your im-
+                  plementation works for both directed and undirected graphs. Your method
+                  should run in O(deg(v)) time.
+          C-14.38 Give a Python implementation of the remove edge(e) method for our ad-
+                  jacency map implementation of Section 14.2.5, making sure your imple-
+                  mentation works for both directed and undirected graphs. Your method
+                  should run in O(1) time.
+          C-14.39 Suppose we wish to represent an n-vertex graph G using the edge list
+                  structure, assuming that we identify the vertices with the integers in the set
+                  {0, 1, . . . , n − 1}. Describe how to implement the collection E to support
+                  O(log n)-time performance for the get edge(u, v) method. How are you
+                  implementing the method in this case?
+          C-14.40 Let T be the spanning tree rooted at the start vertex produced by the depth-
+                  ﬁrst search of a connected, undirected graph G. Argue why every edge of
+                  G not in T goes from a vertex in T to one of its ancestors, that is, it is a
+                  back edge.

@@ -1,0 +1,34 @@
+102                                              Chapter 2. Object-Oriented Programming
+                    warmtones                                                  palette
+                                           list                   list
+                               color                  color
+                     249      red             169    red
+                     124      green           163    green
+                      43      blue              52   blue
+                         Figure 2.10: A shallow copy of a list of colors.
+         This is a better situation than our ﬁrst attempt, as we can legitimately add
+    or remove elements from palette without affecting warmtones. However, if we
+    edit a color instance from the palette list, we effectively change the contents of
+    warmtones. Although palette and warmtones are distinct lists, there remains indi-
+    rect aliasing, for example, with palette[0] and warmtones[0] as aliases for the same
+    color instance.
+         We prefer that palette be what is known as a deep copy of warmtones. In a
+    deep copy, the new copy references its own copies of those objects referenced by
+    the original version. (See Figure 2.11.)
+    warmtones                                            palette
+                            list                                         list
+               color                   color                      color                 color
+     249      red              169    red             249        red        169        red
+     124      green            163    green           124        green      163        green
+      43      blue               52   blue             43        blue         52       blue
+                           Figure 2.11: A deep copy of a list of colors.
+    Python’s copy Module
+    To create a deep copy, we could populate our list by explicitly making copies of
+    the original color instances, but this requires that we know how to make copies of
+    colors (rather than aliasing). Python provides a very convenient module, named
+    copy, that can produce both shallow copies and deep copies of arbitrary objects.
+         This module supports two functions: the copy function creates a shallow copy
+    of its argument, and the deepcopy function creates a deep copy of its argument.
+    After importing the module, we may create a deep copy for our example, as shown
+    in Figure 2.11, using the command:
+         palette = copy.deepcopy(warmtones)

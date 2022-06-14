@@ -1,0 +1,35 @@
+7.5. Sorting a Positional List                                                                285
+  7.5      Sorting a Positional List
+           In Section 5.5.2, we introduced the insertion-sort algorithm, in the context of an
+           array-based sequence. In this section, we develop an implementation that operates
+           on a PositionalList, relying on the same high-level algorithm in which each element
+           is placed relative to a growing collection of previously sorted elements.
+                We maintain a variable named marker that represents the rightmost position of
+           the currently sorted portion of a list. During each pass, we consider the position just
+           past the marker as the pivot and consider where the pivot’s element belongs relative
+           to the sorted portion; we use another variable, named walk, to move leftward from
+           the marker, as long as there remains a preceding element with value larger than the
+           pivot’s. A typical conﬁguration of these variables is diagrammed in Figure 7.15. A
+           Python implementation of this strategy is given in Code 7.17.
+                                          walk             pivot
+                                 15   22   25     29  36    23   53  11   42
+                                                     marker
+           Figure 7.15: Overview of one step of our insertion-sort algorithm. The shaded
+           elements, those up to and including marker, have already been sorted. In this step,
+           the pivot’s element should be relocated immediately before the walk position.
+       1 def insertion sort(L):
+       2     ”””Sort PositionalList of comparable elements into nondecreasing order.”””
+       3     if len(L) > 1:                            # otherwise, no need to sort it
+       4        marker = L.ﬁrst( )
+       5        while marker != L.last( ):
+       6          pivot = L.after(marker)              # next item to place
+       7          value = pivot.element( )
+       8          if value > marker.element( ):        # pivot is already sorted
+       9             marker = pivot                    # pivot becomes new marker
+      10          else:                                # must relocate pivot
+      11             walk = marker                     # ﬁnd leftmost item greater than value
+      12             while walk != L.ﬁrst( ) and L.before(walk).element( ) > value:
+      13               walk = L.before(walk)
+      14             L.delete(pivot)
+      15             L.add before(walk, value)         # reinsert value before walk
+           Code Fragment 7.17: Python code for performing insertion-sort on a positional list.

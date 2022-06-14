@@ -1,0 +1,35 @@
+46                                                              Chapter 1. Python Primer
+ 1.10    Scopes and Namespaces
+      When computing a sum with the syntax x + y in Python, the names x and y must
+      have been previously associated with objects that serve as values; a NameError
+      will be raised if no such deﬁnitions are found. The process of determining the
+      value associated with an identiﬁer is known as name resolution.
+           Whenever an identiﬁer is assigned to a value, that deﬁnition is made with a
+      speciﬁc scope. Top-level assignments are typically made in what is known as global
+      scope. Assignments made within the body of a function typically have scope that is
+      local to that function call. Therefore, an assignment, x = 5, within a function has
+      no effect on the identiﬁer, x, in the broader scope.
+           Each distinct scope in Python is represented using an abstraction known as a
+      namespace. A namespace manages all identiﬁers that are currently deﬁned in a
+      given scope. Figure 1.8 portrays two namespaces, one being that of a caller to our
+      count function from Section 1.5, and the other being the local namespace during
+      the execution of that function.
+           ﬂoat                                  str
+                                                                      n
+            3.56            gpa                    A                                  int
+                                                                   target
+                            grades                                                     2
+                                                 list              data
+             str            major                                  item
+             CS
+                                str              str               str
+                                A-                B+               A-
+      Figure 1.8: A portrayal of the two namespaces associated with a user’s call
+      count(grades, A ), as deﬁned in Section 1.5. The left namespace is the caller’s
+      and the right namespace represents the local scope of the function.
+           Python implements a namespace with its own dictionary that maps each iden-
+      tifying string (e.g., n ) to its associated value. Python provides several ways to
+      examine a given namespace. The function, dir, reports the names of the identiﬁers
+      in a given namespace (i.e., the keys of the dictionary), while the function, vars,
+      returns the full dictionary. By default, calls to dir( ) and vars( ) report on the most
+      locally enclosing namespace in which they are executed.

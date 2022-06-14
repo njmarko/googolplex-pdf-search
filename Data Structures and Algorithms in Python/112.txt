@@ -1,0 +1,38 @@
+2.4. Inheritance                                                                            91
+       1 class FibonacciProgression(Progression):
+       2     ”””Iterator producing a generalized Fibonacci progression.”””
+       3
+       4     def init (self, ﬁrst=0, second=1):
+       5        ”””Create a new ﬁbonacci progression.
+       6
+       7        ﬁrst         the ﬁrst term of the progression (default 0)
+       8        second       the second term of the progression (default 1)
+       9        ”””
+      10        super( ). init (ﬁrst)                   # start progression at ﬁrst
+      11        self. prev = second − ﬁrst              # ﬁctitious value preceding the ﬁrst
+      12
+      13     def advance(self):
+      14        ”””Update current value by taking sum of previous two.”””
+      15        self. prev, self. current = self. current, self. prev + self. current
+                   Code Fragment 2.11: A class that produces a Fibonacci progression.
+               We use our progression framework to deﬁne a new FibonacciProgression class,
+           as shown in Code Fragment 2.11. This class is markedly different from those for the
+           arithmetic and geometric progressions because we cannot determine the next value
+           of a Fibonacci series solely from the current one. We must maintain knowledge of
+           the two most recent values. The base Progression class already provides storage
+           of the most recent value as the current data member. Our FibonacciProgression
+           class introduces a new member, named prev, to store the value that proceeded the
+           current one.
+               With both previous values stored, the implementation of advance is relatively
+           straightforward. (We use a simultaneous assignment similar to that on page 45.)
+           However, the question arises as to how to initialize the previous value in the con-
+           structor. The desired ﬁrst and second values are provided as parameters to the
+           constructor. The ﬁrst should be stored as current so that it becomes the ﬁrst
+           one that is reported. Looking ahead, once the ﬁrst value is reported, we will do
+           an assignment to set the new current value (which will be the second value re-
+           ported), equal to the ﬁrst value plus the “previous.” By initializing the previous
+           value to (second − ﬁrst), the initial advancement will set the new current value to
+           ﬁrst + (second − ﬁrst) = second, as desired.
+          Testing Our Progressions
+           To complete our presentation, Code Fragment 2.12 provides a unit test for all of
+           our progression classes, and Code Fragment 2.13 shows the output of that test.

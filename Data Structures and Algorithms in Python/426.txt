@@ -1,0 +1,38 @@
+10.1. Maps and Dictionaries                                                                405
+       10.1.2 Application: Counting Word Frequencies
+          As a case study for using a map, consider the problem of counting the number
+          of occurrences of words in a document. This is a standard task when performing a
+          statistical analysis of a document, for example, when categorizing an email or news
+          article. A map is an ideal data structure to use here, for we can use words as keys
+          and word counts as values. We show such an application in Code Fragment 10.1.
+               We break apart the original document using a combination of ﬁle and string
+          methods that results in a loop over a lowercased version of all whitespace separated
+          pieces of the document. We omit all nonalphabetic characters so that parentheses,
+          apostrophes, and other such punctuation are not considered part of a word.
+               In terms of map operations, we begin with an empty Python dictionary named
+          freq. During the ﬁrst phase of the algorithm, we execute the command
+                freq[word] = 1 + freq.get(word, 0)
+          for each word occurrence. We use the get method on the right-hand side because the
+          current word might not exist in the dictionary; the default value of 0 is appropriate
+          in that case.
+               During the second phase of the algorithm, after the full document has been pro-
+          cessed, we examine the contents of the frequency map, looping over freq.items( )
+          to determine which word has the most occurrences.
+       1  freq = { }
+       2  for piece in open(ﬁlename).read( ).lower( ).split( ):
+       3    # only consider alphabetic characters within this piece
+       4    word = .join(c for c in piece if c.isalpha( ))
+       5    if word: # require at least one alphabetic character
+       6       freq[word] = 1 + freq.get(word, 0)
+       7
+       8  max word =
+       9  max count = 0
+      10  for (w,c) in freq.items( ):        # (key, value) tuples represent (word, count)
+      11    if c > max count:
+      12       max word = w
+      13       max count = c
+      14  print( The most frequent word is , max word)
+      15  print( Its number of occurrences is , max count)
+          Code Fragment 10.1: A program for counting word frequencies in a document, and
+          reporting the most frequent word. We use Python’s dict class for the map. We
+          convert the input to lowercase and ignore any nonalphabetic characters.

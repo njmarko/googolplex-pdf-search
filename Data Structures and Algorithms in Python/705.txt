@@ -1,0 +1,35 @@
+684                                                       Chapter 14. Graph Algorithms
+         At ﬁrst, this implementation may seem to be no better than the sequence-based
+    data structure, but we add the following two simple heuristics to make it run faster.
+    Union-by-Size: With each position p, store the number of elements in the subtree
+           rooted at p. In a union operation, make the root of the smaller group become
+           a child of the other root, and update the size ﬁeld of the larger root.
+    Path Compression: In a ﬁnd operation, for each position q that the ﬁnd visits,
+           reset the parent of q to the root. (See Figure 14.28.)
+                       2                                    2
+                  3       6            5               3        6              5
+                       9           8      10                9             8        10
+                              11                                    11
+                                  12                                   12
+                             (a)                                   (b)
+    Figure 14.28: Path-compression heuristic: (a) path traversed by operation ﬁnd on
+    element 12; (b) restructured tree.
+         A surprising property of this data structure, when implemented using the union-
+    by-size and path-compression heuristics, is that performing a series of k operations
+    involving n elements takes O(k log∗ n) time, where log∗ n is the log-star function,
+    which is the inverse of the tower-of-twos function. Intuitively, log∗ n is the number
+    of times that one can iteratively take the logarithm (base 2) of a number before
+    getting a number smaller than 2. Table 14.4 shows a few sample values.
+                                                                             2
+                                             2          22                22
+             minimum n      2    22 = 4   22 = 16    22    = 65, 536   22       = 265,536
+                       ∗
+                    log n   1        2         3            4                    5
+             Table 14.4: Some values of log∗ n and critical values for its inverse.
+    Proposition 14.27: When using the tree-based partition representation with both
+    union-by-size and path compression, performing a series of k make group, union,
+    and ﬁnd operations on an initially empty partition involving at most n elements
+    takes O(k log∗ n) time.
+         Although the analysis for this data structure is rather complex, its implemen-
+    tation is quite straightforward. We conclude with complete Python code for the
+    structure, given in Code Fragment 14.19.

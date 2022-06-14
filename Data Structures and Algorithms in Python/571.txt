@@ -1,0 +1,30 @@
+550                                                   Chapter 12. Sorting and Selection
+ 12.3   Quick-Sort
+      The next sorting algorithm we discuss is called quick-sort. Like merge-sort, this
+      algorithm is also based on the divide-and-conquer paradigm, but it uses this tech-
+      nique in a somewhat opposite manner, as all the hard work is done before the
+      recursive calls.
+      High-Level Description of Quick-Sort
+      The quick-sort algorithm sorts a sequence S using a simple recursive approach.
+      The main idea is to apply the divide-and-conquer technique, whereby we divide
+      S into subsequences, recur to sort each subsequence, and then combine the sorted
+      subsequences by a simple concatenation. In particular, the quick-sort algorithm
+      consists of the following three steps (see Figure 12.8):
+         1. Divide: If S has at least two elements (nothing needs to be done if S has
+             zero or one element), select a speciﬁc element x from S, which is called the
+             pivot. As is common practice, choose the pivot x to be the last element in S.
+             Remove all the elements from S and put them into three sequences:
+                • L, storing the elements in S less than x
+                • E, storing the elements in S equal to x
+                • G, storing the elements in S greater than x
+             Of course, if the elements of S are distinct, then E holds just one element—
+             the pivot itself.
+         2. Conquer: Recursively sort sequences L and G.
+         3. Combine: Put back the elements into S in order by ﬁrst inserting the elements
+             of L, then those of E, and ﬁnally those of G.
+                                      1. Split using pivot x.
+                                              E(= x)
+                                  2. Recur.             2. Recur.
+                                    L(< x)              G(> x)
+                                         3. Concatenate.
+                   Figure 12.8: A visual schematic of the quick-sort algorithm.

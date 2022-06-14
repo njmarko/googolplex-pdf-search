@@ -1,0 +1,46 @@
+2.5. Namespaces and Object-Orientation                                                           97
+   function
+                                                                 John Bowman
+   function          init
+                                                        California Savings               customer
+   function       get customer
+                                                                                         bank
+                  get bank                             5391 0375 9387 5309
+   function                                                                              account
+                  get account
+                                                                         1234.56         balance
+   function       make payment
+                                      function                              2500         limit
+   function       get balance                            init                            apr
+                  get limit           function        process month       0.0825
+   function
+                  charge                              charge
+   function                           function
+                         (a)                             (b)                          (c)
+            Figure 2.8: Conceptual view of three namespaces: (a) the class namespace for
+            CreditCard; (b) the class namespace for PredatoryCreditCard; (c) the instance
+            namespace for a PredatoryCreditCard object.
+            How Entries Are Established in a Namespace
+            It is important to understand why a member such as balance resides in a credit
+            card’s instance namespace, while a member such as make payment resides in the
+            class namespace. The balance is established within the init method when a
+            new credit card instance is constructed. The original assignment uses the syntax,
+            self. balance = 0, where self is an identiﬁer for the newly constructed instance.
+            The use of self as a qualiﬁer for self. balance in such an assignment causes the
+             balance identiﬁer to be added directly to the instance namespace.
+                 When inheritance is used, there is still a single instance namespace per object.
+            For example, when an instance of the PredatoryCreditCard class is constructed,
+            the apr attribute as well as attributes such as balance and limit all reside in that
+            instance’s namespace, because all are assigned using a qualiﬁed syntax, such as
+            self. apr.
+                 A class namespace includes all declarations that are made directly within the
+            body of the class deﬁnition. For example, our CreditCard class deﬁnition included
+            the following structure:
+                  class CreditCard:
+                    def make payment(self, amount):
+                       ...
+            Because the make payment function is declared within the scope of the CreditCard
+            class, that function becomes associated with the name make payment within the
+            CreditCard class namespace. Although member functions are the most typical
+            types of entries that are declared in a class namespace, we next discuss how other
+            types of data values, or even other classes can be declared within a class namespace.

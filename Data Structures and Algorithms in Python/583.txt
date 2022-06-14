@@ -1,0 +1,38 @@
+562                                                       Chapter 12. Sorting and Selection
+ 12.4     Studying Sorting through an Algorithmic Lens
+       Recapping our discussions on sorting to this point, we have described several meth-
+       ods with either a worst case or expected running time of O(n log n) on an input se-
+       quence of size n. These methods include merge-sort and quick-sort, described in
+       this chapter, as well as heap-sort (Section 9.4.2). In this section, we study sorting
+       as an algorithmic problem, addressing general issues about sorting algorithms.
+    12.4.1 Lower Bound for Sorting
+       A natural ﬁrst question to ask is whether we can sort any faster than O(n log n)
+       time. Interestingly, if the computational primitive used by a sorting algorithm is the
+       comparison of two elements, this is in fact the best we can do—comparison-based
+       sorting has an Ω(n log n) worst-case lower bound on its running time. (Recall the
+       notation Ω(·) from Section 3.3.1.) To focus on the main cost of comparison-based
+       sorting, let us only count comparisons, for the sake of a lower bound.
+            Suppose we are given a sequence S = (x0 , x1 , . . . , xn−1 ) that we wish to sort,
+       and assume that all the elements of S are distinct (this is not really a restriction
+       since we are deriving a lower bound). We do not care if S is implemented as an
+       array or a linked list, for the sake of our lower bound, since we are only counting
+       comparisons. Each time a sorting algorithm compares two elements xi and x j (that
+       is, it asks, “is xi < x j ?”), there are two outcomes: “yes” or “no.” Based on the result
+       of this comparison, the sorting algorithm may perform some internal calculations
+       (which we are not counting here) and will eventually perform another comparison
+       between two other elements of S, which again will have two outcomes. Therefore,
+       we can represent a comparison-based sorting algorithm with a decision tree T (re-
+       call Example 8.6). That is, each internal node v in T corresponds to a comparison
+       and the edges from position v to its children correspond to the computations result-
+       ing from either a “yes” or “no” answer. It is important to note that the hypothetical
+       sorting algorithm in question probably has no explicit knowledge of the tree T . The
+       tree simply represents all the possible sequences of comparisons that a sorting algo-
+       rithm might make, starting from the ﬁrst comparison (associated with the root) and
+       ending with the last comparison (associated with the parent of an external node).
+            Each possible initial order, or permutation, of the elements in S will cause
+       our hypothetical sorting algorithm to execute a series of comparisons, traversing a
+       path in T from the root to some external node. Let us associate with each external
+       node v in T , then, the set of permutations of S that cause our sorting algorithm to
+       end up in v. The most important observation in our lower-bound argument is that
+       each external node v in T can represent the sequence of comparisons for at most
+       one permutation of S. The justiﬁcation for this claim is simple: If two different

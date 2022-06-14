@@ -1,0 +1,36 @@
+286                                                                   Chapter 7. Linked Lists
+ 7.6    Case Study: Maintaining Access Frequencies
+        The positional list ADT is useful in a number of settings. For example, a program
+        that simulates a game of cards could model each person’s hand as a positional list
+        (Exercise P-7.47). Since most people keep cards of the same suit together, inserting
+        and removing cards from a person’s hand could be implemented using the methods
+        of the positional list ADT, with the positions being determined by a natural order
+        of the suits. Likewise, a simple text editor embeds the notion of positional insertion
+        and deletion, since such editors typically perform all updates relative to a cursor,
+        which represents the current position in the list of characters of text being edited.
+             In this section, we consider maintaining a collection of elements while keeping
+        track of the number of times each element is accessed. Keeping such access counts
+        allows us to know which elements are among the most popular. Examples of such
+        scenarios include a Web browser that keeps track of a user’s most accessed URLs,
+        or a music collection that maintains a list of the most frequently played songs for
+        a user. We model this with a new favorites list ADT that supports the len and
+        is empty methods as well as the following:
+                        access(e): Access the element e, incrementing its access count, and
+                                    adding it to the favorites list if it is not already present.
+                       remove(e): Remove element e from the favorites list, if present.
+                            top(k): Return an iteration of the k most accessed elements.
+     7.6.1 Using a Sorted List
+        Our ﬁrst approach for managing a list of favorites is to store elements in a linked
+        list, keeping them in nonincreasing order of access counts. We access or remove
+        an element by searching the list from the most frequently accessed to the least
+        frequently accessed. Reporting the top k most accessed elements is easy, as they
+        are the ﬁrst k entries of the list.
+             To maintain the invariant that elements are stored in nonincreasing order of
+        access counts, we must consider how a single access operation may affect the order.
+        The accessed element’s count increases by one, and so it may become larger than
+        one or more of its preceding neighbors in the list, thereby violating the invariant.
+             Fortunately, we can reestablish the sorted invariant using a technique similar to
+        a single pass of the insertion-sort algorithm, introduced in the previous section. We
+        can perform a backward traversal of the list, starting at the position of the element
+        whose access count has increased, until we locate a valid position after which the
+        element can be relocated.

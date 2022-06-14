@@ -1,0 +1,36 @@
+290                                                             Chapter 7. Linked Lists
+    The Trade-Oﬀs with the Move-to-Front Heuristic
+    If we no longer maintain the elements of the favorites list ordered by their access
+    counts, when we are asked to ﬁnd the k most accessed elements, we need to search
+    for them. We will implement the top(k) method as follows:
+        1. We copy all entries of our favorites list into another list, named temp.
+        2. We scan the temp list k times. In each scan, we ﬁnd the entry with the largest
+           access count, remove this entry from temp, and report it in the results.
+    This implementation of method top takes O(kn) time. Thus, when k is a constant,
+    method top runs in O(n) time. This occurs, for example, when we want to get the
+    “top ten” list. However, if k is proportional to n, then top runs in O(n2 ) time. This
+    occurs, for example, when we want a “top 25%” list.
+         In Chapter 9 we will introduce a data structure that will allow us to implement
+    top in O(n + k log n) time (see Exercise P-9.54), and more advanced techniques
+    could be used to perform top in O(n + k log k) time.
+         We could easily achieve O(n log n) time if we use a standard sorting algorithm
+    to reorder the temporary list before reporting the top k (see Chapter 12); this ap-
+    proach would be preferred to the original in the case that k is Ω(log n). (Recall
+    the big-Omega notation introduced in Section 3.3.1 to give an asymptotic lower
+    bound on the running time of an algorithm.) There is a more specialized sorting
+    algorithm (see Section 12.4.2) that can take advantage of the fact that access counts
+    are integers in order to achieve O(n) time for top, for any value of k.
+    Implementing the Move-to-Front Heuristic in Python
+    We give an implementation of a favorites list using the move-to-front heuristic in
+    Code Fragment 7.20. The new FavoritesListMTF class inherits most of its func-
+    tionality from the original FavoritesList as a base class.
+         By our original design, the access method of the original class relies on a non-
+    public utility named move up to enact the potential shifting of an element forward
+    in the list, after its access count had been incremented. Therefore, we implement
+    the move-to-front heuristic by simply overriding the move up method so that each
+    accessed element is moved directly to the front of the list (if not already there). This
+    action is easily implemented by means of the positional list ADT.
+         The more complex portion of our FavoritesListMTF class is the new deﬁnition
+    for the top method. We rely on the ﬁrst of the approaches outlined above, inserting
+    copies of the items into a temporary list and then repeatedly ﬁnding, reporting, and
+    removing an element that has the largest access count of those remaining.

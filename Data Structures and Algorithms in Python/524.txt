@@ -1,0 +1,18 @@
+11.5. (2,4) Trees                                                                           503
+                                                           22
+                                            5 10                        25
+                                3 4          6 8        14       23 24       27
+                                                 11 13        17
+                                                      (a)
+                                                           22
+                                            5 10                        25
+                                3 4          6 8        14       23 24       27
+                                                 11 13        17
+                                                      (b)
+                                                           22
+                                            5 10                        25
+                                3 4          6 8        14       23 24       27
+                                                 11 13        17
+                                                      (c)
+            Figure 11.23: (a) A multiway search tree T ; (b) search path in T for key 12 (unsuc-
+            cessful search); (c) search path in T for key 24 (successful search).

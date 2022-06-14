@@ -1,0 +1,48 @@
+Bibliography                                                                                    733
+           [18] R. S. Boyer and J. S. Moore, “A fast string searching algorithm,” Communications
+                of the ACM, vol. 20, no. 10, pp. 762–772, 1977.
+           [19] G. Brassard, “Crusade for a better notation,” SIGACT News, vol. 17, no. 1, pp. 60–
+                64, 1985.
+           [20] T. Budd, An Introduction to Object-Oriented Programming. Reading, MA: Addison-
+                Wesley, 1991.
+           [21] D. Burger, J. R. Goodman, and G. S. Sohi, “Memory systems,” in The Computer
+                Science and Engineering Handbook (A. B. Tucker, Jr., ed.), ch. 18, pp. 447–461,
+                CRC Press, 1997.
+           [22] J. Campbell, P. Gries, J. Montojo, and G. Wilson, Practical Programming: An In-
+                troduction to Computer Science. Pragmatic Bookshelf, 2009.
+           [23] L. Cardelli and P. Wegner, “On understanding types, data abstraction and polymor-
+                phism,” ACM Computing Surveys, vol. 17, no. 4, pp. 471–522, 1985.
+           [24] S. Carlsson, “Average case results on heapsort,” BIT, vol. 27, pp. 2–17, 1987.
+           [25] V. Cedar, The Quick Python Book. Manning Publications, 2nd ed., 2010.
+                                                                     2
+           [26] K. L. Clarkson, “Linear programming in O(n3d ) time,” Inform. Process. Lett.,
+                vol. 22, pp. 21–24, 1986.
+           [27] R. Cole, “Tight bounds on the complexity of the Boyer-Moore pattern matching
+                algorithm,” SIAM J. Comput., vol. 23, no. 5, pp. 1075–1091, 1994.
+           [28] D. Comer, “The ubiquitous B-tree,” ACM Comput. Surv., vol. 11, pp. 121–137, 1979.
+           [29] T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein, Introduction to Algo-
+                rithms. Cambridge, MA: MIT Press, 3rd ed., 2009.
+           [30] M. Crochemore and T. Lecroq, “Pattern matching and text compression algorithms,”
+                in The Computer Science and Engineering Handbook (A. B. Tucker, Jr., ed.), ch. 8,
+                pp. 162–202, CRC Press, 1997.
+           [31] S. Crosby and D. Wallach, “Denial of service via algorithmic complexity attacks,”
+                in Proc. 12th Usenix Security Symp., pp. 29–44, 2003.
+           [32] M. Dawson, Python Programming for the Absolute Beginner. Course Technology
+                PTR, 3rd ed., 2010.
+           [33] S. A. Demurjian, Sr., “Software design,” in The Computer Science and Engineering
+                Handbook (A. B. Tucker, Jr., ed.), ch. 108, pp. 2323–2351, CRC Press, 1997.
+           [34] G. Di Battista, P. Eades, R. Tamassia, and I. G. Tollis, Graph Drawing. Upper Saddle
+                River, NJ: Prentice Hall, 1999.
+           [35] E. W. Dijkstra, “A note on two problems in connexion with graphs,” Numerische
+                Mathematik, vol. 1, pp. 269–271, 1959.
+           [36] E. W. Dijkstra, “Recursive programming,” Numerische Mathematik, vol. 2, no. 1,
+                pp. 312–318, 1960.
+           [37] J. R. Driscoll, H. N. Gabow, R. Shrairaman, and R. E. Tarjan, “Relaxed heaps: An
+                alternative to Fibonacci heaps with applications to parallel computation,” Commun.
+                ACM, vol. 31, pp. 1343–1354, 1988.
+           [38] R. W. Floyd, “Algorithm 97: Shortest path,” Communications of the ACM, vol. 5,
+                no. 6, p. 345, 1962.
+           [39] R. W. Floyd, “Algorithm 245: Treesort 3,” Communications of the ACM, vol. 7,
+                no. 12, p. 701, 1964.
+           [40] M. L. Fredman and R. E. Tarjan, “Fibonacci heaps and their uses in improved net-
+                work optimization algorithms,” J. ACM, vol. 34, pp. 596–615, 1987.

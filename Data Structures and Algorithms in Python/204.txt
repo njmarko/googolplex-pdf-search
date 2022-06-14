@@ -1,0 +1,20 @@
+Chapter
+   5                                 Array-Based Sequences
+Contents
+    5.1   Python’s Sequence Types . . . . . . . . .     . . . . .   . . . . .  184
+    5.2   Low-Level Arrays . . . . . . . . . . . . . .  . . . .  .  . . . . .  185
+         5.2.1 Referential Arrays . . . . . . . . . . . . . . . .  . . . . . . 187
+         5.2.2 Compact Arrays in Python . . . . . .     . . . . .  . . . . . . 190
+    5.3   Dynamic Arrays and Amortization . . . .       . . . . .   . . . . .  192
+         5.3.1 Implementing a Dynamic Array . . . .     . . . . .  . . . . . . 195
+         5.3.2 Amortized Analysis of Dynamic Arrays     . . . . .  . . . . . . 197
+         5.3.3 Python’s List Class . . . . . . . . . .  . . . . .  . . . . . . 201
+    5.4   Eﬃciency of Python’s Sequence Types .         . . . . .   . . . . .  202
+         5.4.1 Python’s List and Tuple Classes . . .    . . . . .  . . . . . . 202
+         5.4.2 Python’s String Class . . . . . . . . .  . . . . .  . . . . . . 208
+    5.5   Using Array-Based Sequences . . . . . .       . . . . .   . . . . .  210
+         5.5.1 Storing High Scores for a Game . . .     . . . . .  . . . . . . 210
+         5.5.2 Sorting a Sequence . . . . . . . . . .   . . . . .  . . . . . . 214
+         5.5.3 Simple Cryptography . . . . . . . . .    . . . . .  . . . . . . 216
+    5.6   Multidimensional Data Sets . . . . . . . .    . . . . .   . . . . .  219
+    5.7   Exercises . . . . . . . . . . . . . . . . . . . . . .  .  . . . . .  224

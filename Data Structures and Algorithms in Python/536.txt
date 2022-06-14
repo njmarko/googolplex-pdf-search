@@ -1,0 +1,34 @@
+11.6. Red-Black Trees                                                                      515
+           Case 1: The Sibling s of y Is Black (or None). (See Figure 11.33.) In this case,
+                 the double red denotes the fact that we have added the new node to a cor-
+                 responding 3-node of the (2, 4) tree T  , effectively creating a malformed
+                 4-node. This formation has one red node (y) that is the parent of another
+                 red node (x), while we want it to have the two red nodes as siblings instead.
+                 To ﬁx this problem, we perform a trinode restructuring of T . The trinode
+                 restructuring is done by the operation restructure(x), which consists of the
+                 following steps (see again Figure 11.33; this operation is also discussed in
+                 Section 11.2):
+                    • Take node x, its parent y, and grandparent z, and temporarily relabel
+                       them as a, b, and c, in left-to-right order, so that a, b, and c will be
+                       visited in this order by an inorder tree traversal.
+                    • Replace the grandparent z with the node labeled b, and make nodes a
+                       and c the children of b, keeping inorder relationships unchanged.
+                 After performing the restructure(x) operation, we color b black and we color
+                 a and c red. Thus, the restructuring eliminates the double-red problem. No-
+                 tice that the portion of any path through the restructured part of the tree is
+                 incident to exactly one black node, both before and after the trinode restruc-
+                 turing. Therefore, the black depth of the tree is unaffected.
+                     z                       z           z                      z
+                   30                      30             10                     10
+              y                  y                            y                          y
+              20         s       10              s    s       20            s           30
+         x                             x                            x                 x
+         10                            20                          30                20
+                                                  (a)
+                                                      b
+                                                   20
+                                              a          c
+                                              10        30
+                                                  (b)
+           Figure 11.33: Restructuring a red-black tree to remedy a double red: (a) the four
+           conﬁgurations for x, y, and z before restructuring; (b) after restructuring.

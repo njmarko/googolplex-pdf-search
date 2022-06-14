@@ -1,0 +1,39 @@
+74                                          Chapter 2. Object-Oriented Programming
+   2.3.2 Operator Overloading and Python’s Special Methods
+      Python’s built-in classes provide natural semantics for many operators. For ex-
+      ample, the syntax a + b invokes addition for numeric types, yet concatenation for
+      sequence types. When deﬁning a new class, we must consider whether a syntax
+      like a + b should be deﬁned when a or b is an instance of that class.
+           By default, the + operator is undeﬁned for a new class. However, the author
+      of a class may provide a deﬁnition using a technique known as operator overload-
+      ing. This is done by implementing a specially named method. In particular, the
+      + operator is overloaded by implementing a method named add , which takes
+      the right-hand operand as a parameter and which returns the result of the expres-
+      sion. That is, the syntax, a + b, is converted to a method call on object a of the
+      form, a. add (b). Similar specially named methods exist for other operators.
+      Table 2.1 provides a comprehensive list of such methods.
+           When a binary operator is applied to two instances of different types, as in
+      3      love me , Python gives deference to the class of the left operand. In this
+      example, it would effectively check if the int class provides a sufﬁcient deﬁnition
+      for how to multiply an instance by a string, via the mul method. However,
+      if that class does not implement such a behavior, Python checks the class deﬁni-
+      tion for the right-hand operand, in the form of a special method named rmul
+      (i.e., “right multiply”). This provides a way for a new user-deﬁned class to support
+      mixed operations that involve an instance of an existing class (given that the exist-
+      ing class would presumably not have deﬁned a behavior involving this new class).
+      The distinction between mul and rmul also allows a class to deﬁne dif-
+      ferent semantics in cases, such as matrix multiplication, in which an operation is
+      noncommutative (that is, A x may differ from x A).
+      Non-Operator Overloads
+      In addition to traditional operator overloading, Python relies on specially named
+      methods to control the behavior of various other functionality, when applied to
+      user-deﬁned classes. For example, the syntax, str(foo), is formally a call to the
+      constructor for the string class. Of course, if the parameter is an instance of a user-
+      deﬁned class, the original authors of the string class could not have known how
+      that instance should be portrayed. So the string constructor calls a specially named
+      method, foo. str ( ), that must return an appropriate string representation.
+           Similar special methods are used to determine how to construct an int, ﬂoat, or
+      bool based on a parameter from a user-deﬁned class. The conversion to a Boolean
+      value is particularly important, because the syntax, if foo:, can be used even when
+      foo is not formally a Boolean value (see Section 1.4.1). For a user-deﬁned class,
+      that condition is evaluated by the special method foo. bool ( ).

@@ -1,0 +1,36 @@
+344                                                                         Chapter 8. Trees
+           Based on our experience of customizing traversals for sample applications Sec-
+      tion 8.4.5, we build support into the primary EulerTour for maintaining the re-
+      cursive depth and the representation of the recursive path through a tree, using the
+      approach that we introduced in Code Fragment 8.24. We also provide a mechanism
+      for one recursive level to return a value to another when post-processing. Formally,
+      our framework relies on the following two hooks that can be specialized:
+           • method hook previsit(p, d, path)
+              This function is called once for each position, immediately before its subtrees
+              (if any) are traversed. Parameter p is a position in the tree, d is the depth of
+              that position, and path is a list of indices, using the convention described in
+              the discussion of Code Fragment 8.24. No return value is expected from this
+              function.
+           • method hook postvisit(p, d, path, results)
+              This function is called once for each position, immediately after its subtrees
+              (if any) are traversed. The ﬁrst three parameters use the same convention as
+              did hook previsit. The ﬁnal parameter is a list of objects that were provided
+              as return values from the post visits of the respective subtrees of p. Any value
+              returned by this call will be available to the parent of p during its postvisit.
+           For more complex tasks, subclasses of EulerTour may also choose to initialize
+      and maintain additional state in the form of instance variables that can be accessed
+      within the bodies of the hooks.
+      Using the Euler Tour Framework
+      To demonstrate the ﬂexibility of our Euler tour framework, we revisit the sample
+      applications from Section 8.4.5. As a simple example, an indented preorder traver-
+      sal, akin to that originally produced by Code Fragment 8.23, can be generated with
+      the simple subclass given in Code Fragment 8.29.
+    1 class PreorderPrintIndentedTour(EulerTour):
+    2    def hook previsit(self, p, d, path):
+    3     print(2 d         + str(p.element( )))
+      Code Fragment 8.29: A subclass of EulerTour that produces an indented preorder
+      list of a tree’s elements.
+           Such a tour would be started by creating an instance of the subclass for a given
+      tree T, and invoking its execute method. This could be expressed as follows:
+      tour = PreorderPrintIndentedTour(T)
+      tour.execute( )

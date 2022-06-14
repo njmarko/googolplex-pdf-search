@@ -1,0 +1,37 @@
+13.3. Dynamic Programming                                                                              595
+         Deﬁning Subproblems
+          One way to solve the matrix chain-product problem is to simply enumerate all the
+          possible ways of parenthesizing the expression for A and determine the number
+          of multiplications performed by each one. Unfortunately, the set of all different
+          parenthesizations of the expression for A is equal in number to the set of all dif-
+          ferent binary trees that have n leaves. This number is exponential in n. Thus, this
+          straightforward (“brute-force”) algorithm runs in exponential time, for there are an
+          exponential number of ways to parenthesize an associative arithmetic expression.
+                We can signiﬁcantly improve the performance achieved by the brute-force al-
+          gorithm, however, by making a few observations about the nature of the matrix
+          chain-product problem. The ﬁrst is that the problem can be split into subproblems.
+          In this case, we can deﬁne a number of different subproblems, each of which is to
+          compute the best parenthesization for some subexpression Ai · Ai+1 · · · A j . As a con-
+          cise notation, we use Ni, j to denote the minimum number of multiplications needed
+          to compute this subexpression. Thus, the original matrix chain-product problem
+          can be characterized as that of computing the value of N0,n−1 . This observation
+          is important, but we need one more in order to apply the dynamic programming
+          technique.
+         Characterizing Optimal Solutions
+          The other important observation we can make about the matrix chain-product prob-
+          lem is that it is possible to characterize an optimal solution to a particular subprob-
+          lem in terms of optimal solutions to its subproblems. We call this property the
+          subproblem optimality condition.
+                In the case of the matrix chain-product problem, we observe that, no mat-
+          ter how we parenthesize a subexpression, there has to be some ﬁnal matrix mul-
+          tiplication that we perform. That is, a full parenthesization of a subexpression
+          Ai · Ai+1 · · · A j has to be of the form (Ai · · · Ak ) · (Ak+1 · · · A j ), for some k ∈ {i, i +
+          1, . . . , j − 1}. Moreover, for whichever k is the correct one, the products (Ai · · · Ak )
+          and (Ak+1 · · · A j ) must also be solved optimally. If this were not so, then there would
+          be a global optimal that had one of these subproblems solved suboptimally. But this
+          is impossible, since we could then reduce the total number of multiplications by re-
+          placing the current subproblem solution by an optimal solution for the subproblem.
+          This observation implies a way of explicitly deﬁning the optimization problem for
+          Ni, j in terms of other optimal subproblem solutions. Namely, we can compute Ni, j
+          by considering each place k where we could put the ﬁnal multiplication and taking
+          the minimum over all such choices.

@@ -1,0 +1,32 @@
+498                                                           Chapter 11. Search Trees
+    An Accounting Analysis of Splaying
+    When we perform a splaying, we pay a certain number of cyber-dollars (the exact
+    value of the payment will be determined at the end of our analysis). We distinguish
+    three cases:
+        • If the payment is equal to the splaying work, then we use it all to pay for the
+           splaying.
+        • If the payment is greater than the splaying work, we deposit the excess in the
+           accounts of several nodes.
+        • If the payment is less than the splaying work, we make withdrawals from the
+           accounts of several nodes to cover the deﬁciency.
+    We show below that a payment of O(log n) cyber-dollars per operation is sufﬁcient
+    to keep the system working, that is, to ensure that each node keeps a nonnegative
+    account balance.
+    An Accounting Invariant for Splaying
+    We use a scheme in which transfers are made between the accounts of the nodes
+    to ensure that there will always be enough cyber-dollars to withdraw for paying for
+    splaying work when needed.
+        In order to use the accounting method to perform our analysis of splaying, we
+    maintain the following invariant:
+           Before and after a splaying, each node w of T has r(w) cyber-dollars
+           in its account.
+    Note that the invariant is “ﬁnancially sound,” since it does not require us to make a
+    preliminary deposit to endow a tree with zero keys.
+        Let r(T ) be the sum of the ranks of all the nodes of T . To preserve the invariant
+    after a splaying, we must make a payment equal to the splaying work plus the total
+    change in r(T ). We refer to a single zig, zig-zig, or zig-zag operation in a splaying
+    as a splaying substep. Also, we denote the rank of a node w of T before and after
+    a splaying substep with r(w) and r (w), respectively. The following proposition
+    gives an upper bound on the change of r(T ) caused by a single splaying substep.
+    We will repeatedly use this lemma in our analysis of a full splaying of a node to the
+    root.

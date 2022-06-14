@@ -1,0 +1,38 @@
+134                                                        Chapter 3. Algorithm Analysis
+           In our ﬁrst two algorithms, the preﬁx sum is computed anew for each value of j.
+      That contributed O( j) time for each j, leading to the quadratic behavior. In algo-
+      rithm preﬁx average3, we maintain the current preﬁx sum dynamically, effectively
+      computing S[0] + S[1] + · · · + S[ j] as total + S[j], where value total is equal to the
+      sum S[0] + S[1] + · · · + S[ j − 1] computed by the previous pass of the loop over j.
+      The analysis of the running time of algorithm preﬁx average3 follows:
+           • Initializing variables n and total uses O(1) time.
+           • Initializing the list A uses O(n) time.
+           • There is a single for loop, which is controlled by counter j. The maintenance
+              of that counter by the range iterator contributes a total of O(n) time.
+           • The body of the loop is executed n times, for j = 0, . . . , n − 1. Thus, state-
+              ments total += S[j] and A[j] = total / (j+1) are executed n times each.
+              Since each of these statements uses O(1) time per iteration, their overall
+              contribution is O(n) time.
+      The running time of algorithm preﬁx average3 is given by the sum of the four
+      terms. The ﬁrst is O(1) and the remaining three are O(n). By a simple application
+      of Proposition 3.9, the running time of preﬁx average3 is O(n), which is much
+      better than the quadratic time of algorithms preﬁx average1 and preﬁx average2.
+      Three-Way Set Disjointness
+      Suppose we are given three sequences of numbers, A, B, and C. We will assume
+      that no individual sequence contains duplicate values, but that there may be some
+      numbers that are in two or three of the sequences. The three-way set disjointness
+      problem is to determine if the intersection of the three sequences is empty, namely,
+      that there is no element x such that x ∈ A, x ∈ B, and x ∈ C. A simple Python
+      function to determine this property is given in Code Fragment 3.5.
+    1 def disjoint1(A, B, C):
+    2    ”””Return True if there is no element common to all three lists.”””
+    3    for a in A:
+    4      for b in B:
+    5         for c in C:
+    6            if a == b == c:
+    7               return False         # we found a common value
+    8    return True                     # if we reach this, sets are disjoint
+         Code Fragment 3.5: Algorithm disjoint1 for testing three-way set disjointness.
+           This simple algorithm loops through each possible triple of values from the
+      three sets to see if those values are equivalent. If each of the original sets has size
+      n, then the worst-case running time of this function is O(n3 ).

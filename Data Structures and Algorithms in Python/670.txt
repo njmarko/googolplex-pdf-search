@@ -1,0 +1,30 @@
+14.3. Graph Traversals                                                                        649
+                  0                                             0         1
+                  A        B        C         D                 A        B        C        D
+                  E        F        G         H                 E        F        G        H
+                  I         J       K         L                 I         J       K        L
+                 M         N        O         P                M         N        O        P
+                              (a)                                           (b)
+                                                                0        1        2        3
+                  0        1        2
+                                                                A        B        C        D
+                  A        B        C         D
+                                                                E        F        G        H
+                  E        F        G         H
+                                                                I         J       K        L
+                  I         J       K         L
+                                                               M         N        O        P
+                 M         N        O         P
+                              (c)                                           (d)
+                  0        1        2         3                 0        1        2        3
+                  A        B        C        D                 A         B        C        D
+                  E        F        G        H                  E        F        G        H
+                                                 4                                             4
+                  I        J        K         L                 I        J        K        L
+                 M         N        O         P                M         N        O        P 5
+                              (e)                                           (f )
+          Figure 14.10: Example of breadth-ﬁrst search traversal, where the edges incident to
+          a vertex are considered in alphabetical order of the adjacent vertices. The discovery
+          edges are shown with solid lines and the nontree (cross) edges are shown with
+          dashed lines: (a) starting the search at A; (b) discovery of level 1; (c) discovery of
+          level 2; (d) discovery of level 3; (e) discovery of level 4; (f) discovery of level 5.

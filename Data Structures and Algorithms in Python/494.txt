@@ -1,0 +1,40 @@
+11.1. Binary Search Trees                                                                   473
+     153    def delete(self, p):
+     154       ”””Remove the item at given Position.”””
+     155       self. validate(p)                         # inherited from LinkedBinaryTree
+     156       if self.left(p) and self.right(p):        # p has two children
+     157          replacement = self. subtree last position(self.left(p))
+     158          self. replace(p, replacement.element( ))         # from LinkedBinaryTree
+     159          p = replacement
+     160       # now p has at most one child
+     161       parent = self.parent(p)
+     162       self. delete(p)                           # inherited from LinkedBinaryTree
+     163       self. rebalance delete(parent)            # if root deleted, parent is None
+     164
+     165    def delitem (self, k):
+     166       ”””Remove item associated with key k (raise KeyError if not found).”””
+     167       if not self.is empty( ):
+     168          p = self. subtree search(self.root( ), k)
+     169          if k == p.key( ):
+     170             self.delete(p)                      # rely on positional version
+     171             return                              # successful deletion complete
+     172          self. rebalance access(p)              # hook for balanced tree subclasses
+     173       raise KeyError( Key Error: + repr(k))
+          Code Fragment 11.8: Support for deleting an item from a TreeMap, located either
+          by position or by key.
+       11.1.5 Performance of a Binary Search Tree
+          An analysis of the operations of our TreeMap class is given in Table 11.1. Almost
+          all operations have a worst-case running time that depends on h, where h is the
+          height of the current tree. This is because most operations rely on a constant amount
+          of work for each node along a particular path of the tree, and the maximum path
+          length within a tree is proportional to the height of the tree. Most notably, our
+          implementations of map operations getitem , setitem , and delitem
+          each begin with a call to the subtree search utility which traces a path downward
+          from the root of the tree, using O(1) time at each node to determine how to con-
+          tinue the search. Similar paths are traced when looking for a replacement during a
+          deletion, or when computing a position’s inorder predecessor or successor. We note
+          that although a single call to the after method has worst-case running time of O(h),
+          the n successive calls made during a call to iter require a total of O(n) time,
+          since each edge is traced at most twice; in a sense, those calls have O(1) amortized
+          time bounds. A similar argument can be used to prove the O(s + h) worst-case
+          bound for a call to ﬁnd range that reports s results (see Exercise C-11.34).

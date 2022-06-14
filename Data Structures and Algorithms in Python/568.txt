@@ -1,0 +1,39 @@
+12.2. Merge-Sort                                                                         547
+       12.2.5 Alternative Implementations of Merge-Sort
+          Sorting Linked Lists
+          The merge-sort algorithm can easily be adapted to use any form of a basic queue
+          as its container type. In Code Fragment 12.3, we provide such an implementation,
+          based on use of the LinkedQueue class from Section 7.1.2. The O(n log n) bound
+          for merge-sort from Proposition 12.2 applies to this implementation as well, since
+          each basic operation runs in O(1) time when implemented with a linked list. We
+          show an example execution of this version of the merge algorithm in Figure 12.7.
+       1 def merge(S1, S2, S):
+       2    ”””Merge two sorted queue instances S1 and S2 into empty queue S.”””
+       3    while not S1.is empty( ) and not S2.is empty( ):
+       4       if S1.ﬁrst( ) < S2.ﬁrst( ):
+       5          S.enqueue(S1.dequeue( ))
+       6       else:
+       7          S.enqueue(S2.dequeue( ))
+       8    while not S1.is empty( ):              # move remaining elements of S1 to S
+       9       S.enqueue(S1.dequeue( ))
+      10    while not S2.is empty( ):              # move remaining elements of S2 to S
+      11       S.enqueue(S2.dequeue( ))
+      12
+      13 def merge sort(S):
+      14    ”””Sort the elements of queue S using the merge-sort algorithm.”””
+      15    n = len(S)
+      16    if n < 2:
+      17       return                              # list is already sorted
+      18    # divide
+      19    S1 = LinkedQueue( )                    # or any other queue implementation
+      20    S2 = LinkedQueue( )
+      21    while len(S1) < n // 2:                # move the ﬁrst n//2 elements to S1
+      22       S1.enqueue(S.dequeue( ))
+      23    while not S.is empty( ):               # move the rest to S2
+      24       S2.enqueue(S.dequeue( ))
+      25    # conquer (with recursion)
+      26    merge sort(S1)                         # sort ﬁrst half
+      27    merge sort(S2)                         # sort second half
+      28    # merge results
+      29    merge(S1, S2, S)                       # merge sorted halves back into S
+              Code Fragment 12.3: An implementation of merge-sort using a basic queue.

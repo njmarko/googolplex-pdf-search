@@ -1,0 +1,64 @@
+14.7. Minimum Spanning Trees                                                                                       677
+                              2704                                                      2704
+                                                   BOS                                                       BOS
+                                      867                                                       867
+                                         849     PVD                                               849     PVD
+                           ORD               144      187                           ORD                144      187
+                                     740                                                       740
+                1846             621                                     1846              621
+                                            JFK                                                       JFK
+                                                        1258                                                      1258
+                        802                184                                   802                 184
+     SFO                                                      SFO
+                               1391         BWI     1090                                 1391         BWI     1090
+           1464                                                     1464
+      337                                                      337
+                     DFW                                                      DFW
+             1235                           946                       1235                            946
+       LAX                                                      LAX
+                               1121                                                      1121
+                     2342                 MIA                                 2342                  MIA
+                          (a)                                                      (b)
+                              2704                                                      2704
+                                                   BOS                                                       BOS
+                                      867                                                       867
+                                         849     PVD                                               849     PVD
+                           ORD               144      187                           ORD                144      187
+                                     740                                                       740
+                1846             621                                     1846              621
+                                            JFK                                                       JFK
+                                                        1258                                                      1258
+                        802                184                                   802                 184
+     SFO                                                      SFO
+                               1391         BWI     1090                                 1391         BWI     1090
+           1464                                                     1464
+      337                                                      337
+                     DFW                                                      DFW
+             1235                           946                       1235                            946
+       LAX                                                      LAX
+                               1121                                                      1121
+                     2342                 MIA                                 2342                  MIA
+                          (c)                                                      (d)
+                              2704                                                      2704
+                                                   BOS                                                       BOS
+                                      867                                                       867
+                                         849     PVD                                               849     PVD
+                           ORD               144      187                           ORD                144      187
+                                     740                                                       740
+                1846             621                                     1846              621
+                                            JFK                                                       JFK
+                                                         1258                                                      1258
+                        802                184                                   802                 184
+     SFO                                                      SFO
+                               1391         BWI     1090                                 1391         BWI     1090
+           1464                                                     1464
+      337                                                      337
+                     DFW                                                      DFW
+             1235                           946                       1235                            946
+       LAX                                                      LAX
+                               1121                                                      1121
+                     2342                 MIA                                 2342                  MIA
+                          (e)                                                      (f )
+           Figure 14.22: Example of an execution of Kruskal’s MST algorithm on a graph with
+           integer weights. We show the clusters as shaded regions and we highlight the edge
+           being considered in each iteration. (Continues in Figure 14.23.)

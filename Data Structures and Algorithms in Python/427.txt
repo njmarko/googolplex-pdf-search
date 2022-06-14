@@ -1,0 +1,40 @@
+406                                     Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.1.3 Python’s MutableMapping Abstract Base Class
+       Section 2.4.3 provides an introduction to the concept of an abstract base class
+       and the role of such classes in Python’s collections module. Methods that are de-
+       clared to be abstract in such a base class must be implemented by concrete sub-
+       classes. However, an abstract base class may provide concrete implementation of
+       other methods that depend upon use of the presumed abstract methods. (This is an
+       example of the template method design pattern.)
+            The collections module provides two abstract base classes that are relevant to
+       our current discussion: the Mapping and MutableMapping classes. The Mapping
+       class includes all nonmutating methods supported by Python’s dict class, while the
+       MutableMapping class extends that to include the mutating methods. What we
+       deﬁne as the map ADT in Section 10.1.1 is akin to the MutableMapping abstract
+       base class in Python’s collections module.
+            The signiﬁcance of these abstract base classes is that they provide a framework
+       to assist in creating a user-deﬁned map class. In particular, the MutableMapping
+       class provides concrete implementations for all behaviors other than the ﬁrst ﬁve
+       outlined in Section 10.1.1: getitem , setitem , delitem , len , and
+          iter . As we implement the map abstraction with various data structures, as
+       long as we provide the ﬁve core behaviors, we can inherit all other derived behav-
+       iors by simply declaring MutableMapping as a parent class.
+            To better understand the MutableMapping class, we provide a few examples of
+       how concrete behaviors can be derived from the ﬁve core abstractions. For example,
+       the contains method, supporting the syntax k in M, could be implemented by
+       making a guarded attempt to retrieve self[k] to determine if the key exists.
+            def contains (self, k):
+              try:
+                 self[k]                        # access via      getitem   (ignore result)
+                 return True
+              except KeyError:
+                 return False                   # attempt failed
+       A similar approach might be used to provide the logic of the setdefault method.
+            def setdefault(self, k, d):
+              try:
+                 return self[k]                 #  if getitem succeeds, return value
+              except KeyError:                  #  otherwise:
+                 self[k] = d                    #  set default value with setitem
+                 return d                       #  and return that newly assigned value
+       We leave as exercises the implementations of the remaining concrete methods of
+       the MutableMapping class.

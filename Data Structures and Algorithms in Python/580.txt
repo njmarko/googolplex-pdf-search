@@ -1,0 +1,40 @@
+12.3. Quick-Sort                                                                           559
+       12.3.2 Additional Optimizations for Quick-Sort
+          An algorithm is in-place if it uses only a small amount of memory in addition
+          to that needed for the original input. Our implementation of heap-sort, from Sec-
+          tion 9.4.2, is an example of such an in-place sorting algorithm. Our implementation
+          of quick-sort from Code Fragment 12.5 does not qualify as in-place because we use
+          additional containers L, E, and G when dividing a sequence S within each recursive
+          call. Quick-sort of an array-based sequence can be adapted to be in-place, and such
+          an optimization is used in most deployed implementations.
+               Performing the quick-sort algorithm in-place requires a bit of ingenuity, how-
+          ever, for we must use the input sequence itself to store the subsequences for all the
+          recursive calls. We show algorithm inplace quick sort, which performs in-place
+          quick-sort, in Code Fragment 12.6. Our implementation assumes that the input
+          sequence, S, is given as a Python list of elements. In-place quick-sort modiﬁes
+          the input sequence using element swapping and does not explicitly create subse-
+          quences. Instead, a subsequence of the input sequence is implicitly represented by
+          a range of positions speciﬁed by a leftmost index a and a rightmost index b. The
+       1 def inplace quick sort(S, a, b):
+       2    ”””Sort the list from S[a] to S[b] inclusive using the quick-sort algorithm.”””
+       3    if a >= b: return                                # range is trivially sorted
+       4    pivot = S[b]                                     # last element of range is pivot
+       5    left = a                                         # will scan rightward
+       6    right = b−1                                      # will scan leftward
+       7    while left <= right:
+       8       # scan until reaching value equal or larger than pivot (or right marker)
+       9       while left <= right and S[left] < pivot:
+      10          left += 1
+      11       # scan until reaching value equal or smaller than pivot (or left marker)
+      12       while left <= right and pivot < S[right]:
+      13          right −= 1
+      14       if left <= right:                             # scans did not strictly cross
+      15          S[left], S[right] = S[right], S[left]                     # swap values
+      16          left, right = left + 1, right − 1                         # shrink range
+      17
+      18    # put pivot into its ﬁnal place (currently marked by left index)
+      19    S[left], S[b] = S[b], S[left]
+      20    # make recursive calls
+      21    inplace quick sort(S, a, left − 1)
+      22    inplace quick sort(S, left + 1, b)
+                        Code Fragment 12.6: In-place quick-sort for a Python list S.

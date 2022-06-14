@@ -1,0 +1,28 @@
+328                                                                         Chapter 8. Trees
+ 8.4    Tree Traversal Algorithms
+        A traversal of a tree T is a systematic way of accessing, or “visiting,” all the posi-
+        tions of T . The speciﬁc action associated with the “visit” of a position p depends
+        on the application of this traversal, and could involve anything from increment-
+        ing a counter to performing some complex computation for p. In this section, we
+        describe several common traversal schemes for trees, implement them in the con-
+        text of our various tree classes, and discuss several common applications of tree
+        traversals.
+     8.4.1 Preorder and Postorder Traversals of General Trees
+        In a preorder traversal of a tree T , the root of T is visited ﬁrst and then the sub-
+        trees rooted at its children are traversed recursively. If the tree is ordered, then
+        the subtrees are traversed according to the order of the children. The pseudo-code
+        for the preorder traversal of the subtree rooted at a position p is shown in Code
+        Fragment 8.12.
+        Algorithm preorder(T, p):
+           perform the “visit” action for position p
+           for each child c in T.children(p) do
+             preorder(T, c)                      {recursively traverse the subtree rooted at c}
+        Code Fragment 8.12: Algorithm preorder for performing the preorder traversal of a
+        subtree rooted at position p of a tree T.
+            Figure 8.15 portrays the order in which positions of a sample tree are visited
+        during an application of the preorder traversal algorithm.
+                                               Paper
+             Title   Abstract    §1                   §2                   §3    References
+                           § 1.1    § 1.2    § 2.1   § 2.2  § 2.3    § 3.1    § 3.2
+        Figure 8.15: Preorder traversal of an ordered tree, where the children of each posi-
+        tion are ordered from left to right.

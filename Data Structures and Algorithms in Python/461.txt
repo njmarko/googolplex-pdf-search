@@ -1,0 +1,39 @@
+440                                    Chapter 10. Maps, Hash Tables, and Skip Lists
+    Algorithm SkipSearch(k):
+         Input: A search key k
+         Output: Position p in the bottom list S0 with the largest key such that key(p) ≤ k
+          p = start                                                 {begin at start position}
+          while below(p) = None do
+            p = below(p)                                                       {drop down}
+            while k ≥ key(next(p)) do
+               p = next(p)                                                  {scan forward}
+          return p.
+              Code Fragment 10.12: Algorthm to search a skip list S for key k.
+         As it turns out, the expected running time of algorithm SkipSearch on a skip list
+    with n entries is O(log n). We postpone the justiﬁcation of this fact, however, until
+    after we discuss the implementation of the update methods for skip lists. Navigation
+    starting at the position identiﬁed by SkipSearch(k) can be easily used to provide the
+    additional forms of searches in the sorted map ADT (e.g., ﬁnd gt, ﬁnd range).
+    Insertion in a Skip List
+    The execution of the map operation M[k] = v begins with a call to SkipSearch(k).
+    This gives us the position p of the bottom-level item with the largest key less than or
+    equal to k (note that p may hold the special item with key −∞). If key(p) = k, the
+    associated value is overwritten with v. Otherwise, we need to create a new tower for
+    item (k, v). We insert (k, v) immediately after position p within S0 . After inserting
+    the new item at the bottom level, we use randomization to decide the height of the
+    tower for the new item. We “ﬂip” a coin, and if the ﬂip comes up tails, then we stop
+    here. Else (the ﬂip comes up heads), we backtrack to the previous (next higher)
+    level and insert (k, v) in this level at the appropriate position. We again ﬂip a coin;
+    if it comes up heads, we go to the next higher level and repeat. Thus, we continue
+    to insert the new item (k, v) in lists until we ﬁnally get a ﬂip that comes up tails.
+    We link together all the references to the new item (k, v) created in this process to
+    create its tower. A coin ﬂip can be simulated with Python’s built-in pseudo-random
+    number generator from the random module by calling randrange(2), which returns
+    0 or 1, each with probability 1/2.
+         We give the insertion algorithm for a skip list S in Code Fragment 10.13 and
+    we illustrate it in Figure 10.12. The algorithm uses an insertAfterAbove(p, q, (k, v))
+    method that inserts a position storing the item (k, v) after position p (on the same
+    level as p) and above position q, returning the new position r (and setting internal
+    references so that next, prev, above, and below methods will work correctly for p,
+    q, and r). The expected running time of the insertion algorithm on a skip list with
+    n entries is O(log n), which we show in Section 10.4.2.

@@ -1,0 +1,30 @@
+5.2. Low-Level Arrays                                                                          189
+               As a more striking example, it is a common practice in Python to initialize an
+          array of integers using a syntax such as counters = [0] 8. This syntax produces
+          a list of length eight, with all eight elements being the value zero. Technically, all
+          eight cells of the list reference the same object, as portrayed in Figure 5.7.
+                                                           0
+                          counters:
+                                      0   1     2     3    4     5      6   7
+                           Figure 5.7: The result of the command data = [0]         8.
+               At ﬁrst glance, the extreme level of aliasing in this conﬁguration may seem
+          alarming. However, we rely on the fact that the referenced integer is immutable.
+          Even a command such as counters[2] += 1 does not technically change the value
+          of the existing integer instance. This computes a new integer, with value 0 + 1, and
+          sets cell 2 to reference the newly computed value. The resulting conﬁguration is
+          shown in Figure 5.8.
+                                              1
+                                                           0
+                          counters:
+                                      0   1     2     3    4     5      6   7
+            Figure 5.8: The result of command data[2] += 1 upon the list from Figure 5.7.
+               As a ﬁnal manifestation of the referential nature of lists, we note that the extend
+          command is used to add all elements from one list to the end of another list. The
+          extended list does not receive copies of those elements, it receives references to
+          those elements. Figure 5.9 portrays the effect of a call to extend.
+                                                                         0    1   2
+                                                             extras:
+                         2     3     5     7    11      13    17     19    23   29    31
+                 primes:
+                             0    1    2    3    4     5    6     7      8    9  10
+            Figure 5.9: The effect of command primes.extend(extras), shown in light gray.

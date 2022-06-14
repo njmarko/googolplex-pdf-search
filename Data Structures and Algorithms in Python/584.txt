@@ -1,0 +1,34 @@
+12.4. Studying Sorting through an Algorithmic Lens                                               563
+          permutations P1 and P2 of S are associated with the same external node, then there
+          are at least two objects xi and x j , such that xi is before x j in P1 but xi is after x j
+          in P2 . At the same time, the output associated with v must be a speciﬁc reordering
+          of S, with either xi or x j appearing before the other. But if P1 and P2 both cause the
+          sorting algorithm to output the elements of S in this order, then that implies there is
+          a way to trick the algorithm into outputting xi and x j in the wrong order. Since this
+          cannot be allowed by a correct sorting algorithm, each external node of T must be
+          associated with exactly one permutation of S. We use this property of the decision
+          tree associated with a sorting algorithm to prove the following result:
+          Proposition 12.4: The running time of any comparison-based algorithm for sort-
+          ing an n-element sequence is Ω(n log n) in the worst case.
+          Justiﬁcation: The running time of a comparison-based sorting algorithm must
+          be greater than or equal to the height of the decision tree T associated with this
+          algorithm, as described above. (See Figure 12.15.) By the argument above, each
+          external node in T must be associated with one permutation of S. Moreover, each
+          permutation of S must result in a different external node of T . The number of
+          permutations of n objects is n! = n(n − 1)(n − 2) · · · 2 · 1. Thus, T must have at
+          least n! external nodes. By Proposition 8.8, the height of T is at least log(n!). This
+          immediately justiﬁes the proposition, because there are at least n/2 terms that are
+          greater than or equal to n/2 in the product n!; hence,
+                                                                 
+                                                            n n2         n       n
+                                       log(n!) ≥ log                 = log ,
+                                                            2            2       2
+           which is Ω(n log n).
+                              Minimum Height
+                      (i.e., worst-case running time)
+                                                                    xi < x j ?
+                                                        xa < xb ?                xc < xd ?
+                                   log(n!)
+                                                 xe < x f ?   xg < xh ?    xk < xl ?   xm < xn ?
+                                                                        n!
+                Figure 12.15: Visualizing the lower bound for comparison-based sorting.

@@ -1,0 +1,34 @@
+4.4. Further Examples of Recursion                                                           169
+  4.4     Further Examples of Recursion
+          In the remainder of this chapter, we provide additional examples of the use of re-
+          cursion. We organize our presentation by considering the maximum number of
+          recursive calls that may be started from within the body of a single activation.
+              • If a recursive call starts at most one other, we call this a linear recursion.
+              • If a recursive call may start two others, we call this a binary recursion.
+              • If a recursive call may start three or more others, this is multiple recursion.
+       4.4.1 Linear Recursion
+          If a recursive function is designed so that each invocation of the body makes at
+          most one new recursive call, this is know as linear recursion. Of the recursions we
+          have seen so far, the implementation of the factorial function (Section 4.1.1) and
+          the good ﬁbonacci function (Section 4.3) are clear examples of linear recursion.
+          More interestingly, the binary search algorithm (Section 4.1.3) is also an example
+          of linear recursion, despite the “binary” terminology in the name. The code for
+          binary search (Code Fragment 4.3) includes a case analysis with two branches that
+          lead to recursive calls, but only one of those calls can be reached during a particular
+          execution of the body.
+               A consequence of the deﬁnition of linear recursion is that any recursion trace
+          will appear as a single sequence of calls, as we originally portrayed for the factorial
+          function in Figure 4.1 of Section 4.1.1. Note that the linear recursion terminol-
+          ogy reﬂects the structure of the recursion trace, not the asymptotic analysis of the
+          running time; for example, we have seen that binary search runs in O(log n) time.
+          Summing the Elements of a Sequence Recursively
+          Linear recursion can be a useful tool for processing a data sequence, such as a
+          Python list. Suppose, for example, that we want to compute the sum of a sequence,
+          S, of n integers. We can solve this summation problem using linear recursion by
+          observing that the sum of all n integers in S is trivially 0, if n = 0, and otherwise
+          that it is the sum of the ﬁrst n − 1 integers in S plus the last element in S. (See
+          Figure 4.9.)
+                       0   1   2    3   4   5  6    7  8    9 10 11 12 13 14 15
+                       4   3   6    2   8   9  3    2  8    5   1   7   2   8    3   7
+          Figure 4.9: Computing the sum of a sequence recursively, by adding the last number
+          to the sum of the ﬁrst n − 1.

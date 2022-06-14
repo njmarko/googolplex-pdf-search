@@ -1,0 +1,39 @@
+414                                   Chapter 10. Maps, Hash Tables, and Skip Lists
+         An implementation of a cyclic-shift hash code computation for a character
+    string in Python appears as follows:
+    def hash code(s):
+      mask = (1 << 32) − 1                           # limit to 32-bit integers
+      h=0
+      for character in s:
+         h = (h << 5 & mask) | (h >> 27)             # 5-bit cyclic shift of running sum
+         h += ord(character)                         # add in value of next character
+      return h
+    As with the traditional polynomial hash code, ﬁne-tuning is required when using a
+    cyclic-shift hash code, as we must wisely choose the amount to shift by for each
+    new character. Our choice of a 5-bit shift is justiﬁed by experiments run on a list of
+    just over 230,000 English words, comparing the number of collisions for various
+    shift amounts (see Table 10.1).
+                                               Collisions
+                                    Shift      Total Max
+                                        0    234735      623
+                                        1    165076       43
+                                        2     38471       13
+                                        3      7174        5
+                                        4      1379        3
+                                        5       190        3
+                                        6       502        2
+                                        7       560        2
+                                        8      5546        4
+                                        9       393        3
+                                       10      5194        5
+                                       11     11559        5
+                                       12       822        2
+                                       13       900        4
+                                       14      2001        4
+                                       15     19251        8
+                                       16    211781       37
+    Table 10.1: Comparison of collision behavior for the cyclic-shift hash code as ap-
+    plied to a list of 230,000 English words. The “Total” column records the total num-
+    ber of words that collide with at least one other, and the “Max” column records the
+    maximum number of words colliding at any one hash code. Note that with a cyclic
+    shift of 0, this hash code reverts to the one that simply sums all the characters.

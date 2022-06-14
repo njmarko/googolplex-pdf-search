@@ -1,0 +1,31 @@
+3.2. The Seven Functions Used in This Book                                                   117
+      The Linear Function
+          Another simple yet important function is the linear function,
+                                                  f (n) = n.
+          That is, given an input value n, the linear function f assigns the value n itself.
+              This function arises in algorithm analysis any time we have to do a single basic
+          operation for each of n elements. For example, comparing a number x to each
+          element of a sequence of size n will require n comparisons. The linear function
+          also represents the best running time we can hope to achieve for any algorithm that
+          processes each of n objects that are not already in the computer’s memory, because
+          reading in the n objects already requires n operations.
+      The N-Log-N Function
+          The next function we discuss in this section is the n-log-n function,
+                                              f (n) = n log n,
+          that is, the function that assigns to an input n the value of n times the logarithm
+          base-two of n. This function grows a little more rapidly than the linear function and
+          a lot less rapidly than the quadratic function; therefore, we would greatly prefer an
+          algorithm with a running time that is proportional to n log n, than one with quadratic
+          running time. We will see several important algorithms that exhibit a running time
+          proportional to the n-log-n function. For example, the fastest possible algorithms
+          for sorting n arbitrary values require time proportional to n log n.
+      The Quadratic Function
+          Another function that appears often in algorithm analysis is the quadratic function,
+                                                 f (n) = n2 .
+          That is, given an input value n, the function f assigns the product of n with itself
+          (in other words, “n squared”).
+              The main reason why the quadratic function appears in the analysis of algo-
+          rithms is that there are many algorithms that have nested loops, where the inner
+          loop performs a linear number of operations and the outer loop is performed a
+          linear number of times. Thus, in such cases, the algorithm performs n · n = n2
+          operations.

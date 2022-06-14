@@ -1,0 +1,38 @@
+3.3. Asymptotic Analysis                                                                  135
+             We can improve upon the asymptotic performance with a simple observation.
+         Once inside the body of the loop over B, if selected elements a and b do not match
+         each other, it is a waste of time to iterate through all values of C looking for a
+         matching triple. An improved solution to this problem, taking advantage of this
+         observation, is presented in Code Fragment 3.6.
+       1 def disjoint2(A, B, C):
+       2   ”””Return True if there is no element common to all three lists.”””
+       3   for a in A:
+       4      for b in B:
+       5        if a == b:               # only check C if we found match from A and B
+       6           for c in C:
+       7             if a == c           # (and thus a == b == c)
+       8                return False     # we found a common value
+       9   return True                   # if we reach this, sets are disjoint
+           Code Fragment 3.6: Algorithm disjoint2 for testing three-way set disjointness.
+             In the improved version, it is not simply that we save time if we get lucky. We
+         claim that the worst-case running time for disjoint2 is O(n2 ). There are quadrat-
+         ically many pairs (a, b) to consider. However, if A and B are each sets of distinct
+         elements, there can be at most O(n) such pairs with a equal to b. Therefore, the
+         innermost loop, over C, executes at most n times.
+             To account for the overall running time, we examine the time spent executing
+         each line of code. The management of the for loop over A requires O(n) time.
+         The management of the for loop over B accounts for a total of O(n2 ) time, since
+         that loop is executed n different times. The test a == b is evaluated O(n2 ) times.
+         The rest of the time spent depends upon how many matching (a, b) pairs exist. As
+         we have noted, there are at most n such pairs, and so the management of the loop
+         over C, and the commands within the body of that loop, use at most O(n2 ) time.
+         By our standard application of Proposition 3.9, the total time spent is O(n2 ).
+         Element Uniqueness
+         A problem that is closely related to the three-way set disjointness problem is the
+         element uniqueness problem. In the former, we are given three collections and we
+         presumed that there were no duplicates within a single collection. In the element
+         uniqueness problem, we are given a single sequence S with n elements and asked
+         whether all elements of that collection are distinct from each other.
+             Our ﬁrst solution to this problem uses a straightforward iterative algorithm.
+         The unique1 function, given in Code Fragment 3.7, solves the element uniqueness
+         problem by looping through all distinct pairs of indices j < k, checking if any of

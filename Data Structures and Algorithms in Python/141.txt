@@ -1,0 +1,35 @@
+120                                                         Chapter 3. Algorithm Analysis
+      Summations
+      A notation that appears again and again in the analysis of data structures and algo-
+      rithms is the summation, which is deﬁned as follows:
+                        b
+                       ∑ f (i) = f (a) + f (a + 1) + f (a + 2) + · · · + f (b),
+                       i=a
+      where a and b are integers and a ≤ b. Summations arise in data structure and algo-
+      rithm analysis because the running times of loops naturally give rise to summations.
+          Using a summation, we can rewrite the formula of Proposition 3.3 as
+                                          n
+                                                  n(n + 1)
+                                         ∑i=          2
+                                                           .
+                                         i=1
+      Likewise, we can write a polynomial f (n) of degree d with coefﬁcients a0 , . . . , ad as
+                                                    d
+                                          f (n) = ∑ ai ni .
+                                                   i=0
+      Thus, the summation notation gives us a shorthand way of expressing sums of in-
+      creasing terms that have a regular structure.
+    The Exponential Function
+      Another function used in the analysis of algorithms is the exponential function,
+                                             f (n) = bn ,
+      where b is a positive constant, called the base, and the argument n is the exponent.
+      That is, function f (n) assigns to the input argument n the value obtained by mul-
+      tiplying the base b by itself n times. As was the case with the logarithm function,
+      the most common base for the exponential function in algorithm analysis is b = 2.
+      For example, an integer word containing n bits can represent all the nonnegative
+      integers less than 2n . If we have a loop that starts by performing one operation
+      and then doubles the number of operations performed with each iteration, then the
+      number of operations performed in the nth iteration is 2n .
+          We sometimes have other exponents besides n, however; hence, it is useful
+      for us to know a few handy rules for working with exponents. In particular, the
+      following exponent rules are quite helpful.

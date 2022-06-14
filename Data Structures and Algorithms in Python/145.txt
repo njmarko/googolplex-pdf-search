@@ -1,0 +1,29 @@
+124                                                        Chapter 3. Algorithm Analysis
+                                                                           cg(n)
+                   Running Time
+                                                                             f(n)
+                                    n0        Input Size
+      Figure 3.5: Illustrating the “big-Oh” notation. The function f (n) is O(g(n)), since
+      f (n) ≤ c · g(n) when n ≥ n0 .
+      Example 3.6: The function 8n + 5 is O(n).
+      Justiﬁcation: By the big-Oh deﬁnition, we need to ﬁnd a real constant c > 0 and
+      an integer constant n0 ≥ 1 such that 8n + 5 ≤ cn for every integer n ≥ n0 . It is easy
+      to see that a possible choice is c = 9 and n0 = 5. Indeed, this is one of inﬁnitely
+      many choices available because there is a trade-off between c and n0 . For example,
+      we could rely on constants c = 13 and n0 = 1.
+           The big-Oh notation allows us to say that a function f (n) is “less than or equal
+      to” another function g(n) up to a constant factor and in the asymptotic sense as n
+      grows toward inﬁnity. This ability comes from the fact that the deﬁnition uses “≤”
+      to compare f (n) to a g(n) times a constant, c, for the asymptotic cases when n ≥ n0 .
+      However, it is considered poor taste to say “ f (n) ≤ O(g(n)),” since the big-Oh
+      already denotes the “less-than-or-equal-to” concept. Likewise, although common,
+      it is not fully correct to say “ f (n) = O(g(n)),” with the usual understanding of the
+      “=” relation, because there is no way to make sense of the symmetric statement,
+      “O(g(n)) = f (n).” It is best to say,
+                “ f (n) is O(g(n)).”
+      Alternatively, we can say “ f (n) is order of g(n).” For the more mathematically
+      inclined, it is also correct to say, “ f (n) ∈ O(g(n)),” for the big-Oh notation, techni-
+      cally speaking, denotes a whole collection of functions. In this book, we will stick
+      to presenting big-Oh statements as “ f (n) is O(g(n)).” Even with this interpretation,
+      there is considerable freedom in how we can use arithmetic operations with the big-
+      Oh notation, and with this freedom comes a certain amount of responsibility.

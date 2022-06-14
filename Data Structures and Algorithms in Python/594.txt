@@ -1,0 +1,36 @@
+12.7. Selection                                                                                573
+       12.7.3 Analyzing Randomized Quick-Select
+           Showing that randomized quick-select runs in O(n) time requires a simple prob-
+           abilistic argument. The argument is based on the linearity of expectation, which
+           states that if X and Y are random variables and c is a number, then
+                          E(X +Y ) = E(X ) + E(Y )         and       E(cX ) = cE(X ),
+           where we use E(Z) to denote the expected value of the expression Z.
+               Let t(n) be the running time of randomized quick-select on a sequence of size n.
+           Since this algorithm depends on random events, its running time, t(n), is a random
+           variable. We want to bound E(t(n)), the expected value of t(n). Say that a recursive
+           invocation of our algorithm is “good” if it partitions S so that the size of each of L
+           and G is at most 3n/4. Clearly, a recursive call is good with probability at least 1/2.
+           Let g(n) denote the number of consecutive recursive calls we make, including the
+           present one, before we get a good one. Then we can characterize t(n) using the
+           following recurrence equation:
+                                         t(n) ≤ bn · g(n) + t(3n/4),
+           where b ≥ 1 is a constant. Applying the linearity of expectation for n > 1, we get
+                     E (t(n)) ≤ E (bn · g(n) + t(3n/4)) = bn · E (g(n)) + E (t(3n/4)) .
+           Since a recursive call is good with probability at least 1/2, and whether a recursive
+           call is good or not is independent of its parent call being good, the expected value
+           of g(n) is at most the expected number of times we must ﬂip a fair coin before it
+           comes up “heads.” That is, E(g(n)) ≤ 2. Thus, if we let T (n) be shorthand for
+           E(t(n)), then we can write the case for n > 1 as
+                                           T (n) ≤ T (3n/4) + 2bn.
+           To convert this relation into a closed form, let us iteratively apply this inequality
+           assuming n is large. So, for example, after two applications,
+                                   T (n) ≤ T ((3/4)2 n) + 2b(3/4)n + 2bn.
+           At this point, we should see that the general case is
+                                                       log4/3 n
+                                         T (n) ≤ 2bn ·    ∑      (3/4)i .
+                                                          i=0
+           In other words, the expected running time is at most 2bn times a geometric sum
+           whose base is a positive number less than 1. Thus, by Proposition 3.5, T (n) is O(n).
+           Proposition 12.7: The expected running time of randomized quick-select on a
+           sequence S of size n is O(n), assuming two elements of S can be compared in O(1)
+           time.

@@ -1,0 +1,34 @@
+14.6. Shortest Paths                                                                         661
+       14.6.2 Dijkstra’s Algorithm
+          The main idea in applying the greedy method pattern to the single-source shortest-
+          path problem is to perform a “weighted” breadth-ﬁrst search starting at the source
+          vertex s. In particular, we can use the greedy method to develop an algorithm that
+          iteratively grows a “cloud” of vertices out of s, with the vertices entering the cloud
+          in order of their distances from s. Thus, in each iteration, the next vertex chosen
+          is the vertex outside the cloud that is closest to s. The algorithm terminates when
+          no more vertices are outside the cloud (or when those outside the cloud are not
+          connected to those within the cloud), at which point we have a shortest path from
+          s to every vertex of G that is reachable from s. This approach is a simple, but
+          nevertheless powerful, example of the greedy method design pattern. Applying the
+          greedy method to the single-source, shortest-path problem, results in an algorithm
+          known as Dijkstra’s algorithm.
+          Edge Relaxation
+          Let us deﬁne a label D[v] for each vertex v in V , which we use to approximate the
+          distance in G from s to v. The meaning of these labels is that D[v] will always store
+          the length of the best path we have found so far from s to v. Initially, D[s] = 0 and
+          D[v] = ∞ for each v = s, and we deﬁne the set C, which is our “cloud” of vertices,
+          to initially be the empty set. At each iteration of the algorithm, we select a vertex
+          u not in C with smallest D[u] label, and we pull u into C. (In general, we will use
+          a priority queue to select among the vertices outside the cloud.) In the very ﬁrst
+          iteration we will, of course, pull s into C. Once a new vertex u is pulled into C, we
+          then update the label D[v] of each vertex v that is adjacent to u and is outside of
+          C, to reﬂect the fact that there may be a new and better way to get to v via u. This
+          update operation is known as a relaxation procedure, for it takes an old estimate
+          and checks if it can be improved to get closer to its true value. The speciﬁc edge
+          relaxation operation is as follows:
+                      Edge Relaxation:
+                                   if D[u] + w(u, v) < D[v] then
+                                      D[v] = D[u] + w(u, v)
+          Algorithm Description and Example
+          We give the pseudo-code for Dijkstra’s algorithm in Code Fragment 14.12, and
+          illustrate several iterations of Dijkstra’s algorithm in Figures 14.15 through 14.17.

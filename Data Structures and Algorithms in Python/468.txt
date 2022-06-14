@@ -1,0 +1,31 @@
+10.5. Sets, Multisets, and Multimaps                                                          447
+                In the next section, we will see that the above ﬁve methods sufﬁce for deriving
+           all other behaviors of a set. Those remaining behaviors can be naturally grouped as
+           follows. We begin by describing the following additional operations for removing
+           one or more elements from a set:
+                 S.remove(e): Remove element e from the set. If the set does not contain e,
+                                  raise a KeyError.
+                       S.pop( ): Remove and return an arbitrary element from the set. If the
+                                  set is empty, raise a KeyError.
+                     S.clear( ): Remove all elements from the set.
+           The next group of behaviors perform Boolean comparisons between two sets.
+                      S == T: Return True if sets S and T have identical contents.
+                       S != T: Return True if sets S and T are not equivalent.
+                      S <= T: Return True if set S is a subset of set T.
+                         S < T: Return True if set S is a proper subset of set T.
+                      S >= T: Return True if set S is a superset of set T.
+                         S > T: Return True if set S is a proper superset of set T.
+              S.isdisjoint(T): Return True if sets S and T have no common elements.
+           Finally, there exists a variety of behaviors that either update an existing set, or
+           compute a new set instance, based on classical set theory operations.
+                          S | T: Return a new set representing the union of sets S and T.
+                        S |= T: Update set S to be the union of S and set T.
+                        S & T: Return a new set representing the intersection of sets S and T.
+                      S &= T: Update set S to be the intersection of S and set T.
+                         S ˆ T: Return a new set representing the symmetric difference of sets
+                                  S and T, that is, a set of elements that are in precisely one of
+                                  S or T.
+                       S ˆ= T: Update set S to become the symmetric difference of itself and
+                                  set T.
+                         S − T: Return a new set containing elements in S but not T.
+                      S −= T: Update set S to remove all common elements with set T.

@@ -1,0 +1,43 @@
+9.3. Heaps                                                                                     377
+       1 class HeapPriorityQueue(PriorityQueueBase): # base class deﬁnes Item
+       2    ”””A min-oriented priority queue implemented with a binary heap.”””
+       3    #------------------------------ nonpublic behaviors ------------------------------
+       4    def parent(self, j):
+       5      return (j−1) // 2
+       6
+       7    def left(self, j):
+       8      return 2 j + 1
+       9
+      10    def right(self, j):
+      11      return 2 j + 2
+      12
+      13    def has left(self, j):
+      14      return self. left(j) < len(self. data)         # index beyond end of list?
+      15
+      16    def has right(self, j):
+      17      return self. right(j) < len(self. data) # index beyond end of list?
+      18
+      19    def swap(self, i, j):
+      20      ”””Swap the elements at indices i and j of array.”””
+      21      self. data[i], self. data[j] = self. data[j], self. data[i]
+      22
+      23    def upheap(self, j):
+      24      parent = self. parent(j)
+      25      if j > 0 and self. data[j] < self. data[parent]:
+      26         self. swap(j, parent)
+      27         self. upheap(parent)                        # recur at position of parent
+      28
+      29    def downheap(self, j):
+      30      if self. has left(j):
+      31         left = self. left(j)
+      32         small child = left                          # although right may be smaller
+      33         if self. has right(j):
+      34            right = self. right(j)
+      35            if self. data[right] < self. data[left]:
+      36               small child = right
+      37         if self. data[small child] < self. data[j]:
+      38            self. swap(j, small child)
+      39            self. downheap(small child)              # recur at position of small child
+          Code Fragment 9.4: An implementation of a priority queue using an array-based
+          heap (continued in Code Fragment 9.5). The extends the PriorityQueueBase class
+          from Code Fragment 9.1.

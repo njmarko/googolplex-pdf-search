@@ -1,0 +1,35 @@
+4.1. Illustrative Examples                                                                     151
+                 This function does not use any explicit loops. Repetition is provided by the
+            repeated recursive invocations of the function. There is no circularity in this deﬁni-
+            tion, because each time the function is invoked, its argument is smaller by one, and
+            when a base case is reached, no further recursive calls are made.
+                 We illustrate the execution of a recursive function using a recursion trace. Each
+            entry of the trace corresponds to a recursive call. Each new recursive function
+            call is indicated by a downward arrow to a new invocation. When the function
+            returns, an arrow showing this return is drawn and the return value may be indicated
+            alongside this arrow. An example of such a trace for the factorial function is shown
+            in Figure 4.1.
+                                                            return 4    6 = 24
+                                     factorial(4)
+                                                              return 3    2=6
+                                       factorial(3)
+                                                                return 2    1=2
+                                         factorial(2)
+                                                                  return 1    1=1
+                                           factorial(1)
+                                                                    return 1
+                                             factorial(0)
+                            Figure 4.1: A recursion trace for the call factorial(5).
+                 A recursion trace closely mirrors the programming language’s execution of the
+            recursion. In Python, each time a function (recursive or otherwise) is called, a struc-
+            ture known as an activation record or frame is created to store information about
+            the progress of that invocation of the function. This activation record includes a
+            namespace for storing the function call’s parameters and local variables (see Sec-
+            tion 1.10 for a discussion of namespaces), and information about which command
+            in the body of the function is currently executing.
+                 When the execution of a function leads to a nested function call, the execu-
+            tion of the former call is suspended and its activation record stores the place in the
+            source code at which the ﬂow of control should continue upon return of the nested
+            call. This process is used both in the standard case of one function calling a dif-
+            ferent function, or in the recursive case in which a function invokes itself. The key
+            point is that there is a different activation record for each active call.

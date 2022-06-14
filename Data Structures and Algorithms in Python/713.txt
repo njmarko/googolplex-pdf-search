@@ -1,0 +1,41 @@
+692                                                   Chapter 14. Graph Algorithms
+    C-14.58 Let G be a weighted directed graph with n vertices. Design a variation
+            of Floyd-Warshall’s algorithm for computing the lengths of the shortest
+            paths from each vertex to every other vertex in O(n3 ) time.
+    C-14.59 Design an efﬁcient algorithm for ﬁnding a longest directed path from a
+            vertex s to a vertex t of an acyclic weighted directed graph G. Specify the
+            graph representation used and any auxiliary data structures used. Also,
+            analyze the time complexity of your algorithm.
+    C-14.60 An independent set of an undirected graph G = (V, E) is a subset I of V
+            such that no two vertices in I are adjacent. That is, if u and v are in I, then
+            (u, v) is not in E. A maximal independent set M is an independent set
+            such that, if we were to add any additional vertex to M, then it would not
+            be independent any more. Every graph has a maximal independent set.
+            (Can you see this? This question is not part of the exercise, but it is worth
+            thinking about.) Give an efﬁcient algorithm that computes a maximal
+            independent set for a graph G. What is this method’s running time?
+    C-14.61 Give an example of an n-vertex simple graph G that causes Dijkstra’s
+            algorithm to run in Ω(n2 log n) time when its implemented with a heap.
+    C-14.62 Give an example of a weighted directed graph G       with negative-weight
+            edges, but no negative-weight cycle, such that Dijkstra’s algorithm incor-
+            rectly computes the shortest-path distances from some start vertex s.
+    C-14.63 Consider the following greedy strategy for ﬁnding a shortest path from
+            vertex start to vertex goal in a given connected graph.
+               1: Initialize path to start.
+               2: Initialize set visited to {start}.
+               3: If start=goal, return path and exit. Otherwise, continue.
+               4: Find the edge (start,v) of minimum weight such that v is adjacent to
+                  start and v is not in visited.
+               5: Add v to path.
+               6: Add v to visited.
+               7: Set start equal to v and go to step 3.
+            Does this greedy strategy always ﬁnd a shortest path from start to goal?
+            Either explain intuitively why it works, or give a counterexample.
+    C-14.64 Our implementation of shortest path lengths in Code Fragment 14.13 re-
+            lies on use of “inﬁnity” as a numeric value, to represent the distance bound
+            for vertices that are not (yet) known to be reachable from the source.
+            Reimplement that function without such a sentinel, so that vertices, other
+            than the source, are not added to the priority queue until it is evident that
+            they are reachable.
+    C-14.65 Show that if all the weights in a connected weighted graph G are distinct,
+            then there is exactly one minimum spanning tree for G.

@@ -1,0 +1,41 @@
+394                                                          Chapter 9. Priority Queues
+    25   def add(self, key, value):
+    26      ”””Add a key-value pair.”””
+    27      token = self.Locator(key, value, len(self. data)) # initiaize locator index
+    28      self. data.append(token)
+    29      self. upheap(len(self. data) − 1)
+    30      return token
+    31
+    32   def update(self, loc, newkey, newval):
+    33      ”””Update the key and value for the entry identiﬁed by Locator loc.”””
+    34      j = loc. index
+    35      if not (0 <= j < len(self) and self. data[j] is loc):
+    36         raise ValueError( Invalid locator )
+    37      loc. key = newkey
+    38      loc. value = newval
+    39      self. bubble(j)
+    40
+    41   def remove(self, loc):
+    42      ”””Remove and return the (k,v) pair identiﬁed by Locator loc.”””
+    43      j = loc. index
+    44      if not (0 <= j < len(self) and self. data[j] is loc):
+    45         raise ValueError( Invalid locator )
+    46      if j == len(self) − 1:                      # item at last position
+    47         self. data.pop( )                        # just remove it
+    48      else:
+    49         self. swap(j, len(self)−1)               # swap item to the last position
+    50         self. data.pop( )                        # remove it from the list
+    51         self. bubble(j)                          # ﬁx item displaced by the swap
+    52      return (loc. key, loc. value)
+       Code Fragment 9.9: An implementation of an adaptable priority queue (continued
+       from Code Fragment 9.8).
+                                             Operation Running Time
+                         len(P), P.is empty( ), P.min( ) O(1)
+                                             P.add(k,v) O(log n)∗
+                                    P.update(loc, k, v) O(log n)
+                                         P.remove(loc) O(log n)∗
+                                       P.remove min( ) O(log n)∗
+                         ∗ amortized with dynamic array
+       Table 9.4: Running times of the methods of an adaptable priority queue, P, of size n,
+       realized by means of our array-based heap representation. The space requirement
+       is O(n).

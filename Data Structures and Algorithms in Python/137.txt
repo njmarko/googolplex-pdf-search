@@ -1,0 +1,37 @@
+116                                                      Chapter 3. Algorithm Analysis
+    We note that most handheld calculators have a button marked LOG, but this is
+    typically for calculating the logarithm base-10, not base-two.
+         Computing the logarithm function exactly for any integer n involves the use
+    of calculus, but we can use an approximation that is good enough for our pur-
+    poses without calculus. In particular, we can easily compute the smallest integer
+    greater than or equal to logb n (its so-called ceiling, logb n). For positive integer,
+    n, this value is equal to the number of times we can divide n by b before we get
+    a number less than or equal to 1. For example, the evaluation of log3 27 is 3,
+    because ((27/3)/3)/3 = 1. Likewise, log4 64 is 3, because ((64/4)/4)/4 = 1,
+    and log2 12 is 4, because (((12/2)/2)/2)/2 = 0.75 ≤ 1.
+         The following proposition describes several important identities that involve
+    logarithms for any base greater than 1.
+    Proposition 3.1 (Logarithm Rules): Given real numbers a > 0, b > 1, c > 0
+    and d > 1, we have:
+        1. logb (ac) = logb a + logb c
+        2. logb (a/c) = logb a − logb c
+        3. logb (ac ) = c logb a
+        4. logb a = logd a/ logd b
+        5. blogd a = alogd b
+         By convention, the unparenthesized notation lognc denotes the value log(nc ).
+    We use a notational shorthand, logc n, to denote the quantity, (log n)c , in which the
+    result of the logarithm is raised to a power.
+         The above identities can be derived from converse rules for exponentiation that
+    we will present on page 121. We illustrate these identities with a few examples.
+    Example 3.2: We demonstrate below some interesting applications of the loga-
+    rithm rules from Proposition 3.1 (using the usual convention that the base of a
+    logarithm is 2 if it is omitted).
+         • log(2n) = log 2 + log n = 1 + log n, by rule 1
+         • log(n/2) = log n − log 2 = log n − 1, by rule 2
+         • log n3 = 3 log n, by rule 3
+         • log 2n = n log 2 = n · 1 = n, by rule 3
+         • log4 n = (log n)/ log 4 = (log n)/2, by rule 4
+         • 2log n = nlog 2 = n1 = n, by rule 5.
+    As a practical matter, we note that rule 4 gives us a way to compute the base-two
+    logarithm on a calculator that has a base-10 logarithm button, LOG, for
+                                    log2 n = LOG n / LOG 2.

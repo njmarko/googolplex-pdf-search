@@ -1,0 +1,41 @@
+Contents                                                                               xv
+                 8.4.1 Preorder and Postorder Traversals of General Trees       . . . 328
+                 8.4.2 Breadth-First Tree Traversal . . . . . . . . . . . .     . . . 330
+                 8.4.3 Inorder Traversal of a Binary Tree . . . . . . . . .     . . . 331
+                 8.4.4 Implementing Tree Traversals in Python . . . . . .       . . . 333
+                 8.4.5 Applications of Tree Traversals . . . . . . . . . . .    . . . 337
+                 8.4.6 Euler Tours and the Template Method Pattern  .          . . . 341
+            8.5 Case Study: An Expression Tree . . . . . . . . . . . . .        . . . 348
+            8.6 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . .   . . . 352
+         9 Priority Queues                                                            362
+            9.1 The Priority Queue Abstract Data Type . . . . . . .           . . . . 363
+                 9.1.1 Priorities . . . . . . . . . . . . . . . . . . . . . . . . . . 363
+                 9.1.2 The Priority Queue ADT . . . . . . . . . . . . .       . . . . 364
+            9.2 Implementing a Priority Queue . . . . . . . . . . . .         . . . . 365
+                 9.2.1 The Composition Design Pattern . . . . . . . . .       . . . . 365
+                 9.2.2 Implementation with an Unsorted List . . . . . .       . . . . 366
+                 9.2.3 Implementation with a Sorted List . . . . . . . .      . . . . 368
+            9.3 Heaps . . . . . . . . . . . . . . . . . . . . . . . . . . .   . . . . 370
+                 9.3.1 The Heap Data Structure . . . . . . . . . . . . .      . . . . 370
+                 9.3.2 Implementing a Priority Queue with a Heap . . .        . . . . 372
+                 9.3.3 Array-Based Representation of a Complete Binary        Tree  . 376
+                 9.3.4 Python Heap Implementation . . . . . . . . . . .       . . . . 376
+                 9.3.5 Analysis of a Heap-Based Priority Queue . . . . .      . . . . 379
+                 9.3.6 Bottom-Up Heap Construction  . . . . . . . . .        . . . . 380
+                 9.3.7 Python’s heapq Module . . . . . . . . . . . . . .      . . . . 384
+            9.4 Sorting with a Priority Queue . . . . . . . . . . . . .       . . . . 385
+                 9.4.1 Selection-Sort and Insertion-Sort . . . . . . . . .    . . . . 386
+                 9.4.2 Heap-Sort . . . . . . . . . . . . . . . . . . . . .    . . . . 388
+            9.5 Adaptable Priority Queues . . . . . . . . . . . . . . .       . . . . 390
+                 9.5.1 Locators . . . . . . . . . . . . . . . . . . . . . .   . . . . 390
+                 9.5.2 Implementing an Adaptable Priority Queue . . .         . . . . 391
+            9.6 Exercises . . . . . . . . . . . . . . . . . . . . . . . . .   . . . . 395
+         10 Maps, Hash Tables, and Skip Lists                                         401
+            10.1 Maps and Dictionaries . . . . . . . . . . . . . . . .      . . . . . 402
+                 10.1.1 The Map ADT . . . . . . . . . . . . . . . . .       . . . . . 403
+                 10.1.2 Application: Counting Word Frequencies . . . .      . . . . . 405
+                 10.1.3 Python’s MutableMapping Abstract Base Class         . . . . . 406
+                 10.1.4 Our MapBase Class . . . . . . . . . . . . . . .     . . . . . 407
+                 10.1.5 Simple Unsorted Map Implementation . . . . .        . . . . . 408
+            10.2 Hash Tables . . . . . . . . . . . . . . . . . . . . . .    . . . . . 410
+                 10.2.1 Hash Functions . . . . . . . . . . . . . . . . .    . . . . . 411

@@ -1,0 +1,48 @@
+Index                                                                                747
+            tree, 669                                 linked-list implementation, 261–263
+      shuﬄe function, 50, 225                   Stein, Clifford, 535, 696
+      sieve algorithm, 454                      Stephen, Graham, 618
+      signature, 23                             Stirling’s approximation, 727
+      simultaneous assignment, 45, 91           stop words, 606, 617
+      singly linked list, 256–260               StopIteration, 33, 39, 41, 79
+      skip list, 437–445                        str class, 7, 9, 10, 208–210, 721–724
+            analysis, 443–445                   strict weak order, 385
+            insertion, 440                      string, see also str class
+            removal, 442–443                          null, 583
+            searching, 439–440                        preﬁx, 583
+            update operations, 440–443                sufﬁx, 583
+      Sleator, Daniel, 535                      strongly connected components, 646
+      slicing notation, 14–15, 188, 203, 583    strongly connected graph, 623
+      sorted function, 6, 23, 28, 29, 136, 537, subclass, 82
+                  569                           subgraph, 623
+      sorted map, 427–436                       subproblem overlap, 597
+            abstract data type, 427             subsequence, 597
+            search table, 428–433               subtree, 302
+      SortedPriorityQueue class, 368–369        sufﬁx, 583
+      SortedTableMap class, 429–433             sum function, 29, 35
+      sorting, 214, 385–386, 537–566            summation, 120
+            bubble-sort, 297                          geometric, 121, 728
+            bucket-sort, 564–565                      telescoping, 727
+            external-memory, 715–716            Summerﬁeld, Mark, 55
+            heap-sort, 384, 388–389             super function, 84
+            in-place, 389, 559                  superclass, 82
+            insertion-sort, 214–215, 285, 387   Sussman, Gerald, 182
+            key, 385                            Sussman, Julie, 182
+            lower bound, 562–563                sys module, 49, 190, 192, 701
+            merge-sort, 538–550                 SystemExit, 83, 303
+            priority-queue, 385–386
+            quick-sort, 550–561                 Tamassia, Roberto, 361, 696
+            radix-sort, 565–566                 Tardos, Éva, 580
+            selection-sort, 386–387             Tarjan, Robert, 361, 535, 696
+            stable, 565                         telescoping sum, 727
+            Tim-sort, 568                       template method pattern, 93, 342, 406,
+      source code, 2                                        448, 478
+      space usage, 110                          testing, 62
+      spanning tree, 623, 638, 642, 643, 670          unit, 49
+      sparse array, 298                         text compression, 601–602
+      splay tree, 478, 490–501                  three-way set disjointness, 134–135
+      split function of str class, 724          Tic-Tac-Toe, 221–223, 330, 361
+      stable sorting, 565                       Tim-sort, 568
+      stack, 229–238                            time module, 49, 111
+            abstract data type, 230–231         Tollis, Ioannis, 361, 696
+            array implementation, 231–234       topological ordering, 655–657

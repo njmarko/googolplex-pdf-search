@@ -1,0 +1,32 @@
+730                                          Appendix B. Useful Mathematical Facts
+    Proposition B.19 (The Linearity of Expectation): Let X and Y be two ran-
+    dom variables and let c be a number. Then
+                   E(X +Y ) = E(X ) + E(Y )       and     E(cX ) = cE(X ).
+    Example B.20: Let X be a random variable that assigns the outcome of the roll
+    of two fair dice to the sum of the number of dots showing. Then E(X ) = 7.
+    Justiﬁcation: To justify this claim, let X1 and X2 be random variables corre-
+    sponding to the number of dots on each die. Thus, X1 = X2 (i.e., they are two
+    instances of the same function) and E(X ) = E(X1 + X2 ) = E(X1 ) + E(X2 ). Each
+    outcome of the roll of a fair die occurs with probability 1/6. Thus,
+                                     1 2 3 4 5 6 7
+                            E(Xi ) =   + + + + + = ,
+                                     6 6 6 6 6 6 2
+    for i = 1, 2. Therefore, E(X ) = 7.
+        Two random variables X and Y are independent if
+                               Pr(X = x|Y = y) = Pr(X = x),
+    for all real numbers x and y.
+    Proposition B.21: If two random variables X and Y are independent, then
+                                     E(XY ) = E(X )E(Y ).
+    Example B.22: Let X be a random variable that assigns the outcome of a roll of
+    two fair dice to the product of the number of dots showing. Then E(X ) = 49/4.
+    Justiﬁcation: Let X1 and X2 be random variables denoting the number of dots
+    on each die. The variables X1 and X2 are clearly independent; hence
+                     E(X ) = E(X1 X2 ) = E(X1 )E(X2 ) = (7/2)2 = 49/4.
+        The following bound and corollaries that follow from it are known as Chernoff
+    bounds.
+    Proposition B.23: Let X be the sum of a ﬁnite number of independent 0/1 ran-
+    dom variables and let μ > 0 be the expected value of X . Then, for δ > 0,
+                                                              μ
+                                                       eδ
+                            Pr(X > (1 + δ)μ) <                    .
+                                                  (1 + δ)(1+δ)

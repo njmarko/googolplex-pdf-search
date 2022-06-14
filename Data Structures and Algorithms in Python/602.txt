@@ -1,0 +1,21 @@
+Chapter
+ 13                                                  Text Processing
+Contents
+    13.1 Abundance of Digitized Text . . . . . . . .       . . . .  . . . . .  582
+         13.1.1 Notations for Strings and the Python str   Class . . . . . . . 583
+    13.2 Pattern-Matching Algorithms . . . . . . . .       . . . .  . . . . .  584
+         13.2.1 Brute Force . . . . . . . . . . . . . . .  . . . . . . . . . . 584
+         13.2.2 The Boyer-Moore Algorithm . . . . . .      . . . . . . . . . . 586
+         13.2.3 The Knuth-Morris-Pratt Algorithm . . .     . . . . . . . . . . 590
+    13.3 Dynamic Programming . . . . . . . . . . .         . . . .  . . . . .  594
+         13.3.1 Matrix Chain-Product . . . . . . . . . .   . . . . . . . . . . 594
+         13.3.2 DNA and Text Sequence Alignment . .        . . . . . . . . . . 597
+    13.4 Text Compression and the Greedy Method            . . . .  . . . . .  601
+         13.4.1 The Huﬀman Coding Algorithm . . . .        . . . . . . . . . . 602
+         13.4.2 The Greedy Method . . . . . . . . . . .    . . . . . . . . . . 603
+    13.5 Tries . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . . .  604
+         13.5.1 Standard Tries . . . . . . . . . . . . . . . . . . . . . . . . 604
+         13.5.2 Compressed Tries . . . . . . . . . . . .   . . . . . . . . . . 608
+         13.5.3 Suﬃx Tries . . . . . . . . . . . . . . .   . . . . . . . . . . 610
+         13.5.4 Search Engine Indexing . . . . . . . . .   . . . . . . . . . . 612
+    13.6 Exercises . . . . . . . . . . . . . . . . . . .   . . . .  . . . . .  613

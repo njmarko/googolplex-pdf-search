@@ -1,0 +1,39 @@
+6.1. Stacks                                                                                  235
+       6.1.3 Reversing Data Using a Stack
+          As a consequence of the LIFO protocol, a stack can be used as a general tool to
+          reverse a data sequence. For example, if the values 1, 2, and 3 are pushed onto a
+          stack in that order, they will be popped from the stack in the order 3, 2, and then 1.
+              This idea can be applied in a variety of settings. For example, we might wish
+          to print lines of a ﬁle in reverse order in order to display a data set in decreasing
+          order rather than increasing order. This can be accomplished by reading each line
+          and pushing it onto a stack, and then writing the lines in the order they are popped.
+          An implementation of such a process is given in Code Fragment 6.3.
+        1 def reverse ﬁle(ﬁlename):
+        2   ”””Overwrite given ﬁle with its contents line-by-line reversed.”””
+        3   S = ArrayStack( )
+        4   original = open(ﬁlename)
+        5   for line in original:
+        6      S.push(line.rstrip( \n ))          # we will re-insert newlines when writing
+        7   original.close( )
+        8
+        9   # now we overwrite with contents in LIFO order
+      10    output = open(ﬁlename, w )            # reopening ﬁle overwrites original
+      11    while not S.is empty( ):
+      12       output.write(S.pop( ) + \n ) # re-insert newline characters
+      13    output.close( )
+                 Code Fragment 6.3: A function that reverses the order of lines in a ﬁle.
+              One technical detail worth noting is that we intentionally strip trailing newlines
+          from lines as they are read, and then re-insert newlines after each line when writing
+          the resulting ﬁle. Our reason for doing this is to handle a special case in which the
+          original ﬁle does not have a trailing newline for the ﬁnal line. If we exactly echoed
+          the lines read from the ﬁle in reverse order, then the original last line would be fol-
+          lowed (without newline) by the original second-to-last line. In our implementation,
+          we ensure that there will be a separating newline in the result.
+              The idea of using a stack to reverse a data set can be applied to other types of
+          sequences. For example, Exercise R-6.5 explores the use of a stack to provide yet
+          another solution for reversing the contents of a Python list (a recursive solution for
+          this goal was discussed in Section 4.4.1). A more challenging task is to reverse
+          the order in which elements are stored within a stack. If we were to move them
+          from one stack to another, they would be reversed, but if we were to then replace
+          them into the original stack, they would be reversed again, thereby reverting to their
+          original order. Exercise C-6.18 explores a solution for this task.

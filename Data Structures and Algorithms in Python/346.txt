@@ -1,0 +1,31 @@
+8.3. Implementing Trees                                                                        325
+       8.3.2 Array-Based Representation of a Binary Tree
+          An alternative representation of a binary tree T is based on a way of numbering the
+          positions of T . For every position p of T , let f (p) be the integer deﬁned as follows.
+              • If p is the root of T , then f (p) = 0.
+              • If p is the left child of position q, then f (p) = 2 f (q) + 1.
+              • If p is the right child of position q, then f (p) = 2 f (q) + 2.
+          The numbering function f is known as a level numbering of the positions in a
+          binary tree T , for it numbers the positions on each level of T in increasing order
+          from left to right. (See Figure 8.12.) Note well that the level numbering is based
+          on potential positions within the tree, not actual positions of a given tree, so they
+          are not necessarily consecutive. For example, in Figure 8.12(b), there are no nodes
+          with level numbering 13 or 14, because the node with level numbering 6 has no
+          children.
+                                                            0
+                                             1                               2
+                  (a)
+                                     3               4               5               6
+                                7         8     9       10     11        12     13      14
+                                            ...                             ...
+                                                                       0
+                                                                      −
+                                                  1                                       2
+                                                  /                                       +
+                                     3                        4                5            6
+                  (b)               ×                        +                ×             6
+                              7         8              9          10     11         12
+                              +         3              −          2       3         −
+                          15      16                19     20                    25    26
+                           3      1                 9      5                     7     4
+             Figure 8.12: Binary tree level numbering: (a) general scheme; (b) an example.

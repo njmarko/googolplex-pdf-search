@@ -1,0 +1,29 @@
+Appendix B. Useful Mathematical Facts                                                              731
+         Useful Mathematical Techniques
+         To compare the growth rates of different functions, it is sometimes helpful to apply
+         the following rule.
+         Proposition B.24 (L’Hôpital’s Rule): If we have limn→∞ f (n) = +∞ and we
+         have limn→∞ g(n) = +∞, then limn→∞ f (n)/g(n) = limn→∞ f  (n)/g (n), where
+          f  (n) and g (n) respectively denote the derivatives of f (n) and g(n).
+                In deriving an upper or lower bound for a summation, it is often useful to split
+         a summation as follows:
+                                          n             j          n
+                                         ∑    f (i) = ∑ f (i) +   ∑    f (i).
+                                         i=1          i=1       i= j+1
+                Another useful technique is to bound a sum by an integral. If f is a nonde-
+         creasing function, then, assuming the following terms are deﬁned,
+                                   Z b                   b       Z b+1
+                                          f (x) dx ≤ ∑ f (i) ≤           f (x) dx.
+                                     a−1               i=a        a
+                There is a general form of recurrence relation that arises in the analysis of
+         divide-and-conquer algorithms:
+                                             T (n) = aT (n/b) + f (n),
+         for constants a ≥ 1 and b > 1.
+         Proposition B.25: Let T (n) be deﬁned as above. Then
+               1. If f (n) is O(nlogb a−ε ), for some constant ε > 0, then T (n) is Θ(nlogb a ).
+               2. If f (n) is Θ(nlogb a logk n), for a ﬁxed nonnegative integer k ≥ 0, then T (n) is
+                  Θ(nlogb a logk+1 n).
+               3. If f (n) is Ω(nlogb a+ε ), for some constant ε > 0, and if a f (n/b) ≤ c f (n), then
+                  T (n) is Θ( f (n)).
+         This proposition is known as the master method for characterizing divide-and-
+         conquer recurrence relations asymptotically.

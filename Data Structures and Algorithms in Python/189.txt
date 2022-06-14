@@ -1,0 +1,39 @@
+168                                                                 Chapter 4. Recursion
+    4.3.1 Maximum Recursive Depth in Python
+       Another danger in the misuse of recursion is known as inﬁnite recursion. If each
+       recursive call makes another recursive call, without ever reaching a base case, then
+       we have an inﬁnite series of such calls. This is a fatal error. An inﬁnite recursion
+       can quickly swamp computing resources, not only due to rapid use of the CPU,
+       but because each successive call creates an activation record requiring additional
+       memory. A blatant example of an ill-formed recursion is the following:
+       def ﬁb(n):
+         return ﬁb(n)                           # ﬁb(n) equals ﬁb(n)
+       However, there are far more subtle errors that can lead to an inﬁnite recursion.
+       Revisiting our implementation of binary search in Code Fragment 4.3, in the ﬁnal
+       case (line 17) we make a recursive call on the right portion of the sequence, in
+       particular going from index mid+1 to high. Had that line instead been written as
+              return binary search(data, target, mid, high)         # note the use of mid
+       this could result in an inﬁnite recursion. In particular, when searching a range of
+       two elements, it becomes possible to make a recursive call on the identical range.
+           A programmer should ensure that each recursive call is in some way progress-
+       ing toward a base case (for example, by having a parameter value that decreases
+       with each call). However, to combat against inﬁnite recursions, the designers of
+       Python made an intentional decision to limit the overall number of function acti-
+       vations that can be simultaneously active. The precise value of this limit depends
+       upon the Python distribution, but a typical default value is 1000. If this limit is
+       reached, the Python interpreter raises a RuntimeError with a message, maximum
+       recursion depth exceeded.
+           For many legitimate applications of recursion, a limit of 1000 nested function
+       calls sufﬁces. For example, our binary search function (Section 4.1.3) has O(log n)
+       recursive depth, and so for the default recursive limit to be reached, there would
+       need to be 21000 elements (far, far more than the estimated number of atoms in the
+       universe). However, in the next section we discuss several algorithms that have
+       recursive depth proportional to n. Python’s artiﬁcial limit on the recursive depth
+       could disrupt such otherwise legitimate computations.
+           Fortunately, the Python interpreter can be dynamically reconﬁgured to change
+       the default recursive limit. This is done through use of a module named sys, which
+       supports a getrecursionlimit function and a setrecursionlimit. Sample usage of
+       those functions is demonstrated as follows:
+       import sys
+       old = sys.getrecursionlimit( )         # perhaps 1000 is typical
+       sys.setrecursionlimit(1000000)         # change to allow 1 million nested calls

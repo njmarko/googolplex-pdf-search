@@ -1,0 +1,37 @@
+704                                   Chapter 15. Memory Management and B-Trees
+    that chapter. Interestingly, early programming languages, such as Cobol and For-
+    tran, did not originally use call stacks to implement function calls. But because of
+    the elegance and efﬁciency that recursion allows, almost all modern programming
+    languages utilize a call stack for function calls, including the current versions of
+    classic languages like Cobol and Fortran.
+        Each box of a recursive trace corresponds to an activation record that is placed
+    on the call stack during the execution of a recursive function. At any point in
+    time, the content of the call stack corresponds to the chain of boxes from the initial
+    function invocation to the current one. To better illustrate how a call stack is used
+    by recursive functions, we refer back to the Python implementation of the classic
+    recursive deﬁnition of the factorial function,
+                                   n! = n(n − 1)(n − 2) · · · 1,
+    with the code originally given in Code Fragment 4.1, and the recursive trace in
+    Figure 4.1. The ﬁrst time we call factorial, its activation record includes a name-
+    space storing the parameter value n. The function recursively calls itself to com-
+    pute (n − 1)!, causing a new activation record, with its own namespace and param-
+    eter, to be pushed onto the call stack. In turn, this recursive invocation calls itself to
+    compute (n − 2)!, and so on. The chain of recursive invocations, and thus the call
+    stack, grows up to size n + 1, with the most deeply nested call being factorial(0),
+    which returns 1 without any further recursion. The run-time stack allows several
+    invocations of the factorial function to exist simultaneously. Each has an activation
+    record that stores the value of its parameter, and eventually the value to be returned.
+    When the ﬁrst recursive call eventually terminates, it returns (n − 1)!, which is then
+    multiplied by n to compute n! for the original call of the factorial method.
+    The Operand Stack
+    Interestingly, there is actually another place where the Python interpreter uses a
+    stack. Arithmetic expressions, such as ((a + b) ∗ (c + d))/e, are evaluated by the
+    interpreter using an operand stack. In Section 8.5 we described how to evaluate an
+    arithmetic expression using a postorder traversal of an explicit expression tree. We
+    described that algorithm in a recursive way; however, this recursive description can
+    be simulated using a nonrecursive process that maintains an explicit operand stack.
+    A simple binary operation, such as a + b, is computed by pushing a on the stack,
+    pushing b on the stack, and then calling an instruction that pops the top two items
+    from the stack, performs the binary operation on them, and pushes the result back
+    onto the stack. Likewise, instructions for writing and reading elements to and from
+    memory involve the use of pop and push methods for the operand stack.

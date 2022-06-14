@@ -1,0 +1,35 @@
+316                                                                   Chapter 8. Trees
+    Relating Internal Nodes to External Nodes in a Proper Binary Tree
+    In addition to the earlier binary tree properties, the following relationship exists
+    between the number of internal nodes and external nodes in a proper binary tree.
+    Proposition 8.9: In a nonempty proper binary tree T , with nE external nodes and
+    nI internal nodes, we have nE = nI + 1.
+    Justiﬁcation: We justify this proposition by removing nodes from T and divid-
+    ing them up into two “piles,” an internal-node pile and an external-node pile, until
+    T becomes empty. The piles are initially empty. By the end, we will show that the
+    external-node pile has one more node than the internal-node pile. We consider two
+    cases:
+    Case 1: If T has only one node v, we remove v and place it on the external-node
+            pile. Thus, the external-node pile has one node and the internal-node pile is
+            empty.
+    Case 2: Otherwise (T has more than one node), we remove from T an (arbitrary)
+            external node w and its parent v, which is an internal node. We place w on
+            the external-node pile and v on the internal-node pile. If v has a parent u,
+            then we reconnect u with the former sibling z of w, as shown in Figure 8.10.
+            This operation, removes one internal node and one external node, and leaves
+            the tree being a proper binary tree.
+            Repeating this operation, we eventually are left with a ﬁnal tree consisting
+            of a single node. Note that the same number of external and internal nodes
+            have been removed and placed on their respective piles by the sequence of
+            operations leading to this ﬁnal tree. Now, we remove the node of the ﬁnal
+            tree and we place it on the external-node pile. Thus, the the external-node
+            pile has one more node than the internal-node pile.
+                      u                           u
+              v                                                           u
+          z        w                    z                           z
+                     (a)                         (b)                        (c)
+    Figure 8.10: Operation that removes an external node and its parent node, used in
+    the justiﬁcation of Proposition 8.9.
+        Note that the above relationship does not hold, in general, for improper binary
+    trees and nonbinary trees, although there are other interesting relationships that do
+    hold. (See Exercises C-8.32 through C-8.34.)

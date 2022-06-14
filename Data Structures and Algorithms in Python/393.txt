@@ -1,0 +1,34 @@
+372                                                            Chapter 9. Priority Queues
+    9.3.2 Implementing a Priority Queue with a Heap
+       Proposition 9.2 has an important consequence, for it implies that if we can perform
+       update operations on a heap in time proportional to its height, then those opera-
+       tions will run in logarithmic time. Let us therefore turn to the problem of how to
+       efﬁciently perform various priority queue methods using a heap.
+           We will use the composition pattern from Section 9.2.1 to store key-value pairs
+       as items in the heap. The len and is empty methods can be implemented based
+       on examination of the tree, and the min operation is equally trivial because the
+       heap property assures that the element at the root of the tree has a minimum key.
+       The interesting algorithms are those for implementing the add and remove min
+       methods.
+       Adding an Item to the Heap
+       Let us consider how to perform add(k,v) on a priority queue implemented with a
+       heap T . We store the pair (k, v) as an item at a new node of the tree. To maintain
+       the complete binary tree property, that new node should be placed at a position p
+       just beyond the rightmost node at the bottom level of the tree, or as the leftmost
+       position of a new level, if the bottom level is already full (or if the heap is empty).
+       Up-Heap Bubbling After an Insertion
+       After this action, the tree T is complete, but it may violate the heap-order property.
+       Hence, unless position p is the root of T (that is, the priority queue was empty
+       before the insertion), we compare the key at position p to that of p’s parent, which
+       we denote as q. If key k p ≥ kq , the heap-order property is satisﬁed and the algorithm
+       terminates. If instead k p < kq , then we need to restore the heap-order property,
+       which can be locally achieved by swapping the entries stored at positions p and q.
+       (See Figure 9.2c and d.) This swap causes the new item to move up one level.
+       Again, the heap-order property may be violated, so we repeat the process, going up
+       in T until no violation of the heap-order property occurs. (See Figure 9.2e and h.)
+           The upward movement of the newly inserted entry by means of swaps is con-
+       ventionally called up-heap bubbling. A swap either resolves the violation of the
+       heap-order property or propagates it one level up in the heap. In the worst case, up-
+       heap bubbling causes the new entry to move all the way up to the root of heap T .
+       Thus, in the worst case, the number of swaps performed in the execution of method
+       add is equal to the height of T . By Proposition 9.2, that bound is log n.

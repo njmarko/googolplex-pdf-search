@@ -1,0 +1,41 @@
+14.5. Directed Acyclic Graphs                                                             657
+       1 def topological sort(g):
+       2     ”””Return a list of verticies of directed acyclic graph g in topological order.
+       3
+       4     If graph g has a cycle, the result will be incomplete.
+       5     ”””
+       6     topo = [ ]                # a list of vertices placed in topological order
+       7     ready = [ ]               # list of vertices that have no remaining constraints
+       8     incount = { }             # keep track of in-degree for each vertex
+       9     for u in g.vertices( ):
+      10        incount[u] = g.degree(u, False)        # parameter requests incoming degree
+      11        if incount[u] == 0:                    # if u has no incoming edges,
+      12           ready.append(u)                     # it is free of constraints
+      13     while len(ready) > 0:
+      14        u = ready.pop( )                       # u is free of constraints
+      15        topo.append(u)                         # add u to the topological order
+      16        for e in g.incident edges(u):          # consider all outgoing neighbors of u
+      17           v = e.opposite(u)
+      18           incount[v] −= 1                     # v has one less constraint without u
+      19           if incount[v] == 0:
+      20              ready.append(v)
+      21     return topo
+          Code Fragment 14.11: Python implementation for the topological sorting algorithm.
+          (We show an example execution of this algorithm in Figure 14.13.)
+          Performance of Topological Sorting
+          Proposition 14.22: Let G     be a directed graph with n vertices and m edges, using
+          an adjacency list representation. The topological sorting algorithm runs in O(n+m)
+          time using O(n) auxiliary space, and either computes a topological ordering of G   
+                                                                   
+          or fails to include some vertices, which indicates that G has a directed cycle.
+          Justiﬁcation: The initial recording of the n in-degrees uses O(n) time based
+          on the degree method. Say that a vertex u is visited by the topological sorting al-
+          gorithm when u is removed from the ready list. A vertex u can be visited only
+          when incount(u) is 0, which implies that all its predecessors (vertices with outgo-
+          ing edges into u) were previously visited. As a consequence, any vertex that is on
+          a directed cycle will never be visited, and any other vertex will be visited exactly
+          once. The algorithm traverses all the outgoing edges of each visited vertex once, so
+          its running time is proportional to the number of outgoing edges of the visited ver-
+          tices. In accordance with Proposition 14.9, the running time is (n + m). Regarding
+          the space usage, observe that containers topo, ready, and incount have at most one
+          entry per vertex, and therefore use O(n) space.

@@ -1,0 +1,43 @@
+10.5. Sets, Multisets, and Multimaps                                                       451
+       1 class MultiMap:
+       2     ”””A multimap class built upon use of an underlying map for storage.”””
+       3      MapType = dict                     # Map type; can be redeﬁned by subclass
+       4
+       5     def init (self):
+       6       ”””Create a new empty multimap instance.”””
+       7       self. map = self. MapType( )                # create map instance for storage
+       8       self. n = 0
+       9
+      10     def iter (self):
+      11       ”””Iterate through all (k,v) pairs in multimap.”””
+      12       for k,secondary in self. map.items( ):
+      13          for v in secondary:
+      14             yield (k,v)
+      15
+      16     def add(self, k, v):
+      17       ”””Add pair (k,v) to multimap.”””
+      18       container = self. map.setdefault(k, [ ])        # create empty list, if needed
+      19       container.append(v)
+      20       self. n += 1
+      21
+      22     def pop(self, k):
+      23       ”””Remove and return arbitrary (k,v) with key k (or raise KeyError).”””
+      24       secondary = self. map[k]                        # may raise KeyError
+      25       v = secondary.pop( )
+      26       if len(secondary) == 0:
+      27          del self. map[k]                             # no pairs left
+      28       self. n −= 1
+      29       return (k, v)
+      30
+      31     def ﬁnd(self, k):
+      32       ”””Return arbitrary (k,v) pair with given key (or raise KeyError).”””
+      33       secondary = self. map[k]                        # may raise KeyError
+      34       return (k, secondary[0])
+      35
+      36     def ﬁnd all(self, k):
+      37       ”””Generate iteration of all (k,v) pairs with given key.”””
+      38       secondary = self. map.get(k, [ ])               # empty list, by default
+      39       for v in secondary:
+      40          yield (k,v)
+           Code Fragment 10.17: An implementation of a MultiMap using a dict for storage.
+           The     len    method, which returns self. n, is omitted from this listing.

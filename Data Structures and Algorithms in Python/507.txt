@@ -1,0 +1,43 @@
+486                                                                      Chapter 11. Search Trees
+           Deletion
+           Recall that a deletion from a regular binary search tree results in the structural
+           removal of a node having either zero or one children. Such a change may violate
+           the height-balance property in an AVL tree. In particular, if position p represents
+           the parent of the removed node in tree T , there may be an unbalanced node on the
+           path from p to the root of T . (See Figure 11.14a.) In fact, there can be at most one
+           such unbalanced node. (The justiﬁcation of this fact is left as Exercise C-11.49.)
+                     4                                                          4
+                    44 z                                                       62 y
+       1                            3                           3                        2
+      17                           62 y                      z 44                        78 x
+                            2              2            1             2                         1
+    0    0   32            50             78 x          17            50                        88
+                      1          1             1                  1         1       0
+      T1
+                     48         54      0      88     0    0     48         54      T3        0    0
+                                       T3               T1                                      T4
+                   0    0     0    0         0    0            0    0     0    0
+                           T2                  T4                     T2
+                          (a)                                                (b)
+           Figure 11.14: Deletion of the item with key 32 from the AVL tree of Figure 11.12b:
+           (a) after removing the node storing key 32, the root becomes unbalanced; (b) a
+           (single) rotation restores the height-balance property.
+                As with insertion, we use trinode restructuring to restore balance in the tree T .
+           In particular, let z be the ﬁrst unbalanced position encountered going up from p
+           toward the root of T . Also, let y be the child of z with larger height (note that
+           position y is the child of z that is not an ancestor of p), and let x be the child of y
+           deﬁned as follows: If one of the children of y is taller than the other, let x be the
+           taller child of y; else (both children of y have the same height), let x be the child of
+           y on the same side as y (that is, if y is the left child of z, let x be the left child of
+           y, else let x be the right child of y). In any case, we then perform a restructure(x)
+           operation. (See Figure 11.14b.)
+                The restructured subtree is rooted at the middle position denoted as b in the
+           description of the trinode restructuring operation. The height-balance property is
+           guaranteed to be locally restored within the subtree of b. (See Exercises R-11.11
+           and R-11.12). Unfortunately, this trinode restructuring may reduce the height of the
+           subtree rooted at b by 1, which may cause an ancestor of b to become unbalanced.
+           So, after rebalancing z, we continue walking up T looking for unbalanced positions.
+           If we ﬁnd another, we perform a restructure operation to restore its balance, and
+           continue marching up T looking for more, all the way to the root. Still, since the
+           height of T is O(log n), where n is the number of entries, by Proposition 11.2,
+           O(log n) trinode restructurings are sufﬁcient to restore the height-balance property.

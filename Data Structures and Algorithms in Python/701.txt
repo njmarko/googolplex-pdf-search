@@ -1,0 +1,40 @@
+680                                                       Chapter 14. Graph Algorithms
+       Python Implementation
+       Code Fragment 14.18 presents a Python implementation of Kruskal’s algorithm. As
+       with our implementation of the Prim-Jarnı́k algorithm, the minimum spanning tree
+       is returned in the form of a list of edges. As a consequence of Kruskal’s algorithm,
+       those edges will be reported in nondecreasing order of their weights.
+            Our implementation assumes use of a Partition class for managing the cluster
+       partition. An implementation of the Partition class is presented in Section 14.7.3.
+     1 def MST Kruskal(g):
+     2   ”””Compute a minimum spanning tree of a graph using Kruskal s algorithm.
+     3
+     4   Return a list of edges that comprise the MST.
+     5
+     6   The elements of the graph s edges are assumed to be weights.
+     7   ”””
+     8   tree = [ ]                          # list of edges in spanning tree
+     9   pq = HeapPriorityQueue( )           # entries are edges in G, with weights as key
+    10   forest = Partition( )               # keeps track of forest clusters
+    11   position = { }                      # map each node to its Partition entry
+    12
+    13   for v in g.vertices( ):
+    14      position[v] = forest.make group(v)
+    15
+    16   for e in g.edges( ):
+    17      pq.add(e.element( ), e)          # edge’s element is assumed to be its weight
+    18
+    19   size = g.vertex count( )
+    20   while len(tree) != size − 1 and not pq.is empty( ):
+    21      # tree not spanning and unprocessed edges remain
+    22      weight,edge = pq.remove min( )
+    23      u,v = edge.endpoints( )
+    24      a = forest.ﬁnd(position[u])
+    25      b = forest.ﬁnd(position[v])
+    26      if a != b:
+    27         tree.append(edge)
+    28         forest.union(a,b)
+    29
+    30   return tree
+       Code Fragment 14.18: Python implementation of Kruskal’s algorithm for the mini-
+       mum spanning tree problem.

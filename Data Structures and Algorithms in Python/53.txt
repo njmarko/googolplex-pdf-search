@@ -1,0 +1,37 @@
+32                                                              Chapter 1. Python Primer
+       When processing a ﬁle, the proxy maintains a current position within the ﬁle as
+   an offset from the beginning, measured in number of bytes. When opening a ﬁle
+   with mode r or w , the position is initially 0; if opened in append mode, a ,
+   the position is initially at the end of the ﬁle. The syntax fp.close( ) closes the ﬁle
+   associated with proxy fp, ensuring that any written contents are saved. A summary
+   of methods for reading and writing a ﬁle is given in Table 1.5
+    Calling Syntax       Description
+    fp.read( )           Return the (remaining) contents of a readable ﬁle as a string.
+    fp.read(k)           Return the next k bytes of a readable ﬁle as a string.
+    fp.readline( )       Return (remainder of ) the current line of a readable ﬁle as a string.
+    fp.readlines( )      Return all (remaining) lines of a readable ﬁle as a list of strings.
+    for line in fp:      Iterate all (remaining) lines of a readable ﬁle.
+    fp.seek(k)           Change the current position to be at the kth byte of the ﬁle.
+    fp.tell( )           Return the current position, measured as byte-offset from the start.
+    fp.write(string)     Write given string at current position of the writable ﬁle.
+                         Write each of the strings of the given sequence at the current
+    fp.writelines(seq)   position of the writable ﬁle. This command does not insert
+                         any newlines, beyond those that are embedded in the strings.
+    print(..., ﬁle=fp)   Redirect output of print function to the ﬁle.
+     Table 1.5: Behaviors for interacting with a text ﬁle via a ﬁle proxy (named fp).
+   Reading from a File
+   The most basic command for reading via a proxy is the read method. When invoked
+   on ﬁle proxy fp, as fp.read(k), the command returns a string representing the next k
+   bytes of the ﬁle, starting at the current position. Without a parameter, the syntax
+   fp.read( ) returns the remaining contents of the ﬁle in entirety. For convenience,
+   ﬁles can be read a line at a time, using the readline method to read one line, or
+   the readlines method to return a list of all remaining lines. Files also support the
+   for-loop syntax, with iteration being line by line (e.g., for line in fp:).
+   Writing to a File
+   When a ﬁle proxy is writable, for example, if created with access mode w or
+    a , text can be written using methods write or writelines. For example, if we de-
+   ﬁne fp = open( results.txt , w ), the syntax fp.write( Hello World.\n )
+   writes a single line to the ﬁle with the given string. Note well that write does not
+   explicitly add a trailing newline, so desired newline characters must be embedded
+   directly in the string parameter. Recall that the output of the print method can be
+   redirected to a ﬁle using a keyword parameter, as described in Section 1.6.

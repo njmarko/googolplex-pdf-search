@@ -1,0 +1,40 @@
+xii                                                                       Contents
+    2 Object-Oriented Programming                                               56
+      2.1 Goals, Principles, and Patterns . . . . . . . . . . . . . .      . .  57
+           2.1.1 Object-Oriented Design Goals . . . . . . . . . . . .      . .  57
+           2.1.2 Object-Oriented Design Principles . . . . . . . . . .     . .  58
+           2.1.3 Design Patterns . . . . . . . . . . . . . . . . . . . .   . .  61
+      2.2 Software Development . . . . . . . . . . . . . . . . . . .       . .  62
+           2.2.1 Design . . . . . . . . . . . . . . . . . . . . . . . . .  . .  62
+           2.2.2 Pseudo-Code . . . . . . . . . . . . . . . . . . . . .     . .  64
+           2.2.3 Coding Style and Documentation . . . . . . . . . . .      . .  64
+           2.2.4 Testing and Debugging . . . . . . . . . . . . . . . .     . .  67
+      2.3 Class Deﬁnitions . . . . . . . . . . . . . . . . . . . . . . .   . .  69
+           2.3.1 Example: CreditCard Class . . . . . . . . . . . . . .     . .  69
+           2.3.2 Operator Overloading and Python’s Special Methods         . .  74
+           2.3.3 Example: Multidimensional Vector Class . . . . . . .      . .  77
+           2.3.4 Iterators . . . . . . . . . . . . . . . . . . . . . . . . . .  79
+           2.3.5 Example: Range Class . . . . . . . . . . . . . . . . .    . .  80
+      2.4 Inheritance . . . . . . . . . . . . . . . . . . . . . . . . . .  . .  82
+           2.4.1 Extending the CreditCard Class . . . . . . . . . . . .    . .  83
+           2.4.2 Hierarchy of Numeric Progressions . . . . . . . . . .     . .  87
+           2.4.3 Abstract Base Classes . . . . . . . . . . . . . . . . .   . .  93
+      2.5 Namespaces and Object-Orientation . . . . . . . . . . .          . .  96
+           2.5.1 Instance and Class Namespaces . . . . . . . . . . . .     . .  96
+           2.5.2 Name Resolution and Dynamic Dispatch . . . . . . .        . . 100
+      2.6 Shallow and Deep Copying . . . . . . . . . . . . . . . . .       . . 101
+      2.7 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . 103
+    3 Algorithm Analysis                                                       109
+      3.1 Experimental Studies . . . . . . . . . . . .     . . . . . . . . . . 111
+           3.1.1 Moving Beyond Experimental Analysis       . . . . . . . . . . 113
+      3.2 The Seven Functions Used in This Book .          . . . . . . . . . . 115
+           3.2.1 Comparing Growth Rates . . . . . . .      . . . . . . . . . . 122
+      3.3 Asymptotic Analysis . . . . . . . . . . . . .    . . . . . . . . . . 123
+           3.3.1 The “Big-Oh” Notation . . . . . . . .     . . . . . . . . . . 123
+           3.3.2 Comparative Analysis . . . . . . . . .    . . . . . . . . . . 128
+           3.3.3 Examples of Algorithm Analysis . . .      . . . . . . . . . . 130
+      3.4 Simple Justiﬁcation Techniques . . . . . .       . . . . . . . . . . 137
+           3.4.1 By Example . . . . . . . . . . . . . .    . . . . . . . . . . 137
+           3.4.2 The “Contra” Attack . . . . . . . . .     . . . . . . . . . . 137
+           3.4.3 Induction and Loop Invariants . . . .     . . . . . . . . . . 138
+      3.5 Exercises . . . . . . . . . . . . . . . . . . .  . . . . . . . . . . 141

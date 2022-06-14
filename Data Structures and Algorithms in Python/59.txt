@@ -1,0 +1,40 @@
+38                                                          Chapter 1. Python Primer
+   will be unchanged, the while loop will continue. If we preferred to have the while
+   loop continue without printing the Invalid response message, we could have
+   written the exception-clause as
+         except (ValueError, EOFError):
+           pass
+   The keyword, pass, is a statement that does nothing, yet it can serve syntactically
+   as a body of a control structure. In this way, we quietly catch the exception, thereby
+   allowing the surrounding while loop to continue.
+        In order to provide different responses to different types of errors, we may use
+   two or more except-clauses as part of a try-structure. In our previous example, an
+   EOFError suggests a more insurmountable error than simply an errant value being
+   entered. In that case, we might wish to provide a more speciﬁc error message, or
+   perhaps to allow the exception to interrupt the loop and be propagated to a higher
+   context. We could implement such behavior as follows:
+         age = −1                        # an initially invalid choice
+         while age <= 0:
+           try:
+             age = int(input( Enter your age in years: ))
+             if age <= 0:
+                print( Your age must be positive )
+           except ValueError:
+             print( That is an invalid age specification )
+           except EOFError:
+             print( There was an unexpected error reading input. )
+             raise                       # let s re-raise this exception
+   In this implementation, we have separate except-clauses for the ValueError and
+   EOFError cases. The body of the clause for handling an EOFError relies on another
+   technique in Python. It uses the raise statement without any subsequent argument,
+   to re-raise the same exception that is currently being handled. This allows us to
+   provide our own response to the exception, and then to interrupt the while loop and
+   propagate the exception upward.
+        In closing, we note two additional features of try-except structures in Python.
+   It is permissible to have a ﬁnal except-clause without any identiﬁed error types,
+   using syntax except:, to catch any other exceptions that occurred. However, this
+   technique should be used sparingly, as it is difﬁcult to suggest how to handle an
+   error of an unknown type. A try-statement can have a ﬁnally clause, with a body of
+   code that will always be executed in the standard or exceptional cases, even when
+   an uncaught or re-raised exception occurs. That block is typically used for critical
+   cleanup work, such as closing an open ﬁle.

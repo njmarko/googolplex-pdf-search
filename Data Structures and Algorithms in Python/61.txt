@@ -1,0 +1,39 @@
+40                                                           Chapter 1. Python Primer
+        We see lazy evaluation used in many of Python’s libraries. For example, the
+   dictionary class supports methods keys( ), values( ), and items( ), which respec-
+   tively produce a “view” of all keys, values, or (key,value) pairs within a dictionary.
+   None of these methods produces an explicit list of results. Instead, the views that
+   are produced are iterable objects based upon the actual contents of the dictionary.
+   An explicit list of values from such an iteration can be immediately constructed by
+   calling the list class constructor with the iteration as a parameter. For example, the
+   syntax list(range(1000)) produces a list instance with values from 0 to 999, while
+   the syntax list(d.values( )) produces a list that has elements based upon the current
+   values of dictionary d. We can similarly construct a tuple or set instance based
+   upon a given iterable.
+   Generators
+   In Section 2.3.4, we will explain how to deﬁne a class whose instances serve as
+   iterators. However, the most convenient technique for creating iterators in Python
+   is through the use of generators. A generator is implemented with a syntax that
+   is very similar to a function, but instead of returning values, a yield statement is
+   executed to indicate each element of the series. As an example, consider the goal
+   of determining all factors of a positive integer. For example, the number 100 has
+   factors 1, 2, 4, 5, 10, 20, 25, 50, 100. A traditional function might produce and
+   return a list containing all factors, implemented as:
+         def factors(n):                  # traditional function that computes factors
+           results = [ ]                  # store factors in a new list
+           for k in range(1,n+1):
+             if n % k == 0:               # divides evenly, thus k is a factor
+                results.append(k)         # add k to the list of factors
+           return results                 # return the entire list
+   In contrast, an implementation of a generator for computing those factors could be
+   implemented as follows:
+         def factors(n):                  # generator that computes factors
+           for k in range(1,n+1):
+             if n % k == 0:               # divides evenly, thus k is a factor
+                yield k                   # yield this factor as next result
+   Notice use of the keyword yield rather than return to indicate a result. This indi-
+   cates to Python that we are deﬁning a generator, rather than a traditional function. It
+   is illegal to combine yield and return statements in the same implementation, other
+   than a zero-argument return statement to cause a generator to end its execution. If
+   a programmer writes a loop such as for factor in factors(100):, an instance of our
+   generator is created. For each iteration of the loop, Python executes our procedure

@@ -1,0 +1,35 @@
+210                                                    Chapter 5. Array-Based Sequences
+ 5.5    Using Array-Based Sequences
+     5.5.1 Storing High Scores for a Game
+        The ﬁrst application we study is storing a sequence of high score entries for a video
+        game. This is representative of many applications in which a sequence of objects
+        must be stored. We could just as easily have chosen to store records for patients in
+        a hospital or the names of players on a football team. Nevertheless, let us focus on
+        storing high score entries, which is a simple application that is already rich enough
+        to present some important data-structuring concepts.
+             To begin, we consider what information to include in an object representing a
+        high score entry. Obviously, one component to include is an integer representing
+        the score itself, which we identify as score. Another useful thing to include is
+        the name of the person earning this score, which we identify as name. We could
+        go on from here, adding ﬁelds representing the date the score was earned or game
+        statistics that led to that score. However, we omit such details to keep our example
+        simple. A Python class, GameEntry, representing a game entry, is given in Code
+        Fragment 5.7.
+     1 class GameEntry:
+     2    ”””Represents one entry of a list of high scores.”””
+     3
+     4    def init (self, name, score):
+     5       self. name = name
+     6       self. score = score
+     7
+     8    def get name(self):
+     9       return self. name
+    10
+    11    def get score(self):
+    12       return self. score
+    13
+    14    def str (self):
+    15       return ({0}, {1}) .format(self. name, self. score) # e.g., (Bob, 98)
+        Code Fragment 5.7: Python code for a simple GameEntry class. We include meth-
+        ods for returning the name and score for a game entry object, as well as a method
+        for returning a string representation of this entry.

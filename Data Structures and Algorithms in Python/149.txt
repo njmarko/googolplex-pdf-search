@@ -1,0 +1,36 @@
+128                                                               Chapter 3. Algorithm Analysis
+    3.3.2 Comparative Analysis
+       Suppose two algorithms solving the same problem are available: an algorithm A,
+       which has a running time of O(n), and an algorithm B, which has a running time
+       of O(n2 ). Which algorithm is better? We know that n is O(n2 ), which implies that
+       algorithm A is asymptotically better than algorithm B, although for a small value
+       of n, B may have a lower running time than A.
+           We can use the big-Oh notation to order classes of functions by asymptotic
+       growth rate. Our seven functions are ordered by increasing growth rate in the fol-
+       lowing sequence, that is, if a function f (n) precedes a function g(n) in the sequence,
+       then f (n) is O(g(n)):
+                               1,   log n,    n,     n log n,     n2 ,   n3 ,   2n .
+           We illustrate the growth rates of the seven functions in Table 3.2. (See also
+       Figure 3.4 from Section 3.2.1.)
+                    n   log n     n   n log n       n2              n3                2n
+                   8      3       8      24         64             512               256
+                   16     4      16      64        256            4, 096           65, 536
+                   32     5      32    160        1, 024         32, 768       4, 294, 967, 296
+                   64     6      64    384        4, 096        262, 144         1.84 × 1019
+                  128     7     128    896       16, 384       2, 097, 152       3.40 × 1038
+                  256     8     256   2, 048     65, 536      16, 777, 216       1.15 × 1077
+                  512     9     512   4, 608    262, 144     134, 217, 728      1.34 × 10154
+           Table 3.2: Selected values of fundamental functions in algorithm analysis.
+           We further illustrate the importance of the asymptotic viewpoint in Table 3.3.
+       This table explores the maximum size allowed for an input instance that is pro-
+       cessed by an algorithm in 1 second, 1 minute, and 1 hour. It shows the importance
+       of good algorithm design, because an asymptotically slow algorithm is beaten in
+       the long run by an asymptotically faster algorithm, even if the constant factor for
+       the asymptotically faster algorithm is worse.
+                            Running          Maximum Problem Size (n)
+                            Time (μs)     1 second 1 minute               1 hour
+                              400n          2,500        150,000 9,000,000
+                               2n2           707          5,477           42,426
+                                2n            19            25               31
+       Table 3.3: Maximum size of a problem that can be solved in 1 second, 1 minute,
+       and 1 hour, for various running times measured in microseconds.

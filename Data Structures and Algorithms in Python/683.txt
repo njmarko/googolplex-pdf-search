@@ -1,0 +1,48 @@
+662                                                                     Chapter 14. Graph Algorithms
+           Algorithm ShortestPath(G, s):
+                 Input: A weighted graph G with nonnegative edge weights, and a distinguished
+                    vertex s of G.
+                 Output: The length of a shortest path from s to v for each vertex v of G.
+                  Initialize D[s] = 0 and D[v] = ∞ for each vertex v = s.
+                  Let a priority queue Q contain all the vertices of G using the D labels as keys.
+                  while Q is not empty do
+                     {pull a new vertex u into the cloud}
+                     u = value returned by Q.remove min()
+                     for each vertex v adjacent to u such that v is in Q do
+                        {perform the relaxation procedure on edge (u, v)}
+                        if D[u] + w(u, v) < D[v] then
+                             D[v] = D[u] + w(u, v)
+                             Change to D[v] the key of vertex v in Q.
+                  return the label D[v] of each vertex v
+           Code Fragment 14.12: Pseudo-code for Dijkstra’s algorithm, solving the single-
+           source shortest-path problem.
+                                                    ∞                                                        ∞
+                               2704                                                    2704
+                                                   BOS                                                      BOS
+                                       867    ∞                                                867    ∞
+                           ∞                                                       621
+                                          849    PVD                                              849     PVD
+                            ORD                144    187                           ORD                144      187
+                                      740                                                     740
+               1846               621                                    1846             621
+                                             JFK   ∞                                                 JFK    184
+    ∞                                                         ∞
+                                                         1258                                                     1258
+                         802                184                                  802                184
+    SFO                                                       SFO
+                                1391         BWI    1090                                1391         BWI     1090
+          1464                         0                            1464                       0
+     337                                                       337
+                      DFW     ∞                                               DFW      ∞
+            1235                             946                      1235                           946
+      LAX                                                       LAX
+                                1121                                                    1121
+     ∞                                                         ∞
+                      2342                 MIA                                2342                 MIA
+                                               ∞                                                      946
+                            (a)                                                     (b)
+           Figure 14.15: An execution of Dijkstra’s algorithm on a weighted graph. The start
+           vertex is BWI. A box next to each vertex v stores the label D[v]. The edges of
+           the shortest-path tree are drawn as thick arrows, and for each vertex u outside the
+           “cloud” we show the current best edge for pulling in u with a thick line. (Continues
+           in Figure 14.16.)

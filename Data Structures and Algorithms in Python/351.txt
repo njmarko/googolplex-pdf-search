@@ -1,0 +1,38 @@
+330                                                                           Chapter 8. Trees
+    8.4.2 Breadth-First Tree Traversal
+       Although the preorder and postorder traversals are common ways of visiting the
+       positions of a tree, another common approach is to traverse a tree so that we visit
+       all the positions at depth d before we visit the positions at depth d + 1. Such an
+       algorithm is known as a breadth-ﬁrst traversal.
+            A breadth-ﬁrst traversal is a common approach used in software for playing
+       games. A game tree represents the possible choices of moves that might be made
+       by a player (or computer) during a game, with the root of the tree being the initial
+       conﬁguration for the game. For example, Figure 8.17 displays a partial game tree
+       for Tic-Tac-Toe.
+                                                        1
+           2                          3X                                        X
+                                                                                  4
+              X
+        O         O    X O     X   O   X       X      X       O X       X       X      X      X
+          X       X                        O     O                    O                O
+                                                          O                   O               O
+          5       6      7       8       9      10     11      12      13      14     15     16
+       Figure 8.17: Partial game tree for Tic-Tac-Toe, with annotations displaying the or-
+       der in which positions are visited in a breadth-ﬁrst traversal.
+       A breadth-ﬁrst traversal of such a game tree is often performed because a computer
+       may be unable to explore a complete game tree in a limited amount of time. So the
+       computer will consider all moves, then responses to those moves, going as deep as
+       computational time allows.
+            Pseudo-code for a breadth-ﬁrst traversal is given in Code Fragment 8.14. The
+       process is not recursive, since we are not traversing entire subtrees at once. We use
+       a queue to produce a FIFO (i.e., ﬁrst-in ﬁrst-out) semantics for the order in which
+       we visit nodes. The overall running time is O(n), due to the n calls to enqueue and
+       n calls to dequeue.
+       Algorithm breadthﬁrst(T):
+          Initialize queue Q to contain T.root( )
+          while Q not empty do
+             p = Q.dequeue( )                               {p is the oldest entry in the queue}
+             perform the “visit” action for position p
+             for each child c in T.children(p) do
+                Q.enqueue(c)         {add p’s children to the end of the queue for later visits}
+        Code Fragment 8.14: Algorithm for performing a breadth-ﬁrst traversal of a tree.

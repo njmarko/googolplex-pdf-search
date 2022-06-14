@@ -1,0 +1,36 @@
+11.4. Splay Trees                                                                            497
+       11.4.4 Amortized Analysis of Splaying 
+          After a zig-zig or zig-zag, the depth of position p decreases by two, and after a zig
+          the depth of p decreases by one. Thus, if p has depth d, splaying p consists of a
+          sequence of d/2 zig-zigs and/or zig-zags, plus one ﬁnal zig if d is odd. Since a
+          single zig-zig, zig-zag, or zig affects a constant number of nodes, it can be done in
+          O(1) time. Thus, splaying a position p in a binary search tree T takes time O(d),
+          where d is the depth of p in T . In other words, the time for performing a splaying
+          step for a position p is asymptotically the same as the time needed just to reach that
+          position in a top-down search from the root of T .
+          Worst-Case Time
+          In the worst case, the overall running time of a search, insertion, or deletion in a
+          splay tree of height h is O(h), since the position we splay might be the deepest
+          position in the tree. Moreover, it is possible for h to be as large as n, as shown in
+          Figure 11.21. Thus, from a worst-case point of view, a splay tree is not an attractive
+          data structure.
+              In spite of its poor worst-case performance, a splay tree performs well in an
+          amortized sense. That is, in a sequence of intermixed searches, insertions, and
+          deletions, each operation takes on average logarithmic time. We perform the amor-
+          tized analysis of splay trees using the accounting method.
+          Amortized Performance of Splay Trees
+          For our analysis, we note that the time for performing a search, insertion, or deletion
+          is proportional to the time for the associated splaying. So let us consider only
+          splaying time.
+              Let T be a splay tree with n keys, and let w be a node of T . We deﬁne the
+          size n(w) of w as the number of nodes in the subtree rooted at w. Note that this
+          deﬁnition implies that the size of a nonleaf node is one more than the sum of the
+          sizes of its children. We deﬁne the rank r(w) of a node w as the logarithm in base 2
+          of the size of w, that is, r(w) = log(n(w)). Clearly, the root of T has the maximum
+          size, n, and the maximum rank, log n, while each leaf has size 1 and rank 0.
+              We use cyber-dollars to pay for the work we perform in splaying a position p
+          in T , and we assume that one cyber-dollar pays for a zig, while two cyber-dollars
+          pay for a zig-zig or a zig-zag. Hence, the cost of splaying a position at depth d is
+          d cyber-dollars. We keep a virtual account storing cyber-dollars at each position of
+          T . Note that this account exists only for the purpose of our amortized analysis, and
+          does not need to be included in a data structure implementing the splay tree T .

@@ -1,0 +1,33 @@
+566                                                         Chapter 12. Sorting and Selection
+         To gain intuition before answering this question, we consider the following
+    example.
+    Example 12.5: Consider the following sequence S (we show only the keys):
+                     S = ((3, 3), (1, 5), (2, 5), (1, 2), (2, 3), (1, 7), (3, 2), (2, 2)).
+    If we sort S stably on the ﬁrst component, then we get the sequence
+                    S1 = ((1, 5), (1, 2), (1, 7), (2, 5), (2, 3), (2, 2), (3, 3), (3, 2)).
+    If we then stably sort this sequence S1 using the second component, we get the
+    sequence
+                   S1,2 = ((1, 2), (2, 2), (3, 2), (2, 3), (3, 3), (1, 5), (2, 5), (1, 7)),
+    which is unfortunately not a sorted sequence. On the other hand, if we ﬁrst stably
+    sort S using the second component, then we get the sequence
+                    S2 = ((1, 2), (3, 2), (2, 2), (3, 3), (2, 3), (1, 5), (2, 5), (1, 7)).
+    If we then stably sort sequence S2 using the ﬁrst component, we get the sequence
+                   S2,1 = ((1, 2), (1, 5), (1, 7), (2, 2), (2, 3), (2, 5), (3, 2), (3, 3)),
+    which is indeed sequence S lexicographically ordered.
+         So, from this example, we are led to believe that we should ﬁrst sort using
+    the second component and then again using the ﬁrst component. This intuition is
+    exactly right. By ﬁrst stably sorting by the second component and then again by
+    the ﬁrst component, we guarantee that if two entries are equal in the second sort
+    (by the ﬁrst component), then their relative order in the starting sequence (which
+    is sorted by the second component) is preserved. Thus, the resulting sequence is
+    guaranteed to be sorted lexicographically every time. We leave to a simple exercise
+    (R-12.18) the determination of how this approach can be extended to triples and
+    other d-tuples of numbers. We can summarize this section as follows:
+    Proposition 12.6: Let S be a sequence of n key-value pairs, each of which has a
+    key (k1 , k2 , . . . , kd ), where ki is an integer in the range [0, N − 1] for some integer
+    N ≥ 2. We can sort S lexicographically in time O(d(n + N)) using radix-sort.
+         Radix sort can be applied to any key that can be viewed as a composite of
+    smaller pieces that are to be sorted lexicographically. For example, we can apply
+    it to sort character strings of moderate length, as each individual character can be
+    represented as an integer value. (Some care is needed to properly handle strings
+    with varying lengths.)

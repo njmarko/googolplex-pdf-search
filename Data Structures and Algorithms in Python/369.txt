@@ -1,0 +1,37 @@
+348                                                                       Chapter 8. Trees
+ 8.5 Case Study: An Expression Tree
+     In Example 8.7, we introduced the use of a binary tree to represent the structure of
+     an arithmetic expression. In this section, we deﬁne a new ExpressionTree class that
+     provides support for constructing such trees, and for displaying and evaluating the
+     arithmetic expression that such a tree represents. Our ExpressionTree class is de-
+     ﬁned as a subclass of LinkedBinaryTree, and we rely on the nonpublic mutators to
+     construct such trees. Each internal node must store a string that deﬁnes a binary op-
+     erator (e.g., + ), and each leaf must store a numeric value (or a string representing
+     a numeric value).
+         Our eventual goal is to build arbitrarily complex expression trees for compound
+     arithmetic expressions such as (((3 + 1) × 4)/((9 − 5) + 2)). However, it sufﬁces
+     for the ExpressionTree class to support two basic forms of initialization:
+         ExpressionTree(value): Create a tree storing the given value at the root.
+     ExpressionTree(op, E1 , E2 ): Create a tree storing string op at the root (e.g., +),
+                                        and with the structures of existing ExpressionTree
+                                        instances E1 and E2 as the left and right subtrees of
+                                        the root, respectively.
+         Such a constructor for the ExpressionTree class is given in Code Fragment 8.35.
+     The class formally inherits from LinkedBinaryTree, so it has access to all the non-
+     public update methods that were deﬁned in Section 8.3.1. We use add root to cre-
+     ate an initial root of the tree storing the token provided as the ﬁrst parameter. Then
+     we perform run-time checking of the parameters to determine whether the caller
+     invoked the one-parameter version of the constructor (in which case, we are done),
+     or the three-parameter form. In that case, we use the inherited attach method to
+     incorporate the structure of the existing trees as subtrees of the root.
+     Composing a Parenthesized String Representation
+     A string representation of an existing expression tree instance, for example, as
+       (((3+1)x4)/((9-5)+2)) , can be produced by displaying tree elements us-
+     ing an inorder traversal, but with opening and closing parentheses inserted with
+     a preorder and postorder step, respectively. In the context of an ExpressionTree
+     class, we support a special str method (see Section 2.3.2) that returns the
+     appropriate string. Because it is more efﬁcient to ﬁrst build a sequence of individ-
+     ual strings to be joined together (see discussion of “Composing Strings” in Sec-
+     tion 5.4.2), the implementation of str relies on a nonpublic, recursive method
+     named parenthesize recur that appends a series of strings to a list. These methods
+     are included in Code 8.35.

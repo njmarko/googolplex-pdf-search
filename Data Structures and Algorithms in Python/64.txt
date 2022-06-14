@@ -1,0 +1,36 @@
+1.9. Additional Python Conveniences                                                          43
+      1.9.2 Comprehension Syntax
+          A very common programming task is to produce one series of values based upon
+          the processing of another series. Often, this task can be accomplished quite simply
+          in Python using what is known as a comprehension syntax. We begin by demon-
+          strating list comprehension, as this was the ﬁrst form to be supported by Python.
+          Its general form is as follows:
+                [ expression for value in iterable if condition ]
+          We note that both expression and condition may depend on value, and that the
+          if-clause is optional. The evaluation of the comprehension is logically equivalent
+          to the following traditional control structure for computing a resulting list:
+                result = [ ]
+                for value in iterable:
+                   if condition:
+                      result.append(expression)
+          As a concrete example, a list of the squares of the numbers from 1 to n, that is
+          [1, 4, 9, 16, 25, . . . , n2 ], can be created by traditional means as follows:
+                squares = [ ]
+                for k in range(1, n+1):
+                   squares.append(k k)
+          With list comprehension, this logic is expressed as follows:
+                squares = [k k for k in range(1, n+1)]
+          As a second example, Section 1.8 introduced the goal of producing a list of factors
+          for an integer n. That task is accomplished with the following list comprehension:
+                factors = [k for k in range(1,n+1) if n % k == 0]
+               Python supports similar comprehension syntaxes that respectively produce a
+          set, generator, or dictionary. We compare those syntaxes using our example for
+          producing the squares of numbers.
+                 [ k k for k in range(1, n+1) ]                  list comprehension
+                 { k k for k in range(1, n+1) }                  set comprehension
+                 ( k k for k in range(1, n+1) )                  generator comprehension
+                 { k : k k for k in range(1, n+1) }              dictionary comprehension
+          The generator syntax is particularly attractive when results do not need to be stored
+          in memory. For example, to compute the sum of the ﬁrst n squares, the genera-
+          tor syntax, total = sum(k k for k in range(1, n+1)), is preferred to the use of an
+          explicitly instantiated list comprehension as the parameter.

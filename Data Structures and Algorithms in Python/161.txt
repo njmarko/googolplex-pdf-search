@@ -1,0 +1,38 @@
+140                                                          Chapter 3. Algorithm Analysis
+      Loop Invariants
+      The ﬁnal justiﬁcation technique we discuss in this section is the loop invariant. To
+      prove some statement L about a loop is correct, deﬁne L in terms of a series of
+      smaller statements L0 , L1 , . . . , Lk , where:
+          1. The initial claim, L0 , is true before the loop begins.
+          2. If L j−1 is true before iteration j, then L j will be true after iteration j.
+          3. The ﬁnal statement, Lk , implies the desired statement L to be true.
+           Let us give a simple example of using a loop-invariant argument to justify the
+      correctness of an algorithm. In particular, we use a loop invariant to justify that
+      the function, ﬁnd (see Code Fragment 3.9), ﬁnds the smallest index at which ele-
+      ment val occurs in sequence S.
+    1 def ﬁnd(S, val):
+    2   ”””Return index j such that S[j] == val, or -1 if no such element.”””
+    3   n = len(S)
+    4   j=0
+    5   while j < n:
+    6      if S[j] == val:
+    7         return j               # a match was found at index j
+    8      j += 1
+    9   return −1
+      Code Fragment 3.9: Algorithm for ﬁnding the ﬁrst index at which a given element
+      occurs in a Python list.
+           To show that ﬁnd is correct, we inductively deﬁne a series of statements, L j ,
+      that lead to the correctness of our algorithm. Speciﬁcally, we claim the following
+      is true at the beginning of iteration j of the while loop:
+                  L j : val is not equal to any of the ﬁrst j elements of S.
+      This claim is true at the beginning of the ﬁrst iteration of the loop, because j is 0
+      and there are no elements among the ﬁrst 0 in S (this kind of a trivially true claim
+      is said to hold vacuously). In iteration j, we compare element val to element S[ j]
+      and return the index j if these two elements are equivalent, which is clearly correct
+      and completes the algorithm in this case. If the two elements val and S[ j] are not
+      equal, then we have found one more element not equal to val and we increment
+      the index j. Thus, the claim L j will be true for this new value of j; hence, it is
+      true at the beginning of the next iteration. If the while loop terminates without
+      ever returning an index in S, then we have j = n. That is, Ln is true—there are no
+      elements of S equal to val. Therefore, the algorithm correctly returns −1 to indicate
+      that val is not in S.

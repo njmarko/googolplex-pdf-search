@@ -1,0 +1,41 @@
+226                                              Chapter 5. Array-Based Sequences
+    C-5.18 Give a formal proof that any sequence of n append or pop operations on
+           an initially empty dynamic array takes O(n) time, if using the strategy
+           described in Exercise C-5.16.
+    C-5.19 Consider a variant of Exercise C-5.16, in which an array of capacity N is
+           resized to capacity precisely that of the number of elements, any time the
+           number of elements in the array goes strictly below N/4. Give a formal
+           proof that any sequence of n append or pop operations on an initially
+           empty dynamic array takes O(n) time.
+    C-5.20 Consider a variant of Exercise C-5.16, in which an array of capacity N, is
+           resized to capacity precisely that of the number of elements, any time the
+           number of elements in the array goes strictly below N/2. Show that there
+           exists a sequence of n operations that requires Ω(n2 ) time to execute.
+    C-5.21 In Section 5.4.2, we described four different ways to compose a long
+           string: (1) repeated concatenation, (2) appending to a temporary list and
+           then joining, (3) using list comprehension with join, and (4) using genera-
+           tor comprehension with join. Develop an experiment to test the efﬁciency
+           of all four of these approaches and report your ﬁndings.
+    C-5.22 Develop an experiment to compare the relative efﬁciency of the extend
+           method of Python’s list class versus using repeated calls to append to
+           accomplish the equivalent task.
+    C-5.23 Based on the discussion of page 207, develop an experiment to compare
+           the efﬁciency of Python’s list comprehension syntax versus the construc-
+           tion of a list by means of repeated calls to append.
+    C-5.24 Perform experiments to evaluate the efﬁciency of the remove method of
+           Python’s list class, as we did for insert on page 205. Use known values so
+           that all removals occur either at the beginning, middle, or end of the list.
+           Report your results akin to Table 5.5.
+    C-5.25 The syntax data.remove(value) for Python list data removes only the ﬁrst
+           occurrence of element value from the list. Give an implementation of a
+           function, with signature remove all(data, value), that removes all occur-
+           rences of value from the given list, such that the worst-case running time
+           of the function is O(n) on a list with n elements. Not that it is not efﬁcient
+           enough in general to rely on repeated calls to remove.
+    C-5.26 Let B be an array of size n ≥ 6 containing integers from 1 to n − 5, inclu-
+           sive, with exactly ﬁve repeated. Describe a good algorithm for ﬁnding the
+           ﬁve integers in B that are repeated.
+    C-5.27 Given a Python list L of n positive integers, each represented with k =
+             log n + 1 bits, describe an O(n)-time method for ﬁnding a k-bit integer
+           not in L.
+    C-5.28 Argue why any solution to the previous problem must run in Ω(n) time.

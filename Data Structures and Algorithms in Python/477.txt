@@ -1,0 +1,42 @@
+456                                  Chapter 10. Maps, Hash Tables, and Skip Lists
+    C-10.39 Although keys in a map are distinct, the binary search algorithm can be
+            applied in a more general setting in which an array stores possibly duplica-
+            tive elements in nondecreasing order. Consider the goal of identifying the
+            index of the leftmost element with key greater than or equal to given k.
+            Does the ﬁnd index method as given in Code Fragment 10.8 guarantee
+            such a result? Does the ﬁnd index method as given in Exercise R-10.21
+            guarantee such a result? Justify your answers.
+    C-10.40 Suppose we are given two sorted search tables S and T , each with n entries
+            (with S and T being implemented with arrays). Describe an O(log2 n)-
+            time algorithm for ﬁnding the kth smallest key in the union of the keys
+            from S and T (assuming no duplicates).
+    C-10.41 Give an O(log n)-time solution for the previous problem.
+    C-10.42 Suppose that each row of an n × n array A consists of 1’s and 0’s such that,
+            in any row of A, all the 1’s come before any 0’s in that row. Assuming A
+            is already in memory, describe a method running in O(n log n) time (not
+            O(n2 ) time!) for counting the number of 1’s in A.
+    C-10.43 Given a collection C of n cost-performance pairs (c, p), describe an algo-
+            rithm for ﬁnding the maxima pairs of C in O(n log n) time.
+    C-10.44 Show that the methods above(p) and prev(p) are not actually needed to
+            efﬁciently implement a map using a skip list. That is, we can imple-
+            ment insertions and deletions in a skip list using a strictly top-down, scan-
+            forward approach, without ever using the above or prev methods. (Hint:
+            In the insertion algorithm, ﬁrst repeatedly ﬂip the coin to determine the
+            level where you should start inserting the new entry.)
+    C-10.45 Describe how to modify a skip-list representation so that index-based
+            operations, such as retrieving the item at index j, can be performed in
+            O(log n) expected time.
+    C-10.46 For sets S and T , the syntax S ˆ T returns a new set that is the symmet-
+            ric difference, that is, a set of elements that are in precisely one of S or
+            T . This syntax is supported by the special xor method. Provide an
+            implementation of that method in the context of the MutableSet abstract
+            base class, relying only on the ﬁve primary abstract methods of that class.
+    C-10.47 In the context of the MutableSet abstract base class, describe a concrete
+            implementation of the and method, which supports the syntax S & T
+            for computing the intersection of two existing sets.
+    C-10.48 An inverted ﬁle is a critical data structure for implementing a search en-
+            gine or the index of a book. Given a document D, which can be viewed
+            as an unordered, numbered list of words, an inverted ﬁle is an ordered list
+            of words, L, such that, for each word w in L, we store the indices of the
+            places in D where w appears. Design an efﬁcient algorithm for construct-
+            ing L from D.

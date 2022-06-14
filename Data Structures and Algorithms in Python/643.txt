@@ -1,0 +1,49 @@
+622                                                                  Chapter 14. Graph Algorithms
+      Example 14.5: We can study air transportation by constructing a graph G, called
+      a ﬂight network, whose vertices are associated with airports, and whose edges
+      are associated with ﬂights. (See Figure 14.2.) In graph G, the edges are directed
+      because a given ﬂight has a speciﬁc travel direction. The endpoints of an edge e in
+      G correspond respectively to the origin and destination of the ﬂight corresponding
+      to e. Two airports are adjacent in G if there is a ﬂight that ﬂies between them,
+      and an edge e is incident to a vertex v in G if the ﬂight for e ﬂies to or from the
+      airport for v. The outgoing edges of a vertex v correspond to the outbound ﬂights
+      from v’s airport, and the incoming edges correspond to the inbound ﬂights to v’s
+      airport. Finally, the in-degree of a vertex v of G corresponds to the number of
+      inbound ﬂights to v’s airport, and the out-degree of a vertex v in G corresponds to
+      the number of outbound ﬂights.
+                                                         SW 45                             BOS
+                                                                                  35
+                                                          ORD                    NW
+                                                                                 JFK
+                                                UA 8
+                                                    77      DL 3
+                                                                                             DL 247
+                                            0
+                                          12                                87
+                                                                35
+                           SFO
+                                                                          13
+                                     UA                              AA
+                                                                                  AA 903
+                                                 DFW
+                            LAX      AA 49
+                                                                 AA
+                                                                    523
+                                                AA 411                           MIA
+      Figure 14.2: Example of a directed graph representing a ﬂight network. The end-
+      points of edge UA 120 are LAX and ORD; hence, LAX and ORD are adjacent.
+      The in-degree of DFW is 3, and the out-degree of DFW is 2.
+           The deﬁnition of a graph refers to the group of edges as a collection, not a
+      set, thus allowing two undirected edges to have the same end vertices, and for two
+      directed edges to have the same origin and the same destination. Such edges are
+      called parallel edges or multiple edges. A ﬂight network can contain parallel edges
+      (Example 14.5), such that multiple edges between the same pair of vertices could
+      indicate different ﬂights operating on the same route at different times of the day.
+      Another special type of edge is one that connects a vertex to itself. Namely, we say
+      that an edge (undirected or directed) is a self-loop if its two endpoints coincide. A
+      self-loop may occur in a graph associated with a city map (Example 14.3), where
+      it would correspond to a “circle” (a curving street that returns to its starting point).
+           With few exceptions, graphs do not have parallel edges or self-loops. Such
+      graphs are said to be simple. Thus, we can usually say that the edges of a simple
+      graph are a set of vertex pairs (and not just a collection). Throughout this chapter,
+      we assume that a graph is simple unless otherwise speciﬁed.

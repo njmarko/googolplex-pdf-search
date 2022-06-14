@@ -1,0 +1,39 @@
+336                                                                        Chapter 8. Trees
+    106    def breadthﬁrst(self):
+    107      ”””Generate a breadth-ﬁrst iteration of the positions of the tree.”””
+    108      if not self.is empty( ):
+    109         fringe = LinkedQueue( )                # known positions not yet yielded
+    110         fringe.enqueue(self.root( ))           # starting with the root
+    111         while not fringe.is empty( ):
+    112            p = fringe.dequeue( )               # remove from front of the queue
+    113            yield p                             # report this position
+    114            for c in self.children(p):
+    115              fringe.enqueue(c)                 # add children to back of queue
+        Code Fragment 8.20: An implementation of a breadth-ﬁrst traversal of a tree. This
+        code should be included in the body of the Tree class.
+     37    def inorder(self):
+     38      ”””Generate an inorder iteration of positions in the tree.”””
+     39      if not self.is empty( ):
+     40         for p in self. subtree inorder(self.root( )):
+     41            yield p
+     42
+     43    def subtree inorder(self, p):
+     44      ”””Generate an inorder iteration of positions in subtree rooted at p.”””
+     45      if self.left(p) is not None:       # if left child exists, traverse its subtree
+     46         for other in self. subtree inorder(self.left(p)):
+     47            yield other
+     48      yield p                            # visit p between its subtrees
+     49      if self.right(p) is not None:      # if right child exists, traverse its subtree
+     50         for other in self. subtree inorder(self.right(p)):
+     51            yield other
+        Code Fragment 8.21: Support for performing an inorder traversal of a binary tree.
+        This code should be included in the BinaryTree class (given in Code Fragment 8.7).
+             For many applications of binary trees, an inorder traversal provides a natural
+        iteration. We could make it the default for the BinaryTree class by overriding the
+        positions method that was inherited from the Tree class (see Code Fragment 8.22).
+     52    # override inherited version to make inorder the default
+     53    def positions(self):
+     54      ”””Generate an iteration of the tree s positions.”””
+     55      return self.inorder( )             # make inorder the default
+        Code Fragment 8.22: Deﬁning the BinaryTree.position method so that positions are
+        reported using inorder traversal.

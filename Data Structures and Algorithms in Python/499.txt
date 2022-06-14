@@ -1,0 +1,34 @@
+478                                                                           Chapter 11. Search Trees
+    11.2.1 Python Framework for Balancing Search Trees
+       Our TreeMap class, introduced in Section 11.1.4, is a concrete map implementation
+       that does not perform any explicit balancing operations. However, we designed
+       that class to also serve as a base class for other subclasses that implement more
+       advanced tree-balancing algorithms. A summary of our inheritance hierarchy is
+       shown in Figure 11.10.
+                                    LinkedBinaryTree                MapBase
+                                      (Section 8.3.1)            (Section 10.1.4)
+                                                      TreeMap
+                                                   (Section 11.1.4)
+                         AVLTreeMap                SplayTreeMap             RedBlackTreeMap
+                        (Section 11.3.2)           (Section 11.4.3)            (Section 11.6.2)
+       Figure 11.10: Our hierarchy of balanced search trees (with references to where they
+       are deﬁned). Recall that TreeMap inherits multiply from LinkedBinaryTree and
+       MapBase.
+       Hooks for Rebalancing Operations
+       Our implementation of the basic map operations in Section 11.1.4 includes strategic
+       calls to three nonpublic methods that serve as hooks for rebalancing algorithms:
+           • A call to rebalance insert(p) is made from within the setitem method
+              immediately after a new node is added to the tree at position p.
+           • A call to rebalance delete(p) is made each time a node has been deleted
+              from the tree, with position p identifying the parent of the node that has just
+              been removed. Formally, this hook is called from within the public delete(p)
+              method, which is indirectly invoked by the public delitem (k) behavior.
+           • We also provide a hook, rebalance access(p), that is called when an item at
+              position p of a tree is accessed through a public method such as getitem .
+              This hook is used by the splay tree structure (see Section 11.4) to restructure
+              a tree so that more frequently accessed items are brought closer to the root.
+           We provide trivial declarations of these three methods, in Code Fragment 11.10,
+       having bodies that do nothing (using the pass statement). A subclass of TreeMap
+       may override any of these methods to implement a nontrivial action to rebalance
+       a tree. This is another example of the template method design pattern, as seen in
+       Section 8.4.6.

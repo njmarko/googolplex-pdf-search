@@ -1,0 +1,30 @@
+10.2. Hash Tables                                                                             417
+       10.2.2 Collision-Handling Schemes
+          The main idea of a hash table is to take a bucket array, A, and a hash function, h, and
+          use them to implement a map by storing each item (k, v) in the “bucket” A[h(k)].
+          This simple idea is challenged, however, when we have two distinct keys, k1 and k2 ,
+          such that h(k1 ) = h(k2 ). The existence of such collisions prevents us from simply
+          inserting a new item (k, v) directly into the bucket A[h(k)]. It also complicates our
+          procedure for performing insertion, search, and deletion operations.
+          Separate Chaining
+          A simple and efﬁcient way for dealing with collisions is to have each bucket A[ j]
+          store its own secondary container, holding items (k, v) such that h(k) = j. A natural
+          choice for the secondary container is a small map instance implemented using a list,
+          as described in Section 10.1.5. This collision resolution rule is known as separate
+          chaining, and is illustrated in Figure 10.6.
+                      0    1    2    3    4     5    6    7    8     9   10 11 12
+                 A
+                               54              18                        10        25
+                               28                                        36        38
+                               41                                                  12
+                                                                                   90
+          Figure 10.6: A hash table of size 13, storing 10 items with integer keys, with colli-
+          sions resolved by separate chaining. The compression function is h(k) = k mod 13.
+          For simplicity, we do not show the values associated with the keys.
+              In the worst case, operations on an individual bucket take time proportional to
+          the size of the bucket. Assuming we use a good hash function to index the n items
+          of our map in a bucket array of capacity N, the expected size of a bucket is n/N.
+          Therefore, if given a good hash function, the core map operations run in O( n/N).
+          The ratio λ = n/N, called the load factor of the hash table, should be bounded by
+          a small constant, preferably below 1. As long as λ is O(1), the core operations on
+          the hash table run in O(1) expected time.

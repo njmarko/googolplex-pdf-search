@@ -1,0 +1,38 @@
+288                                                                Chapter 7. Linked Lists
+    29  #------------------------------- public methods -------------------------------
+    30  def init (self):
+    31    ”””Create an empty list of favorites.”””
+    32    self. data = PositionalList( )                  # will be list of Item instances
+    33
+    34  def len (self):
+    35    ”””Return number of entries on favorites list.”””
+    36    return len(self. data)
+    37
+    38  def is empty(self):
+    39    ”””Return True if list is empty.”””
+    40    return len(self. data) == 0
+    41
+    42  def access(self, e):
+    43    ”””Access element e, thereby increasing its access count.”””
+    44    p = self. ﬁnd position(e)                       # try to locate existing element
+    45    if p is None:
+    46       p = self. data.add last(self. Item(e)) # if new, place at end
+    47    p.element( ). count += 1                        # always increment count
+    48    self. move up(p)                                # consider moving forward
+    49
+    50  def remove(self, e):
+    51    ”””Remove element e from the list of favorites.”””
+    52    p = self. ﬁnd position(e)                       # try to locate existing element
+    53    if p is not None:
+    54       self. data.delete(p)                         # delete, if found
+    55
+    56  def top(self, k):
+    57    ”””Generate sequence of top k elements in terms of access count.”””
+    58    if not 1 <= k <= len(self):
+    59       raise ValueError( Illegal value for k )
+    60    walk = self. data.ﬁrst( )
+    61    for j in range(k):
+    62       item = walk.element( )                       # element of list is Item
+    63       yield item. value                            # report user’s element
+    64       walk = self. data.after(walk)
+       Code Fragment 7.19: Class FavoritesList. (Continued from Code Fragment 7.18.)

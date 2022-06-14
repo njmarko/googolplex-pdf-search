@@ -1,0 +1,39 @@
+13.2. Pattern-Matching Algorithms                                                            593
+           Thus, at each iteration of the loop, either j or s increases by at least 1 (possibly
+           both); hence, the total number of iterations of the while loop in the KMP pattern-
+           matching algorithm is at most 2n. Achieving this bound, of course, assumes that
+           we have already computed the failure function for P.
+               The algorithm for computing the failure function runs in O(m) time. Its analysis
+           is analogous to that of the main KMP algorithm, yet with a pattern of length m
+           compared to itself. Thus, we have:
+           Proposition 13.3: The Knuth-Morris-Pratt algorithm performs pattern matching
+           on a text string of length n and a pattern string of length m in O(n + m) time.
+               The correctness of this algorithm follows from the deﬁnition of the failure func-
+           tion. Any comparisons that are skipped are actually unnecessary, for the failure
+           function guarantees that all the ignored comparisons are redundant—they would
+           involve comparing the same matching characters over again.
+               In Figure 13.6, we illustrate the execution of the KMP pattern-matching algo-
+           rithm on the same input strings as in Example 13.1. Note the use of the failure
+           function to avoid redoing one of the comparisons between a character of the pat-
+           tern and a character of the text. Also note that the algorithm performs fewer overall
+           comparisons than the brute-force algorithm run on the same strings (Figure 13.1).
+                                                 The failure function:
+                                              k     0   1    2   3    4   5
+                                           P[k]     a   b    a   c    a   b
+                                            f (k)   0   0    1   0    1   2
+                       Text:      a  b  a c    a  a  b  a  c   c  a b   a  c  a b  a a b b
+                                 1   2  3 4    5  6
+                     Pattern:     a  b  a c    a  b
+                                                  7
+                                               a  b  a  c  a   b
+                                                  8  9 10 11 12
+                                                  a  b  a  c   a b
+                           no comparison
+                              performed                       13
+                                                               a b   a  c  a b
+                                                                 14 15 16 17 18 19
+                                                                  a b   a  c  a b
+           Figure 13.6: An illustration of the KMP pattern-matching algorithm. The primary
+           algorithm performs 19 character comparisons, which are indicated with numerical
+           labels. (Additional comparisons would be performed during the computation of the
+           failure function.)

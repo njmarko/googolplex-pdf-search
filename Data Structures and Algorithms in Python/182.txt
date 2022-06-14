@@ -1,0 +1,36 @@
+4.2. Analyzing Recursive Algorithms                                                           161
+  4.2     Analyzing Recursive Algorithms
+          In Chapter 3, we introduced mathematical techniques for analyzing the efﬁciency
+          of an algorithm, based upon an estimate of the number of primitive operations that
+          are executed by the algorithm. We use notations such as big-Oh to summarize the
+          relationship between the number of operations and the input size for a problem. In
+          this section, we demonstrate how to perform this type of running-time analysis to
+          recursive algorithms.
+               With a recursive algorithm, we will account for each operation that is performed
+          based upon the particular activation of the function that manages the ﬂow of control
+          at the time it is executed. Stated another way, for each invocation of the function,
+          we only account for the number of operations that are performed within the body of
+          that activation. We can then account for the overall number of operations that are
+          executed as part of the recursive algorithm by taking the sum, over all activations,
+          of the number of operations that take place during each individual activation. (As
+          an aside, this is also the way we analyze a nonrecursive function that calls other
+          functions from within its body.)
+               To demonstrate this style of analysis, we revisit the four recursive algorithms
+          presented in Sections 4.1.1 through 4.1.4: factorial computation, drawing an En-
+          glish ruler, binary search, and computation of the cumulative size of a ﬁle system.
+          In general, we may rely on the intuition afforded by a recursion trace in recogniz-
+          ing how many recursive activations occur, and how the parameterization of each
+          activation can be used to estimate the number of primitive operations that occur
+          within the body of that activation. However, each of these recursive algorithms has
+          a unique structure and form.
+          Computing Factorials
+          It is relatively easy to analyze the efﬁciency of our function for computing fac-
+          torials, as described in Section 4.1.1. A sample recursion trace for our factorial
+          function was given in Figure 4.1. To compute factorial(n), we see that there are a
+          total of n + 1 activations, as the parameter decreases from n in the ﬁrst call, to n − 1
+          in the second call, and so on, until reaching the base case with parameter 0.
+               It is also clear, given an examination of the function body in Code Fragment 4.1,
+          that each individual activation of factorial executes a constant number of opera-
+          tions. Therefore, we conclude that the overall number of operations for computing
+          factorial(n) is O(n), as there are n + 1 activations, each of which accounts for O(1)
+          operations.

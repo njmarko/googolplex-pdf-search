@@ -1,0 +1,41 @@
+582                                                         Chapter 13. Text Processing
+ 13.1    Abundance of Digitized Text
+      Despite the wealth of multimedia information, text processing remains one of the
+      dominant functions of computers. Computer are used to edit, store, and display
+      documents, and to transport documents over the Internet. Furthermore, digital sys-
+      tems are used to archive a wide range of textual information, and new data is being
+      generated at a rapidly increasing pace. A large corpus can readily surpass a petabyte
+      of data (which is equivalent to a thousand terabytes, or a million gigabytes). Com-
+      mon examples of digital collections that include textual information are:
+          • Snapshots of the World Wide Web, as Internet document formats HTML and
+             XML are primarily text formats, with added tags for multimedia content
+          • All documents stored locally on a user’s computer
+          • Email archives
+          • Customer reviews
+          • Compilations of status updates on social networking sites such as Facebook
+          • Feeds from microblogging sites such as Twitter and Tumblr
+      These collections include written text from hundreds of international languages.
+      Furthermore, there are large data sets (such as DNA) that can be viewed computa-
+      tionally as “strings” even though they are not language.
+          In this chapter we explore some of the fundamental algorithms that can be used
+      to efﬁciently analyze and process large textual data sets. In addition to having
+      interesting applications, text-processing algorithms also highlight some important
+      algorithmic design patterns.
+          We begin by examining the problem of searching for a pattern as a substring
+      of a larger piece of text, for example, when searching for a word in a document.
+      The pattern-matching problem gives rise to the brute-force method, which is often
+      inefﬁcient but has wide applicability.
+          Next, we introduce an algorithmic technique known as dynamic programming,
+      which can be applied in certain settings to solve a problem in polynomial time that
+      appears at ﬁrst to require exponential time to solve. We demonstrate the application
+      on this technique to the problem of ﬁnding partial matches between strings that may
+      be similar but not perfectly aligned. This problem arises when making suggestions
+      for a misspelled word, or when trying to match related genetic samples.
+          Because of the massive size of textual data sets, the issue of compression is
+      important, both in minimizing the number of bits that need to be communicated
+      through a network and to reduce the long-term storage requirements for archives.
+      For text compression, we can apply the greedy method, which often allows us to
+      approximate solutions to hard problems, and for some problems (such as in text
+      compression) actually gives rise to optimal algorithms.
+          Finally, we examine several special-purpose data structures that can be used to
+      better organize textual data in order to support more efﬁcient run-time queries.

@@ -1,0 +1,39 @@
+152                                                                 Chapter 4. Recursion
+    4.1.2 Drawing an English Ruler
+       In the case of computing a factorial, there is no compelling reason for preferring
+       recursion over a direct iteration with a loop. As a more complex example of the
+       use of recursion, consider how to draw the markings of a typical English ruler. For
+       each inch, we place a tick with a numeric label. We denote the length of the tick
+       designating a whole inch as the major tick length. Between the marks for whole
+       inches, the ruler contains a series of minor ticks, placed at intervals of 1/2 inch,
+       1/4 inch, and so on. As the size of the interval decreases by half, the tick length
+       decreases by one. Figure 4.2 demonstrates several such rulers with varying major
+       tick lengths (although not drawn to scale).
+                         ---- 0                 ----- 0                ---  0
+                         -                      -                      -
+                         --                     --                     --
+                         -                      -                      -
+                         ---                    ---                    ---  1
+                         -                      -                      -
+                         --                     --                     --
+                         -                      -                      -
+                         ---- 1                 ----                   ---  2
+                         -                      -                      -
+                         --                     --                     --
+                         -                      -                      -
+                         ---                    ---                    ---  3
+                         -                      -
+                         --                     --
+                         -                      -
+                         ---- 2                 ----- 1
+                         (a)                    (b)                    (c)
+       Figure 4.2: Three sample outputs of an English ruler drawing: (a) a 2-inch ruler
+       with major tick length 4; (b) a 1-inch ruler with major tick length 5; (c) a 3-inch
+       ruler with major tick length 3.
+       A Recursive Approach to Ruler Drawing
+       The English ruler pattern is a simple example of a fractal, that is, a shape that has
+       a self-recursive structure at various levels of magniﬁcation. Consider the rule with
+       major tick length 5 shown in Figure 4.2(b). Ignoring the lines containing 0 and 1,
+       let us consider how to draw the sequence of ticks lying between these lines. The
+       central tick (at 1/2 inch) has length 4. Observe that the two patterns of ticks above
+       and below this central tick are identical, and each has a central tick of length 3.

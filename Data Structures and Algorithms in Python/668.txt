@@ -1,0 +1,39 @@
+14.3. Graph Traversals                                                                          647
+               Although the DFS complete function makes multiple calls to the original DFS
+          function, the total time spent by a call to DFS complete is O(n + m). For an undi-
+          rected graph, recall from our original analysis on page 643 that a single call to
+          DFS starting at vertex s runs in time O(ns + ms ) where ns is the number of vertices
+          reachable from s, and ms is the number of incident edges to those vertices. Because
+          each call to DFS explores a different component, the sum of ns + ms terms is n + m.
+          The O(n + m) total bound applies to the directed case as well, even though the sets
+          of reachable vertices are not necessarily disjoint. However, because the same dis-
+          covery dictionary is passed as a parameter to all DFS calls, we know that the DFS
+          subroutine is called once on each vertex, and then each outgoing edge is explored
+          only once during the process.
+               The DFS complete function can be used to analyze the connected components
+          of an undirected graph. The discovery dictionary it returns represents a DFS forest
+          for the entire graph. We say this is a forest rather than a tree, because the graph may
+          not be connected. The number of connected components can be determined by the
+          number of vertices in the discovery dictionary that have None as their discovery
+          edge (those are roots of DFS trees). A minor modiﬁcation to the core DFS method
+          could be used to tag each vertex with a component number when it is discovered.
+          (See Exercise C-14.44.)
+               The situation is more complex for ﬁnding strongly connected components of
+          a directed graph. There exists an approach for computing those components in
+          O(n + m) time, making use of two separate depth-ﬁrst search traversals, but the
+          details are beyond the scope of this book.
+         Detecting Cycles with DFS
+          For both undirected and directed graphs, a cycle exists if and only if a back edge
+          exists relative to the DFS traversal of that graph. It is easy to see that if a back edge
+          exists, a cycle exists by taking the back edge from the descendant to its ancestor
+          and then following the tree edges back to the descendant. Conversely, if a cycle
+          exists in the graph, there must be a back edge relative to a DFS (although we do not
+          prove this fact here).
+               Algorithmically, detecting a back edge in the undirected case is easy, because
+          all edges are either tree edges or back edges. In the case of a directed graph, ad-
+          ditional modiﬁcations to the core DFS implementation are needed to properly cat-
+          egorize a nontree edge as a back edge. When a directed edge is explored leading
+          to a previously visited vertex, we must recognize whether that vertex is an ancestor
+          of the current vertex. This requires some additional bookkeeping, for example, by
+          tagging vertices upon which a recursive call to DFS is still active. We leave details
+          as an exercise (C-14.43).

@@ -1,0 +1,40 @@
+14.2. Data Structures for Graphs                                                             629
+          Performance of the Edge List Structure
+          The performance of an edge list structure in fulﬁlling the graph ADT is summarized
+          in Table 14.2. We begin by discussing the space usage, which is O(n + m) for
+          representing a graph with n vertices and m edges. Each individual vertex or edge
+          instance uses O(1) space, and the additional lists V and E use space proportional
+          to their number of entries.
+               In terms of running time, the edge list structure does as well as one could hope
+          in terms of reporting the number of vertices or edges, or in producing an iteration
+          of those vertices or edges. By querying the respective list V or E, the vertex count
+          and edge count methods run in O(1) time, and by iterating through the appropriate
+          list, the methods vertices and edges run respectively in O(n) and O(m) time.
+               The most signiﬁcant limitations of an edge list structure, especially when com-
+          pared to the other graph representations, are the O(m) running times of methods
+          get edge(u,v), degree(v), and incident edges(v). The problem is that with all
+          edges of the graph in an unordered list E, the only way to answer those queries
+          is through an exhaustive inspection of all edges. The other data structures intro-
+          duced in this section will implement these methods more efﬁciently.
+               Finally, we consider the methods that update the graph. It is easy to add a new
+          vertex or a new edge to the graph in O(1) time. For example, a new edge can be
+          added to the graph by creating an Edge instance storing the given element as data,
+          adding that instance to the positional list E, and recording its resulting Position
+          within E as an attribute of the edge. That stored position can later be used to
+          locate and remove this edge from E in O(1) time, and thus implement the method
+          remove edge(e)
+               It is worth discussing why the remove vertex(v) method has a running time of
+          O(m). As stated in the graph ADT, when a vertex v is removed from the graph, all
+          edges incident to v must also be removed (otherwise, we would have a contradiction
+          of edges that refer to vertices that are not part of the graph). To locate the incident
+          edges to the vertex, we must examine all edges of E.
+                Operation                                                   Running Time
+                vertex count( ), edge count( )                              O(1)
+                vertices( )                                                 O(n)
+                edges( )                                                    O(m)
+                get edge(u,v), degree(v), incident edges(v)                 O(m)
+                insert vertex(x), insert edge(u,v,x), remove edge(e)        O(1)
+                remove vertex(v)                                            O(m)
+          Table 14.2: Running times of the methods of a graph implemented with the edge
+          list structure. The space used is O(n + m), where n is the number of vertices and m
+          is the number of edges.

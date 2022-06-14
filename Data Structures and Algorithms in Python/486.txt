@@ -1,0 +1,33 @@
+11.1. Binary Search Trees                                                                        465
+       11.1.3 Insertions and Deletions
+          Algorithms for inserting or deleting entries of a binary search tree are fairly straight-
+          forward, although not trivial.
+          Insertion
+          The map command M[k] = v, as supported by the setitem method, begins
+          with a search for key k (assuming the map is nonempty). If found, that item’s
+          existing value is reassigned. Otherwise, a node for the new item can be inserted
+          into the underlying tree T in place of the empty subtree that was reached at the end
+          of the failed search. The binary search tree property is sustained by that placement
+          (note that it is placed exactly where a search would expect it). Pseudo-code for
+          such a TreeInsert algorithm is given in in Code Fragment 11.3.
+          Algorithm TreeInsert(T, k, v):
+              Input: A search key k to be associated with value v
+               p = TreeSearch(T, T.root(), k)
+               if k == p.key() then
+                  Set p’s value to v
+               else if k < p.key() then
+                  add node with item (k,v) as left child of p
+               else
+                  add node with item (k,v) as right child of p
+          Code Fragment 11.3: Algorithm for inserting a key-value pair into a map that is
+          represented as a binary search tree.
+              An example of insertion into a binary search tree is shown in Figure 11.4.
+                                 44                                       44
+                      17                      88               17                       88
+                8            32        65           97   8            32         65           97
+                         28         54     82    93               28         54      82    93
+                            29          76                           29           76
+                                           80                                  68    80
+                                (a)                                      (b)
+          Figure 11.4: Insertion of an item with key 68 into the search tree of Figure 11.2.
+          Finding the position to insert is shown in (a), and the resulting tree is shown in (b).

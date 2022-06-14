@@ -1,0 +1,37 @@
+198                                                Chapter 5. Array-Based Sequences
+    Proposition 5.1: Let S be a sequence implemented by means of a dynamic array
+    with initial capacity one, using the strategy of doubling the array size when full.
+    The total time to perform a series of n append operations in S, starting from S being
+    empty, is O(n).
+    Justiﬁcation: Let us assume that one cyber-dollar is enough to pay for the execu-
+    tion of each append operation in S, excluding the time spent for growing the array.
+    Also, let us assume that growing the array from size k to size 2k requires k cyber-
+    dollars for the time spent initializing the new array. We shall charge each append
+    operation three cyber-dollars. Thus, we overcharge each append operation that does
+    not cause an overﬂow by two cyber-dollars. Think of the two cyber-dollars proﬁted
+    in an insertion that does not grow the array as being “stored” with the cell in which
+    the element was inserted. An overﬂow occurs when the array S has 2i elements, for
+    some integer i ≥ 0, and the size of the array used by the array representing S is 2i .
+    Thus, doubling the size of the array will require 2i cyber-dollars. Fortunately, these
+    cyber-dollars can be found stored in cells 2i−1 through 2i − 1. (See Figure 5.14.)
+    Note that the previous overﬂow occurred when the number of elements became
+    larger than 2i−1 for the ﬁrst time, and thus the cyber-dollars stored in cells 2i−1
+    through 2i − 1 have not yet been spent. Therefore, we have a valid amortization
+    scheme in which each operation is charged three cyber-dollars and all the comput-
+    ing time is paid for. That is, we can pay for the execution of n append operations
+    using 3n cyber-dollars. In other words, the amortized running time of each append
+    operation is O(1); hence, the total running time of n append operations is O(n).
+                             $  $   $   $
+                             $  $   $   $
+      (a)
+             0   1   2   3   4   5   6   7
+                                            $
+                                            $
+      (b)
+             0   1   2   3   4   5   6   7   8  9 10 11 12 13 14 15
+    Figure 5.14: Illustration of a series of append operations on a dynamic array: (a) an
+    8-cell array is full, with two cyber-dollars “stored” at cells 4 through 7; (b) an
+    append operation causes an overﬂow and a doubling of capacity. Copying the eight
+    old elements to the new array is paid for by the cyber-dollars already stored in the
+    table. Inserting the new element is paid for by one of the cyber-dollars charged to
+    the current append operation, and the two cyber-dollars proﬁted are stored at cell 8.

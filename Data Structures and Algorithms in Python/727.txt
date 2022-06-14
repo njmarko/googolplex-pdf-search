@@ -1,0 +1,41 @@
+706                                      Chapter 15. Memory Management and B-Trees
+    15.2.2 Caching Strategies
+       The signiﬁcance of the memory hierarchy on the performance of a program de-
+       pends greatly upon the size of the problem we are trying to solve and the physical
+       characteristics of the computer system. Often, the bottleneck occurs between two
+       levels of the memory hierarchy—the one that can hold all data items and the level
+       just below that one. For a problem that can ﬁt entirely in main memory, the two
+       most important levels are the cache memory and the internal memory. Access times
+       for internal memory can be as much as 10 to 100 times longer than those for cache
+       memory. It is desirable, therefore, to be able to perform most memory accesses
+       in cache memory. For a problem that does not ﬁt entirely in main memory, on
+       the other hand, the two most important levels are the internal memory and the ex-
+       ternal memory. Here the differences are even more dramatic, for access times for
+       disks, the usual general-purpose external-memory device, are typically as much as
+       100000 to 1000000 times longer than those for internal memory.
+            To put this latter ﬁgure into perspective, imagine there is a student in Baltimore
+       who wants to send a request-for-money message to his parents in Chicago. If the
+       student sends his parents an email message, it can arrive at their home computer
+       in about ﬁve seconds. Think of this mode of communication as corresponding to
+       an internal-memory access by a CPU. A mode of communication corresponding to
+       an external-memory access that is 500, 000 times slower would be for the student
+       to walk to Chicago and deliver his message in person, which would take about a
+       month if he can average 20 miles per day. Thus, we should make as few accesses
+       to external memory as possible.
+            Most algorithms are not designed with the memory hierarchy in mind, in spite
+       of the great variance between access times for the different levels. Indeed, all of
+       the algorithm analyses described in this book so far have assumed that all memory
+       accesses are equal. This assumption might seem, at ﬁrst, to be a great oversight—
+       and one we are only addressing now in the ﬁnal chapter—but there are good reasons
+       why it is actually a reasonable assumption to make.
+            One justiﬁcation for this assumption is that it is often necessary to assume that
+       all memory accesses take the same amount of time, since speciﬁc device-dependent
+       information about memory sizes is often hard to come by. In fact, information
+       about memory size may be difﬁcult to get. For example, a Python program that
+       is designed to run on many different computer platforms cannot easily be deﬁned
+       in terms of a speciﬁc computer architecture conﬁguration. We can certainly use
+       architecture-speciﬁc information, if we have it (and we will show how to exploit
+       such information later in this chapter). But once we have optimized our software
+       for a certain architecture conﬁguration, our software will no longer be device-
+       independent. Fortunately, such optimizations are not always necessary, primarily
+       because of the second justiﬁcation for the equal-time memory-access assumption.

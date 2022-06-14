@@ -1,0 +1,40 @@
+1.8. Iterators and Generators                                                                      41
+           until a yield statement indicates the next value. At that point, the procedure is tem-
+           porarily interrupted, only to be resumed when another value is requested. When
+           the ﬂow of control naturally reaches the end of our procedure (or a zero-argument
+           return statement), a StopIteration exception is automatically raised. Although this
+           particular example uses a single yield statement in the source code, a generator can
+           rely on multiple yield statements in different constructs, with the generated series
+           determined by the natural ﬂow of control. For example, we can greatly improve
+           the efﬁciency of our generator for computing factors of a number, n, by only test-
+           ing values up to the square root of that number, while reporting the factor n//k
+           that is associated with each k (unless n//k equals k). We might implement such a
+           generator as follows:
+                def factors(n):                     # generator that computes factors
+                   k=1
+                   while k k < n:                   # while k < sqrt(n)
+                      if n % k == 0:
+                         yield k
+                         yield n // k
+                      k += 1
+                   if k k == n:                     # special case if n is perfect square
+                      yield k
+           We should note that this generator differs from our ﬁrst version in that the factors
+           are not generated in strictly increasing order. For example, factors(100) generates
+           the series 1, 100, 2, 50, 4, 25, 5, 20, 10.
+               In closing, we wish to emphasize the beneﬁts of lazy evaluation when using a
+           generator rather than a traditional function. The results are only computed if re-
+           quested, and the entire series need not reside in memory at one time. In fact, a
+           generator can effectively produce an inﬁnite series of values. As an example, the
+           Fibonacci numbers form a classic mathematical sequence, starting with value 0,
+           then value 1, and then each subsequent value being the sum of the two preceding
+           values. Hence, the Fibonacci series begins as: 0, 1, 1, 2, 3, 5, 8, 13, . . .. The follow-
+           ing generator produces this inﬁnite series.
+                def ﬁbonacci( ):
+                   a=0
+                   b=1
+                   while True:                    # keep going...
+                      yield a                     # report value, a, during this pass
+                      future = a + b
+                      a=b                         # this will be next value reported
+                      b = future                  # and subsequently this

@@ -1,0 +1,33 @@
+712                                        Chapter 15. Memory Management and B-Trees
+    15.3.1 (a,b) Trees
+       To reduce the number of external-memory accesses when searching, we can repre-
+       sent our map using a multiway search tree (Section 11.5.1). This approach gives
+       rise to a generalization of the (2, 4) tree data structure known as the (a, b) tree.
+            An (a, b) tree is a multiway search tree such that each node has between a and
+       b children and stores between a − 1 and b − 1 entries. The algorithms for searching,
+       inserting, and removing entries in an (a, b) tree are straightforward generalizations
+       of the corresponding ones for (2, 4) trees. The advantage of generalizing (2, 4) trees
+       to (a, b) trees is that a generalized class of trees provides a ﬂexible search structure,
+       where the size of the nodes and the running time of the various map operations
+       depends on the parameters a and b. By setting the parameters a and b appropriately
+       with respect to the size of disk blocks, we can derive a data structure that achieves
+       good external-memory performance.
+       Deﬁnition of an (a,b) Tree
+       An (a,b) tree, where parameters a and b are integers such that 2 ≤ a ≤ (b + 1)/2,
+       is a multiway search tree T with the following additional restrictions:
+       Size Property: Each internal node has at least a children, unless it is the root, and
+              has at most b children.
+       Depth Property: All the external nodes have the same depth.
+       Proposition 15.1: The height of an (a, b) tree storing n entries is Ω(log n/ log b)
+       and O(log n/ log a).
+       Justiﬁcation: Let T be an (a, b) tree storing n entries, and let h be the height of
+       T . We justify the proposition by establishing the following bounds on h:
+                                 1                        1       n+1
+                                     log(n + 1) ≤ h ≤         log      + 1.
+                               log b                    log a      2
+       By the size and depth properties, the number n of external nodes of T is at least
+       2ah−1 and at most bh . By Proposition 11.7, n = n + 1. Thus,
+                                           2ah−1 ≤ n + 1 ≤ bh .
+       Taking the logarithm in base 2 of each term, we get
+                                 (h − 1) log a + 1 ≤ log(n + 1) ≤ h log b.
+       An algebraic manipulation of these inequalities completes the justiﬁcation.

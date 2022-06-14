@@ -1,0 +1,38 @@
+Preface
+     The design and analysis of efﬁcient data structures has long been recognized as a
+     vital subject in computing and is part of the core curriculum of computer science
+     and computer engineering undergraduate degrees. Data Structures and Algorithms
+     in Python provides an introduction to data structures and algorithms, including their
+     design, analysis, and implementation. This book is designed for use in a beginning-
+     level data structures course, or in an intermediate-level introduction to algorithms
+     course. We discuss its use for such courses in more detail later in this preface.
+          To promote the development of robust and reusable software, we have tried to
+     take a consistent object-oriented viewpoint throughout this text. One of the main
+     ideas of the object-oriented approach is that data should be presented as being en-
+     capsulated with the methods that access and modify them. That is, rather than
+     simply viewing data as a collection of bytes and addresses, we think of data ob-
+     jects as instances of an abstract data type (ADT), which includes a repertoire of
+     methods for performing operations on data objects of this type. We then empha-
+     size that there may be several different implementation strategies for a particular
+     ADT, and explore the relative pros and cons of these choices. We provide complete
+     Python implementations for almost all data structures and algorithms discussed,
+     and we introduce important object-oriented design patterns as means to organize
+     those implementations into reusable components.
+          Desired outcomes for readers of our book include that:
+          • They have knowledge of the most common abstractions for data collections
+            (e.g., stacks, queues, lists, trees, maps).
+          • They understand algorithmic strategies for producing efﬁcient realizations of
+            common data structures.
+          • They can analyze algorithmic performance, both theoretically and experi-
+            mentally, and recognize common trade-offs between competing strategies.
+          • They can wisely use existing data structures and algorithms found in modern
+            programming language libraries.
+          • They have experience working with concrete implementations for most foun-
+            dational data structures and algorithms.
+          • They can apply data structures and algorithms to solve complex problems.
+     In support of the last goal, we present many example applications of data structures
+     throughout the book, including the processing of ﬁle systems, matching of tags
+     in structured formats such as HTML, simple cryptography, text frequency analy-
+     sis, automated geometric layout, Huffman coding, DNA sequence alignment, and
+     search engine indexing.
+                                                  v

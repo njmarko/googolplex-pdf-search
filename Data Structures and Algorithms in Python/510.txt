@@ -1,0 +1,42 @@
+11.3. AVL Trees                                                                                489
+      18   #------------------------- positional-based utility methods -------------------------
+      19   def recompute height(self, p):
+      20     p. node. height = 1 + max(p. node.left height( ), p. node.right height( ))
+      21
+      22   def isbalanced(self, p):
+      23     return abs(p. node.left height( ) − p. node.right height( )) <= 1
+      24
+      25   def tall child(self, p, favorleft=False): # parameter controls tiebreaker
+      26     if p. node.left height( ) + (1 if favorleft else 0) > p. node.right height( ):
+      27        return self.left(p)
+      28     else:
+      29        return self.right(p)
+      30
+      31   def tall grandchild(self, p):
+      32     child = self. tall child(p)
+      33     # if child is on left, favor left grandchild; else favor right grandchild
+      34     alignment = (child == self.left(p))
+      35     return self. tall child(child, alignment)
+      36
+      37   def rebalance(self, p):
+      38     while p is not None:
+      39        old height = p. node. height              # trivially 0 if new node
+      40        if not self. isbalanced(p):               # imbalance detected!
+      41           # perform trinode restructuring, setting p to resulting root,
+      42           # and recompute new local heights after the restructuring
+      43           p = self. restructure(self. tall grandchild(p))
+      44           self. recompute height(self.left(p))
+      45           self. recompute height(self.right(p))
+      46        self. recompute height(p)                 # adjust for recent changes
+      47        if p. node. height == old height:         # has height changed?
+      48           p = None                               # no further changes needed
+      49        else:
+      50           p = self.parent(p)                     # repeat with parent
+      51
+      52   #---------------------------- override balancing hooks ----------------------------
+      53   def rebalance insert(self, p):
+      54     self. rebalance(p)
+      55
+      56   def rebalance delete(self, p):
+      57     self. rebalance(p)
+          Code Fragment 11.13: AVLTreeMap class (continued from Code Fragment 11.12).

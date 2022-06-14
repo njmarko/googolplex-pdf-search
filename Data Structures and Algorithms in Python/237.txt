@@ -1,0 +1,39 @@
+216                                                     Chapter 5. Array-Based Sequences
+    5.5.3 Simple Cryptography
+       An interesting application of strings and lists is cryptography, the science of secret
+       messages and their applications. This ﬁeld studies ways of performing encryp-
+       tion, which takes a message, called the plaintext, and converts it into a scrambled
+       message, called the ciphertext. Likewise, cryptography also studies corresponding
+       ways of performing decryption, which takes a ciphertext and turns it back into its
+       original plaintext.
+            Arguably the earliest encryption scheme is the Caesar cipher, which is named
+       after Julius Caesar, who used this scheme to protect important military messages.
+       (All of Caesar’s messages were written in Latin, of course, which already makes
+       them unreadable for most of us!) The Caesar cipher is a simple way to obscure a
+       message written in a language that forms words with an alphabet.
+            The Caesar cipher involves replacing each letter in a message with the letter that
+       is a certain number of letters after it in the alphabet. So, in an English message, we
+       might replace each A with D, each B with E, each C with F, and so on, if shifting by
+       three characters. We continue this approach all the way up to W, which is replaced
+       with Z. Then, we let the substitution pattern wrap around, so that we replace X
+       with A, Y with B, and Z with C.
+       Converting Between Strings and Character Lists
+       Given that strings are immutable, we cannot directly edit an instance to encrypt it.
+       Instead, our goal will be to generate a new string. A convenient technique for per-
+       forming string transformations is to create an equivalent list of characters, edit the
+       list, and then reassemble a (new) string based on the list. The ﬁrst step can be per-
+       formed by sending the string as a parameter to the constructor of the list class. For
+       example, the expression list( bird ) produces the result [ b , i , r , d ].
+       Conversely, we can use a list of characters to build a string by invoking the join
+       method on an empty string, with the list of characters as the parameter. For exam-
+       ple, the call .join([ b , i , r , d ]) returns the string bird .
+       Using Characters as Array Indices
+       If we were to number our letters like array indices, so that A is 0, B is 1, C is 2,
+       and so on, then we can write the Caesar cipher with a rotation of r as a simple
+       formula: Replace each letter i with the letter (i + r) mod 26, where mod is the
+       modulo operator, which returns the remainder after performing an integer division.
+       This operator is denoted with % in Python, and it is exactly the operator we need
+       to easily perform the wrap around at the end of the alphabet. For 26 mod 26 is
+       0, 27 mod 26 is 1, and 28 mod 26 is 2. The decryption algorithm for the Caesar
+       cipher is just the opposite—we replace each letter with the one r places before it,
+       with wrap around (that is, letter i is replaced by letter (i − r) mod 26).

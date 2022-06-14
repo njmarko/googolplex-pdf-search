@@ -1,0 +1,38 @@
+14.2. Data Structures for Graphs                                                               627
+ 14.2        Data Structures for Graphs
+          In this section, we introduce four data structures for representing a graph. In each
+          representation, we maintain a collection to store the vertices of a graph. However,
+          the four representations differ greatly in the way they organize the edges.
+              • In an edge list, we maintain an unordered list of all edges. This minimally
+                 sufﬁces, but there is no efﬁcient way to locate a particular edge (u, v), or the
+                 set of all edges incident to a vertex v.
+              • In an adjacency list, we maintain, for each vertex, a separate list containing
+                 those edges that are incident to the vertex. The complete set of edges can
+                 be determined by taking the union of the smaller sets, while the organization
+                 allows us to more efﬁciently ﬁnd all edges incident to a given vertex.
+              • An adjacency map is very similar to an adjacency list, but the secondary
+                 container of all edges incident to a vertex is organized as a map, rather than
+                 as a list, with the adjacent vertex serving as a key. This allows for access to
+                 a speciﬁc edge (u, v) in O(1) expected time.
+              • An adjacency matrix provides worst-case O(1) access to a speciﬁc edge
+                 (u, v) by maintaining an n × n matrix, for a graph with n vertices. Each
+                 entry is dedicated to storing a reference to the edge (u, v) for a particular pair
+                 of vertices u and v; if no such edge exists, the entry will be None.
+              A summary of the performance of these structures is given in Table 14.1. We
+          give further explanation of the structures in the remainder of this section.
+            Operation               Edge List    Adj. List          Adj. Map       Adj. Matrix
+            vertex count( )         O(1)         O(1)               O(1)           O(1)
+            edge count( )           O(1)         O(1)               O(1)           O(1)
+            vertices( )             O(n)         O(n)               O(n)           O(n)
+            edges( )                O(m)         O(m)               O(m)           O(m)
+            get edge(u,v)           O(m)         O(min(du , dv ))   O(1) exp.      O(1)
+            degree(v)               O(m)         O(1)               O(1)           O(n)
+            incident edges(v)       O(m)         O(dv )             O(dv )         O(n)
+            insert vertex(x)        O(1)         O(1)               O(1)           O(n2 )
+            remove vertex(v)        O(m)         O(dv )             O(dv )         O(n2 )
+            insert edge(u,v,x)      O(1)         O(1)               O(1) exp.      O(1)
+            remove edge(e)          O(1)         O(1)               O(1) exp.      O(1)
+          Table 14.1: A summary of the running times for the methods of the graph ADT, us-
+          ing the graph representations discussed in this section. We let n denote the number
+          of vertices, m the number of edges, and dv the degree of vertex v. Note that the
+          adjacency matrix uses O(n2 ) space, while all other structures use O(n + m) space.

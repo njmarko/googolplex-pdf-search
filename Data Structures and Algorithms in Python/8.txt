@@ -1,0 +1,38 @@
+Preface                                                                                     vii
+      Contents and Organization
+         The chapters for this book are organized to provide a pedagogical path that starts
+         with the basics of Python programming and object-oriented design. We then add
+         foundational techniques like algorithm analysis and recursion. In the main portion
+         of the book, we present fundamental data structures and algorithms, concluding
+         with a discussion of memory management (that is, the architectural underpinnings
+         of data structures). Speciﬁcally, the chapters for this book are organized as follows:
+            1.  Python Primer
+            2.  Object-Oriented Programming
+            3.  Algorithm Analysis
+            4.  Recursion
+            5.  Array-Based Sequences
+            6.  Stacks, Queues, and Deques
+            7.  Linked Lists
+            8.  Trees
+            9.  Priority Queues
+           10.  Maps, Hash Tables, and Skip Lists
+           11.  Search Trees
+           12.  Sorting and Selection
+           13.  Text Processing
+           14.  Graph Algorithms
+           15.  Memory Management and B-Trees
+            A.  Character Strings in Python
+            B.  Useful Mathematical Facts
+         A more detailed table of contents follows this preface, beginning on page xi.
+      Prerequisites
+         We assume that the reader is at least vaguely familiar with a high-level program-
+         ming language, such as C, C++, Python, or Java, and that he or she understands the
+         main constructs from such a high-level language, including:
+             • Variables and expressions.
+             • Decision structures (such as if-statements and switch-statements).
+             • Iteration structures (for loops and while loops).
+             • Functions (whether stand-alone or object-oriented methods).
+         For readers who are familiar with these concepts, but not with how they are ex-
+         pressed in Python, we provide a primer on the Python language in Chapter 1. Still,
+         this book is primarily a data structures book, not a Python book; hence, it does not
+         give a comprehensive treatment of Python.

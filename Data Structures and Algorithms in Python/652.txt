@@ -1,0 +1,39 @@
+14.2. Data Structures for Graphs                                                              631
+          Performance of the Adjacency List Structure
+          Table 14.3 summarizes the performance of the adjacency list structure implemen-
+          tation of a graph, assuming that the primary collection V and all secondary collec-
+          tions I(v) are implemented with doubly linked lists.
+               Asymptotically, the space requirements for an adjacency list are the same as
+          an edge list structure, using O(n + m) space for a graph with n vertices and m
+          edges. The primary list of vertices uses O(n) space. The sum of the lengths of
+          all secondary lists is O(m), for reasons that were formalized in Propositions 14.8
+          and 14.9. In short, an undirected edge (u, v) is referenced in both I(u) and I(v), but
+          its presence in the graph results in only a constant amount of additional space.
+               We have already noted that the incident edges(v) method can be achieved in
+          O(deg(v)) time based on use of I(v). We can achieve the degree(v) method of
+          the graph ADT to use O(1) time, assuming collection I(v) can report its size in
+          similar time. To locate a speciﬁc edge for implementing get edge(u,v), we can
+          search through either I(u) and I(v). By choosing the smaller of the two, we get
+          O(min(deg(u), deg(v))) running time.
+               The rest of the bounds in Table 14.3 can be achieved with additional care. To
+          efﬁciently support deletions of edges, an edge (u, v) would need to maintain a ref-
+          erence to its positions within both I(u) and I(v), so that it could be deleted from
+          those collections in O(1) time. To remove a vertex v, we must also remove any
+          incident edges, but at least we can locate those edges in O(deg(v)) time.
+               The easiest way to support edges( ) in O(m) and count edges( ) in O(1) is to
+          maintain an auxiliary list E of edges, as in the edge list representation. Otherwise,
+          we can implement the edges method in O(n + m) time by accessing each secondary
+          list and reporting its edges, taking care not to report an undirected edge (u, v) twice.
+                     Operation                                 Running Time
+                     vertex count( ), edge count( )            O(1)
+                     vertices( )                               O(n)
+                     edges( )                                  O(m)
+                     get edge(u,v)                             O(min(deg(u), deg(v)))
+                     degree(v)                                 O(1)
+                     incident edges(v)                         O(deg(v))
+                     insert vertex(x), insert edge(u,v,x)      O(1)
+                     remove edge(e)                            O(1)
+                     remove vertex(v)                          O(deg(v))
+          Table 14.3: Running times of the methods of a graph implemented with the adja-
+          cency list structure. The space used is O(n + m), where n is the number of vertices
+          and m is the number of edges.

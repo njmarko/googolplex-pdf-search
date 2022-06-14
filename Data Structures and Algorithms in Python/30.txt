@@ -1,0 +1,37 @@
+1.2. Objects in Python                                                                              9
+          Sequence Types: The list, tuple, and str Classes
+          The list, tuple, and str classes are sequence types in Python, representing a col-
+          lection of values in which the order is signiﬁcant. The list class is the most general,
+          representing a sequence of arbitrary objects (akin to an “array” in other languages).
+          The tuple class is an immutable version of the list class, beneﬁting from a stream-
+          lined internal representation. The str class is specially designed for representing
+          an immutable sequence of text characters. We note that Python does not have a
+          separate class for characters; they are just strings with length one.
+          The list Class
+          A list instance stores a sequence of objects. A list is a referential structure, as it
+          technically stores a sequence of references to its elements (see Figure 1.4). El-
+          ements of a list may be arbitrary objects (including the None object). Lists are
+          array-based sequences and are zero-indexed, thus a list of length n has elements
+          indexed from 0 to n − 1 inclusive. Lists are perhaps the most used container type in
+          Python and they will be extremely central to our study of data structures and algo-
+          rithms. They have many valuable behaviors, including the ability to dynamically
+          expand and contract their capacities as needed. In this chapter, we will discuss only
+          the most basic properties of lists. We revisit the inner working of all of Python’s
+          sequence types as the focus of Chapter 5.
+               Python uses the characters [ ] as delimiters for a list literal, with [ ] itself being
+          an empty list. As another example, [ red , green , blue ] is a list containing
+          three string instances. The contents of a list literal need not be expressed as literals;
+          if identiﬁers a and b have been established, then syntax [a, b] is legitimate.
+               The list( ) constructor produces an empty list by default. However, the construc-
+          tor will accept any parameter that is of an iterable type. We will discuss iteration
+          further in Section 1.8, but examples of iterable types include all of the standard con-
+          tainer types (e.g., strings, list, tuples, sets, dictionaries). For example, the syntax
+          list( hello ) produces a list of individual characters, [ h , e , l , l , o ].
+          Because an existing list is itself iterable, the syntax backup = list(data) can be
+          used to construct a new list instance referencing the same contents as the original.
+                         2     3     5     7     11    13     17   19    23    29    31
+                 primes:
+                             0   1     2    3     4   5     6    7    8     9   10
+          Figure 1.4: Python’s internal representation of a list of integers, instantiated as
+          prime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]. The implicit indices of the ele-
+          ments are shown below each entry.

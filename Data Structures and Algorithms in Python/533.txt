@@ -1,0 +1,35 @@
+512                                                             Chapter 11. Search Trees
+ 11.6    Red-Black Trees
+      Although AVL trees and (2, 4) trees have a number of nice properties, they also
+      have some disadvantages. For instance, AVL trees may require many restructure
+      operations (rotations) to be performed after a deletion, and (2, 4) trees may require
+      many split or fusing operations to be performed after an insertion or removal. The
+      data structure we discuss in this section, the red-black tree, does not have these
+      drawbacks; it uses O(1) structural changes after an update in order to stay balanced.
+           Formally, a red-black tree is a binary search tree (see Section 11.1) with nodes
+      colored red and black in a way that satisﬁes the following properties:
+      Root Property: The root is black.
+      Red Property: The children of a red node (if any) are black.
+      Depth Property: All nodes with zero or one children have the same black depth,
+             deﬁned as the number of black ancestors. (Recall that a node is its own
+             ancestor).
+      An example of a red-black tree is shown in Figure 11.30.
+                                                  12
+                              5                                         15
+                   3                   10                        13           17
+                       4         7            11                    14
+                               6    8
+      Figure 11.30: An example of a red-black tree, with “red” nodes drawn in white. The
+      common black depth for this tree is 3.
+           We can make the red-black tree deﬁnition more intuitive by noting an interest-
+      ing correspondence between red-black trees and (2, 4) trees (excluding their trivial
+      external nodes). Namely, given a red-black tree, we can construct a corresponding
+      (2, 4) tree by merging every red node w into its parent, storing the entry from w at
+      its parent, and with the children of w becoming ordered children of the parent. For
+      example, the red-black tree in Figure 11.30 corresponds to the (2, 4) tree from Fig-
+      ure 11.24, as illustrated in Figure 11.31. The depth property of the red-black tree
+      corresponds to the depth property of the (2, 4) tree since exactly one black node of
+      the red-black tree contributes to each node of the corresponding (2, 4) tree.
+           Conversely, we can transform any (2, 4) tree into a corresponding red-black tree
+      by coloring each node w black and then performing the following transformations,
+      as illustrated in Figure 11.32.

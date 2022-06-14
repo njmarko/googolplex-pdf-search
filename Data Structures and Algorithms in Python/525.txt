@@ -1,0 +1,39 @@
+504                                                               Chapter 11. Search Trees
+    Searching in a Multiway Tree
+    Searching for an item with key k in a multiway search tree T is simple. We perform
+    such a search by tracing a path in T starting at the root. (See Figure 11.23b and c.)
+    When we are at a d-node w during this search, we compare the key k with the keys
+    k1 , . . . , kd−1 stored at w. If k = ki for some i, the search is successfully completed.
+    Otherwise, we continue the search in the child ci of w such that ki−1 < k < ki .
+    (Recall that we conventionally deﬁne k0 = −∞ and kd = +∞.) If we reach an
+    external node, then we know that there is no item with key k in T , and the search
+    terminates unsuccessfully.
+    Data Structures for Representing Multiway Search Trees
+    In Section 8.3.3, we discuss a linked data structure for representing a general tree.
+    This representation can also be used for a multiway search tree. When using a
+    general tree to implement a multiway search tree, we must store at each node one
+    or more key-value pairs associated with that node. That is, we need to store with w
+    a reference to some collection that stores the items for w.
+          During a search for key k in a multiway search tree, the primary operation
+    needed when navigating a node is ﬁnding the smallest key at that node that is greater
+    than or equal to k. For this reason, it is natural to model the information at a
+    node itself as a sorted map, allowing use of the ﬁnd ge(k) method. We say such
+    a map serves as a secondary data structure to support the primary data structure
+    represented by the entire multiway search tree. This reasoning may at ﬁrst seem
+    like a circular argument, since we need a representation of a (secondary) ordered
+    map to represent a (primary) ordered map. We can avoid any circular dependence,
+    however, by using the bootstrapping technique, where we use a simple solution to
+    a problem to create a new, more advanced solution.
+          In the context of a multiway search tree, a natural choice for the secondary
+    structure at each node is the SortedTableMap of Section 10.3.1. Because we want
+    to determine the associated value in case of a match for key k, and otherwise the
+    corresponding child ci such that ki−1 < k < ki , we recommend having each key
+    ki in the secondary structure map to the pair (vi , ci ). With such a realization of a
+    multiway search tree T , processing a d-node w while searching for an item of T
+    with key k can be performed using a binary search operation in O(log d) time. Let
+    dmax denote the maximum number of children of any node of T , and let h denote the
+    height of T . The search time in a multiway search tree is therefore O(h log dmax ).
+    If dmax is a constant, the running time for performing a search is O(h).
+          The primary efﬁciency goal for a multiway search tree is to keep the height as
+    small as possible. We next discuss a strategy that caps dmax at 4 while guaranteeing
+    a height h that is logarithmic in n, the total number of items stored in the map.

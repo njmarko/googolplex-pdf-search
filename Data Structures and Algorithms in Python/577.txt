@@ -1,0 +1,38 @@
+556                                                  Chapter 12. Sorting and Selection
+    Running Time of Quick-Sort
+    We can analyze the running time of quick-sort with the same technique used for
+    merge-sort in Section 12.2.3. Namely, we can identify the time spent at each node
+    of the quick-sort tree T and sum up the running times for all the nodes.
+        Examining Code Fragment 12.5, we see that the divide step and the ﬁnal con-
+    catenation of quick-sort can be implemented in linear time. Thus, the time spent
+    at a node v of T is proportional to the input size s(v) of v, deﬁned as the size of
+    the sequence handled by the invocation of quick-sort associated with node v. Since
+    subsequence E has at least one element (the pivot), the sum of the input sizes of the
+    children of v is at most s(v) − 1.
+        Let si denote the sum of the input sizes of the nodes at depth i for a particular
+    quick-sort tree T . Clearly, s0 = n, since the root r of T is associated with the entire
+    sequence. Also, s1 ≤ n − 1, since the pivot is not propagated to the children of r.
+    More generally, it must be that si < si−1 since the elements of the subsequences at
+    depth i all come from distinct subsequences at depth i − 1, and at least one element
+    from depth i − 1 does not propagate to depth i because it is in a set E (in fact, one
+    element from each node at depth i − 1 does not propagate to depth i).
+        We can therefore bound the overall running time of an execution of quick-sort
+    as O(n · h) where h is the overall height of the quick-sort tree T for that execution.
+    Unfortunately, in the worst case, the height of a quick-sort tree is Θ(n), as observed
+    in Section 12.3. Thus, quick-sort runs in O(n2 ) worst-case time. Paradoxically,
+    if we choose the pivot as the last element of the sequence, this worst-case behav-
+    ior occurs for problem instances when sorting should be easy—if the sequence is
+    already sorted.
+        Given its name, we would expect quick-sort to run quickly, and it often does
+    in practice. The best case for quick-sort on a sequence of distinct elements oc-
+    curs when subsequences L and G have roughly the same size. In that case, as
+    we saw with merge-sort, the tree has height O(log n) and therefore quick-sort runs
+    in O(n log n) time; we leave the justiﬁcation of this fact as an exercise (R-12.10).
+    More so, we can observe an O(n log n) running time even if the split between L
+    and G is not as perfect. For example, if every divide step caused one subsequence
+    to have one-fourth of those elements and the other to have three-fourths of the
+    elements, the height of the tree would remain O(log n) and thus the overall perfor-
+    mance O(n log n).
+        We will see in the next section that introducing randomization in the choice of
+    a pivot will makes quick-sort essentially behave in this way on average, with an
+    expected running time that is O(n log n).

@@ -1,0 +1,30 @@
+9.5. Adaptable Priority Queues                                                                 391
+      9.5.2 Implementing an Adaptable Priority Queue
+          In this section, we provide a Python implementation of an adaptable priority queue
+          as an extension of our HeapPriorityQueue class from Section 9.3.4. To implement a
+          Locator class, we will extend the existing Item composite to add an additional ﬁeld
+          designating the current index of the element within the array-based representation
+          of our heap, as shown in Figure 9.10.           token
+             (4,C,0)     (5,A,1)   (6,Z,2)   (15,K,3)    (9,F,4)   (7,Q,5)   (20,B,6)    (16,X,7)
+                0           1         2         3           4         5         6           7
+          Figure 9.10: Representing a heap using a sequence of locators. The third element
+          of each locator instance corresponds to the index of the item within the array. Iden-
+          tiﬁer token is presumed to be a locator reference in the user’s scope.
+               The list is a sequence of references to locator instances, each of which stores a
+          key, value, and the current index of the item within the list. The user will be given
+          a reference to the Locator instance for each inserted element, as portrayed by the
+          token identiﬁer in Figure 9.10.
+               When we perform priority queue operations on our heap, and items are relo-
+          cated within our structure, we reposition the locator instances within the list and we
+          update the third ﬁeld of each locator to reﬂect its new index within the list. As an ex-
+          ample, Figure 9.11 shows the state of the above heap after a call to remove min( ).
+          The heap operation caused the minimum entry, (4,C), to be removed, and the en-
+          try, (16,X), to be temporarily moved from the last position to the root, followed by
+          a down-heap bubble phase. During the down-heap, element (16,X) was swapped
+                          token
+             (5,A,0)     (9,F,1)   (6,Z,2)   (15,K,3)   (16,X,4)   (7,Q,5)   (20,B,6)
+                0           1         2         3           4         5         6           7
+          Figure 9.11: The result of a call to remove min( ) on the heap originally portrayed
+          in Figure 9.10. Identiﬁer token continues to reference the same locator instance
+          as in the original conﬁguration, but the placement of that locator in the list has
+          changed, as has the third ﬁeld of the locator.

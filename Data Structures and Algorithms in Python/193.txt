@@ -1,0 +1,51 @@
+172                                                                     Chapter 4. Recursion
+      Recursive Algorithms for Computing Powers
+      As another interesting example of the use of linear recursion, we consider the prob-
+      lem of raising a number x to an arbitrary nonnegative integer, n. That is, we wish
+      to compute the power function, deﬁned as power(x, n) = xn . (We use the name
+      “power” for this discussion, to differentiate from the built-in function pow that pro-
+      vides such functionality.) We will consider two different recursive formulations for
+      the problem that lead to algorithms with very different performance.
+            A trivial recursive deﬁnition follows from the fact that xn = x · xn−1 for n > 0.
+                                           
+                                              1                    if n = 0
+                         power(x, n) =
+                                              x · power(x, n − 1) otherwise.
+      This deﬁnition leads to a recursive algorithm shown in Code Fragment 4.11.
+    1 def power(x, n):
+    2    ”””Compute the value x n for integer n.”””
+    3    if n == 0:
+    4       return 1
+    5    else:
+    6       return x power(x, n−1)
+           Code Fragment 4.11: Computing the power function using trivial recursion.
+            A recursive call to this version of power(x, n) runs in O(n) time. Its recursion
+      trace has structure very similar to that of the factorial function from Figure 4.1,
+      with the parameter decreasing by one with each call, and constant work performed
+      at each of n + 1 levels.
+            However, there is a much faster way to compute the power function      using an
+      alternative deﬁnition that employs a squaring technique. Let k = n2 denote the
+      ﬂoor of the division (expressed as n // 2 in Python). We consider the expression
+             2                                               2       n 2
+        xk . When n is even, n2 = n2 and therefore xk = x 2 = xn . When n is odd,
+       n  n−1            k 2 = xn−1 , and therefore xn = x · xk 2 , just as 213 = 2 · 26 · 26 .
+        2 = 2 and x
+      This analysis leads to the following recursive deﬁnition:
+                                     ⎧
+                                     ⎪
+                                     ⎨ 1                          if n = 0
+                                                           2
+                      power(x, n) =       x · power x, n2         if n > 0 is odd
+                                     ⎩ power x,  n  2
+                                     ⎪
+                                                                  if n > 0 is even
+                                                       2
+            If we were
+                       to implement
+                                    n  this recursion making two recursive calls to compute
+      power(x, 2 ) · power(x, 2 ), a trace of the recursion would demonstrate O(n)
+                    n
+                                                                                           
+      calls. We can perform signiﬁcantly fewer operations by computing power(x, n2 )
+      as a partial result, and then multiplying it by itself. An implementation based on
+      this recursive deﬁnition is given in Code Fragment 4.12.

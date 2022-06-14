@@ -1,0 +1,34 @@
+3.2. The Seven Functions Used in This Book                                                    119
+               The lesson to be learned from Proposition 3.3 is that if we perform an algorithm
+          with nested loops such that the operations in the inner loop increase by one each
+          time, then the total number of operations is quadratic in the number of times, n,
+          we perform the outer loop. To be fair, the number of operations is n2 /2 + n/2,
+          and so this is just over half the number of operations than an algorithm that uses n
+          operations each time the inner loop is performed. But the order of growth is still
+          quadratic in n.
+      The Cubic Function and Other Polynomials
+          Continuing our discussion of functions that are powers of the input, we consider
+          the cubic function,
+                                                      f (n) = n3 ,
+          which assigns to an input value n the product of n with itself three times. This func-
+          tion appears less frequently in the context of algorithm analysis than the constant,
+          linear, and quadratic functions previously mentioned, but it does appear from time
+          to time.
+          Polynomials
+          Most of the functions we have listed so far can each be viewed as being part of a
+          larger class of functions, the polynomials. A polynomial function has the form,
+                                    f (n) = a0 + a1 n + a2 n2 + a3 n3 + · · · + ad nd ,
+          where a0 , a1 , . . . , ad are constants, called the coefﬁcients of the polynomial, and
+          ad = 0. Integer d, which indicates the highest power in the polynomial, is called
+          the degree of the polynomial.
+               For example, the following functions are all polynomials:
+               •  f (n) = 2 + 5n + n2
+               •  f (n) = 1 + n3
+               •  f (n) = 1
+               •  f (n) = n
+               •  f (n) = n2
+          Therefore, we could argue that this book presents just four important functions used
+          in algorithm analysis, but we will stick to saying that there are seven, since the con-
+          stant, linear, and quadratic functions are too important to be lumped in with other
+          polynomials. Running times that are polynomials with small degree are generally
+          better than polynomial running times with larger degree.

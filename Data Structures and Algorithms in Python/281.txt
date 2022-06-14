@@ -1,0 +1,30 @@
+260                                                            Chapter 7. Linked Lists
+    Removing an Element from a Singly Linked List
+    Removing an element from the head of a singly linked list is essentially the reverse
+    operation of inserting a new element at the head. This operation is illustrated in
+    Figure 7.6 and given in detail in Code Fragment 7.3.
+        head
+             LAX               MSP                ATL            BOS
+                                               (a)
+                         head
+             LAX               MSP                ATL            BOS
+                                               (b)
+                         head
+                               MSP                ATL            BOS
+                                               (c)
+    Figure 7.6: Removal of an element at the head of a singly linked list: (a) before the
+    removal; (b) after “linking out” the old head; (c) ﬁnal conﬁguration.
+    Algorithm remove ﬁrst(L):
+         if L.head is None then
+            Indicate an error: the list is empty.
+         L.head = L.head.next                   {make head point to next node (or None)}
+         L.size = L.size − 1                                 {decrement the node count}
+      Code Fragment 7.3: Removing the node at the beginning of a singly linked list.
+         Unfortunately, we cannot easily delete the last node of a singly linked list. Even
+    if we maintain a tail reference directly to the last node of the list, we must be able
+    to access the node before the last node in order to remove the last node. But we
+    cannot reach the node before the tail by following next links from the tail. The only
+    way to access this node is to start from the head of the list and search all the way
+    through the list. But such a sequence of link-hopping operations could take a long
+    time. If we want to support such an operation efﬁciently, we will need to make our
+    list doubly linked (as we do in Section 7.3).

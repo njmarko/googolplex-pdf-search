@@ -1,0 +1,20 @@
+540                                                           Chapter 12. Sorting and Selection
+    85     24   63    45     17   31   96   50                                 17   31  96   50
+                                                       85   24   63    45
+                         (a)                                              (b)
+                               17   31   96   50                               17   31  96   50
+                63  45                                            63   45
+  85   24                                                  24
+                                                      85
+                         (c)                                              (d)
+                              17   31   96    50                               17   31  96   50
+                63  45                                            63   45
+ 85                                                    24 85
+        24
+                         (e)                                              (f )
+              Figure 12.2: Visualization of an execution of merge-sort. Each node of the tree
+              represents a recursive call of merge-sort. The nodes drawn with dashed lines repre-
+              sent calls that have not been made yet. The node drawn with thick lines represents
+              the current call. The empty nodes drawn with thin lines represent completed calls.
+              The remaining nodes (drawn with thin lines and not empty) represent calls that are
+              waiting for a child invocation to return. (Continues in Figure 12.3.)

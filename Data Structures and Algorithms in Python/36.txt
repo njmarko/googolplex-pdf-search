@@ -1,0 +1,41 @@
+1.3. Expressions, Operators, and Precedence                                                   15
+          notation to describe subsequences of a sequence. Slices are described as half-open
+          intervals, with a start index that is included, and a stop index that is excluded. For
+          example, the syntax data[3:8] denotes a subsequence including the ﬁve indices:
+          3, 4, 5, 6, 7. An optional “step” value, possibly negative, can be indicated as a third
+          parameter of the slice. If a start index or stop index is omitted in the slicing nota-
+          tion, it is presumed to designate the respective extreme of the original sequence.
+               Because lists are mutable, the syntax s[j] = val can be used to replace an ele-
+          ment at a given index. Lists also support a syntax, del s[j], that removes the desig-
+          nated element from the list. Slice notation can also be used to replace or delete a
+          sublist.
+               The notation val in s can be used for any of the sequences to see if there is an
+          element equivalent to val in the sequence. For strings, this syntax can be used to
+          check for a single character or for a larger substring, as with amp in example .
+               All sequences deﬁne comparison operations based on lexicographic order, per-
+          forming an element by element comparison until the ﬁrst difference is found. For
+          example, [5, 6, 9] < [5, 7] because of the entries at index 1. Therefore, the follow-
+          ing operations are supported by sequence types:
+                             s == t equivalent (element by element)
+                              s != t not equivalent
+                              s < t lexicographically less than
+                             s <= t lexicographically less than or equal to
+                              s > t lexicographically greater than
+                             s >= t lexicographically greater than or equal to
+          Operators for Sets and Dictionaries
+          Sets and frozensets support the following operators:
+                          key in s     containment check
+                        key not in s non-containment check
+                         s1 == s2      s1 is equivalent to s2
+                          s1 != s2     s1 is not equivalent to s2
+                         s1 <= s2      s1 is subset of s2
+                          s1 < s2      s1 is proper subset of s2
+                         s1 >= s2      s1 is superset of s2
+                          s1 > s2      s1 is proper superset of s2
+                           s1 | s2     the union of s1 and s2
+                          s1 & s2      the intersection of s1 and s2
+                          s1 − s2      the set of elements in s1 but not s2
+                           s1 ˆ s2     the set of elements in precisely one of s1 or s2
+          Note well that sets do not guarantee a particular order of their elements, so the
+          comparison operators, such as <, are not lexicographic; rather, they are based on
+          the mathematical notion of a subset. As a result, the comparison operators deﬁne

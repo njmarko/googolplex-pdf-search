@@ -1,0 +1,41 @@
+10.2. Hash Tables                                                                           425
+          Linear Probing
+          Our implementation of a ProbeHashMap class, using open addressing with linear
+          probing, is given in Code Fragments 10.6 and 10.7. In order to support deletions,
+          we use a technique described in Section 10.2.2 in which we place a special marker
+          in a table location at which an item has been deleted, so that we can distinguish
+          between it and a location that has always been empty. In our implementation, we
+          declare a class-level attribute, AVAIL, as a sentinel. (We use an instance of the
+          built-in object class because we do not care about any behaviors of the sentinel,
+          just our ability to differentiate it from other objects.)
+              The most challenging aspect of open addressing is to properly trace the series
+          of probes when collisions occur during an insertion or search for an item. To this
+          end, we deﬁne a nonpublic utility, ﬁnd slot, that searches for an item with key k
+          in “bucket” j (that is, where j is the index returned by the hash function for key k).
+       1 class ProbeHashMap(HashMapBase):
+       2    ”””Hash map implemented with linear probing for collision resolution.”””
+       3     AVAIL = object( )             # sentinal marks locations of previous deletions
+       4
+       5    def is available(self, j):
+       6       ”””Return True if index j is available in table.”””
+       7       return self. table[j] is None or self. table[j] is ProbeHashMap. AVAIL
+       8
+       9    def ﬁnd slot(self, j, k):
+      10       ”””Search for key k in bucket at index j.
+      11
+      12       Return (success, index) tuple, described as follows:
+      13       If match was found, success is True and index denotes its location.
+      14       If no match found, success is False and index denotes ﬁrst available slot.
+      15       ”””
+      16       ﬁrstAvail = None
+      17       while True:
+      18          if self. is available(j):
+      19             if ﬁrstAvail is None:
+      20                ﬁrstAvail = j                               # mark this as ﬁrst avail
+      21             if self. table[j] is None:
+      22                return (False, ﬁrstAvail)                   # search has failed
+      23          elif k == self. table[j]. key:
+      24             return (True, j)                               # found a match
+      25          j = (j + 1) % len(self. table)                    # keep looking (cyclically)
+          Code Fragment 10.6: Concrete ProbeHashMap class that uses linear probing for
+          collision resolution (continued in Code Fragment 10.7).

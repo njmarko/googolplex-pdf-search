@@ -1,0 +1,41 @@
+76                                         Chapter 2. Object-Oriented Programming
+        Several other top-level functions rely on calling specially named methods. For
+   example, the standard way to determine the size of a container type is by calling
+   the top-level len function. Note well that the calling syntax, len(foo), is not the
+   traditional method-calling syntax with the dot operator. However, in the case of a
+   user-deﬁned class, the top-level len function relies on a call to a specially named
+      len method of that class. That is, the call len(foo) is evaluated through a
+   method call, foo. len ( ). When developing data structures, we will routinely
+   deﬁne the len method to return a measure of the size of the structure.
+   Implied Methods
+   As a general rule, if a particular special method is not implemented in a user-deﬁned
+   class, the standard syntax that relies upon that method will raise an exception. For
+   example, evaluating the expression, a + b, for instances of a user-deﬁned class
+   without add or radd will raise an error.
+        However, there are some operators that have default deﬁnitions provided by
+   Python, in the absence of special methods, and there are some operators whose
+   deﬁnitions are derived from others. For example, the bool method, which
+   supports the syntax if foo:, has default semantics so that every object other than
+   None is evaluated as True. However, for container types, the len method is
+   typically deﬁned to return the size of the container. If such a method exists, then
+   the evaluation of bool(foo) is interpreted by default to be True for instances with
+   nonzero length, and False for instances with zero length, allowing a syntax such as
+   if waitlist: to be used to test whether there are one or more entries in the waitlist.
+        In Section 2.3.4, we will discuss Python’s mechanism for providing iterators
+   for collections via the special method, iter . With that said, if a container class
+   provides implementations for both len and getitem , a default iteration is
+   provided automatically (using means we describe in Section 2.3.4). Furthermore,
+   once an iterator is deﬁned, default functionality of contains is provided.
+        In Section 1.3 we drew attention to the distinction between expression a is b
+   and expression a == b, with the former evaluating whether identiﬁers a and b are
+   aliases for the same object, and the latter testing a notion of whether the two iden-
+   tiﬁers reference equivalent values. The notion of “equivalence” depends upon the
+   context of the class, and semantics is deﬁned with the eq method. However, if
+   no implementation is given for eq , the syntax a == b is legal with semantics
+   of a is b, that is, an instance is equivalent to itself and no others.
+        We should caution that some natural implications are not automatically pro-
+   vided by Python. For example, the eq method supports syntax a == b, but
+   providing that method does not affect the evaluation of syntax a != b. (The ne
+   method should be provided, typically returning not (a == b) as a result.) Simi-
+   larly, providing a lt method supports syntax a < b, and indirectly b > a, but
+   providing both lt and eq does not imply semantics for a <= b.

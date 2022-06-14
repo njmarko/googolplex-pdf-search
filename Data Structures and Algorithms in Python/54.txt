@@ -1,0 +1,36 @@
+1.7. Exception Handling                                                                      33
+  1.7     Exception Handling
+          Exceptions are unexpected events that occur during the execution of a program.
+          An exception might result from a logical error or an unanticipated situation. In
+          Python, exceptions (also known as errors) are objects that are raised (or thrown) by
+          code that encounters an unexpected circumstance. The Python interpreter can also
+          raise an exception should it encounter an unexpected condition, like running out of
+          memory. A raised error may be caught by a surrounding context that “handles” the
+          exception in an appropriate fashion. If uncaught, an exception causes the interpreter
+          to stop executing the program and to report an appropriate message to the console.
+          In this section, we examine the most common error types in Python, the mechanism
+          for catching and handling errors that have been raised, and the syntax for raising
+          errors from within user-deﬁned blocks of code.
+          Common Exception Types
+          Python includes a rich hierarchy of exception classes that designate various cate-
+          gories of errors; Table 1.6 shows many of those classes. The Exception class serves
+          as a base class for most other error types. An instance of the various subclasses
+          encodes details about a problem that has occurred. Several of these errors may be
+          raised in exceptional cases by behaviors introduced in this chapter. For example,
+          use of an undeﬁned identiﬁer in an expression causes a NameError, and errant use
+          of the dot notation, as in foo.bar( ), will generate an AttributeError if object foo
+          does not support a member named bar.
+            Class                  Description
+            Exception              A base class for most error types
+            AttributeError         Raised by syntax obj.foo, if obj has no member named foo
+            EOFError               Raised if “end of ﬁle” reached for console or ﬁle input
+            IOError                Raised upon failure of I/O operation (e.g., opening ﬁle)
+            IndexError             Raised if index to sequence is out of bounds
+            KeyError               Raised if nonexistent key requested for set or dictionary
+            KeyboardInterrupt      Raised if user types ctrl-C while program is executing
+            NameError              Raised if nonexistent identiﬁer used
+            StopIteration          Raised by next(iterator) if no element; see Section 1.8
+            TypeError              Raised when wrong type of parameter is sent to a function
+            ValueError             Raised when parameter has invalid value (e.g., sqrt(−5))
+            ZeroDivisionError      Raised when any division operator used with 0 as divisor
+                             Table 1.6: Common exception classes in Python

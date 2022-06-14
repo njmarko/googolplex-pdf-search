@@ -1,0 +1,38 @@
+694                                                     Chapter 14. Graph Algorithms
+    C-14.71 Suppose you are given a timetable, which consists of:
+               • A set A of n airports, and for each airport a in A, a minimum con-
+                  necting time c(a).
+               • A set F of m ﬂights, and the following, for each ﬂight f in F:
+                     ◦ Origin airport a1 ( f ) in A
+                     ◦ Destination airport a2 ( f ) in A
+                     ◦ Departure time t1 ( f )
+                     ◦ Arrival time t2 ( f )
+            Describe an efﬁcient algorithm for the ﬂight scheduling problem. In this
+            problem, we are given airports a and b, and a time t, and we wish to com-
+            pute a sequence of ﬂights that allows one to arrive at the earliest possible
+            time in b when departing from a at or after time t. Minimum connecting
+            times at intermediate airports must be observed. What is the running time
+            of your algorithm as a function of n and m?
+    C-14.72 Suppose we are given a directed graph G     with n vertices, and let M be the
+            n × n adjacency matrix corresponding to G.   
+               a. Let the product of M with itself (M 2 ) be deﬁned, for 1 ≤ i, j ≤ n, as
+                  follows:
+                          M 2 (i, j) = M(i, 1)  M(1, j) ⊕ · · · ⊕ M(i, n)  M(n, j),
+                  where “⊕” is the Boolean or operator and “” is Boolean and.
+                  Given this deﬁnition, what does M 2 (i, j) = 1 imply about the ver-
+                  tices i and j? What if M 2 (i, j) = 0?
+               b. Suppose M 4 is the product of M 2 with itself. What do the entries of
+                  M 4 signify? How about the entries of M 5 = (M 4 )(M)? In general,
+                  what information is contained in the matrix M p ?
+               c. Now suppose that G    is weighted and assume the following:
+                    1: for 1 ≤ i ≤ n, M(i, i) = 0.
+                    2: for 1 ≤ i, j ≤ n, M(i, j) = weight(i, j) if (i, j) is in E.
+                    3: for 1 ≤ i, j ≤ n, M(i, j) = ∞ if (i, j) is not in E.
+                  Also, let M 2 be deﬁned, for 1 ≤ i, j ≤ n, as follows:
+                        M 2 (i, j) = min{M(i, 1) + M(1, j), . . . , M(i, n) + M(n, j)}.
+                  If M 2 (i, j) = k, what may we conclude about the relationship be-
+                  tween vertices i and j?
+    C-14.73 Karen has a new way to do path compression in a tree-based union/ﬁnd
+            partition data structure starting at a position p. She puts all the positions
+            that are on the path from p to the root in a set S. Then she scans through
+            S and sets the parent pointer of each position in S to its parent’s parent

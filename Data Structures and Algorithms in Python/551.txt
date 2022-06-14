@@ -1,0 +1,39 @@
+530                                                            Chapter 11. Search Trees
+      R-11.24 Consider a tree T storing 100,000 entries. What is the worst-case height
+               of T in the following cases?
+                  a. T is a binary search tree.
+                  b. T is an AVL tree.
+                  c. T is a splay tree.
+                  d. T is a (2, 4) tree.
+                  e. T is a red-black tree.
+      R-11.25 Draw an example of a red-black tree that is not an AVL tree.
+      R-11.26 Let T be a red-black tree and let p be the position of the parent of the
+               original node that is deleted by the standard search tree deletion algorithm.
+               Prove that if p has zero children, the removed node was a red leaf.
+      R-11.27 Let T be a red-black tree and let p be the position of the parent of the
+               original node that is deleted by the standard search tree deletion algorithm.
+               Prove that if p has one child, the deletion has caused a black deﬁcit at p,
+               except for the case when the one remaining child is a red leaf.
+      R-11.28 Let T be a red-black tree and let p be the position of the parent of the
+               original node that is deleted by the standard search tree deletion algorithm.
+               Prove that if p has two children, the removed node was black and had one
+               red child.
+    Creativity
+      C-11.29 Explain how to use an AVL tree or a red-black tree to sort n comparable
+               elements in O(n log n) time in the worst case.
+      C-11.30 Can we use a splay tree to sort n comparable elements in O(n log n) time
+               in the worst case? Why or why not?
+      C-11.31 Repeat Exercise C-10.28 for the TreeMap class.
+      C-11.32 Show that any n-node binary tree can be converted to any other n-node
+               binary tree using O(n) rotations.
+      C-11.33 For a key k that is not found in binary search tree T , prove that both the
+               greatest key less than k and the least key greater than k lie on the path
+               traced by the search for k.
+      C-11.34 In Section 11.1.2 we claim that the ﬁnd range method of a binary search
+               tree executes in O(s + h) time where s is the number of items found within
+               the range and h is the height of the tree. Our implementation, in Code
+               Fragment 11.6 begins by searching for the starting key, and then repeat-
+               edly calling the after method until reaching the end of the range. Each call
+               to after is guaranteed to run in O(h) time. This suggests a weaker O(sh)
+               bound for ﬁnd range, since it involves O(s) calls to after. Prove that this
+               implementation achieves the stronger O(s + h) bound.

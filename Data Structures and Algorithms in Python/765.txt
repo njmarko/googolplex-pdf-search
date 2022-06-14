@@ -1,0 +1,48 @@
+744                                                                           Index
+    McDiarmid, Colin, 400                   move-to-front heuristic, 289–291
+    McIlroy, Douglas, 580                   MST, see minimum spanning tree
+    median, 155, 571                        multidimensional data sets, 219–223
+    median-of-three, 561                    multimap, 450
+    Megiddo, Nimrod, 580                    multiple inheritance, 468
+    Mehlhorn, Kurt, 535, 696, 719           multiple recursion, 175
+    member                                  Multiply-Add-and-Divide (MAD), 416
+         function, see method               multiset, 450
+         nonpublic, 72, 86                  multiway merge-sort, 715–716
+         private, 86                        multiway search tree, 502–504
+         protected, 86                      Munro, J. Ian, 400
+    memory address, 5, 185, 698             MutableLinkedBinaryTree class, 319, 353
+    memory allocation, 699                  MutableMapping abstract base class, 406,
+    memory heap, 699                                   468
+    memory hierarchy, 705                   MutableSet abstract base class, 446, 448
+    memory management, 698–704, 708         mutually independent, 729
+    merge-sort, 538–550
+         multiway, 715–716                  n-log-n function, 117
+    mergeable heap, 534                     name resolution, 46, 100
+    Mersenne twister, 50                    NameError, 33, 46
+    method, 6, 57, 69                       namespace, 23, 46–47, 96–100
+         implied, 76                        natural join, 227, 297
+    min function, 29                        negative index, 14
+    minimum spanning tree, 670–684          nested class, 98–99
+         Kruskal’s algorithm, 676–684       nested loops, 118
+         Prim-Jarnik algorithm, 672–675     next function, 29
+    modularity, 58, 59                      next-ﬁt algorithm, 699
+    module, 48, 59                          node, 256, 301, 620
+         abc, 60, 93, 306                        ancestor, 302
+         array, 191                              child, 301
+         collections, 35, 93, 249, 406, 450      descendant, 302
+         copy, 49, 102, 188                      external, 302
+         ctypes, 191, 195                        internal, 302
+         gc, 701                                 leaf, 302
+         heapq, 384                              parent, 301
+         math, 28, 49                            root, 301
+         os, 49, 159, 182, 357                   sibling, 302
+         random, 49, 49–50, 225, 438        None, 5, 7, 9, 24, 76, 187
+         re, 49                             nonpublic member, 72, 86
+         sys, 49, 190, 192, 701             not in operator, 14–15
+         time, 49, 111                      not operator, 12
+         unittest, 68
+    modulo operator, 13, 216, 242, 726      object class, 303
+    Moore, J. Strother, 618                 object-oriented design, 57–108
+    Morris, James, 618                      objects, 57
+    Morrison, Donald, 618                        ﬁrst class, 47
+    Motwani, Rajeev, 458, 580               open addressing, 418

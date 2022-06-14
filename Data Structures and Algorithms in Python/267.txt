@@ -1,0 +1,36 @@
+246                                             Chapter 6. Stacks, Queues, and Deques
+    Shrinking the Underlying Array
+    A desirable property of a queue implementation is to have its space usage be Θ(n)
+    where n is the current number of elements in the queue. Our ArrayQueue imple-
+    mentation, as given in Code Fragments 6.6 and 6.7, does not have this property.
+    It expands the underlying array when enqueue is called with the queue at full ca-
+    pacity, but the dequeue implementation never shrinks the underlying array. As a
+    consequence, the capacity of the underlying array is proportional to the maximum
+    number of elements that have ever been stored in the queue, not the current number
+    of elements.
+          We discussed this very issue on page 200, in the context of dynamic arrays, and
+    in subsequent Exercises C-5.16 through C-5.20 of that chapter. A robust approach
+    is to reduce the array to half of its current size, whenever the number of elements
+    stored in it falls below one fourth of its capacity. We can implement this strategy by
+    adding the following two lines of code in our dequeue method, just after reducing
+    self. size at line 38 of Code Fragment 6.6, to reﬂect the loss of an element.
+       if 0 < self. size < len(self. data) // 4:
+          self. resize(len(self. data) // 2)
+    Analyzing the Array-Based Queue Implementation
+    Table 6.3 describes the performance of our array-based implementation of the queue
+    ADT, assuming the improvement described above for occasionally shrinking the
+    size of the array. With the exception of the resize utility, all of the methods rely
+    on a constant number of statements involving arithmetic operations, comparisons,
+    and assignments. Therefore, each method runs in worst-case O(1) time, except
+    for enqueue and dequeue, which have amortized bounds of O(1) time, for reasons
+    similar to those given in Section 5.3.
+                                   Operation      Running Time
+                                Q.enqueue(e)      O(1)∗
+                                 Q.dequeue( )     O(1)∗
+                                      Q.ﬁrst( )   O(1)
+                                 Q.is empty( )    O(1)
+                                        len(Q)    O(1)
+                                ∗ amortized
+    Table 6.3: Performance of an array-based implementation of a queue. The bounds
+    for enqueue and dequeue are amortized due to the resizing of the array. The space
+    usage is O(n), where n is the current number of elements in the queue.

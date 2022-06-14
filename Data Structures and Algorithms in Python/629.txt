@@ -1,0 +1,32 @@
+608                                                                           Chapter 13. Text Processing
+    13.5.2 Compressed Tries
+       A compressed trie is similar to a standard trie but it ensures that each internal node
+       in the trie has at least two children. It enforces this rule by compressing chains of
+       single-child nodes into individual edges. (See Figure 13.12.) Let T be a standard
+       trie. We say that an internal node v of T is redundant if v has one child and is not
+       the root. For example, the trie of Figure 13.10 has eight redundant nodes. Let us
+       also say that a chain of k ≥ 2 edges,
+                                           (v0 , v1 )(v1 , v2 ) · · · (vk−1 , vk ),
+       is redundant if:
+            • vi is redundant for i = 1, . . . , k − 1.
+            • v0 and vk are not redundant.
+       We can transform T into a compressed trie by replacing each redundant chain
+       (v0 , v1 ) · · · (vk−1 , vk ) of k ≥ 2 edges into a single edge (v0 , vk ), relabeling vk with
+       the concatenation of the labels of nodes v1 , . . . , vk .
+                                      b                                                 s
+                       e             id           u                               ell          to
+              ar            ll             ll            y                                 ck       p
+       Figure 13.12: Compressed trie for the strings {bear, bell, bid, bull, buy, sell, stock,
+       stop}. (Compare this with the standard trie shown in Figure 13.10.) In addition to
+       compression at the leaves, notice the internal node with label to shared by words
+       stock and stop.
+            Thus, nodes in a compressed trie are labeled with strings, which are substrings
+       of strings in the collection, rather than with individual characters. The advantage of
+       a compressed trie over a standard trie is that the number of nodes of the compressed
+       trie is proportional to the number of strings and not to their total length, as shown
+       in the following proposition (compare with Proposition 13.6).
+       Proposition 13.7: A compressed trie storing a collection S of s strings from an
+       alphabet of size d has the following properties:
+            • Every internal node of T has at least two children and most d children.
+            • T has s leaves nodes.
+            • The number of nodes of T is O(s).

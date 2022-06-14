@@ -1,0 +1,36 @@
+12.6. Python’s Built-In Sorting Functions                                                      569
+ 12.6        Python’s Built-In Sorting Functions
+          Python provides two built-in ways to sort data. The ﬁrst is the sort method of the
+          list class. As an example, suppose that we deﬁne the following list:
+                colors = [ red , green , blue , cyan , magenta , yellow ]
+          That method has the effect of reordering the elements of the list into order, as de-
+          ﬁned by the natural meaning of the < operator for those elements. In the above
+          example, within elements that are strings, the natural order is deﬁned alphabeti-
+          cally. Therefore, after a call to colors.sort( ), the order of the list would become:
+                [ blue , cyan , green , magenta , red , yellow ]
+               Python also supports a built-in function, named sorted, that can be used to
+          produce a new ordered list containing the elements of any existing iterable con-
+          tainer. Going back to our original example, the syntax sorted(colors) would return
+          a new list of those colors, in alphabetical order, while leaving the contents of the
+          original list unchanged. This second form is more general because it can be ap-
+          plied to any iterable object as a parameter; for example, sorted( green ) returns
+          [ e , e , g , n , r ].
+       12.6.1 Sorting According to a Key Function
+          There are many situations in which we wish to sort a list of elements, but according
+          to some order other than the natural order deﬁned by the < operator. For example,
+          we might wish to sort a list of strings from shortest to longest (rather than alphabet-
+          ically). Both of Python’s built-in sort functions allow a caller to control the notion
+          of order that is used when sorting. This is accomplished by providing, as an op-
+          tional keyword parameter, a reference to a secondary function that computes a key
+          for each element of the primary sequence; then the primary elements are sorted
+          based on the natural order of their keys. (See pages 27 and 28 of Section 1.5.1 for
+          a discussion of this technique in the context of the built-in min and max functions.)
+               A key function must be a one-parameter function that accepts an element as a
+          parameter and returns a key. For example, we could use the built-in len function
+          when sorting strings by length, as a call len(s) for string s returns its length. To sort
+          our colors list based on length, we use the syntax colors.sort(key=len) to mutate
+          the list or sorted(colors, key=len) to generate a new ordered list, while leaving the
+          original alone. When sorted with the length function as a key, the contents are:
+                [ red , blue , cyan , green , yellow , magenta ]
+               These built-in functions also support a keyword parameter, reverse, that can be
+          set to True to cause the sort order to be from largest to smallest.

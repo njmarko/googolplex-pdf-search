@@ -1,0 +1,39 @@
+506                                                                Chapter 11. Search Trees
+    of a (2, 4) tree, we must have at least 2 nodes at depth 1, at least 22 nodes at depth
+    2, and so on. Thus, the number of external nodes in T is at least 2h . In addition, by
+    Proposition 11.7, the number of external nodes in T is n + 1. Therefore, we obtain
+                                             2h ≤ n + 1 ≤ 4h .
+    Taking the logarithm in base 2 of the terms for the above inequalities, we get that
+                                         h ≤ log(n + 1) ≤ 2h,
+    which justiﬁes our claim (Formula 11.9) when terms are rearranged.
+        Proposition 11.8 states that the size and depth properties are sufﬁcient for keep-
+    ing a multiway tree balanced. Moreover, this proposition implies that performing
+    a search in a (2, 4) tree takes O(log n) time and that the speciﬁc realization of the
+    secondary structures at the nodes is not a crucial design choice, since the maximum
+    number of children dmax is a constant.
+        Maintaining the size and depth properties requires some effort after performing
+    insertions and deletions in a (2, 4) tree, however. We discuss these operations next.
+    Insertion
+    To insert a new item (k, v), with key k, into a (2, 4) tree T , we ﬁrst perform a search
+    for k. Assuming that T has no item with key k, this search terminates unsuccessfully
+    at an external node z. Let w be the parent of z. We insert the new item into node w
+    and add a new child y (an external node) to w on the left of z.
+        Our insertion method preserves the depth property, since we add a new external
+    node at the same level as existing external nodes. Nevertheless, it may violate the
+    size property. Indeed, if a node w was previously a 4-node, then it would become
+    a 5-node after the insertion, which causes the tree T to no longer be a (2, 4) tree.
+    This type of violation of the size property is called an overﬂow at node w, and it
+    must be resolved in order to restore the properties of a (2, 4) tree. Let c1 , . . . , c5 be
+    the children of w, and let k1 , . . . , k4 be the keys stored at w. To remedy the overﬂow
+    at node w, we perform a split operation on w as follows (see Figure 11.25):
+        • Replace w with two nodes w and w , where
+               ◦ w is a 3-node with children c1 , c2 , c3 storing keys k1 and k2
+               ◦ w is a 2-node with children c4 , c5 storing key k4 .
+        • If w is the root of T , create a new root node u; else, let u be the parent of w.
+        • Insert key k3 into u and make w and w children of u, so that if w was child
+           i of u, then w and w become children i and i + 1 of u, respectively.
+    As a consequence of a split operation on node w, a new overﬂow may occur at the
+    parent u of w. If such an overﬂow occurs, it triggers in turn a split at node u. (See
+    Figure 11.26.) A split operation either eliminates the overﬂow or propagates it into
+    the parent of the current node. We show a sequence of insertions in a (2, 4) tree in
+    Figure 11.27.

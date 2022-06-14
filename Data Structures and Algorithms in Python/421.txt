@@ -1,0 +1,38 @@
+400                                                            Chapter 9. Priority Queues
+      P-9.55 Write a program that can process a sequence of stock buy and sell orders
+               as described in Exercise C-9.50.
+      P-9.56 Let S be a set of n points in the plane with distinct integer x- and y-
+               coordinates. Let T be a complete binary tree storing the points from S
+               at its external nodes, such that the points are ordered left to right by in-
+               creasing x-coordinates. For each node v in T , let S(v) denote the subset of
+               S consisting of points stored in the subtree rooted at v. For the root r of
+               T , deﬁne top(r) to be the point in S = S(r) with maximum y-coordinate.
+               For every other node v, deﬁne top(r) to be the point in S with highest y-
+               coordinate in S(v) that is not also the highest y-coordinate in S(u), where
+               u is the parent of v in T (if such a point exists). Such labeling turns T into
+               a priority search tree. Describe a linear-time algorithm for turning T into
+               a priority search tree. Implement this approach.
+      P-9.57 One of the main applications of priority queues is in operating systems—
+               for scheduling jobs on a CPU. In this project you are to build a program
+               that schedules simulated CPU jobs. Your program should run in a loop,
+               each iteration of which corresponds to a time slice for the CPU. Each job
+               is assigned a priority, which is an integer between −20 (highest priority)
+               and 19 (lowest priority), inclusive. From among all jobs waiting to be pro-
+               cessed in a time slice, the CPU must work on a job with highest priority.
+               In this simulation, each job will also come with a length value, which is an
+               integer between 1 and 100, inclusive, indicating the number of time slices
+               that are needed to process this job. For simplicity, you may assume jobs
+               cannot be interrupted—once it is scheduled on the CPU, a job runs for a
+               number of time slices equal to its length. Your simulator must output the
+               name of the job running on the CPU in each time slice and must process
+               a sequence of commands, one per time slice, each of which is of the form
+               “add job name with length n and priority p” or “no new job this slice”.
+      P-9.58 Develop a Python implementation of an adaptable priority queue that is
+               based on an unsorted list and supports location-aware entries.
+ Chapter Notes
+     Knuth’s book on sorting and searching [65] describes the motivation and history for the
+     selection-sort, insertion-sort, and heap-sort algorithms. The heap-sort algorithm is due
+     to Williams [103], and the linear-time heap construction algorithm is due to Floyd [39].
+     Additional algorithms and analyses for heaps and heap-sort variations can be found in
+     papers by Bentley [15], Carlsson [24], Gonnet and Munro [45], McDiarmid and Reed [74],
+     and Schaffer and Sedgewick [88].

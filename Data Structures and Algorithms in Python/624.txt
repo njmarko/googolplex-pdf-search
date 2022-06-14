@@ -1,0 +1,37 @@
+13.4. Text Compression and the Greedy Method                                                603
+           Algorithm Huﬀman(X ):
+                Input: String X of length n with d distinct characters
+                Output: Coding tree for X
+                 Compute the frequency f (c) of each character c of X .
+                 Initialize a priority queue Q.
+                 for each character c in X do
+                     Create a single-node binary tree T storing c.
+                     Insert T into Q with key f (c).
+                 while len(Q) > 1 do
+                     ( f1 , T1 ) = Q.remove min()
+                     ( f2 , T2 ) = Q.remove min()
+                     Create a new binary tree T with left subtree T1 and right subtree T2 .
+                     Insert T into Q with key f1 + f2 .
+                 ( f , T ) = Q.remove min()
+                 return tree T
+                                  Code Fragment 13.8: Huffman coding algorithm.
+       13.4.2 The Greedy Method
+           Huffman’s algorithm for building an optimal encoding is an example application
+           of an algorithmic design pattern called the greedy method. This design pattern is
+           applied to optimization problems, where we are trying to construct some structure
+           while minimizing or maximizing some property of that structure.
+                The general formula for the greedy method pattern is almost as simple as that
+           for the brute-force method. In order to solve a given optimization problem using
+           the greedy method, we proceed by a sequence of choices. The sequence starts
+           from some well-understood starting condition, and computes the cost for that ini-
+           tial condition. The pattern then asks that we iteratively make additional choices
+           by identifying the decision that achieves the best cost improvement from all of
+           the choices that are currently possible. This approach does not always lead to an
+           optimal solution.
+                But there are several problems that it does work for, and such problems are said
+           to possess the greedy-choice property. This is the property that a global optimal
+           condition can be reached by a series of locally optimal choices (that is, choices
+           that are each the current best from among the possibilities available at the time),
+           starting from a well-deﬁned starting condition. The problem of computing an opti-
+           mal variable-length preﬁx code is just one example of a problem that possesses the
+           greedy-choice property.

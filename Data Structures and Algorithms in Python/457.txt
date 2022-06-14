@@ -1,0 +1,39 @@
+436                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+       Maintaining a Maxima Set with a Sorted Map
+       We can store the set of maxima pairs in a sorted map, M, so that the cost is the
+       key ﬁeld and performance (speed) is the value ﬁeld. We can then implement opera-
+       tions add(c, p), which adds a new cost-performance pair (c, p), and best(c), which
+       returns the best pair with cost at most c, as shown in Code Fragment 10.11.
+     1 class CostPerformanceDatabase:
+     2   ”””Maintain a database of maximal (cost,performance) pairs.”””
+     3
+     4   def init (self):
+     5     ”””Create an empty database.”””
+     6     self. M = SortedTableMap( )                   # or a more eﬃcient sorted map
+     7
+     8   def best(self, c):
+     9     ”””Return (cost,performance) pair with largest cost not exceeding c.
+    10
+    11     Return None if there is no such pair.
+    12     ”””
+    13     return self. M.ﬁnd le(c)
+    14
+    15   def add(self, c, p):
+    16     ”””Add new entry with cost c and performance p.”””
+    17     # determine if (c,p) is dominated by an existing pair
+    18     other = self. M.ﬁnd le(c)                     # other is at least as cheap as c
+    19     if other is not None and other[1] >= p: # if its performance is as good,
+    20          return                                   # (c,p) is dominated, so ignore
+    21     self. M[c] = p                                # else, add (c,p) to database
+    22     # and now remove any pairs that are dominated by (c,p)
+    23     other = self. M.ﬁnd gt(c)                     # other more expensive than c
+    24     while other is not None and other[1] <= p:
+    25        del self. M[other[0]]
+    26        other = self. M.ﬁnd gt(c)
+       Code Fragment 10.11: An implementation of a class maintaining a set of maxima
+       cost-performance pairs using a sorted map.
+           Unfortunately, if we implement M using the SortedTableMap, the add behavior
+       has O(n) worst-case running time. If, on the other hand, we implement M using
+       a skip list, which we next describe, we can perform best(c) queries in O(log n)
+       expected time and add(c, p) updates in O((1 + r) log n) expected time, where r is
+       the number of points removed.

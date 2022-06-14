@@ -1,0 +1,39 @@
+132                                                        Chapter 3. Algorithm Analysis
+       A Quadratic-Time Algorithm
+       Our ﬁrst algorithm for computing preﬁx averages, named preﬁx average1, is shown
+       in Code Fragment 3.2. It computes every element of A separately, using an inner
+       loop to compute the partial sum.
+     1 def preﬁx average1(S):
+     2   ”””Return list such that, for all j, A[j] equals average of S[0], ..., S[j].”””
+     3   n = len(S)
+     4   A = [0] n                               # create new list of n zeros
+     5   for j in range(n):
+     6      total = 0                            # begin computing S[0] + ... + S[j]
+     7      for i in range(j + 1):
+     8        total += S[i]
+     9      A[j] = total / (j+1)                 # record the average
+    10   return A
+                          Code Fragment 3.2: Algorithm preﬁx average1.
+       In order to analyze the preﬁx average1 algorithm, we consider the various steps
+       that are executed.
+           • The statement, n = len(S), executes in constant time, as described at the
+              beginning of Section 3.3.3.
+           • The statement, A = [0] n, causes the creation and initialization of a Python
+              list with length n, and with all entries equal to zero. This uses a constant
+              number of primitive operations per element, and thus runs in O(n) time.
+           • There are two nested for loops, which are controlled, respectively, by coun-
+              ters j and i. The body of the outer loop, controlled by counter j, is ex-
+              ecuted n times, for j = 0, . . . , n − 1. Therefore, statements total = 0 and
+              A[j] = total / (j+1) are executed n times each. This implies that these two
+              statements, plus the management of counter j in the range, contribute a num-
+              ber of primitive operations proportional to n, that is, O(n) time.
+           • The body of the inner loop, which is controlled by counter i, is executed j + 1
+              times, depending on the current value of the outer loop counter j. Thus, state-
+              ment total += S[i], in the inner loop, is executed 1 + 2 + 3 + · · · + n times.
+              By recalling Proposition 3.3, we know that 1 + 2 + 3 + · · · + n = n(n + 1)/2,
+              which implies that the statement in the inner loop contributes O(n2 ) time.
+              A similar argument can be done for the primitive operations associated with
+              maintaining counter i, which also take O(n2 ) time.
+       The running time of implementation preﬁx average1 is given by the sum of three
+       terms. The ﬁrst and the second terms are O(n), and the third term is O(n2 ). By a
+       simple application of Proposition 3.9, the running time of preﬁx average1 is O(n2 ).

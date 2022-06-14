@@ -1,0 +1,38 @@
+208                                                    Chapter 5. Array-Based Sequences
+    5.4.2 Python’s String Class
+       Strings are very important in Python. We introduced their use in Chapter 1, with
+       a discussion of various operator syntaxes in Section 1.3. A comprehensive sum-
+       mary of the named methods of the class is given in Tables A.1 through A.4 of
+       Appendix A. We will not formally analyze the efﬁciency of each of those behav-
+       iors in this section, but we do wish to comment on some notable issues. In general,
+       we let n denote the length of a string. For operations that rely on a second string as
+       a pattern, we let m denote the length of that pattern string.
+           The analysis for many behaviors is quite intuitive. For example, methods that
+       produce a new string (e.g., capitalize, center, strip) require time that is linear in
+       the length of the string that is produced. Many of the behaviors that test Boolean
+       conditions of a string (e.g., islower) take O(n) time, examining all n characters in the
+       worst case, but short circuiting as soon as the answer becomes evident (e.g., islower
+       can immediately return False if the ﬁrst character is uppercased). The comparison
+       operators (e.g., ==, <) fall into this category as well.
+       Pattern Matching
+       Some of the most interesting behaviors, from an algorithmic point of view, are those
+       that in some way depend upon ﬁnding a string pattern within a larger string; this
+       goal is at the heart of methods such as contains , ﬁnd, index, count, replace,
+       and split. String algorithms will be the topic of Chapter 13, and this particular
+       problem known as pattern matching will be the focus of Section 13.2. A naive im-
+       plementation runs in O(mn) time case, because we consider the n − m + 1 possible
+       starting indices for the pattern, and we spend O(m) time at each starting position,
+       checking if the pattern matches. However, in Section 13.2, we will develop an al-
+       gorithm for ﬁnding a pattern of length m within a longer string of length n in O(n)
+       time.
+       Composing Strings
+       Finally, we wish to comment on several approaches for composing large strings. As
+       an academic exercise, assume that we have a large string named document, and our
+       goal is to produce a new string, letters, that contains only the alphabetic characters
+       of the original string (e.g., with spaces, numbers, and punctuation removed). It may
+       be tempting to compose a result through repeated concatenation, as follows.
+            # WARNING: do not do this
+            letters =                                  # start with empty string
+            for c in document:
+              if c.isalpha( ):
+                 letters += c                          # concatenate alphabetic character

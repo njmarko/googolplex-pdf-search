@@ -1,0 +1,35 @@
+584                                                            Chapter 13. Text Processing
+ 13.2      Pattern-Matching Algorithms
+        In the classic pattern-matching problem, we are given a text string T of length n
+        and a pattern string P of length m, and want to ﬁnd whether P is a substring of T.
+        If so, we may want to ﬁnd the lowest index j within T at which P begins, such that
+        T[j:j+m] equals P, or perhaps to ﬁnd all indices of T at which pattern P begins.
+             The pattern-matching problem is inherent to many behaviors of Python’s str
+        class, such as P in T, T.ﬁnd(P), T.index(P), T.count(P), and is a subtask of more
+        complex behaviors such as T.partition(P), T.split(P), and T.replace(P, Q).
+             In this section, we present three pattern-matching algorithms (with increasing
+        levels of difﬁculty). For simplicity, we model the outward semantics of our func-
+        tions upon the ﬁnd method of the string class, returning the lowest index at which
+        the pattern begins, or −1 if the pattern is not found.
+     13.2.1 Brute Force
+        The brute-force algorithmic design pattern is a powerful technique for algorithm
+        design when we have something we wish to search for or when we wish to optimize
+        some function. When applying this technique in a general situation, we typically
+        enumerate all possible conﬁgurations of the inputs involved and pick the best of all
+        these enumerated conﬁgurations.
+             In applying this technique to design a brute-force pattern-matching algorithm,
+        we derive what is probably the ﬁrst algorithm that we might think of for solving
+        the problem—we simply test all the possible placements of P relative to T. An
+        implementation of this algorithm is shown in Code Fragment 13.1.
+     1 def ﬁnd brute(T, P):
+     2     ”””Return the lowest index of T at which substring P begins (or else -1).”””
+     3     n, m = len(T), len(P)              # introduce convenient notations
+     4     for i in range(n−m+1):             # try every potential starting index within T
+     5       k=0                              # an index into pattern P
+     6       while k < m and T[i + k] == P[k]:               # kth character of P matches
+     7          k += 1
+     8       if k == m:                       # if we reached the end of pattern,
+     9          return i                      # substring T[i:i+m] matches P
+    10     return −1                          # failed to ﬁnd a match starting with any i
+        Code Fragment 13.1: An implementation of brute-force pattern-matching algo-
+        rithm.

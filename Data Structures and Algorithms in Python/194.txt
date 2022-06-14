@@ -1,0 +1,37 @@
+4.4. Further Examples of Recursion                                                          173
+       1 def power(x, n):
+       2    ”””Compute the value x n for integer n.”””
+       3    if n == 0:
+       4       return 1
+       5    else:
+       6       partial = power(x, n // 2)                # rely on truncated division
+       7       result = partial partial
+       8       if n % 2 == 1:                            # if n odd, include extra factor of x
+       9          result = x
+      10       return result
+             Code Fragment 4.12: Computing the power function using repeated squaring.
+               To illustrate the execution of our improved algorithm, Figure 4.12 provides a
+          recursion trace of the computation power(2, 13).
+                                                     return 64     64   2 = 8192
+                                 power(2, 13)
+                                                       return 8    8 = 64
+                                   power(2, 6)
+                                                         return 2    2   2=8
+                                     power(2, 3)
+                                                           return 1    1  2=2
+                                      power(2, 1)
+                                                             return 1
+                                        power(2, 0)
+                      Figure 4.12: Recursion trace for an execution of power(2, 13).
+               To analyze the running time of the revised algorithm, we observe that the expo-
+          nent in each recursive call of function power(x,n) is at most half of the preceding
+          exponent. As we saw with the analysis of binary search, the number of times that
+          we can divide n in half before getting to one or less is O(log n). Therefore, our new
+          formulation of the power function results in O(log n) recursive calls. Each individ-
+          ual activation of the function uses O(1) operations (excluding the recursive calls),
+          and so the total number of operations for computing power(x,n) is O(log n). This
+          is a signiﬁcant improvement over the original O(n)-time algorithm.
+               The improved version also provides signiﬁcant saving in reducing the memory
+          usage. The ﬁrst version has a recursive depth of O(n), and therefore O(n) activation
+          records are simultaneous stored in memory. Because the recursive depth of the
+          improved version is O(log n), its memory usages is O(log n) as well.

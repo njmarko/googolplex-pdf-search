@@ -1,0 +1,34 @@
+10.1. Maps and Dictionaries                                                                                   407
+      10.1.4 Our MapBase Class
+         We will be providing many different implementations of the map ADT, in the re-
+         mainder of this chapter and next, using a variety of data structures demonstrating a
+         trade-off of advantages and disadvantages. Figure 10.2 provides a preview of those
+         classes.
+              The MutableMapping abstract base class, from Python’s collections module
+         and discussed in the preceding pages, is a valuable tool when implementing a map.
+         However, in the interest of greater code reuse, we deﬁne our own MapBase class,
+         which is itself a subclass of the MutableMapping class. Our MapBase class pro-
+         vides additional support for the composition design pattern. This is a technique
+         we introduced when implementing a priority queue (see Section 9.2.1) in order to
+         group a key-value pair as a single instance for internal use.
+              More formally, our MapBase class is deﬁned in Code Fragment 10.2, extend-
+         ing the existing MutableMapping abstract base class so that we inherit the many
+         useful concrete methods that class provides. We then deﬁne a nonpublic nested
+           Item class, whose instances are able to store both a key and value. This nested
+         class is reasonably similar in design to the Item class that was deﬁned within our
+         PriorityQueueBase class in Section 9.2.1, except that for a map we provide sup-
+         port for both equality tests and comparisons, both of which rely on the item’s key.
+         The notion of equality is necessary for all of our map implementations, as a way to
+         determine whether a key given as a parameter is equivalent to one that is already
+         stored in the map. The notion of comparisons between keys, using the < operator,
+         will become relevant when we later introduce a sorted map ADT (Section 10.3).
+                                                       MutableMapping
+                                                      (collections module)
+                                                            MapBase
+                                                         (Section 10.1.4)
+             UnsortedTableMap              HashMapBase                SortedTableMap           TreeMap
+               (Section 10.1.5)            (Section 10.2.4)            (Section 10.3.1)      (Chapter 11)
+                                                                                        (additional subclasses)
+                            ChainHashMap                ProbeHashMap
+                             (Section 10.2.4)            (Section 10.2.4)
+         Figure 10.2: Our hierarchy of map types (with references to where they are deﬁned).

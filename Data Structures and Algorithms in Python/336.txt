@@ -1,0 +1,30 @@
+8.2. Binary Trees                                                                           315
+      8.2.2 Properties of Binary Trees
+          Binary trees have several interesting properties dealing with relationships between
+          their heights and number of nodes. We denote the set of all nodes of a tree T at the
+          same depth d as level d of T . In a binary tree, level 0 has at most one node (the
+          root), level 1 has at most two nodes (the children of the root), level 2 has at most
+          four nodes, and so on. (See Figure 8.9.) In general, level d has at most 2d nodes.
+                    Level                                                        Nodes
+                     0                                                              1
+                     1                                                              2
+                     2                                                              4
+                     3                                                              8
+                 ...                 ...                        ...              ...
+                Figure 8.9: Maximum number of nodes in the levels of a binary tree.
+              We can see that the maximum number of nodes on the levels of a binary tree
+          grows exponentially as we go down the tree. From this simple observation, we can
+          derive the following properties relating the height of a binary tree T with its number
+          of nodes. A detailed justiﬁcation of these properties is left as Exercise R-8.8.
+          Proposition 8.8: Let T be a nonempty binary tree, and let n, nE , nI and h denote
+          the number of nodes, number of external nodes, number of internal nodes, and
+          height of T , respectively. Then T has the following properties:
+             1. h + 1 ≤ n ≤ 2h+1 − 1
+             2. 1 ≤ nE ≤ 2h
+             3. h ≤ nI ≤ 2h − 1
+             4. log(n + 1) − 1 ≤ h ≤ n − 1
+          Also, if T is proper, then T has the following properties:
+             1. 2h + 1 ≤ n ≤ 2h+1 − 1
+             2. h + 1 ≤ nE ≤ 2h
+             3. h ≤ nI ≤ 2h − 1
+             4. log(n + 1) − 1 ≤ h ≤ (n − 1)/2

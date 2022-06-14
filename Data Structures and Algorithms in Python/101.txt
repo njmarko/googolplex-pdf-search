@@ -1,0 +1,40 @@
+80                                            Chapter 2. Object-Oriented Programming
+   2.3.5 Example: Range Class
+      As the ﬁnal example for this section, we develop our own implementation of a
+      class that mimics Python’s built-in range class. Before introducing our class, we
+      discuss the history of the built-in version. Prior to Python 3 being released, range
+      was implemented as a function, and it returned a list instance with elements in
+      the speciﬁed range. For example, range(2, 10, 2) returned the list [2, 4, 6, 8].
+      However, a typical use of the function was to support a for-loop syntax, such as
+      for k in range(10000000). Unfortunately, this caused the instantiation and initial-
+      ization of a list with the range of numbers. That was an unnecessarily expensive
+      step, in terms of both time and memory usage.
+           The mechanism used to support ranges in Python 3 is entirely different (to be
+      fair, the “new” behavior existed in Python 2 under the name xrange). It uses a
+      strategy known as lazy evaluation. Rather than creating a new list instance, range
+      is a class that can effectively represent the desired range of elements without ever
+      storing them explicitly in memory. To better explore the built-in range class, we
+      recommend that you create an instance as r = range(8, 140, 5). The result is a
+      relatively lightweight object, an instance of the range class, that has only a few
+      behaviors. The syntax len(r) will report the number of elements that are in the
+      given range (27, in our example). A range also supports the getitem method,
+      so that syntax r[15] reports the sixteenth element in the range (as r[0] is the ﬁrst
+      element). Because the class supports both len and getitem , it inherits
+      automatic support for iteration (see Section 2.3.4), which is why it is possible to
+      execute a for loop over a range.
+           At this point, we are ready to demonstrate our own version of such a class. Code
+      Fragment 2.6 provides a class we name Range (so as to clearly differentiate it from
+      built-in range). The biggest challenge in the implementation is properly computing
+      the number of elements that belong in the range, given the parameters sent by the
+      caller when constructing a range. By computing that value in the constructor, and
+      storing it as self. length, it becomes trivial to return it from the len method. To
+      properly implement a call to getitem (k), we simply take the starting value of
+      the range plus k times the step size (i.e., for k=0, we return the start value). There
+      are a few subtleties worth examining in the code:
+           • To properly support optional parameters, we rely on the technique described
+             on page 27, when discussing a functional version of range.
+           • We compute the number of elements in the range as
+             max(0, (stop − start + step − 1) // step)
+             It is worth testing this formula for both positive and negative step sizes.
+           • The getitem method properly supports negative indices by converting
+             an index −k to len(self)−k before computing the result.

@@ -1,0 +1,37 @@
+3.3. Asymptotic Analysis                                                                     133
+              Our second implementation for computing preﬁx averages, preﬁx average2, is
+         presented in Code Fragment 3.3.
+       1 def preﬁx average2(S):
+       2    ”””Return list such that, for all j, A[j] equals average of S[0], ..., S[j].”””
+       3    n = len(S)
+       4    A = [0] n                               # create new list of n zeros
+       5    for j in range(n):
+       6       A[j] = sum(S[0:j+1]) / (j+1) # record the average
+       7    return A
+                             Code Fragment 3.3: Algorithm preﬁx average2.
+         This approach is essentially the same high-level algorithm as in preﬁx average1,
+         but we have replaced the inner loop by using the single expression sum(S[0:j+1])
+         to compute the partial sum, S[0] + · · · + S[ j]. While the use of that function greatly
+         simpliﬁes the presentation of the algorithm, it is worth asking how it affects the
+         efﬁciency. Asymptotically, this implementation is no better. Even though the ex-
+         pression, sum(S[0:j+1]), seems like a single command, it is a function call and
+         an evaluation of that function takes O( j + 1) time in this context. Technically, the
+         computation of the slice, S[0:j+1], also uses O( j + 1) time, as it constructs a new
+         list instance for storage. So the running time of preﬁx average2 is still dominated
+         by a series of steps that take time proportional to 1+ 2+ 3+ · · · + n, and thus O(n2 ).
+         A Linear-Time Algorithm
+         Our ﬁnal algorithm, preﬁx averages3, is given in Code Fragment 3.4. Just as with
+         our ﬁrst two algorithms, we are interested in computing, for each j, the preﬁx sum
+         S[0] + S[1] + · · · + S[ j], denoted as total in our code, so that we can then compute
+         the preﬁx average A[j] =total / (j + 1). However, there is a key difference that
+         results in much greater efﬁciency.
+       1 def preﬁx average3(S):
+       2    ”””Return list such that, for all j, A[j] equals average of S[0], ..., S[j].”””
+       3    n = len(S)
+       4    A = [0] n                             # create new list of n zeros
+       5    total = 0                             # compute preﬁx sum as S[0] + S[1] + ...
+       6    for j in range(n):
+       7       total += S[j]                      # update preﬁx sum to include S[j]
+       8       A[j] = total / (j+1)               # compute average based on current sum
+       9    return A
+                             Code Fragment 3.4: Algorithm preﬁx average3.

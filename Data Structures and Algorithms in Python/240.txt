@@ -1,0 +1,38 @@
+5.6. Multidimensional Data Sets                                                              219
+  5.6     Multidimensional Data Sets
+          Lists, tuples, and strings in Python are one-dimensional. We use a single index to
+          access each element of the sequence. Many computer applications involve mul-
+          tidimensional data sets. For example, computer graphics are often modeled in
+          either two or three dimensions. Geographic information may be naturally repre-
+          sented in two dimensions, medical imaging may provide three-dimensional scans
+          of a patient, and a company’s valuation is often based upon a high number of in-
+          dependent ﬁnancial measures that can be modeled as multidimensional data. A
+          two-dimensional array is sometimes also called a matrix. We may use two indices,
+          say i and j, to refer to the cells in the matrix. The ﬁrst index usually refers to a
+          row number and the second to a column number, and these are traditionally zero-
+          indexed in computer science. Figure 5.22 illustrates a two-dimensional data set
+          with integer values. This data might, for example, represent the number of stores
+          in various regions of Manhattan.
+                            0     1     2     3     4      5      6       7     8     9
+                      0    22    18   709    5     33     10     4       56   82    440
+                      1    45    32   830   120   750    660     13      77    20   105
+                      2     4   880    45    66    61     28    650       7   510    67
+                      3   940    12    36    3     20    100    306     590    0    500
+                      4    50    65    42    49    88     25     70     126    83   288
+                      5   398   233     5    83    59    232     49       8   365    90
+                      6    33    58   632    87    94      5     59     204   120   829
+                      7    62   394     3     4   102    140    183     390    16    26
+          Figure 5.22: Illustration of a two-dimensional integer data set, which has 8 rows
+          and 10 columns. The rows and columns are zero-indexed. If this data set were
+          named stores, the value of stores[3][5] is 100 and the value of stores[6][2] is 632.
+              A common representation for a two-dimensional data set in Python is as a list
+          of lists. In particular, we can represent a two-dimensional array as a list of rows,
+          with each row itself being a list of values. For example, the two-dimensional data
+                                        22    18    709       5      33
+                                        45    32    830     120     750
+                                         4  880      45      66      61
+          might be stored in Python as follows.
+               data = [ [22, 18, 709, 5, 33], [45, 32, 830, 120, 750], [4, 880, 45, 66, 61] ]
+          An advantage of this representation is that we can naturally use a syntax such
+          as data[1][3] to represent the value that has row index 1 and column index 3, as
+          data[1], the second entry in the outer list, is itself a list, and thus indexable.

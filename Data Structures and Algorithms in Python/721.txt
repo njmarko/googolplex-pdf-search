@@ -1,0 +1,40 @@
+700                                      Chapter 15. Memory Management and B-Trees
+       if this list were maintained as a priority queue (Chapter 9). In each algorithm, the
+       requested amount of memory is subtracted from the chosen memory hole and the
+       leftover part of that hole is returned to the free list.
+            Although it might sound good at ﬁrst, the best-ﬁt algorithm tends to produce
+       the worst external fragmentation, since the leftover parts of the chosen holes tend
+       to be small. The ﬁrst-ﬁt algorithm is fast, but it tends to produce a lot of external
+       fragmentation at the front of the free list, which slows down future searches. The
+       next-ﬁt algorithm spreads fragmentation more evenly throughout the memory heap,
+       thus keeping search times low. This spreading also makes it more difﬁcult to allo-
+       cate large blocks, however. The worst-ﬁt algorithm attempts to avoid this problem
+       by keeping contiguous sections of free memory as large as possible.
+    15.1.2 Garbage Collection
+       In some languages, like C and C++, the memory space for objects must be explic-
+       itly deallocated by the programmer, which is a duty often overlooked by beginning
+       programmers and is the source of frustrating programming errors even for experi-
+       enced programmers. The designers of Python instead placed the burden of memory
+       management entirely on the interpreter. The process of detecting “stale” objects,
+       deallocating the space devoted to those objects, and returning the reclaimed space
+       to the free list is known as garbage collection.
+            To perform automated garbage collection, there must ﬁrst be a way to detect
+       those objects that are no longer necessary. Since the interpreter cannot feasibly
+       analyze the semantics of an arbitrary Python program, it relies on the following
+       conservative rule for reclaiming objects. In order for a program to access an object,
+       it must have a direct or indirect reference to that object. We will deﬁne such objects
+       to be live objects. In deﬁning a live object, a direct reference to an object is in the
+       form of an identiﬁer in an active namespace (i.e., the global namespace, or the local
+       namespace for any active function). For example, immediately after the command
+       w = Widget( ) is executed, identiﬁer w will be deﬁned in the current namespace
+       as a reference to the new widget object. We refer to all such objects with direct
+       references as root objects. An indirect reference to a live object is a reference
+       that occurs within the state of some other live object. For example, if the widget
+       instance in our earlier example maintains a list as an attribute, that list is also a live
+       object (as it can be reached indirectly through use of identiﬁer w). The set of live
+       objects are deﬁned recursively; thus, any objects that are referenced within the list
+       that is referenced by the widget are also classiﬁed as live objects.
+            The Python interpreter assumes that live objects are the active objects currently
+       being used by the running program; these objects should not be deallocated. Other
+       objects can be garbage collected. Python relies on the following two strategies for
+       determining which objects are live.

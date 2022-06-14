@@ -1,0 +1,38 @@
+5.3. Dynamic Arrays and Amortization                                                       201
+      5.3.3 Python’s List Class
+         The experiments of Code Fragment 5.1 and 5.2, at the beginning of Section 5.3,
+         provide empirical evidence that Python’s list class is using a form of dynamic arrays
+         for its storage. Yet, a careful examination of the intermediate array capacities (see
+         Exercises R-5.2 and C-5.13) suggests that Python is not using a pure geometric
+         progression, nor is it using an arithmetic progression.
+             With that said, it is clear that Python’s implementation of the append method
+         exhibits amortized constant-time behavior. We can demonstrate this fact experi-
+         mentally. A single append operation typically executes so quickly that it would be
+         difﬁcult for us to accurately measure the time elapsed at that granularity, although
+         we should notice some of the more expensive operations in which a resize is per-
+         formed. We can get a more accurate measure of the amortized cost per operation
+         by performing a series of n append operations on an initially empty list and deter-
+         mining the average cost of each. A function to perform that experiment is given in
+         Code Fragment 5.4.
+       1 from time import time                    # import time function from time module
+       2 def compute average(n):
+       3   ”””Perform n appends to an empty list and return average time elapsed.”””
+       4   data = [ ]
+       5   start = time( )                        # record the start time (in seconds)
+       6   for k in range(n):
+       7      data.append(None)
+       8   end = time( )                          # record the end time (in seconds)
+       9   return (end − start) / n               # compute average per operation
+         Code Fragment 5.4: Measuring the amortized cost of append for Python’s list class.
+             Technically, the time elapsed between the start and end includes the time to
+         manage the iteration of the for loop, in addition to the append calls. The empirical
+         results of the experiment, for increasingly large values of n, are shown in Table 5.2.
+         We see higher average cost for the smaller data sets, perhaps in part due to the over-
+         head of the loop range. There is also natural variance in measuring the amortized
+         cost in this way, because of the impact of the ﬁnal resize event relative to n. Taken
+         as a whole, there seems clear evidence that the amortized time for each append is
+         independent of n.
+           n      100   1,000    10,000    100,000    1,000,000     10,000,000    100,000,000
+          μs    0.219   0.158     0.164       0.151       0.147           0.147          0.149
+         Table 5.2: Average running time of append, measured in microseconds, as observed
+         over a sequence of n calls, starting with an empty list.

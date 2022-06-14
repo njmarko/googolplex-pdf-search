@@ -1,0 +1,38 @@
+616                                                              Chapter 13. Text Processing
+      C-13.37 Deﬁne the edit distance between two strings X and Y of length n and m,
+               respectively, to be the number of edits that it takes to change X into Y . An
+               edit consists of a character insertion, a character deletion, or a character
+               replacement. For example, the strings "algorithm" and "rhythm" have
+               edit distance 6. Design an O(nm)-time algorithm for computing the edit
+               distance between X and Y .
+      C-13.38 Let X and Y be strings of length n and m, respectively. Deﬁne B( j, k) to
+               be the length of the longest common substring of the sufﬁx X [n − j :n] and
+               the sufﬁx Y [m − k :m]. Design an O(nm)-time algorithm for computing all
+               the values of B( j, k) for j = 1, . . . , n and k = 1, . . . , m.
+      C-13.39 Anna has just won a contest that allows her to take n pieces of candy out
+               of a candy store for free. Anna is old enough to realize that some candy is
+               expensive, while other candy is relatively cheap, costing much less. The
+               jars of candy are numbered 0, 1, . . ., m − 1, so that jar j has n j pieces in
+               it, with a price of c j per piece. Design an O(n + m)-time algorithm that
+               allows Anna to maximize the value of the pieces of candy she takes for
+               her winnings. Show that your algorithm produces the maximum value for
+               Anna.
+      C-13.40 Let three integer arrays, A, B, and C, be given, each of size n. Given an
+               arbitrary integer k, design an O(n2 log n)-time algorithm to determine if
+               there exist numbers, a in A, b in B, and c in C, such that k = a + b + c.
+      C-13.41 Give an O(n2 )-time algorithm for the previous problem.
+      C-13.42 Given a string X of length n and a string Y of length m, describe an O(n +
+               m)-time algorithm for ﬁnding the longest preﬁx of X that is a sufﬁx of Y .
+      C-13.43 Give an efﬁcient algorithm for deleting a string from a standard trie and
+               analyze its running time.
+      C-13.44 Give an efﬁcient algorithm for deleting a string from a compressed trie
+               and analyze its running time.
+      C-13.45 Describe an algorithm for constructing the compact representation of a
+               sufﬁx trie, given its noncompact representation, and analyze its running
+               time.
+    Projects
+       P-13.46 Use the LCS algorithm to compute the best sequence alignment between
+               some DNA strings, which you can get online from GenBank.
+       P-13.47 Write a program that takes two character strings (which could be, for ex-
+               ample, representations of DNA strands) and computes their edit distance,
+               showing the corresponding pieces. (See Exercise C-13.37.)

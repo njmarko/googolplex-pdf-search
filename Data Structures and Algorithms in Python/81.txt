@@ -1,0 +1,41 @@
+60                                        Chapter 2. Object-Oriented Programming
+        As a programming language, Python provides a great deal of latitude in regard
+   to the speciﬁcation of an interface. Python has a tradition of treating abstractions
+   implicitly using a mechanism known as duck typing. As an interpreted and dy-
+   namically typed language, there is no “compile time” checking of data types in
+   Python, and no formal requirement for declarations of abstract base classes. In-
+   stead programmers assume that an object supports a set of known behaviors, with
+   the interpreter raising a run-time error if those assumptions fail. The description
+   of this as “duck typing” comes from an adage attributed to poet James Whitcomb
+   Riley, stating that “when I see a bird that walks like a duck and swims like a duck
+   and quacks like a duck, I call that bird a duck.”
+        More formally, Python supports abstract data types using a mechanism known
+   as an abstract base class (ABC). An abstract base class cannot be instantiated
+   (i.e., you cannot directly create an instance of that class), but it deﬁnes one or more
+   common methods that all implementations of the abstraction must have. An ABC
+   is realized by one or more concrete classes that inherit from the abstract base class
+   while providing implementations for those method declared by the ABC. Python’s
+   abc module provides formal support for ABCs, although we omit such declarations
+   for simplicity. We will make use of several existing abstract base classes coming
+   from Python’s collections module, which includes deﬁnitions for several common
+   data structure ADTs, and concrete implementations of some of those abstractions.
+   Encapsulation
+   Another important principle of object-oriented design is encapsulation. Different
+   components of a software system should not reveal the internal details of their
+   respective implementations. One of the main advantages of encapsulation is that it
+   gives one programmer freedom to implement the details of a component, without
+   concern that other programmers will be writing code that intricately depends on
+   those internal decisions. The only constraint on the programmer of a component
+   is to maintain the public interface for the component, as other programmers will
+   be writing code that depends on that interface. Encapsulation yields robustness
+   and adaptability, for it allows the implementation details of parts of a program to
+   change without adversely affecting other parts, thereby making it easier to ﬁx bugs
+   or add new functionality with relatively local changes to a component.
+        Throughout this book, we will adhere to the principle of encapsulation, making
+   clear which aspects of a data structure are assumed to be public and which are
+   assumed to be internal details. With that said, Python provides only loose support
+   for encapsulation. By convention, names of members of a class (both data members
+   and member functions) that start with a single underscore character (e.g., secret)
+   are assumed to be nonpublic and should not be relied upon. Those conventions
+   are reinforced by the intentional omission of those members from automatically
+   generated documentation.

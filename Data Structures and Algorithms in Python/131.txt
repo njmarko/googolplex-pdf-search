@@ -1,0 +1,42 @@
+110                                                    Chapter 3. Algorithm Analysis
+        In a classic story, the famous mathematician Archimedes was asked to deter-
+    mine if a golden crown commissioned by the king was indeed pure gold, and not
+    part silver, as an informant had claimed. Archimedes discovered a way to perform
+    this analysis while stepping into a bath. He noted that water spilled out of the bath
+    in proportion to the amount of him that went in. Realizing the implications of this
+    fact, he immediately got out of the bath and ran naked through the city shouting,
+    “Eureka, eureka!” for he had discovered an analysis tool (displacement), which,
+    when combined with a simple scale, could determine if the king’s new crown was
+    good or not. That is, Archimedes could dip the crown and an equal-weight amount
+    of gold into a bowl of water to see if they both displaced the same amount. This
+    discovery was unfortunate for the goldsmith, however, for when Archimedes did
+    his analysis, the crown displaced more water than an equal-weight lump of pure
+    gold, indicating that the crown was not, in fact, pure gold.
+        In this book, we are interested in the design of “good” data structures and algo-
+    rithms. Simply put, a data structure is a systematic way of organizing and access-
+    ing data, and an algorithm is a step-by-step procedure for performing some task in
+    a ﬁnite amount of time. These concepts are central to computing, but to be able to
+    classify some data structures and algorithms as “good,” we must have precise ways
+    of analyzing them.
+        The primary analysis tool we will use in this book involves characterizing the
+    running times of algorithms and data structure operations, with space usage also
+    being of interest. Running time is a natural measure of “goodness,” since time is a
+    precious resource—computer solutions should run as fast as possible. In general,
+    the running time of an algorithm or data structure operation increases with the input
+    size, although it may also vary for different inputs of the same size. Also, the run-
+    ning time is affected by the hardware environment (e.g., the processor, clock rate,
+    memory, disk) and software environment (e.g., the operating system, programming
+    language) in which the algorithm is implemented and executed. All other factors
+    being equal, the running time of the same algorithm on the same input data will be
+    smaller if the computer has, say, a much faster processor or if the implementation
+    is done in a program compiled into native machine code instead of an interpreted
+    implementation. We begin this chapter by discussing tools for performing exper-
+    imental studies, yet also limitations to the use of experiments as a primary means
+    for evaluating algorithm efﬁciency.
+        Focusing on running time as a primary measure of goodness requires that we be
+    able to use a few mathematical tools. In spite of the possible variations that come
+    from different environmental factors, we would like to focus on the relationship
+    between the running time of an algorithm and the size of its input. We are interested
+    in characterizing an algorithm’s running time as a function of the input size. But
+    what is the proper way of measuring it? In this chapter, we “roll up our sleeves”
+    and develop a mathematical way of analyzing algorithms.

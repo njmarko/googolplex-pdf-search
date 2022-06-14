@@ -1,0 +1,38 @@
+560                                                       Chapter 12. Sorting and Selection
+    divide step is performed by scanning the array simultaneously using local variables
+    left, which advances forward, and right, which advances backward, swapping pairs
+    of elements that are in reverse order, as shown in Figure 12.14. When these two
+    indices pass each other, the division step is complete and the algorithm completes
+    by recurring on these two sublists. There is no explicit “combine” step, because the
+    concatenation of the two sublists is implicit to the in-place use of the original list.
+         It is worth noting that if a sequence has duplicate values, we are not explicitly
+    creating three sublists L, E, and G, as in our original quick-sort description. We in-
+    stead allow elements equal to the pivot (other than the pivot itself ) to be dispersed
+    across the two sublists. Exercise R-12.11 explores the subtlety of our implementa-
+    tion in the presence of duplicate keys, and Exercise C-12.33 describes an in-place
+    algorithm that strictly partitions into three sublists L, E, and G.
+                          85    24     63    45        17   31   96    50
+                           l                                      r
+                                                  (a)
+                          85    24     63    45        17   31   96    50
+                           l                                 r
+                                                  (b)
+                          31    24     63    45        17   85   96    50
+                                 l                      r
+                                                  (c)
+                          31    24     63    45        17   85   96    50
+                                        l               r
+                                                  (d)
+                          31    24     17    45        63   85   96    50
+                                             l, r
+                                                  (e)
+                          31    24     17    45        63   85   96    50
+                                              r    <    l
+                                                  (f )
+                          31    24     17    45        50   85   96    63
+                                                  (g)
+    Figure 12.14: Divide step of in-place quick-sort, using index l as shorthand for iden-
+    tiﬁer left, and index r as shorthand for identiﬁer right. Index l scans the sequence
+    from left to right, and index r scans the sequence from right to left. A swap is per-
+    formed when l is at an element as large as the pivot and r is at an element as small
+    as the pivot. A ﬁnal swap with the pivot, in part (f ), completes the divide step.

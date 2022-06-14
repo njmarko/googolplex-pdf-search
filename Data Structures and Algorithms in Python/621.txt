@@ -1,0 +1,40 @@
+600                                                           Chapter 13. Text Processing
+       then we can move to the larger of L j,k−1 and L j−1,k . We continue this process until
+       reaching some L j,k = 0 (for example, if j or k is 0 as a boundary case). A Python
+       implementation of this strategy is given in Code Fragment 13.7. This function con-
+       structs a longest common subsequence in O(n + m) additional time, since each pass
+       of the while loop decrements either j or k (or both). An illustration of the algorithm
+       for computing the longest common subsequence is given in Figure 13.8.
+     1 def LCS solution(X, Y, L):
+     2   ”””Return the longest common substring of X and Y, given LCS table L.”””
+     3   solution = [ ]
+     4   j,k = len(X), len(Y)
+     5   while L[j][k] > 0:                          # common characters remain
+     6      if X[j−1] == Y[k−1]:
+     7         solution.append(X[j−1])
+     8         j −= 1
+     9         k −= 1
+    10      elif L[j−1][k] >= L[j][k−1]:
+    11         j −=1
+    12      else:
+    13         k −= 1
+    14   return .join(reversed(solution))            # return left-to-right version
+              Code Fragment 13.7: Reconstructing the longest common subsequence.
+             0   1  2   3  4   5  6   7  8  9 10 11 12
+         0   0   0  0   0  0   0  0   0  0  0   0  0  0
+         1   0   0  1   1  1   1  1   1  1  1   1  1  1
+         2   0   0  1   1  2   2  2   2  2  2   2  2  2
+         3   0   0  1   1  2   2  2   3  3  3   3  3  3
+                                                                   0 1 2 3 4 5 6 7 8 9
+         4   0   1  1   1  2   2  2   3  3  3   3  3  3        X=GTTCCTAATA
+         5   0   1  1   1  2   2  2   3  3  3   3  3  3
+                                                               Y= CGAT AAT T GAGA
+         6   0   1  1   1  2   2  2   3  4  4   4  4  4            0 1 2 3 4 5 6 7 8 9 10 11
+         7   0   1  1   2  2   3  3   3  4  4   5  5  5
+         8   0   1  1   2  2   3  4   4  4  4   5  5  6
+         9   0   1  1   2  3   3  4   5  5  5   5  5  6
+        10 0     1  1   2  3   4  4   5  5  5   6  6  6
+       Figure 13.8: Illustration of the algorithm for constructing a longest common subse-
+       quence from the array L. A diagonal step on the highlighted path represents the use
+       of a common character (with that character’s respective indices in the sequences
+       highlighted in the margins).

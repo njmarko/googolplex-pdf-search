@@ -1,0 +1,39 @@
+Preface                                                                                   ix
+      About the Authors
+        Michael Goodrich received his Ph.D. in Computer Science from Purdue University
+        in 1987. He is currently a Chancellor’s Professor in the Department of Computer
+        Science at University of California, Irvine. Previously, he was a professor at Johns
+        Hopkins University. He is a Fulbright Scholar and a Fellow of the American As-
+        sociation for the Advancement of Science (AAAS), Association for Computing
+        Machinery (ACM), and Institute of Electrical and Electronics Engineers (IEEE).
+        He is a recipient of the IEEE Computer Society Technical Achievement Award,
+        the ACM Recognition of Service Award, and the Pond Award for Excellence in
+        Undergraduate Teaching.
+             Roberto Tamassia received his Ph.D. in Electrical and Computer Engineering
+        from the University of Illinois at Urbana-Champaign in 1988. He is the Plastech
+        Professor of Computer Science and the Chair of the Department of Computer Sci-
+        ence at Brown University. He is also the Director of Brown’s Center for Geometric
+        Computing. His research interests include information security, cryptography, anal-
+        ysis, design, and implementation of algorithms, graph drawing and computational
+        geometry. He is a Fellow of the American Association for the Advancement of
+        Science (AAAS), Association for Computing Machinery (ACM) and Institute for
+        Electrical and Electronic Engineers (IEEE). He is also a recipient of the Technical
+        Achievement Award from the IEEE Computer Society.
+             Michael Goldwasser received his Ph.D. in Computer Science from Stanford
+        University in 1997. He is currently a Professor in the Department of Mathematics
+        and Computer Science at Saint Louis University and the Director of their Com-
+        puter Science program. Previously, he was a faculty member in the Department
+        of Computer Science at Loyola University Chicago. His research interests focus
+        on the design and implementation of algorithms, having published work involving
+        approximation algorithms, online computation, computational biology, and compu-
+        tational geometry. He is also active in the computer science education community.
+      Additional Books by These Authors
+        • M.T. Goodrich and R. Tamassia, Data Structures and Algorithms in Java, Wiley.
+        • M.T. Goodrich, R. Tamassia, and D.M. Mount, Data Structures and Algorithms
+           in C++, Wiley.
+        • M.T. Goodrich and R. Tamassia, Algorithm Design: Foundations, Analysis, and
+           Internet Examples, Wiley.
+        • M.T. Goodrich and R. Tamassia, Introduction to Computer Security, Addison-
+           Wesley.
+        • M.H. Goldwasser and D. Letscher, Object-Oriented Programming in Python,
+           Prentice Hall.

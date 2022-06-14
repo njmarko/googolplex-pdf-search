@@ -1,0 +1,36 @@
+11.6. Red-Black Trees                                                                           519
+          Deletion
+          Deleting an item with key k from a red-black tree T initially proceeds as for a binary
+          search tree (Section 11.1.3). Structurally, the process results in the removal a node
+          that has at most one child (either that originally containing key k or its inorder
+          predecessor) and the promotion of its remaining child (if any).
+               If the removed node was red, this structural change does not affect the black
+          depths of any paths in the tree, nor introduce any red violations, and so the resulting
+          tree remains a valid red-black tree. In the corresponding (2, 4) tree T  , this case
+          denotes the shrinking of a 3-node or 4-node. If the removed node was black, then
+          it either had zero children or it had one child that was a red leaf (because the null
+          subtree of the removed node has black height 0). In the latter case, the removed
+          node represents the black part of a corresponding 3-node, and we restore the red-
+          black properties by recoloring the promoted child to black.
+               The more complex case is when a (nonroot) black leaf is removed. In the cor-
+          responding (2, 4) tree, this denotes the removal of an item from a 2-node. Without
+          rebalancing, such a change results in a deﬁcit of one for the black depth along the
+          path leading to the deleted item. By necessity, the removed node must have a sib-
+          ling whose subtree has black height 1 (given that this was a valid red-black tree
+          prior to the deletion of the black leaf ).
+               To remedy this scenario, we consider a more general setting with a node z that
+          is known to have two subtrees, Theavy and Tlight , such that the root of Tlight (if any) is
+          black and such that the black depth of Theavy is exactly one more than that of Tlight ,
+          as portrayed in Figure 11.37. In the case of a removed black leaf, z is the parent of
+          that leaf and Tlight is trivially the empty subtree that remains after the deletion. We
+          describe the more general case of a deﬁcit because our algorithm for rebalancing
+          the tree will, in some cases, push the deﬁcit higher in the tree (just as the resolution
+          of a deletion in a (2, 4) tree sometimes cascades upward). We let y denote the root
+          of Theavy . (Such a node exists because Theavy has black height at least one.)
+                                                        z
+                                                  y
+                                                               Tlight
+                                                 Theavy
+          Figure 11.37: Portrayal of a deﬁcit between the black heights of subtrees of node z.
+          The gray color in illustrating y and z denotes the fact that these nodes may be
+          colored either black or red.

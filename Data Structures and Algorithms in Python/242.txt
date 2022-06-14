@@ -1,0 +1,32 @@
+5.6. Multidimensional Data Sets                                                               221
+            0   0    0   0    0    0        0 0     0    0 0    0        0   0    0    0   0   0
+            0   1    2   3    4    5        0   1   2    3   4   5       0   1    2    3   4   5
+                                         data:
+                                                  0    1   2
+          Figure 5.24: A valid representation of a 3× 6 data set as a list of lists. (For simplic-
+          ity, we overlook the fact that the values in the secondary lists are referential.)
+               To properly initialize a two-dimensional list, we must ensure that each cell of
+          the primary list refers to an independent instance of a secondary list. This can be
+          accomplished through the use of Python’s list comprehension syntax.
+               data = [ [0]      c for j in range(r) ]
+          This command produces a valid conﬁguration, similar to the one shown in Fig-
+          ure 5.24. By using list comprehension, the expression [0] c is reevaluated for
+          each pass of the embedded for loop. Therefore, we get r distinct secondary lists, as
+          desired. (We note that the variable j in that command is irrelevant; we simply need
+          a for loop that iterates r times.)
+      Two-Dimensional Arrays and Positional Games
+          Many computer games, be they strategy games, simulation games, or ﬁrst-person
+          conﬂict games, involve objects that reside in a two-dimensional space. Software for
+          such positional games need a way of representing such a two-dimensional “board,”
+          and in Python the list of lists is a natural choice.
+          Tic-Tac-Toe
+          As most school children know, Tic-Tac-Toe is a game played in a three-by-three
+          board. Two players—X and O—alternate in placing their respective marks in the
+          cells of this board, starting with player X. If either player succeeds in getting three
+          of his or her marks in a row, column, or diagonal, then that player wins.
+               This is admittedly not a sophisticated positional game, and it’s not even that
+          much fun to play, since a good player O can always force a tie. Tic-Tac-Toe’s saving
+          grace is that it is a nice, simple example showing how two-dimensional arrays can
+          be used for positional games. Software for more sophisticated positional games,
+          such as checkers, chess, or the popular simulation games, are all based on the same
+          approach we illustrate here for using a two-dimensional array for Tic-Tac-Toe.

@@ -1,0 +1,35 @@
+434                                       Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.3.2 Two Applications of Sorted Maps
+       In this section, we explore applications in which there is particular advantage to
+       using a sorted map rather than a traditional (unsorted) map. To apply a sorted
+       map, keys must come from a domain that is totally ordered. Furthermore, to take
+       advantage of the inexact or range searches afforded by a sorted map, there should
+       be some reason why nearby keys have relevance to a search.
+       Flight Databases
+       There are several Web sites on the Internet that allow users to perform queries on
+       ﬂight databases to ﬁnd ﬂights between various cities, typically with the intent to
+       buy a ticket. To make a query, a user speciﬁes origin and destination cities, a depar-
+       ture date, and a departure time. To support such queries, we can model the ﬂight
+       database as a map, where keys are Flight objects that contain ﬁelds corresponding
+       to these four parameters. That is, a key is a tuple
+                                 k = (origin, destination, date, time).
+       Additional information about a ﬂight, such as the ﬂight number, the number of seats
+       still available in ﬁrst (F) and coach (Y) class, the ﬂight duration, and the fare, can
+       be stored in the value object.
+            Finding a requested ﬂight is not simply a matter of ﬁnding an exact match
+       for a requested query. Although a user typically wants to exactly match the ori-
+       gin and destination cities, he or she may have ﬂexibility for the departure date,
+       and certainly will have some ﬂexibility for the departure time on a speciﬁc day.
+       We can handle such a query by ordering our keys lexicographically. Then, an ef-
+       ﬁcient implementation for a sorted map would be a good way to satisfy users’
+       queries. For instance, given a user query key k, we could call ﬁnd ge(k) to return
+       the ﬁrst ﬂight between the desired cities, having a departure date and time match-
+       ing the desired query or later. Better yet, with well-constructed keys, we could
+       use ﬁnd range(k1, k2) to ﬁnd all ﬂights within a given range of times. For exam-
+       ple, if k1 = (ORD, PVD, 05May, 09:30), and k2 = (ORD, PVD, 05May, 20:00),
+       a respective call to ﬁnd range(k1, k2) might result in the following sequence of
+       key-value pairs:
+              (ORD,   PVD,   05May,  09:53)     :  (AA  1840, F5, Y15, 02:05, 251),
+              (ORD,   PVD,   05May,  13:29)     :  (AA  600, F2, Y0, 02:16, 713),
+              (ORD,   PVD,   05May,  17:39)     :  (AA  416, F3, Y9, 02:09, 365),
+              (ORD,   PVD,   05May,  19:50)     :  (AA  1828, F9, Y25, 02:13, 186)

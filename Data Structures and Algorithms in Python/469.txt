@@ -1,0 +1,40 @@
+448                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.5.2 Python’s MutableSet Abstract Base Class
+       To aid in the creation of user-deﬁned set classes, Python’s collections module pro-
+       vides a MutableSet abstract base class (just as it provides the MutableMapping ab-
+       stract base class discussed in Section 10.1.3). The MutableSet base class provides
+       concrete implementations for all methods described in Section 10.5.1, except for
+       ﬁve core behaviors (add, discard, contains , len , and iter ) that must
+       be implemented by any concrete subclass. This design is an example of what is
+       known as the template method pattern, as the concrete methods of the MutableSet
+       class rely on the presumed abstract methods that will subsequently be provided by
+       a subclass.
+           For the purpose of illustration, we examine algorithms for implementing several
+       of the derived methods of the MutableSet base class. For example, to determine if
+       one set is a proper subset of another, we must verify two conditions: a proper subset
+       must have size strictly smaller than that of its superset, and each element of a subset
+       must be contained in the superset. An implementation of the corresponding lt
+       method based on this logic is given in Code Fragment 10.14.
+         def lt (self, other):           # supports syntax S < T
+            ”””Return true if this set is a proper subset of other.”””
+            if len(self) >= len(other):
+               return False              # proper subset must have strictly smaller size
+            for e in self:
+               if e not in other:
+                  return False           # not a subset since element missing from other
+            return True                  # success; all conditions are met
+       Code Fragment 10.14: A possible implementation of the MutableSet.                  lt
+       method, which tests if one set is a proper subset of another.
+           As another example, we consider the computation of the union of two sets.
+       The set ADT includes two forms for computing a union. The syntax S | T should
+       produce a new set that has contents equal to the union of existing sets S and T . This
+       operation is implemented through the special method or in Python. Another
+       syntax, S |= T is used to update existing set S to become the union of itself and
+       set T . Therefore, all elements of T that are not already contained in S should
+       be added to S. We note that this “in-place” operation may be implemented more
+       efﬁciently than if we were to rely on the ﬁrst form, using the syntax S = S | T, in
+       which identiﬁer S is reassigned to a new set instance that represents the union. For
+       convenience, Python’s built-in set class supports named version of these behaviors,
+       with S.union(T) equivalent to S | T, and S.update(T) equivalent to S |= T (yet,
+       those named versions are not formally provided by the MutableSet abstract base
+       class).

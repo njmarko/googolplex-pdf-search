@@ -1,0 +1,34 @@
+11.6. Red-Black Trees                                                                         521
+          Case 2: Node y Is Black and Both Children of y Are Black (or None).
+                 Resolving this case corresponds to a fusion operation in the corresponding
+                 (2, 4) tree T  , as y must represent a 2-node. We do a recoloring; we color
+                 y red, and, if z is red, we color it black. (See Figure 11.39). This does not
+                 introduce any red violation, because y does not have a red child.
+                 In the case that z was originally red, and thus the parent in the corresponding
+                 (2, 4) tree is a 3-node or 4-node, this recoloring resolves the deﬁcit. (See
+                 Figure 11.39a.) The path leading to Tlight includes one additional black node
+                 in the result, while the recoloring did not affect the number of black nodes
+                 on the path to the subtrees of Theavy .
+                 In the case that z was originally black, and thus the parent in the correspond-
+                 ing (2, 4) tree is a 2-node, the recoloring has not increased the number of
+                 black nodes on the path to Tlight ; in fact, it has reduced the number of black
+                 nodes on the path to Theavy . (See Figure 11.39b.) After this step, the two chil-
+                 dren of z will have the same black height. However, the entire tree rooted at
+                 z has become deﬁcient, thereby propogating the problem higher in the tree;
+                 we must repeat consideration of all three cases at the parent of z as a remedy.
+                            z                                                     z
+                    y        30                                           y        30
+                     20                                                    20
+                                     Tlight
+                   Theavy
+                                                     (a)
+                            z                                                     z
+                    y        30                                           y        30
+                     20                                                    20
+                                     Tlight
+                   Theavy                                                        Tlight
+                                                     (b)
+          Figure 11.39: Resolving a black deﬁcit in Tlight by a recoloring operation: (a) when
+          z is originally red, reversing the colors of y and z resolves the black deﬁcit in Tlight ,
+          ending the process; (b) when z is originally black, recoloring y causes the entire
+          subtree of z to have a black deﬁcit, requiring a cascading remedy.

@@ -1,0 +1,41 @@
+632                                                        Chapter 14. Graph Algorithms
+    14.2.3 Adjacency Map Structure
+       In the adjacency list structure, we assume that the secondary incidence collections
+       are implemented as unordered linked lists. Such a collection I(v) uses space pro-
+       portional to O(deg(v)), allows an edge to be added or removed in O(1) time, and
+       allows an iteration of all edges incident to vertex v in O(deg(v)) time. However,
+       the best implementation of get edge(u,v) requires O(min(deg(u), deg(v))) time,
+       because we must search through either I(u) or I(v).
+           We can improve the performance by using a hash-based map to implement I(v)
+       for each vertex v. Speciﬁcally, we let the opposite endpoint of each incident edge
+       serve as a key in the map, with the edge structure serving as the value. We call such
+       a graph representation an adjacency map. (See Figure 14.6.) The space usage for
+       an adjacency map remains O(n + m), because I(v) uses O(deg(v)) space for each
+       vertex v, as with the adjacency list.
+           The advantage of the adjacency map, relative to an adjacency list, is that the
+       get edge(u,v) method can be implemented in expected O(1) time by searching for
+       vertex u as a key in I(v), or vice versa. This provides a likely improvement over the
+       adjacency list, while retaining the worst-case bound of O(min(deg(u), deg(v))).
+           In comparing the performance of adjacency map to other representations (see
+       Table 14.1), we ﬁnd that it essentially achieves optimal running times for all meth-
+       ods, making it an excellent all-purpose choice as a graph representation.
+                                                            V
+                                                                             v w
+                                                                     u
+                                                                             e g
+                                                                             u w
+                     u                                               v
+                                                                             e  f
+                 e       g
+                                                                             u v z
+               v           w           z                             w
+                     f          h                                            g f h
+                                                                             w
+                                                                     z
+                                                                             h
+                          (a)                                            (b)
+       Figure 14.6: (a) An undirected graph G; (b) a schematic representation of the ad-
+       jacency map structure for G. Each vertex maintains a secondary map in which
+       neighboring vertices serve as keys, with the connecting edges as associated values.
+       Although not diagrammed as such, we presume that there is a unique Edge instance
+       for each edge of the graph, and that it maintains references to its endpoint vertices.

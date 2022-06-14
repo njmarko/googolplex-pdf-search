@@ -1,0 +1,47 @@
+Bibliography                                                                                    735
+           [63] D. E. Knuth, “Big omicron and big omega and big theta,” in SIGACT News, vol. 8,
+                pp. 18–24, 1976.
+           [64] D. E. Knuth, Fundamental Algorithms, vol. 1 of The Art of Computer Programming.
+                Reading, MA: Addison-Wesley, 3rd ed., 1997.
+           [65] D. E. Knuth, Sorting and Searching, vol. 3 of The Art of Computer Programming.
+                Reading, MA: Addison-Wesley, 2nd ed., 1998.
+           [66] D. E. Knuth, J. H. Morris, Jr., and V. R. Pratt, “Fast pattern matching in strings,”
+                SIAM J. Comput., vol. 6, no. 1, pp. 323–350, 1977.
+           [67] J. B. Kruskal, Jr., “On the shortest spanning subtree of a graph and the traveling
+                salesman problem,” Proc. Amer. Math. Soc., vol. 7, pp. 48–50, 1956.
+           [68] R. Lesuisse, “Some lessons drawn from the history of the binary search algorithm,”
+                The Computer Journal, vol. 26, pp. 154–163, 1983.
+           [69] N. G. Leveson and C. S. Turner, “An investigation of the Therac-25 accidents,” IEEE
+                Computer, vol. 26, no. 7, pp. 18–41, 1993.
+           [70] A. Levitin, “Do we teach the right algorithm design techniques?,” in 30th ACM
+                SIGCSE Symp. on Computer Science Education, pp. 179–183, 1999.
+           [71] B. Liskov and J. Guttag, Abstraction and Speciﬁcation in Program Development.
+                Cambridge, MA/New York: The MIT Press/McGraw-Hill, 1986.
+           [72] M. Lutz, Programming Python. O’Reilly Media, 4th ed., 2011.
+           [73] E. M. McCreight, “A space-economical sufﬁx tree construction algorithm,” Journal
+                of Algorithms, vol. 23, no. 2, pp. 262–272, 1976.
+           [74] C. J. H. McDiarmid and B. A. Reed, “Building heaps fast,” Journal of Algorithms,
+                vol. 10, no. 3, pp. 352–365, 1989.
+           [75] N. Megiddo, “Linear programming in linear time when the dimension is ﬁxed,” J.
+                ACM, vol. 31, pp. 114–127, 1984.
+           [76] K. Mehlhorn, Data Structures and Algorithms 1: Sorting and Searching, vol. 1
+                of EATCS Monographs on Theoretical Computer Science. Heidelberg, Germany:
+                Springer-Verlag, 1984.
+           [77] K. Mehlhorn, Data Structures and Algorithms 2: Graph Algorithms and NP-
+                Completeness, vol. 2 of EATCS Monographs on Theoretical Computer Science. Hei-
+                delberg, Germany: Springer-Verlag, 1984.
+           [78] K. Mehlhorn and A. Tsakalidis, “Data structures,” in Handbook of Theoretical Com-
+                puter Science (J. van Leeuwen, ed.), vol. A. Algorithms and Complexity, pp. 301–
+                341, Amsterdam: Elsevier, 1990.
+           [79] D. R. Morrison, “PATRICIA—practical algorithm to retrieve information coded in
+                alphanumeric,” Journal of the ACM, vol. 15, no. 4, pp. 514–534, 1968.
+           [80] R. Motwani and P. Raghavan, Randomized Algorithms. New York, NY: Cambridge
+                University Press, 1995.
+           [81] T. Papadakis, J. I. Munro, and P. V. Poblete, “Average search and update costs in
+                skip lists,” BIT, vol. 32, pp. 316–332, 1992.
+           [82] L. Perkovic, Introduction to Computing Using Python: An Application Development
+                Focus. Wiley, 2011.
+           [83] D. Phillips, Python 3: Object Oriented Programming. Packt Publishing, 2010.
+           [84] P. V. Poblete, J. I. Munro, and T. Papadakis, “The binomial transform and its appli-
+                cation to the analysis of skip lists,” in Proceedings of the European Symposium on
+                Algorithms (ESA), pp. 554–569, 1995.

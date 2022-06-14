@@ -1,0 +1,38 @@
+3.3. Asymptotic Analysis                                                                      129
+             The importance of good algorithm design goes beyond just what can be solved
+         effectively on a given computer, however. As shown in Table 3.4, even if we
+         achieve a dramatic speedup in hardware, we still cannot overcome the handicap
+         of an asymptotically slow algorithm. This table shows the new maximum problem
+         size achievable for any ﬁxed amount of time, assuming algorithms with the given
+         running times are now run on a computer 256 times faster than the previous one.
+                            Running Time      New Maximum Problem Size
+                                 400n                      256m
+                                  2n2                       16m
+                                  2n                       m+8
+         Table 3.4: Increase in the maximum size of a problem that can be solved in a ﬁxed
+         amount of time, by using a computer that is 256 times faster than the previous one.
+         Each entry is a function of m, the previous maximum problem size.
+         Some Words of Caution
+         A few words of caution about asymptotic notation are in order at this point. First,
+         note that the use of the big-Oh and related notations can be somewhat misleading
+         should the constant factors they “hide” be very large. For example, while it is true
+         that the function 10100 n is O(n), if this is the running time of an algorithm being
+         compared to one whose running time is 10n log n, we should prefer the O(n log n)-
+         time algorithm, even though the linear-time algorithm is asymptotically faster. This
+         preference is because the constant factor, 10100 , which is called “one googol,” is
+         believed by many astronomers to be an upper bound on the number of atoms in
+         the observable universe. So we are unlikely to ever have a real-world problem that
+         has this number as its input size. Thus, even when using the big-Oh notation, we
+         should at least be somewhat mindful of the constant factors and lower-order terms
+         we are “hiding.”
+             The observation above raises the issue of what constitutes a “fast” algorithm.
+         Generally speaking, any algorithm running in O(n log n) time (with a reasonable
+         constant factor) should be considered efﬁcient. Even an O(n2 )-time function may
+         be fast enough in some contexts, that is, when n is small. But an algorithm running
+         in O(2n ) time should almost never be considered efﬁcient.
+         Exponential Running Times
+         There is a famous story about the inventor of the game of chess. He asked only that
+         his king pay him 1 grain of rice for the ﬁrst square on the board, 2 grains for the
+         second, 4 grains for the third, 8 for the fourth, and so on. It is an interesting test of
+         programming skills to write a program to compute exactly the number of grains of
+         rice the king would have to pay.

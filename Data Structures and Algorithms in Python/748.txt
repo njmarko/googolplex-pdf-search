@@ -1,0 +1,37 @@
+Appendix B. Useful Mathematical Facts                                                   727
+         Proposition B.5: If 0 ≤ k ≤ n, then
+                                                         
+                                              n   k      n        nk
+                                                     ≤        ≤ .
+                                              k          k        k!
+         Proposition B.6 (Stirling’s Approximation):
+                                                                          
+                                       √          n n            1
+                                 n! = 2πn                 1+         + ε(n) ,
+                                                  e            12n
+         where ε(n) is O(1/n2 ).
+             The Fibonacci progression is a numeric progression such that F0 = 0, F1 = 1,
+         and Fn = Fn−1 + Fn−2 for n ≥ 2.
+                          √ If Fn is deﬁned by the Fibonacci progression, then Fn is Θ(g ),
+         Proposition B.7:                                                                n
+         where g = (1 + 5)/2 is the so-called golden ratio.
+         Summations
+         There are a number of useful facts about summations.
+         Proposition B.8: Factoring summations:
+                                            n                n
+                                           ∑ a f (i) = a ∑ f (i),
+                                           i=1             i=1
+         provided a does not depend upon i.
+         Proposition B.9: Reversing the order:
+                                       n   m               m    n
+                                      ∑∑       f (i, j) = ∑ ∑ f (i, j).
+                                      i=1 j=1             j=1 i=1
+             One special form of is a telescoping sum:
+                                   n
+                                  ∑ ( f (i) − f (i − 1)) = f (n) − f (0),
+                                  i=1
+         which arises often in the amortized analysis of a data structure or algorithm.
+             The following are some other facts about summations that arise often in the
+         analysis of data structures and algorithms.
+         Proposition B.10: ∑ni=1 i = n(n + 1)/2.
+         Proposition B.11: ∑ni=1 i2 = n(n + 1)(2n + 1)/6.

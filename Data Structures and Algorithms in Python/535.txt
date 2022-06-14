@@ -1,0 +1,35 @@
+514                                                                Chapter 11. Search Trees
+       Justiﬁcation: Let T be a red-black tree storing n entries, and let h be the height
+       of T . We justify this proposition by establishing the following fact:
+                                log(n + 1) − 1 ≤ h ≤ 2 log(n + 1) − 2.
+       Let d be the common black depth of all nodes of T having zero or one children.
+       Let T  be the (2, 4) tree associated with T , and let h be the height of T  (excluding
+       trivial leaves). Because of the correspondence between red-black trees and (2, 4)
+       trees, we know that h = d. Hence, by Proposition 11.8, d = h ≤ log(n+ 1)− 1. By
+       the red property, h ≤ 2d. Thus, we obtain h ≤ 2 log(n+ 1)− 2. The other inequality,
+       log(n + 1) − 1 ≤ h, follows from Proposition 8.8 and the fact that T has n nodes.
+    11.6.1 Red-Black Tree Operations
+       The algorithm for searching in a red-black tree T is the same as that for a standard
+       binary search tree (Section 11.1). Thus, searching in a red-black tree takes time
+       proportional to the height of the tree, which is O(log n) by Proposition 11.9.
+            The correspondence between (2, 4) trees and red-black trees provides important
+       intuition that we will use in our discussion of how to perform updates in red-black
+       trees; in fact, the update algorithms for red-black trees can seem mysteriously com-
+       plex without this intuition. Split and fuse operations of a (2, 4) tree will be effec-
+       tively mimicked by recoloring neighboring red-black tree nodes. A rotation within
+       a red-black tree will be used to change orientations of a 3-node between the two
+       forms shown in Figure 11.32(b).
+       Insertion
+       Now consider the insertion of a key-value pair (k, v) into a red-black tree T . The
+       algorithm initially proceeds as in a standard binary search tree (Section 11.1.3).
+       Namely, we search for k in T until we reach a null subtree, and we introduce a new
+       leaf x at that position, storing the item. In the special case that x is the only node
+       of T , and thus the root, we color it black. In all other cases, we color x red. This
+       action corresponds to inserting (k, v) into a node of the (2, 4) tree T  with external
+       children. The insertion preserves the root and depth properties of T , but it may
+       violate the red property. Indeed, if x is not the root of T and the parent y of x is
+       red, then we have a parent and a child (namely, y and x) that are both red. Note that
+       by the root property, y cannot be the root of T , and by the red property (which was
+       previously satisﬁed), the parent z of y must be black. Since x and its parent are red,
+       but x’s grandparent z is black, we call this violation of the red property a double
+       red at node x. To remedy a double red, we consider two cases.

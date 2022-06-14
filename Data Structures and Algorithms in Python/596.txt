@@ -1,0 +1,37 @@
+12.8. Exercises                                                                                 575
+          R-12.12 If the outermost while loop of our implementation of inplace quick sort
+                  (line 7 of Code Fragment 12.6) were changed to use condition left < right
+                  (rather than left <= right), there would be a ﬂaw. Explain the ﬂaw and
+                  give a speciﬁc input sequence on which such an implementation fails.
+          R-12.13 If the conditional at line 14 of our inplace quick sort implementation of
+                  Code Fragment 12.6 were changed to use condition left < right (rather
+                  than left <= right), there would be a ﬂaw. Explain the ﬂaw and give a
+                  speciﬁc input sequence on which such an implementation fails.
+          R-12.14 Following our analysis of randomized quick-sort in Section 12.3.1, show
+                  that the probability that a given input element x belongs to more than
+                  2 log n subproblems in size group i is at most 1/n2 .
+          R-12.15 Of the n! possible inputs to a given comparison-based sorting algorithm,
+                  what is the absolute maximum number of inputs that could be correctly
+                  sorted with just n comparisons?
+          R-12.16 Jonathan has a comparison-based sorting algorithm that sorts the ﬁrst k
+                  elements of a sequence of size n in O(n) time. Give a big-Oh characteri-
+                  zation of the biggest that k can be?
+          R-12.17 Is the bucket-sort algorithm in-place? Why or why not?
+          R-12.18 Describe a radix-sort method for lexicographically sorting a sequence S of
+                  triplets (k, l, m), where k, l, and m are integers in the range [0, N − 1], for
+                  some N ≥ 2. How could this scheme be extended to sequences of d-tuples
+                  (k1 , k2 , . . . , kd ), where each ki is an integer in the range [0, N − 1]?
+          R-12.19 Suppose S is a sequence of n values, each equal to 0 or 1. How long will
+                  it take to sort S with the merge-sort algorithm? What about quick-sort?
+          R-12.20 Suppose S is a sequence of n values, each equal to 0 or 1. How long will
+                  it take to sort S stably with the bucket-sort algorithm?
+          R-12.21 Given a sequence S of n values, each equal to 0 or 1, describe an in-place
+                  method for sorting S.
+          R-12.22 Give an example input list that requires merge-sort and heap-sort to take
+                  O(n log n) time to sort, but insertion-sort runs in O(n) time. What if you
+                  reverse this list?
+          R-12.23 What is the best algorithm for sorting each of the following: general com-
+                  parable objects, long character strings, 32-bit integers, double-precision
+                  ﬂoating-point numbers, and bytes? Justify your answer.
+          R-12.24 Show that the worst-case running time of quick-select on an n-element
+                  sequence is Ω(n2 ).

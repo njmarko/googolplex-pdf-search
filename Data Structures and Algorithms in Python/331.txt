@@ -1,0 +1,39 @@
+310                                                                          Chapter 8. Trees
+            It is important to understand why algorithm height2 is more efﬁcient than
+       height1. The algorithm is recursive, and it progresses in a top-down fashion. If
+       the method is initially called on the root of T , it will eventually be called once for
+       each position of T . This is because the root eventually invokes the recursion on
+       each of its children, which in turn invokes the recursion on each of their children,
+       and so on.
+            We can determine the running time of the height2 algorithm by summing, over
+       all the positions, the amount of time spent on the nonrecursive part of each call.
+       (Review Section 4.2 for analyses of recursive processes.) In our implementation,
+       there is a constant amount of work per position, plus the overhead of computing the
+       maximum over the iteration of children. Although we do not yet have a concrete
+       implementation of children(p), we assume that such an iteration is generated in
+       O(c p + 1) time, where c p denotes the number of children of p. Algorithm height2
+       spends O(c p + 1) time at each position p to compute the maximum, and its overall
+       running time is O(∑ p (c p + 1)) = O(n + ∑ p c p ). In order to complete the analysis,
+       we make use of the following property.
+       Proposition 8.5: Let T be a tree with n positions, and let c p denote the number of
+       children of a position p of T . Then, summing over the positions of T , ∑ p c p = n− 1.
+       Justiﬁcation: Each position of T , with the exception of the root, is a child of
+       another position, and thus contributes one unit to the above sum.
+            By Proposition 8.5, the running time of algorithm height2, when called on the
+       root of T , is O(n), where n is the number of positions of T .
+            Revisiting the public interface for our Tree class, the ability to compute heights
+       of subtrees is beneﬁcial, but a user might expect to be able to compute the height
+       of the entire tree without explicitly designating the tree root. We can wrap the non-
+       public height2 in our implementation with a public height method that provides
+       a default interpretation when invoked on tree T with syntax T.height( ). Such an
+       implementation is given in Code Fragment 8.6.
+    67   def height(self, p=None):
+    68      ”””Return the height of the subtree rooted at Position p.
+    69
+    70      If p is None, return the height of the entire tree.
+    71      ”””
+    72      if p is None:
+    73         p = self.root( )
+    74      return self. height2(p)              # start height2 recursion
+       Code Fragment 8.6: Public method Tree.height that computes the height of the
+       entire tree by default, or a subtree rooted at given position, if speciﬁed.

@@ -1,0 +1,41 @@
+11.1. Binary Search Trees                                                                        469
+       1 class TreeMap(LinkedBinaryTree, MapBase):
+       2    ”””Sorted map implementation using a binary search tree.”””
+       3
+       4    #---------------------------- override Position class ----------------------------
+       5    class Position(LinkedBinaryTree.Position):
+       6      def key(self):
+       7         ”””Return key of map s key-value pair.”””
+       8         return self.element( ). key
+       9
+      10      def value(self):
+      11         ”””Return value of map s key-value pair.”””
+      12         return self.element( ). value
+      13
+      14    #------------------------------- nonpublic utilities -------------------------------
+      15    def subtree search(self, p, k):
+      16      ”””Return Position of p s subtree having key k, or last node searched.”””
+      17      if k == p.key( ):                                             # found match
+      18         return p
+      19      elif k < p.key( ):                                            # search left subtree
+      20         if self.left(p) is not None:
+      21            return self. subtree search(self.left(p), k)
+      22      else:                                                         # search right subtree
+      23         if self.right(p) is not None:
+      24            return self. subtree search(self.right(p), k)
+      25      return p                                                      # unsucessful search
+      26
+      27    def subtree ﬁrst position(self, p):
+      28      ”””Return Position of ﬁrst item in subtree rooted at p.”””
+      29      walk = p
+      30      while self.left(walk) is not None:                            # keep walking left
+      31         walk = self.left(walk)
+      32      return walk
+      33
+      34    def subtree last position(self, p):
+      35      ”””Return Position of last item in subtree rooted at p.”””
+      36      walk = p
+      37      while self.right(walk) is not None:                           # keep walking right
+      38         walk = self.right(walk)
+      39      return walk
+          Code Fragment 11.4: Beginning of a TreeMap class based on a binary search tree.

@@ -1,0 +1,47 @@
+14.4. Transitive Closure                                                                                 651
+ 14.4        Transitive Closure
+          We have seen that graph traversals can be used to answer basic questions of reach-
+          ability in a directed graph. In particular, if we are interested in knowing whether
+          there is a path from vertex u to vertex v in a graph, we can perform a DFS or BFS
+          traversal starting at u and observe whether v is discovered. If representing a graph
+          with an adjacency list or adjacency map, we can answer the question of reachability
+          for u and v in O(n + m) time (see Propositions 14.15 and 14.17).
+               In certain applications, we may wish to answer many reachability queries more
+          efﬁciently, in which case it may be worthwhile to precompute a more convenient
+          representation of a graph. For example, the ﬁrst step for a service that computes
+          driving directions from an origin to a destination might be to assess whether the
+          destination is reachable. Similarly, in an electricity network, we may wish to be
+          able to quickly determine whether current ﬂows from one particular vertex to an-
+          other. Motivated by such applications, we introduce the following deﬁnition. The
+          transitive closure of a directed graph G        is itself a directed graph G ∗ such that the
+          vertices of G are the same as the vertices of G,
+                         ∗                                        and G   has an edge (u, v), when-
+                                                                            ∗
+                
+          ever G has a directed path from u to v (including the case where (u, v) is an edge of
+                        
+          the original G).
+               If a graph is represented as an adjacency list or adjacency map, we can compute
+          its transitive closure in O(n(n + m)) time by making use of n graph traversals, one
+          from each starting vertex. For example, a DFS starting at vertex u can be used to
+          determine all vertices reachable from u, and thus a collection of edges originating
+          with u in the transitive closure.
+               In the remainder of this section, we explore an alternative technique for comput-
+          ing the transitive closure of a directed graph that is particularly well suited for when
+          a directed graph is represented by a data structure that supports O(1)-time lookup
+          for the get edge(u,v) method (for example, the adjacency-matrix structure). Let G                
+          be a directed graph with n vertices and m edges. We compute the transitive closure
+          of G in a series of rounds. We initialize G              We also arbitrarily number the
+                                                             0 = G.
+                       
+          vertices of G as v1 , v2 , . . . , vn . We then begin the computation of the rounds, begin-
+          ning with round 1. In a generic round k, we construct directed graph G              k starting
+                                                 
+          with Gk = Gk−1 and adding to Gk the directed edge (vi , v j ) if directed graph G             k−1
+          contains both the edges (vi , vk ) and (vk , v j ). In this way, we will enforce a simple
+          rule embodied in the proposition that follows.
+          Proposition 14.18: For i = 1, . . . , n, directed graph G        k has an edge (vi , v j ) if and
+                                        
+          only if directed graph G has a directed path from vi to v j , whose intermediate
+          vertices (if any) are in the set {v1 , . . . , vk }. In particular, G  n is equal to G   ∗ , the
+          transitive closure of G.

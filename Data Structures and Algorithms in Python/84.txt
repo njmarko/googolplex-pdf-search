@@ -1,0 +1,37 @@
+2.2. Software Development                                                                     63
+               A common tool for developing an initial high-level design for a project is the
+          use of CRC cards. Class-Responsibility-Collaborator (CRC) cards are simple in-
+          dex cards that subdivide the work required of a program. The main idea behind this
+          tool is to have each card represent a component, which will ultimately become a
+          class in the program. We write the name of each component on the top of an index
+          card. On the left-hand side of the card, we begin writing the responsibilities for
+          this component. On the right-hand side, we list the collaborators for this compo-
+          nent, that is, the other components that this component will have to interact with to
+          perform its duties.
+               The design process iterates through an action/actor cycle, where we ﬁrst iden-
+          tify an action (that is, a responsibility), and we then determine an actor (that is, a
+          component) that is best suited to perform that action. The design is complete when
+          we have assigned all actions to actors. In using index cards for this process (rather
+          than larger pieces of paper), we are relying on the fact that each component should
+          have a small set of responsibilities and collaborators. Enforcing this rule helps keep
+          the individual classes manageable.
+               As the design takes form, a standard approach to explain and document the
+          design is the use of UML (Uniﬁed Modeling Language) diagrams to express the
+          organization of a program. UML diagrams are a standard visual notation to express
+          object-oriented software designs. Several computer-aided tools are available to
+          build UML diagrams. One type of UML ﬁgure is known as a class diagram. An
+          example of such a diagram is given in Figure 2.3, for a class that represents a
+          consumer credit card. The diagram has three portions, with the ﬁrst designating
+          the name of the class, the second designating the recommended instance variables,
+          and the third designating the recommended methods of the class. In Section 2.2.3,
+          we discuss our naming conventions, and in Section 2.3.1, we provide a complete
+          implementation of a Python CreditCard class based on this design.
+                 Class:                           CreditCard
+                 Fields:          customer                     balance
+                                  bank                         limit
+                                  account
+                 Behaviors:      get customer( )              get balance( )
+                                 get bank( )                  get limit( )
+                                 get account( )               charge(price)
+                                 make payment(amount)
+                       Figure 2.3: Class diagram for a proposed CreditCard class.

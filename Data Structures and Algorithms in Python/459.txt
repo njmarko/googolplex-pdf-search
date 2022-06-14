@@ -1,0 +1,42 @@
+438                                    Chapter 10. Maps, Hash Tables, and Skip Lists
+    and place that item in Si+1 if the coin comes up “heads.” Thus, we expect S1 to have
+    about n/2 items, S2 to have about n/4 items, and, in general, Si to have about n/2i
+    items. In other words, we expect the height h of S to be about log n. The halving of
+    the number of items from one list to the next is not enforced as an explicit property
+    of skip lists, however. Instead, randomization is used.
+         Functions that generate numbers that can be viewed as random numbers are
+    built into most modern computers, because they are used extensively in computer
+    games, cryptography, and computer simulations, Some functions, called pseudo-
+    random number generators, generate random-like numbers, starting with an initial
+    seed. (See discusion of random module in Section 1.11.1.) Other methods use
+    hardware devices to extract “true” random numbers from nature. In any case, we
+    will assume that our computer has access to numbers that are sufﬁciently random
+    for our analysis.
+         The main advantage of using randomization in data structure and algorithm
+    design is that the structures and functions that result are usually simple and efﬁcient.
+    The skip list has the same logarithmic time bounds for searching as is achieved by
+    the binary search algorithm, yet it extends that performance to update methods
+    when inserting or deleting items. Nevertheless, the bounds are expected for the
+    skip list, while binary search has a worst-case bound with a sorted table.
+         A skip list makes random choices in arranging its structure in such a way that
+    search and update times are O(log n) on average, where n is the number of items
+    in the map. Interestingly, the notion of average time complexity used here does not
+    depend on the probability distribution of the keys in the input. Instead, it depends
+    on the use of a random-number generator in the implementation of the insertions
+    to help decide where to place the new item. The running time is averaged over all
+    possible outcomes of the random numbers used when inserting entries.
+         Using the position abstraction used for lists and trees, we view a skip list as a
+    two-dimensional collection of positions arranged horizontally into levels and ver-
+    tically into towers. Each level is a list Si and each tower contains positions storing
+    the same item across consecutive lists. The positions in a skip list can be traversed
+    using the following operations:
+                     next(p): Return the position following p on the same level.
+                     prev(p): Return the position preceding p on the same level.
+                    below(p): Return the position below p in the same tower.
+                    above(p): Return the position above p in the same tower.
+    We conventionally assume that the above operations return None if the position
+    requested does not exist. Without going into the details, we note that we can eas-
+    ily implement a skip list by means of a linked structure such that the individual
+    traversal methods each take O(1) time, given a skip-list position p. Such a linked
+    structure is essentially a collection of h doubly linked lists aligned at towers, which
+    are also doubly linked lists.

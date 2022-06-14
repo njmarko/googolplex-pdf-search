@@ -1,0 +1,39 @@
+10.6. Exercises                                                                              457
+          C-10.49 Python’s collections module provides an OrderedDict class that is unre-
+                  lated to our sorted map abstraction. An OrderedDict is a subclass of the
+                  standard hash-based dict class that retains the expected O(1) performance
+                  for the primary map operations, but that also guarantees that the iter
+                  method reports items of the map according to ﬁrst-in, ﬁrst-out (FIFO)
+                  order. That is, the key that has been in the dictionary the longest is re-
+                  ported ﬁrst. (The order is unaffected when the value for an existing key
+                  is overwritten.) Describe an algorithmic approach for achieving such per-
+                  formance.
+       Projects
+          P-10.50 Perform a comparative analysis that studies the collision rates for various
+                  hash codes for character strings, such as various polynomial hash codes
+                  for different values of the parameter a. Use a hash table to determine
+                  collisions, but only count collisions where different strings map to the
+                  same hash code (not if they map to the same location in this hash table).
+                  Test these hash codes on text ﬁles found on the Internet.
+          P-10.51 Perform a comparative analysis as in the previous exercise, but for 10-digit
+                  telephone numbers instead of character strings.
+          P-10.52 Implement an OrderedDict class, as described in Exercise C-10.49, en-
+                  suring that the primary map operations run in O(1) expected time.
+          P-10.53 Design a Python class that implements the skip-list data structure. Use
+                  this class to create a complete implementation of the sorted map ADT.
+          P-10.54 Extend the previous project by providing a graphical animation of the
+                  skip-list operations. Visualize how entries move up the skip list during
+                  insertions and are linked out of the skip list during removals. Also, in a
+                  search operation, visualize the scan-forward and drop-down actions.
+          P-10.55 Write a spell-checker class that stores a lexicon of words, W , in a Python
+                  set, and implements a method, check(s), which performs a spell check
+                  on the string s with respect to the set of words, W . If s is in W , then
+                  the call to check(s) returns a list containing only s, as it is assumed to
+                  be spelled correctly in this case. If s is not in W , then the call to check(s)
+                  returns a list of every word in W that might be a correct spelling of s. Your
+                  program should be able to handle all the common ways that s might be a
+                  misspelling of a word in W , including swapping adjacent characters in a
+                  word, inserting a single character in between two adjacent characters in a
+                  word, deleting a single character from a word, and replacing a character in
+                  a word with another character. For an extra challenge, consider phonetic
+                  substitutions as well.

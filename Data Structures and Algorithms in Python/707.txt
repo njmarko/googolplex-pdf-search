@@ -1,0 +1,36 @@
+686                                                          Chapter 14. Graph Algorithms
+ 14.8    Exercises
+       For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+    Reinforcement
+        R-14.1 Draw a simple undirected graph G that has 12 vertices, 18 edges, and 3
+                 connected components.
+        R-14.2 If G is a simple undirected graph with 12 vertices and 3 connected com-
+                 ponents, what is the largest number of edges it might have?
+        R-14.3 Draw an adjacency matrix representation of the undirected graph shown
+                 in Figure 14.1.
+        R-14.4 Draw an adjacency list representation of the undirected graph shown in
+                 Figure 14.1.
+        R-14.5 Draw a simple, connected, directed graph with 8 vertices and 16 edges
+                 such that the in-degree and out-degree of each vertex is 2. Show that there
+                 is a single (nonsimple) cycle that includes all the edges of your graph, that
+                 is, you can trace all the edges in their respective directions without ever
+                 lifting your pencil. (Such a cycle is called an Euler tour.)
+        R-14.6 Suppose we represent a graph G having n vertices and m edges with the
+                 edge list structure. Why, in this case, does the insert vertex method run
+                 in O(1) time while the remove vertex method runs in O(m) time?
+        R-14.7 Give pseudo-code for performing the operation insert edge(u,v,x) in O(1)
+                 time using the adjacency matrix representation.
+        R-14.8 Repeat Exercise R-14.7 for the adjacency list representation, as described
+                 in the chapter.
+        R-14.9 Can edge list E be omitted from the adjacency matrix representation while
+                 still achieving the time bounds given in Table 14.1? Why or why not?
+      R-14.10 Can edge list E be omitted from the adjacency list representation while
+                 still achieving the time bounds given in Table 14.3? Why or why not?
+      R-14.11 Would you use the adjacency matrix structure or the adjacency list struc-
+                 ture in each of the following cases? Justify your choice.
+                    a. The graph has 10,000 vertices and 20,000 edges, and it is important
+                        to use as little space as possible.
+                    b. The graph has 10,000 vertices and 20,000,000 edges, and it is im-
+                        portant to use as little space as possible.
+                    c. You need to answer the query get edge(u,v) as fast as possible, no
+                        matter how much space you use.

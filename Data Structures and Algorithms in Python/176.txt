@@ -1,0 +1,36 @@
+4.1. Illustrative Examples                                                                          155
+        4.1.3 Binary Search
+            In this section, we describe a classic recursive algorithm, binary search, that is used
+            to efﬁciently locate a target value within a sorted sequence of n elements. This is
+            among the most important of computer algorithms, and it is the reason that we so
+            often store data in sorted order (as in Figure 4.4).
+                              0   1   2   3   4   5   6   7   8   9 10 11 12 13 14 15
+                              2   4   5   7   8   9 12 14 17 19 22 25 27 28 33 37
+            Figure 4.4: Values stored in sorted order within an indexable sequence, such as a
+            Python list. The numbers at top are the indices.
+                 When the sequence is unsorted, the standard approach to search for a target
+            value is to use a loop to examine every element, until either ﬁnding the target or
+            exhausting the data set. This is known as the sequential search algorithm. This
+            algorithm runs in O(n) time (i.e., linear time) since every element is inspected in
+            the worst case.
+                 When the sequence is sorted and indexable, there is a much more efﬁcient
+            algorithm. (For intuition, think about how you would accomplish this task by
+            hand!) For any index j, we know that all the values stored at indices 0, . . . , j − 1
+            are less than or equal to the value at index j, and all the values stored at indices
+             j + 1, . . . , n − 1 are greater than or equal to that at index j. This observation allows
+            us to quickly “home in” on a search target using a variant of the children’s game
+            “high-low.” We call an element of the sequence a candidate if, at the current stage
+            of the search, we cannot rule out that this item matches the target. The algorithm
+            maintains two parameters, low and high, such that all the candidate entries have
+            index at least low and at most high. Initially, low = 0 and high = n − 1. We then
+            compare the target value to the median candidate, that is, the item data[mid] with
+            index
+                                                mid = (low + high)/2 .
+            We consider three cases:
+                 • If the target equals data[mid], then we have found the item we are looking
+                    for, and the search terminates successfully.
+                 • If target < data[mid], then we recur on the ﬁrst half of the sequence, that is,
+                    on the interval of indices from low to mid − 1.
+                 • If target > data[mid], then we recur on the second half of the sequence, that
+                    is, on the interval of indices from mid + 1 to high.
+            An unsuccessful search occurs if low > high, as the interval [low, high] is empty.

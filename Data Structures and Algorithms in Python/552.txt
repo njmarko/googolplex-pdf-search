@@ -1,0 +1,40 @@
+11.7. Exercises                                                                              531
+          C-11.35 Describe how to perform an operation remove range(start, stop) that re-
+                  moves all the items whose keys fall within range(start, stop) in a sorted
+                  map that is implemented with a binary search tree T , and show that this
+                  method runs in time O(s + h), where s is the number of items removed
+                  and h is the height of T .
+          C-11.36 Repeat the previous problem using an AVL tree, achieving a running time
+                  of O(s log n). Why doesn’t the solution to the previous problem trivially
+                  result in an O(s + log n) algorithm for AVL trees?
+          C-11.37 Suppose we wish to support a new method count range(start, stop) that
+                  determines how many keys of a sorted map fall in the speciﬁed range. We
+                  could clearly implement this in O(s + h) time by adapting our approach to
+                  ﬁnd range. Describe how to modify the search tree structure to support
+                  O(h) worst-case time for count range.
+          C-11.38 If the approach described in the previous problem were implemented as
+                  part of the TreeMap class, what additional modiﬁcations (if any) would be
+                  necessary to a subclass such as AVLTreeMap in order to maintain support
+                  for the new method?
+          C-11.39 Draw a schematic of an AVL tree such that a single remove operation
+                  could require Ω(log n) trinode restructurings (or rotations) from a leaf to
+                  the root in order to restore the height-balance property.
+          C-11.40 In our AVL implementation, each node stores the height of its subtree,
+                  which is an arbitrarily large integer. The space usage for an AVL tree
+                  can be reduced by instead storing the balance factor of a node, which is
+                  deﬁned as the height of its left subtree minus the height of its right subtree.
+                  Thus, the balance factor of a node is always equal to −1, 0, or 1, except
+                  during an insertion or removal, when it may become temporarily equal to
+                  −2 or +2. Reimplement the AVLTreeMap class storing balance factors
+                  rather than subtree heights.
+          C-11.41 If we maintain a reference to the position of the leftmost node of a bi-
+                  nary search tree, then operation ﬁnd min can be performed in O(1) time.
+                  Describe how the implementation of the other map methods need to be
+                  modiﬁed to maintain a reference to the leftmost position.
+          C-11.42 If the approach described in the previous problem were implemented as
+                  part of the TreeMap class, what additional modiﬁcations (if any) would
+                  be necessary to a subclass such as AVLTreeMap in order to accurately
+                  maintain the reference to the leftmost position?
+          C-11.43 Describe a modiﬁcation to the binary search tree implementation having
+                  worst-case O(1)-time performance for methods after(p) and before(p)
+                  without adversely affecting the asymptotics of any other methods.

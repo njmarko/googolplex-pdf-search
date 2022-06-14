@@ -1,0 +1,36 @@
+364                                                             Chapter 9. Priority Queues
+    9.1.2 The Priority Queue ADT
+       Formally, we model an element and its priority as a key-value pair. We deﬁne the
+       priority queue ADT to support the following methods for a priority queue P:
+              P.add(k, v): Insert an item with key k and value v into priority queue P.
+                  P.min( ): Return a tuple, (k,v), representing the key and value of an
+                              item in priority queue P with minimum key (but do not re-
+                              move the item); an error occurs if the priority queue is empty.
+        P.remove min( ): Remove an item with minimum key from priority queue P,
+                              and return a tuple, (k,v), representing the key and value of the
+                              removed item; an error occurs if the priority queue is empty.
+            P.is empty( ): Return True if priority queue P does not contain any items.
+                     len(P): Return the number of items in priority queue P.
+           A priority queue may have multiple entries with equivalent keys, in which case
+       methods min and remove min may report an arbitrary choice of item having mini-
+       mum key. Values may be any type of object.
+           In our initial model for a priority queue, we assume that an element’s key re-
+       mains ﬁxed once it has been added to a priority queue. In Section 9.5, we consider
+       an extension that allows a user to update an element’s key within the priority queue.
+       Example 9.1: The following table shows a series of operations and their effects
+       on an initially empty priority queue P. The “Priority Queue” column is somewhat
+       deceiving since it shows the entries as tuples and sorted by key. Such an internal
+       representation is not required of a priority queue.
+                   Operation        Return Value              Priority Queue
+                   P.add(5,A)                                     {(5,A)}
+                   P.add(9,C)                                  {(5,A), (9,C)}
+                   P.add(3,B)                              {(3,B), (5,A), (9,C)}
+                   P.add(7,D)                          {(3,B), (5,A), (7,D), (9,C)}
+                     P.min( )            (3,B)         {(3,B), (5,A), (7,D), (9,C)}
+                P.remove min( )          (3,B)             {(5,A), (7,D), (9,C)}
+                P.remove min( )          (5,A)                 {(7,D), (9,C)}
+                      len(P)               2                   {(7,D), (9,C)}
+                P.remove min( )          (7,D)                    {(9,C)}
+                P.remove min( )          (9,C)                      {}
+                  P.is empty( )          True                       {}
+                P.remove min( )         “error”                     {}

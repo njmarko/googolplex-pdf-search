@@ -1,0 +1,34 @@
+174                                                                 Chapter 4. Recursion
+    4.4.2 Binary Recursion
+       When a function makes two recursive calls, we say that it uses binary recursion.
+       We have already seen several examples of binary recursion, most notably when
+       drawing the English ruler (Section 4.1.2), or in the bad ﬁbonacci function of Sec-
+       tion 4.3. As another application of binary recursion, let us revisit the problem of
+       summing the n elements of a sequence, S, of numbers. Computing the sum of one
+       or zero elements is trivial. With two or more elements, we can recursively com-
+       pute the sum of the ﬁrst half, and the sum of the second half, and add these sums
+       together. Our implementation of such an algorithm, in Code Fragment 4.13, is
+       initially invoked as binary sum(A, 0, len(A)).
+    1 def binary sum(S, start, stop):
+    2    ”””Return the sum of the numbers in implicit slice S[start:stop].”””
+    3    if start >= stop:                             # zero elements in slice
+    4       return 0
+    5    elif start == stop−1:                         # one element in slice
+    6       return S[start]
+    7    else:                                         # two or more elements in slice
+    8       mid = (start + stop) // 2
+    9       return binary sum(S, start, mid) + binary sum(S, mid, stop)
+       Code Fragment 4.13: Summing the elements of a sequence using binary recursion.
+            To analyze algorithm binary sum, we consider, for simplicity, the case where
+       n is a power of two. Figure 4.13 shows the recursion trace of an execution of
+       binary sum(0, 8). We label each box with the values of parameters start:stop
+       for that call. The size of the range is divided in half at each recursive call, and
+       so the depth of the recursion is 1 + log2 n. Therefore, binary sum uses O(log n)
+       amount of additional space, which is a big improvement over the O(n) space used
+       by the linear sum function of Code Fragment 4.9. However, the running time of
+       binary sum is O(n), as there are 2n − 1 function calls, each requiring constant time.
+                                                0:8
+                            0:4                                      4:8
+                   0:2                2:4                 4:6                  6:8
+             0:1       1:2       2:3       3:4        4:5       5:6      6:7       7:8
+                Figure 4.13: Recursion trace for the execution of binary sum(0, 8).

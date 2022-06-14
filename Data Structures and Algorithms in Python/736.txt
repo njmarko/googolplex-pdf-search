@@ -1,0 +1,31 @@
+15.4. External-Memory Sorting                                                                715
+ 15.4       External-Memory Sorting
+          In addition to data structures, such as maps, that need to be implemented in external
+          memory, there are many algorithms that must also operate on input sets that are too
+          large to ﬁt entirely into internal memory. In this case, the objective is to solve the
+          algorithmic problem using as few block transfers as possible. The most classic
+          domain for such external-memory algorithms is the sorting problem.
+          Multiway Merge-Sort
+          An efﬁcient way to sort a set S of n objects in external memory amounts to a sim-
+          ple external-memory variation on the familiar merge-sort algorithm. The main idea
+          behind this variation is to merge many recursively sorted lists at a time, thereby
+          reducing the number of levels of recursion. Speciﬁcally, a high-level description
+          of this multiway merge-sort method is to divide S into d subsets S1 , S2 , . . ., Sd of
+          roughly equal size, recursively sort each subset Si , and then simultaneously merge
+          all d sorted lists into a sorted representation of S. If we can perform the merge pro-
+          cess using only O(n/B) disk transfers, then, for large enough values of n, the total
+          number of transfers performed by this algorithm satisﬁes the following recurrence:
+                                          t(n) = d · t(n/d) + cn/B,
+          for some constant c ≥ 1. We can stop the recursion when n ≤ B, since we can
+          perform a single block transfer at this point, getting all of the objects into internal
+          memory, and then sort the set with an efﬁcient internal-memory algorithm. Thus,
+          the stopping criterion for t(n) is
+                                            t(n) = 1    if n/B ≤ 1.
+          This implies a closed-form solution that t(n) is O((n/B) logd (n/B)), which is
+                                          O((n/B) log(n/B)/ log d).
+          Thus, if we can choose d to be Θ(M/B), where M is the size of the internal memory,
+          then the worst-case number of block transfers performed by this multiway merge-
+          sort algorithm will be quite low. For reasons given in the next section, we choose
+                                               d = (M/B) − 1.
+          The only aspect of this algorithm left to specify, then, is how to perform the d-way
+          merge using only O(n/B) block transfers.

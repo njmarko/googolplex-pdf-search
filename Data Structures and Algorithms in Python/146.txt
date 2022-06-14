@@ -1,0 +1,33 @@
+3.3. Asymptotic Analysis                                                                             125
+         Characterizing Running Times Using the Big-Oh Notation
+         The big-Oh notation is used widely to characterize running times and space bounds
+         in terms of some parameter n, which varies from problem to problem, but is always
+         deﬁned as a chosen measure of the “size” of the problem. For example, if we
+         are interested in ﬁnding the largest element in a sequence, as with the ﬁnd max
+         algorithm, we should let n denote the number of elements in that collection. Using
+         the big-Oh notation, we can write the following mathematically precise statement
+         on the running time of algorithm ﬁnd max (Code Fragment 3.1) for any computer.
+         Proposition 3.7: The algorithm, ﬁnd max, for computing the maximum element
+         of a list of n numbers, runs in O(n) time.
+         Justiﬁcation: The initialization before the loop begins requires only a constant
+         number of primitive operations. Each iteration of the loop also requires only a con-
+         stant number of primitive operations, and the loop executes n times. Therefore,
+         we account for the number of primitive operations being c + c · n for appropriate
+         constants c and c that reﬂect, respectively, the work performed during initializa-
+         tion and the loop body. Because each primitive operation runs in constant time, we
+         have that the running time of algorithm ﬁnd max on an input of size n is at most a
+         constant times n; that is, we conclude that the running time of algorithm ﬁnd max
+         is O(n).
+         Some Properties of the Big-Oh Notation
+         The big-Oh notation allows us to ignore constant factors and lower-order terms and
+         focus on the main components of a function that affect its growth.
+         Example 3.8: 5n4 + 3n3 + 2n2 + 4n + 1 is O(n4 ).
+         Justiﬁcation: Note that 5n4 + 3n3 + 2n2 + 4n + 1 ≤ (5 + 3 + 2 + 4 + 1)n4 = cn4 ,
+         for c = 15, when n ≥ n0 = 1.
+              In fact, we can characterize the growth rate of any polynomial function.
+         Proposition 3.9: If f (n) is a polynomial of degree d , that is,
+                                       f (n) = a0 + a1 n + · · · + ad nd ,
+         and ad > 0, then f (n) is O(nd ).
+         Justiﬁcation:       Note that, for n ≥ 1, we have 1 ≤ n ≤ n2 ≤ · · · ≤ nd ; hence,
+                    a0 + a1 n + a2 n2 + · · · + ad nd ≤ (|a0 | + |a1 | + |a2 | + · · · + |ad |) nd .
+         We show that f (n) is O(nd ) by deﬁning c = |a0 | + |a1 | + · · · + |ad | and n0 = 1.

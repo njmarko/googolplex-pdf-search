@@ -1,0 +1,37 @@
+14.1. Graphs                                                                                   621
+          Example 14.2: We can associate with an object-oriented program a graph whose
+          vertices represent the classes deﬁned in the program, and whose edges indicate
+          inheritance between classes. There is an edge from a vertex v to a vertex u if
+          the class for v inherits from the class for u. Such edges are directed because the
+          inheritance relation only goes in one direction (that is, it is asymmetric).
+               If all the edges in a graph are undirected, then we say the graph is an undirected
+          graph. Likewise, a directed graph, also called a digraph, is a graph whose edges
+          are all directed. A graph that has both directed and undirected edges is often called
+          a mixed graph. Note that an undirected or mixed graph can be converted into a
+          directed graph by replacing every undirected edge (u, v) by the pair of directed
+          edges (u, v) and (v, u). It is often useful, however, to keep undirected and mixed
+          graphs represented as they are, for such graphs have several applications, as in the
+          following example.
+          Example 14.3: A city map can be modeled as a graph whose vertices are intersec-
+          tions or dead ends, and whose edges are stretches of streets without intersections.
+          This graph has both undirected edges, which correspond to stretches of two-way
+          streets, and directed edges, which correspond to stretches of one-way streets. Thus,
+          in this way, a graph modeling a city map is a mixed graph.
+          Example 14.4: Physical examples of graphs are present in the electrical wiring
+          and plumbing networks of a building. Such networks can be modeled as graphs,
+          where each connector, ﬁxture, or outlet is viewed as a vertex, and each uninter-
+          rupted stretch of wire or pipe is viewed as an edge. Such graphs are actually com-
+          ponents of much larger graphs, namely the local power and water distribution net-
+          works. Depending on the speciﬁc aspects of these graphs that we are interested in,
+          we may consider their edges as undirected or directed, for, in principle, water can
+          ﬂow in a pipe and current can ﬂow in a wire in either direction.
+               The two vertices joined by an edge are called the end vertices (or endpoints)
+          of the edge. If an edge is directed, its ﬁrst endpoint is its origin and the other is the
+          destination of the edge. Two vertices u and v are said to be adjacent if there is an
+          edge whose end vertices are u and v. An edge is said to be incident to a vertex if
+          the vertex is one of the edge’s endpoints. The outgoing edges of a vertex are the
+          directed edges whose origin is that vertex. The incoming edges of a vertex are the
+          directed edges whose destination is that vertex. The degree of a vertex v, denoted
+          deg(v), is the number of incident edges of v. The in-degree and out-degree of a
+          vertex v are the number of the incoming and outgoing edges of v, and are denoted
+          indeg(v) and outdeg(v), respectively.

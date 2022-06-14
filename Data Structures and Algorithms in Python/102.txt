@@ -1,0 +1,36 @@
+2.3. Class Deﬁnitions                                                                  81
+       1 class Range:
+       2    ”””A class that mimic s the built-in range class.”””
+       3
+       4    def init (self, start, stop=None, step=1):
+       5      ”””Initialize a Range instance.
+       6
+       7      Semantics is similar to built-in range class.
+       8      ”””
+       9      if step == 0:
+      10         raise ValueError( step cannot be 0 )
+      11
+      12      if stop is None:                       # special case of range(n)
+      13         start, stop = 0, start              # should be treated as if range(0,n)
+      14
+      15      # calculate the eﬀective length once
+      16      self. length = max(0, (stop − start + step − 1) // step)
+      17
+      18      # need knowledge of start and step (but not stop) to support getitem
+      19      self. start = start
+      20      self. step = step
+      21
+      22    def len (self):
+      23      ”””Return number of entries in the range.”””
+      24      return self. length
+      25
+      26    def getitem (self, k):
+      27      ”””Return entry at index k (using standard interpretation if negative).”””
+      28      if k < 0:
+      29         k += len(self)                      # attempt to convert negative index
+      30
+      31      if not 0 <= k < self. length:
+      32         raise IndexError( index out of range )
+      33
+      34      return self. start + k self. step
+                    Code Fragment 2.6: Our own implementation of a Range class.

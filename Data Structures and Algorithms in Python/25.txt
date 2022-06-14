@@ -1,0 +1,33 @@
+4                                                               Chapter 1. Python Primer
+  1.2    Objects in Python
+         Python is an object-oriented language and classes form the basis for all data types.
+         In this section, we describe key aspects of Python’s object model, and we intro-
+         duce Python’s built-in classes, such as the int class for integers, the ﬂoat class
+         for ﬂoating-point values, and the str class for character strings. A more thorough
+         presentation of object-orientation is the focus of Chapter 2.
+      1.2.1 Identiﬁers, Objects, and the Assignment Statement
+         The most important of all Python commands is an assignment statement, such as
+              temperature = 98.6
+         This command establishes temperature as an identiﬁer (also known as a name),
+         and then associates it with the object expressed on the right-hand side of the equal
+         sign, in this case a ﬂoating-point object with value 98.6. We portray the outcome
+         of this assignment in Figure 1.1.
+                                                               ﬂoat
+                                    temperature
+                                                               98.6
+         Figure 1.1: The identiﬁer temperature references an instance of the ﬂoat class
+         having value 98.6.
+         Identiﬁers
+         Identiﬁers in Python are case-sensitive, so temperature and Temperature are dis-
+         tinct names. Identiﬁers can be composed of almost any combination of letters,
+         numerals, and underscore characters (or more general Unicode characters). The
+         primary restrictions are that an identiﬁer cannot begin with a numeral (thus 9lives
+         is an illegal name), and that there are 33 specially reserved words that cannot be
+         used as identiﬁers, as shown in Table 1.1.
+                                            Reserved Words
+          False    as       continue    else      from      in         not    return   yield
+          None     assert   def         except global is               or     try
+          True     break    del         ﬁnally if           lambda     pass   while
+          and      class    elif        for       import nonlocal      raise  with
+         Table 1.1: A listing of the reserved words in Python. These names cannot be used
+         as identiﬁers.

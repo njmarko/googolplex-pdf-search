@@ -1,0 +1,35 @@
+714                                     Chapter 15. Memory Management and B-Trees
+    15.3.2 B-Trees
+       A version of the (a, b) tree data structure, which is the best-known method for
+       maintaining a map in external memory, is called the “B-tree.” (See Figure 15.4.) A
+       B-tree of order d is an (a, b) tree with a = d/2 and b = d. Since we discussed
+       the standard map query and update methods for (a, b) trees above, we restrict our
+       discussion here to the I/O complexity of B-trees.
+                                                42 65
+                  22 37                       46 58                     72 80 93
+          11 12  24 29   38 40 41 43 45  48 50 51 53 56  59 63  66 70 74 75   83 85 86 95 98
+                                  Figure 15.4: A B-tree of order 6.
+            An important property of B-trees is that we can choose d so that the d children
+       references and the d − 1 keys stored at a node can ﬁt compactly into a single disk
+       block, implying that d is proportional to B. This choice allows us to assume that a
+       and b are also proportional to B in the analysis of the search and update operations
+       on (a, b) trees. Thus, f (b) and g(b) are both O(1), for each time we access a node
+       to perform a search or an update operation, we need only perform a single disk
+       transfer.
+            As we have already observed above, each search or update requires that we
+       examine at most O(1) nodes for each level of the tree. Therefore, any map search
+       or update operation on a B-tree requires only O(logd/2 n), that is, O(log n/ log B),
+       disk transfers. For example, an insert operation proceeds down the B-tree to locate
+       the node in which to insert the new entry. If the node would overﬂow (to have d + 1
+       children) because of this addition, then this node is split into two nodes that have
+       (d + 1)/2 and (d + 1)/2 children, respectively. This process is then repeated
+       at the next level up, and will continue for at most O(logB n) levels.
+            Likewise, if a remove operation results in a node underﬂow (to have d/2 − 1
+       children), then we move references from a sibling node with at least d/2 + 1
+       children or we perform a fusion operation of this node with its sibling (and repeat
+       this computation at the parent). As with the insert operation, this will continue up
+       the B-tree for at most O(logB n) levels. The requirement that each internal node
+       have at least d/2 children implies that each disk block used to support a B-tree is
+       at least half full. Thus, we have the following:
+       Proposition 15.2: A B-tree with n entries has I/O complexity O(logB n) for search
+       or update operation, and uses O(n/B) blocks, where B is the size of a block.

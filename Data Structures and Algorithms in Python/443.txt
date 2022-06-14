@@ -1,0 +1,39 @@
+422                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.2.4 Python Hash Table Implementation
+       In this section, we develop two implementations of a hash table, one using sepa-
+       rate chaining and the other using open addressing with linear probing. While these
+       approaches to collision resolution are quite different, there are a great many com-
+       monalities to the hashing algorithms. For that reason, we extend the MapBase
+       class (from Code Fragment 10.2), to deﬁne a new HashMapBase class (see Code
+       Fragment 10.4), providing much of the common functionality to our two hash table
+       implementations. The main design elements of the HashMapBase class are:
+           • The bucket array is represented as a Python list, named self. table, with all
+              entries initialized to None.
+           • We maintain an instance variable self. n that represents the number of dis-
+              tinct items that are currently stored in the hash table.
+           • If the load factor of the table increases beyond 0.5, we double the size of the
+              table and rehash all items into the new table.
+           • We deﬁne a hash function utility method that relies on Python’s built-in
+              hash function to produce hash codes for keys, and a randomized Multiply-
+              Add-and-Divide (MAD) formula for the compression function.
+           What is not implemented in the base class is any notion of how a “bucket”
+       should be represented. With separate chaining, each bucket will be an independent
+       structure. With open addressing, however, there is no tangible container for each
+       bucket; the “buckets” are effectively interleaved due to the probing sequences.
+           In our design, the HashMapBase class presumes the following to be abstract
+       methods, which must be implemented by each concrete subclass:
+           • bucket getitem(j, k)
+              This method should search bucket j for an item having key k, returning the
+              associated value, if found, or else raising a KeyError.
+           • bucket setitem(j, k, v)
+              This method should modify bucket j so that key k becomes associated with
+              value v. If the key already exists, the new value overwrites the existing value.
+              Otherwise, a new item is inserted and this method is responsible for incre-
+              menting self. n.
+           • bucket delitem(j, k)
+              This method should remove the item from bucket j having key k, or raise a
+              KeyError if no such item exists. (self. n is decremented after this method.)
+           •     iter
+              This is the standard map method to iterate through all keys of the map. Our
+              base class does not delegate this on a per-bucket basis because “buckets” in
+              open addressing are not inherently disjoint.

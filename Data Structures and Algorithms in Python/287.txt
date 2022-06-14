@@ -1,0 +1,29 @@
+266                                                                 Chapter 7. Linked Lists
+ 7.2 Circularly Linked Lists
+     In Section 6.2.2, we introduced the notion of a “circular” array and demonstrated
+     its use in implementing the queue ADT. In reality, the notion of a circular array was
+     artiﬁcial, in that there was nothing about the representation of the array itself that
+     was circular in structure. It was our use of modular arithmetic when “advancing”
+     an index from the last slot to the ﬁrst slot that provided such an abstraction.
+          In the case of linked lists, there is a more tangible notion of a circularly linked
+     list, as we can have the tail of the list use its next reference to point back to the head
+     of the list, as shown in Figure 7.7. We call such a structure a circularly linked list.
+                  LAX              MSP                 ATL               BOS
+           head                                                    tail
+               Figure 7.7: Example of a singly linked list with circular structure.
+          A circularly linked list provides a more general model than a standard linked
+     list for data sets that are cyclic, that is, which do not have any particular notion of a
+     beginning and end. Figure 7.8 provides a more symmetric illustration of the same
+     circular list structure as Figure 7.7.
+                                            LAX
+                       MSP                                        BOS
+                                                                            current
+                                            ATL
+     Figure 7.8: Example of a circular linked list, with current denoting a reference to a
+     select node.
+          A circular view similar to Figure 7.8 could be used, for example, to describe
+     the order of train stops in the Chicago loop, or the order in which players take turns
+     during a game. Even though a circularly linked list has no beginning or end, per
+     se, we must maintain a reference to a particular node in order to make use of the
+     list. We use the identiﬁer current to describe such a designated node. By setting
+     current = current.next, we can effectively advance through the nodes of the list.

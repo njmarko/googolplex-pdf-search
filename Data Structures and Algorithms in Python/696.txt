@@ -1,0 +1,40 @@
+14.7. Minimum Spanning Trees                                                              675
+          Python Implementation
+          Code Fragment 14.16 presents a Python implementation of the Prim-Jarnı́k algo-
+          rithm. The MST is returned as an unordered list of edges.
+       1 def MST PrimJarnik(g):
+       2     ”””Compute a minimum spanning tree of weighted graph g.
+       3
+       4     Return a list of edges that comprise the MST (in arbitrary order).
+       5     ”””
+       6     d={}                                       # d[v] is bound on distance to tree
+       7     tree = [ ]                                 # list of edges in spanning tree
+       8     pq = AdaptableHeapPriorityQueue( ) # d[v] maps to value (v, e=(u,v))
+       9     pqlocator = { }                            # map from vertex to its pq locator
+      10
+      11     # for each vertex v of the graph, add an entry to the priority queue, with
+      12     # the source having distance 0 and all others having inﬁnite distance
+      13     for v in g.vertices( ):
+      14       if len(d) == 0:                                      # this is the ﬁrst node
+      15          d[v] = 0                                          # make it the root
+      16       else:
+      17          d[v] = ﬂoat( inf )                                # positive inﬁnity
+      18       pqlocator[v] = pq.add(d[v], (v,None))
+      19
+      20     while not pq.is empty( ):
+      21       key,value = pq.remove min( )
+      22       u,edge = value                                       # unpack tuple from pq
+      23       del pqlocator[u]                                     # u is no longer in pq
+      24       if edge is not None:
+      25          tree.append(edge)                                 # add edge to tree
+      26       for link in g.incident edges(u):
+      27          v = link.opposite(u)
+      28          if v in pqlocator:                                # thus v not yet in tree
+      29             # see if edge (u,v) better connects v to the growing tree
+      30             wgt = link.element( )
+      31             if wgt < d[v]:                                 # better edge to v?
+      32                d[v] = wgt                                  # update the distance
+      33                pq.update(pqlocator[v], d[v], (v, link))    # update the pq entry
+      34     return tree
+          Code Fragment 14.16: Python implementation of the Prim-Jarnı́k algorithm for the
+          minimum spanning tree problem.

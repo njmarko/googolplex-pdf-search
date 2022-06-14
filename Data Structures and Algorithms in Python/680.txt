@@ -1,0 +1,40 @@
+14.6. Shortest Paths                                                                           659
+ 14.6        Shortest Paths
+          As we saw in Section 14.3.3, the breadth-ﬁrst search strategy can be used to ﬁnd a
+          shortest path from some starting vertex to every other vertex in a connected graph.
+          This approach makes sense in cases where each edge is as good as any other, but
+          there are many situations where this approach is not appropriate.
+               For example, we might want to use a graph to represent the roads between
+          cities, and we might be interested in ﬁnding the fastest way to travel cross-country.
+          In this case, it is probably not appropriate for all the edges to be equal to each other,
+          for some inter-city distances will likely be much larger than others. Likewise, we
+          might be using a graph to represent a computer network (such as the Internet), and
+          we might be interested in ﬁnding the fastest way to route a data packet between
+          two computers. In this case, it again may not be appropriate for all the edges to
+          be equal to each other, for some connections in a computer network are typically
+          much faster than others (for example, some edges might represent low-bandwidth
+          connections, while others might represent high-speed, ﬁber-optic connections). It
+          is natural, therefore, to consider graphs whose edges are not weighted equally.
+       14.6.1 Weighted Graphs
+          A weighted graph is a graph that has a numeric (for example, integer) label w(e)
+          associated with each edge e, called the weight of edge e. For e = (u, v), we let
+          notation w(u, v) = w(e). We show an example of a weighted graph in Figure 14.14.
+                                                 2704
+                                              1846                       867
+                                                                                     BOS
+                                                              ORD
+                                                                                 187
+                                                                    740      JFK
+                    SFO
+                                    1464
+                    337                                802
+                         LAX                                            1090
+                                   1235
+                                                                                   1258
+                                                   DFW        1121
+                                           2342
+                                                                           MIA
+          Figure 14.14: A weighted graph whose vertices represent major U.S. airports and
+          whose edge weights represent distances in miles. This graph has a path from JFK to
+          LAX of total weight 2,777 (going through ORD and DFW). This is the minimum-
+          weight path in the graph from JFK to LAX.

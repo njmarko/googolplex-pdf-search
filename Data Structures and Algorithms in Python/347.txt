@@ -1,0 +1,37 @@
+326                                                                     Chapter 8. Trees
+         The level numbering function f suggests a representation of a binary tree T
+    by means of an array-based structure A (such as a Python list), with the element
+    at position p of T stored at index f (p) of the array. We show an example of an
+    array-based representation of a binary tree in Figure 8.13.
+                                                  0
+                                                  /
+                                     1                        2
+                                    ×                         +
+                              3            4            5           6
+                             +             4           −            2
+                           7      8                 11     12
+                           3      1                 9       5
+                 / × + + 4 − 2                  3   1            9    5
+                 0    1   2  3    4    5    6   7   8   9   10 11 12 13 14
+              Figure 8.13: Representation of a binary tree by means of an array.
+         One advantage of an array-based representation of a binary tree is that a posi-
+    tion p can be represented by the single integer f (p), and that position-based meth-
+    ods such as root, parent, left, and right can be implemented using simple arithmetic
+    operations on the number f (p). Based on our formula for the level numbering, the
+    left child of p has index 2 f (p) + 1, the right child of p has index 2 f (p) + 2, and
+    the parent of p has index ( f (p) − 1)/2. We leave the details of a complete im-
+    plementation as an exercise (R-8.18).
+         The space usage of an array-based representation depends greatly on the shape
+    of the tree. Let n be the number of nodes of T , and let fM be the maximum value
+    of f (p) over all the nodes of T . The array A requires length N = 1 + fM , since
+    elements range from A[0] to A[ fM ]. Note that A may have a number of empty cells
+    that do not refer to existing nodes of T . In fact, in the worst case, N = 2n − 1,
+    the justiﬁcation of which is left as an exercise (R-8.16). In Section 9.3, we will
+    see a class of binary trees, called “heaps” for which N = n. Thus, in spite of the
+    worst-case space usage, there are applications for which the array representation
+    of a binary tree is space efﬁcient. Still, for general binary trees, the exponential
+    worst-case space requirement of this representation is prohibitive.
+         Another drawback of an array representation is that some update operations for
+    trees cannot be efﬁciently supported. For example, deleting a node and promoting
+    its child takes O(n) time because it is not just the child that moves locations within
+    the array, but all descendants of that child.

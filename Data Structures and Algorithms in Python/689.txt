@@ -1,0 +1,40 @@
+668                                                       Chapter 14. Graph Algorithms
+     1 def shortest path lengths(g, src):
+     2   ”””Compute shortest-path distances from src to reachable vertices of g.
+     3
+     4   Graph g can be undirected or directed, but must be weighted such that
+     5   e.element() returns a numeric weight for each edge e.
+     6
+     7   Return dictionary mapping each reachable vertex to its distance from src.
+     8   ”””
+     9   d={}                                         # d[v] is upper bound from s to v
+    10   cloud = { }                                  # map reachable v to its d[v] value
+    11   pq = AdaptableHeapPriorityQueue( ) # vertex v will have key d[v]
+    12   pqlocator = { }                              # map from vertex to its pq locator
+    13
+    14   # for each vertex v of the graph, add an entry to the priority queue, with
+    15   # the source having distance 0 and all others having inﬁnite distance
+    16   for v in g.vertices( ):
+    17      if v is src:
+    18         d[v] = 0
+    19      else:
+    20         d[v] = ﬂoat( inf )                     # syntax for positive inﬁnity
+    21      pqlocator[v] = pq.add(d[v], v)            # save locator for future updates
+    22
+    23   while not pq.is empty( ):
+    24      key, u = pq.remove min( )
+    25      cloud[u] = key                            # its correct d[u] value
+    26      del pqlocator[u]                          # u is no longer in pq
+    27      for e in g.incident edges(u):             # outgoing edges (u,v)
+    28         v = e.opposite(u)
+    29         if v not in cloud:
+    30            # perform relaxation step on edge (u,v)
+    31            wgt = e.element( )
+    32            if d[u] + wgt < d[v]:                        # better path to v?
+    33               d[v] = d[u] + wgt                         # update the distance
+    34               pq.update(pqlocator[v], d[v], v)          # update the pq entry
+    35
+    36   return cloud                                 # only includes reachable vertices
+       Code Fragment 14.13: Python implementation of Dijkstra’s algorithm for comput-
+       ing the shortest-path distances from a single source. We assume that e.element( )
+       for edge e represents the weight of that edge.

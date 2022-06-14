@@ -1,0 +1,35 @@
+176                                                                                    Chapter 4. Recursion
+             Algorithm PuzzleSolve(k,S,U):
+                 Input: An integer k, sequence S, and set U
+                 Output: An enumeration of all k-length extensions to S using elements in U
+                    without repetitions
+                  for each e in U do
+                     Add e to the end of S
+                     Remove e from U                                                     {e is now being used}
+                     if k == 1 then
+                        Test whether S is a conﬁguration that solves the puzzle
+                        if S solves the puzzle then
+                           return “Solution found: ” S
+                     else
+                        PuzzleSolve(k−1,S,U)                                                   {a recursive call}
+                     Remove e from the end of S
+                     Add e back to U                                        {e is now considered as unused}
+             Code Fragment 4.14: Solving a combinatorial puzzle by enumerating and testing
+             all possible conﬁgurations.
+                  In Figure 4.14, we show a recursion trace of a call to PuzzleSolve(3, S,U ),
+             where S is empty and U = {a, b, c}. During the execution, all the permutations
+             of the three characters are generated and tested. Note that the initial call makes
+             three recursive calls, each of which in turn makes two more. If we had executed
+             PuzzleSolve(3, S,U ) on a set U consisting of four elements, the initial call would
+             have made four recursive calls, each of which would have a trace looking like the
+             one in Figure 4.14.
+                                               initial call
+                                           PuzzleSolve(3, ( ), {a,b,c})
+           PuzzleSolve(2, a, {b,c})         PuzzleSolve(2, b, {a,c})            PuzzleSolve(2, c, {a,b})
+  PuzzleSolve(1, ab, {c})          PuzzleSolve(1, ba, {c})             PuzzleSolve(1, ca, {b})
+            abc                              bac                                 cab
+                      PuzzleSolve(1, ac, {b})             PuzzleSolve(1, bc, {a})          PuzzleSolve(1, cb, {a})
+                                acb                                 bca                              cba
+             Figure 4.14: Recursion trace for an execution of PuzzleSolve(3, S,U ), where S is
+             empty and U = {a, b, c}. This execution generates and tests all permutations of a, b,
+             and c. We show the permutations generated directly below their respective boxes.

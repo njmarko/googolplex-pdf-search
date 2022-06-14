@@ -1,0 +1,38 @@
+14.8. Exercises                                                                              695
+                  pointer (recall that the parent pointer of the root points to itself ). If this
+                  pass changed the value of any position’s parent pointer, then she repeats
+                  this process, and goes on repeating this process until she makes a scan
+                  through S that does not change any position’s parent value. Show that
+                  Karen’s algorithm is correct and analyze its running time for a path of
+                  length h.
+       Projects
+          P-14.74 Use an adjacency matrix to implement a class supporting a simpliﬁed
+                  graph ADT that does not include update methods. Your class should in-
+                  clude a constructor method that takes two collections—a collection V of
+                  vertex elements and a collection E of pairs of vertex elements—and pro-
+                  duces the graph G that these two collections represent.
+          P-14.75 Implement the simpliﬁed graph ADT described in Project P-14.74, using
+                  the edge list structure.
+          P-14.76 Implement the simpliﬁed graph ADT described in Project P-14.74, using
+                  the adjacency list structure.
+          P-14.77 Extend the class of Project P-14.76 to support the update methods of the
+                  graph ADT.
+          P-14.78 Design an experimental comparison of repeated DFS traversals versus
+                  the Floyd-Warshall algorithm for computing the transitive closure of a
+                  directed graph.
+          P-14.79 Perform an experimental comparison of two of the minimum spanning
+                  tree algorithms discussed in this chapter (Kruskal and Prim-Jarnı́k). De-
+                  velop an extensive set of experiments to test the running times of these
+                  algorithms using randomly generated graphs.
+          P-14.80 One way to construct a maze starts with an n × n grid such that each grid
+                  cell is bounded by four unit-length walls. We then remove two boundary
+                  unit-length walls, to represent the start and ﬁnish. For each remaining
+                  unit-length wall not on the boundary, we assign a random value and cre-
+                  ate a graph G, called the dual, such that each grid cell is a vertex in G
+                  and there is an edge joining the vertices for two cells if and only if the
+                  cells share a common wall. The weight of each edge is the weight of the
+                  corresponding wall. We construct the maze by ﬁnding a minimum span-
+                  ning tree T for G and removing all the walls corresponding to edges in
+                  T . Write a program that uses this algorithm to generate mazes and then
+                  solves them. Minimally, your program should draw the maze and, ideally,
+                  it should visualize the solution as well.

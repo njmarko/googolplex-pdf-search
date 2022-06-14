@@ -1,0 +1,31 @@
+Appendix
+     A                             Character Strings in Python
+A string is a sequence of characters that come from some alphabet. In Python, the
+built-in str class represents strings based upon the Unicode international character
+set, a 16-bit character encoding that covers most written languages. Unicode is
+an extension of the 7-bit ASCII character set that includes the basic Latin alpha-
+bet, numerals, and common symbols. Strings are particularly important in most
+programming applications, as text is often used for input and output.
+     A basic introduction to the str class was provided in Section 1.2.3, including use
+of string literals, such as hello , and the syntax str(obj) that is used to construct
+a string representation of a typical object. Common operators that are supported
+by strings, such as the use of + for concatenation, were further discussed in Sec-
+tion 1.3. This appendix serves as a more detailed reference, describing convenient
+behaviors that strings support for the processing of text. To organize our overview
+of the str class behaviors, we group them into the following broad categories of
+functionality.
+Searching for Substrings
+The operator syntax, pattern in s, can be used to determine if the given pattern
+occurs as a substring of string s. Table A.1 describes several related methods that
+determine the number of such occurrences, and the index at which the leftmost or
+rightmost such occurrence begins. Each of the functions in this table accepts two
+optional parameters, start and end, which are indices that effectively restrict the
+search to the implicit slice s[start:end]. For example, the call s.ﬁnd(pattern, 5)
+restricts the search to s[5: ].
+Calling Syntax        Description
+s.count(pattern)      Return the number of non-overlapping occurrences of pattern
+s.ﬁnd(pattern)        Return the index starting the leftmost occurrence of pattern; else -1
+s.index(pattern)      Similar to ﬁnd, but raise ValueError if not found
+s.rﬁnd(pattern)       Return the index starting the rightmost occurrence of pattern; else -1
+s.rindex(pattern)     Similar to rﬁnd, but raise ValueError if not found
+                     Table A.1: Methods that search for substrings.

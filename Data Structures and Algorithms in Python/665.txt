@@ -1,0 +1,39 @@
+644                                                         Chapter 14. Graph Algorithms
+     14.3.2 DFS Implementation and Extensions
+        We begin by providing a Python implementation of the basic depth-ﬁrst search
+        algorithm, originally described with pseudo-code in Code Fragment 14.4. Our DFS
+        function is presented in Code Fragment 14.5.
+     1 def DFS(g, u, discovered):
+     2    ”””Perform DFS of the undiscovered portion of Graph g starting at Vertex u.
+     3
+     4    discovered is a dictionary mapping each vertex to the edge that was used to
+     5    discover it during the DFS. (u should be ”discovered” prior to the call.)
+     6    Newly discovered vertices will be added to the dictionary as a result.
+     7    ”””
+     8    for e in g.incident edges(u):               # for every outgoing edge from u
+     9       v = e.opposite(u)
+    10       if v not in discovered:                  # v is an unvisited vertex
+    11          discovered[v] = e                     # e is the tree edge that discovered v
+    12          DFS(g, v, discovered)                 # recursively explore from v
+        Code Fragment 14.5: Recursive implementation of depth-ﬁrst search on a graph,
+        starting at a designated vertex u.
+            In order to track which vertices have been visited, and to build a representation
+        of the resulting DFS tree, our implementation introduces a third parameter, named
+        discovered. This parameter should be a Python dictionary that maps a vertex of the
+        graph to the tree edge that was used to discover that vertex. As a technicality, we
+        assume that the source vertex u occurs as a key of the dictionary, with None as its
+        value. Thus, a caller might start the traversal as follows:
+              result = {u : None}           # a new dictionary, with u trivially discovered
+              DFS(g, u, result)
+        The dictionary serves two purposes. Internally, the dictionary provides a mecha-
+        nism for recognizing visited vertices, as they will appear as keys in the dictionary.
+        Externally, the DFS function augments this dictionary as it proceeds, and thus the
+        values within the dictionary are the DFS tree edges at the conclusion of the process.
+            Because the dictionary is hash-based, the test, “if v not in discovered,” and
+        the record-keeping step, “discovered[v] = e,” run in O(1) expected time, rather
+        than worst-case time. In practice, this is a compromise we are willing to accept,
+        but it does violate the formal analysis of the algorithm, as given on page 643. If we
+        could assume that vertices could be numbered from 0 to n − 1, then those numbers
+        could be used as indices into an array-based lookup table rather than a hash-based
+        map. Alternatively, we could store each vertex’s discovery status and associated
+        tree edge directly as part of the vertex instance.

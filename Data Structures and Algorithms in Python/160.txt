@@ -1,0 +1,39 @@
+3.4. Simple Justiﬁcation Techniques                                                         139
+          Proposition 3.20: Consider the Fibonacci function F(n), which is deﬁned such
+          that F(1) = 1, F(2) = 2, and F(n) = F(n − 2) + F(n − 1) for n > 2. (See Sec-
+          tion 1.8.) We claim that F(n) < 2n .
+          Justiﬁcation: We will show our claim is correct by induction.
+          Base cases: (n ≤ 2). F(1) = 1 < 2 = 21 and F(2) = 2 < 4 = 22 .
+          Induction step: (n > 2). Suppose our claim is true for all n < n. Consider F(n).
+          Since n > 2, F(n) = F(n − 2) + F (n − 1). Moreover, since both n − 2 and n − 1 are
+          less than n, we can apply the inductive assumption (sometimes called the “inductive
+          hypothesis”) to imply that F(n) < 2n−2 + 2n−1 , since
+                               2n−2 + 2n−1 < 2n−1 + 2n−1 = 2 · 2n−1 = 2n .
+              Let us do another inductive argument, this time for a fact we have seen before.
+          Proposition 3.21: (which is the same as Proposition 3.3)
+                                                n
+                                                     n(n + 1)
+                                              ∑i=        2
+                                                              .
+                                              i=1
+          Justiﬁcation: We will justify this equality by induction.
+          Base case: n = 1. Trivial, for 1 = n(n + 1)/2, if n = 1.
+          Induction step: n ≥ 2. Assume the claim is true for n < n. Consider n.
+                                                n        n−1
+                                               ∑ i = n + ∑ i.
+                                               i=1        i=1
+           By the induction hypothesis, then
+                                            n
+                                                       (n − 1)n
+                                           ∑i = n+          2
+                                                                 ,
+                                           i=1
+           which we can simplify as
+                                (n − 1)n 2n + n2 − n n2 + n n(n + 1)
+                           n+            =                =        =           .
+                                    2              2            2         2
+              We may sometimes feel overwhelmed by the task of justifying something true
+          for all n ≥ 1. We should remember, however, the concreteness of the inductive tech-
+          nique. It shows that, for any particular n, there is a ﬁnite step-by-step sequence of
+          implications that starts with something true and leads to the truth about n. In short,
+          the inductive argument is a template for building a sequence of direct justiﬁcations.

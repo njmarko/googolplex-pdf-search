@@ -1,0 +1,38 @@
+3.1. Experimental Studies                                                                    111
+  3.1     Experimental Studies
+          If an algorithm has been implemented, we can study its running time by executing
+          it on various test inputs and recording the time spent during each execution. A
+          simple approach for doing this in Python is by using the time function of the time
+          module. This function reports the number of seconds, or fractions thereof, that have
+          elapsed since a benchmark time known as the epoch. The choice of the epoch is
+          not signiﬁcant to our goal, as we can determine the elapsed time by recording the
+          time just before the algorithm and the time just after the algorithm, and computing
+          their difference, as follows:
+               from time import time
+               start time = time( )                        # record the starting time
+               run algorithm
+               end time = time( )                          # record the ending time
+               elapsed = end time − start time             # compute the elapsed time
+          We will demonstrate use of this approach, in Chapter 5, to gather experimental data
+          on the efﬁciency of Python’s list class. An elapsed time measured in this fashion
+          is a decent reﬂection of the algorithm efﬁciency, but it is by no means perfect. The
+          time function measures relative to what is known as the “wall clock.” Because
+          many processes share use of a computer’s central processing unit (or CPU), the
+          elapsed time will depend on what other processes are running on the computer
+          when the test is performed. A fairer metric is the number of CPU cycles that are
+          used by the algorithm. This can be determined using the clock function of the time
+          module, but even this measure might not be consistent if repeating the identical
+          algorithm on the identical input, and its granularity will depend upon the computer
+          system. Python includes a more advanced module, named timeit, to help automate
+          such evaluations with repetition to account for such variance among trials.
+               Because we are interested in the general dependence of running time on the size
+          and structure of the input, we should perform independent experiments on many
+          different test inputs of various sizes. We can then visualize the results by plotting
+          the performance of each run of the algorithm as a point with x-coordinate equal to
+          the input size, n, and y-coordinate equal to the running time, t. Figure 3.1 displays
+          such hypothetical data. This visualization may provide some intuition regarding
+          the relationship between problem size and execution time for the algorithm. This
+          may lead to a statistical analysis that seeks to ﬁt the best function of the input size
+          to the experimental data. To be meaningful, this analysis requires that we choose
+          good sample inputs and test enough of them to be able to make sound statistical
+          claims about the algorithm’s running time.

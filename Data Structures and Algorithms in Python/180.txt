@@ -1,0 +1,36 @@
+4.1. Illustrative Examples                                                                    159
+            Python’s os Module
+            To provide a Python implementation of a recursive algorithm for computing disk
+            usage, we rely on Python’s os module, which provides robust tools for interacting
+            with the operating system during the execution of a program. This is an extensive
+            library, but we will only need the following four functions:
+                • os.path.getsize(path)
+                   Return the immediate disk usage (measured in bytes) for the ﬁle or directory
+                   that is identiﬁed by the string path (e.g., /user/rt/courses).
+                • os.path.isdir(path)
+                   Return True if entry designated by string path is a directory; False otherwise.
+                • os.listdir(path)
+                   Return a list of strings that are the names of all entries within a directory
+                   designated by string path. In our sample ﬁle system, if the parameter is
+                   /user/rt/courses, this returns the list [ cs016 , cs252 ].
+                • os.path.join(path, ﬁlename)
+                   Compose the path string and ﬁlename string using an appropriate operating
+                   system separator between the two (e.g., the / character for a Unix/Linux
+                   system, and the \ character for Windows). Return the string that represents
+                   the full path to the ﬁle.
+            Python Implementation
+            With use of the os module, we now convert the algorithm from Code Fragment 4.4
+            into the Python implementation of Code Fragment 4.5.
+        1 import os
+        2
+        3 def disk usage(path):
+        4     ”””Return the number of bytes used by a ﬁle/folder and any descendents.”””
+        5     total = os.path.getsize(path)                      # account for direct usage
+        6     if os.path.isdir(path):                            # if this is a directory,
+        7        for ﬁlename in os.listdir(path):                # then for each child:
+        8          childpath = os.path.join(path, ﬁlename) # compose full path to child
+        9          total += disk usage(childpath)                # add child’s usage to total
+       10
+       11     print ( {0:<7} .format(total), path)               # descriptive output (optional)
+       12     return total                                       # return the grand total
+             Code Fragment 4.5: A recursive function for reporting disk usage of a ﬁle system.

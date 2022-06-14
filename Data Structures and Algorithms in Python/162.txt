@@ -1,0 +1,34 @@
+3.5. Exercises                                                                                  141
+  3.5     Exercises
+          For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+      Reinforcement
+             R-3.1 Graph the functions 8n, 4n log n, 2n2 , n3 , and 2n using a logarithmic scale
+                    for the x- and y-axes; that is, if the function value f (n) is y, plot this as a
+                    point with x-coordinate at log n and y-coordinate at log y.
+             R-3.2 The number of operations executed by algorithms A and B is 8n log n and
+                    2n2 , respectively. Determine n0 such that A is better than B for n ≥ n0 .
+             R-3.3 The number of operations executed by algorithms A and B is 40n2 and
+                    2n3 , respectively. Determine n0 such that A is better than B for n ≥ n0 .
+             R-3.4 Give an example of a function that is plotted the same on a log-log scale
+                    as it is on a standard scale.
+             R-3.5 Explain why the plot of the function nc is a straight line with slope c on a
+                    log-log scale.
+             R-3.6 What is the sum of all the even numbers from 0 to 2n, for any positive
+                    integer n?
+             R-3.7 Show that the following two statements are equivalent:
+                    (a) The running time of algorithm A is always O( f (n)).
+                    (b) In the worst case, the running time of algorithm A is O( f (n)).
+             R-3.8 Order the following functions by asymptotic growth rate.
+                                             4n log n + 2n 210 2log n
+                                            3n + 100 log n 4n         2n
+                                                n2 + 10n       n3 n log n
+             R-3.9 Show that if d(n) is O( f (n)), then ad(n) is O( f (n)), for any constant
+                    a > 0.
+           R-3.10 Show that if d(n) is O( f (n)) and e(n) is O(g(n)), then the product d(n)e(n)
+                    is O( f (n)g(n)).
+           R-3.11 Show that if d(n) is O( f (n)) and e(n) is O(g(n)), then d(n) + e(n) is
+                    O( f (n) + g(n)).
+           R-3.12 Show that if d(n) is O( f (n)) and e(n) is O(g(n)), then d(n) − e(n) is not
+                    necessarily O( f (n) − g(n)).
+           R-3.13 Show that if d(n) is O( f (n)) and f (n) is O(g(n)), then d(n) is O(g(n)).
+           R-3.14 Show that O(max{ f (n), g(n)}) = O( f (n) + g(n)).

@@ -1,0 +1,36 @@
+66                                        Chapter 2. Object-Oriented Programming
+   Documentation
+   Python provides integrated support for embedding formal documentation directly
+   in source code using a mechanism known as a docstring. Formally, any string literal
+   that appears as the ﬁrst statement within the body of a module, class, or function
+   (including a member function of a class) will be considered to be a docstring. By
+   convention, those string literals should be delimited within triple quotes (”””). As
+   an example, our version of the scale function from page 25 could be documented
+   as follows:
+         def scale(data, factor):
+           ”””Multiply all entries of numeric data list by the given factor.”””
+           for j in range(len(data)):
+             data[j] = factor
+   It is common to use the triple-quoted string delimiter for a docstring, even when
+   the string ﬁts on a single line, as in the above example. More detailed docstrings
+   should begin with a single line that summarizes the purpose, followed by a blank
+   line, and then further details. For example, we might more clearly document the
+   scale function as follows:
+         def scale(data, factor):
+           ”””Multiply all entries of numeric data list by the given factor.
+           data      an instance of any mutable sequence type (such as a list)
+                     containing numeric elements
+           factor a number that serves as the multiplicative factor for scaling
+           ”””
+           for j in range(len(data)):
+             data[j] = factor
+        A docstring is stored as a ﬁeld of the module, function, or class in which it
+   is declared. It serves as documentation and can be retrieved in a variety of ways.
+   For example, the command help(x), within the Python interpreter, produces the
+   documentation associated with the identiﬁed object x. An external tool named
+   pydoc is distributed with Python and can be used to generate formal documentation
+   as text or as a Web page. Guidelines for authoring useful docstrings are available
+   at:
+                    http://www.python.org/dev/peps/pep-0257/
+        In this book, we will try to present docstrings when space allows. Omitted
+   docstrings can be found in the online version of our source code.

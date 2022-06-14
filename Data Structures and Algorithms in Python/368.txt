@@ -1,0 +1,36 @@
+8.4. Tree Traversal Algorithms                                                              347
+                 0
+                 1
+                 2
+                 3
+                 4
+                     0     1    2      3    4     5    6    7      8    9 10      11   12
+                             Figure 8.22: An inorder drawing of a binary tree.
+               To demonstrate use of the BinaryEulerTour framework, we develop a subclass
+           that computes a graphical layout of a binary tree, as shown in Figure 8.22. The
+           geometry is determined by an algorithm that assigns x- and y-coordinates to each
+           position p of a binary tree T using the following two rules:
+               • x(p) is the number of positions visited before p in an inorder traversal of T .
+               • y(p) is the depth of p in T .
+           In this application, we take the convention common in computer graphics that x-
+           coordinates increase left to right and y-coordinates increase top to bottom. So the
+           origin is in the upper left corner of the computer screen.
+               Code Fragment 8.34 provides an implementation of a BinaryLayout subclass
+           that implements the above algorithm for assigning (x, y) coordinates to the element
+           stored at each position of a binary tree. We adapt the BinaryEulerTour framework
+           by introducing additional state in the form of a count instance variable that repre-
+           sents the number of “in visits” that we have performed. The x-coordinate for each
+           position is set according to that counter.
+       1 class BinaryLayout(BinaryEulerTour):
+       2     ”””Class for computing (x,y) coordinates for each node of a binary tree.”””
+       3     def init (self, tree):
+       4        super( ). init (tree)                  # must call the parent constructor
+       5        self. count = 0                        # initialize count of processed nodes
+       6
+       7     def hook invisit(self, p, d, path):
+       8        p.element( ).setX(self. count)         # x-coordinate serialized by count
+       9        p.element( ).setY(d)                   # y-coordinate is depth
+      10        self. count += 1                       # advance count of processed nodes
+           Code Fragment 8.34: A BinaryLayout class that computes coordinates at which to
+           draw positions of a binary tree. We assume that the element type for the original
+           tree supports setX and setY methods.

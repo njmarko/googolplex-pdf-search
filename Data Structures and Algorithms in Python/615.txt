@@ -1,0 +1,36 @@
+594                                                              Chapter 13. Text Processing
+ 13.3     Dynamic Programming
+       In this section, we discuss the dynamic programming algorithm-design technique.
+       This technique is similar to the divide-and-conquer technique (Section 12.2.1), in
+       that it can be applied to a wide variety of different problems. Dynamic program-
+       ming can often be used to take problems that seem to require exponential time and
+       produce polynomial-time algorithms to solve them. In addition, the algorithms that
+       result from applications of the dynamic programming technique are usually quite
+       simple—often needing little more than a few lines of code to describe some nested
+       loops for ﬁlling in a table.
+    13.3.1 Matrix Chain-Product
+       Rather than starting out with an explanation of the general components of the dy-
+       namic programming technique, we begin by giving a classic, concrete example.
+       Suppose we are given a collection of n two-dimensional matrices for which we
+       wish to compute the mathematical product
+                                       A = A0 · A1 · A2 · · · An−1 ,
+       where Ai is a di × di+1 matrix, for i = 0, 1, 2, . . . , n − 1. In the standard matrix
+       multiplication algorithm (which is the one we will use), to multiply a d × e-matrix B
+       times an e × f -matrix C, we compute the product, A, as
+                                                e−1
+                                     A[i][ j] = ∑ B[i][k] ·C[k][ j].
+                                                k=0
+       This deﬁnition implies that matrix multiplication is associative, that is, it implies
+       that B · (C · D) = (B · C) · D. Thus, we can parenthesize the expression for A any
+       way we wish and we will end up with the same answer. However, we will not
+       necessarily perform the same number of primitive (that is, scalar) multiplications
+       in each parenthesization, as is illustrated in the following example.
+       Example 13.4: Let B be a 2 × 10-matrix, let C be a 10 × 50-matrix, and let D be
+       a 50 × 20-matrix. Computing B · (C · D) requires 2 · 10 · 20 + 10 · 50 · 20 = 10400
+       multiplications, whereas computing (B ·C) · D requires 2 · 10 · 50 + 2 · 50 · 20 = 3000
+       multiplications.
+            The matrix chain-product problem is to determine the parenthesization of the
+       expression deﬁning the product A that minimizes the total number of scalar mul-
+       tiplications performed. As the example above illustrates, the differences between
+       parenthesizations can be dramatic, so ﬁnding a good solution can result in signiﬁ-
+       cant speedups.

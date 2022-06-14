@@ -1,0 +1,39 @@
+2.1. Goals, Principles, and Patterns                                                        59
+          Modularity
+          Modern software systems typically consist of several different components that
+          must interact correctly in order for the entire system to work properly. Keeping
+          these interactions straight requires that these different components be well orga-
+          nized. Modularity refers to an organizing principle in which different components
+          of a software system are divided into separate functional units.
+               As a real-world analogy, a house or apartment can be viewed as consisting of
+          several interacting units: electrical, heating and cooling, plumbing, and structural.
+          Rather than viewing these systems as one giant jumble of wires, vents, pipes, and
+          boards, the organized architect designing a house or apartment will view them as
+          separate modules that interact in well-deﬁned ways. In so doing, he or she is using
+          modularity to bring a clarity of thought that provides a natural way of organizing
+          functions into distinct manageable units.
+               In like manner, using modularity in a software system can also provide a pow-
+          erful organizing framework that brings clarity to an implementation. In Python,
+          we have already seen that a module is a collection of closely related functions and
+          classes that are deﬁned together in a single ﬁle of source code. Python’s standard
+          libraries include, for example, the math module, which provides deﬁnitions for key
+          mathematical constants and functions, and the os module, which provides support
+          for interacting with the operating system.
+               The use of modularity helps support the goals listed in Section 2.1.1. Robust-
+          ness is greatly increased because it is easier to test and debug separate components
+          before they are integrated into a larger software system. Furthermore, bugs that per-
+          sist in a complete system might be traced to a particular component, which can be
+          ﬁxed in relative isolation. The structure imposed by modularity also helps enable
+          software reusability. If software modules are written in a general way, the modules
+          can be reused when related need arises in other contexts. This is particularly rel-
+          evant in a study of data structures, which can typically be designed with sufﬁcient
+          abstraction and generality to be reused in many applications.
+          Abstraction
+          The notion of abstraction is to distill a complicated system down to its most funda-
+          mental parts. Typically, describing the parts of a system involves naming them and
+          explaining their functionality. Applying the abstraction paradigm to the design of
+          data structures gives rise to abstract data types (ADTs). An ADT is a mathematical
+          model of a data structure that speciﬁes the type of data stored, the operations sup-
+          ported on them, and the types of parameters of the operations. An ADT speciﬁes
+          what each operation does, but not how it does it. We will typically refer to the
+          collective set of behaviors supported by an ADT as its public interface.

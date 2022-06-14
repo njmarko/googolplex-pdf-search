@@ -1,0 +1,48 @@
+746                                                                              Index
+    prune-and-search, 571–573                Reed, Bruce, 400
+    pseudo-code, 64                          reference, 187
+    pseudo-random number generator, 49–50,   reference count, 209, 701
+               438                           reﬂexive property, 385, 537
+    Pugh, William, 458                       rehashing, 420
+    puzzle solver, 175–176                   reserved words, 4
+    Python heap, 699                         return statement, 24
+    Python interpreter, 2                    reusability, 57, 58
+    Python interpreter stack, 703            reversed function, 29
+                                             Ribeiro-Neto, Berthier, 618
+    quadratic function, 117                  Rivest, Ronald, 535, 696
+    quadratic probing, 419                   Robson, David, 298
+    queue, 239                               robustness, 57
+         abstract data type, 240             root objects, 700
+         array implementation, 241–246       root of a tree, 301
+         linked-list implementation, 264–265 rotation, 475
+    quick-sort, 550–561                      round function, 29
+                                             round-robin, 267
+    radix-sort, 565–566                      running time, 110
+    Raghavan, Prabhakar, 458, 580
+    raise statement, 34–35, 38               Samet, Hanan, 719
+    Ramachandran, Vijaya, 361                Schaffer, Russel, 400
+    random access memory (RAM), 185          scheduling, 400
+    Random class, 50                         scope, 46–47, 96, 98, 701
+    random module, 49, 49–50, 225, 438             global, 46, 96
+    random seed, 50                                local, 23–25, 46, 96
+    random variable, 729                     Scoreboard class, 211–213
+    randomization, 438                       script, 2
+    randomized quick-select, 572             search engine, 612
+    randomized quick-sort, 557               search table, 428–433
+    randrange function, 50, 51, 225          search tree, 460–535
+    range class, 22, 27, 29, 80–81           Sedgewick, Robert, 400, 535
+    re module, 49                            seed, 50, 438
+    reachability, 623, 638                   selection, 571–573
+    recurrence equation, 162, 546, 573, 576  selection-sort, 386–387
+    recursion, 149–179, 703–704              self identiﬁer, 69
+         binary, 174                         self-loop, 622
+         depth limit, 168, 528               sentinel, 270–271
+         linear, 169–173                     separate chaining, 417
+         multiple, 175–176                   sequential search, 155
+         tail, 178–179                       set class, 7, 11, 446
+         trace, 151, 161, 703                set comprehension, 43
+    red-black tree, 512–525                  shallow copy, 101, 188
+         depth property, 512                 Sharir, Micha, 361
+         recoloring, 516                     short-circuit evaluation, 12, 20, 208
+         red property, 512                   shortest path, 660–669
+         root property, 512                        Dijkstra’s algorithm, 661–669

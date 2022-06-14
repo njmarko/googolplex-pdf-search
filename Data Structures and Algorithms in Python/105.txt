@@ -1,0 +1,34 @@
+84                                       Chapter 2. Object-Oriented Programming
+          Class:                        CreditCard
+          Fields:          customer                     balance
+                           bank                         limit
+                           account
+          Behaviors:     get customer( )               get balance( )
+                         get bank( )                   get limit( )
+                         get account( )                charge(price)
+                         make payment(amount)
+          Class:                   PredatoryCreditCard
+          Fields:          apr
+          Behaviors:     process month( )              charge(price)
+                    Figure 2.6: Diagram of an inheritance relationship.
+        Figure 2.6 provides an overview of our use of inheritance in designing the new
+   PredatoryCreditCard class, and Code Fragment 2.7 gives a complete Python im-
+   plementation of that class.
+        To indicate that the new class inherits from the existing CreditCard class, our
+   deﬁnition begins with the syntax, class PredatoryCreditCard(CreditCard). The
+   body of the new class provides three member functions:           init , charge, and
+   process month. The init constructor serves a very similar role to the original
+   CreditCard constructor, except that for our new class, there is an extra parameter
+   to specify the annual percentage rate. The body of our new constructor relies upon
+   making a call to the inherited constructor to perform most of the initialization (in
+   fact, everything other than the recording of the percentage rate). The mechanism
+   for calling the inherited constructor relies on the syntax, super( ). Speciﬁcally, at
+   line 15 the command
+        super( ).   init   (customer, bank, acnt, limit)
+   calls the init method that was inherited from the CreditCard superclass. Note
+   well that this method only accepts four parameters. We record the APR value in a
+   new ﬁeld named apr.
+        In similar fashion, our PredatoryCreditCard class provides a new implemen-
+   tation of the charge method that overrides the inherited method. Yet, our imple-
+   mentation of the new method relies on a call to the inherited method, with syntax
+   super( ).charge(price) at line 24. The return value of that call designates whether

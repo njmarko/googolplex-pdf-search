@@ -1,0 +1,36 @@
+10.3. Sorted Maps                                                                           435
+         Maxima Sets
+         Life is full of trade-offs. We often have to trade off a desired performance measure
+         against a corresponding cost. Suppose, for the sake of an example, we are interested
+         in maintaining a database rating automobiles by their maximum speeds and their
+         cost. We would like to allow someone with a certain amount of money to query our
+         database to ﬁnd the fastest car they can possibly afford.
+              We can model such a trade-off problem as this by using a key-value pair to
+         model the two parameters that we are trading off, which in this case would be the
+         pair (cost, speed) for each car. Notice that some cars are strictly better than other
+         cars using this measure. For example, a car with cost-speed pair (20000, 100) is
+         strictly better than a car with cost-speed pair (30000, 90). At the same time, there
+         are some cars that are not strictly dominated by another car. For example, a car with
+         cost-speed pair (20000, 100) may be better or worse than a car with cost-speed pair
+         (30000, 120), depending on how much money we have to spend. (See Figure 10.9.)
+                                                                   g h
+                               Performance
+                                                               f
+                                                 p
+                                                           e
+                                                     c d
+                                                 b
+                                             a
+                                                     Cost
+         Figure 10.9: Illustrating the cost-performance trade-off with pairs represented by
+         points in the plane. Notice that point p is strictly better than points c, d, and e, but
+         may be better or worse than points a, b, f , g, and h, depending on the price we are
+         willing to pay. Thus, if we were to add p to our set, we could remove the points c,
+         d, and e, but not the others.
+              Formally, we say a cost-performance pair (a, b) dominates pair (c, d) = (a, b)
+         if a ≤ c and b ≥ d, that is, if the ﬁrst pair has no greater cost and at least as good
+         performance. A pair (a, b) is called a maximum pair if it is not dominated by any
+         other pair. We are interested in maintaining the set of maxima of a collection of
+         cost-performance pairs. That is, we would like to add new pairs to this collection
+         (for example, when a new car is introduced), and to query this collection for a given
+         dollar amount, d, to ﬁnd the fastest car that costs no more than d dollars.

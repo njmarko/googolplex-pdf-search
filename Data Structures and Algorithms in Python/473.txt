@@ -1,0 +1,37 @@
+452                                        Chapter 10. Maps, Hash Tables, and Skip Lists
+ 10.6    Exercises
+       For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+    Reinforcement
+        R-10.1 Give a concrete implementation of the pop method in the context of the
+                 MutableMapping class, relying only on the ﬁve primary abstract methods
+                 of that class.
+        R-10.2 Give a concrete implementation of the items( ) method in the context of
+                 the MutableMapping class, relying only on the ﬁve primary abstract meth-
+                 ods of that class. What would its running time be if directly applied to the
+                 UnsortedTableMap subclass?
+        R-10.3 Give a concrete implementation of the items( ) method directly within the
+                 UnsortedTableMap class, ensuring that the entire iteration runs in O(n)
+                 time.
+        R-10.4 What is the worst-case running time for inserting n key-value pairs into an
+                 initially empty map M that is implemented with the UnsortedTableMap
+                 class?
+        R-10.5 Reimplement the UnsortedTableMap class from Section 10.1.5, using the
+                 PositionalList class from Section 7.4 rather than a Python list.
+        R-10.6 Which of the hash table collision-handling schemes could tolerate a load
+                 factor above 1 and which could not?
+        R-10.7 Our Position classes for lists and trees support the eq method so that
+                 two distinct position instances are considered equivalent if they refer to the
+                 same underlying node in a structure. For positions to be allowed as keys
+                 in a hash table, there must be a deﬁnition for the hash method that
+                 is consistent with this notion of equivalence. Provide such a hash
+                 method.
+        R-10.8 What would be a good hash code for a vehicle identiﬁcation number that
+                 is a string of numbers and letters of the form “9X9XX99X9XX999999,”
+                 where a “9” represents a digit and an “X” represents a letter?
+        R-10.9 Draw the 11-entry hash table that results from using the hash function,
+                 h(i) = (3i + 5) mod 11, to hash the keys 12, 44, 13, 88, 23, 94, 11, 39, 20,
+                 16, and 5, assuming collisions are handled by chaining.
+      R-10.10 What is the result of the previous exercise, assuming collisions are han-
+                 dled by linear probing?
+      R-10.11 Show the result of Exercise R-10.9, assuming collisions are handled by
+                 quadratic probing, up to the point where the method fails.

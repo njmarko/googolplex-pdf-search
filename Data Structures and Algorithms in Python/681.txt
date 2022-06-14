@@ -1,0 +1,40 @@
+660                                                     Chapter 14. Graph Algorithms
+    Deﬁning Shortest Paths in a Weighted Graph
+    Let G be a weighted graph. The length (or weight) of a path is the sum of the
+    weights of the edges of P. That is, if P = ((v0 , v1 ), (v1 , v2 ), . . . , (vk−1 , vk )), then the
+    length of P, denoted w(P), is deﬁned as
+                                            k−1
+                                    w(P) =  ∑ w(vi , vi+1 ).
+                                            i=0
+    The distance from a vertex u to a vertex v in G, denoted d(u, v), is the length of a
+    minimum-length path (also called shortest path) from u to v, if such a path exists.
+        People often use the convention that d(u, v) = ∞ if there is no path at all from
+    u to v in G. Even if there is a path from u to v in G, however, if there is a cycle
+    in G whose total weight is negative, the distance from u to v may not be deﬁned.
+    For example, suppose vertices in G represent cities, and the weights of edges in
+    G represent how much money it costs to go from one city to another. If someone
+    were willing to actually pay us to go from say JFK to ORD, then the “cost” of the
+    edge (JFK,ORD) would be negative. If someone else were willing to pay us to go
+    from ORD to JFK, then there would be a negative-weight cycle in G and distances
+    would no longer be deﬁned. That is, anyone could now build a path (with cycles)
+    in G from any city A to another city B that ﬁrst goes to JFK and then cycles as
+    many times as he or she likes from JFK to ORD and back, before going on to B.
+    The existence of such paths would allow us to build arbitrarily low negative-cost
+    paths (and, in this case, make a fortune in the process). But distances cannot be
+    arbitrarily low negative numbers. Thus, any time we use edge weights to represent
+    distances, we must be careful not to introduce any negative-weight cycles.
+        Suppose we are given a weighted graph G, and we are asked to ﬁnd a shortest
+    path from some vertex s to each other vertex in G, viewing the weights on the edges
+    as distances. In this section, we explore efﬁcient ways of ﬁnding all such shortest
+    paths, if they exist. The ﬁrst algorithm we discuss is for the simple, yet common,
+    case when all the edge weights in G are nonnegative (that is, w(e) ≥ 0 for each edge
+    e of G); hence, we know in advance that there are no negative-weight cycles in G.
+    Recall that the special case of computing a shortest path when all weights are equal
+    to one was solved with the BFS traversal algorithm presented in Section 14.3.3.
+        There is an interesting approach for solving this single-source problem based
+    on the greedy method design pattern (Section 13.4.2). Recall that in this pattern we
+    solve the problem at hand by repeatedly selecting the best choice from among those
+    available in each iteration. This paradigm can often be used in situations where we
+    are trying to optimize some cost function over a collection of objects. We can add
+    objects to our collection, one at a time, always picking the next one that optimizes
+    the function from among those yet to be chosen.

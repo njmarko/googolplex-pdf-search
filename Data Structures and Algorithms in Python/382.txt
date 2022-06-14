@@ -1,0 +1,36 @@
+Chapter Notes                                                                                  361
+          P-8.68 Write a program that can play Tic-Tac-Toe effectively. (See Section 5.6.)
+                   To do this, you will need to create a game tree T , which is a tree where
+                   each position corresponds to a game conﬁguration, which, in this case,
+                   is a representation of the Tic-Tac-Toe board. (See Section 8.4.2.) The
+                   root corresponds to the initial conﬁguration. For each internal position p
+                   in T , the children of p correspond to the game states we can reach from
+                   p’s game state in a single legal move for the appropriate player, A (the
+                   ﬁrst player) or B (the second player). Positions at even depths correspond
+                   to moves for A and positions at odd depths correspond to moves for B.
+                   Leaves are either ﬁnal game states or are at a depth beyond which we do
+                   not want to explore. We score each leaf with a value that indicates how
+                   good this state is for player A. In large games, like chess, we have to use a
+                   heuristic scoring function, but for small games, like Tic-Tac-Toe, we can
+                   construct the entire game tree and score leaves as +1, 0, −1, indicating
+                   whether player A has a win, draw, or lose in that conﬁguration. A good
+                   algorithm for choosing moves is minimax. In this algorithm, we assign a
+                   score to each internal position p in T , such that if p represents A’s turn, we
+                   compute p’s score as the maximum of the scores of p’s children (which
+                   corresponds to A’s optimal play from p). If an internal node p represents
+                   B’s turn, then we compute p’s score as the minimum of the scores of p’s
+                   children (which corresponds to B’s optimal play from p).
+          P-8.69 Implement the tree ADT using the binary tree representation described in
+                   Exercise C-8.43. You may adapt the LinkedBinaryTree implementation.
+          P-8.70 Write a program that takes as input a general tree T and a position p of T
+                   and converts T to another tree with the same set of position adjacencies,
+                   but now with p as its root.
+ Chapter Notes
+         Discussions of the classic preorder, inorder, and postorder tree traversal methods can be
+         found in Knuth’s Fundamental Algorithms book [64]. The Euler tour traversal technique
+         comes from the parallel algorithms community; it is introduced by Tarjan and Vishkin [93]
+         and is discussed by JáJá [54] and by Karp and Ramachandran [58]. The algorithm for
+         drawing a tree is generally considered to be a part of the “folklore” of graph-drawing al-
+         gorithms. The reader interested in graph drawing is referred to the book by Di Battista,
+         Eades, Tamassia, and Tollis [34] and the survey by Tamassia and Liotta [92]. The puzzle
+         in Exercise R-8.12 was communicated by Micha Sharir.

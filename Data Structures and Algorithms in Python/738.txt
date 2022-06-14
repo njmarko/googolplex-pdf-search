@@ -1,0 +1,34 @@
+15.5. Exercises                                                                                   717
+ 15.5       Exercises
+          For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+       Reinforcement
+           R-15.1 Julia just bought a new computer that uses 64-bit integers to address mem-
+                    ory cells. Argue why Julia will never in her life be able to upgrade the
+                    main memory of her computer so that it is the maximum-size possible,
+                    assuming that you have to have distinct atoms to represent different bits.
+           R-15.2 Describe, in detail, algorithms for adding an item to, or deleting an item
+                    from, an (a, b) tree.
+           R-15.3 Suppose T is a multiway tree in which each internal node has at least ﬁve
+                    and at most eight children. For what values of a and b is T a valid (a, b)
+                    tree?
+           R-15.4 For what values of d is the tree T of the previous exercise an order-d
+                    B-tree?
+           R-15.5 Consider an initially empty memory cache consisting of four pages. How
+                    many page misses does the LRU algorithm incur on the following page
+                    request sequence: (2, 3, 4, 1, 2, 5, 1, 3, 5, 4, 1, 2, 3)?
+           R-15.6 Consider an initially empty memory cache consisting of four pages. How
+                    many page misses does the FIFO algorithm incur on the following page
+                    request sequence: (2, 3, 4, 1, 2, 5, 1, 3, 5, 4, 1, 2, 3)?
+           R-15.7 Consider an initially empty memory cache consisting of four pages. What
+                    is the maximum number of page misses that the random algorithm incurs
+                    on the following page request sequence: (2, 3, 4, 1, 2, 5, 1, 3, 5, 4, 1, 2, 3)?
+                    Show all of the random choices the algorithm made in this case.
+           R-15.8 Draw the result of inserting, into an initially empty order-7 B-tree, entries
+                    with keys (4, 40, 23, 50, 11, 34, 62, 78, 66, 22, 90, 59, 25, 72, 64, 77, 39, 12),
+                    in this order.
+       Creativity
+           C-15.9 Describe an efﬁcient external-memory algorithm for removing all the du-
+                    plicate entries in an array list of size n.
+          C-15.10 Describe an external-memory data structure to implement the stack ADT
+                    so that the total number of disk transfers needed to process a sequence of
+                    k push and pop operations is O(k/B).

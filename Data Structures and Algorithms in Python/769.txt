@@ -1,0 +1,54 @@
+748                                                                               Index
+    total order, 16                             (2, 4) tree, 502–511
+    tower-of-twos, 684                          type function, 29, 449
+    Towers of Hanoi, 181                        TypeError, 33–35, 72, 415
+    trailer sentinel, 270
+    transitive closure, 643, 651–654            Ullman, Jeffrey, 254, 298, 535, 719
+    transitive property, 385, 537               Unicode, 10, 217, 583, 721
+    tree, 164, 299–361, 623                     union-ﬁnd, 679, 681–684
+          abstract data type, 305–306           unit testing, 49, 68
+          binary, see binary tree               unittest module, 68
+          binary search, see binary search tree unpacking a sequence, 44
+          binary tree representation, 356       UnsortedPriorityQueue class, 366–367
+          child node, 301                       UnsortedTableMap class, 408–409, 424
+          decision, 311                         up-heap bubbling, 372
+          depth, 308–310                        update methods, 6
+          edge, 302
+          expression, 312, 348–351              ValueError, 8, 33, 83, 206, 303, 305
+          external node, 302                    van Leeuwen, Jan, 696
+          height, 309–310                       van Rossum, Guido, 2
+          internal node, 302                    vars function, 46
+                                                Vector, 77–78
+          leaf, 302
+                                                vertex, 620
+          level, 315
+                                                      degree, 621
+          linked structure, 327
+                                                virtual memory, 707
+          multiway, 502–504
+                                                Vishkin, Uzi, 361
+          node, 301
+                                                Vitter, Jeffrey, 147, 458, 719
+          ordered, 304
+          parent node, 301                      Warshall, Stephen, 696
+          path, 302                             Wegner, Peter, 108, 254
+          red-black, see red-black tree         while loop, 20
+          root node, 301                        whitespace, 3, 722–724
+          splay, see splay tree                 Williams, J. W. J., 400
+          traversal, 164, 328–347               Wood, Derick, 298
+             breadth-ﬁrst, 330, 335–336         worst-ﬁt algorithm, 699
+             Euler tour, 341–347
+             inorder, 331, 335–336, 461, 476    XML, 237, 582
+             postorder, 329, 335
+             preorder, 328, 333–334             yield statement, 40–41, 296, 334
+          (2, 4), see (2, 4) tree
+    Tree class, 303, 306–310                    Zelle, John, 55
+    triangulation, 615                          zero-indexing, 14, 219
+    trie, 604–612                               ZeroDivisionError, 33, 36, 83, 303
+          compressed, 608
+    trinode restructuring, 476, 484, 515
+    True, 7, 76
+    true division, 13
+    try-except structure, 36–38
+    Tsakalidis, Athanasios, 535
+    tuple class, 7, 9, 10, 202–203

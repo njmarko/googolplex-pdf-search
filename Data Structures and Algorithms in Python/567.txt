@@ -1,0 +1,39 @@
+546                                                    Chapter 12. Sorting and Selection
+    12.2.4 Merge-Sort and Recurrence Equations 
+       There is another way to justify that the running time of the merge-sort algorithm is
+       O(n log n) (Proposition 12.2). Namely, we can deal more directly with the recursive
+       nature of the merge-sort algorithm. In this section, we present such an analysis of
+       the running time of merge-sort, and in so doing, introduce the mathematical concept
+       of a recurrence equation (also known as recurrence relation).
+            Let the function t(n) denote the worst-case running time of merge-sort on an
+       input sequence of size n. Since merge-sort is recursive, we can characterize func-
+       tion t(n) by means of an equation where the function t(n) is recursively expressed
+       in terms of itself. In order to simplify our characterization of t(n), let us restrict
+       our attention to the case when n is a power of 2. (We leave the problem of showing
+       that our asymptotic characterization still holds in the general case as an exercise.)
+       In this case, we can specify the deﬁnition of t(n) as
+                                       
+                                           b               if n ≤ 1
+                               t(n) =
+                                           2t(n/2) + cn otherwise.
+       An expression such as the one above is called a recurrence equation, since the
+       function appears on both the left- and right-hand sides of the equal sign. Although
+       such a characterization is correct and accurate, what we really desire is a big-Oh
+       type of characterization of t(n) that does not involve the function t(n) itself. That
+       is, we want a closed-form characterization of t(n).
+            We can obtain a closed-form solution by applying the deﬁnition of a recurrence
+       equation, assuming n is relatively large. For example, after one more application
+       of the equation above, we can write a new recurrence for t(n) as
+                     t(n) = 2(2t(n/22 ) + (cn/2)) + cn
+                            = 22 t(n/22 ) + 2(cn/2) + cn = 22 t(n/22 ) + 2cn.
+       If we apply the equation again, we get t(n) = 23 t(n/23 ) + 3cn. At this point, we
+       should see a pattern emerging, so that after applying this equation i times, we get
+                                     t(n) = 2i t(n/2i ) + icn.
+       The issue that remains, then, is to determine when to stop this process. To see when
+       to stop, recall that we switch to the closed form t(n) = b when n ≤ 1, which will
+       occur when 2i = n. In other words, this will occur when i = log n. Making this
+       substitution, then, yields
+                                t(n) = 2log n t(n/2log n ) + (log n)cn
+                                      = nt(1) + cn log n
+                                      = nb + cn log n.
+       That is, we get an alternative justiﬁcation of the fact that t(n) is O(n log n).

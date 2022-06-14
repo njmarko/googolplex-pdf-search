@@ -1,0 +1,41 @@
+9.5. Adaptable Priority Queues                                                                  393
+          ride the remove min method because the only change in behavior for the adaptable
+          priority queue is again provided by the overridden swap method.
+              The update and remove methods provide the core new functionality for the
+          adaptable priority queue. We perform robust checking of the validity of a locator
+          that is sent by a caller (although in the interest of space, our displayed code does
+          not do preliminary type-checking to ensure that the parameter is indeed a Locator
+          instance). To ensure that a locator is associated with a current element of the given
+          priority queue, we examine the index that is encapsulated within the locator object,
+          and then verify that the entry of the list at that index is the very same locator.
+              In conclusion, the adaptable priority queue provides the same asymptotic efﬁ-
+          ciency and space usage as the nonadaptive version, and provides logarithmic per-
+          formance for the new locator-based update and remove methods. A summary of
+          the performance is given in Table 9.4.
+       1 class AdaptableHeapPriorityQueue(HeapPriorityQueue):
+       2    ”””A locator-based priority queue implemented with a binary heap.”””
+       3
+       4    #------------------------------ nested Locator class ------------------------------
+       5    class Locator(HeapPriorityQueue. Item):
+       6       ”””Token for locating an entry of the priority queue.”””
+       7          slots = _index                            # add index as additional ﬁeld
+       8
+       9       def init (self, k, v, j):
+      10          super( ). init (k,v)
+      11          self. index = j
+      12
+      13    #------------------------------ nonpublic behaviors ------------------------------
+      14    # override swap to record new indices
+      15    def swap(self, i, j):
+      16       super( ). swap(i,j)                          # perform the swap
+      17       self. data[i]. index = i                     # reset locator index (post-swap)
+      18       self. data[j]. index = j                     # reset locator index (post-swap)
+      19
+      20    def bubble(self, j):
+      21       if j > 0 and self. data[j] < self. data[self. parent(j)]:
+      22          self. upheap(j)
+      23       else:
+      24          self. downheap(j)
+          Code Fragment 9.8: An implementation of an adaptable priority queue (continued
+          in Code Fragment 9.9). This extends the HeapPriorityQueue class of Code Frag-
+          ments 9.4 and 9.5

@@ -1,0 +1,40 @@
+12.3. Quick-Sort                                                                          555
+          Performing Quick-Sort on General Sequences
+          In Code Fragment 12.5, we give an implementation of the quick-sort algorithm
+          that works on any sequence type that operates as a queue. This particular version
+          relies on the LinkedQueue class from Section 7.1.2; we provide a more streamlined
+          implementation of quick-sort using an array-based sequence in Section 12.3.2.
+               Our implementation chooses the ﬁrst item of the queue as the pivot (since it
+          is easily accessible), and then it divides sequence S into queues L, E, and G of
+          elements that are respectively less than, equal to, and greater than the pivot. We
+          then recur on the L and G lists, and transfer elements from the sorted lists L, E,
+          and G back to S. All of the queue operations run in O(1) worst-case time when
+          implemented with a linked list.
+       1 def quick sort(S):
+       2    ”””Sort the elements of queue S using the quick-sort algorithm.”””
+       3    n = len(S)
+       4    if n < 2:
+       5       return                                 # list is already sorted
+       6    # divide
+       7    p = S.ﬁrst( )                             # using ﬁrst as arbitrary pivot
+       8    L = LinkedQueue( )
+       9    E = LinkedQueue( )
+      10    G = LinkedQueue( )
+      11    while not S.is empty( ):                  # divide S into L, E, and G
+      12       if S.ﬁrst( ) < p:
+      13          L.enqueue(S.dequeue( ))
+      14       elif p < S.ﬁrst( ):
+      15          G.enqueue(S.dequeue( ))
+      16       else:                                  # S.ﬁrst() must equal pivot
+      17          E.enqueue(S.dequeue( ))
+      18    # conquer (with recursion)
+      19    quick sort(L)                             # sort elements less than p
+      20    quick sort(G)                             # sort elements greater than p
+      21    # concatenate results
+      22    while not L.is empty( ):
+      23       S.enqueue(L.dequeue( ))
+      24    while not E.is empty( ):
+      25       S.enqueue(E.dequeue( ))
+      26    while not G.is empty( ):
+      27       S.enqueue(G.dequeue( ))
+               Code Fragment 12.5: Quick-sort for a sequence S implemented as a queue.

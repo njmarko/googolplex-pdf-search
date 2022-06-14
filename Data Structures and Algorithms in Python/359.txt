@@ -1,0 +1,40 @@
+338                                                                       Chapter 8. Trees
+           A preferred approach to producing an indented table of contents is to redesign
+      a top-down recursion that includes the current depth as an additional parameter.
+      Such an implementation is provided in Code Fragment 8.23. This implementation
+      runs in worst-case O(n) time (except, technically, the time it takes to print strings
+      of increasing lengths).
+    1 def preorder indent(T, p, d):
+    2    ”””Print preorder representation of subtree of T rooted at p at depth d.”””
+    3    print(2 d       + str(p.element( )))               # use depth for indentation
+    4    for c in T.children(p):
+    5      preorder indent(T, c, d+1)                       # child depth is d+1
+      Code Fragment 8.23: Efﬁcient recursion for printing indented version of a pre-
+      order traversal. On a complete tree T , the recursion should be started with form
+      preorder indent(T, T.root( ), 0).
+           In the example of Figure 8.20, we were fortunate in that the numbering was
+      embedded within the elements of the tree. More generally, we might be interested
+      in using a preorder traversal to display the structure of a tree, with indentation and
+      also explicit numbering that was not present in the tree. For example, we might
+      display the tree from Figure 8.2 beginning as:
+           Electronics R’Us
+              1 R&D
+              2 Sales
+                 2.1 Domestic
+                 2.2 International
+                    2.2.1 Canada
+                    2.2.2 S. America
+           This is more challenging, because the numbers used as labels are implicit in
+      the structure of the tree. A label depends on the index of each position, relative to
+      its siblings, along the path from the root to the current position. To accomplish the
+      task, we add a representation of that path as an additional parameter to the recursive
+      signature. Speciﬁcally, we use a list of zero-indexed numbers, one for each position
+      along the downward path, other than the root. (We convert those numbers to one-
+      indexed form when printing.)
+           At the implementation level, we wish to avoid the inefﬁciency of duplicating
+      such lists when sending a new parameter from one level of the recursion to the next.
+      A standard solution is to share the same list instance throughout the recursion. At
+      one level of the recursion, a new entry is temporarily added to the end of the list
+      before making further recursive calls. In order to “leave no trace,” that same block
+      of code must remove the extraneous entry from the list before completing its task.
+      An implementation based on this approach is given in Code Fragment 8.24.

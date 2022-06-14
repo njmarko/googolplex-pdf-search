@@ -1,0 +1,36 @@
+638                                                       Chapter 14. Graph Algorithms
+ 14.3    Graph Traversals
+      Greek mythology tells of an elaborate labyrinth that was built to house the mon-
+      strous Minotaur, which was part bull and part man. This labyrinth was so complex
+      that neither beast nor human could escape it. No human, that is, until the Greek
+      hero, Theseus, with the help of the king’s daughter, Ariadne, decided to implement
+      a graph traversal algorithm. Theseus fastened a ball of thread to the door of the
+      labyrinth and unwound it as he traversed the twisting passages in search of the
+      monster. Theseus obviously knew about good algorithm design, for, after ﬁnding
+      and defeating the beast, Theseus easily followed the string back out of the labyrinth
+      to the loving arms of Ariadne.
+           Formally, a traversal is a systematic procedure for exploring a graph by exam-
+      ining all of its vertices and edges. A traversal is efﬁcient if it visits all the vertices
+      and edges in time proportional to their number, that is, in linear time.
+           Graph traversal algorithms are key to answering many fundamental questions
+      about graphs involving the notion of reachability, that is, in determining how to
+      travel from one vertex to another while following paths of a graph. Interesting
+      problems that deal with reachability in an undirected graph G include the following:
+          • Computing a path from vertex u to vertex v, or reporting that no such path
+             exists.
+          • Given a start vertex s of G, computing, for every vertex v of G, a path with
+             the minimum number of edges between s and v, or reporting that no such
+             path exists.
+          • Testing whether G is connected.
+          • Computing a spanning tree of G, if G is connected.
+          • Computing the connected components of G.
+          • Computing a cycle in G, or reporting that G has no cycles.
+      Interesting problems that deal with reachability in a directed graph G      include the
+      following:
+          • Computing a directed path from vertex u to vertex v, or reporting that no such
+             path exists.
+          • Finding all the vertices of G that are reachable from a given vertex s.
+          • Determine whether G    is acyclic.
+          • Determine whether G    is strongly connected.
+           In the remainder of this section, we present two efﬁcient graph traversal algo-
+      rithms, called depth-ﬁrst search and breadth-ﬁrst search, respectively.

@@ -1,0 +1,40 @@
+10.2. Hash Tables                                                                            415
+          Hash Codes in Python
+          The standard mechanism for computing hash codes in Python is a built-in function
+          with signature hash(x) that returns an integer value that serves as the hash code for
+          object x. However, only immutable data types are deemed hashable in Python. This
+          restriction is meant to ensure that a particular object’s hash code remains constant
+          during that object’s lifespan. This is an important property for an object’s use as
+          a key in a hash table. A problem could occur if a key were inserted into the hash
+          table, yet a later search were performed for that key based on a different hash code
+          than that which it had when inserted; the wrong bucket would be searched.
+               Among Python’s built-in data types, the immutable int, ﬂoat, str, tuple, and
+          frozenset classes produce robust hash codes, via the hash function, using tech-
+          niques similar to those discussed earlier in this section. Hash codes for character
+          strings are well crafted based on a technique similar to polynomial hash codes,
+          except using exclusive-or computations rather than additions. If we repeat the ex-
+          periment described in Table 10.1 using Python’s built-in hash codes, we ﬁnd that
+          only 8 strings out of the set of more than 230,000 collide with another. Hash codes
+          for tuples are computed with a similar technique based upon a combination of the
+          hash codes of the individual elements of the tuple. When hashing a frozenset, the
+          order of the elements should be irrelevant, and so a natural option is to compute the
+          exclusive-or of the individual hash codes without any shifting. If hash(x) is called
+          for an instance x of a mutable type, such as a list, a TypeError is raised.
+               Instances of user-deﬁned classes are treated as unhashable by default, with a
+          TypeError raised by the hash function. However, a function that computes hash
+          codes can be implemented in the form of a special method named hash within
+          a class. The returned hash code should reﬂect the immutable attributes of an in-
+          stance. It is common to return a hash code that is itself based on the computed hash
+          of the combination of such attributes. For example, a Color class that maintains
+          three numeric red, green, and blue components might implement the method as:
+            def hash (self):
+               return hash( (self. red, self. green, self. blue) )      # hash combined tuple
+               An important rule to obey is that if a class deﬁnes equivalence through eq ,
+          then any implementation of hash must be consistent, in that if x == y, then
+          hash(x) == hash(y). This is important because if two instances are considered
+          to be equivalent and one is used as a key in a hash table, a search for the second
+          instance should result in the discovery of the ﬁrst. It is therefore important that the
+          hash code for the second match the hash code for the ﬁrst, so that the proper bucket
+          is examined. This rule extends to any well-deﬁned comparisons between objects
+          of different classes. For example, since Python treats the expression 5 == 5.0 as
+          true, it ensures that hash(5) and hash(5.0) are the same.

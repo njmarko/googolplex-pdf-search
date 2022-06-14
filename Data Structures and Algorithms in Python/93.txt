@@ -1,0 +1,37 @@
+72                                       Chapter 2. Object-Oriented Programming
+   Encapsulation
+   By the conventions described in Section 2.2.3, a single leading underscore in the
+   name of a data member, such as balance, implies that it is intended as nonpublic.
+   Users of a class should not directly access such members.
+        As a general rule, we will treat all data members as nonpublic. This allows
+   us to better enforce a consistent state for all instances. We can provide accessors,
+   such as get balance, to provide a user of our class read-only access to a trait. If
+   we wish to allow the user to change the state, we can provide appropriate update
+   methods. In the context of data structures, encapsulating the internal representation
+   allows us greater ﬂexibility to redesign the way a class works, perhaps to improve
+   the efﬁciency of the structure.
+   Additional Methods
+   The most interesting behaviors in our class are charge and make payment. The
+   charge function typically adds the given price to the credit card balance, to reﬂect
+   a purchase of said price by the customer. However, before accepting the charge,
+   our implementation veriﬁes that the new purchase would not cause the balance to
+   exceed the credit limit. The make payment charge reﬂects the customer sending
+   payment to the bank for the given amount, thereby reducing the balance on the
+   card. We note that in the command, self. balance −= amount, the expression
+   self. balance is qualiﬁed with the self identiﬁer because it represents an instance
+   variable of the card, while the unqualiﬁed amount represents the local parameter.
+   Error Checking
+   Our implementation of the CreditCard class is not particularly robust. First, we
+   note that we did not explicitly check the types of the parameters to charge and
+   make payment, nor any of the parameters to the constructor. If a user were to make
+   a call such as visa.charge( candy ), our code would presumably crash when at-
+   tempting to add that parameter to the current balance. If this class were to be widely
+   used in a library, we might use more rigorous techniques to raise a TypeError when
+   facing such misuse (see Section 1.7).
+        Beyond the obvious type errors, our implementation may be susceptible to log-
+   ical errors. For example, if a user were allowed to charge a negative price, such
+   as visa.charge(−300), that would serve to lower the customer’s balance. This pro-
+   vides a loophole for lowering a balance without making a payment. Of course,
+   this might be considered valid usage if modeling the credit received when a cus-
+   tomer returns merchandise to a store. We will explore some such issues with the
+   CreditCard class in the end-of-chapter exercises.

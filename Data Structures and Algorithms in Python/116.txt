@@ -1,0 +1,40 @@
+2.4. Inheritance                                                                             95
+               The second advanced technique is the use of the @abstractmethod decorator
+           immediately before the len and getitem methods are declared. That de-
+           clares these two particular methods to be abstract, meaning that we do not provide
+           an implementation within our Sequence base class, but that we expect any concrete
+           subclasses to support those two methods. Python enforces this expectation, by dis-
+           allowing instantiation for any subclass that does not override the abstract methods
+           with concrete implementations.
+               The rest of the Sequence class deﬁnition provides tangible implementations for
+           other behaviors, under the assumption that the abstract len and getitem
+           methods will exist in a concrete subclass. If you carefully examine the source code,
+           the implementations of methods contains , index, and count do not rely on any
+           assumption about the self instances, other than that syntax len(self) and self[j] are
+           supported (by special methods len and getitem , respectively). Support
+           for iteration is automatic as well, as described in Section 2.3.4.
+               In the remainder of this book, we omit the formality of using the abc module.
+           If we need an “abstract” base class, we simply document the expectation that sub-
+           classes provide assumed functionality, without technical declaration of the methods
+           as abstract. But we will make use of the wonderful abstract base classes that are
+           deﬁned within the collections module (such as Sequence). To use such a class, we
+           need only rely on standard inheritance techniques.
+               For example, our Range class, from Code Fragment 2.6 of Section 2.3.5, is an
+           example of a class that supports the len and getitem methods. But that
+           class does not support methods count or index. Had we originally declared it with
+           Sequence as a superclass, then it would also inherit the count and index methods.
+           The syntax for such a declaration would begin as:
+           class Range(collections.Sequence):
+               Finally, we emphasize that if a subclass provides its own implementation of
+           an inherited behaviors from a base class, the new deﬁnition overrides the inherited
+           one. This technique can be used when we have the ability to provide a more efﬁ-
+           cient implementation for a behavior than is achieved by the generic approach. As
+           an example, the general implementation of contains for a sequence is based
+           on a loop used to search for the desired value. For our Range class, there is an
+           opportunity for a more efﬁcient determination of containment. For example, it
+           is evident that the expression, 100000 in Range(0, 2000000, 100), should evalu-
+           ate to True, even without examining the individual elements of the range, because
+           the range starts with zero, has an increment of 100, and goes until 2 million; it
+           must include 100000, as that is a multiple of 100 that is between the start and
+           stop values. Exercise C-2.27 explores the goal of providing an implementation of
+           Range. contains that avoids the use of a (time-consuming) loop.

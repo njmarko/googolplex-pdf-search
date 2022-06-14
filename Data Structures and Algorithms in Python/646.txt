@@ -1,0 +1,29 @@
+14.1. Graphs                                                                                625
+               In the propositions that follow, we explore a few important properties of graphs.
+          Proposition 14.8: If G is a graph with m edges and vertex set V , then
+                                               ∑    deg(v) = 2m.
+                                             v in V
+          Justiﬁcation: An edge (u, v) is counted twice in the summation above; once by
+          its endpoint u and once by its endpoint v. Thus, the total contribution of the edges
+          to the degrees of the vertices is twice the number of edges.
+          Proposition 14.9: If G is a directed graph with m edges and vertex set V , then
+                                    ∑    indeg(v) =     ∑    outdeg(v) = m.
+                                  v in V              v in V
+          Justiﬁcation: In a directed graph, an edge (u, v) contributes one unit to the
+          out-degree of its origin u and one unit to the in-degree of its destination v. Thus,
+          the total contribution of the edges to the out-degrees of the vertices is equal to the
+          number of edges, and similarly for the in-degrees.
+               We next show that a simple graph with n vertices has O(n2 ) edges.
+          Proposition 14.10: Let G be a simple graph with n vertices and m edges. If G is
+          undirected, then m ≤ n(n − 1)/2, and if G is directed, then m ≤ n(n − 1).
+          Justiﬁcation: Suppose that G is undirected. Since no two edges can have the
+          same endpoints and there are no self-loops, the maximum degree of a vertex in G
+          is n − 1 in this case. Thus, by Proposition 14.8, 2m ≤ n(n − 1). Now suppose that
+          G is directed. Since no two edges can have the same origin and destination, and
+          there are no self-loops, the maximum in-degree of a vertex in G is n − 1 in this case.
+          Thus, by Proposition 14.9, m ≤ n(n − 1).
+               There are a number of simple properties of trees, forests, and connected graphs.
+          Proposition 14.11: Let G be an undirected graph with n vertices and m edges.
+               • If G is connected, then m ≥ n − 1.
+               • If G is a tree, then m = n − 1.
+               • If G is a forest, then m ≤ n − 1.

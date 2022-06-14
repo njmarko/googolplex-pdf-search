@@ -1,0 +1,41 @@
+634                                                       Chapter 14. Graph Algorithms
+    14.2.5 Python Implementation
+       In this section, we provide an implementation of the Graph ADT. Our implementa-
+       tion will support directed or undirected graphs, but for ease of explanation, we ﬁrst
+       describe it in the context of an undirected graph.
+           We use a variant of the adjacency map representation. For each vertex v, we
+       use a Python dictionary to represent the secondary incidence map I(v). However,
+       we do not explicitly maintain lists V and E, as originally described in the edge list
+       representation. The list V is replaced by a top-level dictionary D that maps each
+       vertex v to its incidence map I(v); note that we can iterate through all vertices by
+       generating the set of keys for dictionary D. By using such a dictionary D to map
+       vertices to the secondary incidence maps, we need not maintain references to those
+       incidence maps as part of the vertex structures. Also, a vertex does not need to
+       explicitly maintain a reference to its position in D, because it can be determined
+       in O(1) expected time. This greatly simpliﬁes our implementation. However, a
+       consequence of our design is that some of the worst-case running time bounds for
+       the graph ADT operations, given in Table 14.1, become expected bounds. Rather
+       than maintain list E, we are content with taking the union of the edges found in the
+       various incidence maps; technically, this runs in O(n + m) time rather than strictly
+       O(m) time, as the dictionary D has n keys, even if some incidence maps are empty.
+           Our implementation of the graph ADT is given in Code Fragments 14.1 through
+       14.3. Classes Vertex and Edge, given in Code Fragment 14.1, are rather simple,
+       and can be nested within the more complex Graph class. Note that we deﬁne the
+          hash method for both Vertex and Edge so that those instances can be used as
+       keys in Python’s hash-based sets and dictionaries. The rest of the Graph class is
+       given in Code Fragments 14.2 and 14.3. Graphs are undirected by default, but can
+       be declared as directed with an optional parameter to the constructor.
+           Internally, we manage the directed case by having two different top-level dictio-
+       nary instances, outgoing and incoming, such that outgoing[v] maps to another
+       dictionary representing Iout (v), and incoming[v] maps to a representation of Iin (v).
+       In order to unify our treatment of directed and undirected graphs, we continue to
+       use the outgoing and incoming identiﬁers in the undirected case, yet as aliases
+       to the same dictionary. For convenience, we deﬁne a utility named is directed to
+       allow us to distinguish between the two cases.
+           For methods degree and incident edges, which each accept an optional param-
+       eter to differentiate between the outgoing and incoming orientations, we choose the
+       appropriate map before proceeding. For method insert vertex, we always initial-
+       ize outgoing[v] to an empty dictionary for new vertex v. In the directed case, we
+       independently initialize incoming[v] as well. For the undirected case, that step is
+       unnecessary as outgoing and incoming are aliases. We leave the implementations
+       of methods remove vertex and remove edge as exercises (C-14.37 and C-14.38).

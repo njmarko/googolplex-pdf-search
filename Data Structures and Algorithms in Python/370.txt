@@ -1,0 +1,40 @@
+8.5. Case Study: An Expression Tree                                                      349
+       1 class ExpressionTree(LinkedBinaryTree):
+       2    ”””An arithmetic expression tree.”””
+       3
+       4    def init (self, token, left=None, right=None):
+       5      ”””Create an expression tree.
+       6
+       7      In a single parameter form, token should be a leaf value (e.g., 42 ),
+       8      and the expression tree will have that value at an isolated node.
+       9
+      10      In a three-parameter version, token should be an operator,
+      11      and left and right should be existing ExpressionTree instances
+      12      that become the operands for the binary operator.
+      13      ”””
+      14      super( ). init ( )                         # LinkedBinaryTree initialization
+      15      if not isinstance(token, str):
+      16         raise TypeError( Token must be a string )
+      17      self. add root(token)                      # use inherited, nonpublic method
+      18      if left is not None:                       # presumably three-parameter form
+      19         if token not in +-*x/ :
+      20            raise ValueError( token must be valid operator )
+      21         self. attach(self.root( ), left, right) # use inherited, nonpublic method
+      22
+      23    def str (self):
+      24      ”””Return string representation of the expression.”””
+      25      pieces = [ ]                      # sequence of piecewise strings to compose
+      26      self. parenthesize recur(self.root( ), pieces)
+      27      return .join(pieces)
+      28
+      29    def parenthesize recur(self, p, result):
+      30      ”””Append piecewise representation of p s subtree to resulting list.”””
+      31      if self.is leaf(p):
+      32         result.append(str(p.element( )))                    # leaf value as a string
+      33      else:
+      34         result.append( ( )                                  # opening parenthesis
+      35         self. parenthesize recur(self.left(p), result)      # left subtree
+      36         result.append(p.element( ))                         # operator
+      37         self. parenthesize recur(self.right(p), result)     # right subtree
+      38         result.append( ) )                                  # closing parenthesis
+                    Code Fragment 8.35: The beginning of an ExpressionTree class.

@@ -1,0 +1,38 @@
+412                                          Chapter 10. Maps, Hash Tables, and Skip Lists
+    Hash Codes
+      The ﬁrst action that a hash function performs is to take an arbitrary key k in our
+      map and compute an integer that is called the hash code for k; this integer need not
+      be in the range [0, N − 1], and may even be negative. We desire that the set of hash
+      codes assigned to our keys should avoid collisions as much as possible. For if the
+      hash codes of our keys cause collisions, then there is no hope for our compression
+      function to avoid them. In this subsection, we begin by discussing the theory of
+      hash codes. Following that, we discuss practical implementations of hash codes in
+      Python.
+      Treating the Bit Representation as an Integer
+      To begin, we note that, for any data type X that is represented using at most as many
+      bits as our integer hash codes, we can simply take as a hash code for X an integer
+      interpretation of its bits. For example, the hash code for key 314 could simply be
+      314. The hash code for a ﬂoating-point number such as 3.14 could be based upon
+      an interpretation of the bits of the ﬂoating-point representation as an integer.
+           For a type whose bit representation is longer than a desired hash code, the above
+      scheme is not immediately applicable. For example, Python relies on 32-bit hash
+      codes. If a ﬂoating-point number uses a 64-bit representation, its bits cannot be
+      viewed directly as a hash code. One possibility is to use only the high-order 32 bits
+      (or the low-order 32 bits). This hash code, of course, ignores half of the information
+      present in the original key, and if many of the keys in our map only differ in these
+      bits, then they will collide using this simple hash code.
+           A better approach is to combine in some way the high-order and low-order por-
+      tions of a 64-bit key to form a 32-bit hash code, which takes all the original bits
+      into consideration. A simple implementation is to add the two components as 32-
+      bit numbers (ignoring overﬂow), or to take the exclusive-or of the two components.
+      These approaches of combining components can be extended to any object x whose
+      binary representation can be viewed as an n-tuple (x0 , x1 , . . . , xn−1 ) of 32-bit inte-
+      gers, for example, by forming a hash code for x as ∑n−1     i=0 xi , or as x0 ⊕ x1 ⊕ · · ·⊕xn−1 ,
+      where the ⊕ symbol represents the bitwise exclusive-or operation (which is ˆ in
+      Python).
+      Polynomial Hash Codes
+      The summation and exclusive-or hash codes, described above, are not good choices
+      for character strings or other variable-length objects that can be viewed as tuples of
+      the form (x0 , x1 , . . . , xn−1 ), where the order of the xi ’s is signiﬁcant. For example,
+      consider a 16-bit hash code for a character string s that sums the Unicode values
+      of the characters in s. This hash code unfortunately produces lots of unwanted

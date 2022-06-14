@@ -1,0 +1,37 @@
+Chapter Notes                                                                                    227
+          C-5.29 A useful operation in databases is the natural join. If we view a database
+                   as a list of ordered pairs of objects, then the natural join of databases A
+                   and B is the list of all ordered triples (x, y, z) such that the pair (x, y) is in
+                   A and the pair (y, z) is in B. Describe and analyze an efﬁcient algorithm
+                   for computing the natural join of a list A of n pairs and a list B of m pairs.
+          C-5.30 When Bob wants to send Alice a message M on the Internet, he breaks M
+                   into n data packets, numbers the packets consecutively, and injects them
+                   into the network. When the packets arrive at Alice’s computer, they may
+                   be out of order, so Alice must assemble the sequence of n packets in order
+                   before she can be sure she has the entire message. Describe an efﬁcient
+                   scheme for Alice to do this, assuming that she knows the value of n. What
+                   is the running time of this algorithm?
+          C-5.31 Describe a way to use recursion to add all the numbers in an n × n data
+                   set, represented as a list of lists.
+      Projects
+          P-5.32 Write a Python function that takes two three-dimensional numeric data
+                   sets and adds them componentwise.
+          P-5.33 Write a Python program for a matrix class that can add and multiply two-
+                   dimensional arrays of numbers, assuming the dimensions agree appropri-
+                   ately for the operation.
+          P-5.34 Write a program that can perform the Caesar cipher for English messages
+                   that include both upper- and lowercase characters.
+          P-5.35 Implement a class, SubstitutionCipher, with a constructor that takes a
+                   string with the 26 uppercase letters in an arbitrary order and uses that for
+                   the forward mapping for encryption (akin to the self. forward string in
+                   our CaesarCipher class of Code Fragment 5.11). You should derive the
+                   backward mapping from the forward version.
+          P-5.36 Redesign the CaesarCipher class as a subclass of the SubstitutionCipher
+                   from the previous problem.
+          P-5.37 Design a RandomCipher class as a subclass of the SubstitutionCipher
+                   from Exercise P-5.35, so that each instance of the class relies on a random
+                   permutation of letters for its mapping.
+ Chapter Notes
+         The fundamental data structures of arrays belong to the folklore of computer science. They
+         were ﬁrst chronicled in the computer science literature by Knuth in his seminal book on
+         Fundamental Algorithms [64].

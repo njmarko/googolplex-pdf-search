@@ -1,0 +1,39 @@
+2.1. Goals, Principles, and Patterns                                                         61
+      2.1.3 Design Patterns
+          Object-oriented design facilitates reusable, robust, and adaptable software. De-
+          signing good code takes more than simply understanding object-oriented method-
+          ologies, however. It requires the effective use of object-oriented design techniques.
+              Computing researchers and practitioners have developed a variety of organiza-
+          tional concepts and methodologies for designing quality object-oriented software
+          that is concise, correct, and reusable. Of special relevance to this book is the con-
+          cept of a design pattern, which describes a solution to a “typical” software design
+          problem. A pattern provides a general template for a solution that can be applied in
+          many different situations. It describes the main elements of a solution in an abstract
+          way that can be specialized for a speciﬁc problem at hand. It consists of a name,
+          which identiﬁes the pattern; a context, which describes the scenarios for which this
+          pattern can be applied; a template, which describes how the pattern is applied; and
+          a result, which describes and analyzes what the pattern produces.
+              We present several design patterns in this book, and we show how they can be
+          consistently applied to implementations of data structures and algorithms. These
+          design patterns fall into two groups—patterns for solving algorithm design prob-
+          lems and patterns for solving software engineering problems. The algorithm design
+          patterns we discuss include the following:
+              •  Recursion (Chapter 4)
+              •  Amortization (Sections 5.3 and 11.4)
+              •  Divide-and-conquer (Section 12.2.1)
+              •  Prune-and-search, also known as decrease-and-conquer (Section 12.7.1)
+              •  Brute force (Section 13.2.1)
+              •  Dynamic programming (Section 13.3).
+              •  The greedy method (Sections 13.4.2, 14.6.2, and 14.7)
+              Likewise, the software engineering design patterns we discuss include:
+              •  Iterator (Sections 1.8 and 2.3.4)
+              •  Adapter (Section 6.1.2)
+              •  Position (Sections 7.4 and 8.1.2)
+              •  Composition (Sections 7.6.1, 9.2.1, and 10.1.4)
+              •  Template method (Sections 2.4.3, 8.4.6, 10.1.3, 10.5.2, and 11.2.1)
+              •  Locator (Section 9.5.1)
+              •  Factory method (Section 11.2.1)
+              Rather than explain each of these concepts here, however, we introduce them
+          throughout the text as noted above. For each pattern, be it for algorithm engineering
+          or software engineering, we explain its general use and we illustrate it with at least
+          one concrete example.

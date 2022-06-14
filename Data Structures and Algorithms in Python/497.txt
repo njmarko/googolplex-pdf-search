@@ -1,0 +1,41 @@
+476                                                                  Chapter 11. Search Trees
+         In the context of a tree-balancing algorithm, a rotation allows the shape of a
+    tree to be modiﬁed while maintaining the search tree property. If used wisely, this
+    operation can be performed to avoid highly unbalanced tree conﬁgurations. For
+    example, a rightward rotation from the ﬁrst formation of Figure 11.8 to the second
+    reduces the depth of each node in subtree T1 by one, while increasing the depth
+    of each node in subtree T3 by one. (Note that the depth of nodes in subtree T2 are
+    unaffected by the rotation.)
+         One or more rotations can be combined to provide broader rebalancing within a
+    tree. One such compound operation we consider is a trinode restructuring. For this
+    manipulation, we consider a position x, its parent y, and its grandparent z. The goal
+    is to restructure the subtree rooted at z in order to reduce the overall path length
+    to x and its subtrees. Pseudo-code for a restructure(x) method is given in Code
+    Fragment 11.9 and illustrated in Figure 11.9. In describing a trinode restructuring,
+    we temporarily rename the positions x, y, and z as a, b, and c, so that a precedes b
+    and b precedes c in an inorder traversal of T . There are four possible orientations
+    mapping x, y, and z to a, b, and c, as shown in Figure 11.9, which are uniﬁed
+    into one case by our relabeling. The trinode restructuring replaces z with the node
+    identiﬁed as b, makes the children of this node be a and c, and makes the children
+    of a and c be the four previous children of x, y, and z (other than x and y), while
+    maintaining the inorder relationships of all the nodes in T .
+    Algorithm restructure(x):
+         Input: A position x of a binary search tree T that has both a parent y and a
+            grandparent z
+         Output: Tree T after a trinode restructuring (which corresponds to a single or
+            double rotation) involving positions x, y, and z
+      1: Let (a, b, c) be a left-to-right (inorder) listing of the positions x, y, and z, and
+          let (T1 , T2 , T3 , T4 ) be a left-to-right (inorder) listing of the four subtrees of x,
+          y, and z not rooted at x, y, or z.
+      2: Replace the subtree rooted at z with a new subtree rooted at b.
+      3: Let a be the left child of b and let T1 and T2 be the left and right subtrees of a,
+          respectively.
+      4: Let c be the right child of b and let T3 and T4 be the left and right subtrees of
+          c, respectively.
+     Code Fragment 11.9: The trinode restructuring operation in a binary search tree.
+         In practice, the modiﬁcation of a tree T caused by a trinode restructuring op-
+    eration can be implemented through case analysis either as a single rotation (as in
+    Figure 11.9a and b) or as a double rotation (as in Figure 11.9c and d). The double
+    rotation arises when position x has the middle of the three relevant keys and is ﬁrst
+    rotated above its parent, and then above what was originally its grandparent. In any
+    of the cases, the trinode restructuring is completed with O(1) running time.

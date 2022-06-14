@@ -1,0 +1,14 @@
+108                                          Chapter 2. Object-Oriented Programming
+ Chapter Notes
+     For a broad overview of developments in computer science and engineering, we refer the
+     reader to The Computer Science and Engineering Handbook [96]. For more information
+     about the Therac-25 incident, please see the paper by Leveson and Turner [69].
+          The reader interested in studying object-oriented programming further, is referred to
+     the books by Booch [17], Budd [20], and Liskov and Guttag [71]. Liskov and Guttag
+     also provide a nice discussion of abstract data types, as does the survey paper by Cardelli
+     and Wegner [23] and the book chapter by Demurjian [33] in the The Computer Science
+     and Engineering Handbook [96]. Design patterns are described in the book by Gamma et
+     al. [41].
+          Books with speciﬁc focus on object-oriented programming in Python include those
+     by Goldwasser and Letscher [43] at the introductory level, and by Phillips [83] at a more
+     advanced level,

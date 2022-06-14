@@ -1,0 +1,27 @@
+9.3. Heaps                                                                                     371
+                                                       (4,C)
+                                (5,A)                                           (6,Z)
+                  (15,K)                    (9,F)                  (7,Q)                   (20,B)
+            (16,X)       (25,J)      (14,E)      (12,H)     (11,S)      (13,W)
+          Figure 9.1: Example of a heap storing 13 entries with integer keys. The last position
+          is the one storing entry (13,W ).
+               The tree in Figure 9.1 is complete because levels 0, 1, and 2 are full, and the six
+          nodes in level 3 are in the six leftmost possible positions at that level. In formalizing
+          what we mean by the leftmost possible positions, we refer to the discussion of level
+          numbering from Section 8.3.2, in the context of an array-based representation of a
+          binary tree. (In fact, in Section 9.3.3 we will discuss the use of an array to represent
+          a heap.) A complete binary tree with n elements is one that has positions with level
+          numbering 0 through n − 1. For example, in an array-based representation of the
+          above tree, its 13 entries would be stored consecutively from A[0] to A[12].
+         The Height of a Heap
+          Let h denote the height of T . Insisting that T be complete also has an important
+          consequence, as shown in Proposition 9.2.
+          Proposition 9.2: A heap T storing n entries has height h = log n.
+          Justiﬁcation: From the fact that T is complete, we know that the number of
+          nodes in levels 0 through h − 1 of T is precisely 1+ 2 + 4 + · · · + 2h−1 = 2h − 1, and
+          that the number of nodes in level h is at least 1 and at most 2h . Therefore
+                    n ≥ 2h − 1 + 1 = 2h        and    n ≤ 2h − 1 + 2h = 2h+1 − 1.
+               By taking the logarithm of both sides of inequality 2h ≤ n, we see that height
+          h ≤ log n. By rearranging terms and taking the logarithm of both sides of inequality
+          n ≤ 2h+1 − 1, we see that log(n + 1) − 1 ≤ h. Since h is an integer, these two
+          inequalities imply that h = log n.

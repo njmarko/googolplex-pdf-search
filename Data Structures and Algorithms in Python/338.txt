@@ -1,0 +1,32 @@
+8.3. Implementing Trees                                                                           317
+  8.3     Implementing Trees
+          The Tree and BinaryTree classes that we have deﬁned thus far in this chapter are
+          both formally abstract base classes. Although they provide a great deal of support,
+          neither of them can be directly instantiated. We have not yet deﬁned key imple-
+          mentation details for how a tree will be represented internally, and how we can
+          effectively navigate between parents and children. Speciﬁcally, a concrete imple-
+          mentation of a tree must provide methods root, parent, num children, children,
+              len , and in the case of BinaryTree, the additional accessors left and right.
+                There are several choices for the internal representation of trees. We describe
+          the most common representations in this section. We begin with the case of a
+          binary tree, since its shape is more narrowly deﬁned.
+       8.3.1 Linked Structure for Binary Trees
+          A natural way to realize a binary tree T is to use a linked structure, with a node
+          (see Figure 8.11a) that maintains references to the element stored at a position p
+          and to the nodes associated with the children and parent of p. If p is the root of
+          T , then the parent ﬁeld of p is None. Likewise, if p does not have a left child
+          (respectively, right child), the associated ﬁeld is None. The tree itself maintains an
+          instance variable storing a reference to the root node (if any), and a variable, called
+          size, that represents the overall number of nodes of T . We show such a linked
+          structure representation of a binary tree in Figure 8.11b.
+                                                                          ∅
+                                                       root
+                                                        5
+                                                       size
+                                                                               ∅          ∅
+                      parent
+                                                      ∅        ∅    ∅        ∅
+             left               right            Baltimore  Chicago   New York   Providence Seattle
+                     element
+                        (a)                                             (b)
+          Figure 8.11: A linked structure for representing: (a) a single node; (b) a binary tree.

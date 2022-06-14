@@ -1,0 +1,37 @@
+428                                       Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.3.1 Sorted Search Tables
+       Several data structures can efﬁciently support the sorted map ADT, and we will
+       examine some advanced techniques in Section 10.4 and Chapter 11. In this section,
+       we begin by exploring a simple implementation of a sorted map. We store the
+       map’s items in an array-based sequence A so that they are in increasing order of
+       their keys, assuming the keys have a naturally deﬁned order. (See Figure 10.8.) We
+       refer to this implementation of a map as a sorted search table.
+              0     1   2    3    4    5    6    7    8    9 10 11 12 13 14 15
+              2     4   5    7    8    9 12 14 17 19 22 25 27 28 33 37
+       Figure 10.8: Realization of a map by means of a sorted search table. We show only
+       the keys for this map, so as to highlight their ordering.
+            As was the case with the unsorted table map of Section 10.1.5, the sorted search
+       table has a space requirement that is O(n), assuming we grow and shrink the array
+       to keep its size proportional to the number of items in the map. The primary advan-
+       tage of this representation, and our reason for insisting that A be array-based, is that
+       it allows us to use the binary search algorithm for a variety of efﬁcient operations.
+       Binary Search and Inexact Searches
+       We originally presented the binary search algorithm in Section 4.1.3, as a means for
+       detecting whether a given target is stored within a sorted sequence. In our original
+       presentation (Code Fragment 4.3 on page 156), a binary search function returned
+       True of False to designate whether the desired target was found. While such an
+       approach could be used to implement the contains method of the map ADT,
+       we can adapt the binary search algorithm to provide far more useful information
+       when performing forms of inexact search in support of the sorted map ADT.
+            The important realization is that while performing a binary search, we can de-
+       termine the index at or near where a target might be found. During a successful
+       search, the standard implementation determines the precise index at which the tar-
+       get is found. During an unsuccessful search, although the target is not found, the
+       algorithm will effectively determine a pair of indices designating elements of the
+       collection that are just less than or just greater than the missing target.
+            As a motivating example, our original simulation from Figure 4.5 on page 156
+       shows a successful binary search for a target of 22, using the same data we portray
+       in Figure 10.8. Had we instead been searching for 21, the ﬁrst four steps of the
+       algorithm would be the same. The subsequent difference is that we would make an
+       additional call with inverted parameters high=9 and low=10, effectively conclud-
+       ing that the missing target lies in the gap between values 19 and 22 in that example.

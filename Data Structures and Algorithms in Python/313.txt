@@ -1,0 +1,38 @@
+292                                                               Chapter 7. Linked Lists
+ 7.7 Link-Based vs. Array-Based Sequences
+     We close this chapter by reﬂecting on the relative pros and cons of array-based
+     and link-based data structures that have been introduced thus far. The dichotomy
+     between these approaches presents a common design decision when choosing an
+     appropriate implementation of a data structure. There is not a one-size-ﬁts-all so-
+     lution, as each offers distinct advantages and disadvantages.
+     Advantages of Array-Based Sequences
+         • Arrays provide O(1)-time access to an element based on an integer index.
+            The ability to access the kth element for any k in O(1) time is a hallmark
+            advantage of arrays (see Section 5.2). In contrast, locating the kth element
+            in a linked list requires O(k) time to traverse the list from the beginning,
+            or possibly O(n − k) time, if traversing backward from the end of a doubly
+            linked list.
+         • Operations with equivalent asymptotic bounds typically run a constant factor
+            more efﬁciently with an array-based structure versus a linked structure. As
+            an example, consider the typical enqueue operation for a queue. Ignoring
+            the issue of resizing an array, this operation for the ArrayQueue class (see
+            Code Fragment 6.7) involves an arithmetic calculation of the new index, an
+            increment of an integer, and storing a reference to the element in the array.
+            In contrast, the process for a LinkedQueue (see Code Fragment 7.8) requires
+            the instantiation of a node, appropriate linking of nodes, and an increment
+            of an integer. While this operation completes in O(1) time in either model,
+            the actual number of CPU operations will be more in the linked version,
+            especially given the instantiation of the new node.
+         • Array-based representations typically use proportionally less memory than
+            linked structures. This advantage may seem counterintuitive, especially given
+            that the length of a dynamic array may be longer than the number of elements
+            that it stores. Both array-based lists and linked lists are referential structures,
+            so the primary memory for storing the actual objects that are elements is the
+            same for either structure. What differs is the auxiliary amounts of memory
+            that are used by the two structures. For an array-based container of n ele-
+            ments, a typical worst case may be that a recently resized dynamic array has
+            allocated memory for 2n object references. With linked lists, memory must
+            be devoted not only to store a reference to each contained object, but also
+            explicit references that link the nodes. So a singly linked list of length n
+            already requires 2n references (an element reference and next reference for
+            each node). With a doubly linked list, there are 3n references.

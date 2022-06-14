@@ -1,0 +1,39 @@
+6                                                               Chapter 1. Python Primer
+  1.2.2 Creating and Using Objects
+     Instantiation
+     The process of creating a new instance of a class is known as instantiation. In
+     general, the syntax for instantiating an object is to invoke the constructor of a class.
+     For example, if there were a class named Widget, we could create an instance of
+     that class using a syntax such as w = Widget( ), assuming that the constructor does
+     not require any parameters. If the constructor does require parameters, we might
+     use a syntax such as Widget(a, b, c) to construct a new instance.
+          Many of Python’s built-in classes (discussed in Section 1.2.3) support what is
+     known as a literal form for designating new instances. For example, the command
+     temperature = 98.6 results in the creation of a new instance of the ﬂoat class; the
+     term 98.6 in that expression is a literal form. We discuss further cases of Python
+     literals in the coming section.
+          From a programmer’s perspective, yet another way to indirectly create a new
+     instance of a class is to call a function that creates and returns such an instance. For
+     example, Python has a built-in function named sorted (see Section 1.5.2) that takes
+     a sequence of comparable elements as a parameter and returns a new instance of
+     the list class containing those elements in sorted order.
+     Calling Methods
+     Python supports traditional functions (see Section 1.5) that are invoked with a syn-
+     tax such as sorted(data), in which case data is a parameter sent to the function.
+     Python’s classes may also deﬁne one or more methods (also known as member
+     functions), which are invoked on a speciﬁc instance of a class using the dot (“.”)
+     operator. For example, Python’s list class has a method named sort that can be
+     invoked with a syntax such as data.sort( ). This particular method rearranges the
+     contents of the list so that they are sorted.
+          The expression to the left of the dot identiﬁes the object upon which the method
+     is invoked. Often, this will be an identiﬁer (e.g., data), but we can use the dot op-
+     erator to invoke a method upon the immediate result of some other operation. For
+     example, if response identiﬁes a string instance (we will discuss strings later in this
+     section), the syntax response.lower( ).startswith( y ) ﬁrst evaluates the method
+     call, response.lower( ), which itself returns a new string instance, and then the
+     startswith( y ) method is called on that intermediate string.
+          When using a method of a class, it is important to understand its behavior.
+     Some methods return information about the state of an object, but do not change
+     that state. These are known as accessors. Other methods, such as the sort method
+     of the list class, do change the state of an object. These methods are known as
+     mutators or update methods.

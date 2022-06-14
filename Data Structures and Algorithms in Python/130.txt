@@ -1,0 +1,16 @@
+Chapter
+   3                                          Algorithm Analysis
+Contents
+    3.1   Experimental Studies . . . . . . . . . . .    . . . . .   . . . . .  111
+         3.1.1 Moving Beyond Experimental Analysis      . . . . .  . . . . . . 113
+    3.2   The Seven Functions Used in This Book         . . . . .   . . . . .  115
+         3.2.1 Comparing Growth Rates . . . . . . .     . . . . .  . . . . . . 122
+    3.3   Asymptotic Analysis . . . . . . . . . . . .   . . . . .   . . . . .  123
+         3.3.1 The “Big-Oh” Notation . . . . . . . .    . . . . .  . . . . . . 123
+         3.3.2 Comparative Analysis . . . . . . . . .   . . . . .  . . . . . . 128
+         3.3.3 Examples of Algorithm Analysis . . .     . . . . .  . . . . . . 130
+    3.4   Simple Justiﬁcation Techniques . . . . .      . . . . .   . . . . .  137
+         3.4.1 By Example . . . . . . . . . . . . . .   . . . . .  . . . . . . 137
+         3.4.2 The “Contra” Attack . . . . . . . . .    . . . . .  . . . . . . 137
+         3.4.3 Induction and Loop Invariants . . . .    . . . . .  . . . . . . 138
+    3.5   Exercises . . . . . . . . . . . . . . . . . . . . . .  .  . . . . .  141

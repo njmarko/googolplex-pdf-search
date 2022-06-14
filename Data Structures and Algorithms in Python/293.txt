@@ -1,0 +1,32 @@
+272                                                             Chapter 7. Linked Lists
+                header                                                    trailer
+                                BWI          JFK             SFO
+                                              (a)
+        header                                                                    trailer
+                        PVD           BWI             JFK          SFO
+                                              (b)
+        header                                                                    trailer
+                        PVD           BWI             JFK          SFO
+                                              (c)
+    Figure 7.12: Adding an element to the front of a sequence represented by a dou-
+    bly linked list with header and trailer sentinels: (a) before the operation; (b) after
+    creating the new node; (c) after linking the neighbors to the new node.
+        The deletion of a node, portrayed in Figure 7.13, proceeds in the opposite fash-
+    ion of an insertion. The two neighbors of the node to be deleted are linked directly
+    to each other, thereby bypassing the original node. As a result, that node will no
+    longer be considered part of the list and it can be reclaimed by the system. Because
+    of our use of sentinels, the same implementation can be used when deleting the ﬁrst
+    or the last element of a sequence, because even such an element will be stored at a
+    node that lies between two others.
+        header                                                                    trailer
+                        BWI            JFK           PVD           SFO
+                                              (a)
+        header                                                                    trailer
+                        BWI            JFK           PVD           SFO
+                                              (b)
+                header                                                    trailer
+                                BWI          JFK             SFO
+                                              (c)
+    Figure 7.13: Removing the element PVD from a doubly linked list: (a) before
+    the removal; (b) after linking out the old node; (c) after the removal (and garbage
+    collection).

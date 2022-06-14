@@ -1,0 +1,40 @@
+1.2. Objects in Python                                                                         5
+               For readers familiar with other programming languages, the semantics of a
+          Python identiﬁer is most similar to a reference variable in Java or a pointer variable
+          in C++. Each identiﬁer is implicitly associated with the memory address of the
+          object to which it refers. A Python identiﬁer may be assigned to a special object
+          named None, serving a similar purpose to a null reference in Java or C++.
+               Unlike Java and C++, Python is a dynamically typed language, as there is no
+          advance declaration associating an identiﬁer with a particular data type. An iden-
+          tiﬁer can be associated with any type of object, and it can later be reassigned to
+          another object of the same (or different) type. Although an identiﬁer has no de-
+          clared type, the object to which it refers has a deﬁnite type. In our ﬁrst example,
+          the characters 98.6 are recognized as a ﬂoating-point literal, and thus the identiﬁer
+          temperature is associated with an instance of the ﬂoat class having that value.
+               A programmer can establish an alias by assigning a second identiﬁer to an
+          existing object. Continuing with our earlier example, Figure 1.2 portrays the result
+          of a subsequent assignment, original = temperature.
+                                                                 ﬂoat
+                                      temperature                                     original
+                                                                  98.6
+            Figure 1.2: Identiﬁers temperature and original are aliases for the same object.
+               Once an alias has been established, either name can be used to access the under-
+          lying object. If that object supports behaviors that affect its state, changes enacted
+          through one alias will be apparent when using the other alias (because they refer to
+          the same object). However, if one of the names is reassigned to a new value using
+          a subsequent assignment statement, that does not affect the aliased object, rather it
+          breaks the alias. Continuing with our concrete example, we consider the command:
+               temperature = temperature + 5.0
+          The execution of this command begins with the evaluation of the expression on the
+          right-hand side of the = operator. That expression, temperature + 5.0, is eval-
+          uated based on the existing binding of the name temperature, and so the result
+          has value 103.6, that is, 98.6 + 5.0. That result is stored as a new ﬂoating-point
+          instance, and only then is the name on the left-hand side of the assignment state-
+          ment, temperature, (re)assigned to the result. The subsequent conﬁguration is dia-
+          grammed in Figure 1.3. Of particular note, this last command had no effect on the
+          value of the existing ﬂoat instance that identiﬁer original continues to reference.
+                 ﬂoat                                            ﬂoat
+                                      temperature                                     original
+                 103.6                                            98.6
+          Figure 1.3: The temperature identiﬁer has been assigned to a new value, while
+          original continues to refer to the previously existing value.

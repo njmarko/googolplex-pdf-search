@@ -1,0 +1,41 @@
+10.2. Hash Tables                                                                        423
+       1 class HashMapBase(MapBase):
+       2    ”””Abstract base class for map using hash-table with MAD compression.”””
+       3
+       4    def init (self, cap=11, p=109345121):
+       5      ”””Create an empty hash-table map.”””
+       6      self. table = cap [ None ]
+       7      self. n = 0                                  # number of entries in the map
+       8      self. prime = p                              # prime for MAD compression
+       9      self. scale = 1 + randrange(p−1)             # scale from 1 to p-1 for MAD
+      10      self. shift = randrange(p)                   # shift from 0 to p-1 for MAD
+      11
+      12    def hash function(self, k):
+      13      return (hash(k) self. scale + self. shift) % self. prime % len(self. table)
+      14
+      15    def len (self):
+      16      return self. n
+      17
+      18    def getitem (self, k):
+      19      j = self. hash function(k)
+      20      return self. bucket getitem(j, k)            # may raise KeyError
+      21
+      22    def setitem (self, k, v):
+      23      j = self. hash function(k)
+      24      self. bucket setitem(j, k, v)                # subroutine maintains self. n
+      25      if self. n > len(self. table) // 2:          # keep load factor <= 0.5
+      26         self. resize(2 len(self. table) − 1)      # number 2ˆx - 1 is often prime
+      27
+      28    def delitem (self, k):
+      29      j = self. hash function(k)
+      30      self. bucket delitem(j, k)                   # may raise KeyError
+      31      self. n −= 1
+      32
+      33    def resize(self, c):                  # resize bucket array to capacity c
+      34      old = list(self.items( ))           # use iteration to record existing items
+      35      self. table = c [None]              # then reset table to desired capacity
+      36      self. n = 0                         # n recomputed during subsequent adds
+      37      for (k,v) in old:
+      38         self[k] = v                      # reinsert old key-value pair
+          Code Fragment 10.4: A base class for our hash table implementations, extending
+          our MapBase class from Code Fragment 10.2.

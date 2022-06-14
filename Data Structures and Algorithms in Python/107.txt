@@ -1,0 +1,43 @@
+86                                       Chapter 2. Object-Oriented Programming
+   the charge was successful. We examine that return value to decide whether to as-
+   sess a fee, and in turn we return that value to the caller of method, so that the new
+   version of charge has a similar outward interface as the original.
+        The process month method is a new behavior, so there is no inherited version
+   upon which to rely. In our model, this method should be invoked by the bank,
+   once each month, to add new interest charges to the customer’s balance. The most
+   challenging aspect in implementing this method is making sure we have working
+   knowledge of how an annual percentage rate translates to a monthly rate. We do
+   not simply divide the annual rate by twelve to get a monthly rate (that would be too
+   predatory, as it would result in a higher APR than advertised). The correct com-
+   putation is to take the twelfth-root of 1 + self. apr, and use that as a multiplica-
+   tive
+    √    factor. For example, if the APR is 0.0825 (representing 8.25%), we compute
+    12
+       1.0825 ≈ 1.006628, and therefore charge 0.6628% interest per month. In this
+   way, each $100 of debt will amass $8.25 of compounded interest in a year.
+   Protected Members
+   Our PredatoryCreditCard subclass directly accesses the data member self. balance,
+   which was established by the parent CreditCard class. The underscored name, by
+   convention, suggests that this is a nonpublic member, so we might ask if it is okay
+   that we access it in this fashion. While general users of the class should not be
+   doing so, our subclass has a somewhat privileged relationship with the superclass.
+   Several object-oriented languages (e.g., Java, C++) draw a distinction for nonpub-
+   lic members, allowing declarations of protected or private access modes. Members
+   that are declared as protected are accessible to subclasses, but not to the general
+   public, while members that are declared as private are not accessible to either. In
+   this respect, we are using balance as if it were protected (but not private).
+        Python does not support formal access control, but names beginning with a sin-
+   gle underscore are conventionally akin to protected, while names beginning with a
+   double underscore (other than special methods) are akin to private. In choosing to
+   use protected data, we have created a dependency in that our PredatoryCreditCard
+   class might be compromised if the author of the CreditCard class were to change
+   the internal design. Note that we could have relied upon the public get balance( )
+   method to retrieve the current balance within the process month method. But the
+   current design of the CreditCard class does not afford an effective way for a sub-
+   class to change the balance, other than by direct manipulation of the data member.
+   It may be tempting to use charge to add fees or interest to the balance. However,
+   that method does not allow the balance to go above the customer’s credit limit,
+   even though a bank would presumably let interest compound beyond the credit
+   limit, if warranted. If we were to redesign the original CreditCard class, we might
+   add a nonpublic method, set balance, that could be used by subclasses to affect a
+   change without directly accessing the data member balance.

@@ -1,0 +1,40 @@
+1.1. Python Overview                                                                           3
+       1.1.2 Preview of a Python Program
+          As a simple introduction, Code Fragment 1.1 presents a Python program that com-
+          putes the grade-point average (GPA) for a student based on letter grades that are
+          entered by a user. Many of the techniques demonstrated in this example will be
+          discussed in the remainder of this chapter. At this point, we draw attention to a few
+          high-level issues, for readers who are new to Python as a programming language.
+                Python’s syntax relies heavily on the use of whitespace. Individual statements
+          are typically concluded with a newline character, although a command can extend
+          to another line, either with a concluding backslash character (\), or if an opening
+          delimiter has not yet been closed, such as the { character in deﬁning value map.
+                Whitespace is also key in delimiting the bodies of control structures in Python.
+          Speciﬁcally, a block of code is indented to designate it as the body of a control
+          structure, and nested control structures use increasing amounts of indentation. In
+          Code Fragment 1.1, the body of the while loop consists of the subsequent 8 lines,
+          including a nested conditional structure.
+                Comments are annotations provided for human readers, yet ignored by the
+          Python interpreter. The primary syntax for comments in Python is based on use
+          of the # character, which designates the remainder of the line as a comment.
+          print( Welcome to the GPA calculator. )
+          print( Please enter all your letter grades, one per line. )
+          print( Enter a blank line to designate the end. )
+          # map from letter grade to point value
+          points = { A+ :4.0, A :4.0, A- :3.67, B+ :3.33, B :3.0, B- :2.67,
+                        C+ :2.33, C :2.0, C :1.67, D+ :1.33, D :1.0, F :0.0}
+          num courses = 0
+          total points = 0
+          done = False
+          while not done:
+             grade = input( )                                  # read line from user
+             if grade == :                                     # empty line was entered
+                done = True
+             elif grade not in points:                         # unrecognized grade entered
+                print("Unknown grade {0} being ignored".format(grade))
+             else:
+                num courses += 1
+                total points += points[grade]
+          if num courses > 0:                                  # avoid division by zero
+             print( Your GPA is {0:.3} .format(total points / num courses))
+          Code Fragment 1.1: A Python program that computes a grade-point average (GPA).

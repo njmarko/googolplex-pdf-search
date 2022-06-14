@@ -1,0 +1,36 @@
+2.4. Inheritance                                                                           85
+       1 class PredatoryCreditCard(CreditCard):
+       2     ”””An extension to CreditCard that compounds interest and fees.”””
+       3
+       4     def init (self, customer, bank, acnt, limit, apr):
+       5       ”””Create a new predatory credit card instance.
+       6
+       7       The initial balance is zero.
+       8
+       9       customer the name of the customer (e.g., John Bowman )
+      10       bank        the name of the bank (e.g., California Savings )
+      11       acnt        the acount identiﬁer (e.g., 5391 0375 9387 5309 )
+      12       limit       credit limit (measured in dollars)
+      13       apr         annual percentage rate (e.g., 0.0825 for 8.25% APR)
+      14       ”””
+      15       super( ). init (customer, bank, acnt, limit)         # call super constructor
+      16       self. apr = apr
+      17
+      18     def charge(self, price):
+      19       ”””Charge given price to the card, assuming suﬃcient credit limit.
+      20
+      21       Return True if charge was processed.
+      22       Return False and assess 5 fee if charge is denied.
+      23       ”””
+      24       success = super( ).charge(price)               # call inherited method
+      25       if not success:
+      26          self. balance += 5                          # assess penalty
+      27       return success                                 # caller expects return value
+      28
+      29     def process month(self):
+      30       ”””Assess monthly interest on outstanding balance.”””
+      31       if self. balance > 0:
+      32          # if positive balance, convert APR to monthly multiplicative factor
+      33          monthly factor = pow(1 + self. apr, 1/12)
+      34          self. balance = monthly factor
+              Code Fragment 2.7: A subclass of CreditCard that assesses interest and fees.

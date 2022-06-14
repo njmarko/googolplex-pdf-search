@@ -1,0 +1,36 @@
+136                                                        Chapter 3. Algorithm Analysis
+    1 def unique1(S):
+    2   ”””Return True if there are no duplicate elements in sequence S.”””
+    3   for j in range(len(S)):
+    4      for k in range(j+1, len(S)):
+    5         if S[j] == S[k]:
+    6            return False                  # found duplicate pair
+    7   return True                            # if we reach this, elements were unique
+             Code Fragment 3.7: Algorithm unique1 for testing element uniqueness.
+      those pairs refer to elements that are equivalent to each other. It does this using two
+      nested for loops, such that the ﬁrst iteration of the outer loop causes n − 1 iterations
+      of the inner loop, the second iteration of the outer loop causes n − 2 iterations of
+      the inner loop, and so on. Thus, the worst-case running time of this function is
+      proportional to
+                                 (n − 1) + (n − 2) + · · · + 2 + 1,
+      which we recognize as the familiar O(n2 ) summation from Proposition 3.3.
+      Using Sorting as a Problem-Solving Tool
+      An even better algorithm for the element uniqueness problem is based on using
+      sorting as a problem-solving tool. In this case, by sorting the sequence of elements,
+      we are guaranteed that any duplicate elements will be placed next to each other.
+      Thus, to determine if there are any duplicates, all we need to do is perform a sin-
+      gle pass over the sorted sequence, looking for consecutive duplicates. A Python
+      implementation of this algorithm is as follows:
+    1 def unique2(S):
+    2   ”””Return True if there are no duplicate elements in sequence S.”””
+    3   temp = sorted(S)                       # create a sorted copy of S
+    4   for j in range(1, len(temp)):
+    5      if S[j−1] == S[j]:
+    6         return False                     # found duplicate pair
+    7   return True                            # if we reach this, elements were unique
+             Code Fragment 3.8: Algorithm unique2 for testing element uniqueness.
+          The built-in function, sorted, as described in Section 1.5.2, produces a copy of
+      the original list with elements in sorted order. It guarantees a worst-case running
+      time of O(n log n); see Chapter 12 for a discussion of common sorting algorithms.
+      Once the data is sorted, the subsequent loop runs in O(n) time, and so the entire
+      unique2 algorithm runs in O(n log n) time.

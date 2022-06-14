@@ -1,0 +1,32 @@
+220                                                    Chapter 5. Array-Based Sequences
+    Constructing a Multidimensional List
+    To quickly initialize a one-dimensional list, we generally rely on a syntax such as
+    data = [0] n to create a list of n zeros. On page 189, we emphasized that from
+    a technical perspective, this creates a list of length n with all entries referencing
+    the same integer instance, but that there was no meaningful consequence of such
+    aliasing because of the immutability of the int class in Python.
+         We have to be considerably more careful when creating a list of lists. If our
+    goal were to create the equivalent of a two-dimensional list of integers, with r rows
+    and c columns, and to initialize all values to zero, a ﬂawed approach might be to
+    try the command
+         data = ([0]      c)   r                  # Warning: this is a mistake
+    While([0] c) is indeed a list of c zeros, multiplying that list by r unfortunately cre-
+    ates a single list with length r · c, just as [2,4,6] 2 results in list [2, 4, 6, 2, 4, 6].
+         A better, yet still ﬂawed attempt is to make a list that contains the list of c zeros
+    as its only element, and then to multiply that list by r. That is, we could try the
+    command
+         data = [ [0]      c]    r              # Warning: still a mistake
+    This is much closer, as we actually do have a structure that is formally a list of lists.
+    The problem is that all r entries of the list known as data are references to the same
+    instance of a list of c zeros. Figure 5.23 provides a portrayal of such aliasing.
+                                      0    0    0    0   0  0
+                                      0    1    2    3   4  5
+                                   data:
+                                              0    1   2
+    Figure 5.23: A ﬂawed representation of a 3× 6 data set as a list of lists, created with
+    the command data = [ [0] 6 ] 3. (For simplicity, we overlook the fact that the
+    values in the secondary list are referential.)
+    This is truly a problem. Setting an entry such as data[2][0] = 100 would change
+    the ﬁrst entry of the secondary list to reference a new value, 100. Yet that cell of
+    the secondary list also represents the value data[0][0], because “row” data[0] and
+    “row” data[2] refer to the same secondary list.

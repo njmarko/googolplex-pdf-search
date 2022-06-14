@@ -1,0 +1,34 @@
+9.3. Heaps                                                                                379
+      9.3.5 Analysis of a Heap-Based Priority Queue
+          Table 9.3 shows the running time of the priority queue ADT methods for the heap
+          implementation of a priority queue, assuming that two keys can be compared in
+          O(1) time and that the heap T is implemented with an array-based or linked-based
+          tree representation.
+               In short, each of the priority queue ADT methods can be performed in O(1) or
+          in O(log n) time, where n is the number of entries at the time the method is exe-
+          cuted. The analysis of the running time of the methods is based on the following:
+              • The heap T has n nodes, each storing a reference to a key-value pair.
+              • The height of heap T is O(log n), since T is complete (Proposition 9.2).
+              • The min operation runs in O(1) because the root of the tree contains such an
+                 element.
+              • Locating the last position of a heap, as required for add and remove min,
+                 can be performed in O(1) time for an array-based representation, or O(log n)
+                 time for a linked-tree representation. (See Exercise C-9.34.)
+              • In the worst case, up-heap and down-heap bubbling perform a number of
+                 swaps equal to the height of T .
+                                                Operation   Running Time
+                                    len(P), P.is empty( )   O(1)
+                                                  P.min( )  O(1)
+                                                   P.add( ) O(log n)∗
+                                         P.remove min( )    O(log n)∗
+                               ∗ amortized, if array-based
+          Table 9.3: Performance of a priority queue, P, realized by means of a heap. We
+          let n denote the number of entries in the priority queue at the time an operation is
+          executed. The space requirement is O(n). The running time of operations min and
+          remove min are amortized for an array-based representation, due to occasional re-
+          sizing of a dynamic array; those bounds are worst case with a linked tree structure.
+               We conclude that the heap data structure is a very efﬁcient realization of the
+          priority queue ADT, independent of whether the heap is implemented with a linked
+          structure or an array. The heap-based implementation achieves fast running times
+          for both insertion and removal, unlike the implementations that were based on using
+          an unsorted or sorted list.

@@ -1,0 +1,38 @@
+2.7. Exercises                                                                               105
+           R-2.18 Give a short fragment of Python code that uses the progression classes
+                  from Section 2.4.2 to ﬁnd the 8th value of a Fibonacci progression that
+                  starts with 2 and 2 as its ﬁrst two values.
+           R-2.19 When using the ArithmeticProgression class of Section 2.4.2 with an in-
+                  crement of 128 and a start of 0, how many calls to next can we make
+                  before we reach an integer of 263 or larger?
+           R-2.20 What are some potential efﬁciency disadvantages of having very deep in-
+                  heritance trees, that is, a large set of classes, A, B, C, and so on, such that
+                  B extends A, C extends B, D extends C, etc.?
+           R-2.21 What are some potential efﬁciency disadvantages of having very shallow
+                  inheritance trees, that is, a large set of classes, A, B, C, and so on, such
+                  that all of these classes extend a single class, Z?
+           R-2.22 The collections.Sequence abstract base class does not provide support for
+                  comparing two sequences to each other. Modify our Sequence class from
+                  Code Fragment 2.14 to include a deﬁnition for the eq method, so
+                  that expression seq1 == seq2 will return True precisely when the two
+                  sequences are element by element equivalent.
+           R-2.23 In similar spirit to the previous problem, augment the Sequence class with
+                  method lt , to support lexicographic comparison seq1 < seq2.
+      Creativity
+           C-2.24 Suppose you are on the design team for a new e-book reader. What are the
+                  primary classes and methods that the Python software for your reader will
+                  need? You should include an inheritance diagram for this code, but you
+                  do not need to write any actual code. Your software architecture should
+                  at least include ways for customers to buy new books, view their list of
+                  purchased books, and read their purchased books.
+           C-2.25 Exercise R-2.12 uses the mul method to support multiplying a Vector
+                  by a number, while Exercise R-2.14 uses the mul method to support
+                  computing a dot product of two vectors. Give a single implementation of
+                  Vector. mul that uses run-time type checking to support both syntaxes
+                  u v and u k, where u and v designate vector instances and k represents
+                  a number.
+           C-2.26 The SequenceIterator class of Section 2.3.4 provides what is known as a
+                  forward iterator. Implement a class named ReversedSequenceIterator that
+                  serves as a reverse iterator for any Python sequence type. The ﬁrst call to
+                  next should return the last element of the sequence, the second call to next
+                  should return the second-to-last element, and so forth.

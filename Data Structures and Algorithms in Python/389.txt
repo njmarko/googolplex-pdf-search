@@ -1,0 +1,34 @@
+368                                                            Chapter 9. Priority Queues
+    9.2.3 Implementation with a Sorted List
+       An alternative implementation of a priority queue uses a positional list, yet main-
+       taining entries sorted by nondecreasing keys. This ensures that the ﬁrst element of
+       the list is an entry with the smallest key.
+            Our SortedPriorityQueue class is given in Code Fragment 9.3. The implemen-
+       tation of min and remove min are rather straightforward given knowledge that the
+       ﬁrst element of a list has a minimum key. We rely on the ﬁrst method of the posi-
+       tional list to ﬁnd the position of the ﬁrst item, and the delete method to remove the
+       entry from the list. Assuming that the list is implemented with a doubly linked list,
+       operations min and remove min take O(1) time.
+            This beneﬁt comes at a cost, however, for method add now requires that we scan
+       the list to ﬁnd the appropriate position to insert the new item. Our implementation
+       starts at the end of the list, walking backward until the new key is smaller than
+       an existing item; in the worst case, it progresses until reaching the front of the
+       list. Therefore, the add method takes O(n) worst-case time, where n is the number
+       of entries in the priority queue at the time the method is executed. In summary,
+       when using a sorted list to implement a priority queue, insertion runs in linear time,
+       whereas ﬁnding and removing the minimum can be done in constant time.
+       Comparing the Two List-Based Implementations
+       Table 9.2 compares the running times of the methods of a priority queue realized
+       by means of a sorted and unsorted list, respectively. We see an interesting trade-
+       off when we use a list to implement the priority queue ADT. An unsorted list
+       supports fast insertions but slow queries and deletions, whereas a sorted list allows
+       fast queries and deletions, but slow insertions.
+                             Operation      Unsorted List     Sorted List
+                                 len             O(1)             O(1)
+                              is empty           O(1)             O(1)
+                                 add             O(1)             O(n)
+                                 min             O(n)             O(1)
+                            remove min           O(n)             O(1)
+       Table 9.2: Worst-case running times of the methods of a priority queue of size n,
+       realized by means of an unsorted or sorted list, respectively. We assume that the
+       list is implemented by a doubly linked list. The space requirement is O(n).

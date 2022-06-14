@@ -1,0 +1,40 @@
+268                                                                  Chapter 7. Linked Lists
+     7.2.2 Implementing a Queue with a Circularly Linked List
+        To implement the queue ADT using a circularly linked list, we rely on the intuition
+        of Figure 7.7, in which the queue has a head and a tail, but with the next reference of
+        the tail linked to the head. Given such a model, there is no need for us to explicitly
+        store references to both the head and the tail; as long as we keep a reference to the
+        tail, we can always ﬁnd the head by following the tail’s next reference.
+             Code Fragments 7.9 and 7.10 provide an implementation of a CircularQueue
+        class based on this model. The only two instance variables are tail, which is a
+        reference to the tail node (or None when empty), and size, which is the current
+        number of elements in the queue. When an operation involves the front of the
+        queue, we recognize self. tail. next as the head of the queue. When enqueue is
+        called, a new node is placed just after the tail but before the current head, and then
+        the new node becomes the tail.
+             In addition to the traditional queue operations, the CircularQueue class supports
+        a rotate method that more efﬁciently enacts the combination of removing the front
+        element and reinserting it at the back of the queue. With the circular representation,
+        we simply set self. tail = self. tail. next to make the old head become the new tail
+        (with the node after the old head becoming the new head).
+     1 class CircularQueue:
+     2    ”””Queue implementation using circularly linked list for storage.”””
+     3
+     4    class Node:
+     5        ”””Lightweight, nonpublic class for storing a singly linked node.”””
+     6        (omitted here; identical to that of LinkedStack. Node)
+     7
+     8    def init (self):
+     9        ”””Create an empty queue.”””
+    10        self. tail = None                           # will represent tail of queue
+    11        self. size = 0                              # number of queue elements
+    12
+    13    def len (self):
+    14        ”””Return the number of elements in the queue.”””
+    15        return self. size
+    16
+    17    def is empty(self):
+    18        ”””Return True if the queue is empty.”””
+    19        return self. size == 0
+        Code Fragment 7.9: Implementation of a CircularQueue class, using a circularly
+        linked list as storage (continued in Code Fragment 7.10).

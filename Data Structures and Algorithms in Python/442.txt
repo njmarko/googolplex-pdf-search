@@ -1,0 +1,41 @@
+10.2. Hash Tables                                                                             421
+                               Operation       List         Hash Table
+                                                       expected worst case
+                                 getitem       O(n)      O(1)         O(n)
+                                 setitem       O(n)      O(1)         O(n)
+                                 delitem       O(n)      O(1)         O(n)
+                                   len         O(1)      O(1)         O(1)
+                                   iter        O(n)      O(n)         O(n)
+          Table 10.2: Comparison of the running times of the methods of a map realized by
+          means of an unsorted list (as in Section 10.1.5) or a hash table. We let n denote
+          the number of items in the map, and we assume that the bucket array supporting
+          the hash table is maintained such that its capacity is proportional to the number of
+          items in the map.
+               In practice, hash tables are among the most efﬁcient means for implementing
+          a map, and it is essentially taken for granted by programmers that their core oper-
+          ations run in constant time. Python’s dict class is implemented with hashing, and
+          the Python interpreter relies on dictionaries to retrieve an object that is referenced
+          by an identiﬁer in a given namespace. (See Sections 1.10 and 2.5.) The basic com-
+          mand c = a + b involves two calls to getitem in the dictionary for the local
+          namespace to retrieve the values identiﬁed as a and b, and a call to setitem
+          to store the result associated with name c in that namespace. In our own algorithm
+          analysis, we simply presume that such dictionary operations run in constant time,
+          independent of the number of entries in the namespace. (Admittedly, the number
+          of entries in a typical namespace can almost surely be bounded by a constant.)
+               In a 2003 academic paper [31], researchers discuss the possibility of exploiting
+          a hash table’s worst-case performance to cause a denial-of-service (DoS) attack
+          of Internet technologies. For many published algorithms that compute hash codes,
+          they note that an attacker could precompute a very large number of moderate-length
+          strings that all hash to the identical 32-bit hash code. (Recall that by any of the
+          hashing schemes we describe, other than double hashing, if two keys are mapped
+          to the same hash code, they will be inseparable in the collision resolution.)
+               In late 2011, another team of researchers demonstrated an implementation of
+          just such an attack [61]. Web servers allow a series of key-value parameters to be
+          embedded in a URL using a syntax such as ?key1=val1&key2=val2&key3=val3.
+          Typically, those key-value pairs are immediately stored in a map by the server,
+          and a limit is placed on the length and number of such parameters presuming that
+          storage time in the map will be linear in the number of entries. If all keys were
+          to collide, that storage requires quadratic time (causing the server to perform an
+          inordinate amount of work). In spring of 2012, Python developers distributed a
+          security patch that introduces randomization into the computation of hash codes
+          for strings, making it less tractable to reverse engineer a set of colliding strings.

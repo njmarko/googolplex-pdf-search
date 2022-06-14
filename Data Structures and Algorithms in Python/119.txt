@@ -1,0 +1,38 @@
+98                                        Chapter 2. Object-Oriented Programming
+   Class Data Members
+   A class-level data member is often used when there is some value, such as a con-
+   stant, that is to be shared by all instances of a class. In such a case, it would
+   be unnecessarily wasteful to have each instance store that value in its instance
+   namespace. As an example, we revisit the PredatoryCreditCard introduced in Sec-
+   tion 2.4.1. That class assesses a $5 fee if an attempted charge is denied because
+   of the credit limit. Our choice of $5 for the fee was somewhat arbitrary, and our
+   coding style would be better if we used a named variable rather than embedding
+   the literal value in our code. Often, the amount of such a fee is determined by the
+   bank’s policy and does not vary for each customer. In that case, we could deﬁne
+   and use a class data member as follows:
+   class PredatoryCreditCard(CreditCard):
+     OVERLIMIT FEE = 5                                 # this is a class-level member
+     def charge(self, price):
+        success = super( ).charge(price)
+        if not success:
+            self. balance += PredatoryCreditCard.OVERLIMIT FEE
+        return success
+        The data member, OVERLIMIT FEE, is entered into the PredatoryCreditCard
+   class namespace because that assignment takes place within the immediate scope
+   of the class deﬁnition, and without any qualifying identiﬁer.
+   Nested Classes
+   It is also possible to nest one class deﬁnition within the scope of another class.
+   This is a useful construct, which we will exploit several times in this book in the
+   implementation of data structures. This can be done by using a syntax such as
+   class A:            # the outer class
+     class B:          # the nested class
+          ...
+   In this case, class B is the nested class. The identiﬁer B is entered into the name-
+   space of class A associated with the newly deﬁned class. We note that this technique
+   is unrelated to the concept of inheritance, as class B does not inherit from class A.
+        Nesting one class in the scope of another makes clear that the nested class
+   exists for support of the outer class. Furthermore, it can help reduce potential name
+   conﬂicts, because it allows for a similarly named class to exist in another context.
+   For example, we will later introduce a data structure known as a linked list and will
+   deﬁne a nested node class to store the individual components of the list. We will
+   also introduce a data structure known as a tree that depends upon its own nested

@@ -1,0 +1,40 @@
+602                                                             Chapter 13. Text Processing
+             Character          a   b   d   e     f   h     i   k   n   o   r  s   t   u   v
+     (a)
+             Frequency     9    5   1   3   7     3   1    1    1   4   1   5  1   2   1   1
+                                46
+                 19                            27
+                    10          12                               15
+               9
+                  a     r    e     5                7                       8
+     (b)
+                  5     5    7
+                                d     2         f     n             4                4
+                                 3             3      4
+                                   b     h                    2           2      t     2
+                                   1     1                                       2
+                                                          i      k    o     s        u   v
+                                                          1      1    1     1        1   1
+       Figure 13.9: An illustration of an example Huffman code for the input string
+       X = "a fast runner need never be afraid of the dark": (a) frequency
+       of each character of X ; (b) Huffman tree T for string X . The code for a character c
+       is obtained by tracing the path from the root of T to the leaf where c is stored, and
+       associating a left child with 0 and a right child with 1. For example, the code for
+       “r” is 011, and the code for “h” is 10111.
+    13.4.1 The Huﬀman Coding Algorithm
+       The Huffman coding algorithm begins with each of the d distinct characters of the
+       string X to encode being the root node of a single-node binary tree. The algorithm
+       proceeds in a series of rounds. In each round, the algorithm takes the two binary
+       trees with the smallest frequencies and merges them into a single binary tree. It
+       repeats this process until only one tree is left. (See Code Fragment 13.8.)
+            Each iteration of the while loop in Huffman’s algorithm can be implemented
+       in O(log d) time using a priority queue represented with a heap. In addition, each
+       iteration takes two nodes out of Q and adds one in, a process that will be repeated
+       d − 1 times before exactly one node is left in Q. Thus, this algorithm runs in
+       O(n + d log d) time. Although a full justiﬁcation of this algorithm’s correctness is
+       beyond our scope here, we note that its intuition comes from a simple idea—any
+       optimal code can be converted into an optimal code in which the code-words for the
+       two lowest-frequency characters, a and b, differ only in their last bit. Repeating the
+       argument for a string with a and b replaced by a character c, gives the following:
+       Proposition 13.5: Huffman’s algorithm constructs an optimal preﬁx code for a
+       string of length n with d distinct characters in O(n + d log d) time.

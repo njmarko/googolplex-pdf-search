@@ -1,0 +1,37 @@
+10                                                         Chapter 1. Python Primer
+   The tuple Class
+   The tuple class provides an immutable version of a sequence, and therefore its
+   instances have an internal representation that may be more streamlined than that of
+   a list. While Python uses the [ ] characters to delimit a list, parentheses delimit a
+   tuple, with ( ) being an empty tuple. There is one important subtlety. To express
+   a tuple of length one as a literal, a comma must be placed after the element, but
+   within the parentheses. For example, (17,) is a one-element tuple. The reason for
+   this requirement is that, without the trailing comma, the expression (17) is viewed
+   as a simple parenthesized numeric expression.
+   The str Class
+   Python’s str class is speciﬁcally designed to efﬁciently represent an immutable
+   sequence of characters, based upon the Unicode international character set. Strings
+   have a more compact internal representation than the referential lists and tuples, as
+   portrayed in Figure 1.5.
+                                    S A M P L E
+                                     0    1   2  3  4   5
+         Figure 1.5: A Python string, which is an indexed sequence of characters.
+        String literals can be enclosed in single quotes, as in hello , or double
+   quotes, as in "hello". This choice is convenient, especially when using an-
+   other of the quotation characters as an actual character in the sequence, as in
+   "Don t worry". Alternatively, the quote delimiter can be designated using a
+   backslash as a so-called escape character, as in Don\ t worry . Because the
+   backslash has this purpose, the backslash must itself be escaped to occur as a natu-
+   ral character of the string literal, as in C:\\Python\\ , for a string that would be
+   displayed as C:\Python\. Other commonly escaped characters are \n for newline
+   and \t for tab. Unicode characters can be included, such as 20\u20AC for the
+   string 20 .
+        Python also supports using the delimiter       or """ to begin and end a string
+   literal. The advantage of such triple-quoted strings is that newline characters can
+   be embedded naturally (rather than escaped as \n). This can greatly improve the
+   readability of long, multiline strings in source code. For example, at the beginning
+   of Code Fragment 1.1, rather than use separate print statements for each line of
+   introductory output, we can use a single print statement, as follows:
+        print(”””Welcome to the GPA calculator.
+        Please enter all your letter grades, one per line.
+        Enter a blank line to designate the end.”””)

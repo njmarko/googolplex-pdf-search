@@ -1,0 +1,36 @@
+10.2. Hash Tables                                                                                   413
+          collisions for common groups of strings. In particular, "temp01" and "temp10"
+          collide using this function, as do "stop", "tops", "pots", and "spot". A better
+          hash code should somehow take into consideration the positions of the xi ’s. An
+          alternative hash code, which does exactly this, is to choose a nonzero constant,
+          a = 1, and use as a hash code the value
+                                         x0 an−1 + x1 an−2 + · · · + xn−2 a + xn−1 .
+          Mathematically speaking, this is simply a polynomial in a that takes the compo-
+          nents (x0 , x1 , . . . , xn−1 ) of an object x as its coefﬁcients. This hash code is therefore
+          called a polynomial hash code. By Horner’s rule (see Exercise C-3.50), this poly-
+          nomial can be computed as
+                           xn−1 + a(xn−2 + a(xn−3 + · · · + a(x2 + a(x1 + ax0 )) · · · )).
+              Intuitively, a polynomial hash code uses multiplication by different powers as a
+          way to spread out the inﬂuence of each component across the resulting hash code.
+              Of course, on a typical computer, evaluating a polynomial will be done using
+          the ﬁnite bit representation for a hash code; hence, the value will periodically over-
+          ﬂow the bits used for an integer. Since we are more interested in a good spread of
+          the object x with respect to other keys, we simply ignore such overﬂows. Still, we
+          should be mindful that such overﬂows are occurring and choose the constant a so
+          that it has some nonzero, low-order bits, which will serve to preserve some of the
+          information content even as we are in an overﬂow situation.
+              We have done some experimental studies that suggest that 33, 37, 39, and 41
+          are particularly good choices for a when working with character strings that are
+          English words. In fact, in a list of over 50,000 English words formed as the union
+          of the word lists provided in two variants of Unix, we found that taking a to be 33,
+          37, 39, or 41 produced less than 7 collisions in each case!
+          Cyclic-Shift Hash Codes
+          A variant of the polynomial hash code replaces multiplication by a with a cyclic
+          shift of a partial sum by a certain number of bits. For example, a 5-bit cyclic shift
+          of the 32-bit value 00111101100101101010100010101000 is achieved by taking
+          the leftmost ﬁve bits and placing those on the rightmost side of the representation,
+          resulting in 10110010110101010001010100000111. While this operation has little
+          natural meaning in terms of arithmetic, it accomplishes the goal of varying the bits
+          of the calculation. In Python, a cyclic shift of bits can be accomplished through
+          careful use of the bitwise operators << and >>, taking care to truncate results to
+          32-bit integers.

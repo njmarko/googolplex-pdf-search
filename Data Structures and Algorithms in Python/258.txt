@@ -1,0 +1,43 @@
+6.1. Stacks                                                                                  237
+              We assume the input is a sequence of characters, such as [(5+x)-(y+z)] .
+          We perform a left-to-right scan of the original sequence, using a stack S to facilitate
+          the matching of grouping symbols. Each time we encounter an opening symbol,
+          we push that symbol onto S, and each time we encounter a closing symbol, we pop
+          a symbol from the stack S (assuming S is not empty), and check that these two
+          symbols form a valid pair. If we reach the end of the expression and the stack is
+          empty, then the original expression was properly matched. Otherwise, there must
+          be an opening delimiter on the stack without a matching symbol.
+              If the length of the original expression is n, the algorithm will make at most
+          n calls to push and n calls to pop. Those calls run in a total of O(n) time, even con-
+          sidering the amortized nature of the O(1) time bound for those methods. Given that
+          our selection of possible delimiters, ({[, has constant size, auxiliary tests such as
+          c in lefty and righty.index(c) each run in O(1) time. Combining these operations,
+          the matching algorithm on a sequence of length n runs in O(n) time.
+          Matching Tags in a Markup Language
+          Another application of matching delimiters is in the validation of markup languages
+          such as HTML or XML. HTML is the standard format for hyperlinked documents
+          on the Internet and XML is an extensible markup language used for a variety of
+          structured data sets. We show a sample HTML document and a possible rendering
+          in Figure 6.3.
+            <body>
+            <center>
+            <h1> The Little Boat </h1>                           The Little Boat
+            </center>
+            <p> The storm tossed the little                 The storm tossed the little boat
+            boat like a cheap sneaker in an                 like a cheap sneaker in an
+            old washing machine. The three                  old washing machine. The three
+            drunken fishermen were used to
+                                                            drunken ﬁshermen were used to
+            such treatment, of course, but
+            not the tree salesman, who even as              such treatment, of course, but not
+            a stowaway now felt that he                     the tree salesman, who even as
+            had overpaid for the voyage. </p>               a stowaway now felt that he had
+            <ol>                                            overpaid for the voyage.
+            <li> Will the salesman die? </li>                  1. Will the salesman die?
+            <li> What color is the boat? </li>                 2. What color is the boat?
+            <li> And what about Naomi? </li>
+                                                               3. And what about Naomi?
+            </ol>
+            </body>
+                                 (a)                                         (b)
+            Figure 6.3: Illustrating HTML tags. (a) An HTML document; (b) its rendering.

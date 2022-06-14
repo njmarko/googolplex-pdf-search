@@ -1,0 +1,43 @@
+10.4. Skip Lists                                                                             445
+               So we have yet to bound the number of scan-forward steps we make. Let ni be
+          the number of keys examined while scanning forward at level i. Observe that, after
+          the key at the starting position, each additional key examined in a scan-forward at
+          level i cannot also belong to level i + 1. If any of these keys were on the previous
+          level, we would have encountered them in the previous scan-forward step. Thus,
+          the probability that any key is counted in ni is 1/2. Therefore, the expected value of
+          ni is exactly equal to the expected number of times we must ﬂip a fair coin before
+          it comes up heads. This expected value is 2. Hence, the expected amount of time
+          spent scanning forward at any level i is O(1). Since S has O(log n) levels with high
+          probability, a search in S takes expected time O(log n). By a similar analysis, we
+          can show that the expected running time of an insertion or a removal is O(log n).
+          Space Usage in a Skip List
+          Finally, let us turn to the space requirement of a skip list S with n entries. As we
+          observed above, the expected number of positions at level i is n/2i , which means
+          that the expected total number of positions in S is
+                                               h         h
+                                                  n         1
+                                              ∑ 2i = n ∑ 2i .
+                                              i=0       i=0
+          Using Proposition 3.5 on geometric summations, we have
+                                   1 h+1                      
+                         h
+                            1             −1               1
+                         ∑ i = 1 − 1 = 2 · 1 − 2h+1 < 2 for all h ≥ 0.
+                                   2
+                        i=0 2        2
+          Hence, the expected space requirement of S is O(n).
+               Table 10.4 summarizes the performance of a sorted map realized by a skip list.
+                                  Operation      Running Time
+                                       len(M)    O(1)
+                                       k in M    O(log n) expected
+                                    M[k] = v     O(log n) expected
+                                     del M[k]    O(log n) expected
+              M.ﬁnd min( ), M.ﬁnd max( )         O(1)
+                 M.ﬁnd lt(k), M.ﬁnd gt(k)
+                                                 O(log n) expected
+                M.ﬁnd le(k), M.ﬁnd ge(k)
+                  M.ﬁnd range(start, stop)       O(s + log n) expected, with s items reported
+                       iter(M), reversed(M)      O(n)
+          Table 10.4: Performance of a sorted map implemented with a skip list. We use n to
+          denote the number of entries in the dictionary at the time the operation is performed.
+          The expected space requirement is O(n).

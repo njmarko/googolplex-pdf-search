@@ -1,0 +1,40 @@
+420                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+    10.2.3 Load Factors, Rehashing, and Eﬃciency
+       In the hash table schemes described thus far, it is important that the load factor,
+       λ = n/N, be kept below 1. With separate chaining, as λ gets very close to 1, the
+       probability of a collision greatly increases, which adds overhead to our operations,
+       since we must revert to linear-time list-based methods in buckets that have col-
+       lisions. Experiments and average-case analyses suggest that we should maintain
+       λ < 0.9 for hash tables with separate chaining.
+            With open addressing, on the other hand, as the load factor λ grows beyond 0.5
+       and starts approaching 1, clusters of entries in the bucket array start to grow as well.
+       These clusters cause the probing strategies to “bounce around” the bucket array for
+       a considerable amount of time before they ﬁnd an empty slot. In Exercise C-10.36,
+       we explore the degradation of quadratic probing when λ ≥ 0.5. Experiments sug-
+       gest that we should maintain λ < 0.5 for an open addressing scheme with linear
+       probing, and perhaps only a bit higher for other open addressing schemes (for ex-
+       ample, Python’s implementation of open addressing enforces that λ < 2/3).
+            If an insertion causes the load factor of a hash table to go above the speciﬁed
+       threshold, then it is common to resize the table (to regain the speciﬁed load factor)
+       and to reinsert all objects into this new table. Although we need not deﬁne a new
+       hash code for each object, we do need to reapply a new compression function that
+       takes into consideration the size of the new table. Each rehashing will generally
+       scatter the items throughout the new bucket array. When rehashing to a new table, it
+       is a good requirement for the new array’s size to be at least double the previous size.
+       Indeed, if we always double the size of the table with each rehashing operation, then
+       we can amortize the cost of rehashing all the entries in the table against the time
+       used to insert them in the ﬁrst place (as with dynamic arrays; see Section 5.3).
+       Eﬃciency of Hash Tables
+       Although the details of the average-case analysis of hashing are beyond the scope
+       of this book, its probabilistic basis is quite intuitive. If our hash function is good,
+       then we expect the entries to be uniformly distributed in the N cells of the bucket
+       array. Thus, to store n entries, the expected number of keys in a bucket would
+       be n/N, which is O(1) if n is O(N).
+            The costs associated with a periodic rehashing, to resize a table after occasional
+       insertions or deletions can be accounted for separately, leading to an additional
+       O(1) amortized cost for setitem and getitem .
+            In the worst case, a poor hash function could map every item to the same bucket.
+       This would result in linear-time performance for the core map operations with sepa-
+       rate chaining, or with any open addressing model in which the secondary sequence
+       of probes depends only on the hash code. A summary of these costs is given in
+       Table 10.2.

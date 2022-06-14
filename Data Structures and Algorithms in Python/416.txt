@@ -1,0 +1,35 @@
+9.6. Exercises                                                                              395
+  9.6     Exercises
+          For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+      Reinforcement
+             R-9.1 How long would it take to remove the log n smallest elements from a
+                    heap that contains n entries, using the remove min operation?
+             R-9.2 Suppose you label each position p of a binary tree T with a key equal to
+                    its preorder rank. Under what circumstances is T a heap?
+             R-9.3 What does each remove min call return within the following sequence of
+                    priority queue ADT methods: add(5,A), add(4,B), add(7,F), add(1,D),
+                    remove min( ), add(3,J), add(6,L), remove min( ), remove min( ),
+                    add(8,G), remove min( ), add(2,H), remove min( ), remove min( )?
+             R-9.4 An airport is developing a computer simulation of air-trafﬁc control that
+                    handles events such as landings and takeoffs. Each event has a time stamp
+                    that denotes the time when the event will occur. The simulation program
+                    needs to efﬁciently perform the following two fundamental operations:
+                        • Insert an event with a given time stamp (that is, add a future event).
+                        • Extract the event with smallest time stamp (that is, determine the
+                          next event to process).
+                    Which data structure should be used for the above operations? Why?
+             R-9.5 The min method for the UnsortedPriorityQueue class executes in O(n)
+                    time, as analyzed in Table 9.2. Give a simple modiﬁcation to the class so
+                    that min runs in O(1) time. Explain any necessary modiﬁcations to other
+                    methods of the class.
+             R-9.6 Can you adapt your solution to the previous problem to make remove min
+                    run in O(1) time for the UnsortedPriorityQueue class? Explain your an-
+                    swer.
+             R-9.7 Illustrate the execution of the selection-sort algorithm on the following
+                    input sequence: (22, 15, 36, 44, 10, 3, 9, 13, 29, 25).
+             R-9.8 Illustrate the execution of the insertion-sort algorithm on the input se-
+                    quence of the previous problem.
+             R-9.9 Give an example of a worst-case sequence with n elements for insertion-
+                    sort, and show that insertion-sort runs in Ω(n2 ) time on such a sequence.
+           R-9.10 At which positions of a heap might the third smallest key be stored?
+           R-9.11 At which positions of a heap might the largest key be stored?

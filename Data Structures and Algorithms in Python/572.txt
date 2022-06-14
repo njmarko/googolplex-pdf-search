@@ -1,0 +1,27 @@
+12.3. Quick-Sort                                                                            551
+               Like merge-sort, the execution of quick-sort can be visualized by means of a bi-
+          nary recursion tree, called the quick-sort tree. Figure 12.9 summarizes an execution
+          of the quick-sort algorithm by showing the input and output sequences processed at
+          each node of the quick-sort tree. The step-by-step evolution of the quick-sort tree
+          is shown in Figures 12.10, 12.11, and 12.12.
+               Unlike merge-sort, however, the height of the quick-sort tree associated with an
+          execution of quick-sort is linear in the worst case. This happens, for example, if the
+          sequence consists of n distinct elements and is already sorted. Indeed, in this case,
+          the standard choice of the last element as pivot yields a subsequence L of size n − 1,
+          while subsequence E has size 1 and subsequence G has size 0. At each invocation
+          of quick-sort on subsequence L, the size decreases by 1. Hence, the height of the
+          quick-sort tree is n − 1.
+                                85     24    63      45     17     31    96   50
+                              24     45    17      31            85    63   96
+                              24   17           45            85   63
+                                    24                              85
+                                                        (a)
+                                17     24    31      45     50     63    85   96
+                              17     24    31      45            63    85   96
+                              17   24           45            63   85
+                                    24                              85
+                                                        (b)
+          Figure 12.9: Quick-sort tree T for an execution of the quick-sort algorithm on a se-
+          quence with 8 elements: (a) input sequences processed at each node of T ; (b) output
+          sequences generated at each node of T . The pivot used at each level of the recursion
+          is shown in bold.

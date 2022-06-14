@@ -1,0 +1,38 @@
+6.1. Stacks                                                                            233
+        1 class ArrayStack:
+        2   ”””LIFO Stack implementation using a Python list as underlying storage.”””
+        3
+        4   def init (self):
+        5     ”””Create an empty stack.”””
+        6     self. data = [ ]                          # nonpublic list instance
+        7
+        8   def len (self):
+        9     ”””Return the number of elements in the stack.”””
+      10      return len(self. data)
+      11
+      12    def is empty(self):
+      13      ”””Return True if the stack is empty.”””
+      14      return len(self. data) == 0
+      15
+      16    def push(self, e):
+      17      ”””Add element e to the top of the stack.”””
+      18      self. data.append(e)                      # new item stored at end of list
+      19
+      20    def top(self):
+      21      ”””Return (but do not remove) the element at the top of the stack.
+      22
+      23      Raise Empty exception if the stack is empty.
+      24      ”””
+      25      if self.is empty( ):
+      26         raise Empty( Stack is empty )
+      27      return self. data[−1]                     # the last item in the list
+      28
+      29    def pop(self):
+      30      ”””Remove and return the element from the top of the stack (i.e., LIFO).
+      31
+      32      Raise Empty exception if the stack is empty.
+      33      ”””
+      34      if self.is empty( ):
+      35         raise Empty( Stack is empty )
+      36      return self. data.pop( )                  # remove last item from list
+               Code Fragment 6.2: Implementing a stack using a Python list as storage.

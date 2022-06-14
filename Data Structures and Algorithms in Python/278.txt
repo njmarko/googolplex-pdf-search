@@ -1,0 +1,35 @@
+7.1. Singly Linked Lists                                                                       257
+                     LAX               MSP               ATL               BOS
+              head                                                    tail
+           Figure 7.2: Example of a singly linked list whose elements are strings indicating
+           airport codes. The list instance maintains a member named head that identiﬁes
+           the ﬁrst node of the list, and in some applications another member named tail that
+           identiﬁes the last node of the list. The None object is denoted as Ø.
+                The ﬁrst and last node of a linked list are known as the head and tail of the
+           list, respectively. By starting at the head, and moving from one node to another
+           by following each node’s next reference, we can reach the tail of the list. We can
+           identify the tail as the node having None as its next reference. This process is
+           commonly known as traversing the linked list. Because the next reference of a
+           node can be viewed as a link or pointer to another node, the process of traversing
+           a list is also known as link hopping or pointer hopping.
+                A linked list’s representation in memory relies on the collaboration of many
+           objects. Each node is represented as a unique object, with that instance storing a
+           reference to its element and a reference to the next node (or None). Another object
+           represents the linked list as a whole. Minimally, the linked list instance must keep
+           a reference to the head of the list. Without an explicit reference to the head, there
+           would be no way to locate that node (or indirectly, any others). There is not an
+           absolute need to store a direct reference to the tail of the list, as it could otherwise
+           be located by starting at the head and traversing the rest of the list. However,
+           storing an explicit reference to the tail node is a common convenience to avoid
+           such a traversal. In similar regard, it is common for the linked list instance to keep
+           a count of the total number of nodes that comprise the list (commonly described as
+           the size of the list), to avoid the need to traverse the list to count the nodes.
+                For the remainder of this chapter, we continue to illustrate nodes as objects,
+           and each node’s “next” reference as a pointer. However, for the sake of simplicity,
+           we illustrate a node’s element embedded directly within the node structure, even
+           though the element is, in fact, an independent object. For example, Figure 7.3 is a
+           more compact illustration of the linked list from Figure 7.2.
+                     LAX               MSP               ATL               BOS
+              head                                                   tail
+           Figure 7.3: A compact illustration of a singly linked list, with elements embedded
+           in the nodes (rather than more accurately drawn as references to external objects).

@@ -1,0 +1,30 @@
+8.4. Tree Traversal Algorithms                                                                  331
+       8.4.3 Inorder Traversal of a Binary Tree
+           The standard preorder, postorder, and breadth-ﬁrst traversals that were introduced
+           for general trees, can be directly applied to binary trees. In this section, we intro-
+           duce another common traversal algorithm speciﬁcally for a binary tree.
+                During an inorder traversal, we visit a position between the recursive traver-
+           sals of its left and right subtrees. The inorder traversal of a binary tree T can be
+           informally viewed as visiting the nodes of T “from left to right.” Indeed, for every
+           position p, the inorder traversal visits p after all the positions in the left subtree of
+           p and before all the positions in the right subtree of p. Pseudo-code for the inorder
+           traversal algorithm is given in Code Fragment 8.15, and an example of an inorder
+           traversal is portrayed in Figure 8.18.
+           Algorithm inorder(p):
+              if p has a left child lc then
+                 inorder(lc)                            {recursively traverse the left subtree of p}
+              perform the “visit” action for position p
+              if p has a right child rc then
+                 inorder(rc)                          {recursively traverse the right subtree of p}
+           Code Fragment 8.15: Algorithm inorder for performing an inorder traversal of a
+           subtree rooted at position p of a binary tree.
+                                                               −
+                                         /                                            +
+                               ×                      +                ×                   6
+                        +           3           −          2       3         −
+                    3        1              9       5                     7       4
+                                 Figure 8.18: Inorder traversal of a binary tree.
+                The inorder traversal algorithm has several important applications. When using
+           a binary tree to represent an arithmetic expression, as in Figure 8.18, the inorder
+           traversal visits positions in a consistent order with the standard representation of
+           the expression, as in 3 + 1 × 3/9 − 5 + 2 . . . (albeit without parentheses).

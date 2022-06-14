@@ -1,0 +1,34 @@
+2.4. Inheritance                                                                             89
+          An Arithmetic Progression Class
+           Our ﬁrst example of a specialized progression is an arithmetic progression. While
+           the default progression increases its value by one in each step, an arithmetic pro-
+           gression adds a ﬁxed constant to one term of the progression to produce the next.
+           For example, using an increment of 4 for an arithmetic progression that starts at 0
+           results in the sequence 0, 4, 8, 12, . . . .
+               Code Fragment 2.9 presents our implementation of an ArithmeticProgression
+           class, which relies on Progression as its base class. The constructor for this new
+           class accepts both an increment value and a starting value as parameters, although
+           default values for each are provided. By our convention, ArithmeticProgression(4)
+           produces the sequence 0, 4, 8, 12, . . . , and ArithmeticProgression(4, 1) produces
+           the sequence 1, 5, 9, 13, . . . .
+               The body of the ArithmeticProgression constructor calls the super constructor
+           to initialize the current data member to the desired start value. Then it directly
+           establishes the new increment data member for the arithmetic progression. The
+           only remaining detail in our implementation is to override the advance method so
+           as to add the increment to the current value.
+       1 class ArithmeticProgression(Progression):                 # inherit from Progression
+       2     ”””Iterator producing an arithmetic progression.”””
+       3
+       4     def init (self, increment=1, start=0):
+       5        ”””Create a new arithmetic progression.
+       6
+       7        increment the ﬁxed constant to add to each term (default 1)
+       8        start        the ﬁrst term of the progression (default 0)
+       9        ”””
+      10        super( ). init (start)                             # initialize base class
+      11        self. increment = increment
+      12
+      13     def advance(self):                                    # override inherited version
+      14        ”””Update current value by adding the ﬁxed increment.”””
+      15        self. current += self. increment
+                   Code Fragment 2.9: A class that produces an arithmetic progression.

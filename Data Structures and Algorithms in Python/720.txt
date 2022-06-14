@@ -1,0 +1,41 @@
+15.1. Memory Management                                                                      699
+      15.1.1 Memory Allocation
+         With Python, all objects are stored in a pool of memory, known as the memory
+         heap or Python heap (which should not be confused with the “heap” data structure
+         presented in Chapter 9). When a command such as
+               w = Widget( )
+         is executed, assuming Widget is the name of a class, a new instance of the class
+         is created and stored somewhere within the memory heap. The Python interpreter
+         is responsible for negotiating the use of space with the operating system and for
+         managing the use of the memory heap when executing a Python program.
+              The storage available in the memory heap is divided into blocks, which are con-
+         tiguous array-like “chunks” of memory that may be of variable or ﬁxed sizes. The
+         system must be implemented so that it can quickly allocate memory for new ob-
+         jects. One popular method is to keep contiguous “holes” of available free memory
+         in a linked list, called the free list. The links joining these holes are stored inside
+         the holes themselves, since their memory is not being used. As memory is allocated
+         and deallocated, the collection of holes in the free lists changes, with the unused
+         memory being separated into disjoint holes divided by blocks of used memory. This
+         separation of unused memory into separate holes is known as fragmentation. The
+         problem is that it becomes more difﬁcult to ﬁnd large continuous chunks of mem-
+         ory, when needed, even though an equivalent amount of memory may be unused
+         (yet fragmented). Therefore, we would like to minimize fragmentation as much as
+         possible.
+              There are two kinds of fragmentation that can occur. Internal fragmentation
+         occurs when a portion of an allocated memory block is unused. For example, a
+         program may request an array of size 1000, but only use the ﬁrst 100 cells of this
+         array. There is not much that a run-time environment can do to reduce internal
+         fragmentation. External fragmentation, on the other hand, occurs when there is a
+         signiﬁcant amount of unused memory between several contiguous blocks of allo-
+         cated memory. Since the run-time environment has control over where to allocate
+         memory when it is requested, the run-time environment should allocate memory in
+         a way to try to reduce external fragmentation as much as reasonably possible.
+              Several heuristics have been suggested for allocating memory from the heap
+         so as to minimize external fragmentation. The best-ﬁt algorithm searches the en-
+         tire free list to ﬁnd the hole whose size is closest to the amount of memory being
+         requested. The ﬁrst-ﬁt algorithm searches from the beginning of the free list for
+         the ﬁrst hole that is large enough. The next-ﬁt algorithm is similar, in that it also
+         searches the free list for the ﬁrst hole that is large enough, but it begins its search
+         from where it left off previously, viewing the free list as a circularly linked list
+         (Section 7.2). The worst-ﬁt algorithm searches the free list to ﬁnd the largest hole
+         of available memory, which might be done faster than a search of the entire free list

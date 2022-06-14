@@ -1,0 +1,38 @@
+14.7. Minimum Spanning Trees                                                                 681
+      14.7.3 Disjoint Partitions and Union-Find Structures
+          In this section, we consider a data structure for managing a partition of elements
+          into a collection of disjoint sets. Our initial motivation is in support of Kruskal’s
+          minimum spanning tree algorithm, in which a forest of disjoint trees is maintained,
+          with occasional merging of neighboring trees. More generally, the disjoint partition
+          problem can be applied to various models of discrete growth.
+               We formalize the problem with the following model. A partition data structure
+          manages a universe of elements that are organized into disjoint sets (that is, an
+          element belongs to one and only one of these sets). Unlike with the Set ADT or
+          Python’s set class, we do not expect to be able to iterate through the contents of a
+          set, nor to efﬁciently test whether a given set includes a given element. To avoid
+          confusion with such notions of a set, we will refer to the clusters of our partition as
+          groups. However, we will not require an explicit structure for each group, instead
+          allowing the organization of groups to be implicit. To differentiate between one
+          group and another, we assume that at any point in time, each group has a designated
+          entry that we refer to as the leader of the group.
+               Formally, we deﬁne the methods of a partition ADT using position objects,
+          each of which stores an element x. The partition ADT supports the following meth-
+          ods.
+                 make group(x): Create a singleton group containing new element x and
+                                      return the position storing x.
+                      union(p, q): Merge the groups containing positions p and q.
+                            ﬁnd(p): Return the position of the leader of the group containing
+                                      position p.
+          Sequence Implementation
+          A simple implementation of a partition with a total of n elements uses a collection
+          of sequences, one for each group, where the sequence for a group A stores element
+          positions. Each position object stores a variable, element, which references its
+          associated element x and allows the execution of an element() method in O(1) time.
+          In addition, each position stores a variable, group, that references the sequence
+          storing p, since this sequence is representing the group containing p’s element.
+          (See Figure 14.25.)
+               With this representation, we can easily perform the make group(x) and ﬁnd(p)
+          operations in O(1) time, allowing the ﬁrst position in a sequence to serve as the
+          “leader.” Operation union(p, q) requires that we join two sequences into one and
+          update the group references of the positions in one of the two. We choose to imple-
+          ment this operation by removing all the positions from the sequence with smaller

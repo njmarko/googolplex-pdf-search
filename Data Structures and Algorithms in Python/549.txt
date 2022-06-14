@@ -1,0 +1,34 @@
+528                                                                 Chapter 11. Search Trees
+ 11.7    Exercises
+       For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+    Reinforcement
+        R-11.1 If we insert the entries (1, A), (2, B), (3,C), (4, D), and (5, E), in this order,
+                 into an initially empty binary search tree, what will it look like?
+        R-11.2 Insert, into an empty binary search tree, entries with keys 30, 40, 24, 58,
+                 48, 26, 11, 13 (in this order). Draw the tree after each insertion.
+        R-11.3 How many different binary search trees can store the keys {1, 2, 3}?
+        R-11.4 Dr. Amongus claims that the order in which a ﬁxed set of entries is inserted
+                 into a binary search tree does not matter—the same tree results every time.
+                 Give a small example that proves he is wrong.
+        R-11.5 Dr. Amongus claims that the order in which a ﬁxed set of entries is inserted
+                 into an AVL tree does not matter—the same AVL tree results every time.
+                 Give a small example that proves he is wrong.
+        R-11.6 Our implementation of the TreeMap. subtree search utility, from Code
+                 Fragment 11.4, relies on recursion. For a large unbalanced tree, Python’s
+                 default limit on recursive depth may be prohibitive. Give an alternative
+                 implementation of that method that does not rely on the use of recursion.
+        R-11.7 Do the trinode restructurings in Figures 11.12 and 11.14 result in single
+                 or double rotations?
+        R-11.8 Draw the AVL tree resulting from the insertion of an entry with key 52
+                 into the AVL tree of Figure 11.14b.
+        R-11.9 Draw the AVL tree resulting from the removal of the entry with key 62
+                 from the AVL tree of Figure 11.14b.
+      R-11.10 Explain why performing a rotation in an n-node binary tree when using
+                 the array-based representation of Section 8.3.2 takes Ω(n) time.
+      R-11.11 Give a schematic ﬁgure, in the style of Figure 11.13, showing the heights
+                 of subtrees during a deletion operation in an AVL tree that triggers a tri-
+                 node restructuring for the case in which the two children of the node de-
+                 noted as y start with equal heights. What is the net effect of the height of
+                 the rebalanced subtree due to the deletion operation?
+      R-11.12 Repeat the previous problem, considering the case in which y’s children
+                 start with different heights.

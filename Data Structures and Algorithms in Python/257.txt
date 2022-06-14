@@ -1,0 +1,36 @@
+236                                               Chapter 6. Stacks, Queues, and Deques
+     6.1.4 Matching Parentheses and HTML Tags
+        In this subsection, we explore two related applications of stacks, both of which
+        involve testing for pairs of matching delimiters. In our ﬁrst application, we consider
+        arithmetic expressions that may contain various pairs of grouping symbols, such as
+             • Parentheses: “(” and “)”
+             • Braces: “{” and “}”
+             • Brackets: “[” and “]”
+        Each opening symbol must match its corresponding closing symbol. For example, a
+        left bracket, “[,” must match a corresponding right bracket, “],” as in the expression
+        [(5+x)-(y+z)]. The following examples further illustrate this concept:
+             •  Correct: ( )(( )){([( )])}
+             •  Correct: ((( )(( )){([( )])}))
+             •  Incorrect: )(( )){([( )])}
+             •  Incorrect: ({[ ])}
+             •  Incorrect: (
+        We leave the precise deﬁnition of a matching group of symbols to Exercise R-6.6.
+        An Algorithm for Matching Delimiters
+        An important task when processing arithmetic expressions is to make sure their
+        delimiting symbols match up correctly. Code Fragment 6.4 presents a Python im-
+        plementation of such an algorithm. A discussion of the code follows.
+     1 def is matched(expr):
+     2    ”””Return True if all delimiters are properly match; False otherwise.”””
+     3    lefty = ({[                                         # opening delimiters
+     4    righty = )}]                                        # respective closing delims
+     5    S = ArrayStack( )
+     6    for c in expr:
+     7       if c in lefty:
+     8          S.push(c)                                     # push left delimiter on stack
+     9       elif c in righty:
+    10          if S.is empty( ):
+    11             return False                               # nothing to match with
+    12          if righty.index(c) != lefty.index(S.pop( )):
+    13             return False                               # mismatched
+    14    return S.is empty( )                                # were all symbols matched?
+         Code Fragment 6.4: Function for matching delimiters in an arithmetic expression.

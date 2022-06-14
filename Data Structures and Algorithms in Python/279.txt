@@ -1,0 +1,29 @@
+258                                                             Chapter 7. Linked Lists
+    Inserting an Element at the Head of a Singly Linked List
+    An important property of a linked list is that it does not have a predetermined ﬁxed
+    size; it uses space proportionally to its current number of elements. When using a
+    singly linked list, we can easily insert an element at the head of the list, as shown in
+    Figure 7.4, and described with pseudo-code in Code Fragment 7.1. The main idea
+    is that we create a new node, set its element to the new element, set its next link to
+    refer to the current head, and then set the list’s head to point to the new node.
+                          head
+                               MSP               ATL              BOS
+                                               (a)
+       newest             head
+             LAX               MSP               ATL              BOS
+                                               (b)
+       newest             head
+             LAX               MSP               ATL              BOS
+                                               (c)
+    Figure 7.4: Insertion of an element at the head of a singly linked list: (a) before
+    the insertion; (b) after creation of a new node; (c) after reassignment of the head
+    reference.
+    Algorithm add ﬁrst(L, e):
+         newest = Node(e) {create new node instance storing reference to element e}
+         newest.next = L.head {set new node’s next to reference the old head node}
+         L.head = newest                   {set variable head to reference the new node}
+         L.size = L.size + 1                                  {increment the node count}
+    Code Fragment 7.1: Inserting a new element at the beginning of a singly linked
+    list L. Note that we set the next pointer of the new node before we reassign variable
+    L.head to it. If the list were initially empty (i.e., L.head is None), then a natural
+    consequence is that the new node has its next reference set to None.

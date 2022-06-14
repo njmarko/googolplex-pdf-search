@@ -1,0 +1,38 @@
+130                                                         Chapter 3. Algorithm Analysis
+            If we must draw a line between efﬁcient and inefﬁcient algorithms, therefore,
+       it is natural to make this distinction be that between those algorithms running in
+       polynomial time and those running in exponential time. That is, make the distinc-
+       tion between algorithms with a running time that is O(nc ), for some constant c > 1,
+       and those with a running time that is O(b n ), for some constant b > 1. Like so many
+       notions we have discussed in this section, this too should be taken with a “grain of
+       salt,” for an algorithm running in O(n100 ) time should probably not be considered
+       “efﬁcient.” Even so, the distinction between polynomial-time and exponential-time
+       algorithms is considered a robust measure of tractability.
+    3.3.3 Examples of Algorithm Analysis
+       Now that we have the big-Oh notation for doing algorithm analysis, let us give some
+       examples by characterizing the running time of some simple algorithms using this
+       notation. Moreover, in keeping with our earlier promise, we illustrate below how
+       each of the seven functions given earlier in this chapter can be used to characterize
+       the running time of an example algorithm.
+            Rather than use pseudo-code in this section, we give complete Python imple-
+       mentations for our examples. We use Python’s list class as the natural representa-
+       tion for an “array” of values. In Chapter 5, we will fully explore the underpinnings
+       of Python’s list class, and the efﬁciency of the various behaviors that it supports. In
+       this section, we rely on just a few of its behaviors, discussing their efﬁciencies as
+       introduced.
+       Constant-Time Operations
+       Given an instance, named data, of the Python list class, a call to the function,
+       len(data), is evaluated in constant time. This is a very simple algorithm because
+       the list class maintains, for each list, an instance variable that records the current
+       length of the list. This allows it to immediately report that length, rather than take
+       time to iteratively count each of the elements in the list. Using asymptotic notation,
+       we say that this function runs in O(1) time; that is, the running time of this function
+       is independent of the length, n, of the list.
+            Another central behavior of Python’s list class is that it allows access to an arbi-
+       trary element of the list using syntax, data[j], for integer index j. Because Python’s
+       lists are implemented as array-based sequences, references to a list’s elements are
+       stored in a consecutive block of memory. The jth element of the list can be found,
+       not by iterating through the list one element at a time, but by validating the index,
+       and using it as an offset into the underlying array. In turn, computer hardware sup-
+       ports constant-time access to an element based on its memory address. Therefore,
+       we say that the expression data[j] is evaluated in O(1) time for a Python list.

@@ -1,0 +1,38 @@
+232                                          Chapter 6. Stacks, Queues, and Deques
+    Implementing a Stack Using a Python List
+    We use the adapter design pattern to deﬁne an ArrayStack class that uses an un-
+    derlying Python list for storage. (We choose the name ArrayStack to emphasize
+    that the underlying storage is inherently array based.) One question that remains is
+    what our code should do if a user calls pop or top when the stack is empty. Our
+    ADT suggests that an error occurs, but we must decide what type of error. When
+    pop is called on an empty Python list, it formally raises an IndexError, as lists are
+    index-based sequences. That choice does not seem appropriate for a stack, since
+    there is no assumption of indices. Instead, we can deﬁne a new exception class that
+    is more appropriate. Code Fragment 6.1 deﬁnes such an Empty class as a trivial
+    subclass of the Python Exception class.
+    class Empty(Exception):
+      ”””Error attempting to access an element from an empty container.”””
+      pass
+               Code Fragment 6.1: Deﬁnition for an Empty exception class.
+        The formal deﬁnition for our ArrayStack class is given in Code Fragment 6.2.
+    The constructor establishes the member self. data as an initially empty Python list,
+    for internal storage. The rest of the public stack behaviors are implemented, using
+    the corresponding adaptation that was outlined in Table 6.1.
+    Example Usage
+    Below, we present an example of the use of our ArrayStack class, mirroring the
+    operations at the beginning of Example 6.3 on page 230.
+      S = ArrayStack( )                     #   contents: []
+      S.push(5)                             #   contents: [5]
+      S.push(3)                             #   contents: [5, 3]
+      print(len(S))                         #   contents: [5, 3];        outputs  2
+      print(S.pop( ))                       #   contents: [5];           outputs  3
+      print(S.is empty( ))                  #   contents: [5];           outputs  False
+      print(S.pop( ))                       #   contents: [ ];           outputs  5
+      print(S.is empty( ))                  #   contents: [ ];           outputs  True
+      S.push(7)                             #   contents: [7]
+      S.push(9)                             #   contents: [7, 9]
+      print(S.top( ))                       #   contents: [7, 9];        outputs 9
+      S.push(4)                             #   contents: [7, 9, 4]
+      print(len(S))                         #   contents: [7, 9, 4];     outputs 3
+      print(S.pop( ))                       #   contents: [7, 9];        outputs 4
+      S.push(6)                             #   contents: [7, 9, 6]

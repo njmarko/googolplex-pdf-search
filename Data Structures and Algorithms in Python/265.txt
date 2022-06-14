@@ -1,0 +1,38 @@
+244                                             Chapter 6. Stacks, Queues, and Deques
+    40   def enqueue(self, e):
+    41      ”””Add an element to the back of queue.”””
+    42      if self. size == len(self. data):
+    43         self. resize(2 len(self.data))           # double the array size
+    44      avail = (self. front + self. size) % len(self. data)
+    45      self. data[avail] = e
+    46      self. size += 1
+    47
+    48   def resize(self, cap):                         # we assume cap >= len(self)
+    49      ”””Resize to a new list of capacity >= len(self).”””
+    50      old = self. data                            # keep track of existing list
+    51      self. data = [None] cap                     # allocate list with new capacity
+    52      walk = self. front
+    53      for k in range(self. size):                 # only consider existing elements
+    54         self. data[k] = old[walk]                # intentionally shift indices
+    55         walk = (1 + walk) % len(old)             # use old size as modulus
+    56      self. front = 0                             # front has been realigned
+       Code Fragment 6.7: Array-based implementation of a queue (continued from Code
+       Fragment 6.6).
+           The implementation of len and is empty are trivial, given knowledge of
+       the size. The implementation of the front method is also simple, as the front
+       index tells us precisely where the desired element is located within the data list,
+       assuming that list is not empty.
+       Adding and Removing Elements
+       The goal of the enqueue method is to add a new element to the back of the queue.
+       We need to determine the proper index at which to place the new element. Although
+       we do not explicitly maintain an instance variable for the back of the queue, we
+       compute the location of the next opening based on the formula:
+            avail = (self. front + self. size) % len(self. data)
+       Note that we are using the size of the queue as it exists prior to the addition of the
+       new element. For example, consider a queue with capacity 10, current size 3, and
+       ﬁrst element at index 5. The three elements of such a queue are stored at indices 5,
+       6, and 7. The new element should be placed at index (front + size) = 8. In a case
+       with wrap-around, the use of the modular arithmetic achieves the desired circular
+       semantics. For example, if our hypothetical queue had 3 elements with the ﬁrst at
+       index 8, our computation of (8+3) % 10 evaluates to 1, which is perfect since the
+       three existing elements occupy indices 8, 9, and 0.

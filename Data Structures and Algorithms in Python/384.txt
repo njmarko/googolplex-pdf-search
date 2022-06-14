@@ -1,0 +1,38 @@
+9.1. The Priority Queue Abstract Data Type                                                      363
+  9.1     The Priority Queue Abstract Data Type
+      9.1.1 Priorities
+          In Chapter 6, we introduced the queue ADT as a collection of objects that are
+          added and removed according to the ﬁrst-in, ﬁrst-out (FIFO) principle. A com-
+          pany’s customer call center embodies such a model in which waiting customers are
+          told “calls will be answered in the order that they were received.” In that setting, a
+          new call is added to the back of the queue, and each time a customer service rep-
+          resentative becomes available, he or she is connected with the call that is removed
+          from the front of the call queue.
+              In practice, there are many applications in which a queue-like structure is used
+          to manage objects that must be processed in some way, but for which the ﬁrst-in,
+          ﬁrst-out policy does not sufﬁce. Consider, for example, an air-trafﬁc control center
+          that has to decide which ﬂight to clear for landing from among many approaching
+          the airport. This choice may be inﬂuenced by factors such as each plane’s distance
+          from the runway, time spent waiting in a holding pattern, or amount of remaining
+          fuel. It is unlikely that the landing decisions are based purely on a FIFO policy.
+              There are other situations in which a “ﬁrst come, ﬁrst serve” policy might seem
+          reasonable, yet for which other priorities come into play. To use another airline
+          analogy, suppose a certain ﬂight is fully booked an hour prior to departure. Be-
+          cause of the possibility of cancellations, the airline maintains a queue of standby
+          passengers hoping to get a seat. Although the priority of a standby passenger is
+          inﬂuenced by the check-in time of that passenger, other considerations include the
+          fare paid and frequent-ﬂyer status. So it may be that an available seat is given to
+          a passenger who has arrived later than another, if such a passenger is assigned a
+          better priority by the airline agent.
+              In this chapter, we introduce a new abstract data type known as a priority queue.
+          This is a collection of prioritized elements that allows arbitrary element insertion,
+          and allows the removal of the element that has ﬁrst priority. When an element is
+          added to a priority queue, the user designates its priority by providing an associated
+          key. The element with the minimum key will be the next to be removed from the
+          queue (thus, an element with key 1 will be given priority over an element with
+          key 2). Although it is quite common for priorities to be expressed numerically, any
+          Python object may be used as a key, as long as the object type supports a consistent
+          meaning for the test a < b, for any instances a and b, so as to deﬁne a natural
+          order of the keys. With such generality, applications may develop their own notion
+          of priority for each element. For example, different ﬁnancial analysts may assign
+          different ratings (i.e., priorities) to a particular asset, such as a share of stock.

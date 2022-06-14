@@ -1,0 +1,47 @@
+726                                             Appendix B. Useful Mathematical Facts
+    In addition,
+                                              x x2 x3
+                                  ex = 1 +       + + + ···
+                                              1! 2! 3!
+                                            x2 x3 x4
+                          ln(1 + x) = x − + − + · · · .
+                                             2! 3! 4!
+        There are a number of useful inequalities relating to these functions (which
+    derive from these deﬁnitions).
+    Proposition B.2: If x > −1,
+                                      x
+                                            ≤ ln(1 + x) ≤ x.
+                                    1+x
+    Proposition B.3: For 0 ≤ x < 1,
+                                                           1
+                                     1 + x ≤ ex ≤               .
+                                                         1−x
+    Proposition B.4: For any two positive real numbers x and n,
+                                    x   n                     x   n+x/2
+                               1+         ≤ ex ≤ 1 +                    .
+                                    n                         n
+    Integer Functions and Relations
+    The “ﬂoor” and “ceiling” functions are deﬁned respectively as follows:
+       1. x = the largest integer less than or equal to x.
+       2. x = the smallest integer greater than or equal to x.
+        The modulo operator is deﬁned for integers a ≥ 0 and b > 0 as
+                                                          a
+                                    a mod b = a −               b.
+                                                            b
+        The factorial function is deﬁned as
+                                 n! = 1 · 2 · 3 · · · · · (n − 1)n.
+        The binomial coefﬁcient is
+                                      
+                                        n              n!
+                                             =                  ,
+                                        k       k!(n − k)!
+    which is equal to the number of different combinations one can deﬁne by choosing
+    k different items from a collection of n items (where the order does not matter).
+    The name “binomial coefﬁcient” derives from the binomial expansion:
+                                                n  
+                                                       n k n−k
+                                (a + b) = ∑
+                                          n
+                                                            ab .
+                                               k=0 k
+        We also have the following relationships.

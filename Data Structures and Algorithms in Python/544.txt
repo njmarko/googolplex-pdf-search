@@ -1,0 +1,26 @@
+11.6. Red-Black Trees                                                                              523
+                            14                                             14
+                7                       16                          7                  16
+          4            12         15            18            4        12        15          18
+       3     5                              17                   5                        17
+                          (a)                                             (b)
+                           14                                               14
+               7                       16                            5                 16
+         4                       15            18             4         7        15          18
+            5                              17                                             17
+                          (c)                                             (d)
+                      14                                  14                             14
+           5                   16                  5                16         5                 16
+      4          7        15        18          4    7         15          4        7         15
+                     (e)                               (f )                           (g)
+                   14                          14           5                        5
+          5               16            5             4           14           4           14
+      4       7                     4        7                7                         7
+               (h)                       (i)                (j)                      (k)
+            Figure 11.41: A sequence of deletions from a red-black tree: (a) initial tree; (b) re-
+            moval of 3; (c) removal of 12, causing a black deﬁcit to the right of 7 (handled by
+            restructuring); (d) after restructuring; (e) removal of 17; (f ) removal of 18, causing
+            a black deﬁcit to the right of 16 (handled by recoloring); (g) after recoloring; (h) re-
+            moval of 15; (i) removal of 16, causing a black deﬁcit to the right of 14 (handled
+            initially by a rotation); (j) after the rotation the black deﬁcit needs to be handled by
+            a recoloring; (k) after the recoloring.

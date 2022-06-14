@@ -1,0 +1,36 @@
+2.7. Exercises                                                                                103
+  2.7     Exercises
+          For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+      Reinforcement
+             R-2.1 Give three examples of life-critical software applications.
+             R-2.2 Give an example of a software application in which adaptability can mean
+                    the difference between a prolonged lifetime of sales and bankruptcy.
+             R-2.3 Describe a component from a text-editor GUI and the methods that it en-
+                    capsulates.
+             R-2.4 Write a Python class, Flower, that has three instance variables of type str,
+                    int, and ﬂoat, that respectively represent the name of the ﬂower, its num-
+                    ber of petals, and its price. Your class must include a constructor method
+                    that initializes each variable to an appropriate value, and your class should
+                    include methods for setting the value of each type, and retrieving the value
+                    of each type.
+             R-2.5 Use the techniques of Section 1.7 to revise the charge and make payment
+                    methods of the CreditCard class to ensure that the caller sends a number
+                    as a parameter.
+             R-2.6 If the parameter to the make payment method of the CreditCard class
+                    were a negative number, that would have the effect of raising the balance
+                    on the account. Revise the implementation so that it raises a ValueError if
+                    a negative value is sent.
+             R-2.7 The CreditCard class of Section 2.3 initializes the balance of a new ac-
+                    count to zero. Modify that class so that a new account can be given a
+                    nonzero balance using an optional ﬁfth parameter to the constructor. The
+                    four-parameter constructor syntax should continue to produce an account
+                    with zero balance.
+             R-2.8 Modify the declaration of the ﬁrst for loop in the CreditCard tests, from
+                    Code Fragment 2.3, so that it will eventually cause exactly one of the three
+                    credit cards to go over its credit limit. Which credit card is it?
+             R-2.9 Implement the sub method for the Vector class of Section 2.3.3, so
+                    that the expression u−v returns a new vector instance representing the
+                    difference between two vectors.
+           R-2.10 Implement the neg method for the Vector class of Section 2.3.3, so
+                    that the expression −v returns a new vector instance whose coordinates
+                    are all the negated values of the respective coordinates of v.

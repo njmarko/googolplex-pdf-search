@@ -1,0 +1,35 @@
+4.4. Further Examples of Recursion                                                        171
+          Reversing a Sequence with Recursion
+          Next, let us consider the problem of reversing the n elements of a sequence, S, so
+          that the ﬁrst element becomes the last, the second element becomes second to the
+          last, and so on. We can solve this problem using linear recursion, by observing that
+          the reversal of a sequence can be achieved by swapping the ﬁrst and last elements
+          and then recursively reversing the remaining elements. We present an implemen-
+          tation of this algorithm in Code Fragment 4.10, using the convention that the ﬁrst
+          time we call this algorithm we do so as reverse(S, 0, len(S)).
+       1 def reverse(S, start, stop):
+       2    ”””Reverse elements in implicit slice S[start:stop].”””
+       3    if start < stop − 1:                                # if at least 2 elements:
+       4       S[start], S[stop−1] = S[stop−1], S[start]        # swap ﬁrst and last
+       5       reverse(S, start+1, stop−1)                      # recur on rest
+           Code Fragment 4.10: Reversing the elements of a sequence using linear recursion.
+               Note that there are two implicit base case scenarios: When start == stop, the
+          implicit range is empty, and when start == stop−1, the implicit range has only
+          one element. In either of these cases, there is no need for action, as a sequence
+          with zero elements or one element is trivially equal to its reversal. When otherwise
+          invoking recursion, we are guaranteed to make progress towards a base case, as
+          the difference, stop−start, decreases by two with each call (see Figure 4.11). If n
+          is even, we will eventually reach the start == stop case, and if n is odd, we will
+          eventually reach the start == stop − 1 case.
+               The above argument implies that the recursive
+                                                           algorithm of Code Fragment 4.10
+          is guaranteed to terminate after a total of 1 + n2 recursive calls. Since each call
+          involves a constant amount of work, the entire process runs in O(n) time.
+                                        0   1    2  3   4   5   6
+                                        4   3    6  2   8   9   5
+                                        5   3    6  2   8   9   4
+                                        5   9    6  2   8   3   4
+                                        5   9    8  2   6   3   4
+                                        5   9    8  2   6   3   4
+          Figure 4.11: A trace of the recursion for reversing a sequence. The shaded portion
+          has yet to be reversed.

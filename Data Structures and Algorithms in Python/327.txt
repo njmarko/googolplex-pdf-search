@@ -1,0 +1,41 @@
+306                                                                       Chapter 8. Trees
+    A Tree Abstract Base Class in Python
+      In discussing the object-oriented design principle of abstraction in Section 2.1.2, we
+      noted that a public interface for an abstract data type is often managed in Python via
+      duck typing. For example, we deﬁned the notion of the public interface for a queue
+      ADT in Section 6.2, and have since presented several classes that implement the
+      queue interface (e.g., ArrayQueue in Section 6.2.2, LinkedQueue in Section 7.1.2,
+      CircularQueue in Section 7.2.2). However, we never gave any formal deﬁnition of
+      the queue ADT in Python; all of the concrete implementations were self-contained
+      classes that just happen to adhere to the same public interface. A more formal
+      mechanism to designate the relationships between different implementations of the
+      same abstraction is through the deﬁnition of one class that serves as an abstract
+      base class, via inheritance, for one or more concrete classes. (See Section 2.4.3.)
+          We choose to deﬁne a Tree class, in Code Fragment 8.1, that serves as an ab-
+      stract base class corresponding to the tree ADT. Our reason for doing so is that there
+      is quite a bit of useful code that we can provide, even at this level of abstraction, al-
+      lowing greater code reuse in the concrete tree implementations we later deﬁne. The
+      Tree class provides a deﬁnition of a nested Position class (which is also abstract),
+      and declarations of many of the accessor methods included in the tree ADT.
+          However, our Tree class does not deﬁne any internal representation for stor-
+      ing a tree, and ﬁve of the methods given in that code fragment remain abstract
+      (root, parent, num children, children, and len ); each of these methods raises a
+      NotImplementedError. (A more formal approach for deﬁning abstract base classes
+      and abstract methods, using Python’s abc module, is described in Section 2.4.3.)
+      The subclasses are responsible for overriding abstract methods, such as children, to
+      provide a working implementation for each behavior, based on their chosen internal
+      representation.
+          Although the Tree class is an abstract base class, it includes several concrete
+      methods with implementations that rely on calls to the abstract methods of the class.
+      In deﬁning the tree ADT in the previous section, we declare ten accessor methods.
+      Five of those are the ones we left as abstract, in Code Fragment 8.1. The other ﬁve
+      can be implemented based on the former. Code Fragment 8.2 provides concrete
+      implementations for methods is root, is leaf, and is empty. In Section 8.4, we will
+      explore general algorithms for traversing a tree that can be used to provide concrete
+      implementations of the positions and iter methods within the Tree class. The
+      beauty of this design is that the concrete methods deﬁned within the Tree abstract
+      base class will be inherited by all subclasses. This promotes greater code reuse, as
+      there will be no need for those subclasses to reimplement such behaviors.
+          We note that, with the Tree class being abstract, there is no reason to create a
+      direct instance of it, nor would such an instance be useful. The class exists to serve
+      as a base for inheritance, and users will create instances of concrete subclasses.

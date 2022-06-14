@@ -1,0 +1,34 @@
+5.2. Low-Level Arrays                                                                         187
+      5.2.1 Referential Arrays
+          As another motivating example, assume that we want a medical information system
+          to keep track of the patients currently assigned to beds in a certain hospital. If we
+          assume that the hospital has 200 beds, and conveniently that those beds are num-
+          bered from 0 to 199, we might consider using an array-based structure to maintain
+          the names of the patients currently assigned to those beds. For example, in Python
+          we might use a list of names, such as:
+               [ Rene , Joseph , Janet , Jonas , Helen , Virginia , ... ]
+          To represent such a list with an array, Python must adhere to the requirement that
+          each cell of the array use the same number of bytes. Yet the elements are strings,
+          and strings naturally have different lengths. Python could attempt to reserve enough
+          space for each cell to hold the maximum length string (not just of currently stored
+          strings, but of any string we might ever want to store), but that would be wasteful.
+               Instead, Python represents a list or tuple instance using an internal storage
+          mechanism of an array of object references. At the lowest level, what is stored
+          is a consecutive sequence of memory addresses at which the elements of the se-
+          quence reside. A high-level diagram of such a list is shown in Figure 5.4.
+                                          Janet              Jonas
+                        Joseph                                                 Helen
+                       Rene                                                     Virginia
+                                           0   1   2    3    4   5
+                             Figure 5.4: An array storing references to strings.
+               Although the relative size of the individual elements may vary, the number of
+          bits used to store the memory address of each element is ﬁxed (e.g., 64-bits per
+          address). In this way, Python can support constant-time access to a list or tuple
+          element based on its index.
+               In Figure 5.4, we characterize a list of strings that are the names of the patients
+          in a hospital. It is more likely that a medical information system would manage
+          more comprehensive information on each patient, perhaps represented as an in-
+          stance of a Patient class. From the perspective of the list implementation, the same
+          principle applies: The list will simply keep a sequence of references to those ob-
+          jects. Note as well that a reference to the None object can be used as an element
+          of the list to represent an empty bed in the hospital.

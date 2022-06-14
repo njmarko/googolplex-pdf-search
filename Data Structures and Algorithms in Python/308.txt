@@ -1,0 +1,41 @@
+7.6. Case Study: Maintaining Access Frequencies                                                  287
+          Using the Composition Pattern
+          We wish to implement a favorites list by making use of a PositionalList for storage.
+          If elements of the positional list were simply elements of the favorites list, we
+          would be challenged to maintain access counts and to keep the proper count with
+          the associated element as the contents of the list are reordered. We use a general
+          object-oriented design pattern, the composition pattern, in which we deﬁne a single
+          object that is composed of two or more other objects. Speciﬁcally, we deﬁne a
+          nonpublic nested class, Item, that stores the element and its access count as a
+          single instance. We then maintain our favorites list as a PositionalList of item
+          instances, so that the access count for a user’s element is embedded alongside it in
+          our representation. (An Item is never exposed to a user of a FavoritesList.)
+       1 class FavoritesList:
+       2    ”””List of elements ordered from most frequently accessed to least.”””
+       3
+       4    #------------------------------ nested Item class ------------------------------
+       5    class Item:
+       6           slots = _value , _count                          # streamline memory usage
+       7       def init (self, e):
+       8          self. value = e                                   # the user s element
+       9          self. count = 0                                   # access count initially zero
+      10
+      11    #------------------------------- nonpublic utilities -------------------------------
+      12    def ﬁnd position(self, e):
+      13       ”””Search for element e and return its Position (or None if not found).”””
+      14       walk = self. data.ﬁrst( )
+      15       while walk is not None and walk.element( ). value != e:
+      16          walk = self. data.after(walk)
+      17       return walk
+      18
+      19    def move up(self, p):
+      20       ”””Move item at Position p earlier in the list based on access count.”””
+      21       if p != self. data.ﬁrst( ):                                  # consider moving...
+      22          cnt = p.element( ). count
+      23          walk = self. data.before(p)
+      24          if cnt > walk.element( ). count:                          # must shift forward
+      25             while (walk != self. data.ﬁrst( ) and
+      26                     cnt > self. data.before(walk).element( ). count):
+      27               walk = self. data.before(walk)
+      28             self. data.add before(walk, self. data.delete(p))            # delete/reinsert
+            Code Fragment 7.18: Class FavoritesList. (Continues in Code Fragment 7.19.)

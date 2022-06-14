@@ -1,0 +1,20 @@
+542                                                    Chapter 12. Sorting and Selection
+ 24 45  63    85                                24   45   63     85
+                      17   31    96   50                                  17  31   50   96
+                 (m)                                                 (n)
+ 24 45  63    85      17   31    50   96          17   24   31     45    50  63  85   96
+                 (o)                                                 (p)
+       Figure 12.4: Visualization of an execution of merge-sort (continued from Fig-
+       ure 12.3). Several invocations are omitted between (m) and (n). Note the merging
+       of two halves performed in step (p).
+       Proposition 12.1: The merge-sort tree associated with an execution of merge-
+       sort on a sequence of size n has height log n.
+            We leave the justiﬁcation of Proposition 12.1 as a simple exercise (R-12.1). We
+       will use this proposition to analyze the running time of the merge-sort algorithm.
+            Having given an overview of merge-sort and an illustration of how it works,
+       let us consider each of the steps of this divide-and-conquer algorithm in more de-
+       tail. Dividing a sequence of size n involves separating it at the element with index
+        n/2, and recursive calls can be started by passing these smaller sequences as pa-
+       rameters. The difﬁcult step is combining the two sorted sequences into a single
+       sorted sequence. Thus, before we present our analysis of merge-sort, we need to
+       say more about how this is done.

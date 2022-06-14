@@ -1,0 +1,40 @@
+2.2. Software Development                                                                    67
+       2.2.4 Testing and Debugging
+          Testing is the process of experimentally checking the correctness of a program,
+          while debugging is the process of tracking the execution of a program and discov-
+          ering the errors in it. Testing and debugging are often the most time-consuming
+          activity in the development of a program.
+          Testing
+          A careful testing plan is an essential part of writing a program. While verifying the
+          correctness of a program over all possible inputs is usually infeasible, we should
+          aim at executing the program on a representative subset of inputs. At the very
+          minimum, we should make sure that every method of a class is tested at least once
+          (method coverage). Even better, each code statement in the program should be
+          executed at least once (statement coverage).
+               Programs often tend to fail on special cases of the input. Such cases need to be
+          carefully identiﬁed and tested. For example, when testing a method that sorts (that
+          is, puts in order) a sequence of integers, we should consider the following inputs:
+               • The sequence has zero length (no elements).
+               • The sequence has one element.
+               • All the elements of the sequence are the same.
+               • The sequence is already sorted.
+               • The sequence is reverse sorted.
+               In addition to special inputs to the program, we should also consider special
+          conditions for the structures used by the program. For example, if we use a Python
+          list to store data, we should make sure that boundary cases, such as inserting or
+          removing at the beginning or end of the list, are properly handled.
+               While it is essential to use handcrafted test suites, it is also advantageous to
+          run the program on a large collection of randomly generated inputs. The random
+          module in Python provides several means for generating random numbers, or for
+          randomizing the order of collections.
+               The dependencies among the classes and functions of a program induce a hi-
+          erarchy. Namely, a component A is above a component B in the hierarchy if A
+          depends upon B, such as when function A calls function B, or function A relies on
+          a parameter that is an instance of class B. There are two main testing strategies,
+          top-down and bottom-up, which differ in the order in which components are tested.
+               Top-down testing proceeds from the top to the bottom of the program hierarchy.
+          It is typically used in conjunction with stubbing, a boot-strapping technique that
+          replaces a lower-level component with a stub, a replacement for the component
+          that simulates the functionality of the original. For example, if function A calls
+          function B to get the ﬁrst line of a ﬁle, when testing A we can replace B with a stub
+          that returns a ﬁxed string.

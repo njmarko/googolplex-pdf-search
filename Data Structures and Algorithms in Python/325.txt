@@ -1,0 +1,30 @@
+304                                                                       Chapter 8. Trees
+    Ordered Trees
+    A tree is ordered if there is a meaningful linear order among the children of each
+    node; that is, we purposefully identify the children of a node as being the ﬁrst,
+    second, third, and so on. Such an order is usually visualized by arranging siblings
+    left to right, according to their order.
+    Example 8.3: The components of a structured document, such as a book, are hier-
+    archically organized as a tree whose internal nodes are parts, chapters, and sections,
+    and whose leaves are paragraphs, tables, ﬁgures, and so on. (See Figure 8.6.) The
+    root of the tree corresponds to the book itself. We could, in fact, consider expanding
+    the tree further to show paragraphs consisting of sentences, sentences consisting of
+    words, and words consisting of characters. Such a tree is an example of an ordered
+    tree, because there is a well-deﬁned order among the children of each node.
+                                               Book
+       Preface                Part A                             Part B        References
+       ¶  ...  ¶    Ch. 1     ...      Ch. 5               Ch. 6   ...  Ch. 9     ¶  ...  ¶
+              § 1.1 ... § 1.4     § 5.1 ... § 5.7     § 6.1 ... § 6.5   § 9.1 ... § 9.6
+            ¶  ...  ¶                             ...                            ¶  ...  ¶
+                      Figure 8.6: An ordered tree associated with a book.
+         Let’s look back at the other examples of trees that we have described thus far,
+    and consider whether the order of children is signiﬁcant. A family tree that de-
+    scribes generational relationships, as in Figure 8.1, is often modeled as an ordered
+    tree, with siblings ordered according to their birth.
+         In contrast, an organizational chart for a company, as in Figure 8.2, is typically
+    considered an unordered tree. Likewise, when using a tree to describe an inher-
+    itance hierarchy, as in Figure 8.4, there is no particular signiﬁcance to the order
+    among the subclasses of a parent class. Finally, we consider the use of a tree in
+    modeling a computer’s ﬁle system, as in Figure 8.3. Although an operating system
+    often displays entries of a directory in a particular order (e.g., alphabetical, chrono-
+    logical), such an order is not typically inherent to the ﬁle system’s representation.

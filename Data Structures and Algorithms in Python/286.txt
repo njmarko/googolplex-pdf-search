@@ -1,0 +1,41 @@
+7.1. Singly Linked Lists                                                                      265
+      27     def dequeue(self):
+      28        ”””Remove and return the ﬁrst element of the queue (i.e., FIFO).
+      29
+      30        Raise Empty exception if the queue is empty.
+      31        ”””
+      32        if self.is empty( ):
+      33           raise Empty( Queue is empty )
+      34        answer = self. head. element
+      35        self. head = self. head. next
+      36        self. size −= 1
+      37        if self.is empty( ):                           # special case as queue is empty
+      38           self. tail = None                           # removed head had been the tail
+      39        return answer
+      40
+      41     def enqueue(self, e):
+      42        ”””Add an element to the back of queue.”””
+      43        newest = self. Node(e, None)                   # node will be new tail node
+      44        if self.is empty( ):
+      45           self. head = newest                         # special case: previously empty
+      46        else:
+      47           self. tail. next = newest
+      48        self. tail = newest                            # update reference to tail node
+      49        self. size += 1
+           Code Fragment 7.8: Implementation of a queue ADT using a singly linked list
+           (continued from Code Fragment 7.7).
+                Many aspects of our implementation are similar to that of the LinkedStack
+           class, such as the deﬁnition of the nested Node class. Our implementation of
+           dequeue for LinkedQueue is similar to that of pop for LinkedStack, as both remove
+           the head of the linked list. However, there is a subtle difference because our queue
+           must accurately maintain the tail reference (no such variable was maintained for
+           our stack). In general, an operation at the head has no effect on the tail, but when
+           dequeue is invoked on a queue with one element, we are simultaneously removing
+           the tail of the list. We therefore set self. tail to None for consistency.
+                There is a similar complication in our implementation of enqueue. The newest
+           node always becomes the new tail. Yet a distinction is made depending on whether
+           that new node is the only node in the list. In that case, it also becomes the new head;
+           otherwise the new node must be linked immediately after the existing tail node.
+                In terms of performance, the LinkedQueue is similar to the LinkedStack in that
+           all operations run in worst-case constant time, and the space usage is linear in the
+           current number of elements.

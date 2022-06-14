@@ -1,0 +1,34 @@
+                                                               Contents
+  Preface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  v
+1 Python Primer                                                              1
+  1.1 Python Overview . . . . . . . . . . . . . . . . . . . . . .     . . .  2
+       1.1.1 The Python Interpreter . . . . . . . . . . . . . . .     . . .  2
+       1.1.2 Preview of a Python Program . . . . . . . . . . .        . . .  3
+  1.2 Objects in Python . . . . . . . . . . . . . . . . . . . . .     . . .  4
+       1.2.1 Identiﬁers, Objects, and the Assignment Statement        . . .  4
+       1.2.2 Creating and Using Objects . . . . . . . . . . . . .     . . .  6
+       1.2.3 Python’s Built-In Classes . . . . . . . . . . . . . .    . . .  7
+  1.3 Expressions, Operators, and Precedence . . . . . . . .          . . . 12
+       1.3.1 Compound Expressions and Operator Precedence .           . . . 17
+  1.4 Control Flow . . . . . . . . . . . . . . . . . . . . . . . .    . . . 18
+       1.4.1 Conditionals . . . . . . . . . . . . . . . . . . . . .   . . . 18
+       1.4.2 Loops . . . . . . . . . . . . . . . . . . . . . . . .    . . . 20
+  1.5 Functions . . . . . . . . . . . . . . . . . . . . . . . . . .   . . . 23
+       1.5.1 Information Passing . . . . . . . . . . . . . . . . .    . . . 24
+       1.5.2 Python’s Built-In Functions . . . . . . . . . . . . .    . . . 28
+  1.6 Simple Input and Output . . . . . . . . . . . . . . . . .       . . . 30
+       1.6.1 Console Input and Output . . . . . . . . . . . . .       . . . 30
+       1.6.2 Files . . . . . . . . . . . . . . . . . . . . . . . . .  . . . 31
+  1.7 Exception Handling . . . . . . . . . . . . . . . . . . . .      . . . 33
+       1.7.1 Raising an Exception . . . . . . . . . . . . . . . .     . . . 34
+       1.7.2 Catching an Exception . . . . . . . . . . . . . . .      . . . 36
+  1.8 Iterators and Generators . . . . . . . . . . . . . . . . .      . . . 39
+  1.9 Additional Python Conveniences . . . . . . . . . . . . .        . . . 42
+       1.9.1 Conditional Expressions . . . . . . . . . . . . . . .    . . . 42
+       1.9.2 Comprehension Syntax . . . . . . . . . . . . . . .       . . . 43
+       1.9.3 Packing and Unpacking of Sequences . . . . . . .         . . . 44
+  1.10 Scopes and Namespaces . . . . . . . . . . . . . . . . .        . . . 46
+  1.11 Modules and the Import Statement . . . . . . . . . . .         . . . 48
+       1.11.1 Existing Modules . . . . . . . . . . . . . . . . . .    . . . 49
+  1.12 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . 51
+                                     xi

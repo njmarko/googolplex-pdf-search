@@ -1,0 +1,31 @@
+538                                                       Chapter 12. Sorting and Selection
+ 12.2     Merge-Sort
+    12.2.1 Divide-and-Conquer
+       The ﬁrst two algorithms we describe in this chapter, merge-sort and quick-sort, use
+       recursion in an algorithmic design pattern called divide-and-conquer. We have
+       already seen the power of recursion in describing algorithms in an elegant manner
+       (see Chapter 4). The divide-and-conquer pattern consists of the following three
+       steps:
+           1. Divide: If the input size is smaller than a certain threshold (say, one or two
+              elements), solve the problem directly using a straightforward method and
+              return the solution so obtained. Otherwise, divide the input data into two or
+              more disjoint subsets.
+           2. Conquer: Recursively solve the subproblems associated with the subsets.
+           3. Combine: Take the solutions to the subproblems and merge them into a so-
+              lution to the original problem.
+       Using Divide-and-Conquer for Sorting
+       We will ﬁrst describe the merge-sort algorithm at a high level, without focusing on
+       whether the data is an array-based (Python) list or a linked list; we will soon give
+       concrete implementations for each. To sort a sequence S with n elements using the
+       three divide-and-conquer steps, the merge-sort algorithm proceeds as follows:
+           1. Divide: If S has zero or one element, return S immediately; it is already
+              sorted. Otherwise (S has at least two elements), remove all the elements
+              from S and put them into two sequences, S1 and S2 , each containing about
+              half of the elements of S; that is, S1 contains the ﬁrst n/2 elements of S,
+              and S2 contains the remaining n/2 elements.
+           2. Conquer: Recursively sort sequences S1 and S2 .
+           3. Combine: Put back the elements into S by merging the sorted sequences S1
+              and S2 into a sorted sequence.
+       In reference to the divide step, we recall that the notation x indicates the ﬂoor of
+       x, that is, the largest integer k, such that k ≤ x. Similarly, the notation x indicates
+       the ceiling of x, that is, the smallest integer m, such that x ≤ m.

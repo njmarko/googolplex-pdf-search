@@ -1,0 +1,38 @@
+2.3. Class Deﬁnitions                                                                           71
+      39      def charge(self, price):
+      40        ”””Charge given price to the card, assuming suﬃcient credit limit.
+      41
+      42        Return True if charge was processed; False if charge was denied.
+      43        ”””
+      44        if price + self. balance > self. limit:           # if charge would exceed limit,
+      45           return False                                   # cannot accept charge
+      46        else:
+      47           self. balance += price
+      48           return True
+      49
+      50      def make payment(self, amount):
+      51        ”””Process customer payment that reduces balance.”””
+      52        self. balance −= amount
+           Code Fragment 2.2: The conclusion of the CreditCard class deﬁnition (continued
+           from Code Fragment 2.1). These methods are indented within the class deﬁnition.
+                We draw attention to the difference between the method signature as declared
+           within the class versus that used by a caller. For example, from a user’s perspec-
+           tive we have seen that the get balance method takes zero parameters, yet within
+           the class deﬁnition, self is an explicit parameter. Likewise, the charge method is
+           declared within the class having two parameters (self and price), even though this
+           method is called with one parameter, for example, as my card.charge(200). The
+           interpretter automatically binds the instance upon which the method is invoked to
+           the self parameter.
+           The Constructor
+           A user can create an instance of the CreditCard class using a syntax as:
+           cc = CreditCard( John Doe,            1st Bank ,     5391 0375 9387 5309 , 1000)
+           Internally, this results in a call to the specially named init method that serves
+           as the constructor of the class. Its primary responsibility is to establish the state of
+           a newly created credit card object with appropriate instance variables. In the case
+           of the CreditCard class, each object maintains ﬁve instance variables, which we
+           name: customer, bank, account, limit, and balance. The initial values for the
+           ﬁrst four of those ﬁve are provided as explicit parameters that are sent by the user
+           when instantiating the credit card, and assigned within the body of the construc-
+           tor. For example, the command, self. customer = customer, assigns the instance
+           variable self. customer to the parameter customer; note that because customer is
+           unqualiﬁed on the right-hand side, it refers to the parameter in the local namespace.

@@ -1,0 +1,40 @@
+238                                             Chapter 6. Stacks, Queues, and Deques
+           In an HTML document, portions of text are delimited by HTML tags. A simple
+       opening HTML tag has the form “<name>” and the corresponding closing tag has
+       the form “</name>”. For example, we see the <body> tag on the ﬁrst line of
+       Figure 6.3(a), and the matching </body> tag at the close of that document. Other
+       commonly used HTML tags that are used in this example include:
+           •   body: document body
+           •   h1: section header
+           •   center: center justify
+           •   p: paragraph
+           •   ol: numbered (ordered) list
+           •   li: list item
+       Ideally, an HTML document should have matching tags, although most browsers
+       tolerate a certain number of mismatching tags. In Code Fragment 6.5, we give a
+       Python function that matches tags in a string representing an HTML document. We
+       make a left-to-right pass through the raw string, using index j to track our progress
+       and the ﬁnd method of the str class to locate the < and > characters that deﬁne
+       the tags. Opening tags are pushed onto the stack, and matched against closing tags
+       as they are popped from the stack, just as we did when matching delimiters in Code
+       Fragment 6.4. By similar analysis, this algorithm runs in O(n) time, where n is the
+       number of characters in the raw HTML source.
+     1 def is matched html(raw):
+     2   ”””Return True if all HTML tags are properly match; False otherwise.”””
+     3   S = ArrayStack( )
+     4   j = raw.ﬁnd( < )                              # ﬁnd ﬁrst ’<’ character (if any)
+     5   while j != −1:
+     6      k = raw.ﬁnd( > , j+1)                      # ﬁnd next ’>’ character
+     7      if k == −1:
+     8         return False                            # invalid tag
+     9      tag = raw[j+1:k]                           # strip away < >
+    10      if not tag.startswith( / ):                # this is opening tag
+    11         S.push(tag)
+    12      else:                                      # this is closing tag
+    13         if S.is empty( ):
+    14             return False                        # nothing to match with
+    15         if tag[1:] != S.pop( ):
+    16             return False                        # mismatched delimiter
+    17      j = raw.ﬁnd( < , k+1)                      # ﬁnd next ’<’ character (if any)
+    18   return S.is empty( )                          # were all opening tags matched?
+       Code Fragment 6.5: Function for testing if an HTML document has matching tags.

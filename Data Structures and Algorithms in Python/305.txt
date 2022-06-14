@@ -1,0 +1,42 @@
+284                                                                    Chapter 7. Linked Lists
+     68   #------------------------------- mutators -------------------------------
+     69   # override inherited version to return Position, rather than Node
+     70   def insert between(self, e, predecessor, successor):
+     71     ”””Add element between existing nodes and return new Position.”””
+     72     node = super( ). insert between(e, predecessor, successor)
+     73     return self. make position(node)
+     74
+     75   def add ﬁrst(self, e):
+     76     ”””Insert element e at the front of the list and return new Position.”””
+     77     return self. insert between(e, self. header, self. header. next)
+     78
+     79   def add last(self, e):
+     80     ”””Insert element e at the back of the list and return new Position.”””
+     81     return self. insert between(e, self. trailer. prev, self. trailer)
+     82
+     83   def add before(self, p, e):
+     84     ”””Insert element e into list before Position p and return new Position.”””
+     85     original = self. validate(p)
+     86     return self. insert between(e, original. prev, original)
+     87
+     88   def add after(self, p, e):
+     89     ”””Insert element e into list after Position p and return new Position.”””
+     90     original = self. validate(p)
+     91     return self. insert between(e, original, original. next)
+     92
+     93   def delete(self, p):
+     94     ”””Remove and return the element at Position p.”””
+     95     original = self. validate(p)
+     96     return self. delete node(original)           # inherited method returns element
+     97
+     98   def replace(self, p, e):
+     99     ”””Replace the element at Position p with e.
+    100
+    101     Return the element formerly at Position p.
+    102     ”””
+    103     original = self. validate(p)
+    104     old value = original. element                # temporarily store old element
+    105     original. element = e                        # replace with new element
+    106     return old value                             # return the old element value
+        Code Fragment 7.16: A PositionalList class based on a doubly linked list. (Contin-
+        ued from Code Fragments 7.14 and 7.15.)

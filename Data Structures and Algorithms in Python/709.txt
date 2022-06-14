@@ -1,0 +1,43 @@
+688                                                    Chapter 14. Graph Algorithms
+    R-14.21 Compute a topological ordering for the directed graph drawn with solid
+            edges in Figure 14.3d.
+    R-14.22 Bob loves foreign languages and wants to plan his course schedule for the
+            following years. He is interested in the following nine language courses:
+            LA15, LA16, LA22, LA31, LA32, LA126, LA127, LA141, and LA169.
+            The course prerequisites are:
+                • LA15: (none)
+                • LA16: LA15
+                • LA22: (none)
+                • LA31: LA15
+                • LA32: LA16, LA31
+                • LA126: LA22, LA32
+                • LA127: LA16
+                • LA141: LA22, LA16
+                • LA169: LA32
+            In what order can Bob take these courses, respecting the prerequisites?
+    R-14.23 Draw a simple, connected, weighted graph with 8 vertices and 16 edges,
+            each with unique edge weights. Identify one vertex as a “start” vertex and
+            illustrate a running of Dijkstra’s algorithm on this graph.
+    R-14.24 Show how to modify the pseudo-code for Dijkstra’s algorithm for the case
+            when the graph is directed and we want to compute shortest directed paths
+            from the source vertex to all the other vertices.
+    R-14.25 Draw a simple, connected, undirected, weighted graph with 8 vertices and
+            16 edges, each with unique edge weights. Illustrate the execution of the
+            Prim-Jarnı́k algorithm for computing the minimum spanning tree of this
+            graph.
+    R-14.26 Repeat the previous problem for Kruskal’s algorithm.
+    R-14.27 There are eight small islands in a lake, and the state wants to build seven
+            bridges to connect them so that each island can be reached from any other
+            one via one or more bridges. The cost of constructing a bridge is propor-
+            tional to its length. The distances between pairs of islands are given in the
+            following table.
+                               1    2     3     4      5    6      7     8
+                           1   -   240   210   340    280  200    345   120
+                           2   -    -    265   175    215  180    185   155
+                           3   -    -     -    260    115  350    435   195
+                           4   -    -     -     -     160  330    295   230
+                           5   -    -     -     -      -   360    400   170
+                           6   -    -     -     -      -    -     175   205
+                           7   -    -     -     -      -    -      -    305
+                           8   -    -     -     -      -    -      -     -
+            Find which bridges to build to minimize the total construction cost.

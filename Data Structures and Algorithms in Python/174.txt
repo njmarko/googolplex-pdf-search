@@ -1,0 +1,39 @@
+4.1. Illustrative Examples                                                                      153
+                 In general, an interval with a central tick length L ≥ 1 is composed of:
+                 • An interval with a central tick length L − 1
+                 • A single tick of length L
+                 • An interval with a central tick length L − 1
+                 Although it is possible to draw such a ruler using an iterative process (see Ex-
+            ercise P-4.25), the task is considerably easier to accomplish with recursion. Our
+            implementation consists of three functions, as shown in Code Fragment 4.2. The
+            main function, draw ruler, manages the construction of the entire ruler. Its argu-
+            ments specify the total number of inches in the ruler and the major tick length. The
+            utility function, draw line, draws a single tick with a speciﬁed number of dashes
+            (and an optional string label, that is printed after the tick).
+                 The interesting work is done by the recursive draw interval function. This
+            function draws the sequence of minor ticks within some interval, based upon the
+            length of the interval’s central tick. We rely on the intuition shown at the top of this
+            page, and with a base case when L = 0 that draws nothing. For L ≥ 1, the ﬁrst and
+            last steps are performed by recursively calling draw interval(L − 1). The middle
+            step is performed by calling the function draw line(L).
+        1 def draw line(tick length, tick label= ):
+        2     ”””Draw one line with given tick length (followed by optional label).”””
+        3     line = -        tick length
+        4     if tick label:
+        5        line +=         + tick label
+        6     print(line)
+        7
+        8 def draw interval(center length):
+        9     ”””Draw tick interval based upon a central tick length.”””
+       10     if center length > 0:                            # stop when length drops to 0
+       11        draw interval(center length − 1)              # recursively draw top ticks
+       12        draw line(center length)                      # draw center tick
+       13        draw interval(center length − 1)              # recursively draw bottom ticks
+       14
+       15 def draw ruler(num inches, major length):
+       16     ”””Draw English ruler with given number of inches, major tick length.”””
+       17     draw line(major length, 0 )                      # draw inch 0 line
+       18     for j in range(1, 1 + num inches):
+       19        draw interval(major length − 1)               # draw interior ticks for inch
+       20        draw line(major length, str(j))               # draw inch j line and label
+              Code Fragment 4.2: A recursive implementation of a function that draws a ruler.

@@ -1,0 +1,30 @@
+11.6. Red-Black Trees                                                                       513
+                                                       12
+                                    5                                    15
+                           3                 10                    13           17
+                              4        7           11                 14
+                                     6    8
+          Figure 11.31: An illustration that the red-black tree of Figure 11.30 corresponds to
+          the (2, 4) tree of Figure 11.24, based on the highlighted grouping of red nodes with
+          their black parents.
+              • If w is a 2-node, then keep the (black) children of w as is.
+              • If w is a 3-node, then create a new red node y, give w’s last two (black)
+                 children to y, and make the ﬁrst child of w and y be the two children of w.
+              • If w is a 4-node, then create two new red nodes y and z, give w’s ﬁrst two
+                 (black) children to y, give w’s last two (black) children to z, and make y and
+                 z be the two children of w.
+          Notice that a red node always has a black parent in this construction.
+          Proposition 11.9: The height of a red-black tree storing n entries is O(log n).
+                             15                                          15
+                                                ←→
+                                                (a)
+                           13 14                             13                       14
+                                                ←→                        or
+                                                                14                 13
+                                                (b)
+                         6    7  8                                       7
+                                                ←→
+                                                                     6         8
+                                                (c)
+          Figure 11.32: Correspondence between nodes of a (2, 4) tree and a red-black tree:
+          (a) 2-node; (b) 3-node; (c) 4-node.

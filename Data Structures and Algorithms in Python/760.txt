@@ -1,0 +1,48 @@
+Index                                                                                739
+            insertion, 465                      chained assignment, 17
+            removal, 466–467                    chained operators, 17
+            rotation, 475                       ChainHashMap class, 424
+            trinode restructuring, 476          character-jump heuristic, 586
+      binary tree, 311–324, 539                 Chen, Wen-Chin, 458
+            array-based representation, 325–326 Chernoff bound, 579, 580, 730
+            complete, 370                       child class, 82
+            full, 311                           child node, 301
+            improper, 311                       chr function, 29
+            level, 315                          circularly linked list, 266–269, 296
+            linked structure, 317–324           CircularQueue class, 268–269, 306
+            proper, 311                         Clarkson, Kenneth, 580
+      BinaryEulerTour class, 346–347            class, 4, 57
+      BinaryTree class, 303, 313–314, 317, 318,       abstract base, 60, 93–95, 306
+                  335, 336                            base, 82
+      binomial expansion, 726                         child, 82
+      bipartite graph, 690                            concrete, 60, 93
+      bitwise operators, 14                           diagram, 63
+      Booch, Grady, 108, 298                          nested, 98–99
+      bool class, 7, 12                               parent, 82
+      Boolean expressions, 12                         sub, 82
+      bootstrapping, 504                              super, 82
+      Boyer, Robert, 618                        clustering, 419
+      Boyer-Moore algorithm, 586–589            Cole, Richard, 618
+      Brassard, Gilles, 147                     collections module, 35, 93, 249, 406, 450
+      breadth-ﬁrst search, 648–650                    deque class, 249, 251, 267
+      breadth-ﬁrst tree traversal, 335–336      collision resolution, 411, 417–419
+      break statement, 22                       Comer, Douglas, 719
+      brute force, 584                          comment syntax in Python, 3
+      B-tree, 714                               compact array, 190, 711
+      bubble-sort, 297                          comparison operators, 13
+      bucket-sort, 564–565                      complete binary tree, 370
+      Budd, Timothy, 108, 298                   complete graph, 687
+      built-in classes, 7                       composition design pattern, 287
+      built-in functions, 28                    compression function, 411, 416
+      Burger, Doug, 719                         concrete class, 60, 93
+      byte, 185                                 conditional expression, 42
+                                                conditional probability, 729
+      caching, 705–710                          conditional statements, 18
+      Caesar cipher, 216–218                    connected components, 623, 643, 646
+      call stack, 703                           constructor, 6
+      Campbell, Jennifer, 55                    continue statement, 22
+      Cardelli, Luca, 108, 254                  contradiction, 137
+      Carlsonn, Svante, 400                     contrapositive, 137
+      Cedar, Vern, 55                           copy module, 49, 102, 188
+      ceiling function, 116, 122, 726           copying objects, 101–103
+      central processing unit (CPU), 111        core memory, 705

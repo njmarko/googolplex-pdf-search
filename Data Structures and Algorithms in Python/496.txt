@@ -1,0 +1,34 @@
+11.2. Balanced Search Trees                                                                   475
+ 11.2        Balanced Search Trees
+          In the closing of the previous section, we noted that if we could assume a random
+          series of insertions and removals, the standard binary search tree supports O(log n)
+          expected running times for the basic map operations. However, we may only claim
+          O(n) worst-case time, because some sequences of operations may lead to an unbal-
+          anced tree with height proportional to n.
+               In the remainder of this chapter, we explore four search tree algorithms that
+          provide stronger performance guarantees. Three of the four data structures (AVL
+          trees, splay trees, and red-black trees) are based on augmenting a standard binary
+          search tree with occasional operations to reshape the tree and reduce its height.
+               The primary operation to rebalance a binary search tree is known as a rotation.
+          During a rotation, we “rotate” a child to be above its parent, as diagrammed in
+          Figure 11.8.
+                                 y                                       x
+                        x                                                         y
+                                         T3                     T1
+                  T1          T2                                           T2          T3
+          Figure 11.8: A rotation operation in a binary search tree. A rotation can be per-
+          formed to transform the left formation into the right, or the right formation into the
+          left. Note that all keys in subtree T1 have keys less than that of position x, all keys
+          in subtree T2 have keys that are between those of positions x and y, and all keys in
+          subtree T3 have keys that are greater than that of position y.
+               To maintain the binary search tree property through a rotation, we note that
+          if position x was a left child of position y prior to a rotation (and therefore the
+          key of x is less than the key of y), then y becomes the right child of x after the
+          rotation, and vice versa. Furthermore, we must relink the subtree of items with
+          keys that lie between the keys of the two positions that are being rotated. For
+          example, in Figure 11.8 the subtree labeled T2 represents items with keys that are
+          known to be greater than that of position x and less than that of position y. In the
+          ﬁrst conﬁguration of that ﬁgure, T2 is the right subtree of position x; in the second
+          conﬁguration, it is the left subtree of position y.
+               Because a single rotation modiﬁes a constant number of parent-child relation-
+          ships, it can be implemented in O(1) time with a linked binary tree representation.

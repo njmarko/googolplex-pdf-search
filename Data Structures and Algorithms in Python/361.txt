@@ -1,0 +1,40 @@
+340                                                                         Chapter 8. Trees
+     1 def parenthesize(T, p):
+     2    ”””Print parenthesized representation of subtree of T rooted at p.”””
+     3    print(p.element( ), end= )               # use of end avoids trailing newline
+     4    if not T.is leaf(p):
+     5       ﬁrst time = True
+     6       for c in T.children(p):
+     7         sep = ( if ﬁrst time else ,                    # determine proper separator
+     8         print(sep, end= )
+     9         ﬁrst time = False                   # any future passes will not be the ﬁrst
+    10         parenthesize(T, c)                  # recur on child
+    11       print( ) , end= )                     # include closing parenthesis
+       Code Fragment 8.25: Function that prints parenthetic string representation of a tree.
+       Computing Disk Space
+       In Example 8.1, we considered the use of a tree as a model for a ﬁle-system struc-
+       ture, with internal positions representing directories and leaves representing ﬁles.
+       In fact, when introducing the use of recursion back in Chapter 4, we speciﬁcally
+       examined the topic of ﬁle systems (see Section 4.1.4). Although we did not explic-
+       itly model it as a tree at that time, we gave an implementation of an algorithm for
+       computing the disk usage (Code Fragment 4.5).
+             The recursive computation of disk space is emblematic of a postorder traversal,
+       as we cannot effectively compute the total space used by a directory until after we
+       know the space that is used by its children directories. Unfortunately, the formal
+       implementation of postorder, as given in Code Fragment 8.19 does not sufﬁce for
+       this purpose. As it visits the position of a directory, there is no easy way to discern
+       which of the previous positions represent children of that directory, nor how much
+       recursive disk space was allocated.
+             We would like to have a mechanism for children to return information to the
+       parent as part of the traversal process. A custom solution to the disk space prob-
+       lem, with each level of recursion providing a return value to the (parent) caller, is
+       provided in Code Fragment 8.26.
+     1 def disk space(T, p):
+     2    ”””Return total disk space for subtree of T rooted at p.”””
+     3    subtotal = p.element( ).space( )                # space used at position p
+     4    for c in T.children(p):
+     5       subtotal += disk space(T, c)                 # add child’s space to subtotal
+     6    return subtotal
+       Code Fragment 8.26: Recursive computation of disk space for a tree. We assume
+       that a space( ) method of each tree element reports the local space used at that
+       position.

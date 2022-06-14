@@ -1,0 +1,38 @@
+240                                               Chapter 6. Stacks, Queues, and Deques
+    6.2.1 The Queue Abstract Data Type
+       Formally, the queue abstract data type deﬁnes a collection that keeps objects in a
+       sequence, where element access and deletion are restricted to the ﬁrst element in
+       the queue, and element insertion is restricted to the back of the sequence. This
+       restriction enforces the rule that items are inserted and deleted in a queue accord-
+       ing to the ﬁrst-in, ﬁrst-out (FIFO) principle. The queue abstract data type (ADT)
+       supports the following two fundamental methods for a queue Q:
+                 Q.enqueue(e): Add element e to the back of queue Q.
+                 Q.dequeue( ): Remove and return the ﬁrst element from queue Q;
+                                   an error occurs if the queue is empty.
+       The queue ADT also includes the following supporting methods (with ﬁrst being
+       analogous to the stack’s top method):
+                       Q.ﬁrst( ): Return a reference to the element at the front of queue Q,
+                                   without removing it; an error occurs if the queue is empty.
+                 Q.is empty( ): Return True if queue Q does not contain any elements.
+                         len(Q): Return the number of elements in queue Q; in Python,
+                                   we implement this with the special method len .
+           By convention, we assume that a newly created queue is empty, and that there
+       is no a priori bound on the capacity of the queue. Elements added to the queue can
+       have arbitrary type.
+       Example 6.4: The following table shows a series of queue operations and their
+       effects on an initially empty queue Q of integers.
+                          Operation       Return Value      ﬁrst ← Q ← last
+                        Q.enqueue(5)             –                  [5]
+                        Q.enqueue(3)             –                [5, 3]
+                             len(Q)              2                [5, 3]
+                        Q.dequeue( )             5                  [3]
+                        Q.is empty( )          False                [3]
+                        Q.dequeue( )             3                  []
+                        Q.is empty( )          True                 []
+                        Q.dequeue( )          “error”               []
+                        Q.enqueue(7)             –                  [7]
+                        Q.enqueue(9)             –                [7, 9]
+                           Q.ﬁrst( )             7                [7, 9]
+                        Q.enqueue(4)             –              [7, 9, 4]
+                             len(Q)              3              [7, 9, 4]
+                        Q.dequeue( )             7                [9, 4]

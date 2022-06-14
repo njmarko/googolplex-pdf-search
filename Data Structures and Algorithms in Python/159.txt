@@ -1,0 +1,31 @@
+138                                                            Chapter 3. Algorithm Analysis
+       Contradiction
+       Another negative justiﬁcation technique is justiﬁcation by contradiction, which
+       also often involves using DeMorgan’s Law. In applying the justiﬁcation by con-
+       tradiction technique, we establish that a statement q is true by ﬁrst supposing that
+       q is false and then showing that this assumption leads to a contradiction (such as
+       2 = 2 or 1 > 3). By reaching such a contradiction, we show that no consistent sit-
+       uation exists with q being false, so q must be true. Of course, in order to reach this
+       conclusion, we must be sure our situation is consistent before we assume q is false.
+       Example 3.19: Let a and b be integers. If ab is odd, then a is odd and b is odd.
+       Justiﬁcation: Let ab be odd. We wish to show that a is odd and b is odd. So,
+       with the hope of leading to a contradiction, let us assume the opposite, namely,
+       suppose a is even or b is even. In fact, without loss of generality, we can assume
+       that a is even (since the case for b is symmetric). Then a = 2 j for some integer
+        j. Hence, ab = (2 j)b = 2( jb), that is, ab is even. But this is a contradiction: ab
+       cannot simultaneously be odd and even. Therefore, a is odd and b is odd.
+    3.4.3 Induction and Loop Invariants
+       Most of the claims we make about a running time or a space bound involve an inte-
+       ger parameter n (usually denoting an intuitive notion of the “size” of the problem).
+       Moreover, most of these claims are equivalent to saying some statement q(n) is true
+       “for all n ≥ 1.” Since this is making a claim about an inﬁnite set of numbers, we
+       cannot justify this exhaustively in a direct fashion.
+       Induction
+       We can often justify claims such as those above as true, however, by using the
+       technique of induction. This technique amounts to showing that, for any particular
+       n ≥ 1, there is a ﬁnite sequence of implications that starts with something known
+       to be true and ultimately leads to showing that q(n) is true. Speciﬁcally, we begin a
+       justiﬁcation by induction by showing that q(n) is true for n = 1 (and possibly some
+       other values n = 2, 3, . . . , k, for some constant k). Then we justify that the inductive
+       “step” is true for n > k, namely, we show “if q( j) is true for all j < n, then q(n) is
+       true.” The combination of these two pieces completes the justiﬁcation by induction.

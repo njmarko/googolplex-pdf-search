@@ -1,0 +1,37 @@
+12                                                           Chapter 1. Python Primer
+ 1.3 Expressions, Operators, and Precedence
+     In the previous section, we demonstrated how names can be used to identify ex-
+     isting objects, and how literals and constructors can be used to create instances of
+     built-in classes. Existing values can be combined into larger syntactic expressions
+     using a variety of special symbols and keywords known as operators. The seman-
+     tics of an operator depends upon the type of its operands. For example, when a
+     and b are numbers, the syntax a + b indicates addition, while if a and b are strings,
+     the operator indicates concatenation. In this section, we describe Python’s opera-
+     tors in various contexts of the built-in types.
+          We continue, in Section 1.3.1, by discussing compound expressions, such as
+     a + b c, which rely on the evaluation of two or more operations. The order
+     in which the operations of a compound expression are evaluated can affect the
+     overall value of the expression. For this reason, Python deﬁnes a speciﬁc order of
+     precedence for evaluating operators, and it allows a programmer to override this
+     order by using explicit parentheses to group subexpressions.
+     Logical Operators
+     Python supports the following keyword operators for Boolean values:
+                                     not unary negation
+                                     and conditional and
+                                       or conditional or
+     The and and or operators short-circuit, in that they do not evaluate the second
+     operand if the result can be determined based on the value of the ﬁrst operand.
+     This feature is useful when constructing Boolean expressions in which we ﬁrst test
+     that a certain condition holds (such as a reference not being None), and then test a
+     condition that could have otherwise generated an error condition had the prior test
+     not succeeded.
+     Equality Operators
+     Python supports the following operators to test two notions of equality:
+                                      is     same identity
+                                   is not different identity
+                                     ==      equivalent
+                                     !=      not equivalent
+     The expression a is b evaluates to True, precisely when identiﬁers a and b are
+     aliases for the same object. The expression a == b tests a more general notion of
+     equivalence. If identiﬁers a and b refer to the same object, then a == b should also
+     evaluate to True. Yet a == b also evaluates to True when the identiﬁers refer to

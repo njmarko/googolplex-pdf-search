@@ -1,0 +1,36 @@
+544                                                      Chapter 12. Sorting and Selection
+     1 def merge sort(S):
+     2    ”””Sort the elements of Python      list S using the merge-sort algorithm.”””
+     3    n = len(S)
+     4    if n < 2:
+     5       return                             # list is already sorted
+     6    # divide
+     7    mid = n // 2
+     8    S1 = S[0:mid]                         # copy of ﬁrst half
+     9    S2 = S[mid:n]                         # copy of second half
+    10    # conquer (with recursion)
+    11    merge sort(S1)                        # sort copy of ﬁrst half
+    12    merge sort(S2)                        # sort copy of second half
+    13    # merge results
+    14    merge(S1, S2, S)                      # merge sorted halves back into S
+        Code Fragment 12.2: An implementation of the recursive merge-sort algorithm for
+        Python’s array-based list class (using the merge function deﬁned in Code Frag-
+        ment 12.1.
+     12.2.3 The Running Time of Merge-Sort
+        We begin by analyzing the running time of the merge algorithm. Let n1 and n2
+        be the number of elements of S1 and S2 , respectively. It is clear that the operations
+        performed inside each pass of the while loop take O(1) time. The key observation is
+        that during each iteration of the loop, one element is copied from either S1 or S2 into
+        S (and that element is considered no further). Therefore, the number of iterations
+        of the loop is n1 + n2 . Thus, the running time of algorithm merge is O(n1 + n2 ).
+             Having analyzed the running time of the merge algorithm used to combine
+        subproblems, let us analyze the running time of the entire merge-sort algorithm,
+        assuming it is given an input sequence of n elements. For simplicity, we restrict our
+        attention to the case where n is a power of 2. We leave it to an exercise (R-12.3) to
+        show that the result of our analysis also holds when n is not a power of 2.
+             When evaluating the merge-sort recursion, we rely on the analysis technique
+        introduced in Section 4.2. We account for the amount of time spent within each
+        recursive call, but excluding any time spent waiting for successive recursive calls
+        to terminate. In the case of our merge sort function, we account for the time to
+        divide the sequence into two subsequences, and the call to merge to combine the
+        two sorted sequences, but we exclude the two recursive calls to merge sort.

@@ -1,0 +1,40 @@
+724                                         Appendix A. Character Strings in Python
+        The other methods discussed in Table A.4 serve a dual purpose to join, as they
+    begin with a string and produce a sequence of substrings based upon a given de-
+    limiter. For example, the call red and green and blue .split( and ) pro-
+    duces the result [ red , green , blue ]. If no delimiter (or None) is speciﬁed,
+    split uses whitespace as a delimiter; thus, red and green and blue .split( )
+    produces [ red , and , green , and , blue ].
+    String Formatting
+    The format method of the str class composes a string that includes one or more for-
+    matted arguments. The method is invoked with a syntax s.format(arg0, arg1, ...),
+    where s serves as a formatting string that expresses the desired result with one
+    or more placeholders in which the arguments will be substituted. As a simple
+    example, the expression {} had a little {} .format( Mary , lamb ) pro-
+    duces the result Mary had a little lamb . The pairs of curly braces in the
+    formatting string are the placeholders for ﬁelds that will be substituted into the
+    result. By default, the arguments sent to the function are substituted using posi-
+    tional order; hence, Mary was the ﬁrst substitute and lamb the second. How-
+    ever, the substitution patterns may be explicitly numbered to alter the order, or
+    to use a single argument in more than one location. For example, the expres-
+    sion {0}, {0}, {0} your {1} .format( row , boat ) produces the result
+      row, row, row your boat .
+        All substitution patterns allow use of annotations to pad an argument to a par-
+    ticular width, using a choice of ﬁll character and justiﬁcation mode. An example of
+    such an annotation is {:-^20} .format( hello ). In this example, the hyphen
+    (-) serves as a ﬁll character, the caret (^) designates a desire for the string to be
+    centered, and 20 is the desired width for the argument. This example results in
+    the string -------hello-------- . By default, space is used as a ﬁll character
+    and an implied < character dictates left-justiﬁcation; an explicit > character would
+    dictate right-justiﬁcation.
+        There are additional formatting options for numeric types. A number will be
+    padded with zeros rather than spaces if its width description is prefaced with a
+    zero. For example, a date can be formatted in traditional “YYYY/MM/DD” form
+    as {}/{:02}/{:02} .format(year, month, day). Integers can be converted to
+    binary, octal, or hexadecimal by respectively adding the character b, o, or x as a
+    sufﬁx to the annotation. The displayed precision of a ﬂoating-point number is spec-
+    iﬁed with a decimal point and the subsequent number of desired digits. For exam-
+    ple, the expression {:.3}.format(2/3) produces the string 0.667 , rounded
+    to three digits after the decimal point. A programmer can explicitly designate use
+    of ﬁxed-point representation (e.g., 0.667 ) by adding the character f as a sufﬁx,
+    or scientiﬁc notation (e.g., 6.667e-01 ) by adding the character e as a sufﬁx.

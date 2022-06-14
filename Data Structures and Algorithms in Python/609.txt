@@ -1,0 +1,41 @@
+588                                                            Chapter 13. Text Processing
+       another occurrence. The efﬁciency of the Boyer-Moore algorithm relies on creat-
+       ing a lookup table that quickly determines where a mismatched character occurs
+       elsewhere in the pattern. In particular, we deﬁne a function last(c) as
+           • If c is in P, last(c) is the index of the last (rightmost) occurrence of c in P.
+               Otherwise, we conventionally deﬁne last(c) = −1.
+            If we assume that the alphabet is of ﬁxed, ﬁnite size, and that characters can be
+       converted to indices of an array (for example, by using their character code), the
+       last function can be easily implemented as a lookup table with worst-case O(1)-
+       time access to the value last(c). However, the table would have length equal to the
+       size of the alphabet (rather than the size of the pattern), and time would be required
+       to initialize the entire table.
+            We prefer to use a hash table to represent the last function, with only those
+       characters from the pattern occurring in the structure. The space usage for this
+       approach is proportional to the number of distinct alphabet symbols that occur in
+       the pattern, and thus O(m). The expected lookup time remains independent of the
+       problem (although the worst-case bound is O(m)). Our complete implementation
+       of the Boyer-Moore pattern-matching algorithm is given in Code Fragment 13.2.
+     1 def ﬁnd boyer moore(T, P):
+     2   ”””Return the lowest index of T at which substring P begins (or else -1).”””
+     3   n, m = len(T), len(P)                          # introduce convenient notations
+     4   if m == 0: return 0                            # trivial search for empty string
+     5   last = { }                                     # build ’last’ dictionary
+     6   for k in range(m):
+     7      last[ P[k] ] = k                            # later occurrence overwrites
+     8   # align end of pattern at index m-1 of text
+     9   i = m−1                                        # an index into T
+    10   k = m−1                                        # an index into P
+    11   while i < n:
+    12      if T[i] == P[k]:                            # a matching character
+    13         if k == 0:
+    14            return i                              # pattern begins at index i of text
+    15         else:
+    16            i −= 1                                # examine previous character
+    17            k −= 1                                # of both T and P
+    18      else:
+    19         j = last.get(T[i], −1)                   # last(T[i]) is -1 if not found
+    20         i += m − min(k, j + 1)                   # case analysis for jump step
+    21         k=m−1                                    # restart at end of pattern
+    22   return −1
+             Code Fragment 13.2: An implementation of the Boyer-Moore algorithm.

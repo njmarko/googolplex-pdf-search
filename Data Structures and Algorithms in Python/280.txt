@@ -1,0 +1,30 @@
+7.1. Singly Linked Lists                                                                      259
+           Inserting an Element at the Tail of a Singly Linked List
+           We can also easily insert an element at the tail of the list, provided we keep a
+           reference to the tail node, as shown in Figure 7.5. In this case, we create a new
+           node, assign its next reference to None, set the next reference of the tail to point to
+           this new node, and then update the tail reference itself to this new node. We give
+           the details in Code Fragment 7.2.
+                                             tail
+              MSP               ATL               BOS
+                                                      (a)
+                                             tail                       newest
+              MSP               ATL               BOS                         MIA
+                                                      (b)
+                                                              tail            newest
+              MSP               ATL               BOS              MIA
+                                                      (c)
+           Figure 7.5: Insertion at the tail of a singly linked list: (a) before the insertion;
+           (b) after creation of a new node; (c) after reassignment of the tail reference. Note
+           that we must set the next link of the tail in (b) before we assign the tail variable to
+           point to the new node in (c).
+           Algorithm add last(L, e):
+                 newest = Node(e) {create new node instance storing reference to element e}
+                 newest.next = None         {set new node’s next to reference the None object}
+                 L.tail.next = newest                     {make old tail node point to new node}
+                 L.tail = newest                    {set variable tail to reference the new node}
+                 L.size = L.size + 1                                  {increment the node count}
+           Code Fragment 7.2: Inserting a new node at the end of a singly linked list. Note
+           that we set the next pointer for the old tail node before we make variable tail point
+           to the new node. This code would need to be adjusted for inserting onto an empty
+           list, since there would not be an existing tail node.

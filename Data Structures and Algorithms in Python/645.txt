@@ -1,0 +1,32 @@
+624                                                   Chapter 14. Graph Algorithms
+                                          BOS                                       BOS
+                           ORD                                       ORD
+                                      JFK                                       JFK
+       SFO                                        SFO
+                      DFW                                       DFW
+         LAX                                        LAX
+                                     MIA                                       MIA
+                         (a)                                      (b)
+                                          BOS                                       BOS
+                           ORD                                       ORD
+                                      JFK                                       JFK
+       SFO                                        SFO
+                      DFW                                       DFW
+         LAX                                        LAX
+                                     MIA                                       MIA
+                         (c)                                      (d)
+    Figure 14.3: Examples of reachability in a directed graph: (a) a directed path from
+    BOS to LAX is highlighted; (b) a directed cycle (ORD, MIA, DFW, LAX, ORD) is
+    highlighted; its vertices induce a strongly connected subgraph; (c) the subgraph of
+    the vertices and edges reachable from ORD is highlighted; (d) the removal of the
+    dashed edges results in an acyclic directed graph.
+    Example 14.7: Perhaps the most talked about graph today is the Internet, which
+    can be viewed as a graph whose vertices are computers and whose (undirected)
+    edges are communication connections between pairs of computers on the Inter-
+    net. The computers and the connections between them in a single domain, like
+    wiley.com, form a subgraph of the Internet. If this subgraph is connected, then two
+    users on computers in this domain can send email to one another without having
+    their information packets ever leave their domain. Suppose the edges of this sub-
+    graph form a spanning tree. This implies that, if even a single connection goes
+    down (for example, because someone pulls a communication cable out of the back
+    of a computer in this domain), then this subgraph will no longer be connected.

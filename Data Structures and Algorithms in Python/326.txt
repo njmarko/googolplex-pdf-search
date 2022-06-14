@@ -1,0 +1,32 @@
+8.1. General Trees                                                                           305
+      8.1.2 The Tree Abstract Data Type
+          As we did with positional lists in Section 7.4, we deﬁne a tree ADT using the
+          concept of a position as an abstraction for a node of a tree. An element is stored
+          at each position, and positions satisfy parent-child relationships that deﬁne the tree
+          structure. A position object for a tree supports the method:
+                      p.element( ): Return the element stored at position p.
+          The tree ADT then supports the following accessor methods, allowing a user to
+          navigate the various positions of a tree:
+                          T.root( ): Return the position of the root of tree T,
+                                       or None if T is empty.
+                      T.is root(p): Return True if position p is the root of Tree T.
+                      T.parent(p): Return the position of the parent of position p,
+                                       or None if p is the root of T.
+             T.num children(p): Return the number of children of position p.
+                    T.children(p): Generate an iteration of the children of position p.
+                       T.is leaf(p): Return True if position p does not have any children.
+                             len(T): Return the number of positions (and hence elements) that
+                                       are contained in tree T.
+                     T.is empty( ): Return True if tree T does not contain any positions.
+                    T.positions( ): Generate an iteration of all positions of tree T.
+                            iter(T): Generate an iteration of all elements stored within tree T.
+          Any of the above methods that accepts a position as an argument should generate a
+          ValueError if that position is invalid for T.
+              If a tree T is ordered, then T.children(p) reports the children of p in the natural
+          order. If p is a leaf, then T.children(p) generates an empty iteration. In similar
+          regard, if tree T is empty, then both T.positions( ) and iter(T) generate empty iter-
+          ations. We will discuss general means for iterating through all positions of a tree in
+          Sections 8.4.
+              We do not deﬁne any methods for creating or modifying trees at this point.
+          We prefer to describe different tree update methods in conjunction with speciﬁc
+          implementations of the tree interface, and speciﬁc applications of trees.

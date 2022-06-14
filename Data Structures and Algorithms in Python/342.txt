@@ -1,0 +1,42 @@
+8.3. Implementing Trees                                                                    321
+      41    #-------------------------- binary tree constructor --------------------------
+      42    def init (self):
+      43      ”””Create an initially empty binary tree.”””
+      44      self. root = None
+      45      self. size = 0
+      46
+      47    #-------------------------- public accessors --------------------------
+      48    def len (self):
+      49      ”””Return the total number of elements in the tree.”””
+      50      return self. size
+      51
+      52    def root(self):
+      53      ”””Return the root Position of the tree (or None if tree is empty).”””
+      54      return self. make position(self. root)
+      55
+      56    def parent(self, p):
+      57      ”””Return the Position of p s parent (or None if p is root).”””
+      58      node = self. validate(p)
+      59      return self. make position(node. parent)
+      60
+      61    def left(self, p):
+      62      ”””Return the Position of p s left child (or None if no left child).”””
+      63      node = self. validate(p)
+      64      return self. make position(node. left)
+      65
+      66    def right(self, p):
+      67      ”””Return the Position of p s right child (or None if no right child).”””
+      68      node = self. validate(p)
+      69      return self. make position(node. right)
+      70
+      71    def num children(self, p):
+      72      ”””Return the number of children of Position p.”””
+      73      node = self. validate(p)
+      74      count = 0
+      75      if node. left is not None:            # left child exists
+      76         count += 1
+      77      if node. right is not None:           # right child exists
+      78         count += 1
+      79      return count
+          Code Fragment 8.9: Public accessors for our LinkedBinaryTree class. The class
+          begins in Code Fragment 8.8 and continues in Code Fragments 8.10 and 8.11.

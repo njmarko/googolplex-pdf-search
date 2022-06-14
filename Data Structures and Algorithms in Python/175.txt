@@ -1,0 +1,24 @@
+154                                                               Chapter 4. Recursion
+    Illustrating Ruler Drawing Using a Recursion Trace
+    The execution of the recursive draw interval function can be visualized using a re-
+    cursion trace. The trace for draw interval is more complicated than in the factorial
+    example, however, because each instance makes two recursive calls. To illustrate
+    this, we will show the recursion trace in a form that is reminiscent of an outline for
+    a document. See Figure 4.3.
+                                                                          Output
+        draw interval(3)
+               draw interval(2)
+                        draw interval(1)
+                                draw interval(0)
+                                  draw line(1)
+                                draw interval(0)
+                          draw line(2)
+                        draw interval(1)
+                                draw interval(0)
+                                  draw line(1)
+                                draw interval(0)
+                 draw line(3)
+               draw interval(2)
+                     (previous pattern repeats)
+    Figure 4.3: A partial recursion trace for the call draw interval(3). The second
+    pattern of calls for draw interval(2) is not shown, but it is identical to the ﬁrst.

@@ -1,0 +1,47 @@
+736                                                                               Bibliography
+     [85] R. C. Prim, “Shortest connection networks and some generalizations,” Bell Syst.
+          Tech. J., vol. 36, pp. 1389–1401, 1957.
+     [86] W. Pugh, “Skip lists: a probabilistic alternative to balanced trees,” Commun. ACM,
+          vol. 33, no. 6, pp. 668–676, 1990.
+     [87] H. Samet, The Design and Analysis of Spatial Data Structures. Reading, MA:
+          Addison-Wesley, 1990.
+     [88] R. Schaffer and R. Sedgewick, “The analysis of heapsort,” Journal of Algorithms,
+          vol. 15, no. 1, pp. 76–100, 1993.
+     [89] D. D. Sleator and R. E. Tarjan, “Self-adjusting binary search trees,” J. ACM, vol. 32,
+          no. 3, pp. 652–686, 1985.
+     [90] G. A. Stephen, String Searching Algorithms. World Scientiﬁc Press, 1994.
+     [91] M. Summerﬁeld, Programming in Python 3: A Complete Introduction to the Python
+          Language. Addison-Wesley Professional, 2nd ed., 2009.
+     [92] R. Tamassia and G. Liotta, “Graph drawing,” in Handbook of Discrete and Compu-
+          tational Geometry (J. E. Goodman and J. O’Rourke, eds.), ch. 52, pp. 1163–1186,
+          CRC Press LLC, 2nd ed., 2004.
+     [93] R. Tarjan and U. Vishkin, “An efﬁcient parallel biconnectivity algorithm,” SIAM J.
+          Comput., vol. 14, pp. 862–874, 1985.
+     [94] R. E. Tarjan, “Depth ﬁrst search and linear graph algorithms,” SIAM J. Comput.,
+          vol. 1, no. 2, pp. 146–160, 1972.
+     [95] R. E. Tarjan, Data Structures and Network Algorithms, vol. 44 of CBMS-NSF Re-
+          gional Conference Series in Applied Mathematics. Philadelphia, PA: Society for
+          Industrial and Applied Mathematics, 1983.
+     [96] A. B. Tucker, Jr., The Computer Science and Engineering Handbook. CRC Press,
+          1997.
+     [97] J. D. Ullman, Principles of Database Systems. Potomac, MD: Computer Science
+          Press, 1983.
+     [98] J. van Leeuwen, “Graph algorithms,” in Handbook of Theoretical Computer Science
+          (J. van Leeuwen, ed.), vol. A. Algorithms and Complexity, pp. 525–632, Amster-
+          dam: Elsevier, 1990.
+     [99] J. S. Vitter, “Efﬁcient memory access in large-scale computation,” in Proc. 8th Sym-
+          pos. Theoret. Aspects Comput. Sci., Lecture Notes Comput. Sci., Springer-Verlag,
+          1991.
+    [100] J. S. Vitter and W. C. Chen, Design and Analysis of Coalesced Hashing. New York:
+          Oxford University Press, 1987.
+    [101] J. S. Vitter and P. Flajolet, “Average-case analysis of algorithms and data structures,”
+          in Algorithms and Complexity (J. van Leeuwen, ed.), vol. A of Handbook of Theo-
+          retical Computer Science, pp. 431–524, Amsterdam: Elsevier, 1990.
+    [102] S. Warshall, “A theorem on boolean matrices,” Journal of the ACM, vol. 9, no. 1,
+          pp. 11–12, 1962.
+    [103] J. W. J. Williams, “Algorithm 232: Heapsort,” Communications of the ACM, vol. 7,
+          no. 6, pp. 347–348, 1964.
+    [104] D. Wood, Data Structures, Algorithms, and Performance. Reading, MA: Addison-
+          Wesley, 1993.
+    [105] J. Zelle, Python Programming: An Introduciton to Computer Science. Franklin,
+          Beedle & Associates Inc., 2nd ed., 2010.

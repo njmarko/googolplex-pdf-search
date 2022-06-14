@@ -1,0 +1,40 @@
+9.6. Exercises                                                                              399
+           C-9.44 Given a class, PriorityQueue, that implements the minimum-oriented pri-
+                   ority queue ADT, provide an implementation of a MaxPriorityQueue class
+                   that adapts to provide a maximum-oriented abstraction with methods add,
+                   max, and remove max. Your implementation should not make any as-
+                   sumption about the internal workings of the original PriorityQueue class,
+                   nor the type of keys that might be used.
+           C-9.45 Write a key function for nonnegative integers that determines order based
+                   on the number of 1’s in each integer’s binary expansion.
+           C-9.46 Give an alternative implementation of the pq sort function, from Code
+                   Fragment 9.7, that accepts a key function as an optional parameter.
+           C-9.47 Describe an in-place version of the selection-sort algorithm for an array
+                   that uses only O(1) space for instance variables in addition to the array.
+           C-9.48 Assuming the input to the sorting problem is given in an array A, describe
+                   how to implement the insertion-sort algorithm using only the array A and
+                   at most a constant number of additional variables.
+           C-9.49 Give an alternate description of the in-place heap-sort algorithm using
+                   the standard minimum-oriented priority queue (instead of a maximum-
+                   oriented one).
+           C-9.50 An online computer system for trading stocks needs to process orders of
+                   the form “buy 100 shares at $x each” or “sell 100 shares at $y each.” A
+                   buy order for $x can only be processed if there is an existing sell order
+                   with price $y such that y ≤ x. Likewise, a sell order for $y can only be
+                   processed if there is an existing buy order with price $x such that y ≤ x.
+                   If a buy or sell order is entered but cannot be processed, it must wait for a
+                   future order that allows it to be processed. Describe a scheme that allows
+                   buy and sell orders to be entered in O(log n) time, independent of whether
+                   or not they can be immediately processed.
+           C-9.51 Extend a solution to the previous problem so that users are allowed to
+                   update the prices for their buy or sell orders that have yet to be processed.
+           C-9.52 A group of children want to play a game, called Unmonopoly, where in
+                   each turn the player with the most money must give half of his/her money
+                   to the player with the least amount of money. What data structure(s)
+                   should be used to play this game efﬁciently? Why?
+      Projects
+            P-9.53 Implement the in-place heap-sort algorithm. Experimentally compare its
+                   running time with that of the standard heap-sort that is not in-place.
+            P-9.54 Use the approach of either Exercise C-9.42 or C-9.43 to reimplement the
+                   top method of the FavoritesListMTF class from Section 7.6.2. Make sure
+                   that results are generated from largest to smallest.

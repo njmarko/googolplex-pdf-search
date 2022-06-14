@@ -1,0 +1,36 @@
+8.4. Tree Traversal Algorithms                                                                 335
+           Postorder Traversal
+           We can implement a postorder traversal using very similar technique as with a
+           preorder traversal. The only difference is that within the recursive utility for a post-
+           order we wait to yield position p until after we have recursively yield the positions
+           in its subtrees. An implementation is given in Code Fragment 8.19.
+      94     def postorder(self):
+      95        ”””Generate a postorder iteration of positions in the tree.”””
+      96        if not self.is empty( ):
+      97           for p in self. subtree postorder(self.root( )):        # start recursion
+      98             yield p
+      99
+     100     def subtree postorder(self, p):
+     101        ”””Generate a postorder iteration of positions in subtree rooted at p.”””
+     102        for c in self.children(p):                      # for each child c
+     103           for other in self. subtree postorder(c): # do postorder of c’s subtree
+     104             yield other                                # yielding each to our caller
+     105        yield p                                         # visit p after its subtrees
+           Code Fragment 8.19: Support for performing a postorder traversal of a tree. This
+           code should be included in the body of the Tree class.
+           Breadth-First Traversal
+           In Code Fragment 8.20, we provide an implementation of the breadth-ﬁrst traversal
+           algorithm in the context of our Tree class. Recall that the breadth-ﬁrst traversal
+           algorithm is not recursive; it relies on a queue of positions to manage the traver-
+           sal process. Our implementation uses the LinkedQueue class from Section 7.1.2,
+           although any implementation of the queue ADT would sufﬁce.
+           Inorder Traversal for Binary Trees
+           The preorder, postorder, and breadth-ﬁrst traversal algorithms are applicable to
+           all trees, and so we include their implementations within the Tree abstract base
+           class. Those methods are inherited by the abstract BinaryTree class, the concrete
+           LinkedBinaryTree class, and any other dependent tree classes we might develop.
+                The inorder traversal algorithm, because it explicitly relies on the notion of a
+           left and right child of a node, only applies to binary trees. We therefore include its
+           deﬁnition within the body of the BinaryTree class. We use a similar technique to
+           implement an inorder traversal (Code Fragment 8.21) as we did with preorder and
+           postorder traversals.

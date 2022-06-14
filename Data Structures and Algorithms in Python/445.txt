@@ -1,0 +1,41 @@
+424                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+       Separate Chaining
+       Code Fragment 10.5 provides a concrete implementation of a hash table with sepa-
+       rate chaining, in the form of the ChainHashMap class. To represent a single bucket,
+       it relies on an instance of the UnsortedTableMap class from Code Fragment 10.3.
+            The ﬁrst three methods in the class use index j to access the potential bucket in
+       the bucket array, and a check for the special case in which that table entry is None.
+       The only time we need a new bucket structure is when bucket setitem is called on
+       an otherwise empty slot. The remaining functionality relies on map behaviors that
+       are already supported by the individual UnsortedTableMap instances. We need a
+       bit of forethought to determine whether the application of setitem on the chain
+       causes a net increase in the size of the map (that is, whether the given key is new).
+     1 class ChainHashMap(HashMapBase):
+     2    ”””Hash map implemented with separate chaining for collision resolution.”””
+     3
+     4    def bucket getitem(self, j, k):
+     5      bucket = self. table[j]
+     6      if bucket is None:
+     7         raise KeyError( Key Error: + repr(k))                 # no match found
+     8      return bucket[k]                                         # may raise KeyError
+     9
+    10    def bucket setitem(self, j, k, v):
+    11      if self. table[j] is None:
+    12         self. table[j] = UnsortedTableMap( )           # bucket is new to the table
+    13      oldsize = len(self. table[j])
+    14      self. table[j][k] = v
+    15      if len(self. table[j]) > oldsize:                 # key was new to the table
+    16         self. n += 1                                   # increase overall map size
+    17
+    18    def bucket delitem(self, j, k):
+    19      bucket = self. table[j]
+    20      if bucket is None:
+    21         raise KeyError( Key Error: + repr(k))                 # no match found
+    22      del bucket[k]                                            # may raise KeyError
+    23
+    24    def iter (self):
+    25      for bucket in self. table:
+    26         if bucket is not None:                                # a nonempty slot
+    27            for key in bucket:
+    28              yield key
+               Code Fragment 10.5: Concrete hash map class with separate chaining.

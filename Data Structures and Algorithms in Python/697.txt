@@ -1,0 +1,39 @@
+676                                                        Chapter 14. Graph Algorithms
+    14.7.2 Kruskal’s Algorithm
+       In this section, we introduce Kruskal’s algorithm for constructing a minimum span-
+       ning tree. While the Prim-Jarnı́k algorithm builds the MST by growing a single tree
+       until it spans the graph, Kruskal’s algorithm maintains a forest of clusters, repeat-
+       edly merging pairs of clusters until a single cluster spans the graph.
+            Initially, each vertex is by itself in a singleton cluster. The algorithm then
+       considers each edge in turn, ordered by increasing weight. If an edge e connects
+       two different clusters, then e is added to the set of edges of the minimum spanning
+       tree, and the two clusters connected by e are merged into a single cluster. If, on the
+       other hand, e connects two vertices that are already in the same cluster, then e is
+       discarded. Once the algorithm has added enough edges to form a spanning tree, it
+       terminates and outputs this tree as the minimum spanning tree.
+            We give pseudo-code for Kruskal’s MST algorithm in Code Fragment 14.17
+       and we show an example of this algorithm in Figures 14.22, 14.23, and 14.24.
+       Algorithm Kruskal(G):
+            Input: A simple connected weighted graph G with n vertices and m edges
+            Output: A minimum spanning tree T for G
+          for each vertex v in G do
+             Deﬁne an elementary cluster C(v) = {v}.
+          Initialize a priority queue Q to contain all edges in G, using the weights as keys.
+          T =∅                            {T will ultimately contain the edges of the MST}
+          while T has fewer than n − 1 edges do
+             (u, v) = value returned by Q.remove min()
+             Let C(u) be the cluster containing u, and let C(v) be the cluster containing v.
+             if C(u) = C(v) then
+                Add edge (u, v) to T .
+                Merge C(u) and C(v) into one cluster.
+          return tree T
+                 Code Fragment 14.17: Kruskal’s algorithm for the MST problem.
+            As was the case with the Prim-Jarnı́k algorithm, the correctness of Kruskal’s al-
+       gorithm is based upon the crucial fact about minimum spanning trees from Propo-
+       sition 14.25. Each time Kruskal’s algorithm adds an edge (u, v) to the minimum
+       spanning tree T , we can deﬁne a partitioning of the set of vertices V (as in the
+       proposition) by letting V1 be the cluster containing v and letting V2 contain the rest
+       of the vertices in V . This clearly deﬁnes a disjoint partitioning of the vertices of
+       V and, more importantly, since we are extracting edges from Q in order by their
+       weights, e must be a minimum-weight edge with one vertex in V1 and the other in
+       V2 . Thus, Kruskal’s algorithm always adds a valid minimum spanning tree edge.

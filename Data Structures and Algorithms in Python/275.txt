@@ -1,0 +1,34 @@
+254                                             Chapter 6. Stacks, Queues, and Deques
+       P-6.36 When a share of common stock of some company is sold, the capital
+               gain (or, sometimes, loss) is the difference between the share’s selling
+               price and the price originally paid to buy it. This rule is easy to under-
+               stand for a single share, but if we sell multiple shares of stock bought
+               over a long period of time, then we must identify the shares actually be-
+               ing sold. A standard accounting principle for identifying which shares of
+               a stock were sold in such a case is to use a FIFO protocol—the shares
+               sold are the ones that have been held the longest (indeed, this is the de-
+               fault method built into several personal ﬁnance software packages). For
+               example, suppose we buy 100 shares at $20 each on day 1, 20 shares at
+               $24 on day 2, 200 shares at $36 on day 3, and then sell 150 shares on day
+               4 at $30 each. Then applying the FIFO protocol means that of the 150
+               shares sold, 100 were bought on day 1, 20 were bought on day 2, and 30
+               were bought on day 3. The capital gain in this case would therefore be
+               100 · 10 + 20 · 6 + 30 · (−6), or $940. Write a program that takes as input
+               a sequence of transactions of the form “buy x share(s) at y each”
+               or “sell x share(s) at y each,” assuming that the transactions oc-
+               cur on consecutive days and the values x and y are integers. Given this
+               input sequence, the output should be the total capital gain (or loss) for the
+               entire sequence, using the FIFO protocol to identify shares.
+       P-6.37 Design an ADT for a two-color, double-stack ADT that consists of two
+               stacks—one “red” and one “blue”—and has as its operations color-coded
+               versions of the regular stack ADT operations. For example, this ADT
+               should support both a red push operation and a blue push operation. Give
+               an efﬁcient implementation of this ADT using a single array whose ca-
+               pacity is set at some value N that is assumed to always be larger than the
+               sizes of the red and blue stacks combined.
+ Chapter Notes
+     We were introduced to the approach of deﬁning data structures ﬁrst in terms of their ADTs
+     and then in terms of concrete implementations by the classic books by Aho, Hopcroft, and
+     Ullman [5, 6]. Exercises C-6.30, and C-6.31 are similar to interview questions said to be
+     from a well-known software company. For further study of abstract data types, see Liskov
+     and Guttag [71], Cardelli and Wegner [23], or Demurjian [33].

@@ -1,0 +1,42 @@
+710                                    Chapter 15. Memory Management and B-Trees
+         The FIFO strategy is quite simple to implement, as it only requires a queue
+    Q to store references to the pages in the cache. Pages are enqueued in Q when
+    they are referenced by a browser, and then are brought into the cache. When a
+    page needs to be evicted, the computer simply performs a dequeue operation on Q
+    to determine which page to evict. Thus, this policy also requires O(1) additional
+    work per page replacement. Also, the FIFO policy incurs no additional overhead
+    for page requests. Moreover, it tries to take some advantage of temporal locality.
+         The LRU strategy goes a step further than the FIFO strategy, for the LRU strat-
+    egy explicitly takes advantage of temporal locality as much as possible, by always
+    evicting the page that was least-recently used. From a policy point of view, this is
+    an excellent approach, but it is costly from an implementation point of view. That
+    is, its way of optimizing temporal and spatial locality is fairly costly. Implement-
+    ing the LRU strategy requires the use of an adaptable priority queue Q that supports
+    updating the priority of existing pages. If Q is implemented with a sorted sequence
+    based on a linked list, then the overhead for each page request and page replace-
+    ment is O(1). When we insert a page in Q or update its key, the page is assigned
+    the highest key in Q and is placed at the end of the list, which can also be done
+    in O(1) time. Even though the LRU strategy has constant-time overhead, using
+    the implementation above, the constant factors involved, in terms of the additional
+    time overhead and the extra space for the priority queue Q, make this policy less
+    attractive from a practical point of view.
+         Since these different page replacement policies have different trade-offs be-
+    tween implementation difﬁculty and the degree to which they seem to take advan-
+    tage of localities, it is natural for us to ask for some kind of comparative analysis
+    of these methods to see which one, if any, is the best.
+         From a worst-case point of view, the FIFO and LRU strategies have fairly
+    unattractive competitive behavior. For example, suppose we have a cache con-
+    taining m pages, and consider the FIFO and LRU methods for performing page
+    replacement for a program that has a loop that repeatedly requests m + 1 pages in
+    a cyclic order. Both the FIFO and LRU policies perform badly on such a sequence
+    of page requests, because they perform a page replacement on every page request.
+    Thus, from a worst-case point of view, these policies are almost the worst we can
+    imagine—they require a page replacement on every page request.
+         This worst-case analysis is a little too pessimistic, however, for it focuses on
+    each protocol’s behavior for one bad sequence of page requests. An ideal analy-
+    sis would be to compare these methods over all possible page-request sequences.
+    Of course, this is impossible to do exhaustively, but there have been a great num-
+    ber of experimental simulations done on page-request sequences derived from real
+    programs. Based on these experimental comparisons, the LRU strategy has been
+    shown to be usually superior to the FIFO strategy, which is usually better than the
+    random strategy.

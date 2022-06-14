@@ -1,0 +1,34 @@
+3.2. The Seven Functions Used in This Book                                                    115
+  3.2     The Seven Functions Used in This Book
+          In this section, we brieﬂy discuss the seven most important functions used in the
+          analysis of algorithms. We will use only these seven simple functions for almost
+          all the analysis we do in this book. In fact, a section that uses a function other
+          than one of these seven will be marked with a star () to indicate that it is optional.
+          In addition to these seven fundamental functions, Appendix B contains a list of
+          other useful mathematical facts that apply in the analysis of data structures and
+          algorithms.
+      The Constant Function
+          The simplest function we can think of is the constant function. This is the function,
+                                                  f (n) = c,
+          for some ﬁxed constant c, such as c = 5, c = 27, or c = 210 . That is, for any
+          argument n, the constant function f (n) assigns the value c. In other words, it does
+          not matter what the value of n is; f (n) will always be equal to the constant value c.
+               Because we are most interested in integer functions, the most fundamental con-
+          stant function is g(n) = 1, and this is the typical constant function we use in this
+          book. Note that any other constant function, f (n) = c, can be written as a constant
+          c times g(n). That is, f (n) = cg(n) in this case.
+               As simple as it is, the constant function is useful in algorithm analysis, because
+          it characterizes the number of steps needed to do a basic operation on a computer,
+          like adding two numbers, assigning a value to some variable, or comparing two
+          numbers.
+      The Logarithm Function
+          One of the interesting and sometimes even surprising aspects of the analysis of
+          data structures and algorithms is the ubiquitous presence of the logarithm function,
+           f (n) = logb n, for some constant b > 1. This function is deﬁned as follows:
+                                     x = logb n if and only if bx = n.
+          By deﬁnition, logb 1 = 0. The value b is known as the base of the logarithm.
+               The most common base for the logarithm function in computer science is 2,
+          as computers store integers in binary, and because a common operation in many
+          algorithms is to repeatedly divide an input in half. In fact, this base is so common
+          that we will typically omit it from the notation when it is 2. That is, for us,
+                                               log n = log2 n.

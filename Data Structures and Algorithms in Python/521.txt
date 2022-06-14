@@ -1,0 +1,41 @@
+500                                                                  Chapter 11. Search Trees
+    Proposition 11.4: Let T be a splay tree with root t , and let Δ be the total variation
+    of r(T ) caused by splaying a node x at depth d . We have
+                                        Δ ≤ 3(r(t) − r(x)) − d + 2.
+    Justiﬁcation: Splaying node x consists of c = d/2 splaying substeps, each
+    of which is a zig-zig or a zig-zag, except possibly the last one, which is a zig if
+    d is odd. Let r0 (x) = r(x) be the initial rank of x, and for i = 1, . . . , c, let ri (x) be
+    the rank of x after the ith substep and δi be the variation of r(T ) caused by the ith
+    substep. By Proposition 11.3, the total variation Δ of r(T ) caused by splaying x is
+                                             c
+                                   Δ =      ∑ δi
+                                            i=1
+                                                  c
+                                       ≤ 2 + ∑ 3(ri (x) − ri−1 (x)) − 2
+                                                 i=1
+                                       = 3(rc (x) − r0 (x)) − 2c + 2
+                                       ≤ 3(r(t) − r(x)) − d + 2.
+         By Proposition 11.4, if we make a payment of 3(r(t) − r(x)) + 2 cyber-dollars
+    towards the splaying of node x, we have enough cyber-dollars to maintain the in-
+    variant, keeping r(w) cyber-dollars at each node w in T , and pay for the entire
+    splaying work, which costs d cyber-dollars. Since the size of the root t is n, its
+    rank r(t) = log n. Given that r(x) ≥ 0, the payment to be made for splaying is
+    O(log n) cyber-dollars. To complete our analysis, we have to compute the cost for
+    maintaining the invariant when a node is inserted or deleted.
+         When inserting a new node w into a splay tree with n keys, the ranks of all
+    the ancestors of w are increased. Namely, let w0 , wi , . . . , wd be the ancestors of w,
+    where w0 = w, wi is the parent of wi−1 , and wd is the root. For i = 1, . . . , d, let
+    n (wi ) and n(wi ) be the size of wi before and after the insertion, respectively, and
+    let r (wi ) and r(wi ) be the rank of wi before and after the insertion. We have
+                                             n (wi ) = n(wi ) + 1.
+    Also, since n(wi ) + 1 ≤ n(wi+1 ), for i = 0, 1, . . . , d − 1, we have the following for
+    each i in this range:
+                r (wi ) = log(n (wi )) = log(n(wi ) + 1) ≤ log(n(wi+1 )) = r(wi+1 ).
+    Thus, the total variation of r(T ) caused by the insertion is
+                       d                                        d−1
+                      ∑    r (wi ) − r(wi )     ≤ r (wd ) +   ∑ (r(wi+1) − r(wi ))
+                     i=1                                        i=1
+                                                 = r (wd ) − r(w0 )
+                                                 ≤ log n.
+    Therefore, a payment of O(log n) cyber-dollars is sufﬁcient to maintain the invariant
+    when a new node is inserted.

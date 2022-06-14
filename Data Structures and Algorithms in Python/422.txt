@@ -1,0 +1,26 @@
+Chapter
+ 10             Maps, Hash Tables, and Skip Lists
+Contents
+    10.1 Maps and Dictionaries . . . . . . . . . . . . . . . .     . . . . .  402
+         10.1.1 The Map ADT . . . . . . . . . . . . . . . . .     . . . . . . 403
+         10.1.2 Application: Counting Word Frequencies . . . .    . . . . . . 405
+         10.1.3 Python’s MutableMapping Abstract Base Class       . . . . . . 406
+         10.1.4 Our MapBase Class . . . . . . . . . . . . . . .   . . . . . . 407
+         10.1.5 Simple Unsorted Map Implementation . . . . .      . . . . . . 408
+    10.2 Hash Tables . . . . . . . . . . . . . . . . . . . . .     . . . . .  410
+         10.2.1 Hash Functions . . . . . . . . . . . . . . . . .  . . . . . . 411
+         10.2.2 Collision-Handling Schemes . . . . . . . . . . .  . . . . . . 417
+         10.2.3 Load Factors, Rehashing, and Eﬃciency . . . .     . . . . . . 420
+         10.2.4 Python Hash Table Implementation . . . . . .      . . . . . . 422
+    10.3 Sorted Maps . . . . . . . . . . . . . . . . . . . . .     . . . . .  427
+         10.3.1 Sorted Search Tables . . . . . . . . . . . . . .  . . . . . . 428
+         10.3.2 Two Applications of Sorted Maps . . . . . . .     . . . . . . 434
+    10.4 Skip Lists . . . . . . . . . . . . . . . . . . . . . . .  . . . . .  437
+         10.4.1 Search and Update Operations in a Skip List .     . . . . . . 439
+                                                    
+         10.4.2 Probabilistic Analysis of Skip Lists . . . . . .  . . . . . . 443
+    10.5 Sets, Multisets, and Multimaps . . . . . . . . . .        . . . . .  446
+         10.5.1 The Set ADT . . . . . . . . . . . . . . . . . .   . . . . . . 446
+         10.5.2 Python’s MutableSet Abstract Base Class . . .     . . . . . . 448
+         10.5.3 Implementing Sets, Multisets, and Multimaps .     . . . . . . 450
+    10.6 Exercises . . . . . . . . . . . . . . . . . . . . . . .   . . . . .  452

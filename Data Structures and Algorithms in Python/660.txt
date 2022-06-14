@@ -1,0 +1,38 @@
+14.3. Graph Traversals                                                                        639
+       14.3.1 Depth-First Search
+          The ﬁrst traversal algorithm we consider in this section is depth-ﬁrst search (DFS).
+          Depth-ﬁrst search is useful for testing a number of properties of graphs, including
+          whether there is a path from one vertex to another and whether or not a graph is
+          connected.
+              Depth-ﬁrst search in a graph G is analogous to wandering in a labyrinth with
+          a string and a can of paint without getting lost. We begin at a speciﬁc starting
+          vertex s in G, which we initialize by ﬁxing one end of our string to s and painting
+          s as “visited.” The vertex s is now our “current” vertex—call our current vertex u.
+          We then traverse G by considering an (arbitrary) edge (u, v) incident to the current
+          vertex u. If the edge (u, v) leads us to a vertex v that is already visited (that is,
+          painted), we ignore that edge. If, on the other hand, (u, v) leads to an unvisited
+          vertex v, then we unroll our string, and go to v. We then paint v as “visited,” and
+          make it the current vertex, repeating the computation above. Eventually, we will get
+          to a “dead end,” that is, a current vertex v such that all the edges incident to v lead
+          to vertices already visited. To get out of this impasse, we roll our string back up,
+          backtracking along the edge that brought us to v, going back to a previously visited
+          vertex u. We then make u our current vertex and repeat the computation above for
+          any edges incident to u that we have not yet considered. If all of u’s incident edges
+          lead to visited vertices, then we again roll up our string and backtrack to the vertex
+          we came from to get to u, and repeat the procedure at that vertex. Thus, we continue
+          to backtrack along the path that we have traced so far until we ﬁnd a vertex that has
+          yet unexplored edges, take one such edge, and continue the traversal. The process
+          terminates when our backtracking leads us back to the start vertex s, and there are
+          no more unexplored edges incident to s.
+              The pseudo-code for a depth-ﬁrst search traversal starting at a vertex u (see
+          Code Fragment 14.4) follows our analogy with string and paint. We use recursion
+          to implement the string analogy, and we assume that we have a mechanism (the
+          paint analogy) to determine whether a vertex or edge has been previously explored.
+          Algorithm DFS(G,u):              {We assume u has already been marked as visited}
+              Input: A graph G and a vertex u of G
+              Output: A collection of vertices reachable from u, with their discovery edges
+               for each outgoing edge e = (u, v) of u do
+                 if vertex v has not been visited then
+                    Mark vertex v as visited (via edge e).
+                    Recursively call DFS(G,v).
+                                Code Fragment 14.4: The DFS algorithm.

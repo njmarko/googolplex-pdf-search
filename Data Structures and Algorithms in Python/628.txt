@@ -1,0 +1,24 @@
+13.5. Tries                                                                                      607
+              0   1 2   3    4 5     6 7  8   9 10 11 12 13 14 15 16 17 18 19 20 21 22
+             s    e e        a      b  e  a   r  ?       s  e    l  l      s    t     o    c k   !
+             23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45
+                  s e   e      a       b  u   l  l   ?      b    u  y      s    t     o    c k   !
+             46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68
+                  b i   d      s    t  o  c   k  !       b  i    d     s   t    o     c    k !
+             69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88
+             h    e a   r      t    h  e      b  e   l   l  ?       s  t   o    p     !
+                                                    (a)
+                                 b                      h                     s
+                     e           i          u           e            e                     t
+                a         l      d      l        y      a       e        l                 o
+                               47, 58            36           0, 24
+                r         l             l               r                l         c           p
+                6         78           30               69               12                   84
+                                                                                   k
+                                                                             17, 40, 51, 62
+                                                    (b)
+           Figure 13.11: Word matching with a standard trie: (a) text to be searched (articles
+           and prepositions, which are also known as stop words, excluded); (b) standard trie
+           for the words in the text, with leaves augmented with indications of the index at
+           which the given work begins in the text. For example, the leaf for the word stock
+           notes that the word begins at indices 17, 40, 51, and 62 of the text.

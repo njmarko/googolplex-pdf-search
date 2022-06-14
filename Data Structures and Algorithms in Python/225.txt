@@ -1,0 +1,41 @@
+204                                                   Chapter 5. Array-Based Sequences
+                                         Operation     Running Time
+                                       data[j] = val   O(1)
+                               data.append(value)      O(1)∗
+                              data.insert(k, value)    O(n − k + 1)∗
+                                         data.pop( )   O(1)∗
+                                        data.pop(k)
+                                                       O(n − k)∗
+                                         del data[k]
+                               data.remove(value)      O(n)∗
+                              data1.extend(data2)
+                                                       O(n2 )∗
+                                  data1 += data2
+                                     data.reverse( )   O(n)
+                                         data.sort( )  O(n log n)
+                                                       ∗ amortized
+      Table 5.4: Asymptotic performance of the mutating behaviors of the list class. Iden-
+      tiﬁers data, data1, and data2 designate instances of the list class, and n, n1 , and n2
+      their respective lengths.
+      Adding Elements to a List
+      In Section 5.3 we fully explored the append method. In the worst case, it requires
+      Ω(n) time because the underlying array is resized, but it uses O(1) time in the amor-
+      tized sense. Lists also support a method, with signature insert(k, value), that inserts
+      a given value into the list at index 0 ≤ k ≤ n while shifting all subsequent elements
+      back one slot to make room. For the purpose of illustration, Code Fragment 5.5 pro-
+      vides an implementation of that method, in the context of our DynamicArray class
+      introduced in Code Fragment 5.3. There are two complicating factors in analyzing
+      the efﬁciency of such an operation. First, we note that the addition of one element
+      may require a resizing of the dynamic array. That portion of the work requires Ω(n)
+      worst-case time but only O(1) amortized time, as per append. The other expense
+      for insert is the shifting of elements to make room for the new item. The time for
+    1    def insert(self, k, value):
+    2      ”””Insert value at index k, shifting subsequent values rightward.”””
+    3      # (for simplicity, we assume 0 <= k <= n in this verion)
+    4      if self. n == self. capacity:                       # not enough room
+    5         self. resize(2 self. capacity)                   # so double capacity
+    6      for j in range(self. n, k, −1):                     # shift rightmost ﬁrst
+    7         self. A[j] = self. A[j−1]
+    8      self. A[k] = value                                  # store newest element
+    9      self. n += 1
+           Code Fragment 5.5: Implementation of insert for our DynamicArray class.

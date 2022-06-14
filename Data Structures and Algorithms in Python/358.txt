@@ -1,0 +1,37 @@
+8.4. Tree Traversal Algorithms                                                                 337
+       8.4.5 Applications of Tree Traversals
+           In this section, we demonstrate several representative applications of tree traversals,
+           including some customizations of the standard traversal algorithms.
+           Table of Contents
+           When using a tree to represent the hierarchical structure of a document, a preorder
+           traversal of the tree can naturally be used to produce a table of contents for the doc-
+           ument. For example, the table of contents associated with the tree from Figure 8.15
+           is displayed in Figure 8.20. Part (a) of that ﬁgure gives a simple presentation with
+           one element per line; part (b) shows a more attractive presentation produced by
+           indenting each element based on its depth within the tree. A similar presentation
+           could be used to display the contents of a computer’s ﬁle system, based on its tree
+           representation (as in Figure 8.3).
+                                 Paper                       Paper
+                                 Title                         Title
+                                 Abstract                      Abstract
+                                  1                             1
+                                  1.1                              1.1
+                                  1.2                              1.2
+                                  2                             2
+                                  2.1                              2.1
+                                 ...                              ...
+                                 (a)                         (b)
+           Figure 8.20: Table of contents for a document represented by the tree in Figure 8.15:
+           (a) without indentation; (b) with indentation based on depth within the tree.
+               The unindented version of the table of contents, given a tree T , can be produced
+           with the following code:
+                   for p in T.preorder( ):
+                     print(p.element( ))
+               To produce the presentation of Figure 8.20(b), we indent each element with a
+           number of spaces equal to twice the element’s depth in the tree (hence, the root ele-
+           ment was unindented). Although we could replace the body of the above loop with
+           the statement print(2 T.depth(p)           + str(p.element( ))), such an approach is
+           unnecessarily inefﬁcient. Although the work to produce the preorder traversal runs
+           in O(n) time, based on the analysis of Section 8.4.1, the calls to depth incur a hid-
+           den cost. Making a call to depth from every position of the tree results in O(n2 )
+           worst-case time, as noted when analyzing the algorithm height1 in Section 8.1.3.

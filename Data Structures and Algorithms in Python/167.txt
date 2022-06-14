@@ -1,0 +1,37 @@
+146                                                     Chapter 3. Algorithm Analysis
+       C-3.48 Consider the following “justiﬁcation” that the Fibonacci function, F(n)
+               (see Proposition 3.20) is O(n):
+               Base case (n ≤ 2): F(1) = 1 and F(2) = 2.
+               Induction step (n > 2): Assume claim true for n < n. Consider n. F(n) =
+               F(n − 2) + F (n − 1). By induction, F(n − 2) is O(n − 2) and F(n − 1) is
+               O(n − 1). Then, F(n) is O((n − 2) + (n − 1)), by the identity presented in
+               Exercise R-3.11. Therefore, F(n) is O(n).
+               What is wrong with this “justiﬁcation”?
+       C-3.49 Consider the Fibonacci function, F(n) (see Proposition 3.20). Show by
+               induction that F(n) is Ω((3/2)n ).
+       C-3.50 Let p(x) be a polynomial of degree n, that is, p(x) = ∑ni=0 ai xi .
+               (a) Describe a simple O(n2 )-time algorithm for computing p(x).
+               (b) Describe an O(n log n)-time algorithm for computing p(x), based upon
+               a more efﬁcient calculation of xi .
+               (c) Now consider a rewriting of p(x) as
+                       p(x) = a0 + x(a1 + x(a2 + x(a3 + · · · + x(an−1 + xan ) · · · ))),
+               which is known as Horner’s method. Using the big-Oh notation, charac-
+               terize the number of arithmetic operations this method executes.
+       C-3.51  Show that the summation ∑ni=1 log i is O(n log n).
+       C-3.52  Show that the summation ∑ni=1 log i is Ω(n log n).
+       C-3.53  An evil king has n bottles of wine, and a spy has just poisoned one of
+               them. Unfortunately, they do not know which one it is. The poison is very
+               deadly; just one drop diluted even a billion to one will still kill. Even so,
+               it takes a full month for the poison to take effect. Design a scheme for
+               determining exactly which one of the wine bottles was poisoned in just
+               one month’s time while expending O(log n) taste testers.
+       C-3.54  A sequence S contains n integers taken from the interval [0, 4n], with repe-
+               titions allowed. Describe an efﬁcient algorithm for determining an integer
+               value k that occurs the most often in S. What is the running time of your
+               algorithm?
+    Projects
+        P-3.55 Perform an experimental analysis of the three algorithms preﬁx average1,
+               preﬁx average2, and preﬁx average3, from Section 3.3.3. Visualize their
+               running times as a function of the input size with a log-log chart.
+        P-3.56 Perform an experimental analysis that compares the relative running times
+               of the functions shown in Code Fragment 3.10.

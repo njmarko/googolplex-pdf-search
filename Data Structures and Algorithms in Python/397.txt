@@ -1,0 +1,36 @@
+376                                                              Chapter 9. Priority Queues
+    9.3.3 Array-Based Representation of a Complete Binary Tree
+       The array-based representation of a binary tree (Section 8.3.2) is especially suitable
+       for a complete binary tree T . We recall that in this implementation, the elements
+       of T are stored in an array-based list A such that the element at position p in T is
+       stored in A with index equal to the level number f (p) of p, deﬁned as follows:
+            • If p is the root of T , then f (p) = 0.
+            • If p is the left child of position q, then f (p) = 2 f (q) + 1.
+            • If p is the right child of position q, then f (p) = 2 f (q) + 2.
+       With this implementation, the elements of T have contiguous indices in the range
+       [0, n − 1] and the last position of T is always at index n − 1, where n is the number
+       of positions of T . For example, Figure 9.4 illustrates the array-based representation
+       of the heap structure originally portrayed in Figure 9.1.
+         (4,C) (5,A) (6,Z) (15,K) (9,F) (7,Q) (20,B) (16,X) (25,J) (14,E) (12,H) (11,S) (8,W)
+            0     1      2      3       4     5      6     7     8       9     10  11     12
+               Figure 9.4: An array-based representation of the heap from Figure 9.1.
+            Implementing a priority queue using an array-based heap representation allows
+       us to avoid some complexities of a node-based tree structure. In particular, the add
+       and remove min operations of a priority queue both depend on locating the last
+       index of a heap of size n. With the array-based representation, the last position
+       is at index n − 1 of the array. Locating the last position of a complete binary tree
+       implemented with a linked structure requires more effort. (See Exercise C-9.34.)
+            If the size of a priority queue is not known in advance, use of an array-based
+       representation does introduce the need to dynamically resize the array on occasion,
+       as is done with a Python list. The space usage of such an array-based representation
+       of a complete binary tree with n nodes is O(n), and the time bounds of methods for
+       adding or removing elements become amortized. (See Section 5.3.1.)
+    9.3.4 Python Heap Implementation
+       We provide a Python implementation of a heap-based priority queue in Code Frag-
+       ments 9.4 and 9.5. We use an array-based representation, maintaining a Python list
+       of item composites. Although we do not formally use the binary tree ADT, Code
+       Fragment 9.4 includes nonpublic utility functions that compute the level numbering
+       of a parent or child of another. This allows us to describe the rest of our algorithms
+       using tree-like terminology of parent, left, and right. However, the relevant vari-
+       ables are integer indexes (not “position” objects). We use recursion to implement
+       the repetition in the upheap and downheap utilities.

@@ -1,0 +1,35 @@
+90                                               Chapter 2. Object-Oriented Programming
+      A Geometric Progression Class
+      Our second example of a specialized progression is a geometric progression, in
+      which each value is produced by multiplying the preceding value by a ﬁxed con-
+      stant, known as the base of the geometric progression. The starting point of a ge-
+      ometric progression is traditionally 1, rather than 0, because multiplying 0 by any
+      factor results in 0. As an example, a geometric progression with base 2 proceeds as
+      1, 2, 4, 8, 16, . . . .
+           Code Fragment 2.10 presents our implementation of a GeometricProgression
+      class. The constructor uses 2 as a default base and 1 as a default starting value, but
+      either of those can be varied using optional parameters.
+    1 class GeometricProgression(Progression):                   # inherit from Progression
+    2    ”””Iterator producing a geometric progression.”””
+    3
+    4    def init (self, base=2, start=1):
+    5      ”””Create a new geometric progression.
+    6
+    7      base               the ﬁxed constant multiplied to each term (default 2)
+    8      start              the ﬁrst term of the progression (default 1)
+    9      ”””
+   10      super( ). init (start)
+   11      self. base = base
+   12
+   13    def advance(self):                                      # override inherited version
+   14      ”””Update current value by multiplying it by the base value.”””
+   15      self. current = self. base
+                Code Fragment 2.10: A class that produces a geometric progression.
+      A Fibonacci Progression Class
+      As our ﬁnal example, we demonstrate how to use our progression framework to
+      produce a Fibonacci progression. We originally discussed the Fibonacci series
+      on page 41 in the context of generators. Each value of a Fibonacci series is the
+      sum of the two most recent values. To begin the series, the ﬁrst two values are
+      conventionally 0 and 1, leading to the Fibonacci series 0, 1, 1, 2, 3, 5, 8, . . . . More
+      generally, such a series can be generated from any two starting values. For example,
+      if we start with values 4 and 6, the series proceeds as 4, 6, 10, 16, 26, 42, . . . .

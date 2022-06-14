@@ -1,0 +1,33 @@
+628                                                        Chapter 14. Graph Algorithms
+    14.2.1 Edge List Structure
+       The edge list structure is possibly the simplest, though not the most efﬁcient, rep-
+       resentation of a graph G. All vertex objects are stored in an unordered list V , and
+       all edge objects are stored in an unordered list E. We illustrate an example of the
+       edge list structure for a graph G in Figure 14.4.
+                                                              V                        E
+                                                                     u          e
+                      u                                              v          f
+                  e       g
+                v          w           z                             w          g
+                      f          h
+                                                                     z          h
+                          (a)                                           (b)
+       Figure 14.4: (a) A graph G; (b) schematic representation of the edge list structure
+       for G. Notice that an edge object refers to the two vertex objects that correspond to
+       its endpoints, but that vertices do not refer to incident edges.
+            To support the many methods of the Graph ADT (Section 14.1), we assume the
+       following additional features of an edge list representation. Collections V and E are
+       represented with doubly linked lists using our PositionalList class from Chapter 7.
+       Vertex Objects
+       The vertex object for a vertex v storing element x has instance variables for:
+            • A reference to element x, to support the element( ) method.
+            • A reference to the position of the vertex instance in the list V , thereby allow-
+              ing v to be efﬁciently removed from V if it were removed from the graph.
+       Edge Objects
+       The edge object for an edge e storing element x has instance variables for:
+            • A reference to element x, to support the element( ) method.
+            • References to the vertex objects associated with the endpoint vertices of e.
+              These allow the edge instance to provide constant-time support for methods
+              endpoints( ) and opposite(v).
+            • A reference to the position of the edge instance in list E, thereby allowing e
+              to be efﬁciently removed from E if it were removed from the graph.

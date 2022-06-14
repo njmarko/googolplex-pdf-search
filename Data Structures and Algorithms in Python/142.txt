@@ -1,0 +1,40 @@
+3.2. The Seven Functions Used in This Book                                                   121
+          Proposition 3.4 (Exponent Rules): Given positive integers a, b, and c, we have
+              1. (ba )c = bac
+              2. ba bc = ba+c
+              3. ba /bc = ba−c
+          For example, we have the following:
+              • 256 = 162 = (24 )2 = 24·2 = 28 = 256 (Exponent Rule 1)
+              • 243 = 35 = 32+3 = 32 33 = 9 · 27 = 243 (Exponent Rule 2)
+              • 16 = 1024/64 = 210 /26 = 210−6 = 24 = 16 (Exponent Rule 3)
+               We can extend the exponential function to exponents that are fractions or real
+          numbers and to negative exponents, as follows. Given a positive integer k, we de-
+          ﬁne b1/k to be kth root of b, that is, the number r such that rk = b. For example,
+          251/2 = 5, since 52 = 25. Likewise, 271/3 = 3 and 161/4 = 2. This approach al-
+          lows us to deﬁne any power whose exponent can be expressed as a fraction, for
+          ba/c = (ba )1/c , by Exponent Rule 1. For example, 93/2 = (93 )1/2 = 7291/2 = 27.
+          Thus, ba/c is really just the cth root of the integral exponent ba .
+               We can further extend the exponential function to deﬁne bx for any real number
+          x, by computing a series of numbers of the form ba/c for fractions a/c that get pro-
+          gressively closer and closer to x. Any real number x can be approximated arbitrarily
+          closely by a fraction a/c; hence, we can use the fraction a/c as the exponent of b
+          to get arbitrarily close to bx . For example, the number 2π is well deﬁned. Finally,
+          given a negative exponent d, we deﬁne bd = 1/b−d , which corresponds to applying
+          Exponent Rule 3 with a = 0 and c = −d. For example, 2−3 = 1/23 = 1/8.
+          Geometric Sums
+          Suppose we have a loop for which each iteration takes a multiplicative factor longer
+          than the previous one. This loop can be analyzed using the following proposition.
+          Proposition 3.5: For any integer n ≥ 0 and any real number a such that a > 0 and
+          a = 1, consider the summation
+                                          n
+                                        ∑ ai = 1 + a + a2 + · · · + an
+                                        i=0
+          (remembering that     a0 = 1 if a > 0). This summation is equal to
+                                                   an+1 − 1
+                                                              .
+                                                    a−1
+               Summations as shown in Proposition 3.5 are called geometric summations, be-
+          cause each term is geometrically larger than the previous one if a > 1. For example,
+          everyone working in computing should know that
+                                     1 + 2 + 4 + 8 + · · · + 2n−1 = 2n − 1,
+          for this is the largest integer that can be represented in binary notation using n bits.

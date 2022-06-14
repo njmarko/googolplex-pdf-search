@@ -1,0 +1,33 @@
+460                                                              Chapter 11. Search Trees
+ 11.1    Binary Search Trees
+      In Chapter 8 we introduced the tree data structure and demonstrated a variety of
+      applications. One important use is as a search tree (as described on page 332). In
+      this chapter, we use a search tree structure to efﬁciently implement a sorted map.
+      The three most fundamental methods of a map M (see Section 10.1.1) are:
+             M[k]: Return the value v associated with key k in map M, if one exists;
+                     otherwise raise a KeyError; implemented with getitem method.
+       M[k] = v: Associate value v with key k in map M, replacing the existing value
+                     if the map already contains an item with key equal to k; implemented
+                     with setitem method.
+        del M[k]: Remove from map M the item with key equal to k; if M has no such
+                     item, then raise a KeyError; implemented with delitem method.
+      The sorted map ADT includes additional functionality (see Section 10.3), guar-
+      anteeing that an iteration reports keys in sorted order, and supporting additional
+      searches such as ﬁnd gt(k) and ﬁnd range(start, stop).
+           Binary trees are an excellent data structure for storing items of a map, assuming
+      we have an order relation deﬁned on the keys. In this context, a binary search tree
+      is a binary tree T with each position p storing a key-value pair (k, v) such that:
+           • Keys stored in the left subtree of p are less than k.
+           • Keys stored in the right subtree of p are greater than k.
+      An example of such a binary search tree is given in Figure 11.1. As a matter of
+      convenience, we will not diagram the values associated with keys in this chapter,
+      since those values do not affect the placement of items within a search tree.
+                                                 44
+                                   17                          88
+                             8            32            65             97
+                                      28            54      82     93
+                                         29              76
+                                                            80
+      Figure 11.1: A binary search tree with integer keys. We omit the display of associ-
+      ated values in this chapter, since they are not relevant to the order of items within a
+      search tree.

@@ -1,0 +1,10 @@
+Chapter Notes                                                                                    55
+ Chapter Notes
+         The ofﬁcial Python Web site (http://www.python.org) has a wealth of information, in-
+         cluding a tutorial and full documentation of the built-in functions, classes, and standard
+         modules. The Python interpreter is itself a useful reference, as the interactive command
+         help(foo) provides documentation for any function, class, or module that foo identiﬁes.
+             Books providing an introduction to programming in Python include titles authored by
+         Campbell et al. [22], Cedar [25], Dawson [32], Goldwasser and Letscher [43], Lutz [72],
+         Perkovic [82], and Zelle [105]. More complete reference books on Python include titles by
+         Beazley [12], and Summerﬁeld [91].

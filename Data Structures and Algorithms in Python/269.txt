@@ -1,0 +1,37 @@
+248                                             Chapter 6. Stacks, Queues, and Deques
+       Example 6.5: The following table shows a series of operations and their effects
+       on an initially empty deque D of integers.
+                              Operation       Return Value       Deque
+                            D.add last(5)           –              [5]
+                            D.add ﬁrst(3)           –            [3, 5]
+                            D.add ﬁrst(7)           –          [7, 3, 5]
+                               D.ﬁrst( )            7          [7, 3, 5]
+                           D.delete last( )         5            [7, 3]
+                                 len(D)             2            [7, 3]
+                           D.delete last( )         3              [7]
+                           D.delete last( )         7              []
+                            D.add ﬁrst(6)           –              [6]
+                                D.last( )           6              [6]
+                            D.add ﬁrst(8)           –            [8, 6]
+                            D.is empty( )         False          [8, 6]
+                                D.last( )           6            [8, 6]
+    6.3.2 Implementing a Deque with a Circular Array
+       We can implement the deque ADT in much the same way as the ArrayQueue class
+       provided in Code Fragments 6.6 and 6.7 of Section 6.2.2 (so much so that we leave
+       the details of an ArrayDeque implementation to Exercise P-6.32). We recommend
+       maintaining the same three instance variables: data, size, and front. Whenever
+       we need to know the index of the back of the deque, or the ﬁrst available slot
+       beyond the back of the deque, we use modular arithmetic for the computation. For
+       example, our implementation of the last( ) method uses the index
+            back = (self. front + self. size − 1) % len(self. data)
+           Our implementation of the ArrayDeque.add last method is essentially the same
+       as that for ArrayQueue.enqueue, including the reliance on a resize utility. Like-
+       wise, the implementation of the ArrayDeque.delete ﬁrst method is the same as
+       ArrayQueue.dequeue. Implementations of add ﬁrst and delete last use similar
+       techniques. One subtlety is that a call to add ﬁrst may need to wrap around the
+       beginning of the array, so we rely on modular arithmetic to circularly decrement
+       the index, as
+            self. front = (self. front − 1) % len(self. data)            # cyclic shift
+           The efﬁciency of an ArrayDeque is similar to that of an ArrayQueue, with all
+       operations having O(1) running time, but with that bound being amortized for op-
+       erations that may change the size of the underlying list.

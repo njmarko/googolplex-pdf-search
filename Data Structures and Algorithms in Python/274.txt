@@ -1,0 +1,40 @@
+6.4. Exercises                                                                             253
+           C-6.30 Alice has two queues, Q and R, which can store integers. Bob gives Alice
+                   50 odd integers and 50 even integers and insists that she store all 100
+                   integers in Q and R. They then play a game where Bob picks Q or R
+                   at random and then applies the round-robin scheduler, described in the
+                   chapter, to the chosen queue a random number of times. If the last number
+                   to be processed at the end of this game was odd, Bob wins. Otherwise,
+                   Alice wins. How can Alice allocate integers to queues to optimize her
+                   chances of winning? What is her chance of winning?
+           C-6.31 Suppose Bob has four cows that he wants to take across a bridge, but only
+                   one yoke, which can hold up to two cows, side by side, tied to the yoke.
+                   The yoke is too heavy for him to carry across the bridge, but he can tie
+                   (and untie) cows to it in no time at all. Of his four cows, Mazie can cross
+                   the bridge in 2 minutes, Daisy can cross it in 4 minutes, Crazy can cross
+                   it in 10 minutes, and Lazy can cross it in 20 minutes. Of course, when
+                   two cows are tied to the yoke, they must go at the speed of the slower cow.
+                   Describe how Bob can get all his cows across the bridge in 34 minutes.
+      Projects
+            P-6.32 Give a complete ArrayDeque implementation of the double-ended queue
+                   ADT as sketched in Section 6.3.2.
+            P-6.33 Give an array-based implementation of a double-ended queue supporting
+                   all of the public behaviors shown in Table 6.4 for the collections.deque
+                   class, including use of the maxlen optional parameter. When a length-
+                   limited deque is full, provide semantics similar to the collections.deque
+                   class, whereby a call to insert an element on one end of a deque causes an
+                   element to be lost from the opposite side.
+            P-6.34 Implement a program that can input an expression in postﬁx notation (see
+                   Exercise C-6.22) and output its value.
+            P-6.35 The introduction of Section 6.1 notes that stacks are often used to provide
+                   “undo” support in applications like a Web browser or text editor. While
+                   support for undo can be implemented with an unbounded stack, many
+                   applications provide only limited support for such an undo history, with a
+                   ﬁxed-capacity stack. When push is invoked with the stack at full capacity,
+                   rather than throwing a Full exception (as described in Exercise C-6.16),
+                   a more typical semantic is to accept the pushed element at the top while
+                   “leaking” the oldest element from the bottom of the stack to make room.
+                   Give an implementation of such a LeakyStack abstraction, using a circular
+                   array with appropriate storage capacity. This class should have a public
+                   interface similar to the bounded-capacity stack in Exercise C-6.16, but
+                   with the desired leaky semantics when full.

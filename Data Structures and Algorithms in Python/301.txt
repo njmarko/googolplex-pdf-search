@@ -1,0 +1,40 @@
+280                                                             Chapter 7. Linked Lists
+         Note well that the ﬁrst( ) and last( ) methods of the positional list ADT return
+    the associated positions, not the elements. (This is in contrast to the corresponding
+    ﬁrst and last methods of the deque ADT.) The ﬁrst element of a positional list
+    can be determined by subsequently invoking the element method on that position,
+    as L.ﬁrst( ).element( ). The advantage of receiving a position as a return value is
+    that we can use that position to navigate the list. For example, the following code
+    fragment prints all elements of a positional list named data.
+         cursor = data.ﬁrst( )
+         while cursor is not None:
+           print(cursor.element( ))         # print the element stored at the position
+           cursor = data.after(cursor)      # advance to the next position (if any)
+    This code relies on the stated convention that the None object is returned when
+    after is called upon the last position. That return value is clearly distinguishable
+    from any legitimate position. The positional list ADT similarly indicates that the
+    None value is returned when the before method is invoked at the front of the list, or
+    when ﬁrst or last methods are called upon an empty list. Therefore, the above code
+    fragment works correctly even if the data list is empty.
+         Because the ADT includes support for Python’s iter function, users may rely
+    on the traditional for-loop syntax for such a forward traversal of a list named data.
+         for e in data:
+           print(e)
+    More general navigational and update methods of the positional list ADT are shown
+    in the following example.
+    Example 7.1: The following table shows a series of operations on an initially
+    empty positional list L. To identify position instances, we use variables such as p
+    and q. For ease of exposition, when displaying the list contents, we use subscript
+    notation to denote its positions.
+                         Operation         Return Value              L
+                       L.add last(8)              p                 8p
+                          L.ﬁrst( )               p                 8p
+                     L.add after(p, 5)            q               8p , 5q
+                        L.before(q)               p               8p , 5q
+                    L.add before(q, 3)            r            8p , 3r , 5q
+                        r.element( )              3            8p , 3r , 5q
+                         L.after(p)               r            8p , 3r , 5q
+                        L.before(p)             None           8p , 3r , 5q
+                       L.add ﬁrst(9)              s          9s , 8p , 3r , 5q
+                     L.delete(L.last( ))          5            9s , 8p , 3r
+                      L.replace(p, 7)             8            9s , 7p , 3r

@@ -1,0 +1,36 @@
+466                                                                Chapter 11. Search Trees
+    Deletion
+    Deleting an item from a binary search tree T is a bit more complex than inserting
+    a new item because the location of the deletion might be anywhere in the tree. (In
+    contrast, insertions are always enacted at the bottom of a path.) To delete an item
+    with key k, we begin by calling TreeSearch(T, T.root( ), k) to ﬁnd the position p
+    of T storing an item with key equal to k. If the search is successful, we distinguish
+    between two cases (of increasing difﬁculty):
+        • If p has at most one child, the deletion of the node at position p is easily
+           implemented. When introducing update methods for the LinkedBinaryTree
+           class in Section 8.3.1, we declared a nonpublic utility, delete(p), that deletes
+           a node at position p and replaces it with its child (if any), presuming that p has
+           at most one child. That is precisely the desired behavior. It removes the item
+           with key k from the map while maintaining all other ancestor-descendant
+           relationships in the tree, thereby assuring the upkeep of the binary search
+           tree property. (See Figure 11.5.)
+        • If position p has two children, we cannot simply remove the node from T
+           since this would create a “hole” and two orphaned children. Instead, we
+           proceed as follows (see Figure 11.6):
+              ◦ We locate position r containing the item having the greatest key that is
+                 strictly less than that of position p, that is, r = before(p) by the notation
+                 of Section 11.1.1. Because p has two children, its predecessor is the
+                 rightmost position of the left subtree of p.
+              ◦ We use r’s item as a replacement for the one being deleted at position p.
+                 Because r has the immediately preceding key in the map, any items in
+                 p’s right subtree will have keys greater than r and any other items in p’s
+                 left subtree will have keys less than r. Therefore, the binary search tree
+                 property is satisﬁed after the replacement.
+              ◦ Having used r’s as a replacement for p, we instead delete the node at
+                 position r from the tree. Fortunately, since r was located as the right-
+                 most position in a subtree, r does not have a right child. Therefore, its
+                 deletion can be performed using the ﬁrst (and simpler) approach.
+        As with searching and insertion, this algorithm for a deletion involves the
+    traversal of a single path downward from the root, possibly moving an item between
+    two positions of this path, and removing a node from that path and promoting its
+    child. Therefore, it executes in time O(h) where h is the height of the tree.

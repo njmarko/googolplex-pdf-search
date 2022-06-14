@@ -1,0 +1,38 @@
+158                                                                        Chapter 4. Recursion
+                                                   5124K
+                                             /user/rt/courses/
+                                                    1K
+                             249K                                             4874K
+                               cs016/                                      cs252/
+                                 2K                                          1K
+                            10K                229K              4870K
+                  grades   homeworks/     programs/                 projects/    grades
+                    8K           1K            1K                       1K         3K
+                                                             82K                 4787K
+                      hw1 hw2     hw3  pr1    pr2    pr3     papers/           demos/
+                       3K  2K      4K  57K    97K    74K       1K                1K
+                                                        buylow    sellhigh     market
+                                                         26K        55K        4786K
+    Figure 4.7: The same portion of a ﬁle system given in Figure 4.6, but with additional
+    annotations to describe the amount of disk space that is used. Within the icon for
+    each ﬁle or directory is the amount of space directly used by that artifact. Above
+    the icon for each directory is an indication of the cumulative disk space used by
+    that directory and all its (recursive) contents.
+        The cumulative disk space for an entry can be computed with a simple recursive
+    algorithm. It is equal to the immediate disk space used by the entry plus the sum
+    of the cumulative disk space usage of any entries that are stored directly within
+    the entry. For example, the cumulative disk space for cs016 is 249K because it
+    uses 2K itself, 8K cumulatively in grades, 10K cumulatively in homeworks, and
+    229K cumulatively in programs. Pseudo-code for this algorithm is given in Code
+    Fragment 4.4.
+    Algorithm DiskUsage(path):
+        Input: A string designating a path to a ﬁle-system entry
+        Output: The cumulative disk space used by that entry and any nested entries
+         total = size(path)                       {immediate disk space used by the entry}
+         if path represents a directory then
+            for each child entry stored within directory path do
+              total = total + DiskUsage(child)                                      {recursive call}
+         return total
+    Code Fragment 4.4: An algorithm for computing the cumulative disk space usage
+    nested at a ﬁle-system entry. Function size returns the immediate disk space of an
+    entry.

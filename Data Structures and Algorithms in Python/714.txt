@@ -1,0 +1,42 @@
+14.8. Exercises                                                                             693
+          C-14.66 An old MST method, called Barůvka’s algorithm, works as follows on a
+                  graph G having n vertices and m edges with distinct weights:
+                       Let T be a subgraph of G initially containing just the vertices in V .
+                       while T has fewer than n − 1 edges do
+                          for each connected component Ci of T do
+                            Find the lowest-weight edge (u, v) in E with u in Ci and v not in
+                            Ci .
+                            Add (u, v) to T (unless it is already in T ).
+                       return T
+                  Prove that this algorithm is correct and that it runs in O(m log n) time.
+          C-14.67 Let G be a graph with n vertices and m edges such that all the edge weights
+                  in G are integers in the range [1, n]. Give an algorithm for ﬁnding a mini-
+                  mum spanning tree for G in O(m log∗ n) time.
+          C-14.68 Consider a diagram of a telephone network, which is a graph G whose ver-
+                  tices represent switching centers, and whose edges represent communica-
+                  tion lines joining pairs of centers. Edges are marked by their bandwidth,
+                  and the bandwidth of a path is equal to the lowest bandwidth among the
+                  path’s edges. Give an algorithm that, given a network and two switch-
+                  ing centers a and b, outputs the maximum bandwidth of a path between a
+                  and b.
+          C-14.69 NASA wants to link n stations spread over the country using communica-
+                  tion channels. Each pair of stations has a different bandwidth available,
+                  which is known a priori. NASA wants to select n − 1 channels (the mini-
+                  mum possible) in such a way that all the stations are linked by the channels
+                  and the total bandwidth (deﬁned as the sum of the individual bandwidths
+                  of the channels) is maximum. Give an efﬁcient algorithm for this prob-
+                  lem and determine its worst-case time complexity. Consider the weighted
+                  graph G = (V, E), where V is the set of stations and E is the set of chan-
+                  nels between the stations. Deﬁne the weight w(e) of an edge e in E as the
+                  bandwidth of the corresponding channel.
+          C-14.70 Inside the Castle of Asymptopia there is a maze, and along each corridor
+                  of the maze there is a bag of gold coins. The amount of gold in each
+                  bag varies. A noble knight, named Sir Paul, will be given the opportunity
+                  to walk through the maze, picking up bags of gold. He may enter the
+                  maze only through a door marked “ENTER” and exit through another
+                  door marked “EXIT.” While in the maze he may not retrace his steps.
+                  Each corridor of the maze has an arrow painted on the wall. Sir Paul may
+                  only go down the corridor in the direction of the arrow. There is no way
+                  to traverse a “loop” in the maze. Given a map of the maze, including the
+                  amount of gold in each corridor, describe an algorithm to help Sir Paul
+                  pick up the most gold.

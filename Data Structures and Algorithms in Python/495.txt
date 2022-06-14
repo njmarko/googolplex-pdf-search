@@ -1,0 +1,35 @@
+474                                                              Chapter 11. Search Trees
+                                                          Operation     Running Time
+                                                              k in T    O(h)
+                                                      T[k], T[k] = v    O(h)
+                                              T.delete(p), del T[k]     O(h)
+                                                 T.ﬁnd position(k)      O(h)
+                T.ﬁrst( ), T.last( ), T.ﬁnd min( ), T.ﬁnd max( )        O(h)
+                                            T.before(p), T.after(p)     O(h)
+          T.ﬁnd lt(k), T.ﬁnd le(k), T.ﬁnd gt(k), T.ﬁnd ge(k)            O(h)
+                                          T.ﬁnd range(start, stop)      O(s + h)
+                                               iter(T), reversed(T)     O(n)
+    Table 11.1: Worst-case running times of the operations for a TreeMap T. We denote
+    the current height of the tree with h, and the number of items reported by ﬁnd range
+    as s. The space usage is O(n), where n is the number of items stored in the map.
+         A binary search tree T is therefore an efﬁcient implementation of a map with n
+    entries only if its height is small. In the best case, T has height h = log(n+ 1)− 1,
+    which yields logarithmic-time performance for all the map operations. In the worst
+    case, however, T has height n, in which case it would look and feel like an ordered
+    list implementation of a map. Such a worst-case conﬁguration arises, for example,
+    if we insert items with keys in increasing or decreasing order. (See Figure 11.7.)
+                                           10
+                                               20
+                                                   30
+                                                       40
+    Figure 11.7: Example of a binary search tree with linear height, obtained by insert-
+    ing entries with keys in increasing order.
+         We can nevertheless take comfort that, on average, a binary search tree with
+    n keys generated from a random series of insertions and removals of keys has ex-
+    pected height O(log n); the justiﬁcation of this statement is beyond the scope of the
+    book, requiring careful mathematical language to precisely deﬁne what we mean
+    by a random series of insertions and removals, and sophisticated probability theory.
+         In applications where one cannot guarantee the random nature of updates, it
+    is better to rely on variations of search trees, presented in the remainder of this
+    chapter, that guarantee a worst-case height of O(log n), and thus O(log n) worst-
+    case time for searches, insertions, and deletions.

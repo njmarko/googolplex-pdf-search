@@ -1,0 +1,34 @@
+2.2. Software Development                                                                     65
+              • Use meaningful names for identiﬁers. Try to choose names that can be read
+                aloud, and choose names that reﬂect the action, responsibility, or data each
+                identiﬁer is naming.
+                   ◦ Classes (other than Python’s built-in classes) should have a name that
+                       serves as a singular noun, and should be capitalized (e.g., Date rather
+                       than date or Dates). When multiple words are concatenated to form a
+                       class name, they should follow the so-called “CamelCase” convention
+                       in which the ﬁrst letter of each word is capitalized (e.g., CreditCard).
+                   ◦ Functions, including member functions of a class, should be lowercase.
+                       If multiple words are combined, they should be separated by under-
+                       scores (e.g., make payment). The name of a function should typically
+                       be a verb that describes its affect. However, if the only purpose of the
+                       function is to return a value, the function name may be a noun that
+                       describes the value (e.g., sqrt rather than calculate sqrt).
+                   ◦ Names that identify an individual object (e.g., a parameter, instance
+                       variable, or local variable) should be a lowercase noun (e.g., price).
+                       Occasionally, we stray from this rule when using a single uppercase
+                       letter to designate the name of a data structures (such as tree T).
+                   ◦ Identiﬁers that represent a value considered to be a constant are tradi-
+                       tionally identiﬁed using all capital letters and with underscores to sep-
+                       arate words (e.g., MAX SIZE).
+                Recall from our discussion of encapsulation that identiﬁers in any context
+                that begin with a single leading underscore (e.g., secret) are intended to
+                suggest that they are only for “internal” use to a class or module, and not part
+                of a public interface.
+              • Use comments that add meaning to a program and explain ambiguous or
+                confusing constructs. In-line comments are good for quick explanations;
+                they are indicated in Python following the # character, as in
+                     if n % 2 == 1:            # n is odd
+                Multiline block comments are good for explaining more complex code sec-
+                tions. In Python, these are technically multiline string literals, typically de-
+                limited with triple quotes (”””), which have no effect when executed. In the
+                next section, we discuss the use of block comments for documentation.

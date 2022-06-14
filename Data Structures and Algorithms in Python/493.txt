@@ -1,0 +1,39 @@
+472                                                            Chapter 11. Search Trees
+    118   def getitem (self, k):
+    119     ”””Return value associated with key k (raise KeyError if not found).”””
+    120     if self.is empty( ):
+    121        raise KeyError( Key Error: + repr(k))
+    122     else:
+    123        p = self. subtree search(self.root( ), k)
+    124        self. rebalance access(p)             # hook for balanced tree subclasses
+    125        if k != p.key( ):
+    126           raise KeyError( Key Error: + repr(k))
+    127        return p.value( )
+    128
+    129   def setitem (self, k, v):
+    130     ”””Assign value v to key k, overwriting existing value if present.”””
+    131     if self.is empty( ):
+    132        leaf = self. add root(self. Item(k,v))          # from LinkedBinaryTree
+    133     else:
+    134        p = self. subtree search(self.root( ), k)
+    135        if p.key( ) == k:
+    136           p.element( ). value = v            # replace existing item’s value
+    137           self. rebalance access(p)          # hook for balanced tree subclasses
+    138           return
+    139        else:
+    140           item = self. Item(k,v)
+    141           if p.key( ) < k:
+    142              leaf = self. add right(p, item) # inherited from LinkedBinaryTree
+    143           else:
+    144              leaf = self. add left(p, item) # inherited from LinkedBinaryTree
+    145     self. rebalance insert(leaf)             # hook for balanced tree subclasses
+    146
+    147   def iter (self):
+    148     ”””Generate an iteration of all keys in the map in order.”””
+    149     p = self.ﬁrst( )
+    150     while p is not None:
+    151        yield p.key( )
+    152        p = self.after(p)
+        Code Fragment 11.7: Map operations for accessing and inserting items in the
+        TreeMap class. Reverse iteration can be implemented with reverse , using
+        symmetric approach to iter .

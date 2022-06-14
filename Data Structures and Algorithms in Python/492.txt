@@ -1,0 +1,40 @@
+11.1. Binary Search Trees                                                             471
+      80    def ﬁnd min(self):
+      81      ”””Return (key,value) pair with minimum key (or None if empty).”””
+      82      if self.is empty( ):
+      83         return None
+      84      else:
+      85         p = self.ﬁrst( )
+      86         return (p.key( ), p.value( ))
+      87
+      88    def ﬁnd ge(self, k):
+      89      ”””Return (key,value) pair with least key greater than or equal to k.
+      90
+      91      Return None if there does not exist such a key.
+      92      ”””
+      93      if self.is empty( ):
+      94         return None
+      95      else:
+      96         p = self.ﬁnd position(k)                      # may not ﬁnd exact match
+      97         if p.key( ) < k:                              # p’s key is too small
+      98            p = self.after(p)
+      99         return (p.key( ), p.value( )) if p is not None else None
+     100
+     101    def ﬁnd range(self, start, stop):
+     102      ”””Iterate all (key,value) pairs such that start <= key < stop.
+     103
+     104      If start is None, iteration begins with minimum key of map.
+     105      If stop is None, iteration continues through the maximum key of map.
+     106      ”””
+     107      if not self.is empty( ):
+     108         if start is None:
+     109            p = self.ﬁrst( )
+     110         else:
+     111            # we initialize p with logic similar to ﬁnd ge
+     112            p = self.ﬁnd position(start)
+     113            if p.key( ) < start:
+     114               p = self.after(p)
+     115         while p is not None and (stop is None or p.key( ) < stop):
+     116            yield (p.key( ), p.value( ))
+     117            p = self.after(p)
+           Code Fragment 11.6: Some of the sorted map operations for the TreeMap class.

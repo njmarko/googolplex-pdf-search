@@ -1,0 +1,48 @@
+738                                                                               Index
+    abc module, 60, 93, 306                    and operator, 12
+    Abelson, Hal, 182                          any function, 29
+    abs function, 29, 75                       arc, 620
+    abstract base class, 60, 93–95, 306, 317,  arithmetic operators, 13
+                406                            arithmetic progression, 89, 199–200
+    abstract data type, v, 59                  ArithmeticError, 83, 303
+          deque, 247–248                       array, 9, 183–222, 223, 227
+          graph, 620–626                             compact, 190, 711
+          map, 402–408                               dynamic, 192–201, 246
+          partition, 681–684                   array module, 191
+          positional list, 279–281             ArrayQueue class, 242–246, 248, 292,
+          priority queue, 364                             306
+          queue, 240                           ASCII, 721
+          sorted map, 427                      assignment statement, 4, 24
+          stack, 230–231                             chained, 17
+          tree, 305–306                              extended, 16
+    abstraction, 58–60                               simultaneous, 45, 91
+    (a, b) tree, 712–714                       asymptotic notation, 123–127, 136
+    access frequency, 286                            big-Oh, 123–127
+    accessors, 6                                     big-Omega, 127, 197
+    activation record, 23, 151, 703                  big-Theta, 127
+    actual parameter, 24                       AttributeError, 33, 100
+    acyclic graph, 623                         AVL tree, 481–488
+    adaptability, 57, 58                             balance factor, 531
+    adaptable priority queue, 390–395, 666,          height-balance property, 481
+                667
+    AdaptableHeapPriorityQueue class,          back edge, 647, 689
+                392–394, 667                   backslash character, 3
+    adapter design pattern, 231                Baeza-Yates, Ricardo, 535, 580, 618, 719
+    Adel’son-Vel’skii, Georgii, 481, 535       Barůvka, Otakar, 693, 696
+    adjacency list, 627, 630–631               base class, 82
+    adjacency map, 627, 632, 634               BaseException, 83, 303
+    adjacency matrix, 627, 633                 Bayer, Rudolf, 535, 719
+    ADT, see abstract data type                Beazley, David, 55
+    Aggarwal, Alok, 719                        Bellman, Richard, 618
+    Aho, Alfred, 254, 298, 535, 618            Bentley, Jon, 182, 400, 580
+    Ahuja, Ravindra, 696                       best-ﬁt algorithm, 699
+    algorithm, 110                             BFS, see breadth-ﬁrst search
+    algorithm analysis, 123–136                biconnected graph, 690
+          average-case, 114                    big-Oh notation, 123–127
+          worst-case, 114                      big-Omega notation, 127, 197
+    alias, 5, 12, 101, 189                     big-Theta notation, 127
+    all function, 29                           binary heap, 370–384
+    alphabet, 583                              binary recursion, 174
+    amortization, 164, 197–200, 234, 237, 246, binary search, 155–156, 162–163,
+                376, 681–684                              428–433, 571
+    ancestor, 302                              binary search tree, 332, 460–479

@@ -1,0 +1,38 @@
+8                                                          Chapter 1. Python Primer
+  The int Class
+  The int and ﬂoat classes are the primary numeric types in Python. The int class is
+  designed to represent integer values with arbitrary magnitude. Unlike Java and
+  C++, which support different integral types with different precisions (e.g., int,
+  short, long), Python automatically chooses the internal representation for an in-
+  teger based upon the magnitude of its value. Typical literals for integers include 0,
+  137, and −23. In some contexts, it is convenient to express an integral value using
+  binary, octal, or hexadecimal. That can be done by using a preﬁx of the number 0
+  and then a character to describe the base. Example of such literals are respectively
+  0b1011, 0o52, and 0x7f.
+       The integer constructor, int( ), returns value 0 by default. But this constructor
+  can be used to construct an integer value based upon an existing value of another
+  type. For example, if f represents a ﬂoating-point value, the syntax int(f) produces
+  the truncated value of f. For example, both int(3.14) and int(3.99) produce the
+  value 3, while int(−3.9) produces the value −3. The constructor can also be used
+  to parse a string that is presumed to represent an integral value (such as one en-
+  tered by a user). If s represents a string, then int(s) produces the integral value
+  that string represents. For example, the expression int( 137 ) produces the inte-
+  ger value 137. If an invalid string is given as a parameter, as in int( hello ), a
+  ValueError is raised (see Section 1.7 for discussion of Python’s exceptions). By de-
+  fault, the string must use base 10. If conversion from a different base is desired, that
+  base can be indicated as a second, optional, parameter. For example, the expression
+  int( 7f , 16) evaluates to the integer 127.
+  The ﬂoat Class
+  The ﬂoat class is the sole ﬂoating-point type in Python, using a ﬁxed-precision
+  representation. Its precision is more akin to a double in Java or C++, rather than
+  those languages’ ﬂoat type. We have already discussed a typical literal form, 98.6.
+  We note that the ﬂoating-point equivalent of an integral number can be expressed
+  directly as 2.0. Technically, the trailing zero is optional, so some programmers
+  might use the expression 2. to designate this ﬂoating-point literal. One other form
+  of literal for ﬂoating-point values uses scientiﬁc notation. For example, the literal
+  6.022e23 represents the mathematical value 6.022 × 1023 .
+       The constructor form of ﬂoat( ) returns 0.0. When given a parameter, the con-
+  structor attempts to return the equivalent ﬂoating-point value. For example, the call
+  ﬂoat(2) returns the ﬂoating-point value 2.0. If the parameter to the constructor is
+  a string, as with ﬂoat( 3.14 ), it attempts to parse that string as a ﬂoating-point
+  value, raising a ValueError as an exception.

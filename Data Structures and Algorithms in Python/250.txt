@@ -1,0 +1,24 @@
+6.1. Stacks                                                                                   229
+  6.1     Stacks
+          A stack is a collection of objects that are inserted and removed according to the
+          last-in, ﬁrst-out (LIFO) principle. A user may insert objects into a stack at any
+          time, but may only access or remove the most recently inserted object that remains
+          (at the so-called “top” of the stack). The name “stack” is derived from the metaphor
+          of a stack of plates in a spring-loaded, cafeteria plate dispenser. In this case, the
+          fundamental operations involve the “pushing” and “popping” of plates on the stack.
+          When we need a new plate from the dispenser, we “pop” the top plate off the stack,
+          and when we add a plate, we “push” it down on the stack to become the new top
+          plate. Perhaps an even more amusing example is a PEZ ® candy dispenser, which
+          stores mint candies in a spring-loaded container that “pops” out the topmost candy
+          in the stack when the top of the dispenser is lifted (see Figure 6.1). Stacks are
+          a fundamental data structure. They are used in many applications, including the
+          following.
+          Example 6.1: Internet Web browsers store the addresses of recently visited sites
+          in a stack. Each time a user visits a new site, that site’s address is “pushed” onto the
+          stack of addresses. The browser then allows the user to “pop” back to previously
+          visited sites using the “back” button.
+          Example 6.2: Text editors usually provide an “undo” mechanism that cancels re-
+          cent editing operations and reverts to former states of a document. This undo oper-
+          ation can be accomplished by keeping text changes in a stack.
+          Figure 6.1: A schematic drawing of a PEZ ® dispenser; a physical implementation
+          of the stack ADT. (PEZ ® is a registered trademark of PEZ Candy, Inc.)

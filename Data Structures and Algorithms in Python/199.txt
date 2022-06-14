@@ -1,0 +1,40 @@
+178                                                               Chapter 4. Recursion
+ 4.6 Eliminating Tail Recursion
+     The main beneﬁt of a recursive approach to algorithm design is that it allows us to
+     succinctly take advantage of a repetitive structure present in many problems. By
+     making our algorithm description exploit the repetitive structure in a recursive way,
+     we can often avoid complex case analyses and nested loops. This approach can
+     lead to more readable algorithm descriptions, while still being quite efﬁcient.
+          However, the usefulness of recursion comes at a modest cost. In particular, the
+     Python interpreter must maintain activation records that keep track of the state of
+     each nested call. When computer memory is at a premium, it is useful in some
+     cases to be able to derive nonrecursive algorithms from recursive ones.
+          In general, we can use the stack data structure, which we will introduce in
+     Section 6.1, to convert a recursive algorithm into a nonrecursive algorithm by man-
+     aging the nesting of the recursive structure ourselves, rather than relying on the
+     interpreter to do so. Although this only shifts the memory usage from the inter-
+     preter to our stack, we may be able to reduce the memory usage by storing only the
+     minimal information necessary.
+          Even better, some forms of recursion can be eliminated without any use of
+     axillary memory. A notable such form is known as tail recursion. A recursion
+     is a tail recursion if any recursive call that is made from one context is the very
+     last operation in that context, with the return value of the recursive call (if any)
+     immediately returned by the enclosing recursion. By necessity, a tail recursion
+     must be a linear recursion (since there is no way to make a second recursive call if
+     you must immediately return the result of the ﬁrst).
+          Of the recursive functions demonstrated in this chapter, the binary search func-
+     tion of Code Fragment 4.3 and the reverse function of Code Fragment 4.10 are
+     examples of tail recursion. Several others of our linear recursions are almost like
+     tail recursion, but not technically so. For example, our factorial function of Code
+     Fragment 4.1 is not a tail recursion. It concludes with the command:
+           return n    factorial(n−1)
+     This is not a tail recursion because an additional multiplication is performed after
+     the recursive call is completed. For similar reasons, the linear sum function of
+     Code Fragment 4.9 and the good ﬁbonacci function of Code Fragment 4.7 fail to
+     be tail recursions.
+          Any tail recursion can be reimplemented nonrecursively by enclosing the body
+     in a loop for repetition, and replacing a recursive call with new parameters by a
+     reassignment of the existing parameters to those values. As a tangible example, our
+     binary search function can be reimplemented as shown in Code Fragment 4.15.
+     We initialize variables low and high, just prior to our while loop, to represent the
+     full extent of the sequence. Then, during each pass of the loop, we either ﬁnd

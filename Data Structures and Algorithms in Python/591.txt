@@ -1,0 +1,33 @@
+570                                                     Chapter 12. Sorting and Selection
+      Decorate-Sort-Undecorate Design Pattern
+      Python’s support for a key function when sorting is implemented using what is
+      known as the decorate-sort-undecorate design pattern. It proceeds in 3 steps:
+           1. Each element of the list is temporarily replaced with a “decorated” version
+              that includes the result of the key function applied to the element.
+           2. The list is sorted based upon the natural order of the keys (Figure 12.16).
+           3. The decorated elements are replaced by the original elements.
+                                  4   blue         5   green          7 magenta
+                         3   red          4   cyan         6   yellow
+                           0       1        2       3        4        5
+      Figure 12.16: A list of “decorated” strings, using their lengths as decoration. This
+      list has been sorted by those keys.
+            Although there is already built-in support for Python, if we were to implement
+      such a strategy ourselves, a natural way to represent a “decorated” element is using
+      the same composition strategy that we used for representing key-value pairs within
+      a priority queue. Code Fragment 9.1 of Section 9.2.1 includes just such an Item
+      class, deﬁned so that the < operator for items relies upon the given keys. With such
+      a composition, we could trivially adapt any sorting algorithm to use the decorate-
+      sort-undecorate pattern, as demonstrated in Code Fragment 12.8 with merge-sort.
+    1 def decorated merge sort(data, key=None):
+    2    ”””Demonstration of the decorate-sort-undecorate pattern.”””
+    3    if key is not None:
+    4       for j in range(len(data)):
+    5         data[j] = Item(key(data[j]), data[j])           # decorate each element
+    6    merge sort(data)                                     # sort with existing algorithm
+    7    if key is not None:
+    8       for j in range(len(data)):
+    9         data[j] = data[j]. value                        # undecorate each element
+      Code Fragment 12.8: An approach for implementing the decorate-sort-undecorate
+      pattern based upon the array-based merge-sort of Code Fragment 12.1. The Item
+      class is identical to that which was used in the PriorityQueueBase class. (See Code
+      Fragment 9.1.)

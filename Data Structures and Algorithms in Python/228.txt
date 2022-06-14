@@ -1,0 +1,38 @@
+5.4. Efﬁciency of Python’s Sequence Types                                                        207
+          Extending a List
+           Python provides a method named extend that is used to add all elements of one list
+           to the end of a second list. In effect, a call to data.extend(other) produces the same
+           outcome as the code,
+                 for element in other:
+                   data.append(element)
+           In either case, the running time is proportional to the length of the other list, and
+           amortized because the underlying array for the ﬁrst list may be resized to accom-
+           modate the additional elements.
+                In practice, the extend method is preferable to repeated calls to append because
+           the constant factors hidden in the asymptotic analysis are signiﬁcantly smaller. The
+           greater efﬁciency of extend is threefold. First, there is always some advantage to
+           using an appropriate Python method, because those methods are often implemented
+           natively in a compiled language (rather than as interpreted Python code). Second,
+           there is less overhead to a single function call that accomplishes all the work, versus
+           many individual function calls. Finally, increased efﬁciency of extend comes from
+           the fact that the resulting size of the updated list can be calculated in advance. If the
+           second data set is quite large, there is some risk that the underlying dynamic array
+           might be resized multiple times when using repeated calls to append. With a single
+           call to extend, at most one resize operation will be performed. Exercise C-5.22
+           explores the relative efﬁciency of these two approaches experimentally.
+          Constructing New Lists
+           There are several syntaxes for constructing new lists. In almost all cases, the asymp-
+           totic efﬁciency of the behavior is linear in the length of the list that is created. How-
+           ever, as with the case in the preceding discussion of extend, there are signiﬁcant
+           differences in the practical efﬁciency.
+                Section 1.9.2 introduces the topic of list comprehension, using an example
+           such as squares = [ k k for k in range(1, n+1) ] as a shorthand for
+                 squares = [ ]
+                 for k in range(1, n+1):
+                   squares.append(k k)
+           Experiments should show that the list comprehension syntax is signiﬁcantly faster
+           than building the list by repeatedly appending (see Exercise C-5.23).
+                Similarly, it is a common Python idiom to initialize a list of constant values
+           using the multiplication operator, as in [0] n to produce a list of length n with
+           all values equal to zero. Not only is this succinct for the programmer; it is more
+           efﬁcient than building such a list incrementally.

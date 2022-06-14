@@ -1,0 +1,39 @@
+12.3. Quick-Sort                                                                             561
+               Although the implementation we describe in this section for dividing the se-
+          quence into two pieces is in-place, we note that the complete quick-sort algorithm
+          needs space for a stack proportional to the depth of the recursion tree, which in
+          this case can be as large as n − 1. Admittedly, the expected stack depth is O(log n),
+          which is small compared to n. Nevertheless, a simple trick lets us guarantee the
+          stack size is O(log n). The main idea is to design a nonrecursive version of in-place
+          quick-sort using an explicit stack to iteratively process subproblems (each of which
+          can be represented with a pair of indices marking subarray boundaries). Each iter-
+          ation involves popping the top subproblem, splitting it in two (if it is big enough),
+          and pushing the two new subproblems. The trick is that when pushing the new
+          subproblems, we should ﬁrst push the larger subproblem and then the smaller one.
+          In this way, the sizes of the subproblems will at least double as we go down the
+          stack; hence, the stack can have depth at most O(log n). We leave the details of this
+          implementation as an exercise (P-12.56).
+          Pivot Selection
+          Our implementation in this section blindly picks the last element as the pivot at each
+          level of the quick-sort recursion. This leaves it susceptible to the Θ(n2 )-time worst
+          case, most notably when the original sequence is already sorted, reverse sorted, or
+          nearly sorted.
+               As described in Section 12.3.1, this can be improved upon by using a randomly
+          chosen pivot for each partition step. In practice, another common technique for
+          choosing a pivot is to use the median of tree values, taken respectively from the
+          front, middle, and tail of the array. This median-of-three heuristic will more often
+          choose a good pivot and computing a median of three may require lower overhead
+          than selecting a pivot with a random number generator. For larger data sets, the
+          median of more than three potential pivots might be computed.
+          Hybrid Approaches
+          Although quick-sort has very good performance on large data sets, it has rather
+          high overhead on relatively small data sets. For example, the process of quick-
+          sorting a sequence of eight elements, as illustrated in Figures 12.10 through 12.12,
+          involves considerable bookkeeping. In practice, a simple algorithm like insertion-
+          sort (Section 7.5) will execute faster when sorting such a short sequence.
+               It is therefore common, in optimized sorting implementations, to use a hybrid
+          approach, with a divide-and-conquer algorithm used until the size of a subsequence
+          falls below some threshold (perhaps 50 elements); insertion-sort can be directly
+          invoked upon portions with length below the threshold. We will further discuss
+          such practical considerations in Section 12.5, when comparing the performance of
+          various sorting algorithms.

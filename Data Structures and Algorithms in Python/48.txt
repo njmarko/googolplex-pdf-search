@@ -1,0 +1,39 @@
+1.5. Functions                                                                                 27
+              As an additional example of an interesting polymorphic function, we consider
+          Python’s support for range. (Technically, this is a constructor for the range class,
+          but for the sake of this discussion, we can treat it as a pure function.) Three calling
+          syntaxes are supported. The one-parameter form, range(n), generates a sequence of
+          integers from 0 up to but not including n. A two-parameter form, range(start,stop)
+          generates integers from start up to, but not including, stop. A three-parameter
+          form, range(start, stop, step), generates a similar range as range(start, stop), but
+          with increments of size step rather than 1.
+              This combination of forms seems to violate the rules for default parameters.
+          In particular, when a single parameter is sent, as in range(n), it serves as the stop
+          value (which is the second parameter); the value of start is effectively 0 in that
+          case. However, this effect can be achieved with some sleight of hand, as follows:
+               def range(start, stop=None, step=1):
+                 if stop is None:
+                     stop = start
+                     start = 0
+                 ...
+          From a technical perspective, when range(n) is invoked, the actual parameter n will
+          be assigned to formal parameter start. Within the body, if only one parameter is
+          received, the start and stop values are reassigned to provide the desired semantics.
+          Keyword Parameters
+          The traditional mechanism for matching the actual parameters sent by a caller, to
+          the formal parameters declared by the function signature is based on the concept
+          of positional arguments. For example, with signature foo(a=10, b=20, c=30),
+          parameters sent by the caller are matched, in the given order, to the formal param-
+          eters. An invocation of foo(5) indicates that a=5, while b and c are assigned their
+          default values.
+              Python supports an alternate mechanism for sending a parameter to a function
+          known as a keyword argument. A keyword argument is speciﬁed by explicitly
+          assigning an actual parameter to a formal parameter by name. For example, with
+          the above deﬁnition of function foo, a call foo(c=5) will invoke the function with
+          parameters a=10, b=20, c=5.
+              A function’s author can require that certain parameters be sent only through the
+          keyword-argument syntax. We never place such a restriction in our own function
+          deﬁnitions, but we will see several important uses of keyword-only parameters in
+          Python’s standard libraries. As an example, the built-in max function accepts a
+          keyword parameter, coincidentally named key, that can be used to vary the notion
+          of “maximum” that is used.

@@ -1,0 +1,42 @@
+196                                               Chapter 5. Array-Based Sequences
+     1 import ctypes                                     # provides low-level arrays
+     2
+     3 class DynamicArray:
+     4   ”””A dynamic array class akin to a simpliﬁed Python list.”””
+     5
+     6   def init (self):
+     7     ”””Create an empty array.”””
+     8     self. n = 0                                   # count actual elements
+     9     self. capacity = 1                            # default array capacity
+    10     self. A = self. make array(self. capacity)    # low-level array
+    11
+    12   def len (self):
+    13     ”””Return number of elements stored in the array.”””
+    14     return self. n
+    15
+    16   def getitem (self, k):
+    17     ”””Return element at index k.”””
+    18     if not 0 <= k < self. n:
+    19        raise IndexError( invalid index )
+    20     return self. A[k]                             # retrieve from array
+    21
+    22   def append(self, obj):
+    23     ”””Add object to end of the array.”””
+    24     if self. n == self. capacity:                 # not enough room
+    25        self. resize(2 self. capacity)             # so double capacity
+    26     self. A[self. n] = obj
+    27     self. n += 1
+    28
+    29   def resize(self, c):                            # nonpublic utitity
+    30     ”””Resize internal array to capacity c.”””
+    31     B = self. make array(c)                       # new (bigger) array
+    32     for k in range(self. n):                      # for each existing value
+    33        B[k] = self. A[k]
+    34     self. A = B                                   # use the bigger array
+    35     self. capacity = c
+    36
+    37   def make array(self, c):                        # nonpublic utitity
+    38       ”””Return new array with capacity c.”””
+    39       return (c ctypes.py object)( )              # see ctypes documentation
+       Code Fragment 5.3: An implementation of a DynamicArray class, using a raw array
+       from the ctypes module as storage.

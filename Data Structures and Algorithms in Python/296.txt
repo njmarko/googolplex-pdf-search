@@ -1,0 +1,40 @@
+7.3. Doubly Linked Lists                                                                   275
+               The other two methods of our class are the nonpublic utilities, insert between
+          and delete node. These provide generic support for insertions and deletions, re-
+          spectively, but require one or more node references as parameters. The implemen-
+          tation of the insert between method is modeled upon the algorithm that was previ-
+          ously portrayed in Figure 7.11. It creates a new node, with that node’s ﬁelds initial-
+          ized to link to the speciﬁed neighboring nodes. Then the ﬁelds of the neighboring
+          nodes are updated to include the newest node in the list. For later convenience, the
+          method returns a reference to the newly created node.
+               The implementation of the delete node method is modeled upon the algorithm
+          portrayed in Figure 7.13. The neighbors of the node to be deleted are linked directly
+          to each other, thereby bypassing the deleted node from the list. As a formality,
+          we intentionally reset the prev, next, and element ﬁelds of the deleted node to
+          None (after recording the element to be returned). Although the deleted node will
+          be ignored by the rest of the list, setting its ﬁelds to None is advantageous as it
+          may help Python’s garbage collection, since unnecessary links to the other nodes
+          and the stored element are eliminated. We will also rely on this conﬁguration to
+          recognize a node as “deprecated” when it is no longer part of the list.
+      7.3.2 Implementing a Deque with a Doubly Linked List
+          The double-ended queue (deque) ADT was introduced in Section 6.3. With an
+          array-based implementation, we achieve all operations in amortized O(1) time, due
+          to the occasional need to resize the array. With an implementation based upon a
+          doubly linked list, we can achieve all deque operation in worst-case O(1) time.
+               We provide an implementation of a LinkedDeque class (Code Fragment 7.13)
+          that inherits from the DoublyLinkedBase class of the preceding section. We do
+          not provide an explicit init method for the LinkedDeque class, as the inherited
+          version of that method sufﬁces to initialize a new instance. We also rely on the
+          inherited methods len and is empty in meeting the deque ADT.
+               With the use of sentinels, the key to our implementation is to remember that
+          the header does not store the ﬁrst element of the deque—it is the node just after the
+          header that stores the ﬁrst element (assuming the deque is nonempty). Similarly,
+          the node just before the trailer stores the last element of the deque.
+               We use the inherited insert between method to insert at either end of the
+          deque. To insert an element at the front of the deque, we place it immediately
+          between the header and the node just after the header. An insertion at the end of
+          deque is placed immediately before the trailer node. Note that these operations
+          succeed, even when the deque is empty; in such a situation, the new node is placed
+          between the two sentinels. When deleting an element from a nonempty deque, we
+          rely upon the inherited delete node method, knowing that the designated node is
+          assured to have neighbors on each side.

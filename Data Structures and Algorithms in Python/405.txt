@@ -1,0 +1,40 @@
+384                                                             Chapter 9. Priority Queues
+    9.3.7 Python’s heapq Module
+       Python’s standard distribution includes a heapq module that provides support for
+       heap-based priority queues. That module does not provide any priority queue class;
+       instead it provides functions that allow a standard Python list to be managed as a
+       heap. Its model is essentially the same as our own, with n elements stored in list
+       cells L[0] through L[n − 1], based on the level-numbering indices with the small-
+       est element at the root in L[0]. We note that heapq does not separately manage
+       associated values; elements serve as their own key.
+           The heapq module supports the following functions, all of which presume that
+       existing list L satisﬁes the heap-order property prior to the call:
+              heappush(L, e): Push element e onto list L and restore the heap-order
+                                   property. The function executes in O(log n) time.
+                  heappop(L): Pop and return the element with smallest value from list L,
+                                   and reestablish the heap-order property. The operation
+                                   executes in O(log n) time.
+         heappushpop(L, e): Push element e on list L and then pop and return the
+                                   smallest item. The time is O(log n), but it is slightly more
+                                   efﬁcient than separate calls to push and pop because the
+                                   size of the list never changes. If the newly pushed el-
+                                   ement becomes the smallest, it is immediately returned.
+                                   Otherwise, the new element takes the place of the popped
+                                   element at the root and a down-heap is performed.
+           heapreplace(L, e): Similar to heappushpop, but equivalent to the pop be-
+                                   ing performed before the push (in other words, the new
+                                   element cannot be returned as the smallest). Again, the
+                                   time is O(log n), but it is more efﬁcient that two separate
+                                   operations.
+           The module supports additional functions that operate on sequences that do not
+       previously satisfy the heap-order property.
+                     heapify(L): Transform unordered list to satisfy the heap-order prop-
+                                   erty. This executes in O(n) time by using the bottom-up
+                                   construction algorithm.
+        nlargest(k, iterable): Produce a list of the k largest values from a given iterable.
+                                   This can be implemented to run in O(n + k log n) time,
+                                   where we use n to denote the length of the iterable (see
+                                   Exercise C-9.42).
+       nsmallest(k, iterable): Produce a list of the k smallest values from a given it-
+                                   erable. This can be implemented to run in O(n + k log n)
+                                   time, using similar technique as with nlargest.

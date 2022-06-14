@@ -1,0 +1,39 @@
+572                                                     Chapter 12. Sorting and Selection
+     12.7.2 Randomized Quick-Select
+        In applying the prune-and-search pattern to ﬁnding the kth smallest element in an
+        unordered sequence of n elements, we describe a simple and practical algorithm,
+        known as randomized quick-select. This algorithm runs in O(n) expected time,
+        taken over all possible random choices made by the algorithm; this expectation
+        does not depend whatsoever on any randomness assumptions about the input dis-
+        tribution. We note though that randomized quick-select runs in O(n2 ) time in the
+        worst case, the justiﬁcation of which is left as an exercise (R-12.24). We also
+        provide an exercise (C-12.55) for modifying randomized quick-select to deﬁne a
+        deterministic selection algorithm that runs in O(n) worst-case time. The existence
+        of this deterministic algorithm is mostly of theoretical interest, however, since the
+        constant factor hidden by the big-Oh notation is relatively large in that case.
+              Suppose we are given an unsorted sequence S of n comparable elements to-
+        gether with an integer k ∈ [1, n]. At a high level, the quick-select algorithm for
+        ﬁnding the kth smallest element in S is similar to the randomized quick-sort algo-
+        rithm described in Section 12.3.1. We pick a “pivot” element from S at random and
+        use this to subdivide S into three subsequences L, E, and G, storing the elements of
+        S less than, equal to, and greater than the pivot, respectively. In the prune step, we
+        determine which of these subsets contains the desired element, based on the value
+        of k and the sizes of those subsets. We then recur on the appropriate subset, noting
+        that the desired element’s rank in the subset may differ from its rank in the full set.
+        An implementation of randomized quick-select is shown in Code Fragment 12.9.
+     1 def quick select(S, k):
+     2     ”””Return the kth smallest element of list S, for k from 1 to len(S).”””
+     3     if len(S) == 1:
+     4        return S[0]
+     5     pivot = random.choice(S)                  # pick random pivot element from S
+     6     L = [x for x in S if x < pivot]           # elements less than pivot
+     7     E = [x for x in S if x == pivot]          # elements equal to pivot
+     8     G = [x for x in S if pivot < x]           # elements greater than pivot
+     9     if k <= len(L):
+    10        return quick select(L, k)              # kth smallest lies in L
+    11     elif k <= len(L) + len(E):
+    12        return pivot                           # kth smallest equal to pivot
+    13     else:
+    14        j = k − len(L) − len(E)                # new selection parameter
+    15        return quick select(G, j)              # kth smallest is jth in G
+                      Code Fragment 12.9: Randomized quick-select algorithm.

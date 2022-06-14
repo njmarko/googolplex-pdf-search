@@ -1,0 +1,34 @@
+2.6. Shallow and Deep Copying                                                                   101
+  2.6      Shallow and Deep Copying
+           In Chapter 1, we emphasized that an assignment statement foo = bar makes the
+           name foo an alias for the object identiﬁed as bar. In this section, we consider
+           the task of making a copy of an object, rather than an alias. This is necessary in
+           applications when we want to subsequently modify either the original or the copy
+           in an independent manner.
+                Consider a scenario in which we manage various lists of colors, with each color
+           represented by an instance of a presumed color class. We let identiﬁer warmtones
+           denote an existing list of such colors (e.g., oranges, browns). In this application,
+           we wish to create a new list named palette, which is a copy of the warmtones list.
+           However, we want to subsequently be able to add additional colors to palette, or
+           to modify or remove some of the existing colors, without affecting the contents of
+           warmtones. If we were to execute the command
+                palette = warmtones
+           this creates an alias, as shown in Figure 2.9. No new list is created; instead, the
+           new identiﬁer palette references the original list.
+                                  warmtones                               palette
+                                                        list
+                                             color                  color
+                                   249      red            169     red
+                                   124      green          163     green
+                                    43      blue             52    blue
+                            Figure 2.9: Two aliases for the same list of colors.
+           Unfortunately, this does not meet our desired criteria, because if we subsequently
+           add or remove colors from “palette,” we modify the list identiﬁed as warmtones.
+                We can instead create a new instance of the list class by using the syntax:
+                palette = list(warmtones)
+           In this case, we explicitly call the list constructor, sending the ﬁrst list as a param-
+           eter. This causes a new list to be created, as shown in Figure 2.10; however, it is
+           what is known as a shallow copy. The new list is initialized so that its contents are
+           precisely the same as the original sequence. However, Python’s lists are referential
+           (see page 9 of Section 1.2.3), and so the new list represents a sequence of references
+           to the same elements as in the ﬁrst.

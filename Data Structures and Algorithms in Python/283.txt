@@ -1,0 +1,42 @@
+262                                                                 Chapter 7. Linked Lists
+     1 class LinkedStack:
+     2   ”””LIFO Stack implementation using a singly linked list for storage.”””
+     3
+     4   #-------------------------- nested Node class --------------------------
+     5   class Node:
+     6     ”””Lightweight, nonpublic class for storing a singly linked node.”””
+     7        slots = _element , _next                     # streamline memory usage
+     8
+     9     def init (self, element, next):                 # initialize node’s ﬁelds
+    10        self. element = element                      # reference to user’s element
+    11        self. next = next                            # reference to next node
+    12
+    13   #------------------------------- stack methods -------------------------------
+    14   def init (self):
+    15     ”””Create an empty stack.”””
+    16     self. head = None                               # reference to the head node
+    17     self. size = 0                                  # number of stack elements
+    18
+    19   def len (self):
+    20     ”””Return the number of elements in the stack.”””
+    21     return self. size
+    22
+    23   def is empty(self):
+    24     ”””Return True if the stack is empty.”””
+    25     return self. size == 0
+    26
+    27   def push(self, e):
+    28     ”””Add element e to the top of the stack.”””
+    29     self. head = self. Node(e, self. head)          # create and link a new node
+    30     self. size += 1
+    31
+    32   def top(self):
+    33     ”””Return (but do not remove) the element at the top of the stack.
+    34
+    35     Raise Empty exception if the stack is empty.
+    36     ”””
+    37     if self.is empty( ):
+    38        raise Empty( Stack is empty )
+    39     return self. head. element                      # top of stack is at head of list
+       Code Fragment 7.5: Implementation of a stack ADT using a singly linked list (con-
+       tinued in Code Fragment 7.6).

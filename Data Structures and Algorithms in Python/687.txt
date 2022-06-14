@@ -1,0 +1,39 @@
+666                                                      Chapter 14. Graph Algorithms
+         Let us ﬁrst assume that we are representing the graph G using an adjacency
+    list or adjacency map structure. This data structure allows us to step through the
+    vertices adjacent to u during the relaxation step in time proportional to their number.
+    Therefore, the time spent in the management of the nested for loop, and the number
+    of iterations of that loop, is
+                                            ∑    outdeg(u),
+                                         u in VG
+    which is O(m) by Proposition 14.9. The outer while loop executes O(n) times,
+    since a new vertex is added to the cloud during each iteration. This still does not
+    settle all the details for the algorithm analysis, however, for we must say more about
+    how to implement the other principal data structure in the algorithm—the priority
+    queue Q.
+         Referring back to Code Fragment 14.12 in search of priority queue operations,
+    we ﬁnd that n vertices are originally inserted into the priority queue; since these are
+    the only insertions, the maximum size of the queue is n. In each of n iterations of
+    the while loop, a call to remove min is made to extract the vertex u with smallest
+    D label from Q. Then, for each neighbor v of u, we perform an edge relaxation,
+    and may potentially update the key of v in the queue. Thus, we actually need an
+    implementation of an adaptable priority queue (Section 9.5), in which case the key
+    of a vertex v is changed using the method update(, k), where  is the locator for
+    the priority queue entry associated with vertex v. In the worst case, there could be
+    one such update for each edge of the graph. Overall, the running time of Dijkstra’s
+    algorithm is bounded by the sum of the following:
+         • n insertions into Q.
+         • n calls to the remove min method on Q.
+         • m calls to the update method on Q.
+         If Q is an adaptable priority queue implemented as a heap, then each of the
+    above operations run in O(log n), and so the overall running time for Dijkstra’s
+    algorithm is O((n + m) log n). Note that if we wish to express the running time as a
+    function of n only, then it is O(n2 log n) in the worst case.
+         Let us now consider an alternative implementation for the adaptable priority
+    queue Q using an unsorted sequence. (See Exercise P-9.58.) This, of course, re-
+    quires that we spend O(n) time to extract the minimum element, but it affords
+    very fast key updates, provided Q supports location-aware entries (Section 9.5.1).
+    Speciﬁcally, we can implement each key update done in a relaxation step in O(1)
+    time—we simply change the key value once we locate the entry in Q to update.
+    Hence, this implementation results in a running time that is O(n2 + m), which can
+    be simpliﬁed to O(n2 ) since G is simple.

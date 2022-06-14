@@ -1,0 +1,40 @@
+468                                                              Chapter 11. Search Trees
+    11.1.4 Python Implementation
+       In Code Fragments 11.4 through 11.8 we deﬁne a TreeMap class that implements
+       the sorted map ADT using a binary search tree. In fact, our implementation is more
+       general. We support all of the standard map operations (Section 10.1.1), all ad-
+       ditional sorted map operations (Section 10.3), and positional operations including
+       ﬁrst( ), last( ), ﬁnd position(k), before(p), after(p), and delete(p).
+           Our TreeMap class takes advantage of multiple inheritance for code reuse,
+       inheriting from the LinkedBinaryTree class of Section 8.3.1 for our representation
+       as a positional binary tree, and from the MapBase class from Code Fragment 10.2
+       of Section 10.1.4 to provide us with the key-value composite item and the concrete
+       behaviors from the collections.MutableMapping abstract base class. We subclass
+       the nested Position class to support more speciﬁc p.key( ) and p.value( ) accessors
+       for our map, rather than the p.element( ) syntax inherited from the tree ADT.
+           We deﬁne several nonpublic utilities, most notably a subtree search(p, k)
+       method that corresponds to the TreeSearch algorithm of Code Fragment 11.2. That
+       returns a position, ideally one that contains the key k, or otherwise the last position
+       that is visited on the search path. We rely on the fact that the ﬁnal position dur-
+       ing an unsuccessful search is either the nearest key less than k or the nearest key
+       greater than k. This search utility becomes the basis for the public ﬁnd position(k)
+       method, and also for internal use when searching, inserting, or deleting items from
+       a map, as well as for the robust searches of the sorted map ADT.
+           When making structural modiﬁcations to the tree, we rely on nonpublic update
+       methods, such as add right, that are inherited from the LinkedBinaryTree class
+       (see Section 8.3.1). It is important that these inherited methods remain nonpublic,
+       as the search tree property could be violated through misuse of such operations.
+           Finally, we note that our code is peppered with calls to presumed methods
+       named rebalance insert, rebalance delete, and rebalance access. These meth-
+       ods serve as hooks for future use when balancing search trees; we discuss them in
+       Section 11.2. We conclude with a brief guide to the organization of our code.
+           Code Fragment 11.4: Beginning of TreeMap class including redeﬁned Position
+                                   class and nonpublic search utilities.
+           Code Fragment 11.5: Positional methods ﬁrst( ), last( ), before(p), after(p),
+                                   and ﬁnd position(p) accessor.
+           Code Fragment 11.6: Selected methods of the sorted map ADT: ﬁnd min( ),
+                                   ﬁnd ge(k), and ﬁnd range(start, stop); related methods
+                                   are omitted for the sake of brevity.
+           Code Fragment 11.7:        getitem   (k),    setitem    (k, v), and   iter   ( ).
+           Code Fragment 11.8: Deletion either by position, as delete(p), or by key, as
+                                      delitem (k).

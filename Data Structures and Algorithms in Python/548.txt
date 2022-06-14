@@ -1,0 +1,43 @@
+11.6. Red-Black Trees                                                                        527
+      47   #------------------------- support for deletions -------------------------
+      48   def rebalance delete(self, p):
+      49      if len(self) == 1:
+      50         self. set black(self.root( ))        # special case: ensure that root is black
+      51      elif p is not None:
+      52         n = self.num children(p)
+      53         if n == 1:                           # deﬁcit exists unless child is a red leaf
+      54            c = next(self.children(p))
+      55            if not self. is red leaf(c):
+      56               self. ﬁx deﬁcit(p, c)
+      57         elif n == 2:                         # removed black node with red child
+      58            if self. is red leaf(self.left(p)):
+      59               self. set black(self.left(p))
+      60            else:
+      61               self. set black(self.right(p))
+      62
+      63   def ﬁx deﬁcit(self, z, y):
+      64      ”””Resolve black deﬁcit at z, where y is the root of z s heavier subtree.”””
+      65      if not self. is red(y): # y is black; will apply Case 1 or 2
+      66         x = self. get red child(y)
+      67         if x is not None: # Case 1: y is black and has red child x; do ”transfer”
+      68            old color = self. is red(z)
+      69            middle = self. restructure(x)
+      70            self. set color(middle, old color)           # middle gets old color of z
+      71            self. set black(self.left(middle))           # children become black
+      72            self. set black(self.right(middle))
+      73         else: # Case 2: y is black, but no red children; recolor as ”fusion”
+      74            self. set red(y)
+      75            if self. is red(z):
+      76               self. set black(z)                        # this resolves the problem
+      77            elif not self.is root(z):
+      78               self. ﬁx deﬁcit(self.parent(z), self.sibling(z)) # recur upward
+      79      else: # Case 3: y is red; rotate misaligned 3-node and repeat
+      80         self. rotate(y)
+      81         self. set black(y)
+      82         self. set red(z)
+      83         if z == self.right(y):
+      84            self. ﬁx deﬁcit(z, self.left(z))
+      85         else:
+      86            self. ﬁx deﬁcit(z, self.right(z))
+          Code Fragment 11.17: Conclusion of the RedBlackTreeMap class. (Continued from
+          Code Fragment 11.16.)

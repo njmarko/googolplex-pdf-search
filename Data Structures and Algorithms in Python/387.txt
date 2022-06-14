@@ -1,0 +1,39 @@
+366                                                            Chapter 9. Priority Queues
+    9.2.2 Implementation with an Unsorted List
+       In our ﬁrst concrete implementation of a priority queue, we store entries within
+       an unsorted list. Our UnsortedPriorityQueue class is given in Code Fragment 9.2,
+       inheriting from the PriorityQueueBase class introduced in Code Fragment 9.1. For
+       internal storage, key-value pairs are represented as composites, using instances of
+       the inherited Item class. These items are stored within a PositionalList, identiﬁed
+       as the data member of our class. We assume that the positional list is implemented
+       with a doubly-linked list, as in Section 7.4, so that all operations of that ADT
+       execute in O(1) time.
+           We begin with an empty list when a new priority queue is constructed. At all
+       times, the size of the list equals the number of key-value pairs currently stored in the
+       priority queue. For this reason, our priority queue len method simply returns
+       the length of the internal data list. By the design of our PriorityQueueBase class,
+       we inherit a concrete implementation of the is empty method that relies on a call to
+       our len method.
+           Each time a key-value pair is added to the priority queue, via the add method,
+       we create a new Item composite for the given key and value, and add that item to
+       the end of the list. Such an implementation takes O(1) time.
+           The remaining challenge is that when min or remove min is called, we must
+       locate the item with minimum key. Because the items are not sorted, we must
+       inspect all entries to ﬁnd one with a minimum key. For convenience, we deﬁne a
+       nonpublic ﬁnd min utility that returns the position of an item with minimum key.
+       Knowledge of the position allows the remove min method to invoke the delete
+       method on the positional list. The min method simply uses the position to retrieve
+       the item when preparing a key-value tuple to return. Due to the loop for ﬁnding the
+       minimum key, both min and remove min methods run in O(n) time, where n is the
+       number of entries in the priority queue.
+           A summary of the running times for the UnsortedPriorityQueue class is given
+       in Table 9.1.
+                                      Operation    Running Time
+                                          len            O(1)
+                                       is empty          O(1)
+                                          add            O(1)
+                                          min            O(n)
+                                     remove min          O(n)
+       Table 9.1: Worst-case running times of the methods of a priority queue of size
+       n, realized by means of an unsorted, doubly linked list. The space requirement
+       is O(n).

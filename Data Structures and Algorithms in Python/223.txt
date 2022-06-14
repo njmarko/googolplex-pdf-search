@@ -1,0 +1,34 @@
+202                                                    Chapter 5. Array-Based Sequences
+ 5.4    Eﬃciency of Python’s Sequence Types
+        In the previous section, we began to explore the underpinnings of Python’s list
+        class, in terms of implementation strategies and efﬁciency. We continue in this
+        section by examining the performance of all of Python’s sequence types.
+     5.4.1 Python’s List and Tuple Classes
+        The nonmutating behaviors of the list class are precisely those that are supported
+        by the tuple class. We note that tuples are typically more memory efﬁcient than
+        lists because they are immutable; therefore, there is no need for an underlying
+        dynamic array with surplus capacity. We summarize the asymptotic efﬁciency of
+        the nonmutating behaviors of the list and tuple classes in Table 5.3. An explanation
+        of this analysis follows.
+                                               Operation     Running Time
+                                                len(data)    O(1)
+                                                   data[j]   O(1)
+                                       data.count(value)     O(n)
+                                       data.index(value)     O(k + 1)
+                                            value in data    O(k + 1)
+                                        data1 == data2
+                                                             O(k + 1)
+                          (similarly !=, <, <=, >, >=)
+                                                 data[j:k]   O(k − j + 1)
+                                          data1 + data2      O(n1 + n2 )
+                                                 c data      O(cn)
+        Table 5.3: Asymptotic performance of the nonmutating behaviors of the list and
+        tuple classes. Identiﬁers data, data1, and data2 designate instances of the list or
+        tuple class, and n, n1 , and n2 their respective lengths. For the containment check
+        and index method, k represents the index of the leftmost occurrence (with k = n if
+        there is no occurrence). For comparisons between two sequences, we let k denote
+        the leftmost index at which they disagree or else k = min(n1 , n2 ).
+        Constant-Time Operations
+        The length of an instance is returned in constant time because an instance explicitly
+        maintains such state information. The constant-time efﬁciency of syntax data[j] is
+        assured by the underlying access into an array.

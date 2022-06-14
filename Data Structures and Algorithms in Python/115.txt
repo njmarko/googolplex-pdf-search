@@ -1,0 +1,41 @@
+94                                           Chapter 2. Object-Oriented Programming
+    1 from abc import ABCMeta, abstractmethod                   # need these deﬁnitions
+    2
+    3 class Sequence(metaclass=ABCMeta):
+    4   ”””Our own version of collections.Sequence abstract base class.”””
+    5
+    6   @abstractmethod
+    7   def len (self):
+    8     ”””Return the length of the sequence.”””
+    9
+   10   @abstractmethod
+   11   def getitem (self, j):
+   12     ”””Return the element at index j of the sequence.”””
+   13
+   14   def contains (self, val):
+   15     ”””Return True if val found in the sequence; False otherwise.”””
+   16     for j in range(len(self)):
+   17        if self[j] == val:                                  # found match
+   18           return True
+   19     return False
+   20
+   21   def index(self, val):
+   22     ”””Return leftmost index at which val is found (or raise ValueError).”””
+   23     for j in range(len(self)):
+   24        if self[j] == val:                                  # leftmost match
+   25           return j
+   26     raise ValueError( value not in sequence )              # never found a match
+   27
+   28   def count(self, val):
+   29     ”””Return the number of elements equal to given value.”””
+   30     k=0
+   31     for j in range(len(self)):
+   32        if self[j] == val:                                  # found a match
+   33           k += 1
+   34     return k
+           Code Fragment 2.14: An abstract base class akin to collections.Sequence.
+          This implementation relies on two advanced Python techniques. The ﬁrst is that
+      we declare the ABCMeta class of the abc module as a metaclass of our Sequence
+      class. A metaclass is different from a superclass, in that it provides a template for
+      the class deﬁnition itself. Speciﬁcally, the ABCMeta declaration assures that the
+      constructor for the class raises an error.

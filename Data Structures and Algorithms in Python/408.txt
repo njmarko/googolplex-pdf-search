@@ -1,0 +1,42 @@
+9.4. Sorting with a Priority Queue                                                            387
+                                                Collection C      Priority Queue P
+                              Input            (7, 4, 8, 2, 5, 3)          ()
+                              Phase 1    (a)     (4, 8, 2, 5, 3)          (7)
+                                         (b)      (8, 2, 5, 3)          (7, 4)
+                                          ..            ..                  ..
+                                           .             .                   .
+                                         (f )          ()          (7, 4, 8, 2, 5, 3)
+                              Phase 2    (a)          (2)           (7, 4, 8, 5, 3)
+                                         (b)         (2, 3)          (7, 4, 8, 5)
+                                         (c)       (2, 3, 4)           (7, 8, 5)
+                                         (d)      (2, 3, 4, 5)          (7, 8)
+                                         (e)     (2, 3, 4, 5, 7)          (8)
+                                         (f )  (2, 3, 4, 5, 7, 8)          ()
+                Figure 9.7: Execution of selection-sort on collection C = (7, 4, 8, 2, 5, 3).
+           Insertion-Sort
+           If we implement the priority queue P using a sorted list, then we improve the run-
+           ning time of Phase 2 to O(n), for each remove min operation on P now takes O(1)
+           time. Unfortunately, Phase 1 becomes the bottleneck for the running time, since,
+           in the worst case, each add operation takes time proportional to the current size of
+           P. This sorting algorithm is better known as insertion-sort (see Figure 9.8); in fact,
+           our implementation for adding an element to a priority queue is almost identical to
+           a step of insertion-sort as presented in Section 7.5.
+               The worst-case running time of Phase 1 of insertion-sort is
+                                 O(1 + 2 + . . . + (n − 1) + n) = O (∑ni=1 i) .
+           Again, by Proposition 3.3, this implies a worst-case O(n2 ) time for Phase 1, and
+           thus, the entire insertion-sort algorithm. However, unlike selection-sort, insertion-
+           sort has a best-case running time of O(n).
+                                                Collection C      Priority Queue P
+                              Input            (7, 4, 8, 2, 5, 3)          ()
+                              Phase 1    (a)     (4, 8, 2, 5, 3)          (7)
+                                         (b)      (8, 2, 5, 3)          (4, 7)
+                                         (c)       (2, 5, 3)           (4, 7, 8)
+                                         (d)         (5, 3)          (2, 4, 7, 8)
+                                         (e)          (3)           (2, 4, 5, 7, 8)
+                                         (f )          ()          (2, 3, 4, 5, 7, 8)
+                              Phase 2    (a)          (2)           (3, 4, 5, 7, 8)
+                                         (b)         (2, 3)          (4, 5, 7, 8)
+                                           ..            ..                  ..
+                                            .             .                   .
+                                         (f )  (2, 3, 4, 5, 7, 8)          ()
+                Figure 9.8: Execution of insertion-sort on collection C = (7, 4, 8, 2, 5, 3).

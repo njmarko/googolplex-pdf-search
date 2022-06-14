@@ -1,0 +1,35 @@
+520                                                            Chapter 11. Search Trees
+        We consider three possible cases to remedy a deﬁcit.
+    Case 1: Node y Is Black and Has a Red Child x. (See Figure 11.38.)
+           We perform a trinode restructuring, as originally described in Section 11.2.
+           The operation restructure(x) takes the node x, its parent y, and grandparent
+           z, labels them temporarily left to right as a, b, and c, and replaces z with the
+           node labeled b, making it the parent of the other two. We color a and c black,
+           and give b the former color of z.
+           Notice that the path to Tlight in the result includes one additional black node
+           after the restructure, thereby resolving its deﬁcit. In contrast, the number
+           of black nodes on paths to any of the other three subtrees illustrated in Fig-
+           ure 11.38 remains unchanged.
+           Resolving this case corresponds to a transfer operation in the (2, 4) tree T 
+           between the two children of the node with z. The fact that y has a red child
+           assures us that it represents either a 3-node or a 4-node. In effect, the item
+           previously stored at z is demoted to become a new 2-node to resolve the
+           deﬁciency, while an item stored at y or its child is promoted to take the place
+           of the item previously stored at z.
+                       z                                                     x
+        y               30                                        y        20        z
+          10       x                                                10            30
+                  20
+                                    Tlight
+                                                                                      Tlight
+                         z                                                    y
+                 y        30                                       x       20        z
+         x        20                                                10             30
+          10
+                                     Tlight
+                                                                                       Tlight
+    Figure 11.38: Resolving a black deﬁcit in Tlight by performing a trinode restructuring
+    as restructure(x). Two possible conﬁgurations are shown (two other conﬁgurations
+    are symmetric). The gray color of z in the left ﬁgures denotes the fact that this node
+    may be colored either red or black. The root of the restructured portion is given
+    that same color, while the children of that node are both colored black in the result.

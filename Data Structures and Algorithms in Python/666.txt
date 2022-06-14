@@ -1,0 +1,38 @@
+14.3. Graph Traversals                                                                       645
+         Reconstructing a Path from u to v
+          We can use the basic DFS function as a tool to identify the (directed) path lead-
+          ing from vertex u to v, if v is reachable from u. This path can easily be recon-
+          structed from the information that was recorded in the discovery dictionary during
+          the traversal. Code Fragment 14.6 provides an implementation of a secondary func-
+          tion that produces an ordered list of vertices on the path from u to v.
+               To reconstruct the path, we begin at the end of the path, examining the discovery
+          dictionary to determine what edge was used to reach vertex v, and then what the
+          other endpoint of that edge is. We add that vertex to a list, and then repeat the
+          process to determine what edge was used to discover it. Once we have traced the
+          path all the way back to the starting vertex u, we can reverse the list so that it is
+          properly oriented from u to v, and return it to the caller. This process takes time
+          proportional to the length of the path, and therefore it runs in O(n) time (in addition
+          to the time originally spent calling DFS).
+       1 def construct path(u, v, discovered):
+       2    path = [ ]                                             # empty path by default
+       3    if v in discovered:
+       4       # we build list from v to u and then reverse it at the end
+       5       path.append(v)
+       6       walk = v
+       7       while walk is not u:
+       8         e = discovered[walk]                              # ﬁnd edge leading to walk
+       9         parent = e.opposite(walk)
+      10         path.append(parent)
+      11         walk = parent
+      12       path.reverse( )                                     # reorient path from u to v
+      13    return path
+          Code Fragment 14.6: Function to reconstruct a directed path from u to v, given the
+          trace of discovery from a DFS started at u. The function returns an ordered list of
+          vertices on the path.
+         Testing for Connectivity
+          We can use the basic DFS function to determine whether a graph is connected. In
+          the case of an undirected graph, we simply start a depth-ﬁrst search at an arbitrary
+          vertex and then test whether len(discovered) equals n at the conclusion. If the graph
+          is connected, then by Proposition 14.12, all vertices will have been discovered;
+          conversely, if the graph is not connected, there must be at least one vertex v that is
+          not reachable from u, and that will not be discovered.

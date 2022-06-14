@@ -1,0 +1,34 @@
+234                                             Chapter 6. Stacks, Queues, and Deques
+    Analyzing the Array-Based Stack Implementation
+    Table 6.2 shows the running times for our ArrayStack methods. The analysis di-
+    rectly mirrors the analysis of the list class given in Section 5.3. The implementa-
+    tions for top, is empty, and len use constant time in the worst case. The O(1) time
+    for push and pop are amortized bounds (see Section 5.3.2); a typical call to either
+    of these methods uses constant time, but there is occasionally an O(n)-time worst
+    case, where n is the current number of elements in the stack, when an operation
+    causes the list to resize its internal array. The space usage for a stack is O(n).
+                                    Operation     Running Time
+                                     S.push(e)    O(1)∗
+                                       S.pop( )   O(1)∗
+                                       S.top( )   O(1)
+                                 S.is empty( )    O(1)
+                                         len(S)   O(1)
+                                 ∗ amortized
+    Table 6.2: Performance of our array-based stack implementation. The bounds for
+    push and pop are amortized due to similar bounds for the list class. The space
+    usage is O(n), where n is the current number of elements in the stack.
+    Avoiding Amortization by Reserving Capacity
+    In some contexts, there may be additional knowledge that suggests a maximum size
+    that a stack will reach. Our implementation of ArrayStack from Code Fragment 6.2
+    begins with an empty list and expands as needed. In the analysis of lists from
+    Section 5.4.1, we emphasized that it is more efﬁcient in practice to construct a list
+    with initial length n than it is to start with an empty list and append n items (even
+    though both approaches run in O(n) time).
+        As an alternate model for a stack, we might wish for the constructor to accept
+    a parameter specifying the maximum capacity of a stack and to initialize the data
+    member to a list of that length. Implementing such a model requires signiﬁcant
+    changes relative to Code Fragment 6.2. The size of the stack would no longer be
+    synonymous with the length of the list, and pushes and pops of the stack would not
+    require changing the length of the list. Instead, we suggest maintaining a separate
+    integer as an instance variable that denotes the current number of elements in the
+    stack. Details of such an implementation are left as Exercise C-6.17.

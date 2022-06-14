@@ -1,0 +1,35 @@
+342                                                                       Chapter 8. Trees
+         The process of an Euler tour can easily be viewed recursively. In between the
+    “pre visit” and “post visit” of a given position will be a recursive tour of each of
+    its subtrees. Looking at Figure 8.21 as an example, there is a contiguous portion
+    of the entire tour that is itself an Euler tour of the subtree of the node with element
+    “/”. That tour contains two contiguous subtours, one traversing that position’s left
+    subtree and another traversing the right subtree. The pseudo-code for an Euler tour
+    traversal of a subtree rooted at a position p is shown in Code Fragment 8.27.
+    Algorithm eulertour(T, p):
+       perform the “pre visit” action for position p
+       for each child c in T.children(p) do
+          eulertour(T, c)                         {recursively tour the subtree rooted at c}
+       perform the “post visit” action for position p
+    Code Fragment 8.27: Algorithm eulertour for performing an Euler tour traversal of
+    a subtree rooted at position p of a tree.
+    The Template Method Pattern
+    To provide a framework that is reusable and adaptable, we rely on an interesting
+    object-oriented software design pattern, the template method pattern. The template
+    method pattern describes a generic computation mechanism that can be specialized
+    for a particular application by redeﬁning certain steps. To allow customization, the
+    primary algorithm calls auxiliary functions known as hooks at designated steps of
+    the process.
+         In the context of an Euler tour traversal, we deﬁne two separate hooks, a pre-
+    visit hook that is called before the subtrees are traversed, and a postvisit hook that is
+    called after the completion of the subtree traversals. Our implementation will take
+    the form of an EulerTour class that manages the process, and deﬁnes trivial deﬁ-
+    nitions for the hooks that do nothing. The traversal can be customized by deﬁning
+    a subclass of EulerTour and overriding one or both hooks to provide specialized
+    behavior.
+    Python Implementation
+    Our implementation of an EulerTour class is provided in Code Fragment 8.28. The
+    primary recursive process is deﬁned in the nonpublic tour method. A tour instance
+    is created by sending a reference to a speciﬁc tree to the constructor, and then by
+    calling the public execute method, which beings the tour and returns a ﬁnal result
+    of the computation.

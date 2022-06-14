@@ -1,0 +1,39 @@
+648                                                         Chapter 14. Graph Algorithms
+     14.3.3 Breadth-First Search
+        The advancing and backtracking of a depth-ﬁrst search, as described in the previ-
+        ous section, deﬁnes a traversal that could be physically traced by a single person
+        exploring a graph. In this section, we consider another algorithm for traversing
+        a connected component of a graph, known as a breadth-ﬁrst search (BFS). The
+        BFS algorithm is more akin to sending out, in all directions, many explorers who
+        collectively traverse a graph in coordinated fashion.
+            A BFS proceeds in rounds and subdivides the vertices into levels. BFS starts
+        at vertex s, which is at level 0. In the ﬁrst round, we paint as “visited,” all vertices
+        adjacent to the start vertex s—these vertices are one step away from the beginning
+        and are placed into level 1. In the second round, we allow all explorers to go
+        two steps (i.e., edges) away from the starting vertex. These new vertices, which
+        are adjacent to level 1 vertices and not previously assigned to a level, are placed
+        into level 2 and marked as “visited.” This process continues in similar fashion,
+        terminating when no new vertices are found in a level.
+            A Python implementation of BFS is given in Code Fragment 14.8. We follow
+        a convention similar to that of DFS (Code Fragment 14.5), using a discovered dic-
+        tionary both to recognize visited vertices, and to record the discovery edges of the
+        BFS tree. We illustrate a BFS traversal in Figure 14.10.
+     1 def BFS(g, s, discovered):
+     2    ”””Perform BFS of the undiscovered portion of Graph g starting at Vertex s.
+     3
+     4    discovered is a dictionary mapping each vertex to the edge that was used to
+     5    discover it during the BFS (s should be mapped to None prior to the call).
+     6    Newly discovered vertices will be added to the dictionary as a result.
+     7    ”””
+     8    level = [s]                            # ﬁrst level includes only s
+     9    while len(level) > 0:
+    10      next level = [ ]                     # prepare to gather newly found vertices
+    11      for u in level:
+    12         for e in g.incident edges(u): # for every outgoing edge from u
+    13           v = e.opposite(u)
+    14           if v not in discovered:         # v is an unvisited vertex
+    15              discovered[v] = e            # e is the tree edge that discovered v
+    16              next level.append(v)         # v will be further considered in next pass
+    17      level = next level                   # relabel ’next’ level to become current
+        Code Fragment 14.8: Implementation of breadth-ﬁrst search on a graph, starting at
+        a designated vertex s.

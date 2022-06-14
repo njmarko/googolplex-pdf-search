@@ -1,0 +1,31 @@
+4.7. Exercises                                                                               181
+           C-4.13 In Section 4.2 we prove by induction that the number of lines printed by
+                  a call to draw interval(c) is 2c − 1. Another interesting question is how
+                  many dashes are printed during that process. Prove by induction that the
+                  number of dashes printed by draw interval(c) is 2c+1 − c − 2.
+           C-4.14 In the Towers of Hanoi puzzle, we are given a platform with three pegs, a,
+                  b, and c, sticking out of it. On peg a is a stack of n disks, each larger than
+                  the next, so that the smallest is on the top and the largest is on the bottom.
+                  The puzzle is to move all the disks from peg a to peg c, moving one disk
+                  at a time, so that we never place a larger disk on top of a smaller one.
+                  See Figure 4.15 for an example of the case n = 4. Describe a recursive
+                  algorithm for solving the Towers of Hanoi puzzle for arbitrary n. (Hint:
+                  Consider ﬁrst the subproblem of moving all but the nth disk from peg a to
+                  another peg using the third as “temporary storage.”)
+                     Figure 4.15: An illustration of the Towers of Hanoi puzzle.
+           C-4.15 Write a recursive function that will output all the subsets of a set of n
+                  elements (without repeating any subsets).
+           C-4.16 Write a short recursive Python function that takes a character string s and
+                  outputs its reverse. For example, the reverse of pots&pans would be
+                    snap&stop .
+           C-4.17 Write a short recursive Python function that determines if a string s is a
+                  palindrome, that is, it is equal to its reverse. For example, racecar and
+                    gohangasalamiimalasagnahog are palindromes.
+           C-4.18 Use recursion to write a Python function for determining if a string s has
+                  more vowels than consonants.
+           C-4.19 Write a short recursive Python function that rearranges a sequence of in-
+                  teger values so that all the even values appear before all the odd values.
+           C-4.20 Given an unsorted sequence, S, of integers and an integer k, describe a
+                  recursive algorithm for rearranging the elements in S so that all elements
+                  less than or equal to k come before any elements larger than k. What is
+                  the running time of your algorithm on a sequence of n values?

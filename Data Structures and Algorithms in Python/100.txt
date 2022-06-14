@@ -1,0 +1,38 @@
+2.3. Class Deﬁnitions                                                                           79
+       2.3.4 Iterators
+           Iteration is an important concept in the design of data structures. We introduced
+           Python’s mechanism for iteration in Section 1.8. In short, an iterator for a collec-
+           tion provides one key behavior: It supports a special method named next that
+           returns the next element of the collection, if any, or raises a StopIteration exception
+           to indicate that there are no further elements.
+                Fortunately, it is rare to have to directly implement an iterator class. Our pre-
+           ferred approach is the use of the generator syntax (also described in Section 1.8),
+           which automatically produces an iterator of yielded values.
+                Python also helps by providing an automatic iterator implementation for any
+           class that deﬁnes both len and getitem . To provide an instructive exam-
+           ple of a low-level iterator, Code Fragment 2.5 demonstrates just such an iterator
+           class that works on any collection that supports both len and getitem .
+           This class can be instantiated as SequenceIterator(data). It operates by keeping an
+           internal reference to the data sequence, as well as a current index into the sequence.
+           Each time next is called, the index is incremented, until reaching the end of
+           the sequence.
+       1 class SequenceIterator:
+       2     ”””An iterator for any of Python s sequence types.”””
+       3
+       4     def init (self, sequence):
+       5        ”””Create an iterator for the given sequence.”””
+       6        self. seq = sequence                # keep a reference to the underlying data
+       7        self. k = −1                        # will increment to 0 on ﬁrst call to next
+       8
+       9     def next (self):
+      10        ”””Return the next element, or else raise StopIteration error.”””
+      11        self. k += 1                        # advance to next index
+      12        if self. k < len(self. seq):
+      13           return(self. seq[self. k])       # return the data element
+      14        else:
+      15           raise StopIteration( )           # there are no more elements
+      16
+      17     def iter (self):
+      18        ”””By convention, an iterator must return itself as an iterator.”””
+      19        return self
+                        Code Fragment 2.5: An iterator class for any sequence type.

@@ -1,0 +1,32 @@
+302                                                                            Chapter 8. Trees
+    Other Node Relationships
+    Two nodes that are children of the same parent are siblings. A node v is external
+    if v has no children. A node v is internal if it has one or more children. External
+    nodes are also known as leaves.
+    Example 8.1: In Section 4.1.4, we discussed the hierarchical relationship be-
+    tween ﬁles and directories in a computer’s ﬁle system, although at the time we
+    did not emphasize the nomenclature of a ﬁle system as a tree. In Figure 8.3, we
+    revisit an earlier example. We see that the internal nodes of the tree are associ-
+    ated with directories and the leaves are associated with regular ﬁles. In the UNIX
+    and Linux operating systems, the root of the tree is appropriately called the “root
+    directory,” and is represented by the symbol “/.”
+                                            /user/rt/courses/
+                              cs016/                                      cs252/
+                 grades                                                         grades
+                           homeworks/    programs/                 projects/
+                     hw1 hw2    hw3   pr1    pr2    pr3
+                                                            papers/          demos/
+                                                       buylow    sellhigh    market
+                  Figure 8.3: Tree representing a portion of a ﬁle system.
+         A node u is an ancestor of a node v if u = v or u is an ancestor of the parent
+    of v. Conversely, we say that a node v is a descendant of a node u if u is an ancestor
+    of v. For example, in Figure 8.3, cs252/ is an ancestor of papers/, and pr3 is a
+    descendant of cs016/. The subtree of T rooted at a node v is the tree consisting of
+    all the descendants of v in T (including v itself). In Figure 8.3, the subtree rooted at
+    cs016/ consists of the nodes cs016/, grades, homeworks/, programs/, hw1, hw2,
+    hw3, pr1, pr2, and pr3.
+    Edges and Paths in Trees
+    An edge of tree T is a pair of nodes (u, v) such that u is the parent of v, or vice
+    versa. A path of T is a sequence of nodes such that any two consecutive nodes in
+    the sequence form an edge. For example, the tree in Figure 8.3 contains the path
+    (cs252/, projects/, demos/, market).

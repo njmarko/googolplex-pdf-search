@@ -1,0 +1,41 @@
+480                                                             Chapter 11. Search Trees
+    177   def relink(self, parent, child, make left child):
+    178     ”””Relink parent node with child node (we allow      child to be None).”””
+    179     if make left child:                        # make    it a left child
+    180        parent. left = child
+    181     else:                                      # make    it a right child
+    182        parent. right = child
+    183     if child is not None:                      # make    child point to parent
+    184        child. parent = parent
+    185
+    186   def rotate(self, p):
+    187     ”””Rotate Position p above its parent.”””
+    188     x = p. node
+    189     y = x. parent                              # we assume this exists
+    190     z = y. parent                              # grandparent (possibly None)
+    191     if z is None:
+    192        self. root = x                          # x becomes root
+    193        x. parent = None
+    194     else:
+    195        self. relink(z, x, y == z. left)        # x becomes a direct child of z
+    196     # now rotate x and y, including transfer of middle subtree
+    197     if x == y. left:
+    198        self. relink(y, x. right, True)         # x. right becomes left child of y
+    199        self. relink(x, y, False)               # y becomes right child of x
+    200     else:
+    201        self. relink(y, x. left, False)         # x. left becomes right child of y
+    202        self. relink(x, y, True)                # y becomes left child of x
+    203
+    204   def restructure(self, x):
+    205     ”””Perform trinode restructure of Position x with     parent/grandparent.”””
+    206     y = self.parent(x)
+    207     z = self.parent(y)
+    208     if (x == self.right(y)) == (y == self.right(z)):      #  matching alignments
+    209        self. rotate(y)                                    #  single rotation (of y)
+    210        return y                                           #  y is new subtree root
+    211     else:                                                 #  opposite alignments
+    212        self. rotate(x)                                    #  double rotation (of x)
+    213        self. rotate(x)
+    214        return x                                           # x is new subtree root
+        Code Fragment 11.11: Additional code for the TreeMap class (continued from Code
+        Fragment 11.10), to provide nonpublic utilities for balanced search tree subclasses.

@@ -1,0 +1,36 @@
+5.2. Low-Level Arrays                                                                                 185
+ 5.2     Low-Level Arrays
+         To accurately describe the way in which Python represents the sequence types,
+         we must ﬁrst discuss aspects of the low-level computer architecture. The primary
+         memory of a computer is composed of bits of information, and those bits are typ-
+         ically grouped into larger units that depend upon the precise system architecture.
+         Such a typical unit is a byte, which is equivalent to 8 bits.
+             A computer system will have a huge number of bytes of memory, and to keep
+         track of what information is stored in what byte, the computer uses an abstraction
+         known as a memory address. In effect, each byte of memory is associated with a
+         unique number that serves as its address (more formally, the binary representation
+         of the number serves as the address). In this way, the computer system can refer
+         to the data in “byte #2150” versus the data in “byte #2157,” for example. Memory
+         addresses are typically coordinated with the physical layout of the memory system,
+         and so we often portray the numbers in sequential fashion. Figure 5.1 provides
+         such a diagram, with the designated memory address for each byte.
+                 44   45   46   47   48   49   50   51   52   53   54   55   56   57   58   59   60
+               21   21   21   21   21   21   21   21   21   21   21   21   21   21   21   21   21
+         Figure 5.1: A representation of a portion of a computer’s memory, with individual
+         bytes labeled with consecutive memory addresses.
+             Despite the sequential nature of the numbering system, computer hardware is
+         designed, in theory, so that any byte of the main memory can be efﬁciently accessed
+         based upon its memory address. In this sense, we say that a computer’s main mem-
+         ory performs as random access memory (RAM). That is, it is just as easy to retrieve
+         byte #8675309 as it is to retrieve byte #309. (In practice, there are complicating
+         factors including the use of caches and external memory; we address some of those
+         issues in Chapter 15.) Using the notation for asymptotic analysis, we say that any
+         individual byte of memory can be stored or retrieved in O(1) time.
+              In general, a programming language keeps track of the association between
+         an identiﬁer and the memory address in which the associated value is stored. For
+         example, identiﬁer x might be associated with one value stored in memory, while y
+         is associated with another value stored in memory. A common programming task
+         is to keep track of a sequence of related objects. For example, we may want a video
+         game to keep track of the top ten scores for that game. Rather than use ten different
+         variables for this task, we would prefer to use a single name for the group and use
+         index numbers to refer to the high scores in that group.

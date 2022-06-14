@@ -1,0 +1,38 @@
+4.3. Recursion Run Amok                                                                        165
+  4.3     Recursion Run Amok
+          Although recursion is a very powerful tool, it can easily be misused in various ways.
+          In this section, we examine several problems in which a poorly implemented recur-
+          sion causes drastic inefﬁciency, and we discuss some strategies for recognizing and
+          avoid such pitfalls.
+               We begin by revisiting the element uniqueness problem, deﬁned on page 135
+          of Section 3.3.3. We can use the following recursive formulation to determine if
+          all n elements of a sequence are unique. As a base case, when n = 1, the elements
+          are trivially unique. For n ≥ 2, the elements are unique if and only if the ﬁrst n − 1
+          elements are unique, the last n − 1 items are unique, and the ﬁrst and last elements
+          are different (as that is the only pair that was not already checked as a subcase). A
+          recursive implementation based on this idea is given in Code Fragment 4.6, named
+          unique3 (to differentiate it from unique1 and unique2 from Chapter 3).
+       1 def unique3(S, start, stop):
+       2    ”””Return True if there are no duplicate elements in slice S[start:stop].”””
+       3    if stop − start <= 1: return True                         # at most one item
+       4    elif not unique(S, start, stop−1): return False # ﬁrst part has duplicate
+       5    elif not unique(S, start+1, stop): return False # second part has duplicate
+       6    else: return S[start] != S[stop−1]                        # do ﬁrst and last diﬀer?
+                  Code Fragment 4.6: Recursive unique3 for testing element uniqueness.
+               Unfortunately, this is a terribly inefﬁcient use of recursion. The nonrecursive
+          part of each call uses O(1) time, so the overall running time will be proportional to
+          the total number of recursive invocations. To analyze the problem, we let n denote
+          the number of entries under consideration, that is, let n= stop − start.
+               If n = 1, then the running time of unique3 is O(1), since there are no recursive
+          calls for this case. In the general case, the important observation is that a single call
+          to unique3 for a problem of size n may result in two recursive calls on problems of
+          size n − 1. Those two calls with size n − 1 could in turn result in four calls (two
+          each) with a range of size n − 2, and thus eight calls with size n − 3 and so on.
+          Thus, in the worst case, the total number of function calls is given by the geometric
+          summation
+                                           1 + 2 + 4 + · · · + 2n−1 ,
+          which is equal to 2n − 1 by Proposition 3.5. Thus, the running time of function
+          unique3 is O(2n ). This is an incredibly inefﬁcient function for solving the ele-
+          ment uniqueness problem. Its inefﬁciency comes not from the fact that it uses
+          recursion—it comes from the fact that it uses recursion poorly, which is something
+          we address in Exercise C-4.11.

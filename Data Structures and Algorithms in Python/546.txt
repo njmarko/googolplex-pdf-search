@@ -1,0 +1,40 @@
+11.6. Red-Black Trees                                                                       525
+       11.6.2 Python Implementation
+          A complete implementation of a RedBlackTreeMap class is provided in Code Frag-
+          ments 11.15 through 11.17. It inherits from the standard TreeMap class and relies
+          on the balancing framework described in Section 11.2.1.
+               We begin, in Code Fragment 11.15, by overriding the deﬁnition of the nested
+           Node class to introduce an additional Boolean ﬁeld to denote the current color
+          of a node. Our constructor intentionally sets the color of a new node to red to
+          be consistent with our approach for inserting items. We deﬁne several additional
+          utility functions, at the top of Code Fragment 11.16, that aid in setting the color of
+          nodes and querying various conditions.
+               When an element has been inserted as a leaf in the tree, the rebalance insert
+          hook is called, allowing us the opportunity to modify the tree. The new node is
+          red by default, so we need only look for the special case of the new node being
+          the root (in which case it should be colored black), or the possibility that we have
+          a double-red violation because the new node’s parent is also red. To remedy such
+          violations, we closely follow the case analysis described in Section 11.6.1.
+               The rebalancing after a deletion also follows the case analysis described in
+          Section 11.6.1. An additional challenge is that by the time the rebalance hook is
+          called, the old node has already been removed from the tree. That hook is invoked
+          on the parent of the removed node. Some of the case analysis depends on knowing
+          about the properties of the removed node. Fortunately, we can reverse engineer that
+          information by relying on the red-black tree properties. In particular, if p denotes
+          the parent of the removed node, it must be that:
+               • If p has no children, the removed node was a red leaf. (Exercise R-11.26.)
+               • If p has one child, the removed node was a black leaf, causing a deﬁcit,
+                 unless that one remaining child is a red leaf. (Exercise R-11.27.)
+               • If p has two children, the removed node was a black node with one red child,
+                 which was promoted. (Exercise R-11.28.)
+       1 class RedBlackTreeMap(TreeMap):
+       2    ”””Sorted map implementation using a red-black tree.”””
+       3    class Node(TreeMap. Node):
+       4       ”””Node class for red-black tree maintains bit that denotes color.”””
+       5          slots = _red             # add additional data member to the Node class
+       6
+       7       def init (self, element, parent=None, left=None, right=None):
+       8          super( ). init (element, parent, left, right)
+       9          self. red = True         # new node red by default
+          Code Fragment 11.15: Beginning of the RedBlackTreeMap class. (Continued in
+          Code Fragment 11.16.)

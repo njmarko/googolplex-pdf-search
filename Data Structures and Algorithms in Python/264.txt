@@ -1,0 +1,42 @@
+6.2. Queues                                                                          243
+       1 class ArrayQueue:
+       2    ”””FIFO queue implementation using a Python list as underlying storage.”””
+       3    DEFAULT CAPACITY = 10                # moderate capacity for all new queues
+       4
+       5    def init (self):
+       6      ”””Create an empty queue.”””
+       7      self. data = [None] ArrayQueue.DEFAULT CAPACITY
+       8      self. size = 0
+       9      self. front = 0
+      10
+      11    def len (self):
+      12      ”””Return the number of elements in the queue.”””
+      13      return self. size
+      14
+      15    def is empty(self):
+      16      ”””Return True if the queue is empty.”””
+      17      return self. size == 0
+      18
+      19    def ﬁrst(self):
+      20      ”””Return (but do not remove) the element at the front of the queue.
+      21
+      22      Raise Empty exception if the queue is empty.
+      23      ”””
+      24      if self.is empty( ):
+      25         raise Empty( Queue is empty )
+      26      return self. data[self. front]
+      27
+      28    def dequeue(self):
+      29      ”””Remove and return the ﬁrst element of the queue (i.e., FIFO).
+      30
+      31      Raise Empty exception if the queue is empty.
+      32      ”””
+      33      if self.is empty( ):
+      34         raise Empty( Queue is empty )
+      35      answer = self. data[self. front]
+      36      self. data[self. front] = None                    # help garbage collection
+      37      self. front = (self. front + 1) % len(self. data)
+      38      self. size −= 1
+      39      return answer
+         Code Fragment 6.6: Array-based implementation of a queue (continued in Code
+         Fragment 6.7).

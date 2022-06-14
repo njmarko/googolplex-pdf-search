@@ -1,0 +1,13 @@
+554                                                    Chapter 12. Sorting and Selection
+                       50 85   63   96                                 50 85   63    96
+ 17 24  31                                     17   24   31  45
+             45
+                   (m)                                            (n)
+                       50 85   63   96         17    24   31    45     50 85   63    96
+17  24  31      45
+                   (o)                                            (p)
+ 17  24   31     45    50 63   85   96         17    24   31    45     50 63   85    96
+                   (q)                                             (r)
+         Figure 12.12: Visualization of an execution of quick-sort. Several invocations be-
+         tween (p) and (q) have been omitted. Note the concatenation steps performed in (o)
+         and (r). (Continued from Figure 12.11.)

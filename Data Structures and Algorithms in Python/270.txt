@@ -1,0 +1,36 @@
+6.3. Double-Ended Queues                                                                      249
+      6.3.3 Deques in the Python Collections Module
+          An implementation of a deque class is available in Python’s standard collections
+          module. A summary of the most commonly used behaviors of the collections.deque
+          class is given in Table 6.4. It uses more asymmetric nomenclature than our ADT.
+              Our Deque ADT         collections.deque      Description
+              len(D)                len(D)                 number of elements
+              D.add ﬁrst( )         D.appendleft( )        add to beginning
+              D.add last( )         D.append( )            add to end
+              D.delete ﬁrst( )      D.popleft( )           remove from beginning
+              D.delete last( )      D.pop( )               remove from end
+              D.ﬁrst( )             D[0]                   access ﬁrst element
+              D.last( )             D[−1]                  access last element
+                                    D[j]                   access arbitrary entry by index
+                                    D[j] = val             modify arbitrary entry by index
+                                    D.clear( )             clear all contents
+                                    D.rotate(k)            circularly shift rightward k steps
+                                    D.remove(e)            remove ﬁrst matching element
+                                    D.count(e)             count number of matches for e
+               Table 6.4: Comparison of our deque ADT and the collections.deque class.
+               The collections.deque interface was chosen to be consistent with established
+          naming conventions of Python’s list class, for which append and pop are presumed
+          to act at the end of the list. Therefore, appendleft and popleft designate an opera-
+          tion at the beginning of the list. The library deque also mimics a list in that it is an
+          indexed sequence, allowing arbitrary access or modiﬁcation using the D[j] syntax.
+               The library deque constructor also supports an optional maxlen parameter to
+          force a ﬁxed-length deque. However, if a call to append at either end is invoked
+          when the deque is full, it does not throw an error; instead, it causes one element to
+          be dropped from the opposite side. That is, calling appendleft when the deque is
+          full causes an implicit pop from the right side to make room for the new element.
+               The current Python distribution implements collections.deque with a hybrid ap-
+          proach that uses aspects of circular arrays, but organized into blocks that are them-
+          selves organized in a doubly linked list (a data structure that we will introduce in
+          the next chapter). The deque class is formally documented to guarantee O(1)-time
+          operations at either end, but O(n)-time worst-case operations when using index
+          notation near the middle of the deque.

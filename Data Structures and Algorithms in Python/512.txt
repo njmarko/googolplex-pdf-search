@@ -1,0 +1,30 @@
+11.4. Splay Trees                                                                          491
+          zig-zag: One of x and y is a left child and the other is a right child. (See Fig-
+                 ure 11.17.) In this case, we promote x by making x have y and z as its chil-
+                 dren, while maintaining the inorder relationships of the nodes in T .
+                       10
+                        z             30                                     20
+                             20        y                          10          x      30
+                              x                                    z                  y
+               T1
+                                            T4
+                       T2           T3                     T1           T2        T3    T4
+                             (a)                                            (b)
+          Figure 11.17: Zig-zag: (a) before; (b) after. There is another symmetric conﬁgura-
+          tion where x is a right child and y is a left child.
+          zig: x does not have a grandparent. (See Figure 11.18.) In this case, we perform a
+                 single rotation to promote x over y, making y a child of x, while maintaining
+                 the relative inorder relationships of the nodes in T .
+                                10                                             20
+                                 y                                              x
+                                         20                          10
+                                          x                          y
+                      T1                                                             T3
+                                   T2          T3              T1          T2
+                                   (a)                                    (b)
+          Figure 11.18: Zig: (a) before; (b) after. There is another symmetric conﬁguration
+          where x is originally a left child of y.
+              We perform a zig-zig or a zig-zag when x has a grandparent, and we perform a
+          zig when x has a parent but not a grandparent. A splaying step consists of repeating
+          these restructurings at x until x becomes the root of T . An example of the splaying
+          of a node is shown in Figures 11.19 and 11.20.

@@ -1,0 +1,41 @@
+380                                                             Chapter 9. Priority Queues
+    9.3.6 Bottom-Up Heap Construction 
+        If we start with an initially empty heap, n successive calls to the add operation will
+        run in O(n log n) time in the worst case. However, if all n key-value pairs to be
+        stored in the heap are given in advance, such as during the ﬁrst phase of the heap-
+        sort algorithm, there is an alternative bottom-up construction method that runs in
+        O(n) time. (Heap-sort, however, still requires Θ(n log n) time because of the second
+        phase in which we repeatedly remove the remaining element with smallest key.)
+            In this section, we describe the bottom-up heap construction, and provide an
+        implementation that can be used by the constructor of a heap-based priority queue.
+            For simplicity of exposition, we describe this bottom-up heap construction as-
+        suming the number of keys, n, is an integer such that n = 2h+1 − 1. That is,
+        the heap is a complete binary tree with every level being full, so the heap has
+        height h = log(n + 1) − 1. Viewed nonrecursively, bottom-up heap construction
+        consists of the following h + 1 = log(n + 1) steps:
+           1. In the ﬁrst step (see Figure 9.5b), we construct (n + 1)/2 elementary heaps
+               storing one entry each.
+           2. In the second step (see Figure 9.5c–d), we form (n+ 1)/4 heaps, each storing
+               three entries, by joining pairs of elementary heaps and adding a new entry.
+               The new entry is placed at the root and may have to be swapped with the
+               entry stored at a child to preserve the heap-order property.
+           3. In the third step (see Figure 9.5e–f ), we form (n + 1)/8 heaps, each storing
+               7 entries, by joining pairs of 3-entry heaps (constructed in the previous step)
+               and adding a new entry. The new entry is placed initially at the root, but may
+               have to move down with a down-heap bubbling to preserve the heap-order
+               property.
+                         ..
+                          .
+            i. In the generic ith step, 2 ≤ i ≤ h, we form (n+ 1)/2i heaps, each storing 2i − 1
+               entries, by joining pairs of heaps storing (2i−1 − 1) entries (constructed in the
+               previous step) and adding a new entry. The new entry is placed initially at
+               the root, but may have to move down with a down-heap bubbling to preserve
+               the heap-order property.
+                          ..
+                           .
+       h + 1. In the last step (see Figure 9.5g–h), we form the ﬁnal heap, storing all the
+               n entries, by joining two heaps storing (n − 1)/2 entries (constructed in the
+               previous step) and adding a new entry. The new entry is placed initially at
+               the root, but may have to move down with a down-heap bubbling to preserve
+               the heap-order property.
+        We illustrate bottom-up heap construction in Figure 9.5 for h = 3.

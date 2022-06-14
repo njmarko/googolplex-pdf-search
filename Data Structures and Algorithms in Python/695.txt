@@ -1,0 +1,70 @@
+674                                                                        Chapter 14. Graph Algorithms
+                                2704                                                        2704
+                                                       BOS                                                          BOS
+                                        867                                                           867
+                                            849     PVD                                                  849      PVD
+                            ORD                 144       187                            ORD                  144       187
+                                       740                                                          740
+                1846               621                                       1846               621
+                                               JFK                                                           JFK
+                                                            1258                                                          1258
+                         802                  184                                    802                   184
+   SFO                                                           SFO
+                                 1391          BWI      1090                                  1391          BWI      1090
+          1464                                                         1464
+     337                                                           337
+                      DFW                                                         DFW
+            1235                               946                        1235                              946
+     LAX                                                           LAX
+                                 1121                                                         1121
+                      2342                   MIA                                  2342                    MIA
+                            (e)                                                          (f )
+                                2704                                                        2704
+                                                       BOS                                                          BOS
+                                        867                                                          867
+                                            849     PVD                                                 849       PVD
+                            ORD                                                         ORD                   144      187
+                                       740      144       187                                       740
+                1846                                                         1846               621
+                                   621         JFK                                                          JFK
+                                                            1258                                                         1258
+                                              184                                    802                  184
+                         802                                     SFO
+   SFO
+                                 1391          BWI                                           1391          BWI       1090
+          1464                                          1090           1464
+     337                                                          337
+                      DFW                                                         DFW
+                                               946                       1235                               946
+            1235                                                   LAX
+     LAX                                                                                     1121
+                                 1121
+                      2342                   MIA                                  2342                    MIA
+                            (g)                                                          (h)
+                                                                                            2704
+                               2704                                                                                 BOS
+                                                      BOS                                            867
+                                       867
+                                                                                                         849      PVD
+                                           849     PVD                                  ORD
+                                                                                                    740       144      187
+                           ORD                 144       187
+                                      740                                    1846               621
+               1846                                                                                         JFK
+                                  621         JFK                                                                         1258
+                                                                                     802                   184
+                                                           1258  SFO
+                        802                  184
+  SFO                                                                                         1391          BWI      1090
+                                1391          BWI                      1464
+         1464                                          1090       337
+    337                                                                           DFW
+                     DFW                                                 1235                               946
+           1235                               946                  LAX
+    LAX                                                                                       1121
+                                1121
+                                                                                  2342                    MIA
+                     2342                   MIA
+                             (i)                                                         (j)
+            Figure 14.21: An illustration of the Prim-Jarnı́k MST algorithm. (Continued from
+            Figure 14.20.)

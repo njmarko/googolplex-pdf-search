@@ -1,0 +1,29 @@
+9.4. Sorting with a Priority Queue                                                          389
+              3. In the second phase of the algorithm, we start with an empty sequence and
+                  move the boundary between the heap and the sequence from right to left, one
+                  step at a time. At step i, for i = 1, . . . , n, we remove a maximum element
+                  from the heap and store it at index n − i.
+               In general, we say that a sorting algorithm is in-place if it uses only a small
+           amount of memory in addition to the sequence storing the objects to be sorted. The
+           variation of heap-sort above qualiﬁes as in-place; instead of transferring elements
+           out of the sequence and then back in, we simply rearrange them. We illustrate the
+           second phase of in-place heap-sort in Figure 9.9.
+                                                                             9
+                    (a)     9  7   5   2   6    4                  7                  5
+                                                          2             6        4
+                                                                             7
+                    (b)     7  6   5   2   4    9                  6                  5
+                                                          2             4
+                                                                             6
+                    (c)     6  4   5   2   7    9                  4                  5
+                                                          2
+                                                                             5
+                    (d)     5  4   2   6   7    9
+                                                                   4                  2
+                                                                             4
+                    (e)     4  2   5   6   7    9
+                                                                   2
+                     (f)    2  4   5   6   7    9                            2
+           Figure 9.9: Phase 2 of an in-place heap-sort. The heap portion of each sequence
+           representation is highlighted. The binary tree that each sequence (implicitly) repre-
+           sents is diagrammed with the most recent path of down-heap bubbling highlighted.

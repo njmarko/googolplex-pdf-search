@@ -1,0 +1,33 @@
+188                                                  Chapter 5. Array-Based Sequences
+         The fact that lists and tuples are referential structures is signiﬁcant to the se-
+    mantics of these classes. A single list instance may include multiple references
+    to the same object as elements of the list, and it is possible for a single object to
+    be an element of two or more lists, as those lists simply store references back to
+    that object. As an example, when you compute a slice of a list, the result is a new
+    list instance, but that new list has references to the same elements that are in the
+    original list, as portrayed in Figure 5.5.
+                                            0    1    2
+                                    temp:
+                             2    3     5     7    11   13      17    19
+                     primes:
+                               0      1   2    3    4   5     6     7
+                  Figure 5.5: The result of the command temp = primes[3:6].
+         When the elements of the list are immutable objects, as with the integer in-
+    stances in Figure 5.5, the fact that the two lists share elements is not that signiﬁ-
+    cant, as neither of the lists can cause a change to the shared object. If, for example,
+    the command temp[2] = 15 were executed from this conﬁguration, that does not
+    change the existing integer object; it changes the reference in cell 2 of the temp list
+    to reference a different object. The resulting conﬁguration is shown in Figure 5.6.
+                                            0    1    2
+                                    temp:                        15
+                             2    3     5     7    11   13      17    19
+                     primes:
+                               0      1   2    3    4   5     6     7
+    Figure 5.6: The result of the command temp[2] = 15 upon the conﬁguration por-
+    trayed in Figure 5.5.
+         The same semantics is demonstrated when making a new list as a copy of an
+    existing one, with a syntax such as backup = list(primes). This produces a new
+    list that is a shallow copy (see Section 2.6), in that it references the same elements
+    as in the ﬁrst list. With immutable elements, this point is moot. If the contents of
+    the list were of a mutable type, a deep copy, meaning a new list with new elements,
+    can be produced by using the deepcopy function from the copy module.

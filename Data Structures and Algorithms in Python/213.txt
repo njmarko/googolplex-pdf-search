@@ -1,0 +1,37 @@
+192                                                         Chapter 5. Array-Based Sequences
+ 5.3   Dynamic Arrays and Amortization
+       When creating a low-level array in a computer system, the precise size of that array
+       must be explicitly declared in order for the system to properly allocate a consecutive
+       piece of memory for its storage. For example, Figure 5.11 displays an array of 12
+       bytes that might be stored in memory locations 2146 through 2157.
+               44   45   46   47   48   49   50   51   52   53   54   55   56   57   58   59   60
+              21   21   21   21   21   21   21   21   21   21   21   21   21   21   21   21   21
+       Figure 5.11: An array of 12 bytes allocated in memory locations 2146 through 2157.
+       Because the system might dedicate neighboring memory locations to store other
+       data, the capacity of an array cannot trivially be increased by expanding into sub-
+       sequent cells. In the context of representing a Python tuple or str instance, this
+       constraint is no problem. Instances of those classes are immutable, so the correct
+       size for an underlying array can be ﬁxed when the object is instantiated.
+            Python’s list class presents a more interesting abstraction. Although a list has a
+       particular length when constructed, the class allows us to add elements to the list,
+       with no apparent limit on the overall capacity of the list. To provide this abstraction,
+       Python relies on an algorithmic sleight of hand known as a dynamic array.
+            The ﬁrst key to providing the semantics of a dynamic array is that a list instance
+       maintains an underlying array that often has greater capacity than the current length
+       of the list. For example, while a user may have created a list with ﬁve elements,
+       the system may have reserved an underlying array capable of storing eight object
+       references (rather than only ﬁve). This extra capacity makes it easy to append a
+       new element to the list by using the next available cell of the array.
+            If a user continues to append elements to a list, any reserved capacity will
+       eventually be exhausted. In that case, the class requests a new, larger array from the
+       system, and initializes the new array so that its preﬁx matches that of the existing
+       smaller array. At that point in time, the old array is no longer needed, so it is
+       reclaimed by the system. Intuitively, this strategy is much like that of the hermit
+       crab, which moves into a larger shell when it outgrows its previous one.
+            We give empirical evidence that Python’s list class is based upon such a strat-
+       egy. The source code for our experiment is displayed in Code Fragment 5.1, and a
+       sample output of that program is given in Code Fragment 5.2. We rely on a func-
+       tion named getsizeof that is available from the sys module. This function reports
+       the number of bytes that are being used to store an object in Python. For a list, it
+       reports the number of bytes devoted to the array and other instance variables of the
+       list, but not any space devoted to elements referenced by the list.

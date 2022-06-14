@@ -1,0 +1,36 @@
+10.4. Skip Lists                                                                                443
+          Maintaining the Topmost Level
+          A skip list S must maintain a reference to the start position (the topmost, left po-
+          sition in S) as an instance variable, and must have a policy for any insertion that
+          wishes to continue inserting a new entry past the top level of S. There are two
+          possible courses of action we can take, both of which have their merits.
+               One possibility is to restrict the top level, h, to be kept at some ﬁxed value that
+          is a function of n, the number of entries currently in the map (from the analysis we
+          will see that h = max{10, 2 log n} is a reasonable choice, and picking h = 3 log n
+          is even safer). Implementing this choice means that we must modify the insertion
+          algorithm to stop inserting a new position once we reach the topmost level (unless
+           log n < log(n + 1), in which case we can now go at least one more level, since
+          the bound on the height is increasing).
+               The other possibility is to let an insertion continue inserting a new position as
+          long as heads keeps getting returned from the random number generator. This is
+          the approach taken by algorithm SkipInsert of Code Fragment 10.13. As we show
+          in the analysis of skip lists, the probability that an insertion will go to a level that is
+          more than O(log n) is very low, so this design choice should also work.
+               Either choice will still result in the expected O(log n) time to perform search,
+          insertion, and removal, however, which we show in the next section.
+       10.4.2 Probabilistic Analysis of Skip Lists 
+          As we have shown above, skip lists provide a simple implementation of a sorted
+          map. In terms of worst-case performance, however, skip lists are not a superior data
+          structure. In fact, if we do not ofﬁcially prevent an insertion from continuing signif-
+          icantly past the current highest level, then the insertion algorithm can go into what
+          is almost an inﬁnite loop (it is not actually an inﬁnite loop, however, since the prob-
+          ability of having a fair coin repeatedly come up heads forever is 0). Moreover, we
+          cannot inﬁnitely add positions to a list without eventually running out of memory.
+          In any case, if we terminate position insertion at the highest level h, then the worst-
+          case running time for performing the getitem , setitem , and delitem
+          map operations in a skip list S with n entries and height h is O(n + h). This worst-
+          case performance occurs when the tower of every entry reaches level h − 1, where
+          h is the height of S. However, this event has very low probability. Judging from
+          this worst case, we might conclude that the skip-list structure is strictly inferior to
+          the other map implementations discussed earlier in this chapter. But this would not
+          be a fair analysis, for this worst-case behavior is a gross overestimate.

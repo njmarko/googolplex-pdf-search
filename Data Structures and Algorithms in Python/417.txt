@@ -1,0 +1,42 @@
+396                                                        Chapter 9. Priority Queues
+    R-9.12 Consider a situation in which a user has numeric keys and wishes to have
+           a priority queue that is maximum-oriented. How could a standard (min-
+           oriented) priority queue be used for such a purpose?
+    R-9.13 Illustrate the execution of the in-place heap-sort algorithm on the follow-
+           ing input sequence: (2, 5, 16, 4, 10, 23, 39, 18, 26, 15).
+    R-9.14 Let T be a complete binary tree such that position p stores an element
+           with key f (p), where f (p) is the level number of p (see Section 8.3.2). Is
+           tree T a heap? Why or why not?
+    R-9.15 Explain why the description of down-heap bubbling does not consider the
+           case in which position p has a right child but not a left child.
+    R-9.16 Is there a heap H storing seven entries with distinct keys such that a pre-
+           order traversal of H yields the entries of H in increasing or decreasing
+           order by key? How about an inorder traversal? How about a postorder
+           traversal? If so, give an example; if not, say why.
+    R-9.17 Let H be a heap storing 15 entries using the array-based representation of
+           a complete binary tree. What is the sequence of indices of the array that
+           are visited in a preorder traversal of H? What about an inorder traversal
+           of H? What about a postorder traversal of H?
+    R-9.18 Show that the sum
+                                               n
+                                              ∑ log i,
+                                              i=1
+           which appears in the analysis of heap-sort, is Ω(n log n).
+    R-9.19 Bill claims that a preorder traversal of a heap will list its keys in nonde-
+           creasing order. Draw an example of a heap that proves him wrong.
+    R-9.20 Hillary claims that a postorder traversal of a heap will list its keys in non-
+           increasing order. Draw an example of a heap that proves her wrong.
+    R-9.21 Show all the steps of the algorithm for removing the entry (16, X ) from the
+           heap of Figure 9.1, assuming the entry had been identiﬁed with a locator.
+    R-9.22 Show all the steps of the algorithm for replacing key of entry (5, A) with
+           18 in the heap of Figure 9.1, assuming the entry had been identiﬁed with
+           a locator.
+    R-9.23 Draw an example of a heap whose keys are all the odd numbers from 1 to
+           59 (with no repeats), such that the insertion of an entry with key 32 would
+           cause up-heap bubbling to proceed all the way up to a child of the root
+           (replacing that child’s key with 32).
+    R-9.24 Describe a sequence of n insertions in a heap that requires Ω(n log n) time
+           to process.
+    R-9.25 Complete Figure 9.9 by showing all the steps of the in-place heap-sort
+           algorithm. Show both the array and the associated heap at the end of each
+           step.

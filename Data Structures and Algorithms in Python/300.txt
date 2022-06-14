@@ -1,0 +1,38 @@
+7.4. The Positional List ADT                                                                 279
+      7.4.1 The Positional List Abstract Data Type
+          To provide for a general abstraction of a sequence of elements with the ability to
+          identify the location of an element, we deﬁne a positional list ADT as well as a
+          simpler position abstract data type to describe a location within a list. A position
+          acts as a marker or token within the broader positional list. A position p is unaf-
+          fected by changes elsewhere in a list; the only way in which a position becomes
+          invalid is if an explicit command is issued to delete it.
+               A position instance is a simple object, supporting only the following method:
+            p.element( ): Return the element stored at position p.
+          In the context of the positional list ADT, positions serve as parameters to some
+          methods and as return values from other methods. In describing the behaviors of a
+          positional list, we being by presenting the accessor methods supported by a list L:
+                 L.ﬁrst( ): Return the position of the ﬁrst element of L, or None if L is empty.
+                  L.last( ): Return the position of the last element of L, or None if L is empty.
+             L.before(p): Return the position of L immediately before position p, or None
+                             if p is the ﬁrst position.
+               L.after(p): Return the position of L immediately after position p, or None if
+                             p is the last position.
+            L.is empty( ): Return True if list L does not contain any elements.
+                    len(L): Return the number of elements in the list.
+                   iter(L): Return a forward iterator for the elements of the list. See Sec-
+                             tion 1.8 for discussion of iterators in Python.
+               The positional list ADT also includes the following update methods:
+                L.add ﬁrst(e): Insert a new element e at the front of L, returning the position
+                                    of the new element.
+                L.add last(e): Insert a new element e at the back of L, returning the position
+                                    of the new element.
+          L.add before(p, e): Insert a new element e just before position p in L, returning
+                                    the position of the new element.
+           L.add after(p, e): Insert a new element e just after position p in L, returning
+                                    the position of the new element.
+              L.replace(p, e): Replace the element at position p with element e, returning
+                                    the element formerly at position p.
+                   L.delete(p): Remove and return the element at position p in L, invalidat-
+                                    ing the position.
+               For those methods of the ADT that accept a position p as a parameter, an error
+          occurs if p is not a valid position for list L.

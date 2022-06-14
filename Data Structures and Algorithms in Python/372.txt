@@ -1,0 +1,40 @@
+8.5. Case Study: An Expression Tree                                                        351
+          Building an Expression Tree
+          The constructor for the ExpressionTree class, from Code Fragment 8.35, provides
+          basic functionality for combining existing trees to build larger expression trees.
+          However, the question still remains how to construct a tree that represents an ex-
+          pression for a given string, such as (((3+1)x4)/((9-5)+2)) .
+              To automate this process, we rely on a bottom-up construction algorithm, as-
+          suming that a string can ﬁrst be tokenized so that multidigit numbers are treated
+          atomically (see Exercise R-8.30), and that the expression is fully parenthesized.
+          The algorithm uses a stack S while scanning tokens of the input expression E to
+          ﬁnd values, operators, and right parentheses. (Left parentheses are ignored.)
+              • When we see an operator ◦, we push that string on the stack.
+              • When we see a literal value v, we create a single-node expression tree T
+                  storing v, and push T on the stack.
+              • When we see a right parenthesis, ) , we pop the top three items from the
+                  stack S, which represent a subexpression (E1 ◦ E2 ). We then construct a
+                  tree T using trees for E1 and E2 as subtrees of the root storing ◦, and push
+                  the resulting tree T back on the stack.
+          We repeat this until the expression E has been processed, at which time the top
+          element on the stack is the expression tree for E. The total running time is O(n).
+              An implementation of this algorithm is given in Code Fragment 8.38 in the form
+          of a stand-alone function named build expression tree, which produces and returns
+          an appropriate ExpressionTree instance, assuming the input has been tokenized.
+       1 def build expression tree(tokens):
+       2    ”””Returns an ExpressionTree based upon by a tokenized expression.”””
+       3    S=[]                                             # we use Python list as stack
+       4    for t in tokens:
+       5       if t in +-x*/ :                               # t is an operator symbol
+       6          S.append(t)                                # push the operator symbol
+       7       elif t not in () :                            # consider t to be a literal
+       8          S.append(ExpressionTree(t))                # push trivial tree storing value
+       9       elif t == ) :             # compose a new tree from three constituent parts
+      10          right = S.pop( )                           # right subtree as per LIFO
+      11          op = S.pop( )                              # operator symbol
+      12          left = S.pop( )                            # left subtree
+      13          S.append(ExpressionTree(op, left, right)) # repush tree
+      14       # we ignore a left parenthesis
+      15    return S.pop( )
+          Code Fragment 8.38: Implementation of a build expression tree that produces an
+          ExpressionTree from a sequence of tokens representing an arithmetic expression.

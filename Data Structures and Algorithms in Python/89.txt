@@ -1,0 +1,40 @@
+68                                        Chapter 2. Object-Oriented Programming
+        Bottom-up testing proceeds from lower-level components to higher-level com-
+   ponents. For example, bottom-level functions, which do not invoke other functions,
+   are tested ﬁrst, followed by functions that call only bottom-level functions, and so
+   on. Similarly a class that does not depend upon any other classes can be tested
+   before another class that depends on the former. This form of testing is usually
+   described as unit testing, as the functionality of a speciﬁc component is tested in
+   isolation of the larger software project. If used properly, this strategy better isolates
+   the cause of errors to the component being tested, as lower-level components upon
+   which it relies should have already been thoroughly tested.
+        Python provides several forms of support for automated testing. When func-
+   tions or classes are deﬁned in a module, testing for that module can be embedded
+   in the same ﬁle. The mechanism for doing so was described in Section 1.11. Code
+   that is shielded in a conditional construct of the form
+        if   name == __main__ :
+           # perform tests...
+   will be executed when Python is invoked directly on that module, but not when the
+   module is imported for use in a larger software project. It is common to put tests
+   in such a construct to test the functionality of the functions and classes speciﬁcally
+   deﬁned in that module.
+        More robust support for automation of unit testing is provided by Python’s
+   unittest module. This framework allows the grouping of individual test cases into
+   larger test suites, and provides support for executing those suites, and reporting or
+   analyzing the results of those tests. As software is maintained, the act of regression
+   testing is used, whereby all previous tests are re-executed to ensure that changes to
+   the software do not introduce new bugs in previously tested components.
+   Debugging
+   The simplest debugging technique consists of using print statements to track the
+   values of variables during the execution of the program. A problem with this ap-
+   proach is that eventually the print statements need to be removed or commented
+   out, so they are not executed when the software is ﬁnally released.
+        A better approach is to run the program within a debugger, which is a special-
+   ized environment for controlling and monitoring the execution of a program. The
+   basic functionality provided by a debugger is the insertion of breakpoints within
+   the code. When the program is executed within the debugger, it stops at each
+   breakpoint. While the program is stopped, the current value of variables can be
+   inspected.
+        The standard Python distribution includes a module named pdb, which provides
+   debugging support directly within the interpreter. Most IDEs for Python, such as
+   IDLE, provide debugging environments with graphical user interfaces.

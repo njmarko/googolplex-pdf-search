@@ -1,0 +1,37 @@
+356                                                                         Chapter 8. Trees
+     C-8.41 Describe how to clone a LinkedBinaryTree instance representing a proper
+               binary tree, with use of the attach method.
+     C-8.42 Describe how to clone a LinkedBinaryTree instance representing a (not
+               necessarily proper) binary tree, with use of the add left and add right
+               methods.
+     C-8.43 We can deﬁne a binary tree representation T  for an ordered general tree
+               T as follows (see Figure 8.23):
+                   • For each position p of T , there is an associated position p of T  .
+                   • If p is a leaf of T , then p in T  does not have a left child; otherwise
+                     the left child of p is q , where q is the ﬁrst child of p in T .
+                   • If p has a sibling q ordered immediately after it in T , then q is the
+                     right child of p in T ; otherwise p does not have a right child.
+               Given such a representation T  of a general ordered tree T , answer each
+               of the following questions:
+                  a. Is a preorder traversal of T  equivalent to a preorder traversal of T ?
+                  b. Is a postorder traversal of T  equivalent to a postorder traversal of T ?
+                  c. Is an inorder traversal of T  equivalent to one of the standard traver-
+                     sals of T ? If so, which one?
+                                       A                                   A
+                              B        C       D                  B
+                         E        F            G           E            C
+                                                               F             D
+                                                                      G
+                                    (a)                           (b)
+    Figure 8.23: Representation of a tree with a binary tree: (a) tree T ; (b) binary tree
+    T  for T . The dashed edges connect nodes of T  that are siblings in T .
+     C-8.44 Give an efﬁcient algorithm that computes and prints, for every position p
+               of a tree T , the element of p followed by the height of p’s subtree.
+     C-8.45 Give an O(n)-time algorithm for computing the depths of all positions of
+               a tree T , where n is the number of nodes of T .
+     C-8.46 The path length of a tree T is the sum of the depths of all positions in T .
+               Describe a linear-time method for computing the path length of a tree T .
+     C-8.47 The balance factor of an internal position p of a proper binary tree is the
+               difference between the heights of the right and left subtrees of p. Show
+               how to specialize the Euler tour traversal of Section 8.4.6 to print the
+               balance factors of all the internal nodes of a proper binary tree.

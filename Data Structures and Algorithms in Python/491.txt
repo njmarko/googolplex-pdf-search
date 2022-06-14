@@ -1,0 +1,42 @@
+470                                                          Chapter 11. Search Trees
+    40 def ﬁrst(self):
+    41   ”””Return the ﬁrst Position in the tree (or None if empty).”””
+    42   return self. subtree ﬁrst position(self.root( )) if len(self) > 0 else None
+    43
+    44 def last(self):
+    45   ”””Return the last Position in the tree (or None if empty).”””
+    46   return self. subtree last position(self.root( )) if len(self) > 0 else None
+    47
+    48 def before(self, p):
+    49   ”””Return the Position just before p in the natural order.
+    50
+    51   Return None if p is the ﬁrst position.
+    52   ”””
+    53   self. validate(p)                        # inherited from LinkedBinaryTree
+    54   if self.left(p):
+    55      return self. subtree last position(self.left(p))
+    56   else:
+    57      # walk upward
+    58      walk = p
+    59      above = self.parent(walk)
+    60      while above is not None and walk == self.left(above):
+    61        walk = above
+    62        above = self.parent(walk)
+    63      return above
+    64
+    65 def after(self, p):
+    66   ”””Return the Position just after p in the natural order.
+    67
+    68   Return None if p is the last position.
+    69   ”””
+    70   # symmetric to before(p)
+    71
+    72 def ﬁnd position(self, k):
+    73   ”””Return position with key k, or else neighbor (or None if empty).”””
+    74   if self.is empty( ):
+    75      return None
+    76   else:
+    77      p = self. subtree search(self.root( ), k)
+    78      self. rebalance access(p)             # hook for balanced tree subclasses
+    79      return p
+              Code Fragment 11.5: Navigational methods of the TreeMap class.

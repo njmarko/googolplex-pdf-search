@@ -1,0 +1,79 @@
+360                                                                    Chapter 8. Trees
+                   E             F
+                                              A                      E      F
+                             C       D
+                   A                                 B
+                                B                          C      D
+                            (a)                             (b)
+    Figure 8.25: (a) Slicing ﬂoor plan; (b) slicing tree associated with the ﬂoor plan.
+            of the basic rectangles. Namely, this problem requires the assignment of
+            values h(p) and w(p) to each position p of the slicing tree such that:
+                    ⎧
+                    ⎪
+                    ⎪           w
+                                            if p is a leaf whose basic rectangle has
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                                            minimum width w
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪                       if p is an internal position, associated with
+                    ⎪
+                    ⎨ max(w(), w(r)) a horizontal cut, with left child  and right
+            w(p) =
+                    ⎪
+                    ⎪                       child r
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪                       if p is an internal position, associated with
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪      w() +  w(r)     a vertical cut, with left child  and right
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎩                       child r
+                    ⎧
+                    ⎪                      if p is a leaf node whose basic rectangle
+                    ⎪
+                    ⎪           h
+                    ⎪
+                    ⎪                      has minimum height h
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪                      if p is an internal position, associated with
+                    ⎨     h() + h(r)      a horizontal cut, with left child  and right
+            h(p) =
+                    ⎪
+                    ⎪                      child r
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪                      if p is an internal position, associated with
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎪   max(h(),  h(r))   a vertical cut, with left child  and right
+                    ⎪
+                    ⎪
+                    ⎪
+                    ⎩                      child r
+            Design a data structure for slicing ﬂoor plans that supports the operations:
+               •  Create a ﬂoor plan consisting of a single basic rectangle.
+               •  Decompose a basic rectangle by means of a horizontal cut.
+               •  Decompose a basic rectangle by means of a vertical cut.
+               •  Assign minimum height and width to a basic rectangle.
+               •  Draw the slicing tree associated with the ﬂoor plan.
+               •  Compact and draw the ﬂoor plan.

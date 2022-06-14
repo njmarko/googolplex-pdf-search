@@ -1,0 +1,41 @@
+8.6. Exercises                                                                              353
+           R-8.11 Find the value of the arithmetic expression associated with each subtree
+                  of the binary tree of Figure 8.8.
+           R-8.12 Draw an arithmetic expression tree that has four external nodes, storing
+                  the numbers 1, 5, 6, and 7 (with each number stored in a distinct external
+                  node, but not necessarily in this order), and has three internal nodes, each
+                  storing an operator from the set {+, −, ×, /}, so that the value of the root
+                  is 21. The operators may return and act on fractions, and an operator may
+                  be used more than once.
+           R-8.13 Draw the binary tree representation of the following arithmetic expres-
+                  sion: “(((5 + 2) ∗ (2 − 1))/((2 + 9) + ((7 − 2) − 1)) ∗ 8)”.
+           R-8.14 Justify Table 8.2, summarizing the running time of the methods of a tree
+                  represented with a linked structure, by providing, for each method, a de-
+                  scription of its implementation, and an analysis of its running time.
+           R-8.15 The LinkedBinaryTree class provides only nonpublic versions of the up-
+                  date methods discussed on page 319. Implement a simple subclass named
+                  MutableLinkedBinaryTree that provides public wrapper functions for each
+                  of the inherited nonpublic update methods.
+           R-8.16 Let T be a binary tree with n nodes, and let f () be the level numbering
+                  function of the positions of T , as given in Section 8.3.2.
+                      a. Show that, for every position p of T , f (p) ≤ 2n − 2.
+                      b. Show an example of a binary tree with seven nodes that attains the
+                         above upper bound on f (p) for some position p.
+           R-8.17 Show how to use the Euler tour traversal to compute the level number
+                   f (p), as deﬁned in Section 8.3.2, of each position in a binary tree T .
+           R-8.18 Let T be a binary tree with n positions that is realized with an array rep-
+                  resentation A, and let f () be the level numbering function of the positions
+                  of T , as given in Section 8.3.2. Give pseudo-code descriptions of each of
+                  the methods root, parent, left, right, is leaf, and is root.
+           R-8.19 Our deﬁnition of the level numbering function f (p), as given in Sec-
+                  tion 8.3.2, began with the root having number 0. Some authors prefer
+                  to use a level numbering g(p) in which the root is assigned number 1, be-
+                  cause it simpliﬁes the arithmetic for ﬁnding neighboring positions. Redo
+                  Exercise R-8.18, but assuming that we use a level numbering g(p) in
+                  which the root is assigned number 1.
+           R-8.20 Draw a binary tree T that simultaneously satisﬁes the following:
+                      • Each internal node of T stores a single character.
+                      • A preorder traversal of T yields EXAMFUN.
+                      • An inorder traversal of T yields MAFXUEN.
+           R-8.21 In what order are positions visited during a preorder traversal of the tree
+                  of Figure 8.8?

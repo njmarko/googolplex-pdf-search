@@ -1,0 +1,41 @@
+392                                                         Chapter 9. Priority Queues
+    with its left child, (5,A), at index 1 of the list, then swapped with its right child,
+    (9,F), at index 4 of the list. In the ﬁnal conﬁguration, the locator instances for all
+    affected elements have been modiﬁed to reﬂect their new location.
+         It is important to emphasize that the locator instances have not changed iden-
+    tity. The user’s token reference, portrayed in Figures 9.10 and 9.11, continues to
+    reference the same instance; we have simply changed the third ﬁeld of that instance,
+    and we have changed where that instance is referenced within the list sequence.
+         With this new representation, providing the additional support for the adaptable
+    priority queue ADT is rather straightforward. When a locator instance is sent as a
+    parameter to update or remove, we may rely on the third ﬁeld of that structure to
+    designate where the element resides in the heap. With that knowledge, the update
+    of a key may simply require an up-heap or down-heap bubbling step to reestablish
+    the heap-order property. (The complete binary tree property remains intact.) To
+    implement the removal of an arbitrary element, we move the element at the last
+    position to the vacated location, and again perform an appropriate bubbling step to
+    satisfy the heap-order property.
+    Python Implementation
+    Code Fragments 9.8 and 9.9 present a Python implementation of an adaptable pri-
+    ority queue, as a subclass of the HeapPriorityQueue class from Section 9.3.4. Our
+    modiﬁcations to the original class are relatively minor. We deﬁne a public Locator
+    class that inherits from the nonpublic Item class and augments it with an addi-
+    tional index ﬁeld. We make it a public class because we will be using locators
+    as return values and parameters; however, the public interface for the locator class
+    does not include any other functionality for the user.
+         To update locators during the ﬂow of our heap operations, we rely on an inten-
+    tional design decision that our original class uses a nonpublic swap method for all
+    data movement. We override that utility to execute the additional step of updating
+    the stored indices within the two swapped locator instances.
+         We provide a new bubble utility that manages the reinstatement of the heap-
+    order property when a key has changed at an arbitrary position within the heap,
+    either due to a key update, or the blind replacement of a removed element with the
+    item from the last position of the tree. The bubble utility determines whether to
+    apply up-heap or down-heap bubbling, depending on whether the given location
+    has a parent with a smaller key. (If an updated key coincidentally remains valid for
+    its current location, we technically call downheap but no swaps result.)
+         The public methods are provided in Code Fragment 9.9. The existing add
+    method is overridden, both to make use of a Locator instance rather than an Item
+    instance for storage of the new element, and to return the locator to the caller. The
+    remainder of that method is similar to the original, with the management of locator
+    indices enacted by the use of the new version of swap. There is no reason to over-

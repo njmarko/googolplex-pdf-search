@@ -1,0 +1,40 @@
+8.6. Exercises                                                                              355
+           C-8.32 Let T be a (not necessarily proper) binary tree with n nodes, and let D be
+                  the sum of the depths of all the external nodes of T . Show that if T has the
+                  minimum number of external nodes possible, then D is O(n) and if T has
+                  the maximum number of external nodes possible, then D is O(n log n).
+           C-8.33 Let T be a (possibly improper) binary tree with n nodes, and let D be the
+                  sum of the depths of all the external nodes of T . Describe a conﬁguration
+                  for T such that D is Ω(n2 ). Such a tree would be the worst case for the
+                  asymptotic running time of method height1 (Code Fragment 8.4).
+           C-8.34 For a tree T , let nI denote the number of its internal nodes, and let nE
+                  denote the number of its external nodes. Show that if every internal node
+                  in T has exactly 3 children, then nE = 2nI + 1.
+           C-8.35 Two ordered trees T  and T  are said to be isomorphic if one of the fol-
+                  lowing holds:
+                     • Both T  and T  are empty.
+                     • The roots of T  and T  have the same number k ≥ 0 of subtrees, and
+                        the ith such subtree of T  is isomorphic to the ith such subtree of T 
+                        for i = 1, . . . , k.
+                  Design an algorithm that tests whether two given ordered trees are iso-
+                  morphic. What is the running time of your algorithm?
+           C-8.36 Show that there are more than 2n improper binary trees with n internal
+                  nodes such that no pair are isomorphic (see Exercise C-8.35).
+           C-8.37 If we exclude isomorphic trees (see Exercise C-8.35), exactly how many
+                  proper binary trees exist with exactly 4 leaves?
+           C-8.38 Add support in LinkedBinaryTree for a method, delete subtree(p), that
+                  removes the entire subtree rooted at position p, making sure to maintain
+                  the count on the size of the tree. What is the running time of your imple-
+                  mentation?
+           C-8.39 Add support in LinkedBinaryTree for a method, swap(p,q), that has the
+                  effect of restructuring the tree so that the node referenced by p takes the
+                  place of the node referenced by q, and vice versa. Make sure to properly
+                  handle the case when the nodes are adjacent.
+           C-8.40 We can simplify parts of our LinkedBinaryTree implementation if we
+                  make use of of a single sentinel node, referenced as the sentinel member
+                  of the tree instance, such that the sentinel is the parent of the real root of
+                  the tree, and the root is referenced as the left child of the sentinel. Fur-
+                  thermore, the sentinel will take the place of None as the value of the left
+                  or right member for a node without such a child. Give a new imple-
+                  mentation of the update methods delete and attach, assuming such a
+                  representation.

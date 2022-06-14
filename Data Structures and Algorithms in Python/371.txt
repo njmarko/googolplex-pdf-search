@@ -1,0 +1,38 @@
+350                                                                       Chapter 8. Trees
+       Expression Tree Evaluation
+       The numeric evaluation of an expression tree can be accomplished with a simple
+       application of a postorder traversal. If we know the values represented by the two
+       subtrees of an internal position, we can calculate the result of the computation that
+       position designates. Pseudo-code for the recursive evaluation of the value repre-
+       sented by a subtree rooted at position p is given in Code Fragment 8.36.
+       Algorithm evaluate recur(p):
+          if p is a leaf then
+             return the value stored at p
+          else
+             let ◦ be the operator stored at p
+             x = evaluate recur(left(p))
+             y = evaluate recur(right(p))
+             return x ◦ y
+       Code Fragment 8.36: Algorithm evaluate recur for evaluating the expression rep-
+       resented by a subtree of an arithmetic expression tree rooted at position p.
+            To implement this algorithm in the context of a Python ExpressionTree class,
+       we provide a public evaluate method that is invoked on instance T as T.evaluate( ).
+       Code Fragment 8.37 provides such an implementation, relying on a nonpublic
+        evaluate recur method that computes the value of a designated subtree.
+    39   def evaluate(self):
+    40      ”””Return the numeric result of the expression.”””
+    41      return self. evaluate recur(self.root( ))
+    42
+    43   def evaluate recur(self, p):
+    44      ”””Return the numeric result of subtree rooted at p.”””
+    45      if self.is leaf(p):
+    46         return ﬂoat(p.element( ))          # we assume element is numeric
+    47      else:
+    48         op = p.element( )
+    49         left val = self. evaluate recur(self.left(p))
+    50         right val = self. evaluate recur(self.right(p))
+    51         if op == + : return left val + right val
+    52         elif op == - : return left val − right val
+    53         elif op == / : return left val / right val
+    54         else: return left val right val         # treat x or       as multiplication
+             Code Fragment 8.37: Support for evaluating an ExpressionTree instance.

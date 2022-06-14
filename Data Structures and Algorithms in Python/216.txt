@@ -1,0 +1,35 @@
+5.3. Dynamic Arrays and Amortization                                                            195
+      5.3.1 Implementing a Dynamic Array
+         Although the Python list class provides a highly optimized implementation of dy-
+         namic arrays, upon which we rely for the remainder of this book, it is instructive to
+         see how such a class might be implemented.
+              The key is to provide means to grow the array A that stores the elements of a
+         list. Of course, we cannot actually grow that array, as its capacity is ﬁxed. If an
+         element is appended to a list at a time when the underlying array is full, we perform
+         the following steps:
+             1. Allocate a new array B with larger capacity.
+             2. Set B[i] = A[i], for i = 0, . . . , n − 1, where n denotes current number of items.
+             3. Set A = B, that is, we henceforth use B as the array supporting the list.
+             4. Insert the new element in the new array.
+         An illustration of this process is shown in Figure 5.12.
+            A                             A
+            B                             B                               A
+                       (a)                               (b)                        (c)
+         Figure 5.12: An illustration of the three steps for “growing” a dynamic array: (a)
+         create new array B; (b) store elements of A in B; (c) reassign reference A to the new
+         array. Not shown is the future garbage collection of the old array, or the insertion
+         of the new element.
+              The remaining issue to consider is how large of a new array to create. A com-
+         monly used rule is for the new array to have twice the capacity of the existing array
+         that has been ﬁlled. In Section 5.3.2, we will provide a mathematical analysis to
+         justify such a choice.
+              In Code Fragment 5.3, we offer a concrete implementation of dynamic arrays
+         in Python. Our DynamicArray class is designed using ideas described in this sec-
+         tion. While consistent with the interface of a Python list class, we provide only
+         limited functionality in the form of an append method, and accessors len and
+            getitem . Support for creating low-level arrays is provided by a module named
+         ctypes. Because we will not typically use such a low-level structure in the remain-
+         der of this book, we omit a detailed explanation of the ctypes module. Instead,
+         we wrap the necessary command for declaring the raw array within a private util-
+         ity method make array. The hallmark expansion procedure is performed in our
+         nonpublic resize method.

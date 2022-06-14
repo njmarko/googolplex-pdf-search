@@ -1,0 +1,37 @@
+10.1. Maps and Dictionaries                                                                403
+      10.1.1 The Map ADT
+         In this section, we introduce the map ADT, and deﬁne its behaviors to be consistent
+         with those of Python’s built-in dict class. We begin by listing what we consider the
+         most signiﬁcant ﬁve behaviors of a map M as follows:
+                            M[k]: Return the value v associated with key k in map M, if
+                                    one exists; otherwise raise a KeyError. In Python, this is
+                                    implemented with the special method getitem .
+                       M[k] = v: Associate value v with key k in map M, replacing the ex-
+                                    isting value if the map already contains an item with key
+                                    equal to k. In Python, this is implemented with the special
+                                    method setitem .
+                        del M[k]: Remove from map M the item with key equal to k; if M
+                                    has no such item, then raise a KeyError. In Python, this is
+                                    implemented with the special method delitem .
+                          len(M): Return the number of items in map M. In Python, this is
+                                    implemented with the special method len .
+                         iter(M): The default iteration for a map generates a sequence of
+                                    keys in the map. In Python, this is implemented with the
+                                    special method iter , and it allows loops of the form,
+                                    for k in M.
+         We have highlighted the above ﬁve behaviors because they demonstrate the core
+         functionality of a map—namely, the ability to query, add, modify, or delete a key-
+         value pair, and the ability to report all such pairs. For additional convenience,
+         map M should also support the following behaviors:
+                          k in M: Return True if the map contains an item with key k. In
+                                    Python, this is implemented with the special contains
+                                    method.
+           M.get(k, d=None): Return M[k] if key k exists in the map; otherwise return
+                                    default value d. This provides a form to query M[k] with-
+                                    out risk of a KeyError.
+           M.setdefault(k, d): If key k exists in the map, simply return M[k]; if key k
+                                    does not exist, set M[k] = d and return that value.
+          M.pop(k, d=None): Remove the item associated with key k from the map and
+                                    return its associated value v. If key k is not in the map,
+                                    return default value d (or raise KeyError if parameter d is
+                                    None).

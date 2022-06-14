@@ -1,0 +1,28 @@
+12.2. Merge-Sort                                                                          539
+             We can visualize an execution of the merge-sort algorithm by means of a binary
+         tree T , called the merge-sort tree. Each node of T represents a recursive invocation
+         (or call) of the merge-sort algorithm. We associate with each node v of T the
+         sequence S that is processed by the invocation associated with v. The children of
+         node v are associated with the recursive calls that process the subsequences S1 and
+         S2 of S. The external nodes of T are associated with individual elements of S,
+         corresponding to instances of the algorithm that make no recursive calls.
+             Figure 12.1 summarizes an execution of the merge-sort algorithm by showing
+         the input and output sequences processed at each node of the merge-sort tree. The
+         step-by-step evolution of the merge-sort tree is shown in Figures 12.2 through 12.4.
+             This algorithm visualization in terms of the merge-sort tree helps us analyze
+         the running time of the merge-sort algorithm. In particular, since the size of the
+         input sequence roughly halves at each recursive call of merge-sort, the height of
+         the merge-sort tree is about logn (recall that the base of log is 2 if omitted).
+                                85     24   63   45     17   31   96     50
+                              85     24   63   45         17   31   96     50
+                              85   24       63 45         17 31       96   50
+                             85     24     63   45       17   31     96     50
+                                                    (a)
+                                17     24   31   45     50   63   85     96
+                              24     45   63   85         17   31   50     96
+                              24   85       45 63         17 31       50   96
+                             85     24     63   45       17   31     96     50
+                                                    (b)
+         Figure 12.1: Merge-sort tree T for an execution of the merge-sort algorithm on
+         a sequence with 8 elements: (a) input sequences processed at each node of T ;
+         (b) output sequences generated at each node of T .

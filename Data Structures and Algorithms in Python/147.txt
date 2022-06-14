@@ -1,0 +1,35 @@
+126                                                       Chapter 3. Algorithm Analysis
+         Thus, the highest-degree term in a polynomial is the term that determines the
+    asymptotic growth rate of that polynomial. We consider some additional properties
+    of the big-Oh notation in the exercises. Let us consider some further examples here,
+    focusing on combinations of the seven fundamental functions used in algorithm
+    design. We rely on the mathematical fact that logn ≤ n for n ≥ 1.
+    Example 3.10: 5n2 + 3n log n + 2n + 5 is O(n2 ).
+    Justiﬁcation: 5n2 + 3n log n+ 2n+ 5 ≤ (5+ 3+ 2+ 5)n2 = cn2 , for c = 15, when
+    n ≥ n0 = 1.
+    Example 3.11: 20n3 + 10n log n + 5 is O(n3 ).
+    Justiﬁcation:       20n3 + 10n log n + 5 ≤ 35n3 , for n ≥ 1.
+    Example 3.12: 3 log n + 2 is O(log n).
+    Justiﬁcation: 3 log n + 2 ≤ 5 log n, for n ≥ 2. Note that log n is zero for n = 1.
+    That is why we use n ≥ n0 = 2 in this case.
+    Example 3.13: 2n+2 is O(2n ).
+    Justiﬁcation:       2n+2 = 2n · 22 = 4 · 2n ; hence, we can take c = 4 and n0 = 1 in this
+    case.
+    Example 3.14: 2n + 100 log n is O(n).
+    Justiﬁcation:       2n + 100 log n ≤ 102n, for n ≥ n0 = 1; hence, we can take c = 102
+    in this case.
+    Characterizing Functions in Simplest Terms
+    In general, we should use the big-Oh notation to characterize a function as closely
+    as possible. While it is true that the function f (n) = 4n3 + 3n2 is O(n5 ) or even
+    O(n4 ), it is more accurate to say that f (n) is O(n3 ). Consider, by way of analogy,
+    a scenario where a hungry traveler driving along a long country road happens upon
+    a local farmer walking home from a market. If the traveler asks the farmer how
+    much longer he must drive before he can ﬁnd some food, it may be truthful for the
+    farmer to say, “certainly no longer than 12 hours,” but it is much more accurate
+    (and helpful) for him to say, “you can ﬁnd a market just a few minutes drive up this
+    road.” Thus, even with the big-Oh notation, we should strive as much as possible
+    to tell the whole truth.
+         It is also considered poor taste to include constant factors and lower-order terms
+    in the big-Oh notation. For example, it is not fashionable to say that the function
+    2n2 is O(4n2 + 6n log n), although this is completely correct. We should strive
+    instead to describe the function in the big-Oh in simplest terms.

@@ -1,0 +1,40 @@
+9.3. Heaps                                                                                       383
+         Asymptotic Analysis of Bottom-Up Heap Construction
+          Bottom-up heap construction is asymptotically faster than incrementally inserting
+          n keys into an initially empty heap. Intuitively, we are performing a single down-
+          heap operation at each position in the tree, rather than a single up-heap operation
+          from each. Since more nodes are closer to the bottom of a tree than the top, the
+          sum of the downward paths is linear, as shown in the following proposition.
+          Proposition 9.3: Bottom-up construction of a heap with n entries takes O(n)
+          time, assuming two keys can be compared in O(1) time.
+          Justiﬁcation: The primary cost of the construction is due to the down-heap
+          steps performed at each nonleaf position. Let πv denote the path of T from nonleaf
+          node v to its “inorder successor” leaf, that is, the path that starts at v, goes to the
+          right child of v, and then goes down leftward until it reaches a leaf. Although,
+          πv is not necessarily the path followed by the down-heap bubbling step from v,
+          the length πv  (its number of edges) is proportional to the height of the subtree
+          rooted at v, and thus a bound on the complexity of the down-heap operation at v.
+          We can bound the total running time of the bottom-up heap construction algorithm
+          based on the sum of the sizes of paths, ∑v πv . For intuition, Figure 9.6 illustrates
+          the justiﬁcation “visually,” marking each edge with the label of the nonleaf node v
+          whose path πv contains that edge.
+               We claim that the paths πv for all nonleaf v are edge-disjoint, and thus the sum
+          of the path lengths is bounded by the number of total edges in the tree, hence O(n).
+          To show this, we consider what we term “right-leaning” and “left-leaning” edges
+          (i.e., those going from a parent to a right, respectively left, child). A particular right-
+          leaning edge e can only be part of the path πv for node v that is the parent in the
+          relationship represented by e. Left-leaning edges can be partitioned by considering
+          the leaf that is reached if continuing down leftward until reaching a leaf. Each
+          nonleaf node only uses left-leaning edges in the group leading to that nonleaf node’s
+          inorder successor. Since each nonleaf node must have a different inorder successor,
+          no two such paths can contain the same left-leaning edge. We conclude that the
+          bottom-up construction of heap T takes O(n) time.
+                                                       4
+                                                               4
+                                       5                             6
+                                             5                  4           6
+                                15             9              7               17
+                                   15      5       9       4      7       6      17
+                            16     25     14      12      11      8      23      20
+          Figure 9.6: Visual justiﬁcation of the linear running time of bottom-up heap con-
+          struction. Each edge e is labeled with a node v for which πv contains e (if any).

@@ -1,0 +1,42 @@
+4.2. Analyzing Recursive Algorithms                                                            163
+          Justiﬁcation: To prove this claim, a crucial fact is that with each recursive call
+          the number of candidate entries still to be searched is given by the value
+                                              high − low + 1.
+          Moreover, the number of remaining candidates is reduced by at least one half with
+          each recursive call. Speciﬁcally, from the deﬁnition of mid, the number of remain-
+          ing candidates is either
+                                                           
+                                                low + high             high − low + 1
+                       (mid − 1) − low + 1 =                  − low ≤
+                                                      2                        2
+           or                                                     
+                                                        low + high      high − low + 1
+                      high − (mid + 1) + 1 = high −                  ≤                 .
+                                                            2                  2
+          Initially, the number of candidates is n; after the ﬁrst call in a binary search, it is at
+          most n/2; after the second call, it is at most n/4; and so on. In general, after the jth
+          call in a binary search, the number of candidate entries remaining is at most n/2 j .
+          In the worst case (an unsuccessful search), the recursive calls stop when there are no
+          more candidate entries. Hence, the maximum number of recursive calls performed,
+          is the smallest integer r such that
+                                                    n
+                                                       < 1.
+                                                   2r
+          In other words (recalling that we omit a logarithm’s base when it is 2), r > log n.
+          Thus, we have                       r = log n + 1,
+          which implies that binary search runs in O(log n) time.
+          Computing Disk Space Usage
+          Our ﬁnal recursive algorithm from Section 4.1 was that for computing the overall
+          disk space usage in a speciﬁed portion of a ﬁle system. To characterize the “prob-
+          lem size” for our analysis, we let n denote the number of ﬁle-system entries in the
+          portion of the ﬁle system that is considered. (For example, the ﬁle system portrayed
+          in Figure 4.6 has n = 19 entries.)
+               To characterize the cumulative time spent for an initial call to the disk usage
+          function, we must analyze the total number of recursive invocations that are made,
+          as well as the number of operations that are executed within those invocations.
+               We begin by showing that there are precisely n recursive invocations of the
+          function, in particular, one for each entry in the relevant portion of the ﬁle system.
+          Intuitively, this is because a call to disk usage for a particular entry e of the ﬁle
+          system is only made from within the for loop of Code Fragment 4.5 when process-
+          ing the entry for the unique directory that contains e, and that entry will only be
+          explored once.

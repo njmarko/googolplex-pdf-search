@@ -1,0 +1,43 @@
+640                                                      Chapter 14. Graph Algorithms
+    Classifying Graph Edges with DFS
+    An execution of depth-ﬁrst search can be used to analyze the structure of a graph,
+    based upon the way in which edges are explored during the traversal. The DFS
+    process naturally identiﬁes what is known as the depth-ﬁrst search tree rooted at
+    a starting vertex s. Whenever an edge e = (u, v) is used to discover a new vertex v
+    during the DFS algorithm of Code Fragment 14.4, that edge is known as a discovery
+    edge or tree edge, as oriented from u to v. All other edges that are considered during
+    the execution of DFS are known as nontree edges, which take us to a previously
+    visited vertex. In the case of an undirected graph, we will ﬁnd that all nontree edges
+    that are explored connect the current vertex to one that is an ancestor of it in the
+    DFS tree. We will call such an edge a back edge. When performing a DFS on a
+    directed graph, there are three possible kinds of nontree edges:
+         • back edges, which connect a vertex to an ancestor in the DFS tree
+         • forward edges, which connect a vertex to a descendant in the DFS tree
+         • cross edges, which connect a vertex to a vertex that is neither its ancestor nor
+           its descendant.
+         An example application of the DFS algorithm on a directed graph is shown in
+    Figure 14.8, demonstrating each type of nontree edge. An example application of
+    the DFS algorithm on an undirected graph is shown in Figure 14.9.
+                                                                                          1
+                                         BOS                                          BOS
+                                                                      ORD  5
+                         ORD
+                                                                                  JFK
+                                     JFK         7                                      2
+     SFO                                           SFO
+                                                                 DFW
+                     DFW
+       LAX                                           LAX
+                                                                  3
+                                                   4
+                                    MIA                                          MIA
+                                                                                       6
+                       (a)                                         (b)
+    Figure 14.8: An example of a DFS in a directed graph, starting at vertex (BOS):
+    (a) intermediate step, where, for the ﬁrst time, a considered edge leads to an al-
+    ready visited vertex (DFW); (b) the completed DFS. The tree edges are shown
+    with thick lines, the back edges are shown with dashed lines, and the forward and
+    cross edges are shown with dotted lines. The order in which the vertices are vis-
+    ited is indicated by a label next to each vertex. The edge (ORD,DFW) is a back
+    edge, but (DFW,ORD) is a forward edge. Edge (BOS,SFO) is a forward edge, and
+    (SFO,LAX) is a cross edge.

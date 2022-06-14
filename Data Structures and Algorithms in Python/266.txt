@@ -1,0 +1,35 @@
+6.2. Queues                                                                                 245
+              When the dequeue method is called, the current value of self. front designates
+         the index of the value that is to be removed and returned. We keep a local refer-
+         ence to the element that will be returned, setting answer = self. data[self. front]
+         just prior to removing the reference to that object from the list, with the assignment
+         self. data[self. front] = None. Our reason for the assignment to None relates to
+         Python’s mechanism for reclaiming unused space. Internally, Python maintains a
+         count of the number of references that exist to each object. If that count reaches
+         zero, the object is effectively inaccessible, thus the system may reclaim that mem-
+         ory for future use. (For more details, see Section 15.1.2.) Since we are no longer
+         responsible for storing a dequeued element, we remove the reference to it from our
+         list so as to reduce that element’s reference count.
+              The second signiﬁcant responsibility of the dequeue method is to update the
+         value of front to reﬂect the removal of the element, and the presumed promotion
+         of the second element to become the new ﬁrst. In most cases, we simply want
+         to increment the index by one, but because of the possibility of a wrap-around
+         conﬁguration, we rely on modular arithmetic as originally described on page 242.
+         Resizing the Queue
+         When enqueue is called at a time when the size of the queue equals the size of the
+         underlying list, we rely on a standard technique of doubling the storage capacity of
+         the underlying list. In this way, our approach is similar to the one used when we
+         implemented a DynamicArray in Section 5.3.1.
+              However, more care is needed in the queue’s resize utility than was needed in
+         the corresponding method of the DynamicArray class. After creating a temporary
+         reference to the old list of values, we allocate a new list that is twice the size and
+         copy references from the old list to the new list. While transferring the contents, we
+         intentionally realign the front of the queue with index 0 in the new array, as shown
+         in Figure 6.7. This realignment is not purely cosmetic. Since the modular arith-
+         metic depends on the size of the array, our state would be ﬂawed had we transferred
+         each element to its same index in the new array.
+                                      f
+                         I   J   K    E   F   G   H
+                         E   F   G    H   I   J   K
+                      f=0    1   2
+           Figure 6.7: Resizing the queue, while realigning the front element with index 0.

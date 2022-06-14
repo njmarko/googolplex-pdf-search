@@ -1,0 +1,34 @@
+8.4. Tree Traversal Algorithms                                                                341
+       8.4.6 Euler Tours and the Template Method Pattern 
+           The various applications described in Section 8.4.5 demonstrate the great power
+           of recursive tree traversals. Unfortunately, they also show that the speciﬁc imple-
+           mentations of the preorder and postorder methods of our Tree class, or the inorder
+           method of the BinaryTree class, are not general enough to capture the range of
+           computations we desire. In some cases, we need more of a blending of the ap-
+           proaches, with initial work performed before recurring on subtrees, additional work
+           performed after those recursions, and in the case of a binary tree, work performed
+           between the two possible recursions. Furthermore, in some contexts it was impor-
+           tant to know the depth of a position, or the complete path from the root to that
+           position, or to return information from one level of the recursion to another. For
+           each of the previous applications, we were able to develop a custom implementa-
+           tion to properly adapt the recursive ideas, but the great principles of object-oriented
+           programming introduced in Section 2.1.1 include adaptability and reusability.
+               In this section, we develop a more general framework for implementing tree
+           traversals based on a concept known as an Euler tour traversal. The Euler tour
+           traversal of a general tree T can be informally deﬁned as a “walk” around T , where
+           we start by going from the root toward its leftmost child, viewing the edges of T as
+           being “walls” that we always keep to our left. (See Figure 8.21.)
+                                                          −
+                                          /                                   +
+                                   ×                 +           ×               6
+                               +        3      −        2     3       −
+                            3     1         9      5               7      4
+                                 Figure 8.21: Euler tour traversal of a tree.
+               The complexity of the walk is O(n), because it progresses exactly two times
+           along each of the n−1 edges of the tree—once going downward along the edge, and
+           later going upward along the edge. To unify the concept of preorder and postorder
+           traversals, we can think of there being two notable “visits” to each position p:
+               • A “pre visit” occurs when ﬁrst reaching the position, that is, when the walk
+                  passes immediately left of the node in our visualization.
+               • A “post visit” occurs when the walk later proceeds upward from that position,
+                  that is, when the walk passes to the right of the node in our visualization.

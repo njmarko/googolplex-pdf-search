@@ -1,0 +1,38 @@
+11.2. Balanced Search Trees                                                                  479
+     174     def rebalance insert(self, p): pass
+     175     def rebalance delete(self, p): pass
+     176     def rebalance access(self, p): pass
+          Code Fragment 11.10: Additional code for the TreeMap class (continued from Code
+          Fragment 11.8), providing stubs for the rebalancing hooks.
+          Nonpublic Methods for Rotating and Restructuring
+          A second form of support for balanced search trees is our inclusion of nonpub-
+          lic utility methods rotate and restructure that, respectively, implement a single
+          rotation and a trinode restructuring (described at the beginning of Section 11.2).
+          Although these methods are not invoked by the public TreeMap operations, we
+          promote code reuse by providing these implementation in this class so that they are
+          inherited by all balanced-tree subclasses.
+               Our implementations are provided in Code Fragment 11.11. To simplify the
+          code, we deﬁne an additional relink utility that properly links parent and child
+          nodes to each other, including the special case in which a “child” is a None ref-
+          erence. The focus of the rotate method then becomes redeﬁning the relationship
+          between the parent and child, relinking a rotated node directly to its original grand-
+          parent, and shifting the “middle” subtree (that labeled as T2 in Figure 11.8) between
+          the rotated nodes. For the trinode restructuring, we determine whether to perform
+          a single or double rotation, as originally described in Figure 11.9.
+          Factory for Creating Tree Nodes
+          We draw attention to an important subtlety in the design of both our TreeMap class
+          and the original LinkedBinaryTree subclass. The low-level deﬁnition of a node is
+          provided by the nested Node class within LinkedBinaryTree. Yet, several of our
+          tree-balancing strategies require that auxiliary information be stored at each node
+          to guide the balancing process. Those classes will override the nested Node class
+          to provide storage for an additional ﬁeld.
+               Whenever we add a new node to the tree, as within the add right method of
+          the LinkedBinaryTree (originally given in Code Fragment 8.10), we intentionally
+          instantiate the node using the syntax self. Node, rather than the qualiﬁed name
+          LinkedBinaryTree. Node. This is vital to our framework! When the expression
+          self. Node is applied to an instance of a tree (sub)class, Python’s name resolution
+          follows the inheritance structure (as described in Section 2.5.2). If a subclass has
+          overridden the deﬁnition for the Node class, instantiation of self. Node relies on
+          the newly deﬁned node class. This technique is an example of the factory method
+          design pattern, as we provide a subclass the means to control the type of node that
+          is created within methods of the parent class.

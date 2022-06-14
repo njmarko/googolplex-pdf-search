@@ -1,0 +1,34 @@
+12.7. Selection                                                                               571
+ 12.7        Selection
+           As important as it is, sorting is not the only interesting problem dealing with a total
+           order relation on a set of elements. There are a number of applications in which
+           we are interested in identifying a single element in terms of its rank relative to
+           the sorted order of the entire set. Examples include identifying the minimum and
+           maximum elements, but we may also be interested in, say, identifying the median
+           element, that is, the element such that half of the other elements are smaller and the
+           remaining half are larger. In general, queries that ask for an element with a given
+           rank are called order statistics.
+           Deﬁning the Selection Problem
+           In this section, we discuss the general order-statistic problem of selecting the kth
+           smallest element from an unsorted collection of n comparable elements. This is
+           known as the selection problem. Of course, we can solve this problem by sorting
+           the collection and then indexing into the sorted sequence at index k − 1. Using
+           the best comparison-based sorting algorithms, this approach would take O(n log n)
+           time, which is obviously an overkill for the cases where k = 1 or k = n (or even
+           k = 2, k = 3, k = n − 1, or k = n − 5), because we can easily solve the selection
+           problem for these values of k in O(n) time. Thus, a natural question to ask is
+           whether we can achieve an O(n) running time for all values of k (including the
+           interesting case of ﬁnding the median, where k = n/2).
+       12.7.1 Prune-and-Search
+           We can indeed solve the selection problem in O(n) time for any value of k. More-
+           over, the technique we use to achieve this result involves an interesting algorithmic
+           design pattern. This design pattern is known as prune-and-search or decrease-
+           and-conquer. In applying this design pattern, we solve a given problem that is
+           deﬁned on a collection of n objects by pruning away a fraction of the n objects
+           and recursively solving the smaller problem. When we have ﬁnally reduced the
+           problem to one deﬁned on a constant-sized collection of objects, we then solve
+           the problem using some brute-force method. Returning back from all the recursive
+           calls completes the construction. In some cases, we can avoid using recursion, in
+           which case we simply iterate the prune-and-search reduction step until we can ap-
+           ply a brute-force method and stop. Incidentally, the binary search method described
+           in Section 4.1.3 is an example of the prune-and-search design pattern.

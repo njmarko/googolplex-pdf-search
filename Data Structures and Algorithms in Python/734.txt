@@ -1,0 +1,43 @@
+15.3. External Searching and B-Trees                                                            713
+          Search and Update Operations
+          We recall that in a multiway search tree T , each node v of T holds a secondary
+          structure M(v), which is itself a map (Section 11.5.1). If T is an (a, b) tree, then
+          M(v) stores at most b entries. Let f (b) denote the time for performing a search
+          in a map, M(v). The search algorithm in an (a, b) tree is exactly like the one for
+          multiway search trees given in Section 11.5.1. Hence, searching in an (a, b) tree T
+                                    f (b)
+          with n entries takes O( log   a log n) time. Note that if b is considered a constant (and
+          thus a is also), then the search time is O(log n).
+               The main application of (a, b) trees is for maps stored in external memory.
+          Namely, to minimize disk accesses, we select the parameters a and b so that each
+          tree node occupies a single disk block (so that f (b) = 1 if we wish to simply count
+          block transfers). Providing the right a and b values in this context gives rise to
+          a data structure known as the B-tree, which we will describe shortly. Before we
+          describe this structure, however, let us discuss how insertions and removals are
+          handled in (a, b) trees.
+               The insertion algorithm for an (a, b) tree is similar to that for a (2, 4) tree.
+          An overﬂow occurs when an entry is inserted into a b-node w, which becomes an
+          illegal (b + 1)-node. (Recall that a node in a multiway tree is a d-node if it has d
+          children.) To remedy an overﬂow, we split node w by moving the median entry of w
+          into the parent of w and replacing w with a (b + 1)/2-node w and a (b + 1)/2-
+          node w . We can now see the reason for requiring a ≤ (b + 1)/2 in the deﬁnition
+          of an (a, b) tree. Note that as a consequence of the split, we need to build the
+          secondary structures M(w ) and M(w ).
+               Removing an entry from an (a, b) tree is similar to what was done for (2, 4)
+          trees. An underﬂow occurs when a key is removed from an a-node w, distinct from
+          the root, which causes w to become an illegal (a−1)-node. To remedy an underﬂow,
+          we perform a transfer with a sibling of w that is not an a-node or we perform a
+          fusion of w with a sibling that is an a-node. The new node w resulting from the
+          fusion is a (2a − 1)-node, which is another reason for requiring a ≤ (b + 1)/2.
+               Table 15.1 shows the performance of a map realized with an (a, b) tree.
+                                          Operation     Running Time
+                                                            f (b)
+                                                M[k]    O  log a  log n
+                                                           g(b)
+                                           M[k] = v     O  log a  log n
+                                                           g(b)
+                                            del M[k]    O  log a  log n
+          Table 15.1: Time bounds for an n-entry map realized by an (a, b) tree T . We assume
+          the secondary structure of the nodes of T support search in f (b) time, and split and
+          fusion operations in g(b) time, for some functions f (b) and g(b), which can be
+          made to be O(1) when we are only counting disk transfers.

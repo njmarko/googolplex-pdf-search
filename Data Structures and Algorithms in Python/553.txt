@@ -1,0 +1,38 @@
+532                                                          Chapter 11. Search Trees
+    C-11.44 If the approach described in the previous problem were implemented as
+            part of the TreeMap class, what additional modiﬁcations (if any) would
+            be necessary to a subclass such as AVLTreeMap in order to maintain the
+            efﬁciency?
+    C-11.45 For a standard binary search tree, Table 11.1 claims O(h)-time perfor-
+            mance for the delete(p) method. Explain why delete(p) would run in
+            O(1) time if given a solution to Exercise C-11.43.
+    C-11.46 Describe a modiﬁcation to the binary search tree data structure that would
+            support the following two index-based operations for a sorted map in O(h)
+            time, where h is the height of the tree.
+            at index(i): Return the position p of the item at index i of a sorted map.
+            index of(p): Return the index i of the item at position p of a sorted map.
+    C-11.47 Draw a splay tree, T1 , together with the sequence of updates that produced
+            it, and a red-black tree, T2 , on the same set of ten entries, such that a
+            preorder traversal of T1 would be the same as a preorder traversal of T2 .
+    C-11.48 Show that the nodes that become temporarily unbalanced in an AVL tree
+            during an insertion may be nonconsecutive on the path from the newly
+            inserted node to the root.
+    C-11.49 Show that at most one node in an AVL tree becomes temporarily un-
+            balanced after the immediate deletion of a node as part of the standard
+                delitem map operation.
+    C-11.50 Let T and U be (2, 4) trees storing n and m entries, respectively, such
+            that all the entries in T have keys less than the keys of all the entries in
+            U . Describe an O(log n + log m)-time method for joining T and U into a
+            single tree that stores all the entries in T and U .
+    C-11.51 Repeat the previous problem for red-black trees T and U .
+    C-11.52 Justify Proposition 11.7.
+    C-11.53 The Boolean indicator used to mark nodes in a red-black tree as being
+            “red” or “black” is not strictly needed when we have distinct keys. De-
+            scribe a scheme for implementing a red-black tree without adding any
+            extra space to standard binary search tree nodes.
+    C-11.54 Let T be a red-black tree storing n entries, and let k be the key of an entry
+            in T . Show how to construct from T , in O(log n) time, two red-black trees
+            T  and T  , such that T  contains all the keys of T less than k, and T 
+            contains all the keys of T greater than k. This operation destroys T .
+    C-11.55 Show that the nodes of any AVL tree T can be colored “red” and “black”
+            so that T becomes a red-black tree.

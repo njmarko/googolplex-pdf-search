@@ -1,0 +1,38 @@
+11.7. Exercises                                                                            533
+          C-11.56 The standard splaying step requires two passes, one downward pass to
+                  ﬁnd the node x to splay, followed by an upward pass to splay the node
+                  x. Describe a method for splaying and searching for x in one downward
+                  pass. Each substep now requires that you consider the next two nodes
+                  in the path down to x, with a possible zig substep performed at the end.
+                  Describe how to perform the zig-zig, zig-zag, and zig steps.
+          C-11.57 Consider a variation of splay trees, called half-splay trees, where splaying
+                  a node at depth d stops as soon as the node reaches depth d/2. Perform
+                  an amortized analysis of half-splay trees.
+          C-11.58 Describe a sequence of accesses to an n-node splay tree T , where n is odd,
+                  that results in T consisting of a single chain of nodes such that the path
+                  down T alternates between left children and right children.
+          C-11.59 As a positional structure, our TreeMap implementation has a subtle ﬂaw.
+                  A position instance p associated with an key-value pair (k, v) should re-
+                  main valid as long as that item remains in the map. In particular, that
+                  position should be unaffected by calls to insert or delete other items in the
+                  collection. Our algorithm for deleting an item from a binary search tree
+                  may fail to provide such a guarantee, in particular because of our rule for
+                  using the inorder predecessor of a key as a replacement when deleting a
+                  key that is located in a node with two children. Given an explicit series of
+                  Python commands that demonstrates such a ﬂaw.
+          C-11.60 How might the TreeMap implementation be changed to avoid the ﬂaw
+                  described in the previous problem?
+       Projects
+          P-11.61 Perform an experimental study to compare the speed of our AVL tree,
+                  splay tree, and red-black tree implementations for various sequences of
+                  operations.
+          P-11.62 Redo the previous exercise, including an implementation of skip lists.
+                  (See Exercise P-10.53.)
+          P-11.63 Implement the Map ADT using a (2, 4) tree. (See Section 10.1.1.)
+          P-11.64 Redo the previous exercise, including all methods of the Sorted Map ADT.
+                  (See Section 10.3.)
+          P-11.65 Redo Exercise P-11.63 providing positional support, as we did for bi-
+                  nary search trees (Section 11.1.1), so as to include methods ﬁrst( ), last( ),
+                  before(p), after(p), and ﬁnd position(k). Each item should have a dis-
+                  tinct position in this abstraction, even though several items may be stored
+                  at a single node of a tree.

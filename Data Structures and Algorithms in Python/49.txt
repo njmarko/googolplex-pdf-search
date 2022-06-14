@@ -1,0 +1,39 @@
+28                                                            Chapter 1. Python Primer
+           By default, max operates based upon the natural order of elements according
+      to the < operator for that type. But the maximum can be computed by comparing
+      some other aspect of the elements. This is done by providing an auxiliary function
+      that converts a natural element to some other value for the sake of comparison.
+      For example, if we are interested in ﬁnding a numeric value with magnitude that is
+      maximal (i.e., considering −35 to be larger than +20), we can use the calling syn-
+      tax max(a, b, key=abs). In this case, the built-in abs function is itself sent as the
+      value associated with the keyword parameter key. (Functions are ﬁrst-class objects
+      in Python; see Section 1.10.) When max is called in this way, it will compare abs(a)
+      to abs(b), rather than a to b. The motivation for the keyword syntax as an alternate
+      to positional arguments is important in the case of max. This function is polymor-
+      phic in the number of arguments, allowing a call such as max(a,b,c,d); therefore,
+      it is not possible to designate a key function as a traditional positional element.
+      Sorting functions in Python also support a similar key parameter for indicating a
+      nonstandard order. (We explore this further in Section 9.4 and in Section 12.6.1,
+      when discussing sorting algorithms).
+   1.5.2 Python’s Built-In Functions
+      Table 1.4 provides an overview of common functions that are automatically avail-
+      able in Python, including the previously discussed abs, max, and range. When
+      choosing names for the parameters, we use identiﬁers x, y, z for arbitrary numeric
+      types, k for an integer, and a, b, and c for arbitrary comparable types. We use
+      the identiﬁer, iterable, to represent an instance of any iterable type (e.g., str, list,
+      tuple, set, dict); we will discuss iterators and iterable data types in Section 1.8.
+      A sequence represents a more narrow category of indexable classes, including str,
+      list, and tuple, but neither set nor dict. Most of the entries in Table 1.4 can be
+      categorized according to their functionality as follows:
+      Input/Output: print, input, and open will be more fully explained in Section 1.6.
+      Character Encoding: ord and chr relate characters and their integer code points.
+      For example, ord( A ) is 65 and chr(65) is A .
+      Mathematics: abs, divmod, pow, round, and sum provide common mathematical
+      functionality; an additional math module will be introduced in Section 1.11.
+      Ordering: max and min apply to any data type that supports a notion of compar-
+      ison, or to any collection of such values. Likewise, sorted can be used to produce
+      an ordered list of elements drawn from any existing collection.
+      Collections/Iterations: range generates a new sequence of numbers; len reports
+      the length of any existing collection; functions reversed, all, any, and map oper-
+      ate on arbitrary iterations as well; iter and next provide a general framework for
+      iteration through elements of a collection, and are discussed in Section 1.8.

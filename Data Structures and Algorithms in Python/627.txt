@@ -1,0 +1,42 @@
+606                                                         Chapter 13. Text Processing
+         A trie T for a set S of strings can be used to implement a set or map whose keys
+    are the strings of S. Namely, we perform a search in T for a string X by tracing
+    down from the root the path indicated by the characters in X . If this path can be
+    traced and terminates at a leaf node, then we know X is a key in the map. For
+    example, in the trie in Figure 13.10, tracing the path for “bull” ends up at a leaf.
+    If the path cannot be traced or the path can be traced but terminates at an internal
+    node, then X is not a key in the map. In the example in Figure 13.10, the path for
+    “bet” cannot be traced and the path for “be” ends at an internal node. Neither such
+    word is in the map.
+         It is easy to see that the running time of the search for a string of length m is
+    O(m · |Σ|), because we visit at most m + 1 nodes of T and we spend O(|Σ|) time
+    at each node determining the child having the subsequent character as a label. The
+    O(|Σ|) upper bound on the time to locate a child with a given label is achievable,
+    even if the children of a node are unordered, since there are at most |Σ| children.
+    We can improve the time spent at a node to be O(log |Σ|) or expected O(1), by
+    mapping characters to children using a secondary search table or hash table at each
+    node, or by using a direct lookup table of size |Σ| at each node, if |Σ| is sufﬁciently
+    small (as is the case for DNA strings). For these reasons, we typically expect a
+    search for a string of length m to run in O(m) time.
+         From the discussion above, it follows that we can use a trie to perform a spe-
+    cial type of pattern matching, called word matching, where we want to determine
+    whether a given pattern matches one of the words of the text exactly. Word match-
+    ing differs from standard pattern matching because the pattern cannot match an
+    arbitrary substring of the text—only one of its words. To accomplish this, each
+    word of the original document must be added to the trie. (See Figure 13.11.) A
+    simple extension of this scheme supports preﬁx-matching queries. However, ar-
+    bitrary occurrences of the pattern in the text (for example, the pattern is a proper
+    sufﬁx of a word or spans two words) cannot be efﬁciently performed.
+         To construct a standard trie for a set S of strings, we can use an incremental
+    algorithm that inserts the strings one at a time. Recall the assumption that no string
+    of S is a preﬁx of another string. To insert a string X into the current trie T , we
+    trace the path associated with X in T , creating a new chain of nodes to store the
+    remaining characters of X when we get stuck. The running time to insert X with
+    length m is similar to a search, with worst-case O(m · |Σ|) performance, or expected
+    O(m) if using secondary hash tables at each node. Thus, constructing the entire trie
+    for set S takes expected O(n) time, where n is the total length of the strings of S.
+         There is a potential space inefﬁciency in the standard trie that has prompted the
+    development of the compressed trie, which is also known (for historical reasons)
+    as the Patricia trie. Namely, there are potentially a lot of nodes in the standard trie
+    that have only one child, and the existence of such nodes is a waste. We discuss the
+    compressed trie next.

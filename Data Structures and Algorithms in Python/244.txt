@@ -1,0 +1,47 @@
+5.6. Multidimensional Data Sets                                                              223
+       1 class TicTacToe:
+       2    ”””Management of a Tic-Tac-Toe game (does not do strategy).”””
+       3
+       4    def init (self):
+       5      ”””Start a new game.”””
+       6      self. board = [ [      ] 3 for j in range(3) ]
+       7      self. player = X
+       8
+       9    def mark(self, i, j):
+      10      ”””Put an X or O mark at position (i,j) for next player s turn.”””
+      11      if not (0 <= i <= 2 and 0 <= j <= 2):
+      12         raise ValueError( Invalid board position )
+      13      if self. board[i][j] !=    :
+      14         raise ValueError( Board position occupied )
+      15      if self.winner( ) is not None:
+      16         raise ValueError( Game is already complete )
+      17      self. board[i][j] = self. player
+      18      if self. player == X :
+      19         self. player = O
+      20      else:
+      21         self. player = X
+      22
+      23    def is win(self, mark):
+      24      ”””Check whether the board conﬁguration is a win for the given player.”””
+      25      board = self. board                                 # local variable for shorthand
+      26      return (mark == board[0][0] == board[0][1] == board[0][2] or           # row 0
+      27                 mark == board[1][0] == board[1][1] == board[1][2] or        # row 1
+      28                 mark == board[2][0] == board[2][1] == board[2][2] or        # row 2
+      29                 mark == board[0][0] == board[1][0] == board[2][0] or        # column 0
+      30                 mark == board[0][1] == board[1][1] == board[2][1] or        # column 1
+      31                 mark == board[0][2] == board[1][2] == board[2][2] or        # column 2
+      32                 mark == board[0][0] == board[1][1] == board[2][2] or        # diagonal
+      33                 mark == board[0][2] == board[1][1] == board[2][0])          # rev diag
+      34
+      35    def winner(self):
+      36      ”””Return mark of winning player, or None to indicate a tie.”””
+      37      for mark in XO :
+      38         if self. is win(mark):
+      39            return mark
+      40      return None
+      41
+      42    def str (self):
+      43      ”””Return string representation of current game board.”””
+      44      rows = [ | .join(self. board[r]) for r in range(3)]
+      45      return \n-----\n .join(rows)
+           Code Fragment 5.13: A complete Python class for managing a Tic-Tac-Toe game.

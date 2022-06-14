@@ -1,0 +1,39 @@
+488                                                               Chapter 11. Search Trees
+     11.3.2 Python Implementation
+        A complete implementation of an AVLTreeMap class is provided in Code Frag-
+        ments 11.12 and 11.13. It inherits from the standard TreeMap class and relies on
+        the balancing framework described in Section 11.2.1. We highlight two important
+        aspects of our implementation. First, the AVLTreeMap overrides the deﬁnition of
+        the nested Node class, as shown in Code Fragment 11.12, in order to provide sup-
+        port for storing the height of the subtree stored at a node. We also provide several
+        utilities involving heights of nodes, and the corresponding positions.
+             To implement the core logic of the AVL balancing strategy, we deﬁne a utility,
+        named rebalance, that sufﬁces as a hook for restoring the height-balance property
+        after an insertion or a deletion. Although the inherited behaviors for insertion and
+        deletion are quite different, the necessary post-processing for an AVL tree can be
+        uniﬁed. In both cases, we trace an upward path from the position p at which the
+        change took place, recalculating the height of each position based on the (updated)
+        heights of its children, and using a trinode restructuring operation if an imbalanced
+        position is reached. If we reach an ancestor with height that is unchanged by the
+        overall map operation, or if we perform a trinode restructuring that results in the
+        subtree having the same height it had before the map operation, we stop the pro-
+        cess; no further ancestor’s height will change. To detect the stopping condition, we
+        record the “old” height of each node and compare it to the newly calculated height.
+     1 class AVLTreeMap(TreeMap):
+     2    ”””Sorted map implementation using an AVL tree.”””
+     3
+     4    #-------------------------- nested Node class --------------------------
+     5    class Node(TreeMap. Node):
+     6       ”””Node class for AVL maintains height value for balancing.”””
+     7          slots = _height                  # additional data member to store height
+     8
+     9       def init (self, element, parent=None, left=None, right=None):
+    10          super( ). init (element, parent, left, right)
+    11          self. height = 0                 # will be recomputed during balancing
+    12
+    13       def left height(self):
+    14          return self. left. height if self. left is not None else 0
+    15
+    16       def right height(self):
+    17          return self. right. height if self. right is not None else 0
+          Code Fragment 11.12: AVLTreeMap class (continued in Code Fragment 11.13).

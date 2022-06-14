@@ -1,0 +1,38 @@
+10.3. Sorted Maps                                                                              427
+ 10.3        Sorted Maps
+           The traditional map ADT allows a user to look up the value associated with a given
+           key, but the search for that key is a form known as an exact search.
+               For example, computer systems often maintain information about events that
+           have occurred (such as ﬁnancial transactions), organizing such events based upon
+           what are known as time stamps. If we can assume that time stamps are unique
+           for a particular system, then we might organize a map with a time stamp serving
+           as the key, and a record about the event that occurred at that time as the value. A
+           particular time stamp could serve as a reference ID for an event, in which case we
+           can quickly retrieve information about that event from the map. However, the map
+           ADT does not provide any way to get a list of all events ordered by the time at
+           which they occur, or to search for which event occurred closest to a particular time.
+           In fact, the fast performance of hash-based implementations of the map ADT relies
+           on the intentionally scattering of keys that may seem very “near” to each other in
+           the original domain, so that they are more uniformly distributed in a hash table.
+               In this section, we introduce an extension known as the sorted map ADT that
+           includes all behaviors of the standard map, plus the following:
+                        M.ﬁnd min( ): Return the (key,value) pair with minimum key
+                                          (or None, if map is empty).
+                       M.ﬁnd max( ): Return the (key,value) pair with maximum key
+                                          (or None, if map is empty).
+                          M.ﬁnd lt(k): Return the (key,value) pair with the greatest key that
+                                          is strictly less than k (or None, if no such item exists).
+                          M.ﬁnd le(k): Return the (key,value) pair with the greatest key that
+                                          is less than or equal to k (or None, if no such item
+                                          exists).
+                         M.ﬁnd gt(k): Return the (key,value) pair with the least key that is
+                                          strictly greater than k (or None, if no such item exists).
+                         M.ﬁnd ge(k): Return the (key,value) pair with the least key that is
+                                          greater than or equal to k (or None, if no such item).
+        M.ﬁnd range(start, stop): Iterate all (key,value) pairs with start <= key < stop.
+                                          If start is None, iteration begins with minimum key; if
+                                          stop is None, iteration concludes with maximum key.
+                                iter(M): Iterate all keys of the map according to their natural
+                                          order, from smallest to largest.
+                          reversed(M): Iterate all keys of the map in reverse order; in Python,
+                                          this is implemented with the reversed method.

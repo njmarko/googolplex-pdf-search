@@ -1,0 +1,34 @@
+13.6. Exercises                                                                           613
+ 13.6       Exercises
+          For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+       Reinforcement
+           R-13.1 List the preﬁxes of the string P ="aaabbaaa" that are also sufﬁxes of P.
+           R-13.2 What is the longest (proper) preﬁx of the string "cgtacgttcgtacg" that
+                    is also a sufﬁx of this string?
+           R-13.3 Draw a ﬁgure illustrating the comparisons done by brute-force pattern
+                    matching for the text "aaabaadaabaaa" and pattern "aabaaa".
+           R-13.4 Repeat the previous problem for the Boyer-Moore algorithm, not counting
+                    the comparisons made to compute the last(c) function.
+           R-13.5 Repeat Exercise R-13.3 for the Knuth-Morris-Pratt algorithm, not count-
+                    ing the comparisons made to compute the failure function.
+           R-13.6 Compute a map representing the last function used in the Boyer-Moore
+                    pattern-matching algorithm for characters in the pattern string:
+                               "the quick brown fox jumped over a lazy cat".
+           R-13.7 Compute a table representing the Knuth-Morris-Pratt failure function for
+                    the pattern string "cgtacgttcgtac".
+           R-13.8 What is the best way to multiply a chain of matrices with dimensions that
+                    are 10 × 5, 5 × 2, 2 × 20, 20 × 12, 12 × 4, and 4 × 60? Show your work.
+           R-13.9 In Figure 13.8, we illustrate that GTTTAA is a longest common subse-
+                    quence for the given strings X and Y . However, that answer is not unique.
+                    Give another common subsequence of X and Y having length six.
+          R-13.10 Show the longest common subsequence array L for the two strings:
+                                              X    = "skullandbones"
+                                              Y    = "lullabybabies"
+                    What is a longest common subsequence between these strings?
+          R-13.11 Draw the frequency array and Huffman tree for the following string:
+                               "dogs do not spot hot pots or cats".
+          R-13.12 Draw a standard trie for the following set of strings:
+                      { abab, baba, ccccc, bbaaaa, caa, bbaacc, cbcc, cbca }.
+          R-13.13 Draw a compressed trie for the strings given in the previous problem.
+          R-13.14 Draw the compact representation of the sufﬁx trie for the string:
+                               "minimize minime".

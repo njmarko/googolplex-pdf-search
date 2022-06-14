@@ -1,0 +1,36 @@
+332                                                                     Chapter 8. Trees
+    Binary Search Trees
+    An important application of the inorder traversal algorithm arises when we store an
+    ordered sequence of elements in a binary tree, deﬁning a structure we call a binary
+    search tree. Let S be a set whose unique elements have an order relation. For
+    example, S could be a set of integers. A binary search tree for S is a binary tree T
+    such that, for each position p of T :
+        • Position p stores an element of S, denoted as e(p).
+        • Elements stored in the left subtree of p (if any) are less than e(p).
+        • Elements stored in the right subtree of p (if any) are greater than e(p).
+    An example of a binary search tree is shown in Figure 8.19. The above properties
+    assure that an inorder traversal of a binary search tree T visits the elements in
+    nondecreasing order.
+                                                     58
+                                   31                                90
+                            25               42            62
+                         12               36                   75
+    Figure 8.19: A binary search tree storing integers. The solid path is traversed when
+    searching (successfully) for 36. The dashed path is traversed when searching (un-
+    successfully) for 70.
+         We can use a binary search tree T for set S to ﬁnd whether a given search
+    value v is in S, by traversing a path down the tree T , starting at the root. At each
+    internal position p encountered, we compare our search value v with the element
+    e(p) stored at p. If v < e(p), then the search continues in the left subtree of p.
+    If v = e(p), then the search terminates successfully. If v > e(p), then the search
+    continues in the right subtree of p. Finally, if we reach an empty subtree, the search
+    terminates unsuccessfully. In other words, a binary search tree can be viewed as a
+    binary decision tree (recall Example 8.6), where the question asked at each internal
+    node is whether the element at that node is less than, equal to, or larger than the
+    element being searched for. We illustrate several examples of the search operation
+    in Figure 8.19.
+         Note that the running time of searching in a binary search tree T is proportional
+    to the height of T . Recall from Proposition 8.8 that the height of a binary tree with
+    n nodes can be as small as log(n + 1) − 1 or as large as n − 1. Thus, binary search
+    trees are most efﬁcient when they have small height. Chapter 11 is devoted to the
+    study of search trees.

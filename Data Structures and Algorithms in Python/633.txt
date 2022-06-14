@@ -1,0 +1,36 @@
+612                                                            Chapter 13. Text Processing
+    13.5.4 Search Engine Indexing
+       The World Wide Web contains a huge collection of text documents (Web pages).
+       Information about these pages are gathered by a program called a Web crawler,
+       which then stores this information in a special dictionary database. A Web search
+       engine allows users to retrieve relevant information from this database, thereby
+       identifying relevant pages on the Web containing given keywords. In this section,
+       we present a simpliﬁed model of a search engine.
+       Inverted Files
+       The core information stored by a search engine is a dictionary, called an inverted
+       index or inverted ﬁle, storing key-value pairs (w, L), where w is a word and L is
+       a collection of pages containing word w. The keys (words) in this dictionary are
+       called index terms and should be a set of vocabulary entries and proper nouns as
+       large as possible. The elements in this dictionary are called occurrence lists and
+       should cover as many Web pages as possible.
+            We can efﬁciently implement an inverted index with a data structure consisting
+       of the following:
+           1. An array storing the occurrence lists of the terms (in no particular order).
+           2. A compressed trie for the set of index terms, where each leaf stores the index
+              of the occurrence list of the associated term.
+       The reason for storing the occurrence lists outside the trie is to keep the size of the
+       trie data structure sufﬁciently small to ﬁt in internal memory. Instead, because of
+       their large total size, the occurrence lists have to be stored on disk.
+            With our data structure, a query for a single keyword is similar to a word-
+       matching query (Section 13.5.1). Namely, we ﬁnd the keyword in the trie and we
+       return the associated occurrence list.
+            When multiple keywords are given and the desired output are the pages con-
+       taining all the given keywords, we retrieve the occurrence list of each keyword
+       using the trie and return their intersection. To facilitate the intersection computa-
+       tion, each occurrence list should be implemented with a sequence sorted by address
+       or with a map, to allow efﬁcient set operations.
+            In addition to the basic task of returning a list of pages containing given key-
+       words, search engines provide an important additional service by ranking the pages
+       returned by relevance. Devising fast and accurate ranking algorithms for search
+       engines is a major challenge for computer researchers and electronic commerce
+       companies.

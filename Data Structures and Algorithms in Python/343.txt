@@ -1,0 +1,43 @@
+322                                                                    Chapter 8. Trees
+     80   def add root(self, e):
+     81     ”””Place element e at the root of an empty tree and return new Position.
+     82
+     83     Raise ValueError if tree nonempty.
+     84     ”””
+     85     if self. root is not None: raise ValueError( Root exists )
+     86     self. size = 1
+     87     self. root = self. Node(e)
+     88     return self. make position(self. root)
+     89
+     90   def add left(self, p, e):
+     91     ”””Create a new left child for Position p, storing element e.
+     92
+     93     Return the Position of new node.
+     94     Raise ValueError if Position p is invalid or p already has a left child.
+     95     ”””
+     96     node = self. validate(p)
+     97     if node. left is not None: raise ValueError( Left child exists )
+     98     self. size += 1
+     99     node. left = self. Node(e, node)                        # node is its parent
+    100     return self. make position(node. left)
+    101
+    102   def add right(self, p, e):
+    103     ”””Create a new right child for Position p, storing element e.
+    104
+    105     Return the Position of new node.
+    106     Raise ValueError if Position p is invalid or p already has a right child.
+    107     ”””
+    108     node = self. validate(p)
+    109     if node. right is not None: raise ValueError( Right child exists )
+    110     self. size += 1
+    111     node. right = self. Node(e, node)                       # node is its parent
+    112     return self. make position(node. right)
+    113
+    114   def replace(self, p, e):
+    115     ”””Replace the element at position p with e, and return old element.”””
+    116     node = self. validate(p)
+    117     old = node. element
+    118     node. element = e
+    119     return old
+        Code Fragment 8.10: Nonpublic update methods for the LinkedBinaryTree class
+        (continued in Code Fragment 8.11).

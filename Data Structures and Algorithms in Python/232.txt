@@ -1,0 +1,29 @@
+5.5. Using Array-Based Sequences                                                                211
+          A Class for High Scores
+          To maintain a sequence of high scores, we develop a class named Scoreboard. A
+          scoreboard is limited to a certain number of high scores that can be saved; once that
+          limit is reached, a new score only qualiﬁes for the scoreboard if it is strictly higher
+          than the lowest “high score” on the board. The length of the desired scoreboard may
+          depend on the game, perhaps 10, 50, or 500. Since that limit may vary depending on
+          the game, we allow it to be speciﬁed as a parameter to our Scoreboard constructor.
+               Internally, we will use a Python list named board in order to manage the
+          GameEntry instances that represent the high scores. Since we expect the score-
+          board to eventually reach full capacity, we initialize the list to be large enough to
+          hold the maximum number of scores, but we initially set all entries to None. By
+          allocating the list with maximum capacity initially, it never needs to be resized. As
+          entries are added, we will maintain them from highest to lowest score, starting at
+          index 0 of the list. We illustrate a typical state of the data structure in Figure 5.18.
+                      Rob  750         Anna 660          Jack  510
+           Mike 1105         Paul  720        Rose 590
+              0        1        2        3       4         5        6        7       8        9
+          Figure 5.18: An illustration of an ordered list of length ten, storing references to six
+          GameEntry objects in the cells from index 0 to 5, with the rest being None.
+               A complete Python implementation of the Scoreboard class is given in Code
+          Fragment 5.8. The constructor is rather simple. The command
+                self. board = [None]       capacity
+          creates a list with the desired length, yet all entries equal to None. We maintain
+          an additional instance variable, n, that represents the number of actual entries
+          currently in our table. For convenience, our class supports the getitem method
+          to retrieve an entry at a given index with a syntax board[i] (or None if no such entry
+          exists), and we support a simple str method that returns a string representation
+          of the entire scoreboard, with one entry per line.

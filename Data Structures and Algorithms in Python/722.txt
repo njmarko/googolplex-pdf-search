@@ -1,0 +1,40 @@
+15.1. Memory Management                                                                      701
+         Reference Counts
+         Within the state of every Python object is an integer known as its reference count.
+         This is the count of how many references to the object exist anywhere in the system.
+         Every time a reference is assigned to this object, its reference count is incremented,
+         and every time one of those references is reassigned to something else, the reference
+         count for the former object is decremented. The maintenance of a reference count
+         for each object adds O(1) space per object, and the increments and decrements to
+         the count add O(1) additional computation time per such operations.
+              The Python interpreter allows a running program to examine an object’s ref-
+         erence count. Within the sys module there is a function named getrefcount that
+         returns an integer equal to the reference count for the object sent as a parameter. It
+         is worth noting that because the formal parameter of that function is assigned to the
+         actual parameter sent by the caller, there is temporarily one additional reference to
+         that object in the local namespace of the function at the time the count is reported.
+              The advantage of having a reference count for each object is that if an object’s
+         count is ever decremented to zero, that object cannot possibly be a live object and
+         therefore the system can immediately deallocate the object (or place it in a queue
+         of objects that are ready to be deallocated).
+         Cycle Detection
+         Although it is clear that an object with a reference count of zero cannot be a live
+         object, it is important to recognize that an object with a nonzero reference count
+         need not qualify as live. There may exist a group of objects that have references to
+         each other, even though none of those objects are reachable from a root object.
+              For example, a running Python program may have an identiﬁer, data, that is a
+         reference to a sequence implemented using a doubly linked list. In this case, the
+         list referenced by data is a root object, the header and trailer nodes that are stored
+         as attributes of the list are live objects, as are all the intermediate nodes of the list
+         that are indirectly referenced and all the elements that are referenced as elements
+         of those nodes. If the identiﬁer, data, were to go out of scope, or to be reassigned
+         to some other object, the reference count for the list instance may go to zero and
+         be garbage collected, but the reference counts for all of the nodes would remain
+         nonzero, stopping them from being garbage collected by the simple rule above.
+              Every so often, in particular when the available space in the memory heap is
+         becoming scarce, the Python interpreter uses a more advanced form of garbage
+         collection to reclaim objects that are unreachable, despite their nonzero reference
+         counts. There are different algorithms for implementing cycle detection. (The
+         mechanics of garbage collection in Python are abstracted in the gc module, and
+         may vary depending on the implementation of the interpreter.) A classic algorithm
+         for garbage collection is the mark-sweep algorithm, which we next discuss.

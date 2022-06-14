@@ -1,0 +1,43 @@
+7.2. Circularly Linked Lists                                                          269
+      20    def ﬁrst(self):
+      21       ”””Return (but do not remove) the element at the front of the queue.
+      22
+      23       Raise Empty exception if the queue is empty.
+      24       ”””
+      25       if self.is empty( ):
+      26          raise Empty( Queue is empty )
+      27       head = self. tail. next
+      28       return head. element
+      29
+      30    def dequeue(self):
+      31       ”””Remove and return the ﬁrst element of the queue (i.e., FIFO).
+      32
+      33       Raise Empty exception if the queue is empty.
+      34       ”””
+      35       if self.is empty( ):
+      36          raise Empty( Queue is empty )
+      37       oldhead = self. tail. next
+      38       if self. size == 1:                      # removing only element
+      39          self. tail = None                     # queue becomes empty
+      40       else:
+      41          self. tail. next = oldhead. next      # bypass the old head
+      42       self. size −= 1
+      43       return oldhead. element
+      44
+      45    def enqueue(self, e):
+      46       ”””Add an element to the back of queue.”””
+      47       newest = self. Node(e, None)             # node will be new tail node
+      48       if self.is empty( ):
+      49          newest. next = newest                 # initialize circularly
+      50       else:
+      51          newest. next = self. tail. next       # new node points to head
+      52          self. tail. next = newest             # old tail points to new node
+      53       self. tail = newest                      # new node becomes the tail
+      54       self. size += 1
+      55
+      56    def rotate(self):
+      57       ”””Rotate front element to the back of the queue.”””
+      58       if self. size > 0:
+      59          self. tail = self. tail. next         # old head becomes new tail
+          Code Fragment 7.10: Implementation of a CircularQueue class, using a circularly
+          linked list as storage (continued from Code Fragment 7.9).

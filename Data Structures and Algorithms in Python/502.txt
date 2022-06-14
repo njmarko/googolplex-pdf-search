@@ -1,0 +1,35 @@
+11.3. AVL Trees                                                                             481
+ 11.3       AVL Trees
+         The TreeMap class, which uses a standard binary search tree as its data structure,
+         should be an efﬁcient map data structure, but its worst-case performance for the
+         various operations is linear time, because it is possible that a series of operations
+         results in a tree with linear height. In this section, we describe a simple balancing
+         strategy that guarantees worst-case logarithmic running time for all the fundamental
+         map operations.
+         Deﬁnition of an AVL Tree
+         The simple correction is to add a rule to the binary search tree deﬁnition that will
+         maintain a logarithmic height for the tree. Although we originally deﬁned the
+         height of a subtree rooted at position p of a tree to be the number of edges on
+         the longest path from p to a leaf (see Section 8.1.3), it is easier for explanation in
+         this section to consider the height to be the number of nodes on such a longest path.
+         By this deﬁnition, a leaf position has height 1, while we trivially deﬁne the height
+         of a “null” child to be 0.
+              In this section, we consider the following height-balance property, which char-
+         acterizes the structure of a binary search tree T in terms of the heights of its nodes.
+         Height-Balance Property: For every position p of T , the heights of the children
+                 of p differ by at most 1.
+         Any binary search tree T that satisﬁes the height-balance property is said to be an
+         AVL tree, named after the initials of its inventors: Adel’son-Vel’skii and Landis.
+         An example of an AVL tree is shown in Figure 11.11.
+                                                  4
+                                                 44
+                                      2                            3
+                                     17                           78
+                                            1             2             1
+                                   0       32             50           88
+                                                     1         1
+                                         0    0      48        62    0    0
+                                                   0    0    0    0
+         Figure 11.11: An example of an AVL tree. The keys of the items are shown inside
+         the nodes, and the heights of the nodes are shown above the nodes (with empty
+         subtrees having height 0).

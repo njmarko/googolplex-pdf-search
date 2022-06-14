@@ -1,0 +1,42 @@
+8.1. General Trees                                                                                 307
+       1 class Tree:
+       2    ”””Abstract base class representing a tree structure.”””
+       3
+       4    #------------------------------- nested Position class -------------------------------
+       5    class Position:
+       6      ”””An abstraction representing the location of a single element.”””
+       7
+       8      def element(self):
+       9        ”””Return the element stored at this Position.”””
+      10        raise NotImplementedError( must be implemented by subclass )
+      11
+      12      def eq (self, other):
+      13        ”””Return True if other Position represents the same location.”””
+      14        raise NotImplementedError( must be implemented by subclass )
+      15
+      16      def ne (self, other):
+      17        ”””Return True if other does not represent the same location.”””
+      18        return not (self == other)                     # opposite of eq
+      19
+      20    # ---------- abstract methods that concrete subclass must support ----------
+      21    def root(self):
+      22      ”””Return Position representing the tree s root (or None if empty).”””
+      23      raise NotImplementedError( must be implemented by subclass )
+      24
+      25    def parent(self, p):
+      26      ”””Return Position representing p s parent (or None if p is root).”””
+      27      raise NotImplementedError( must be implemented by subclass )
+      28
+      29    def num children(self, p):
+      30      ”””Return the number of children that Position p has.”””
+      31      raise NotImplementedError( must be implemented by subclass )
+      32
+      33    def children(self, p):
+      34      ”””Generate an iteration of Positions representing p s children.”””
+      35      raise NotImplementedError( must be implemented by subclass )
+      36
+      37    def len (self):
+      38      ”””Return the total number of elements in the tree.”””
+      39      raise NotImplementedError( must be implemented by subclass )
+          Code Fragment 8.1: A portion of our Tree abstract base class (continued in Code
+          Fragment 8.2).

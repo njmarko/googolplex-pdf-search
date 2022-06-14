@@ -1,0 +1,36 @@
+270                                                               Chapter 7. Linked Lists
+ 7.3 Doubly Linked Lists
+     In a singly linked list, each node maintains a reference to the node that is immedi-
+     ately after it. We have demonstrated the usefulness of such a representation when
+     managing a sequence of elements. However, there are limitations that stem from
+     the asymmetry of a singly linked list. In the opening of Section 7.1, we empha-
+     sized that we can efﬁciently insert a node at either end of a singly linked list, and
+     can delete a node at the head of a list, but we are unable to efﬁciently delete a node
+     at the tail of the list. More generally, we cannot efﬁciently delete an arbitrary node
+     from an interior position of the list if only given a reference to that node, because
+     we cannot determine the node that immediately precedes the node to be deleted
+     (yet, that node needs to have its next reference updated).
+          To provide greater symmetry, we deﬁne a linked list in which each node keeps
+     an explicit reference to the node before it and a reference to the node after it. Such
+     a structure is known as a doubly linked list. These lists allow a greater variety of
+     O(1)-time update operations, including insertions and deletions at arbitrary posi-
+     tions within the list. We continue to use the term “next” for the reference to the
+     node that follows another, and we introduce the term “prev” for the reference to the
+     node that precedes it.
+     Header and Trailer Sentinels
+     In order to avoid some special cases when operating near the boundaries of a doubly
+     linked list, it helps to add special nodes at both ends of the list: a header node at the
+     beginning of the list, and a trailer node at the end of the list. These “dummy” nodes
+     are known as sentinels (or guards), and they do not store elements of the primary
+     sequence. A doubly linked list with such sentinels is shown in Figure 7.10.
+           header     next             next              next               next   trailer
+                               JFK             PVD                SFO
+                      prev             prev              prev               prev
+     Figure 7.10: A doubly linked list representing the sequence { JFK, PVD, SFO },
+     using sentinels header and trailer to demarcate the ends of the list.
+          When using sentinel nodes, an empty list is initialized so that the next ﬁeld of
+     the header points to the trailer, and the prev ﬁeld of the trailer points to the header;
+     the remaining ﬁelds of the sentinels are irrelevant (presumably None, in Python).
+     For a nonempty list, the header’s next will refer to a node containing the ﬁrst real
+     element of a sequence, just as the trailer’s prev references the node containing the
+     last element of a sequence.

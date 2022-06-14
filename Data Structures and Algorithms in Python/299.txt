@@ -1,0 +1,39 @@
+278                                                             Chapter 7. Linked Lists
+        As another example, a text document can be viewed as a long sequence of
+    characters. A word processor uses the abstraction of a cursor to describe a position
+    within the document without explicit use of an integer index, allowing operations
+    such as “delete the character at the cursor” or “insert a new character just after the
+    cursor.” Furthermore, we may be able to refer to an inherent position within a doc-
+    ument, such as the beginning of a particular section, without relying on a character
+    index (or even a section number) that may change as the document evolves.
+    A Node Reference as a Position?
+    One of the great beneﬁts of a linked list structure is that it is possible to perform
+    O(1)-time insertions and deletions at arbitrary positions of the list, as long as we
+    are given a reference to a relevant node of the list. It is therefore very tempting to
+    develop an ADT in which a node reference serves as the mechanism for describing
+    a position. In fact, our DoublyLinkedBase class of Section 7.3.1 has methods
+     insert between and delete node that accept node references as parameters.
+        However, such direct use of nodes would violate the object-oriented design
+    principles of abstraction and encapsulation that were introduced in Chapter 2. There
+    are several reasons to prefer that we encapsulate the nodes of a linked list, for both
+    our sake and for the beneﬁt of users of our abstraction.
+        • It will be simpler for users of our data structure if they are not bothered with
+           unnecessary details of our implementation, such as low-level manipulation
+           of nodes, or our reliance on the use of sentinel nodes. Notice that to use the
+            insert between method of our DoublyLinkedBase class to add a node at
+           the beginning of a sequence, the header sentinel must be sent as a parameter.
+        • We can provide a more robust data structure if we do not permit users to
+           directly access or manipulate the nodes. In that way, we ensure that users
+           cannot invalidate the consistency of a list by mismanaging the linking of
+           nodes. A more subtle problem arises if a user were allowed to call the
+            insert between or delete node method of our DoublyLinkedBase class,
+           sending a node that does not belong to the given list as a parameter. (Go back
+           and look at that code and see why it causes a problem!)
+        • By better encapsulating the internal details of our implementation, we have
+           greater ﬂexibility to redesign the data structure and improve its performance.
+           In fact, with a well-designed abstraction, we can provide a notion of a non-
+           numeric position, even if using an array-based sequence.
+        For these reasons, instead of relying directly on nodes, we introduce an inde-
+    pendent position abstraction to denote the location of an element within a list, and
+    then a complete positional list ADT that can encapsulate a doubly linked list (or
+    even an array-based sequence; see Exercise P-7.46).

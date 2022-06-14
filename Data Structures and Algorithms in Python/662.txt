@@ -1,0 +1,24 @@
+14.3. Graph Traversals                                                                     641
+                   A        B        C       D             A         B       C       D
+                   E        F        G       H             E          F      G       H
+                   I        J        K       L              I         J      K       L
+                   M        N        O       P             M         N       O       P
+                               (a)                                      (b)
+                   A        B        C       D             A         B       C       D
+                   E        F        G       H             E          F      G       H
+                   I        J        K       L              I         J      K       L
+                   M        N        O       P             M         N       O       P
+                               (c)                                      (d)
+                   A        B        C       D             A         B       C       D
+                   E        F        G       H             E          F      G       H
+                   I        J        K       L              I         J      K       L
+                   M        N        O       P             M         N       O       P
+                               (e)                                      (f )
+          Figure 14.9: Example of depth-ﬁrst search traversal on an undirected graph starting
+          at vertex A. We assume that a vertex’s adjacencies are considered in alphabetical
+          order. Visited vertices and explored edges are highlighted, with discovery edges
+          drawn as solid lines and nontree (back) edges as dashed lines: (a) input graph;
+          (b) path of tree edges, traced from A until back edge (G,C) is examined; (c) reach-
+          ing F, which is a dead end; (d) after backtracking to I, resuming with edge (I,M),
+          and hitting another dead end at O; (e) after backtracking to G, continuing with edge
+          (G,L), and hitting another dead end at H; (f ) ﬁnal result.

@@ -1,0 +1,41 @@
+1.7. Exception Handling                                                                        35
+               How much error-checking to perform within a function is a matter of debate.
+          Checking the type and value of each parameter demands additional execution time
+          and, if taken to an extreme, seems counter to the nature of Python. Consider the
+          built-in sum function, which computes a sum of a collection of numbers. An im-
+          plementation with rigorous error-checking might be written as follows:
+                def sum(values):
+                  if not isinstance(values, collections.Iterable):
+                     raise TypeError( parameter must be an iterable type )
+                  total = 0
+                  for v in values:
+                     if not isinstance(v, (int, ﬂoat)):
+                        raise TypeError( elements must be numeric )
+                     total = total+ v
+                  return total
+          The abstract base class, collections.Iterable, includes all of Python’s iterable con-
+          tainers types that guarantee support for the for-loop syntax (e.g., list, tuple, set);
+          we discuss iterables in Section 1.8, and the use of modules, such as collections, in
+          Section 1.11. Within the body of the for loop, each element is veriﬁed as numeric
+          before being added to the total. A far more direct and clear implementation of this
+          function can be written as follows:
+                def sum(values):
+                  total = 0
+                  for v in values:
+                     total = total + v
+                  return total
+          Interestingly, this simple implementation performs exactly like Python’s built-in
+          version of the function. Even without the explicit checks, appropriate exceptions
+          are raised naturally by the code. In particular, if values is not an iterable type, the
+          attempt to use the for-loop syntax raises a TypeError reporting that the object is not
+          iterable. In the case when a user sends an iterable type that includes a nonnumer-
+          ical element, such as sum([3.14, oops ]), a TypeError is naturally raised by the
+          evaluation of expression total + v. The error message
+                 unsupported operand type(s) for +: ’float’ and ’str’
+          should be sufﬁciently informative to the caller. Perhaps slightly less obvious is the
+          error that results from sum([ alpha , beta ]). It will technically report a failed
+          attempt to add an int and str, due to the initial evaluation of total + alpha ,
+          when total has been initialized to 0.
+               In the remainder of this book, we tend to favor the simpler implementations
+          in the interest of clean presentation, performing minimal error-checking in most
+          situations.

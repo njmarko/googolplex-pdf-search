@@ -1,0 +1,40 @@
+654                                                                Chapter 14. Graph Algorithms
+            The importance of the Floyd-Warshall algorithm is that it is much easier to
+       implement than DFS, and much faster in practice because there are relatively few
+       low-level operations hidden within the asymptotic notation. The algorithm is par-
+       ticularly well suited for the use of an adjacency matrix, as a single bit can be used
+       to designate the reachability modeled as an edge (u, v) in the transitive closure.
+            However, note that repeated calls to DFS results in better asymptotic perfor-
+       mance when the graph is sparse and represented using an adjacency list or adja-
+       cency map. In that case, a single DFS runs in O(n + m) time, and so the transitive
+       closure can be computed in O(n2 + nm) time, which is preferable to O(n3 ).
+       Python Implementation
+       We conclude with a Python implementation of the Floyd-Warshall algorithm, as
+       presented in Code Fragment 14.10. Although the original algorithm is described
+       using a series of directed graphs G           1, . . . , G
+                                                0, G             n , we create a single copy of the
+       original graph (using the deepcopy method of Python’s copy module) and then re-
+       peatedly add new edges to the closure as we progress through rounds of the Floyd-
+       Warshall algorithm.
+            The algorithm requires a canonical numbering of the graph’s vertices; therefore,
+       we create a list of the vertices in the closure graph, and subsequently index that list
+       for our order. Within the outermost loop, we must consider all pairs i and j. Finally,
+       we optimize by only iterating through all values of j after we have veriﬁed that i
+       has been chosen such that (vi , vk ) exists in the current version of our closure.
+     1 def ﬂoyd warshall(g):
+     2    ”””Return a new graph that is the transitive closure of g.”””
+     3    closure = deepcopy(g)                                       # imported from copy module
+     4    verts = list(closure.vertices( ))                           # make indexable list
+     5    n = len(verts)
+     6    for k in range(n):
+     7      for i in range(n):
+     8         # verify that edge (i,k) exists in the partial closure
+     9         if i != k and closure.get edge(verts[i],verts[k]) is not None:
+    10            for j in range(n):
+    11               # verify that edge (k,j) exists in the partial closure
+    12               if i != j != k and closure.get edge(verts[k],verts[j]) is not None:
+    13                  # if (i,j) not yet included, add it to the closure
+    14                  if closure.get edge(verts[i],verts[j]) is None:
+    15                     closure.insert edge(verts[i],verts[j])
+    16    return closure
+         Code Fragment 14.10: Python implementation of the Floyd-Warshall algorithm.

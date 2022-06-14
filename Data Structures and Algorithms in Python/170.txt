@@ -1,0 +1,37 @@
+                                                                                  149
+    One way to describe repetition within a computer program is the use of loops,
+such as Python’s while-loop and for-loop constructs described in Section 1.4.2. An
+entirely different way to achieve repetition is through a process known as recursion.
+    Recursion is a technique by which a function makes one or more calls to itself
+during execution, or by which a data structure relies upon smaller instances of
+the very same type of structure in its representation. There are many examples of
+recursion in art and nature. For example, fractal patterns are naturally recursive. A
+physical example of recursion used in art is in the Russian Matryoshka dolls. Each
+doll is either made of solid wood, or is hollow and contains another Matryoshka
+doll inside it.
+    In computing, recursion provides an elegant and powerful alternative for per-
+forming repetitive tasks. In fact, a few programming languages (e.g., Scheme,
+Smalltalk) do not explicitly support looping constructs and instead rely directly
+on recursion to express repetition. Most modern programming languages support
+functional recursion using the identical mechanism that is used to support tradi-
+tional forms of function calls. When one invocation of the function make a recur-
+sive call, that invocation is suspended until the recursive call completes.
+    Recursion is an important technique in the study of data structures and algo-
+rithms. We will use it prominently in several later chapters of this book (most
+notably, Chapters 8 and 12). In this chapter, we begin with the following four il-
+lustrative examples of the use of recursion, providing a Python implementation for
+each.
+    • The factorial function (commonly denoted as n!) is a classic mathematical
+       function that has a natural recursive deﬁnition.
+    • An English ruler has a recursive pattern that is a simple example of a fractal
+       structure.
+    • Binary search is among the most important computer algorithms. It allows
+       us to efﬁciently locate a desired value in a data set with upwards of billions
+       of entries.
+    • The ﬁle system for a computer has a recursive structure in which directories
+       can be nested arbitrarily deeply within other directories. Recursive algo-
+       rithms are widely used to explore and manage these ﬁle systems.
+    We then describe how to perform a formal analysis of the running time of a
+recursive algorithm and we discuss some potential pitfalls when deﬁning recur-
+sions. In the balance of the chapter, we provide many more examples of recursive
+algorithms, organized to highlight some common forms of design.

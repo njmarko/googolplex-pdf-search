@@ -1,0 +1,32 @@
+11.5. (2,4) Trees                                                                               511
+                A fusion operation at node w may cause a new underﬂow to occur at the parent
+            u of w, which in turn triggers a transfer or fusion at u. (See Figure 11.29.) Hence,
+            the number of fusion operations is bounded by the height of the tree, which is
+            O(log n) by Proposition 11.8. If an underﬂow propagates all the way up to the root,
+            then the root is simply deleted. (See Figure 11.29c and d.)
+                                       11                                      11
+                                                                                            u
+                            6                      15              6
+                                           14                                       15
+                                                                                   w
+                        5       8 10                  17        5      8 10                   17
+                                      (a)                                     (b)
+                                          u
+                                                 11
+                                                      w
+                              6                                              6 11
+                          5      8 10             15 17          5           8 10         15 17
+                                      (c)                                     (d)
+            Figure 11.29: A propagating sequence of fusions in a (2, 4) tree: (a) removal of 14,
+            which causes an underﬂow; (b) fusion, which causes another underﬂow; (c) second
+            fusion operation, which causes the root to be removed; (d) ﬁnal tree.
+           Performance of (2,4) Trees
+            The asymptotic performance of a (2, 4) tree is identical to that of an AVL tree (see
+            Table 11.2) in terms of the sorted map ADT, with guaranteed logarithmic bounds
+            for most operations. The time complexity analysis for a (2, 4) tree having n key-
+            value pairs is based on the following:
+                • The height of a (2, 4) tree storing n entries is O(log n), by Proposition 11.8.
+                • A split, transfer, or fusion operation takes O(1) time.
+                • A search, insertion, or removal of an entry visits O(log n) nodes.
+                Thus, (2, 4) trees provide for fast map search and update operations. (2, 4) trees
+            also have an interesting relationship to the data structure we discuss next.

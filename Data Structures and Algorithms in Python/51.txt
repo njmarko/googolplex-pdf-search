@@ -1,0 +1,35 @@
+30                                                               Chapter 1. Python Primer
+ 1.6    Simple Input and Output
+        In this section, we address the basics of input and output in Python, describing stan-
+        dard input and output through the user console, and Python’s support for reading
+        and writing text ﬁles.
+     1.6.1 Console Input and Output
+        The print Function
+        The built-in function, print, is used to generate standard output to the console.
+        In its simplest form, it prints an arbitrary sequence of arguments, separated by
+        spaces, and followed by a trailing newline character. For example, the command
+        print( maroon , 5) outputs the string maroon 5\n . Note that arguments need
+        not be string instances. A nonstring argument x will be displayed as str(x). Without
+        any arguments, the command print( ) outputs a single newline character.
+            The print function can be customized through the use of the following keyword
+        parameters (see Section 1.5 for a discussion of keyword parameters):
+            • By default, the print function inserts a separating space into the output be-
+               tween each pair of arguments. The separator can be customized by providing
+               a desired separating string as a keyword parameter, sep. For example, colon-
+               separated output can be produced as print(a, b, c, sep= : ). The separating
+               string need not be a single character; it can be a longer string, and it can be
+               the empty string, sep= , causing successive arguments to be directly con-
+               catenated.
+            • By default, a trailing newline is output after the ﬁnal argument. An alterna-
+               tive trailing string can be designated using a keyword parameter, end. Des-
+               ignating the empty string end= suppresses all trailing characters.
+            • By default, the print function sends its output to the standard console. How-
+               ever, output can be directed to a ﬁle by indicating an output ﬁle stream (see
+               Section 1.6.2) using ﬁle as a keyword parameter.
+        The input Function
+        The primary means for acquiring information from the user console is a built-in
+        function named input. This function displays a prompt, if given as an optional pa-
+        rameter, and then waits until the user enters some sequence of characters followed
+        by the return key. The formal return value of the function is the string of characters
+        that were entered strictly before the return key (i.e., no newline character exists in
+        the returned string).

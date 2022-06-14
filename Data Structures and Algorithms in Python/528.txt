@@ -1,0 +1,25 @@
+11.5. (2,4) Trees                                                                                       507
+                      u                                 u                                u
+                      h1 h2                            h1     h2                       h 1 k3 h 2
+                                                                 k3
+                     w                                  w                         w                w
+                   k1 k2 k3 k4                       k1 k2       k4            k1 k2                k4
+           c1     c2     c3     c4     c5    c1     c2     c3    c4 c5    c1      c2      c3     c4     c5
+                         (a)                              (b)                            (c)
+            Figure 11.25: A node split: (a) overﬂow at a 5-node w; (b) the third key of w inserted
+            into the parent u of w; (c) node w replaced with a 3-node w and a 2-node w .
+                         5 10 12                                           5 10 12
+     3 4        6 7 8          11       13 14 15            3 4     6 7 8          11         13 14 15 17
+                        (a)                                                  (b)
+                        5 10 12                                             5 10 12 15
+                                            15
+    3 4        6 7 8         11       13 14      17         3 4     6 7 8          11        13 14      17
+                        (c)                                                  (d)
+                                                                                      12
+                                 12
+                        5 10       15                                5 10                           15
+   3 4         6 7 8         11       13 14      17         3 4     6 7 8          11        13 14      17
+                        (e)                                                  (f )
+            Figure 11.26: An insertion in a (2, 4) tree that causes a cascading split: (a) before
+            the insertion; (b) insertion of 17, causing an overﬂow; (c) a split; (d) after the split
+            a new overﬂow occurs; (e) another split, creating a new root node; (f ) ﬁnal tree.

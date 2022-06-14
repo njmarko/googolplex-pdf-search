@@ -1,0 +1,34 @@
+610                                                                     Chapter 13. Text Processing
+    13.5.3 Suﬃx Tries
+       One of the primary applications for tries is for the case when the strings in the
+       collection S are all the sufﬁxes of a string X . Such a trie is called the sufﬁx trie (also
+       known as a sufﬁx tree or position tree) of string X . For example, Figure 13.14a
+       shows the sufﬁx trie for the eight sufﬁxes of string “minimize.” For a sufﬁx trie, the
+       compact representation presented in the previous section can be further simpliﬁed.
+       Namely, the label of each vertex is a pair ( j, k) indicating the string X [ j : k]. (See
+       Figure 13.14b.) To satisfy the rule that no sufﬁx of X is a preﬁx of another sufﬁx,
+       we can add a special character, denoted with $, that is not in the original alphabet Σ
+       at the end of X (and thus to every sufﬁx). That is, if string X has length n, we build
+       a trie for the set of n strings X [ j : n], for j = 0, . . . , n − 1.
+       Saving Space
+       Using a sufﬁx trie allows us to save space over a standard trie by using several space
+       compression techniques, including those used for the compressed trie.
+            The advantage of the compact representation of tries now becomes apparent for
+       sufﬁx tries. Since the total length of the sufﬁxes of a string X of length n is
+                                                            n(n + 1)
+                                      1+ 2+ ···+ n =                      ,
+                                                                    2
+       storing all the sufﬁxes of X explicitly would take O(n2 ) space. Even so, the suf-
+       ﬁx trie represents these strings implicitly in O(n) space, as formally stated in the
+       following proposition.
+       Proposition 13.8: The compact representation of a sufﬁx trie T for a string X of
+       length n uses O(n) space.
+       Construction
+       We can construct the sufﬁx trie for a string of length n with an incremental algo-
+       rithm like the one given in Section 13.5.1. This construction takes O(|Σ|n2 ) time
+       because the total length of the sufﬁxes is quadratic in n. However, the (compact)
+       sufﬁx trie for a string of length n can be constructed in O(n) time with a specialized
+       algorithm, different from the one for general tries. This linear-time construction
+       algorithm is fairly complex, however, and is not reported here. Still, we can take
+       advantage of the existence of this fast construction algorithm when we want to use
+       a sufﬁx trie to solve other problems.

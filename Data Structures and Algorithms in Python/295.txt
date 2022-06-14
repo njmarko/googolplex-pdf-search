@@ -1,0 +1,43 @@
+274                                                           Chapter 7. Linked Lists
+     1 class DoublyLinkedBase:
+     2   ”””A base class providing a doubly linked list representation.”””
+     3
+     4   class Node:
+     5     ”””Lightweight, nonpublic class for storing a doubly linked node.”””
+     6     (omitted here; see previous code fragment)
+     7
+     8   def init (self):
+     9     ”””Create an empty list.”””
+    10     self. header = self. Node(None, None, None)
+    11     self. trailer = self. Node(None, None, None)
+    12     self. header. next = self. trailer                # trailer is after header
+    13     self. trailer. prev = self. header                # header is before trailer
+    14     self. size = 0                                    # number of elements
+    15
+    16   def len (self):
+    17     ”””Return the number of elements in the list.”””
+    18     return self. size
+    19
+    20   def is empty(self):
+    21     ”””Return True if list is empty.”””
+    22     return self. size == 0
+    23
+    24   def insert between(self, e, predecessor, successor):
+    25     ”””Add element e between two existing nodes and return new node.”””
+    26     newest = self. Node(e, predecessor, successor) # linked to neighbors
+    27     predecessor. next = newest
+    28     successor. prev = newest
+    29     self. size += 1
+    30     return newest
+    31
+    32   def delete node(self, node):
+    33     ”””Delete nonsentinel node from the list and return its element.”””
+    34     predecessor = node. prev
+    35     successor = node. next
+    36     predecessor. next = successor
+    37     successor. prev = predecessor
+    38     self. size −= 1
+    39     element = node. element                           # record deleted element
+    40     node. prev = node. next = node. element = None            # deprecate node
+    41     return element                                    # return deleted element
+              Code Fragment 7.12: A base class for managing a doubly linked list.

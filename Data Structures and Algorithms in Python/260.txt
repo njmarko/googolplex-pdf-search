@@ -1,0 +1,25 @@
+6.2. Queues                                                                               239
+  6.2    Queues
+         Another fundamental data structure is the queue. It is a close “cousin” of the stack,
+         as a queue is a collection of objects that are inserted and removed according to the
+         ﬁrst-in, ﬁrst-out (FIFO) principle. That is, elements can be inserted at any time,
+         but only the element that has been in the queue the longest can be next removed.
+             We usually say that elements enter a queue at the back and are removed from
+         the front. A metaphor for this terminology is a line of people waiting to get on an
+         amusement park ride. People waiting for such a ride enter at the back of the line
+         and get on the ride from the front of the line. There are many other applications
+         of queues (see Figure 6.4). Stores, theaters, reservation centers, and other similar
+         services typically process customer requests according to the FIFO principle. A
+         queue would therefore be a logical choice for a data structure to handle calls to a
+         customer service center, or a wait-list at a restaurant. FIFO queues are also used by
+         many computing devices, such as a networked printer, or a Web server responding
+         to requests.
+                      Tickets
+                                                   (a)
+                                           er
+                                     C ent
+                               C all
+                                                           Call Queue
+                                                   (b)
+         Figure 6.4: Real-world examples of a ﬁrst-in, ﬁrst-out queue. (a) People waiting in
+         line to purchase tickets; (b) phone calls being routed to a customer service center.

@@ -1,0 +1,47 @@
+734                                                                           Bibliography
+    [41] E. Gamma, R. Helm, R. Johnson, and J. Vlissides, Design Patterns: Elements of
+         Reusable Object-Oriented Software. Reading, MA: Addison-Wesley, 1995.
+    [42] A. Goldberg and D. Robson, Smalltalk-80: The Language. Reading, MA: Addison-
+         Wesley, 1989.
+    [43] M. H. Goldwasser and D. Letscher, Object-Oriented Programming in Python. Upper
+         Saddle River, NJ: Prentice Hall, 2008.
+    [44] G. H. Gonnet and R. Baeza-Yates, Handbook of Algorithms and Data Structures in
+         Pascal and C. Reading, MA: Addison-Wesley, 1991.
+    [45] G. H. Gonnet and J. I. Munro, “Heaps on heaps,” SIAM J. Comput., vol. 15, no. 4,
+         pp. 964–971, 1986.
+    [46] M. T. Goodrich, J.-J. Tsay, D. E. Vengroff, and J. S. Vitter, “External-memory
+         computational geometry,” in Proc. 34th Annu. IEEE Sympos. Found. Comput. Sci.,
+         pp. 714–723, 1993.
+    [47] R. L. Graham and P. Hell, “On the history of the minimum spanning tree problem,”
+         Annals of the History of Computing, vol. 7, no. 1, pp. 43–57, 1985.
+    [48] L. J. Guibas and R. Sedgewick, “A dichromatic framework for balanced trees,” in
+         Proc. 19th Annu. IEEE Sympos. Found. Comput. Sci., Lecture Notes Comput. Sci.,
+         pp. 8–21, Springer-Verlag, 1978.
+    [49] Y. Gurevich, “What does O(n) mean?,” SIGACT News, vol. 17, no. 4, pp. 61–63,
+         1986.
+    [50] J. Hennessy and D. Patterson, Computer Architecture: A Quantitative Approach.
+         San Francisco: Morgan Kaufmann, 2nd ed., 1996.
+    [51] C. A. R. Hoare, “Quicksort,” The Computer Journal, vol. 5, pp. 10–15, 1962.
+    [52] J. E. Hopcroft and R. E. Tarjan, “Efﬁcient algorithms for graph manipulation,” Com-
+         munications of the ACM, vol. 16, no. 6, pp. 372–378, 1973.
+    [53] B.-C. Huang and M. Langston, “Practical in-place merging,” Communications of the
+         ACM, vol. 31, no. 3, pp. 348–352, 1988.
+    [54] J. JáJá, An Introduction to Parallel Algorithms. Reading, MA: Addison-Wesley,
+         1992.
+    [55] V. Jarnı́k, “O jistem problemu minimalnim,” Praca Moravske Prirodovedecke
+         Spolecnosti, vol. 6, pp. 57–63, 1930. (in Czech).
+    [56] R. Jones and R. Lins, Garbage Collection: Algorithms for Automatic Dynamic Mem-
+         ory Management. John Wiley and Sons, 1996.
+    [57] D. R. Karger, P. Klein, and R. E. Tarjan, “A randomized linear-time algorithm to ﬁnd
+         minimum spanning trees,” Journal of the ACM, vol. 42, pp. 321–328, 1995.
+    [58] R. M. Karp and V. Ramachandran, “Parallel algorithms for shared memory ma-
+         chines,” in Handbook of Theoretical Computer Science (J. van Leeuwen, ed.),
+         pp. 869–941, Amsterdam: Elsevier/The MIT Press, 1990.
+    [59] P. Kirschenhofer and H. Prodinger, “The path length of random skip lists,” Acta
+         Informatica, vol. 31, pp. 775–792, 1994.
+    [60] J. Kleinberg and É. Tardos, Algorithm Design. Reading, MA: Addison-Wesley,
+         2006.
+    [61] A. Klink and J. Wälde, “Efﬁcient denial of service attacks on web application plat-
+         forms.” 2011.
+    [62] D. E. Knuth, Sorting and Searching, vol. 3 of The Art of Computer Programming.
+         Reading, MA: Addison-Wesley, 1973.

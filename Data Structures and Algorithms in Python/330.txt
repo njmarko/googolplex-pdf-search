@@ -1,0 +1,38 @@
+8.1. General Trees                                                                           309
+          Height
+          The height of a position p in a tree T is also deﬁned recursively:
+              • If p is a leaf, then the height of p is 0.
+              • Otherwise, the height of p is one more than the maximum of the heights of
+                  p’s children.
+          The height of a nonempty tree T is the height of the root of T . For example, the
+          tree of Figure 8.2 has height 4. In addition, height can also be viewed as follows.
+          Proposition 8.4: The height of a nonempty tree T is equal to the maximum of
+          the depths of its leaf positions.
+               We leave the justiﬁcation of this fact to an exercise (R-8.3). We present an
+          algorithm, height1, implemented in Code Fragment 8.4 as a nonpublic method
+            height1 of the Tree class. It computes the height of a nonempty tree T based on
+          Proposition 8.4 and the algorithm depth from Code Fragment 8.3.
+      58     def height1(self):                         # works, but O(nˆ2) worst-case time
+      59       ”””Return the height of the tree.”””
+      60       return max(self.depth(p) for p in self.positions( ) if self.is leaf(p))
+          Code Fragment 8.4: Method height1 of the Tree class. Note that this method calls
+          the depth method.
+               Unfortunately, algorithm height1 is not very efﬁcient. We have not yet deﬁned
+          the positions( ) method; we will see that it can be implemented to run in O(n) time,
+          where n is the number of positions of T . Because height1 calls algorithm depth(p)
+          on each leaf of T , its running time is O(n + ∑ p∈L (d p + 1)), where L is the set of
+          leaf positions of T . In the worst case, the sum ∑ p∈L (d p + 1) is proportional to n2 .
+          (See Exercise C-8.33.) Thus, algorithm height1 runs in O(n2 ) worst-case time.
+               We can compute the height of a tree more efﬁciently, in O(n) worst-case time,
+          by relying instead on the original recursive deﬁnition. To do this, we will param-
+          eterize a function based on a position within the tree, and calculate the height of
+          the subtree rooted at that position. Algorithm height2, shown as nonpublic method
+            height2 in Code Fragment 8.5, computes the height of tree T in this way.
+      61     def height2(self, p):                         # time is linear in size of subtree
+      62       ”””Return the height of the subtree rooted at Position p.”””
+      63       if self.is leaf(p):
+      64          return 0
+      65       else:
+      66          return 1 + max(self. height2(c) for c in self.children(p))
+          Code Fragment 8.5: Method height2 for computing the height of a subtree rooted
+          at a position p of a Tree.

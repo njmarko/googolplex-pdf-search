@@ -1,0 +1,40 @@
+264                                                                  Chapter 7. Linked Lists
+     7.1.2 Implementing a Queue with a Singly Linked List
+        As we did for the stack ADT, we can use a singly linked list to implement the
+        queue ADT while supporting worst-case O(1)-time for all operations. Because we
+        need to perform operations on both ends of the queue, we will explicitly maintain
+        both a head reference and a tail reference as instance variables for each queue.
+        The natural orientation for a queue is to align the front of the queue with the head of
+        the list, and the back of the queue with the tail of the list, because we must be able
+        to enqueue elements at the back, and dequeue them from the front. (Recall from
+        the introduction of Section 7.1 that we are unable to efﬁciently remove elements
+        from the tail of a singly linked list.) Our implementation of a LinkedQueue class is
+        given in Code Fragments 7.7 and 7.8.
+     1 class LinkedQueue:
+     2    ”””FIFO queue implementation using a singly linked list for storage.”””
+     3
+     4    class Node:
+     5       ”””Lightweight, nonpublic class for storing a singly linked node.”””
+     6       (omitted here; identical to that of LinkedStack. Node)
+     7
+     8    def init (self):
+     9       ”””Create an empty queue.”””
+    10       self. head = None
+    11       self. tail = None
+    12       self. size = 0                                 # number of queue elements
+    13
+    14    def len (self):
+    15       ”””Return the number of elements in the queue.”””
+    16       return self. size
+    17
+    18    def is empty(self):
+    19       ”””Return True if the queue is empty.”””
+    20       return self. size == 0
+    21
+    22    def ﬁrst(self):
+    23       ”””Return (but do not remove) the element at the front of the queue.”””
+    24       if self.is empty( ):
+    25          raise Empty( Queue is empty )
+    26       return self. head. element                     # front aligned with head of list
+        Code Fragment 7.7: Implementation of a queue ADT using a singly linked list
+        (continued in Code Fragment 7.8).

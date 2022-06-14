@@ -1,0 +1,37 @@
+8.4. Tree Traversal Algorithms                                                               333
+       8.4.4 Implementing Tree Traversals in Python
+           When ﬁrst deﬁning the tree ADT in Section 8.1.2, we stated that tree T should
+           include support for the following methods:
+                     T.positions( ): Generate an iteration of all positions of tree T.
+                             iter(T): Generate an iteration of all elements stored within tree T.
+                At that time, we did not make any assumption about the order in which these
+           iterations report their results. In this section, we demonstrate how any of the tree
+           traversal algorithms we have introduced could be used to produce these iterations.
+                To begin, we note that it is easy to produce an iteration of all elements of a
+           tree, if we rely on a presumed iteration of all positions. Therefore, support for
+           the iter(T) syntax can be formally provided by a concrete implementation of the
+           special method iter within the abstract base class Tree. We rely on Python’s
+           generator syntax as the mechanism for producing iterations. (See Section 1.8.) Our
+           implementation of Tree. iter is given in Code Fragment 8.16.
+      75      def iter (self):
+      76        ”””Generate an iteration of the tree s elements.”””
+      77        for p in self.positions( ):        # use same order as positions()
+      78           yield p.element( )              # but yield each element
+           Code Fragment 8.16: Iterating all elements of a Tree instance, based upon an iter-
+           ation of the positions of the tree. This code should be included in the body of the
+           Tree class.
+                To implement the positions method, we have a choice of tree traversal algo-
+           rithms. Given that there are advantages to each of those traversal orders, we will
+           provide independent implementations of each strategy that can be called directly
+           by a user of our class. We can then trivially adapt one of those as a default order
+           for the positions method of the tree ADT.
+           Preorder Traversal
+           We begin by considering the preorder traversal algorithm. We will support a public
+           method with calling signature T.preorder( ) for tree T, which generates a preorder
+           iteration of all positions within the tree. However, the recursive algorithm for gen-
+           erating a preorder traversal, as originally described in Code Fragment 8.12, must
+           be parameterized by a speciﬁc position within the tree that serves as the root of a
+           subtree to traverse. A standard solution for such a circumstance is to deﬁne a non-
+           public utility method with the desired recursive parameterization, and then to have
+           the public method preorder invoke the nonpublic method upon the root of the tree.
+           Our implementation of such a design is given in Code Fragment 8.17.

@@ -1,0 +1,39 @@
+1.8. Iterators and Generators                                                                       39
+  1.8      Iterators and Generators
+           In Section 1.4.2, we introduced the for-loop syntax beginning as:
+                 for element in iterable:
+           and we noted that there are many types of objects in Python that qualify as being
+           iterable. Basic container types, such as list, tuple, and set, qualify as iterable types.
+           Furthermore, a string can produce an iteration of its characters, a dictionary can
+           produce an iteration of its keys, and a ﬁle can produce an iteration of its lines. User-
+           deﬁned types may also support iteration. In Python, the mechanism for iteration is
+           based upon the following conventions:
+                • An iterator is an object that manages an iteration through a series of values. If
+                   variable, i, identiﬁes an iterator object, then each call to the built-in function,
+                   next(i), produces a subsequent element from the underlying series, with a
+                   StopIteration exception raised to indicate that there are no further elements.
+                • An iterable is an object, obj, that produces an iterator via the syntax iter(obj).
+           By these deﬁnitions, an instance of a list is an iterable, but not itself an iterator.
+           With data = [1, 2, 4, 8], it is not legal to call next(data). However, an iterator
+           object can be produced with syntax, i = iter(data), and then each subsequent call
+           to next(i) will return an element of that list. The for-loop syntax in Python simply
+           automates this process, creating an iterator for the give iterable, and then repeatedly
+           calling for the next element until catching the StopIteration exception.
+                More generally, it is possible to create multiple iterators based upon the same
+           iterable object, with each iterator maintaining its own state of progress. However,
+           iterators typically maintain their state with indirect reference back to the original
+           collection of elements. For example, calling iter(data) on a list instance produces
+           an instance of the list iterator class. That iterator does not store its own copy of the
+           list of elements. Instead, it maintains a current index into the original list, represent-
+           ing the next element to be reported. Therefore, if the contents of the original list
+           are modiﬁed after the iterator is constructed, but before the iteration is complete,
+           the iterator will be reporting the updated contents of the list.
+                Python also supports functions and classes that produce an implicit iterable se-
+           ries of values, that is, without constructing a data structure to store all of its values
+           at once. For example, the call range(1000000) does not return a list of numbers; it
+           returns a range object that is iterable. This object generates the million values one
+           at a time, and only as needed. Such a lazy evaluation technique has great advan-
+           tage. In the case of range, it allows a loop of the form, for j in range(1000000):,
+           to execute without setting aside memory for storing one million values. Also, if
+           such a loop were to be interrupted in some fashion, no time will have been spent
+           computing unused values of the range.

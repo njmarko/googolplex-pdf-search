@@ -1,0 +1,37 @@
+404                                  Chapter 10. Maps, Hash Tables, and Skip Lists
+             M.popitem( ): Remove an arbitrary key-value pair from the map, and re-
+                              turn a (k,v) tuple representing the removed pair. If map is
+                              empty, raise a KeyError.
+                  M.clear( ): Remove all key-value pairs from the map.
+                  M.keys( ): Return a set-like view of all keys of M.
+                M.values( ): Return a set-like view of all values of M.
+                 M.items( ): Return a set-like view of (k,v) tuples for all entries of M.
+           M.update(M2): Assign M[k] = v for every (k,v) pair in map M2.
+                M == M2: Return True if maps M and M2 have identical key-value
+                              associations.
+                 M != M2: Return True if maps M and M2 do not have identical key-
+                              value associations.
+    Example 10.1: In the following, we show the effect of a series of operations on
+    an initially empty map storing items with integer keys and single-character values.
+    We use the literal syntax for Python’s dict class to describe the map contents.
+            Operation            Return Value                       Map
+              len(M)                    0                            {}
+           M[ K ] = 2                   –                         { K : 2}
+           M[ B ] = 4                   –                     { K : 2, B :   4}
+           M[ U ] = 2                   –                 { K : 2, B : 4,    U :  2}
+           M[ V ] = 8                   –             { K : 2,  B : 4, U :   2,   V : 8}
+           M[ K ] = 9                   –             { K : 9,  B : 4, U :   2,   V : 8}
+              M[ B ]                    4             { K : 9,  B : 4, U :   2,   V : 8}
+              M[ X ]                KeyError          { K : 9,  B : 4, U :   2,   V : 8}
+           M.get( F )                 None            { K : 9,  B : 4, U :   2,   V : 8}
+         M.get( F , 5)                  5             { K : 9,  B : 4, U :   2,   V : 8}
+         M.get( K , 5)                  9             { K : 9,  B : 4, U :   2,   V : 8}
+              len(M)                    4             { K : 9,  B : 4, U :   2,   V : 8}
+           del M[ V ]                   –                 { K : 9, B : 4,    U :  2}
+          M.pop( K )                    9                     { B : 4, U :   2}
+            M.keys( )                B , U                    { B : 4, U :   2}
+           M.values( )                 4, 2                   { B : 4, U :   2}
+            M.items( )         ( B , 4), ( U , 2)             { B : 4, U :   2}
+     M.setdefault( B , 1)               4                     { B : 4, U :   2}
+     M.setdefault( A , 1)               1                 { A : 1, B : 4,    U :  2}
+          M.popitem( )              ( B , 4)                  { A : 1, U :   2}

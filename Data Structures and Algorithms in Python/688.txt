@@ -1,0 +1,40 @@
+14.6. Shortest Paths                                                                           667
+          Comparing the Two Implementations
+          We have two choices for implementing the adaptable priority queue with location-
+          aware entries in Dijkstra’s algorithm: a heap implementation, which yields a run-
+          ning time of O((n + m) log n), and an unsorted sequence implementation, which
+          yields a running time of O(n2 ). Since both implementations would be fairly simple
+          to code, they are about equal in terms of the programming sophistication needed.
+          These two implementations are also about equal in terms of the constant factors in
+          their worst-case running times. Looking only at these worst-case times, we prefer
+          the heap implementation when the number of edges in the graph is small (that is,
+          when m < n2 / log n), and we prefer the sequence implementation when the number
+          of edges is large (that is, when m > n2 / log n).
+          Proposition 14.24: Given a weighted graph G with n vertices and m edges, such
+          that the weight of each edge is nonnegative, and a vertex s of G, Dijkstra’s algorithm
+          can compute the distance from s to all other vertices of G in the better of O(n2 ) or
+          O((n + m) log n) time.
+               We note that an advanced priority queue implementation, known as a Fibonacci
+          heap, can be used to implement Dijkstra’s algorithm in O(m + n log n) time.
+          Programming Dijkstra’s Algorithm in Python
+          Having given a pseudo-code description of Dijkstra’s algorithm, let us now present
+          Python code for performing Dijkstra’s algorithm, assuming we are given a graph
+          whose edge elements are nonnegative integer weights. Our implementation of the
+          algorithm is in the form of a function, shortest path lengths, that takes a graph and
+          a designated source vertex as parameters. (See Code Fragment 14.13.) It returns a
+          dictionary, named cloud, mapping each vertex v that is reachable from the source
+          to its shortest-path distance d(s, v). We rely on our AdaptableHeapPriorityQueue
+          developed in Section 9.5.2 as an adaptable priority queue.
+               As we have done with other algorithms in this chapter, we rely on dictionaries
+          to map vertices to associated data (in this case, mapping v to its distance bound
+          D[v] and its adaptable priority queue locator). The expected O(1)-time access to
+          elements of these dictionaries could be converted to worst-case bounds, either by
+          numbering vertices from 0 to n − 1 to use as indices into a list, or by storing the
+          information within each vertex’s element.
+               The pseudo-code for Dijkstra’s algorithm begins by assigning d[v] = ∞ for
+          each v other than the source. We rely on the special value ﬂoat( inf ) in Python
+          to provide a numeric value that represents positive inﬁnity. However, we avoid in-
+          cluding vertices with this “inﬁnite” distance in the resulting cloud that is returned
+          by the function. The use of this numeric limit could be avoided altogether by wait-
+          ing to add a vertex to the priority queue until after an edge that reaches it is relaxed.
+          (See Exercise C-14.64.)

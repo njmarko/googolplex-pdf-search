@@ -1,0 +1,37 @@
+568                                                 Chapter 12. Sorting and Selection
+    Quick-Sort
+    Although its O(n2 )-time worst-case performance makes quick-sort susceptible in
+    real-time applications where we must make guarantees on the time needed to com-
+    plete a sorting operation, we expect its performance to be O(n log n)-time, and ex-
+    perimental studies have shown that it outperforms both heap-sort and merge-sort on
+    many tests. Quick-sort does not naturally provide a stable sort, due to the swapping
+    of elements during the partitioning step.
+         For decades quick-sort was the default choice for a general-purpose, in-memory
+    sorting algorithm. Quick-sort was included as the qsort sorting utility provided in C
+    language libraries, and was the basis for sorting utilities on Unix operating systems
+    for many years. It was also the standard algorithm for sorting arrays in Java through
+    version 6 of that language. (We discuss Java7 below.)
+    Merge-Sort
+    Merge-sort runs in O(n log n) time in the worst case. It is quite difﬁcult to make
+    merge-sort run in-place for arrays, and without that optimization the extra overhead
+    of allocate a temporary array, and copying between the arrays is less attractive than
+    in-place implementations of heap-sort and quick-sort for sequences that can ﬁt en-
+    tirely in a computer’s main memory. Even so, merge-sort is an excellent algorithm
+    for situations where the input is stratiﬁed across various levels of the computer’s
+    memory hierarchy (e.g., cache, main memory, external memory). In these contexts,
+    the way that merge-sort processes runs of data in long merge streams makes the best
+    use of all the data brought as a block into a level of memory, thereby reducing the
+    total number of memory transfers.
+         The GNU sorting utility (and most current versions of the Linux operating sys-
+    tem) relies on a multiway merge-sort variant. Since 2003, the standard sort method
+    of Python’s list class has been a hybrid approach named Tim-sort (designed by Tim
+    Peters), which is essentially a bottom-up merge-sort that takes advantage of some
+    initial runs in the data while using insertion-sort to build additional runs. Tim-sort
+    has also become the default algorithm for sorting arrays in Java7.
+    Bucket-Sort and Radix-Sort
+    Finally, if an application involves sorting entries with small integer keys, character
+    strings, or d-tuples of keys from a discrete range, then bucket-sort or radix-sort is
+    an excellent choice, for it runs in O(d(n + N)) time, where [0, N − 1] is the range of
+    integer keys (and d = 1 for bucket sort). Thus, if d(n + N) is signiﬁcantly “below”
+    the n log n function, then this sorting method should run faster than even quick-sort,
+    heap-sort, or merge-sort.

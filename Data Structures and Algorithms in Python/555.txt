@@ -1,0 +1,41 @@
+534                                                           Chapter 11. Search Trees
+    P-11.66 Write a Python class that can take any red-black tree and convert it into its
+            corresponding (2, 4) tree and can take any (2, 4) tree and convert it into its
+            corresponding red-black tree.
+    P-11.67 In describing multisets and multimaps in Section 10.5.3, we describe a
+            general approach for adapting a traditional map by storing all duplicates
+            within a secondary container as a value in the map. Give an alternative
+            implementation of a multimap using a binary search tree such that each
+            entry of the map is stored at a distinct node of the tree. With the existence
+            of duplicates, we redeﬁne the search tree property so that all items in the
+            left subtree of a position p with key k have keys that are less than or equal
+            to k, while all items in the right subtree of p have keys that are greater than
+            or equal to k. Use the public interface given in Code Fragment 10.17.
+    P-11.68 Prepare an implementation of splay trees that uses top-down splaying as
+            described in Exercise C-11.56. Perform extensive experimental studies to
+            compare its performance to the standard bottom-up splaying implemented
+            in this chapter.
+    P-11.69 The mergeable heap ADT is an extension of the priority queue ADT
+            consisting of operations add(k, v), min( ), remove min( ) and merge(h),
+            where the merge(h) operations performs a union of the mergeable heap h
+            with the present one, incorporating all items into the current one while
+            emptying h. Describe a concrete implementation of the mergeable heap
+            ADT that achieves O(log n) performance for all its operations, where n
+            denotes the size of the resulting heap for the merge operation.
+    P-11.70 Write a program that performs a simple n-body simulation, called “Jump-
+            ing Leprechauns.” This simulation involves n leprechauns, numbered 1 to
+            n. It maintains a gold value gi for each leprechaun i, which begins with
+            each leprechaun starting out with a million dollars worth of gold, that is,
+            gi = 1 000 000 for each i = 1, 2, . . . , n. In addition, the simulation also
+            maintains, for each leprechaun, i, a place on the horizon, which is repre-
+            sented as a double-precision ﬂoating-point number, xi . In each iteration
+            of the simulation, the simulation processes the leprechauns in order. Pro-
+            cessing a leprechaun i during this iteration begins by computing a new
+            place on the horizon for i, which is determined by the assignment
+                                             xi = xi + rgi ,
+            where r is a random ﬂoating-point number between −1 and 1. The lep-
+            rechaun i then steals half the gold from the nearest leprechauns on either
+            side of him and adds this gold to his gold value, gi . Write a program that
+            can perform a series of iterations in this simulation for a given number,
+            n, of leprechauns. You must maintain the set of horizon positions using a
+            sorted map data structure described in this chapter.

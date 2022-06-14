@@ -1,0 +1,34 @@
+8.2. Binary Trees                                                                               311
+  8.2     Binary Trees
+          A binary tree is an ordered tree with the following properties:
+              1. Every node has at most two children.
+              2. Each child node is labeled as being either a left child or a right child.
+              3. A left child precedes a right child in the order of children of a node.
+          The subtree rooted at a left or right child of an internal node v is called a left subtree
+          or right subtree, respectively, of v. A binary tree is proper if each node has either
+          zero or two children. Some people also refer to such trees as being full binary
+          trees. Thus, in a proper binary tree, every internal node has exactly two children.
+          A binary tree that is not proper is improper.
+          Example 8.6: An important class of binary trees arises in contexts where we wish
+          to represent a number of different outcomes that can result from answering a series
+          of yes-or-no questions. Each internal node is associated with a question. Starting at
+          the root, we go to the left or right child of the current node, depending on whether
+          the answer to the question is “Yes” or “No.” With each decision, we follow an
+          edge from a parent to a child, eventually tracing a path in the tree from the root
+          to a leaf. Such binary trees are known as decision trees, because a leaf position p
+          in such a tree represents a decision of what to do if the questions associated with
+          p’s ancestors are answered in a way that leads to p. A decision tree is a proper
+          binary tree. Figure 8.7 illustrates a decision tree that provides recommendations to
+          a prospective investor.
+                                         Are you nervous?
+                                 Yes                        No
+                                                   Will you need to access most of the
+                       Savings account.            money within the next 5 years?
+                                           Yes                         No
+                                                   Are you willing to accept risks in
+                       Money market fund.
+                                                   exchange for higher expected returns?
+                                                Yes                        No
+                                                            Diversiﬁed portfolio with stocks,
+                                  Stock portfolio.          bonds, and short-term instruments.
+                         Figure 8.7: A decision tree providing investment advice.

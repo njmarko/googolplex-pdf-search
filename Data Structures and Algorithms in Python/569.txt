@@ -1,0 +1,26 @@
+548                                                     Chapter 12. Sorting and Selection
+    S1  24     45     63    85                  S1    24        45       63      85
+    S2  17     31     50    96                           S2     31       50      96
+    S                                           S     17
+                      (a)                                                    (b)
+           S1 45     63     85                           S1    45        63      85
+           S2 31     50     96                                     S2    50      96
+    S  17     24                                S     17       24        31
+                      (c)                                                    (d)
+                  S1 63     85                                     S1    63      85
+                  S2 50     96                                              S2 96
+    S  17     24     31     45                  S     17       24        31      45 50
+                      (e)                                                    (f )
+                                                                                S1
+                         S1 85
+                                                                            S2 96
+                         S2 96
+                                                S    17       24        31      45  50 63 85
+    S  17     24     31     45  50   63
+                      (g)                                                    (h)
+                                          S1
+                                          S2
+                          S  17   24   31 45       50       63        85      96
+                                             (i)
+       Figure 12.7: Example of an execution of the merge algorithm, as implemented in
+       Code Fragment 12.3 using queues.

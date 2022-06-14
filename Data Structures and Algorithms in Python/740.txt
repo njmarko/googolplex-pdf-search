@@ -1,0 +1,37 @@
+Chapter Notes                                                                                   719
+         C-15.20 Consider the page caching strategy based on the least frequently used
+                   (LFU) rule, where the page in the cache that has been accessed the least
+                   often is the one that is evicted when a new page is requested. If there are
+                   ties, LFU evicts the least frequently used page that has been in the cache
+                   the longest. Show that there is a sequence P of n requests that causes LFU
+                   to miss Ω(n) times for a cache of m pages, whereas the optimal algorithm
+                   will miss only O(m) times.
+         C-15.21 Suppose that instead of having the node-search function f (d) = 1 in an
+                   order-d B-tree T , we have f (d) = log d. What does the asymptotic run-
+                   ning time of performing a search in T now become?
+      Projects
+         P-15.22 Write a Python class that simulates the best-ﬁt, worst-ﬁt, ﬁrst-ﬁt, and next-
+                   ﬁt algorithms for memory management. Determine experimentally which
+                   method is the best under various sequences of memory requests.
+         P-15.23 Write a Python class that implements all the methods of the ordered map
+                   ADT by means of an (a, b) tree, where a and b are integer constants passed
+                   as parameters to a constructor.
+         P-15.24 Implement the B-tree data structure, assuming a block size of 1024 and
+                   integer keys. Test the number of “disk transfers” needed to process a
+                   sequence of map operations.
+ Chapter Notes
+         The reader interested in the study of the architecture of hierarchical memory systems is
+         referred to the book chapter by Burger et al. [21] or the book by Hennessy and Patter-
+         son [50]. The mark-sweep garbage collection method we describe is one of many different
+         algorithms for performing garbage collection. We encourage the reader interested in fur-
+         ther study of garbage collection to examine the book by Jones and Lins [56]. Knuth [62]
+         has very nice discussions about external-memory sorting and searching, and Ullman [97]
+         discusses external memory structures for database systems. The handbook by Gonnet and
+         Baeza-Yates [44] compares the performance of a number of different sorting algorithms,
+         many of which are external-memory algorithms. B-trees were invented by Bayer and Mc-
+         Creight [11] and Comer [28] provides a very nice overview of this data structure. The
+         books by Mehlhorn [76] and Samet [87] also have nice discussions about B-trees and their
+         variants. Aggarwal and Vitter [3] study the I/O complexity of sorting and related problems,
+         establishing upper and lower bounds. Goodrich et al. [46] study the I/O complexity of
+         several computational geometry problems. The reader interested in further study of I/O-
+         efﬁcient algorithms is encouraged to examine the survey paper of Vitter [99].

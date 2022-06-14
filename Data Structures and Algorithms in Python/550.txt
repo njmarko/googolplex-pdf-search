@@ -1,0 +1,40 @@
+11.7. Exercises                                                                                 529
+          R-11.13 The rules for a deletion in an AVL tree speciﬁcally require that when the
+                  two subtrees of the node denoted as y have equal height, child x should be
+                  chosen to be “aligned” with y (so that x and y are both left children or both
+                  right children). To better understand this requirement, repeat Exercise R-
+                  11.11 assuming we picked the misaligned choice of x. Why might there
+                  be a problem in restoring the AVL property with that choice?
+          R-11.14 Perform the following sequence of operations in an initially empty splay
+                  tree and draw the tree after each set of operations.
+                     a. Insert keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
+                     b. Search for keys 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, in this order.
+                     c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
+          R-11.15 What does a splay tree look like if its entries are accessed in increasing
+                  order by their keys?
+          R-11.16 Is the search tree of Figure 11.23(a) a (2, 4) tree? Why or why not?
+          R-11.17 An alternative way of performing a split at a node w in a (2, 4) tree is
+                  to partition w into w and w , with w being a 2-node and w a 3-node.
+                  Which of the keys k1 , k2 , k3 , or k4 do we store at w’s parent? Why?
+          R-11.18 Dr. Amongus claims that a (2, 4) tree storing a set of entries will always
+                  have the same structure, regardless of the order in which the entries are
+                  inserted. Show that he is wrong.
+          R-11.19 Draw four different red-black trees that correspond to the same (2, 4) tree.
+          R-11.20 Consider the set of keys K = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}.
+                     a. Draw a (2, 4) tree storing K as its keys using the fewest number of
+                        nodes.
+                     b. Draw a (2, 4) tree storing K as its keys using the maximum number
+                        of nodes.
+          R-11.21 Consider the sequence of keys (5, 16, 22, 45, 2, 10, 18, 30, 50, 12, 1). Draw
+                  the result of inserting entries with these keys (in the given order) into
+                     a. An initially empty (2, 4) tree.
+                     b. An initially empty red-black tree.
+          R-11.22 For the following statements about red-black trees, provide a justiﬁcation
+                  for each true statement and a counterexample for each false one.
+                     a. A subtree of a red-black tree is itself a red-black tree.
+                     b. A node that does not have a sibling is red.
+                     c. There is a unique (2, 4) tree associated with a given red-black tree.
+                     d. There is a unique red-black tree associated with a given (2, 4) tree.
+          R-11.23 Explain why you would get the same output in an inorder listing of the
+                  entries in a binary search tree, T , independent of whether T is maintained
+                  to be an AVL tree, splay tree, or red-black tree.

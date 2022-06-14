@@ -1,0 +1,39 @@
+296                                                               Chapter 7. Linked Lists
+    Creativity
+       C-7.24 Give a complete implementation of the stack ADT using a singly linked
+               list that includes a header sentinel.
+       C-7.25 Give a complete implementation of the queue ADT using a singly linked
+               list that includes a header sentinel.
+       C-7.26 Implement a method, concatenate(Q2) for the LinkedQueue class that
+               takes all elements of LinkedQueue Q2 and appends them to the end of the
+               original queue. The operation should run in O(1) time and should result
+               in Q2 being an empty queue.
+       C-7.27 Give a recursive implementation of a singly linked list class, such that an
+               instance of a nonempty list stores its ﬁrst element and a reference to a list
+               of remaining elements.
+       C-7.28 Describe a fast recursive algorithm for reversing a singly linked list.
+       C-7.29 Describe in detail an algorithm for reversing a singly linked list L using
+               only a constant amount of additional space and not using any recursion.
+       C-7.30 Exercise P-6.35 describes a LeakyStack abstraction. Implement that ADT
+               using a singly linked list for storage.
+       C-7.31 Design a forward list ADT that abstracts the operations on a singly linked
+               list, much as the positional list ADT abstracts the use of a doubly linked
+               list. Implement a ForwardList class that supports such an ADT.
+       C-7.32 Design a circular positional list ADT that abstracts a circularly linked list
+               in the same way that the positional list ADT abstracts a doubly linked list,
+               with a notion of a designated “cursor” position within the list.
+       C-7.33 Modify the DoublyLinkedBase class to include a reverse method that re-
+               verses the order of the list, yet without creating or destroying any nodes.
+       C-7.34 Modify the PositionalList class to support a method swap(p, q) that causes
+               the underlying nodes referenced by positions p and q to be exchanged for
+               each other. Relink the existing nodes; do not create any new nodes.
+       C-7.35 To implement the iter method of the PositionalList class, we relied on the
+               convenience of Python’s generator syntax and the yield statement. Give
+               an alternative implementation of iter by designing a nested iterator class.
+               (See Section 2.3.4 for discussion of iterators.)
+       C-7.36 Give a complete implementation of the positional list ADT using a doubly
+               linked list that does not include any sentinel nodes.
+       C-7.37 Implement a function that accepts a PositionalList L of n integers sorted
+               in nondecreasing order, and another value V , and determines in O(n) time
+               if there are two elements of L that sum precisely to V . The function should
+               return a pair of positions of such elements, if found, or None otherwise.

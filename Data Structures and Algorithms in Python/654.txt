@@ -1,0 +1,40 @@
+14.2. Data Structures for Graphs                                                               633
+       14.2.4 Adjacency Matrix Structure
+          The adjacency matrix structure for a graph G augments the edge list structure with
+          a matrix A (that is, a two-dimensional array, as in Section 5.6), which allows us to
+          locate an edge between a given pair of vertices in worst-case constant time. In the
+          adjacency matrix representation, we think of the vertices as being the integers in
+          the set {0, 1, . . . , n − 1} and the edges as being pairs of such integers. This allows
+          us to store references to edges in the cells of a two-dimensional n × n array A.
+          Speciﬁcally, the cell A[i, j] holds a reference to the edge (u, v), if it exists, where u
+          is the vertex with index i and v is the vertex with index j. If there is no such edge,
+          then A[i, j] = None. We note that array A is symmetric if graph G is undirected, as
+          A[i, j] = A[ j, i] for all pairs i and j. (See Figure 14.7.)
+               The most signiﬁcant advantage of an adjacency matrix is that any edge (u, v)
+          can be accessed in worst-case O(1) time; recall that the adjacency map supports
+          that operation in O(1) expected time. However, several operation are less efﬁcient
+          with an adjacency matrix. For example, to ﬁnd the edges incident to vertex v, we
+          must presumably examine all n entries in the row associated with v; recall that an
+          adjacency list or map can locate those edges in optimal O(deg(v)) time. Adding or
+          removing vertices from a graph is problematic, as the matrix must be resized.
+               Furthermore, the O(n2 ) space usage of an adjacency matrix is typically far
+          worse than the O(n + m) space required of the other representations. Although,
+          in the worst case, the number of edges in a dense graph will be proportional to
+          n2 , most real-world graphs are sparse. In such cases, use of an adjacency matrix
+          is inefﬁcient. However, if a graph is dense, the constants of proportionality of an
+          adjacency matrix can be smaller than that of an adjacency list or map. In fact, if
+          edges do not have auxiliary data, a Boolean adjacency matrix can use one bit per
+          edge slot, such that A[i, j] = True if and only if associated (u, v) is an edge.
+                                                                                0 1 2 3
+                           u                                      u        0       e g
+                     e            g                                v       1    e      f
+                                                                  w        2    g f        h
+                   v               w          z
+                           f            h                          z       3          h
+                                  (a)                                         (b)
+          Figure 14.7: (a) An undirected graph G; (b) a schematic representation of the aux-
+          iliary adjacency matrix structure for G, in which n vertices are mapped to indices 0
+          to n− 1. Although not diagrammed as such, we presume that there is a unique Edge
+          instance for each edge, and that it maintains references to its endpoint vertices. We
+          also assume that there is a secondary edge list (not pictured), to allow the edges( )
+          method to run in O(m) time, for a graph with m edges.

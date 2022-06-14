@@ -1,0 +1,40 @@
+8.3. Implementing Trees                                                                       319
+              For linked binary trees, a reasonable set of update methods to support for gen-
+          eral usage are the following:
+                  T.add root(e): Create a root for an empty tree, storing e as the element,
+                                     and return the position of that root; an error occurs if the
+                                     tree is not empty.
+                T.add left(p, e): Create a new node storing element e, link the node as the
+                                     left child of position p, and return the resulting position;
+                                     an error occurs if p already has a left child.
+               T.add right(p, e): Create a new node storing element e, link the node as the
+                                     right child of position p, and return the resulting position;
+                                     an error occurs if p already has a right child.
+                 T.replace(p, e): Replace the element stored at position p with element e,
+                                     and return the previously stored element.
+                      T.delete(p): Remove the node at position p, replacing it with its child,
+                                     if any, and return the element that had been stored at p;
+                                     an error occurs if p has two children.
+           T.attach(p, T1, T2): Attach the internal structure of trees T1 and T2, respec-
+                                     tively, as the left and right subtrees of leaf position p of
+                                     T, and reset T1 and T2 to empty trees; an error condition
+                                     occurs if p is not a leaf.
+              We have speciﬁcally chosen this collection of operations because each can be
+          implemented in O(1) worst-case time with our linked representation. The most
+          complex of these are delete and attach, due to the case analyses involving the
+          various parent-child relationships and boundary conditions, yet there remains only
+          a constant number of operations to perform. (The implementation of both methods
+          could be greatly simpliﬁed if we used a tree representation with a sentinel node,
+          akin to our treatment of positional lists; see Exercise C-8.40).
+              To avoid the problem of undesirable update methods being inherited by sub-
+          classes of LinkedBinaryTree, we have chosen an implementation in which none
+          of the above methods are publicly supported. Instead, we provide nonpublic ver-
+          sions of each, for example, providing the underscored delete in lieu of a public
+          delete. Our implementations of these six update methods are provided in Code
+          Fragments 8.10 and 8.11.
+              In particular applications, subclasses of LinkedBinaryTree can invoke the non-
+          public methods internally, while preserving a public interface that is appropriate
+          for the application. A subclass may also choose to wrap one or more of the non-
+          public update methods with a public method to expose it to the user. We leave as
+          an exercise (R-8.15), the task of deﬁning a MutableLinkedBinaryTree subclass that
+          provides public methods wrapping each of these six update methods.

@@ -1,0 +1,29 @@
+14.7. Minimum Spanning Trees                                                                 683
+          A Tree-Based Partition Implementation                 
+              An alternative data structure for representing a partition uses a collection of
+          trees to store the n elements, where each tree is associated with a different group.
+          (See Figure 14.26.) In particular, we implement each tree with a linked data struc-
+          ture whose nodes are themselves the group position objects. We view each position
+          p as being a node having an instance variable, element, referring to its element x,
+          and an instance variable, parent, referring to its parent node. By convention, if p is
+          the root of its tree, we set p’s parent reference to itself.
+                                1                     2                     5
+                            4        7            3       6              8     10
+                                                      9             11
+                                                                        12
+          Figure 14.26: Tree-based implementation of a partition consisting of three groups:
+          A = {1, 4, 7}, B = {2, 3, 6, 9}, and C = {5, 8, 10, 11, 12}.
+              With this partition data structure, operation ﬁnd(p) is performed by walking
+          up from position p to the root of its tree, which takes O(n) time in the worst case.
+          Operation union(p, q) can be implemented by making one of the trees a subtree
+          of the other. This can be done by ﬁrst locating the two roots, and then in O(1)
+          additional time by setting the parent reference of one root to point to the other root.
+          See Figure 14.27 for an example of both operations.
+                             2                                   2
+                        3        6          5               3         6         5
+                             9          8      10                9           8     10
+                                    11                                   11
+                                        12                                  12
+                                   (a)                                  (b)
+          Figure 14.27: Tree-based implementation of a partition: (a) operation union(p, q);
+          (b) operation ﬁnd(p), where p denotes the position object for element 12.

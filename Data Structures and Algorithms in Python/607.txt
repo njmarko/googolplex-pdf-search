@@ -1,0 +1,38 @@
+586                                                           Chapter 13. Text Processing
+    13.2.2 The Boyer-Moore Algorithm
+       At ﬁrst, it might seem that it is always necessary to examine every character in T in
+       order to locate a pattern P as a substring or to rule out its existence. But this is not
+       always the case. The Boyer-Moore pattern-matching algorithm, which we study in
+       this section, can sometimes avoid comparisons between P and a sizable fraction of
+       the characters in T. In this section, we describe a simpliﬁed version of the original
+       algorithm by Boyer and Moore.
+           The main idea of the Boyer-Moore algorithm is to improve the running time of
+       the brute-force algorithm by adding two potentially time-saving heuristics. Roughly
+       stated, these heuristics are as follows:
+       Looking-Glass Heuristic: When testing a possible placement of P against T, be-
+              gin the comparisons from the end of P and move backward to the front of P.
+       Character-Jump Heuristic: During the testing of a possible placement of P within
+              T, a mismatch of text character T[i]=c with the corresponding pattern char-
+              acter P[k] is handled as follows. If c is not contained anywhere in P, then
+              shift P completely past T[i] (for it cannot match any character in P). Other-
+              wise, shift P until an occurrence of character c in P gets aligned with T[i].
+       We will formalize these heuristics shortly, but at an intuitive level, they work as an
+       integrated team. The looking-glass heuristic sets up the other heuristic to allow us
+       to avoid comparisons between P and whole groups of characters in T. In this case at
+       least, we can get to the destination faster by going backwards, for if we encounter a
+       mismatch during the consideration of P at a certain location in T, then we are likely
+       to avoid lots of needless comparisons by signiﬁcantly shifting P relative to T using
+       the character-jump heuristic. The character-jump heuristic pays off big if it can be
+       applied early in the testing of a potential placement of P against T. Figure 13.2
+       demonstrates a few simple applications of these heuristics.
+                   Text:  ·  ·   ·  ·  e  ·  ·  ·  ·  s ·  ·  ·   ·  ·  ·  ·  ·  ·  ·
+                 Pattern: s  u   s h   i
+                                          s u   s  h  i
+                                                s  u  s h  i
+       Figure 13.2: A simple example demonstrating the intuition of the Boyer-Moore
+       pattern-matching algorithm. The original comparison results in a mismatch with
+       character e of the text. Because that character is nowhere in the pattern, the entire
+       pattern is shifted beyond its location. The second comparison is also a mismatch,
+       but the mismatched character s occurs elsewhere in the pattern. The pattern is next
+       shifted so that its last occurrence of s is aligned with the corresponding s in the
+       text. The remainder of the process is not illustrated in this ﬁgure.

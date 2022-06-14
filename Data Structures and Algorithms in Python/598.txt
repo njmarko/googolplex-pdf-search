@@ -1,0 +1,41 @@
+12.8. Exercises                                                                              577
+          C-12.33 Our high-level description of quick-sort describes partitioning the ele-
+                  ments into three sets L, E, and G, having keys less than, equal to, or
+                  greater than the pivot, respectively. However, our in-place quick-sort im-
+                  plementation of Code Fragment 12.6 does not gather all elements equal
+                  to the pivot into a set E. An alternative strategy for an in-place, three-
+                  way partition is as follows. Loop through the elements from left to right
+                  maintaining indices i, j, and k and the invariant that all elements of slice
+                  S[0:i] are strictly less than the pivot, all elements of slice S[i:j] are equal
+                  to the pivot, and all elements of slice S[j:k] are strictly greater than the
+                  pivot; elements of S[k:n] are yet unclassiﬁed. In each pass of the loop,
+                  classify one additional element, performing a constant number of swaps
+                  as needed. Implement an in-place quick-sort using this strategy.
+          C-12.34 Suppose we are given an n-element sequence S such that each element in S
+                  represents a different vote for president, where each vote is given as an in-
+                  teger representing a particular candidate, yet the integers may be arbitrar-
+                  ily large (even if the number of candidates is not). Design an O(n log n)-
+                  time algorithm to see who wins the election S represents, assuming the
+                  candidate with the most votes wins.
+          C-12.35 Consider the voting problem from Exercise C-12.34, but now suppose that
+                  we know the number k < n of candidates running, even though the integer
+                  IDs for those candidates can be arbitrarily large. Describe an O(n log k)-
+                  time algorithm for determining who wins the election.
+          C-12.36 Consider the voting problem from Exercise C-12.34, but now suppose the
+                  integers 1 to k are used to identify k < n candidates. Design an O(n)-time
+                  algorithm to determine who wins the election.
+          C-12.37 Show that any comparison-based sorting algorithm can be made to be
+                  stable without affecting its asymptotic running time.
+          C-12.38 Suppose we are given two sequences A and B of n elements, possibly
+                  containing duplicates, on which a total order relation is deﬁned. Describe
+                  an efﬁcient algorithm for determining if A and B contain the same set of
+                  elements. What is the running time of this method?
+          C-12.39 Given an array A of n integers in the range [0, n2 − 1], describe a simple
+                  method for sorting A in O(n) time.
+          C-12.40 Let S1 , S2 , . . . , Sk be k different sequences whose elements have integer
+                  keys in the range [0, N − 1], for some parameter N ≥ 2. Describe an algo-
+                  rithm that produces k respective sorted sequences in O(n + N) time, were
+                  n denotes the sum of the sizes of those sequences.
+          C-12.41 Given a sequence S of n elements, on which a total order relation is de-
+                  ﬁned, describe an efﬁcient method for determining whether there are two
+                  equal elements in S. What is the running time of your method?

@@ -1,0 +1,41 @@
+426                                       Chapter 10. Maps, Hash Tables, and Skip Lists
+    26   def bucket getitem(self, j, k):
+    27      found, s = self. ﬁnd slot(j, k)
+    28      if not found:
+    29         raise KeyError( Key Error:        + repr(k))            # no match found
+    30      return self. table[s]. value
+    31
+    32   def bucket setitem(self, j, k, v):
+    33      found, s = self. ﬁnd slot(j, k)
+    34      if not found:
+    35         self. table[s] = self. Item(k,v)                        # insert new item
+    36         self. n += 1                                            # size has increased
+    37      else:
+    38         self. table[s]. value = v                               # overwrite existing
+    39
+    40   def bucket delitem(self, j, k):
+    41      found, s = self. ﬁnd slot(j, k)
+    42      if not found:
+    43         raise KeyError( Key Error: + repr(k))                   # no match found
+    44      self. table[s] = ProbeHashMap. AVAIL                       # mark as vacated
+    45
+    46   def iter (self):
+    47      for j in range(len(self. table)):                          # scan entire table
+    48         if not self. is available(j):
+    49            yield self. table[j]. key
+       Code Fragment 10.7: Concrete ProbeHashMap class that uses linear probing for
+       collision resolution (continued from Code Fragment 10.6).
+           The three primary map operations each rely on the ﬁnd slot utility. When at-
+       tempting to retrieve the value associated with a given key, we must continue probing
+       until we ﬁnd the key, or until we reach a table slot with the None value. We cannot
+       stop the search upon reaching an AVAIL sentinel, because it represents a location
+       that may have been ﬁlled when the desired item was once inserted.
+           When a key-value pair is being assigned in the map, we must attempt to ﬁnd
+       an existing item with the given key, so that we might overwrite its value, before
+       adding a new item to the map. Therefore, we must search beyond any occurrences
+       of the AVAIL sentinel when inserting. However, if no match is found, we prefer to
+       repurpose the ﬁrst slot marked with AVAIL, if any, when placing the new element
+       in the table. The ﬁnd slot method enacts this logic, continuing the search until a
+       truly empty slot, but returning the index of the ﬁrst available slot for an insertion.
+           When deleting an existing item within bucket delitem, we intentionally set
+       the table entry to the AVAIL sentinel in accordance with our strategy.

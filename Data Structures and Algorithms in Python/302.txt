@@ -1,0 +1,38 @@
+7.4. The Positional List ADT                                                                  281
+      7.4.2 Doubly Linked List Implementation
+          In this section, we present a complete implementation of a PositionalList class
+          using a doubly linked list that satisﬁes the following important proposition.
+          Proposition 7.2: Each method of the positional list ADT runs in worst-case O(1)
+          time when implemented with a doubly linked list.
+               We rely on the DoublyLinkedBase class from Section 7.3.1 for our low-level
+          representation; the primary responsibility of our new class is to provide a public
+          interface in accordance with the positional list ADT. We begin our class deﬁnition
+          in Code Fragment 7.14 with the deﬁnition of the public Position class, nested within
+          our PositionalList class. Position instances will be used to represent the locations
+          of elements within the list. Our various PositionalList methods may end up creating
+          redundant Position instances that reference the same underlying node (for example,
+          when ﬁrst and last are the same). For that reason, our Position class deﬁnes the
+             eq and ne special methods so that a test such as p == q evaluates to
+          True when two positions refer to the same node.
+          Validating Positions
+          Each time a method of the PositionalList class accepts a position as a parameter,
+          we want to verify that the position is valid, and if so, to determine the underlying
+          node associated with the position. This functionality is implemented by a non-
+          public method named validate. Internally, a position maintains a reference to the
+          associated node of the linked list, and also a reference to the list instance that con-
+          tains the speciﬁed node. With the container reference, we can robustly detect when
+          a caller sends a position instance that does not belong to the indicated list.
+               We are also able to detect a position instance that belongs to the list, but that
+          refers to a node that is no longer part of that list. Recall that the delete node of
+          the base class sets the previous and next references of a deleted node to None; we
+          can recognize that condition to detect a deprecated node.
+          Access and Update Methods
+          The access methods of the PositionalList class are given in Code Fragment 7.15
+          and the update methods are given in Code Fragment 7.16. All of these methods
+          trivially adapt the underlying doubly linked list implementation to support the pub-
+          lic interface of the positional list ADT. Those methods rely on the validate utility
+          to “unwrap” any position that is sent. They also rely on a make position utility
+          to “wrap” nodes as Position instances to return to the user, making sure never to
+          return a position referencing a sentinel. For convenience, we have overridden the
+          inherited insert between utility method so that ours returns a position associated
+          with the newly created node (whereas the inherited version returns the node itself ).

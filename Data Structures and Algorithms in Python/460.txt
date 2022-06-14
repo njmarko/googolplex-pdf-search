@@ -1,0 +1,34 @@
+10.4. Skip Lists                                                                               439
+       10.4.1 Search and Update Operations in a Skip List
+           The skip-list structure affords simple map search and update algorithms. In fact,
+           all of the skip-list search and update algorithms are based on an elegant SkipSearch
+           method that takes a key k and ﬁnds the position p of the item in list S0 that has the
+           largest key less than or equal to k (which is possibly −∞).
+           Searching in a Skip List
+           Suppose we are given a search key k. We begin the SkipSearch method by setting
+           a position variable p to the topmost, left position in the skip list S, called the start
+           position of S. That is, the start position is the position of Sh storing the special
+           entry with key −∞. We then perform the following steps (see Figure 10.11), where
+           key(p) denotes the key of the item at position p:
+               1. If S.below(p) is None, then the search terminates—we are at the bottom and
+                   have located the item in S with the largest key less than or equal to the search
+                   key k. Otherwise, we drop down to the next lower level in the present tower
+                   by setting p = S.below(p).
+               2. Starting at position p, we move p forward until it is at the rightmost position
+                   on the present level such that key(p) ≤ k. We call this the scan forward step.
+                   Note that such a position always exists, since each level contains the keys
+                   +∞ and −∞. It may be that p remains where it started after we perform
+                   such a forward scan for this level.
+               3. Return to step 1.
+      S5  -∞                                                                                   +∞
+      S4  -∞                17                                                                 +∞
+      S3  -∞                17            25                                            55     +∞
+      S2  -∞                17            25      31                                    55     +∞
+      S1  -∞        12      17            25      31      38             44             55     +∞
+      S0  -∞        12      17     20     25      31      38     39      44      50     55     +∞
+           Figure 10.11: Example of a search in a skip list. The positions examined when
+           searching for key 50 are highlighted.
+                We give a pseudo-code description of the skip-list search algorithm, SkipSearch,
+           in Code Fragment 10.12. Given this method, the map operation M[k] is performed
+           by computing p = SkipSearch(k) and testing whether or not key(p) = k. If these
+           two keys are equal, we return the associated value; otherwise, we raise a KeyError.

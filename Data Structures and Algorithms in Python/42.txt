@@ -1,0 +1,37 @@
+1.4. Control Flow                                                                                21
+          For Loops
+          Python’s for-loop syntax is a more convenient alternative to a while loop when
+          iterating through a series of elements. The for-loop syntax can be used on any
+          type of iterable structure, such as a list, tuple str, set, dict, or ﬁle (we will discuss
+          iterators more formally in Section 1.8). Its general syntax appears as follows.
+               for element in iterable:
+                  body                         # body may refer to element as an identiﬁer
+          For readers familiar with Java, the semantics of Python’s for loop is similar to the
+          “for each” loop style introduced in Java 1.5.
+               As an instructive example of such a loop, we consider the task of computing
+          the sum of a list of numbers. (Admittedly, Python has a built-in function, sum, for
+          this purpose.) We perform the calculation with a for loop as follows, assuming that
+          data identiﬁes the list:
+               total = 0
+               for val in data:
+                  total += val                             # note use of the loop variable, val
+          The loop body executes once for each element of the data sequence, with the iden-
+          tiﬁer, val, from the for-loop syntax assigned at the beginning of each pass to a
+          respective element. It is worth noting that val is treated as a standard identiﬁer. If
+          the element of the original data happens to be mutable, the val identiﬁer can be
+          used to invoke its methods. But a reassignment of identiﬁer val to a new value has
+          no affect on the original data, nor on the next iteration of the loop.
+               As a second classic example, we consider the task of ﬁnding the maximum
+          value in a list of elements (again, admitting that Python’s built-in max function
+          already provides this support). If we can assume that the list, data, has at least one
+          element, we could implement this task as follows:
+               biggest = data[0]                           # as we assume nonempty list
+               for val in data:
+                  if val > biggest:
+                     biggest = val
+               Although we could accomplish both of the above tasks with a while loop, the
+          for-loop syntax had an advantage of simplicity, as there is no need to manage an
+          explicit index into the list nor to author a Boolean loop condition. Furthermore, we
+          can use a for loop in cases for which a while loop does not apply, such as when
+          iterating through a collection, such as a set, that does not support any direct form
+          of indexing.

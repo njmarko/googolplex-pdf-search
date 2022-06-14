@@ -1,0 +1,41 @@
+12.2. Merge-Sort                                                                           549
+         A Bottom-Up (Nonrecursive) Merge-Sort
+         There is a nonrecursive version of array-based merge-sort, which runs in O(n log n)
+         time. It is a bit faster than recursive merge-sort in practice, as it avoids the extra
+         overheads of recursive calls and temporary memory at each level. The main idea
+         is to perform merge-sort bottom-up, performing the merges level by level going up
+         the merge-sort tree. Given an input array of elements, we begin by merging every
+         successive pair of elements into sorted runs of length two. We merge these runs into
+         runs of length four, merge these new runs into runs of length eight, and so on, until
+         the array is sorted. To keep the space usage reasonable, we deploy a second array
+         that stores the merged runs (swapping input and output arrays after each iteration).
+         We give a Python implementation in Code Fragment 12.4. A similar bottom-up
+         approach can be used for sorting linked lists. (See Exercise C-12.29.)
+       1 def merge(src, result, start, inc):
+       2   ”””Merge src[start:start+inc] and src[start+inc:start+2 inc] into result.”””
+       3   end1 = start+inc                          # boundary for run 1
+       4   end2 = min(start+2 inc, len(src))         # boundary for run 2
+       5   x, y, z = start, start+inc, start         # index into run 1, run 2, result
+       6   while x < end1 and y < end2:
+       7      if src[x] < src[y]:
+       8         result[z] = src[x]; x += 1          # copy from run 1 and increment x
+       9      else:
+      10         result[z] = src[y]; y += 1          # copy from run 2 and increment y
+      11      z += 1                                 # increment z to reﬂect new result
+      12   if x < end1:
+      13      result[z:end2] = src[x:end1]           # copy remainder of run 1 to output
+      14   elif y < end2:
+      15      result[z:end2] = src[y:end2]           # copy remainder of run 2 to output
+      16
+      17 def merge sort(S):
+      18   ”””Sort the elements of Python list S using the merge-sort algorithm.”””
+      19   n = len(S)
+      20   logn = math.ceil(math.log(n,2))
+      21   src, dest = S, [None] n                   # make temporary storage for dest
+      22   for i in (2 k for k in range(logn)): # pass i creates all runs of length 2i
+      23      for j in range(0, n, 2 i):             # each pass merges two length i runs
+      24         merge(src, dest, j, i)
+      25      src, dest = dest, src                  # reverse roles of lists
+      26   if S is not src:
+      27      S[0:n] = src[0:n]                      # additional copy to get results to S
+         Code Fragment 12.4: An implementation of the nonrecursive merge-sort algorithm.

@@ -1,0 +1,35 @@
+446                                       Chapter 10. Maps, Hash Tables, and Skip Lists
+ 10.5    Sets, Multisets, and Multimaps
+       We conclude this chapter by examining several additional abstractions that are
+       closely related to the map ADT, and that can be implemented using data structures
+       similar to those for a map.
+           • A set is an unordered collection of elements, without duplicates, that typi-
+              cally supports efﬁcient membership tests. In essence, elements of a set are
+              like keys of a map, but without any auxiliary values.
+           • A multiset (also known as a bag) is a set-like container that allows duplicates.
+           • A multimap is similar to a traditional map, in that it associates values with
+              keys; however, in a multimap the same key can be mapped to multiple val-
+              ues. For example, the index of this book maps a given term to one or more
+              locations at which the term occurs elsewhere in the book.
+    10.5.1 The Set ADT
+       Python provides support for representing the mathematical notion of a set through
+       the built-in classes frozenset and set, as originally discussed in Chapter 1, with
+       frozenset being an immutable form. Both of those classes are implemented using
+       hash tables in Python.
+           Python’s collections module deﬁnes abstract base classes that essentially mirror
+       these built-in classes. Although the choice of names is counterintuitive, the abstract
+       base class collections.Set matches the concrete frozenset class, while the abstract
+       base class collections.MutableSet is akin to the concrete set class.
+           In our own discussion, we equate the “set ADT” with the behavior of the built-
+       in set class (and thus, the collections.MutableSet base class). We begin by listing
+       what we consider to be the ﬁve most fundamental behaviors for a set S:
+                      S.add(e): Add element e to the set. This has no effect if the set
+                                   already contains e.
+                   S.discard(e): Remove element e from the set, if present. This has no
+                                   effect if the set does not contain e.
+                          e in S: Return True if the set contains element e. In Python, this
+                                   is implemented with the special contains method.
+                          len(S): Return the number of elements in set S. In Python, this
+                                   is implemented with the special method len .
+                         iter(S): Generate an iteration of all elements of the set. In Python,
+                                   this is implemented with the special method iter .

@@ -1,0 +1,42 @@
+8.6. Exercises                                                                                  357
+           C-8.48 Given a proper binary tree T , deﬁne the reﬂection of T to be the binary
+                  tree T  such that each node v in T is also in T  , but the left child of v in T
+                  is v’s right child in T  and the right child of v in T is v’s left child in T  .
+                  Show that a preorder traversal of a proper binary tree T is the same as the
+                  postorder traversal of T ’s reﬂection, but in reverse order.
+           C-8.49 Let the rank of a position p during a traversal be deﬁned such that the ﬁrst
+                  element visited has rank 1, the second element visited has rank 2, and so
+                  on. For each position p in a tree T , let pre(p) be the rank of p in a preorder
+                  traversal of T , let post(p) be the rank of p in a postorder traversal of T , let
+                  depth(p) be the depth of p, and let desc(p) be the number of descendants
+                  of p, including p itself. Derive a formula deﬁning post(p) in terms of
+                  desc(p), depth(p), and pre(p), for each node p in T .
+           C-8.50 Design algorithms for the following operations for a binary tree T :
+                      • preorder next(p): Return the position visited after p in a preorder
+                         traversal of T (or None if p is the last node visited).
+                      • inorder next(p): Return the position visited after p in an inorder
+                         traversal of T (or None if p is the last node visited).
+                      • postorder next(p): Return the position visited after p in a postorder
+                         traversal of T (or None if p is the last node visited).
+                  What are the worst-case running times of your algorithms?
+           C-8.51 To implement the preorder method of the LinkedBinaryTree class, we re-
+                  lied on the convenience of Python’s generator syntax and the yield state-
+                  ment. Give an alternative implementation of preorder that returns an ex-
+                  plicit instance of a nested iterator class. (See Section 2.3.4 for discussion
+                  of iterators.)
+           C-8.52 Algorithm preorder draw draws a binary tree T by assigning x- and y-
+                  coordinates to each position p such that x(p) is the number of nodes pre-
+                  ceding p in the preorder traversal of T and y(p) is the depth of p in T .
+                     a. Show that the drawing of T produced by preorder draw has no pairs
+                         of crossing edges.
+                     b. Redraw the binary tree of Figure 8.22 using preorder draw.
+           C-8.53 Redo the previous problem for the algorithm postorder draw that is simi-
+                  lar to preorder draw except that it assigns x(p) to be the number of nodes
+                  preceding position p in the postorder traversal.
+           C-8.54 Design an algorithm for drawing general trees, using a style similar to the
+                  inorder traversal approach for drawing binary trees.
+           C-8.55 Exercise P-4.27 described the walk function of the os module. This func-
+                  tion performs a traversal of the implicit tree represented by the ﬁle system.
+                  Read the formal documentation for the function, and in particular its use
+                  of an optional Boolean parameter named topdown. Describe how its be-
+                  havior relates to tree traversal algorithms described in this chapter.

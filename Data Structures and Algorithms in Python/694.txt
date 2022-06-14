@@ -1,0 +1,54 @@
+14.7. Minimum Spanning Trees                                                                                      673
+           Analyzing the Prim-Jarnı́k Algorithm
+           The implementation issues for the Prim-Jarnı́k algorithm are similar to those for
+           Dijkstra’s algorithm, relying on an adaptable priority queue Q (Section 9.5.1).
+           We initially perform n insertions into Q, later perform n extract-min operations,
+           and may update a total of m priorities as part of the algorithm. Those steps are
+           the primary contributions to the overall running time. With a heap-based priority
+           queue, each operation runs in O(log n) time, and the overall time for the algorithm
+           is O((n + m) log n), which is O(m log n) for a connected graph. Alternatively, we
+           can achieve O(n2 ) running time by using an unsorted list as a priority queue.
+           Illustrating the Prim-Jarnı́k Algorithm
+           We illustrate the Prim-Jarnı́k algorithm in Figures 14.20 through 14.21.
+                                2704                                                    2704
+                                                      BOS                                                     BOS
+                                         867                                                     867
+                                            849     PVD                                             849     PVD
+                              ORD               144      187                          ORD               144      187
+                                        740                                                     740
+                   1846             621                                    1846             621
+                                               JFK                                                    JFK
+                                                           1258                                                    1258
+                           802                184                                  802               184
+      SFO                                                       SFO
+                                  1391         BWI     1090                               1391        BWI      1090
+              1464                                                    1464
+       337                                                       337
+                        DFW                                                     DFW
+                1235                           946                      1235                          946
+        LAX                                                       LAX
+                                  1121                                                    1121
+                        2342                 MIA                                2342                 MIA
+                              (a)                                                     (b)
+                                2704                                                    2704
+                                                      BOS                                                     BOS
+                                         867                                                     867
+                                            849     PVD                                             849     PVD
+                              ORD               144      187                          ORD               144      187
+                                        740                                                     740
+                   1846             621                                    1846             621
+                                               JFK                                                    JFK
+                                                           1258                                                    1258
+                           802                184                                  802               184
+      SFO                                                       SFO
+                                  1391         BWI     1090                               1391        BWI      1090
+              1464                                                    1464
+       337                                                       337
+                        DFW                                                     DFW
+                1235                           946                      1235                          946
+        LAX                                                       LAX
+                                  1121                                                    1121
+                        2342                 MIA                                2342                 MIA
+                              (c)                                                     (d)
+           Figure 14.20: An illustration of the Prim-Jarnı́k MST algorithm, starting with vertex
+           PVD. (Continues in Figure 14.21.)

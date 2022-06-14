@@ -1,0 +1,40 @@
+x                                                                                 Preface
+  Acknowledgments
+    We have depended greatly upon the contributions of many individuals as part of
+    the development of this book. We begin by acknowledging the wonderful team at
+    Wiley. We are grateful to our editor, Beth Golub, for her enthusiastic support of
+    this project, from beginning to end. The efforts of Elizabeth Mills and Katherine
+    Willis were critical in keeping the project moving, from its early stages as an initial
+    proposal, through the extensive peer review process. We greatly appreciate the
+    attention to detail demonstrated by Julie Kennedy, the copyeditor for this book.
+    Finally, many thanks are due to Joyce Poh for managing the ﬁnal months of the
+    production process.
+         We are truly indebted to the outside reviewers and readers for their copious
+    comments, emails, and constructive criticism, which were extremely useful in writ-
+    ing this edition. We therefore thank the following reviewers for their comments and
+    suggestions: Claude Anderson (Rose Hulman Institute of Technology), Alistair
+    Campbell (Hamilton College), Barry Cohen (New Jersey Institute of Technology),
+    Robert Franks (Central College), Andrew Harrington (Loyola University Chicago),
+    Dave Musicant (Carleton College), and Victor Norman (Calvin College). We wish
+    to particularly acknowledge Claude for going above and beyond the call of duty,
+    providing us with an enumeration of 400 detailed corrections or suggestions.
+         We thank David Mount, of University of Maryland, for graciously sharing the
+    wisdom gained from his experience with the C++ version of this text. We are grate-
+    ful to Erin Chambers and David Letscher, of Saint Louis University, for their intan-
+    gible contributions during many hallway conversations about the teaching of data
+    structures, and to David for comments on early versions of the Python code base for
+    this book. We thank David Zampino, a student at Loyola University Chicago, for
+    his feedback while using a draft of this book during an independent study course,
+    and to Andrew Harrington for supervising David’s studies.
+         We also wish to reiterate our thanks to the many research collaborators and
+    teaching assistants whose feedback shaped the previous Java and C++ versions of
+    this material. The beneﬁts of those contributions carry forward to this book.
+         Finally, we would like to warmly thank Susan Goldwasser, Isabel Cruz, Karen
+    Goodrich, Giuseppe Di Battista, Franco Preparata, Ioannis Tollis, and our parents
+    for providing advice, encouragement, and support at various stages of the prepa-
+    ration of this book, and Calista and Maya Goldwasser for offering their advice
+    regarding the artistic merits of many illustrations. More importantly, we thank all
+    of these people for reminding us that there are things in life beyond writing books.
+                                                                    Michael T. Goodrich
+                                                                       Roberto Tamassia
+                                                                 Michael H. Goldwasser

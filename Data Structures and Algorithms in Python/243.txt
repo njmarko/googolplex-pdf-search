@@ -1,0 +1,38 @@
+222                                                    Chapter 5. Array-Based Sequences
+             Our representation of a 3 × 3 board will be a list of lists of characters, with
+         X or O designating a player’s move, or           designating an empty space. For
+       example, the board conﬁguration
+                                              O X O
+                                                  X
+                                                  O X
+       will be stored internally as
+             [ [ O , X , O ], [      , X ,      ], [    , O , X ]]
+             We develop a complete Python class for maintaining a Tic-Tac-Toe board for
+       two players. That class will keep track of the moves and report a winner, but it
+       does not perform any strategy or allow someone to play Tic-Tac-Toe against the
+       computer. The details of such a program are beyond the scope of this chapter, but
+       it might nonetheless make a good course project (see Exercise P-8.68).
+             Before presenting the implementation of the class, we demonstrate its public
+       interface with a simple test in Code Fragment 5.12.
+     1    game = TicTacToe( )
+     2    # X moves:                # O moves:
+     3    game.mark(1, 1);          game.mark(0,    2)
+     4    game.mark(2, 2);          game.mark(0,    0)
+     5    game.mark(0, 1);          game.mark(2,    1)
+     6    game.mark(1, 2);          game.mark(1,    0)
+     7    game.mark(2, 0)
+     8
+     9    print(game)
+    10    winner = game.winner( )
+    11    if winner is None:
+    12       print( Tie )
+    13    else:
+    14       print(winner, wins )
+                    Code Fragment 5.12: A simple test for our Tic-Tac-Toe class.
+             The basic operations are that a new game instance represents an empty board,
+       that the mark(i,j) method adds a mark at the given position for the current player
+       (with the software managing the alternating of turns), and that the game board can
+       be printed and the winner determined. The complete source code for the TicTacToe
+       class is given in Code Fragment 5.13. Our mark method performs error checking
+       to make sure that valid indices are sent, that the position is not already occupied,
+       and that no further moves are made after someone wins the game.

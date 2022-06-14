@@ -1,0 +1,41 @@
+646                                                         Chapter 14. Graph Algorithms
+            For directed graph, G, we may wish to test whether it is strongly connected, that
+       is, whether for every pair of vertices u and v, both u reaches v and v reaches u. If we
+       start an independent call to DFS from each vertex, we could determine whether this
+       was the case, but those n calls when combined would run in O(n(n+ m)). However,
+       we can determine if G     is strongly connected much faster than this, requiring only
+       two depth-ﬁrst searches.
+            We begin by performing a depth-ﬁrst search of our directed graph G     starting at
+                                                         
+       an arbitrary vertex s. If there is any vertex of G that is not visited by this traversal,
+       and is not reachable from s, then the graph is not strongly connected. If this ﬁrst
+       depth-ﬁrst search visits each vertex of G, we need to then check whether s is reach-
+       able from all other vertices. Conceptually, we can accomplish this by making a
+       copy of graph G,  but with the orientation of all edges reversed. A depth-ﬁrst search
+       starting at s in the reversed graph will reach every vertex that could reach s in the
+       original. In practice, a better approach than making a new graph is to reimplement
+       a version of the DFS method that loops through all incoming edges to the current
+       vertex, rather than all outgoing edges. Since this algorithm makes just two DFS
+                       it runs in O(n + m) time.
+       traversals of G,
+       Computing all Connected Components
+       When a graph is not connected, the next goal we may have is to identify all of the
+       connected components of an undirected graph, or the strongly connected compo-
+       nents of a directed graph. We begin by discussing the undirected case.
+            If an initial call to DFS fails to reach all vertices of a graph, we can restart a
+       new call to DFS at one of those unvisited vertices. An implementation of such a
+       comprehensive DFS all method is given in Code Fragment 14.7.
+     1 def DFS complete(g):
+     2   ”””Perform DFS for entire graph and return forest as a dictionary.
+     3
+     4   Result maps each vertex v to the edge that was used to discover it.
+     5   (Vertices that are roots of a DFS tree are mapped to None.)
+     6   ”””
+     7   forest = { }
+     8   for u in g.vertices( ):
+     9      if u not in forest:
+    10         forest[u] = None                      # u will be the root of a tree
+    11         DFS(g, u, forest)
+    12   return forest
+       Code Fragment 14.7: Top-level function that returns a DFS forest for an entire
+       graph.

@@ -1,0 +1,38 @@
+142                                                   Chapter 3. Algorithm Analysis
+    R-3.15 Show that f (n) is O(g(n)) if and only if g(n) is Ω( f (n)).
+    R-3.16 Show that if p(n) is a polynomial in n, then log p(n) is O(log n).
+    R-3.17 Show that (n + 1)5 is O(n5 ).
+    R-3.18 Show that 2n+1 is O(2n ).
+    R-3.19 Show that n is O(n log n).
+    R-3.20 Show that n2 is Ω(n log n).
+    R-3.21 Show that n log n is Ω(n).
+    R-3.22 Show that f (n) is O( f (n)), if f (n) is a positive nondecreasing function
+           that is always greater than 1.
+    R-3.23 Give a big-Oh characterization, in terms of n, of the running time of the
+           example1 function shown in Code Fragment 3.10.
+    R-3.24 Give a big-Oh characterization, in terms of n, of the running time of the
+           example2 function shown in Code Fragment 3.10.
+    R-3.25 Give a big-Oh characterization, in terms of n, of the running time of the
+           example3 function shown in Code Fragment 3.10.
+    R-3.26 Give a big-Oh characterization, in terms of n, of the running time of the
+           example4 function shown in Code Fragment 3.10.
+    R-3.27 Give a big-Oh characterization, in terms of n, of the running time of the
+           example5 function shown in Code Fragment 3.10.
+    R-3.28 For each function f (n) and time t in the following table, determine the
+           largest size n of a problem P that can be solved in time t if the algorithm
+           for solving P takes f (n) microseconds (one entry is already completed).
+                                 1 Second    1 Hour     1 Month    1 Century
+                         log n   ≈ 10 300000
+                           n
+                        n log n
+                           n2
+                           2n
+    R-3.29 Algorithm A executes an O(log n)-time computation for each entry of an
+           n-element sequence. What is its worst-case running time?
+    R-3.30 Given an n-element sequence S, Algorithm B chooses log n elements in
+           S at random and executes an O(n)-time calculation for each. What is the
+           worst-case running time of Algorithm B?
+    R-3.31 Given an n-element sequence S of integers, Algorithm C executes an
+           O(n)-time computation for each even number in S, and an O(log n)-time
+           computation for each odd number in S. What are the best-case and worst-
+           case running times of Algorithm C?

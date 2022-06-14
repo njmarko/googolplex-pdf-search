@@ -1,0 +1,27 @@
+5.3. Dynamic Arrays and Amortization                                                                    197
+      5.3.2 Amortized Analysis of Dynamic Arrays
+         In this section, we perform a detailed analysis of the running time of operations on
+         dynamic arrays. We use the big-Omega notation introduced in Section 3.3.1 to give
+         an asymptotic lower bound on the running time of an algorithm or step within it.
+             The strategy of replacing an array with a new, larger array might at ﬁrst seem
+         slow, because a single append operation may require Ω(n) time to perform, where
+         n is the current number of elements in the array. However, notice that by doubling
+         the capacity during an array replacement, our new array allows us to add n new
+         elements before the array must be replaced again. In this way, there are many
+         simple append operations for each expensive one (see Figure 5.13). This fact allows
+         us to show that performing a series of operations on an initially empty dynamic
+         array is efﬁcient in terms of its total running time.
+             Using an algorithmic design pattern called amortization, we can show that per-
+         forming a sequence of such append operations on a dynamic array is actually quite
+         efﬁcient. To perform an amortized analysis, we use an accounting technique where
+         we view the computer as a coin-operated appliance that requires the payment of
+         one cyber-dollar for a constant amount of computing time. When an operation
+         is executed, we should have enough cyber-dollars available in our current “bank
+         account” to pay for that operation’s running time. Thus, the total amount of cyber-
+         dollars spent for any computation will be proportional to the total time spent on that
+         computation. The beauty of using this analysis method is that we can overcharge
+         some operations in order to save up cyber-dollars to pay for others.
+                          primitive operations for an append
+                                                               1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+                                                                    current number of elements
+          Figure 5.13: Running times of a series of append operations on a dynamic array.

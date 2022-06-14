@@ -1,0 +1,35 @@
+1.9. Additional Python Conveniences                                                           45
+          Simultaneous Assignments
+          The combination of automatic packing and unpacking forms a technique known
+          as simultaneous assignment, whereby we explicitly assign a series of values to a
+          series of identiﬁers, using a syntax:
+               x, y, z = 6, 2, 5
+          In effect, the right-hand side of this assignment is automatically packed into a tuple,
+          and then automatically unpacked with its elements assigned to the three identiﬁers
+          on the left-hand side.
+              When using a simultaneous assignment, all of the expressions are evaluated
+          on the right-hand side before any of the assignments are made to the left-hand
+          variables. This is signiﬁcant, as it provides a convenient means for swapping the
+          values associated with two variables:
+               j, k = k, j
+          With this command, j will be assigned to the old value of k, and k will be assigned
+          to the old value of j. Without simultaneous assignment, a swap typically requires
+          more delicate use of a temporary variable, such as
+               temp = j
+               j=k
+               k = temp
+          With the simultaneous assignment, the unnamed tuple representing the packed val-
+          ues on the right-hand side implicitly serves as the temporary variable when per-
+          forming such a swap.
+              The use of simultaneous assignments can greatly simplify the presentation of
+          code. As an example, we reconsider the generator on page 41 that produces the
+          Fibonacci series. The original code requires separate initialization of variables a
+          and b to begin the series. Within each pass of the loop, the goal was to reassign a
+          and b, respectively, to the values of b and a+b. At the time, we accomplished this
+          with brief use of a third variable. With simultaneous assignments, that generator
+          can be implemented more directly as follows:
+               def ﬁbonacci( ):
+                  a, b = 0, 1
+                  while True:
+                    yield a
+                    a, b = b, a+b

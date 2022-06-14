@@ -1,0 +1,35 @@
+10.4. Skip Lists                                                                                     437
+ 10.4        Skip Lists
+           An interesting data structure for realizing the sorted map ADT is the skip list. In
+           Section 10.3.1, we saw that a sorted array will allow O(log n)-time searches via the
+           binary search algorithm. Unfortunately, update operations on a sorted array have
+           O(n) worst-case running time because of the need to shift elements. In Chapter 7
+           we demonstrated that linked lists support very efﬁcient update operations, as long
+           as the position within the list is identiﬁed. Unfortunately, we cannot perform fast
+           searches on a standard linked list; for example, the binary search algorithm requires
+           an efﬁcient means for direct accessing an element of a sequence by index.
+               Skip lists provide a clever compromise to efﬁciently support search and update
+           operations. A skip list S for a map M consists of a series of lists {S0 , S1 , . . . , Sh }.
+           Each list Si stores a subset of the items of M sorted by increasing keys, plus items
+           with two sentinel keys denoted −∞ and +∞, where −∞ is smaller than every
+           possible key that can be inserted in M and +∞ is larger than every possible key
+           that can be inserted in M. In addition, the lists in S satisfy the following:
+               • List S0 contains every item of the map M (plus sentinels −∞ and +∞).
+               • For i = 1, . . . , h − 1, list Si contains (in addition to −∞ and +∞) a randomly
+                   generated subset of the items in list Si−1 .
+               • List Sh contains only −∞ and +∞.
+           An example of a skip list is shown in Figure 10.10. It is customary to visualize a
+           skip list S with list S0 at the bottom and lists S1 , . . . , Sh above it. Also, we refer to h
+           as the height of skip list S.
+               Intuitively, the lists are set up so that Si+1 contains more or less alternate items
+           of Si . As we shall see in the details of the insertion method, the items in Si+1 are
+           chosen at random from the items in Si by picking each item from Si to also be in
+           Si+1 with probability 1/2. That is, in essence, we “ﬂip a coin” for each item in Si
+      S5  -∞                                                                                         +∞
+      S4  -∞               17                                                                        +∞
+      S3  -∞               17                 25                                             55      +∞
+      S2  -∞               17                 25      31                                     55      +∞
+      S1  -∞        12     17                 25      31      38               44            55      +∞
+      S0  -∞        12     17         20      25      31      38      39       44     50     55      +∞
+           Figure 10.10: Example of a skip list storing 10 items. For simplicity, we show only
+           the items’ keys, not their associated values.

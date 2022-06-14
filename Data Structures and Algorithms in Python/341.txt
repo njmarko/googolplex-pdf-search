@@ -1,0 +1,43 @@
+320                                                                    Chapter 8. Trees
+     1 class LinkedBinaryTree(BinaryTree):
+     2   ”””Linked representation of a binary tree structure.”””
+     3
+     4   class Node:            # Lightweight, nonpublic class for storing a node.
+     5        slots = _element , _parent , _left , _right
+     6     def init (self, element, parent=None, left=None, right=None):
+     7        self. element = element
+     8        self. parent = parent
+     9        self. left = left
+    10        self. right = right
+    11
+    12   class Position(BinaryTree.Position):
+    13     ”””An abstraction representing the location of a single element.”””
+    14
+    15     def init (self, container, node):
+    16        ”””Constructor should not be invoked by user.”””
+    17        self. container = container
+    18        self. node = node
+    19
+    20     def element(self):
+    21        ”””Return the element stored at this Position.”””
+    22        return self. node. element
+    23
+    24     def eq (self, other):
+    25        ”””Return True if other is a Position representing the same location.”””
+    26        return type(other) is type(self) and other. node is self. node
+    27
+    28   def validate(self, p):
+    29     ”””Return associated node, if position is valid.”””
+    30     if not isinstance(p, self.Position):
+    31        raise TypeError( p must be proper Position type )
+    32     if p. container is not self:
+    33        raise ValueError( p does not belong to this container )
+    34     if p. node. parent is p. node:          # convention for deprecated nodes
+    35        raise ValueError( p is no longer valid )
+    36     return p. node
+    37
+    38   def make position(self, node):
+    39     ”””Return Position instance for given node (or None if no node).”””
+    40     return self.Position(self, node) if node is not None else None
+       Code Fragment 8.8: The beginning of our LinkedBinaryTree class (continued in
+       Code Fragments 8.9 through 8.11).

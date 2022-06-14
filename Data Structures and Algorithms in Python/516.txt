@@ -1,0 +1,32 @@
+11.4. Splay Trees                                                                           495
+              • When deleting a key k, we splay the position p that is the parent of the re-
+                 moved node; recall that by the removal algorithm for binary search trees, the
+                 removed node may be that originally containing k, or a descendant node with
+                 a replacement key. An example of splaying following a deletion is shown in
+                 Figure 11.22.
+                                       8
+                                                                           7
+                 3                           10               3                      10
+                                     7
+                          4                       11                 4                   11
+                               p
+                              6                                           6
+                                   w
+                           5                                          5
+                                 (a)                                       (b)
+                                       7                                       7
+                              6                10                                    10
+                                                                        6
+                     4                              11                                   11
+                                                                  4
+                 3        5                                 3       5
+                                 (c)                                       (d)
+                                6
+                       4                 7
+                   3        5               10
+                                                 11
+                                 (e)
+          Figure 11.22: Deletion from a splay tree: (a) the deletion of 8 from the root node
+          is performed by moving to the root the key of its inorder predecessor w, deleting
+          w, and splaying the parent p of w; (b) splaying p starts with a zig-zig; (c) after the
+          zig-zig; (d) the next step is a zig; (e) after the zig.

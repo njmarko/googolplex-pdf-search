@@ -1,0 +1,37 @@
+48                                                            Chapter 1. Python Primer
+ 1.11   Modules and the Import Statement
+      We have already introduced many functions (e.g., max) and classes (e.g., list)
+      that are deﬁned within Python’s built-in namespace. Depending on the version of
+      Python, there are approximately 130–150 deﬁnitions that were deemed signiﬁcant
+      enough to be included in that built-in namespace.
+          Beyond the built-in deﬁnitions, the standard Python distribution includes per-
+      haps tens of thousands of other values, functions, and classes that are organized in
+      additional libraries, known as modules, that can be imported from within a pro-
+      gram. As an example, we consider the math module. While the built-in namespace
+      includes a few mathematical functions (e.g., abs, min, max, round), many more
+      are relegated to the math module (e.g., sin, cos, sqrt). That module also deﬁnes
+      approximate values for the mathematical constants, pi and e.
+          Python’s import statement loads deﬁnitions from a module into the current
+      namespace. One form of an import statement uses a syntax such as the following:
+           from math import pi, sqrt
+      This command adds both pi and sqrt, as deﬁned in the math module, into the cur-
+      rent namespace, allowing direct use of the identiﬁer, pi, or a call of the function,
+      sqrt(2). If there are many deﬁnitions from the same module to be imported, an
+      asterisk may be used as a wild card, as in, from math import , but this form
+      should be used sparingly. The danger is that some of the names deﬁned in the mod-
+      ule may conﬂict with names already in the current namespace (or being imported
+      from another module), and the import causes the new deﬁnitions to replace existing
+      ones.
+          Another approach that can be used to access many deﬁnitions from the same
+      module is to import the module itself, using a syntax such as:
+           import math
+      Formally, this adds the identiﬁer, math, to the current namespace, with the module
+      as its value. (Modules are also ﬁrst-class objects in Python.) Once imported, in-
+      dividual deﬁnitions from the module can be accessed using a fully-qualiﬁed name,
+      such as math.pi or math.sqrt(2).
+      Creating a New Module
+      To create a new module, one simply has to put the relevant deﬁnitions in a ﬁle
+      named with a .py sufﬁx. Those deﬁnitions can be imported from any other .py
+      ﬁle within the same project directory. For example, if we were to put the deﬁnition
+      of our count function (see Section 1.5) into a ﬁle named utility.py, we could
+      import that function using the syntax, from utility import count.

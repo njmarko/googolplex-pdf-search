@@ -1,0 +1,42 @@
+13.2. Pattern-Matching Algorithms                                                            589
+               The correctness of the Boyer-Moore pattern-matching algorithm follows from
+           the fact that each time the method makes a shift, it is guaranteed not to “skip” over
+           any possible matches. For last(c) is the location of the last occurrence of c in P.
+           In Figure 13.4, we illustrate the execution of the Boyer-Moore pattern-matching
+           algorithm on an input string similar to Example 13.1.
+                                             c      a   b     c     d
+                                          last(c)   4   5     3    −1
+                       Text:  a  b  a  c   a  a  b a  d   c    a b   a  c a b a a  b  b
+                                              1
+                     Pattern: a  b  a  c   a  b
+                                           4  3  2            13 12 11 10 9 8
+                                 a  b  a   c  a  b             a b   a  c a b
+                                                   5                      7
+                                    a  b   a  c  a b      a   b   a  c  a b
+                                                      6
+                                       a   b  a  c a  b
+           Figure 13.4: An illustration of the Boyer-Moore pattern-matching algorithm, in-
+           cluding a summary of the last(c) function. The algorithm performs 13 character
+           comparisons, which are indicated with numerical labels.
+          Performance
+           If using a traditional lookup table, the worst-case running time of the Boyer-Moore
+           algorithm is O(nm + |Σ|). Namely, the computation of the last function takes time
+           O(m + |Σ|), and the actual search for the pattern takes O(nm) time in the worst case,
+           the same as the brute-force algorithm. (With a hash table, the dependence on |Σ| is
+           removed.) An example of a text-pattern pair that achieves the worst case is
+                                                            n
+                                                       
+                                             T   = aaaaaa· · · a
+                                                        m−1
+                                                        
+                                             P = b aa · · · a
+           The worst-case performance, however, is unlikely to be achieved for English text,
+           for, in that case, the Boyer-Moore algorithm is often able to skip large portions
+           of text. Experimental evidence on English text shows that the average number of
+           comparisons done per character is 0.24 for a ﬁve-character pattern string.
+               We have actually presented a simpliﬁed version of the Boyer-Moore algorithm.
+           The original algorithm achieves running time O(n+ m + |Σ|) by using an alternative
+           shift heuristic to the partially matched text string, whenever it shifts the pattern
+           more than the character-jump heuristic. This alternative shift heuristic is based on
+           applying the main idea from the Knuth-Morris-Pratt pattern-matching algorithm,
+           which we discuss next.

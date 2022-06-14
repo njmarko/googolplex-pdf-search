@@ -1,0 +1,38 @@
+8.4. Tree Traversal Algorithms                                                                   339
+       1 def preorder label(T, p, d, path):
+       2     ”””Print labeled representation of subtree         of T rooted at p at depth d.”””
+       3     label = . .join(str(j+1) for j in path)            # displayed labels are one-indexed
+       4     print(2 d        + label, p.element( ))
+       5     path.append(0)                                     # path entries are zero-indexed
+       6     for c in T.children(p):
+       7        preorder label(T, c, d+1, path)                 # child depth is d+1
+       8        path[−1] += 1
+       9     path.pop( )
+           Code Fragment 8.24: Efﬁcient recursion for printing an indented and labeled pre-
+           sentation of a preorder traversal.
+           Parenthetic Representations of a Tree
+           It is not possible to reconstruct a general tree, given only the preorder sequence
+           of elements, as in Figure 8.20(a). Some additional context is necessary for the
+           structure of the tree to be well deﬁned. The use of indentation or numbered labels
+           provides such context, with a very human-friendly presentation. However, there
+           are more concise string representations of trees that are computer-friendly.
+                In this section, we explore one such representation. The parenthetic string
+           representation P(T ) of tree T is recursively deﬁned as follows. If T consists of a
+           single position p, then
+                                         P(T ) = str(p.element()).
+           Otherwise, it is deﬁned recursively as,
+               P(T ) = str(p.element()) + ( + P(T1 ) + ,            + ··· + ,      + P(Tk ) + )
+           where p is the root of T and T1 , T2 , . . . , Tk are the subtrees rooted at the children
+           of p, which are given in order if T is an ordered tree. We are using “+” here to
+           denote string concatenation. As an example, the parenthetic representation of the
+           tree of Figure 8.2 would appear as follows (line breaks are cosmetic):
+           Electronics R’Us (R&D, Sales (Domestic, International (Canada,
+           S. America, Overseas (Africa, Europe, Asia, Australia))),
+           Purchasing, Manufacturing (TV, CD, Tuner))
+                Although the parenthetic representation is essentially a preorder traversal, we
+           cannot easily produce the additional punctuation using the formal implementation
+           of preorder, as given in Code Fragment 8.17. The opening parenthesis must be
+           produced just before the loop over a position’s children and the closing parenthesis
+           must be produced just after that loop. Furthermore, the separating commas must
+           be produced. The Python function parenthesize, shown in Code Fragment 8.25, is
+           a custom traversal that prints such a parenthetic string representation of a tree T .

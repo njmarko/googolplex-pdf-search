@@ -1,0 +1,35 @@
+6.2. Queues                                                                                  241
+      6.2.2 Array-Based Queue Implementation
+         For the stack ADT, we created a very simple adapter class that used a Python list
+         as the underlying storage. It may be very tempting to use a similar approach for
+         supporting the queue ADT. We could enqueue element e by calling append(e) to
+         add it to the end of the list. We could use the syntax pop(0), as opposed to pop( ),
+         to intentionally remove the ﬁrst element from the list when dequeuing.
+              As easy as this would be to implement, it is tragically inefﬁcient. As we dis-
+         cussed in Section 5.4.1, when pop is called on a list with a non-default index, a
+         loop is executed to shift all elements beyond the speciﬁed index to the left, so as to
+         ﬁll the hole in the sequence caused by the pop. Therefore, a call to pop(0) always
+         causes the worst-case behavior of Θ(n) time.
+              We can improve on the above strategy by avoiding the call to pop(0) entirely.
+         We can replace the dequeued entry in the array with a reference to None, and main-
+         tain an explicit variable f to store the index of the element that is currently at the
+         front of the queue. Such an algorithm for dequeue would run in O(1) time. After
+         several dequeue operations, this approach might lead to the conﬁguration portrayed
+         in Figure 6.5.
+                                            E F G                     K L M
+                           0   1   2         f
+               Figure 6.5: Allowing the front of the queue to drift away from index 0.
+              Unfortunately, there remains a drawback to the revised approach. In the case
+         of a stack, the length of the list was precisely equal to the size of the stack (even if
+         the underlying array for the list was slightly larger). With the queue design that we
+         are considering, the situation is worse. We can build a queue that has relatively few
+         elements, yet which are stored in an arbitrarily large list. This occurs, for example,
+         if we repeatedly enqueue a new element and then dequeue another (allowing the
+         front to drift rightward). Over time, the size of the underlying list would grow to
+         O(m) where m is the total number of enqueue operations since the creation of the
+         queue, rather than the current number of elements in the queue.
+              This design would have detrimental consequences in applications in which
+         queues have relatively modest size, but which are used for long periods of time.
+         For example, the wait-list for a restaurant might never have more than 30 entries
+         at one time, but over the course of a day (or a week), the overall number of entries
+         would be signiﬁcantly larger.

@@ -1,0 +1,41 @@
+10.3. Sorted Maps                                                                     431
+      40    def setitem (self, k, v):
+      41      ”””Assign value v to key k, overwriting existing value if present.”””
+      42      j = self. ﬁnd index(k, 0, len(self. table) − 1)
+      43      if j < len(self. table) and self. table[j]. key == k:
+      44         self. table[j]. value = v                             # reassign value
+      45      else:
+      46         self. table.insert(j, self. Item(k,v))                # adds new item
+      47
+      48    def delitem (self, k):
+      49      ”””Remove item associated with key k (raise KeyError if not found).”””
+      50      j = self. ﬁnd index(k, 0, len(self. table) − 1)
+      51      if j == len(self. table) or self. table[j]. key != k:
+      52         raise KeyError( Key Error: + repr(k))
+      53      self. table.pop(j)                                       # delete item
+      54
+      55    def iter (self):
+      56      ”””Generate keys of the map ordered from minimum to maximum.”””
+      57      for item in self. table:
+      58         yield item. key
+      59
+      60    def reversed (self):
+      61      ”””Generate keys of the map ordered from maximum to minimum.”””
+      62      for item in reversed(self. table):
+      63         yield item. key
+      64
+      65    def ﬁnd min(self):
+      66      ”””Return (key,value) pair with minimum key (or None if empty).”””
+      67      if len(self. table) > 0:
+      68         return (self. table[0]. key, self. table[0]. value)
+      69      else:
+      70         return None
+      71
+      72    def ﬁnd max(self):
+      73      ”””Return (key,value) pair with maximum key (or None if empty).”””
+      74      if len(self. table) > 0:
+      75         return (self. table[−1]. key, self. table[−1]. value)
+      76      else:
+      77         return None
+           Code Fragment 10.9: An implementation of a SortedTableMap class (together with
+           Code Fragments 10.8 and 10.10).

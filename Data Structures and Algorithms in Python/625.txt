@@ -1,0 +1,38 @@
+604                                                            Chapter 13. Text Processing
+ 13.5     Tries
+       The pattern-matching algorithms presented in Section 13.2 speed up the search in
+       a text by preprocessing the pattern (to compute the failure function in the Knuth-
+       Morris-Pratt algorithm or the last function in the Boyer-Moore algorithm). In this
+       section, we take a complementary approach, namely, we present string searching
+       algorithms that preprocess the text. This approach is suitable for applications where
+       a series of queries is performed on a ﬁxed text, so that the initial cost of preprocess-
+       ing the text is compensated by a speedup in each subsequent query (for example, a
+       Web site that offers pattern matching in Shakespeare’s Hamlet or a search engine
+       that offers Web pages on the Hamlet topic).
+            A trie (pronounced “try”) is a tree-based data structure for storing strings in
+       order to support fast pattern matching. The main application for tries is in infor-
+       mation retrieval. Indeed, the name “trie” comes from the word “retrieval.” In an
+       information retrieval application, such as a search for a certain DNA sequence in a
+       genomic database, we are given a collection S of strings, all deﬁned using the same
+       alphabet. The primary query operations that tries support are pattern matching and
+       preﬁx matching. The latter operation involves being given a string X , and looking
+       for all the strings in S that contain X as a preﬁx.
+    13.5.1 Standard Tries
+       Let S be a set of s strings from alphabet Σ such that no string in S is a preﬁx
+       of another string. A standard trie for S is an ordered tree T with the following
+       properties (see Figure 13.10):
+           • Each node of T , except the root, is labeled with a character of Σ.
+           • The children of an internal node of T have distinct labels.
+           • T has s leaves, each associated with a string of S, such that the concatenation
+              of the labels of the nodes on the path from the root to a leaf v of T yields the
+              string of S associated with v.
+            Thus, a trie T represents the strings of S with paths from the root to the leaves
+       of T . Note the importance of assuming that no string in S is a preﬁx of another
+       string. This ensures that each string of S is uniquely associated with a leaf of T .
+       (This is similar to the restriction for preﬁx codes with Huffman coding, as described
+       in Section 13.4.) We can always satisfy this assumption by adding a special char-
+       acter that is not in the original alphabet Σ at the end of each string.
+            An internal node in a standard trie T can have anywhere between 1 and |Σ|
+       children. There is an edge going from the root r to one of its children for each
+       character that is ﬁrst in some string in the collection S. In addition, a path from the
+       root of T to an internal node v at depth k corresponds to a k-character preﬁx X [0:k]

@@ -1,0 +1,35 @@
+682                                                      Chapter 14. Graph Algorithms
+                A                                       B
+                          4     1   7                              9     3    6    2
+                              C
+                                        5     11   12     10   8
+    Figure 14.25: Sequence-based implementation of a partition consisting of three
+    groups: A = {1, 4, 7}, B = {2, 3, 6, 9}, and C = {5, 8, 10, 11, 12}.
+    size, and inserting them in the sequence with larger size. Each time we take a po-
+    sition from the smaller group a and insert it into the larger group b, we update the
+    group reference for that position to now point to b. Hence, the operation union(p, q)
+    takes time O(min(n p , nq )), where n p (resp. nq ) is the cardinality of the group con-
+    taining position p (resp. q). Clearly, this time is O(n) if there are n elements in the
+    partition universe. However, we next present an amortized analysis that shows this
+    implementation to be much better than appears from this worst-case analysis.
+    Proposition 14.26: When using the above sequence-based partition implementa-
+    tion, performing a series of k make group, union, and ﬁnd operations on an initially
+    empty partition involving at most n elements takes O(k + n log n) time.
+    Justiﬁcation: We use the accounting method and assume that one cyber-dollar
+    can pay for the time to perform a ﬁnd operation, a make group operation, or the
+    movement of a position object from one sequence to another in a union operation.
+    In the case of a ﬁnd or make group operation, we charge the operation itself 1
+    cyber-dollar. In the case of a union operation, we assume that 1 cyber-dollar pays
+    for the constant-time work in comparing the sizes of the two sequences, and that
+    we charge 1 cyber-dollar to each position that we move from the smaller group to
+    the larger group. Clearly, the 1 cyber-dollar charged for each ﬁnd and make group
+    operation, together with the ﬁrst cyber-dollar collected for each union operation,
+    accounts for a total of k cyber-dollars.
+         Consider, then, the number of charges made to positions on behalf of union
+    operations. The important observation is that each time we move a position from
+    one group to another, the size of that position’s group at least doubles. Thus, each
+    position is moved from one group to another at most logn times; hence, each po-
+    sition can be charged at most O(log n) times. Since we assume that the partition is
+    initially empty, there are O(n) different elements referenced in the given series of
+    operations, which implies that the total time for moving elements during the union
+    operations is O(n log n).

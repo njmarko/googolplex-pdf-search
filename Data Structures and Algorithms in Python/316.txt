@@ -1,0 +1,41 @@
+7.8. Exercises                                                                                  295
+           R-7.11 Implement a function, with calling syntax max(L), that returns the max-
+                  imum element from a PositionalList instance L containing comparable
+                  elements.
+           R-7.12 Redo the previously problem with max as a method of the PositionalList
+                  class, so that calling syntax L.max( ) is supported.
+           R-7.13 Update the PositionalList class to support an additional method ﬁnd(e),
+                  which returns the position of the (ﬁrst occurrence of ) element e in the list
+                  (or None if not found).
+           R-7.14 Repeat the previous process using recursion. Your method should not
+                  contain any loops. How much space does your method use in addition to
+                  the space used for L?
+           R-7.15 Provide support for a reversed method of the PositionalList class that
+                  is similar to the given iter , but that iterates the elements in reversed
+                  order.
+           R-7.16 Describe an implementation of the PositionalList methods add last and
+                  add before realized by using only methods in the set {is empty, ﬁrst, last,
+                  prev, next, add after, and add ﬁrst}.
+           R-7.17 In the FavoritesListMTF class, we rely on public methods of the positional
+                  list ADT to move an element of a list at position p to become the ﬁrst ele-
+                  ment of the list, while keeping the relative order of the remaining elements
+                  unchanged. Internally, that combination of operations causes one node to
+                  be removed and a new node to be inserted. Augment the PositionalList
+                  class to support a new method, move to front(p), that accomplishes this
+                  goal more directly, by relinking the existing node.
+           R-7.18 Given the set of element {a, b, c, d, e, f } stored in a list, show the ﬁnal state
+                  of the list, assuming we use the move-to-front heuristic and access the el-
+                  ements according to the following sequence: (a, b, c, d, e, f , a, c, f , b, d, e).
+           R-7.19 Suppose that we have made kn total accesses to the elements in a list L of
+                  n elements, for some integer k ≥ 1. What are the minimum and maximum
+                  number of elements that have been accessed fewer than k times?
+           R-7.20 Let L be a list of n items maintained according to the move-to-front heuris-
+                  tic. Describe a series of O(n) accesses that will reverse L.
+           R-7.21 Suppose we have an n-element list L maintained according to the move-
+                  to-front heuristic. Describe a sequence of n2 accesses that is guaranteed
+                  to take Ω(n3 ) time to perform on L.
+           R-7.22 Implement a clear( ) method for the FavoritesList class that returns the list
+                  to empty.
+           R-7.23 Implement a reset counts( ) method for the FavoritesList class that resets
+                  all elements’ access counts to zero (while leaving the order of the list
+                  unchanged).

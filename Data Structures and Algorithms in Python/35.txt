@@ -1,0 +1,39 @@
+14                                                            Chapter 1. Python Primer
+       Python carefully extends the semantics of // and % to cases where one or both
+   operands are negative. For the sake of notation, let us assume that variables n
+   and m represent respectively the dividend and divisor of a quotient m        n , and that
+   q = n // m and r = n % m. Python guarantees that q m + r will equal n. We
+   already saw an example of this identity with positive operands, as 6 ∗ 4 + 3 = 27.
+   When the divisor m is positive, Python further guarantees that 0 ≤ r < m. As
+   a consequence, we ﬁnd that −27 // 4 evaluates to −7 and −27 % 4 evaluates
+   to 1, as (−7) ∗ 4 + 1 = −27. When the divisor is negative, Python guarantees that
+   m < r ≤ 0. As an example, 27 // −4 is −7 and 27 % −4 is −1, satisfying the
+   identity 27 = (−7) ∗ (−4) + (−1).
+       The conventions for the // and % operators are even extended to ﬂoating-
+   point operands, with the expression q = n // m being the integral ﬂoor of the
+   quotient, and r = n % m being the “remainder” to ensure that q m + r equals
+   n. For example, 8.2 // 3.14 evaluates to 2.0 and 8.2 % 3.14 evaluates to 1.92, as
+   2.0 ∗ 3.14 + 1.92 = 8.2.
+   Bitwise Operators
+   Python provides the following bitwise operators for integers:
+                       ∼ bitwise complement (preﬁx unary operator)
+                        & bitwise and
+                        |   bitwise or
+                        ˆ   bitwise exclusive-or
+                       << shift bits left, ﬁlling in with zeros
+                       >> shift bits right, ﬁlling in with sign bit
+   Sequence Operators
+   Each of Python’s built-in sequence types (str, tuple, and list) support the following
+   operator syntaxes:
+                  s[j]         element at index j
+             s[start:stop]     slice including indices [start,stop)
+          s[start:stop:step] slice including indices start, start + step,
+                               start + 2 step, . . . , up to but not equalling or stop
+                 s+t           concatenation of sequences
+                 k s           shorthand for s + s + s + ... (k times)
+                val in s       containment check
+             val not in s      non-containment check
+   Python relies on zero-indexing of sequences, thus a sequence of length n has ele-
+   ments indexed from 0 to n − 1 inclusive. Python also supports the use of negative
+   indices, which denote a distance from the end of the sequence; index −1 denotes
+   the last element, index −2 the second to last, and so on. Python uses a slicing

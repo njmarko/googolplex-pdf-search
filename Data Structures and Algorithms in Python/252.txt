@@ -1,0 +1,34 @@
+6.1. Stacks                                                                                 231
+       6.1.2 Simple Array-Based Stack Implementation
+          We can implement a stack quite easily by storing its elements in a Python list. The
+          list class already supports adding an element to the end with the append method,
+          and removing the last element with the pop method, so it is natural to align the top
+          of the stack at the end of the list, as shown in Figure 6.2.
+                           A B C D E F G                               K L M
+                            0   1   2                                         top
+          Figure 6.2: Implementing a stack with a Python list, storing the top element in the
+          rightmost cell.
+               Although a programmer could directly use the list class in place of a formal
+          stack class, lists also include behaviors (e.g., adding or removing elements from
+          arbitrary positions) that would break the abstraction that the stack ADT represents.
+          Also, the terminology used by the list class does not precisely align with traditional
+          nomenclature for a stack ADT, in particular the distinction between append and
+          push. Instead, we demonstrate how to use a list for internal storage while providing
+          a public interface consistent with a stack.
+          The Adapter Pattern
+          The adapter design pattern applies to any context where we effectively want to
+          modify an existing class so that its methods match those of a related, but different,
+          class or interface. One general way to apply the adapter pattern is to deﬁne a new
+          class in such a way that it contains an instance of the existing class as a hidden
+          ﬁeld, and then to implement each method of the new class using methods of this
+          hidden instance variable. By applying the adapter pattern in this way, we have
+          created a new class that performs some of the same functions as an existing class,
+          but repackaged in a more convenient way. In the context of the stack ADT, we can
+          adapt Python’s list class using the correspondences shown in Table 6.1.
+                              Stack Method       Realization with Python list
+                              S.push(e)          L.append(e)
+                              S.pop( )           L.pop( )
+                              S.top( )           L[−1]
+                              S.is empty( )      len(L) == 0
+                              len(S)             len(L)
+                  Table 6.1: Realization of a stack S as an adaptation of a Python list L.

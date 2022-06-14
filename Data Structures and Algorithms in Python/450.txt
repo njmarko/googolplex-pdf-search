@@ -1,0 +1,41 @@
+10.3. Sorted Maps                                                                              429
+          Implementation
+           In Code Fragments 10.8 through 10.10, we present a complete implementation of a
+           class, SortedTableMap, that supports the sorted map ADT. The most notable fea-
+           ture of our design is the inclusion of a ﬁnd index utility function. This method
+           using the binary search algorithm, but by convention returns the index of the left-
+           most item in the search interval having key greater than or equal to k. Therefore, if
+           the key is present, it will return the index of the item having that key. (Recall that
+           keys are unique in a map.) When the key is missing, the function returns the index
+           of the item in the search interval that is just beyond where the key would have been
+           located. As a technicality, the method returns index high + 1 to indicate that no
+           items of the interval had a key greater than k.
+               We rely on this utility method when implementing the traditional map opera-
+           tions and the new sorted map operations. The body of each of the getitem ,
+              setitem , and delitem methods begins with a call to ﬁnd index to deter-
+           mine a candidate index at which a matching key might be found. For getitem ,
+           we simply check whether that is a valid index containing the target to determine the
+           result. For setitem , recall that the goal is to replace the value of an existing
+           item, if one with key k is found, but otherwise to insert a new item into the map. The
+           index returned by ﬁnd index will be the index of the match, if one exists, or oth-
+           erwise the exact index at which the new item should be inserted. For delitem ,
+           we again rely on the convenience of ﬁnd index to determine the location of the
+           item to be popped, if any.
+               Our ﬁnd index utility is equally valuable when implementing the various in-
+           exact search methods given in Code Fragment 10.10. For each of the methods
+           ﬁnd lt, ﬁnd le, ﬁnd gt, and ﬁnd ge, we begin with a call to ﬁnd index utility,
+           which locates the ﬁrst index at which there is an element with key ≥ k, if any. This
+           is precisely what we want for ﬁnd ge, if valid, and just beyond the index we want
+           for ﬁnd lt. For ﬁnd gt and ﬁnd le we need some extra case analysis to distinguish
+           whether the indicated index has a key equal to k. For example, if the indicated
+           item has a matching key, our ﬁnd gt implementation increments the index before
+           continuing with the process. (We omit the implementation of ﬁnd le, for brevity.)
+           In all cases, we must properly handle boundary cases, reporting None when unable
+           to ﬁnd a key with the desired property.
+               Our strategy for implementing ﬁnd range is to use the ﬁnd index utility to
+           locate the ﬁrst item with key ≥ start (assuming start is not None). With that knowl-
+           edge, we use a while loop to sequentially report items until reaching one that has
+           a key greater than or equal to the stopping value (or until reaching the end of the
+           table). It is worth noting that the while loop may trivially iterate zero items if the
+           ﬁrst key that is greater than or equal to start also happens to be greater than or equal
+           to stop. This represents an empty range in the map.

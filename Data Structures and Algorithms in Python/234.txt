@@ -1,0 +1,33 @@
+5.5. Using Array-Based Sequences                                                                 213
+          Adding an Entry
+          The most interesting method of the Scoreboard class is add, which is responsible
+          for considering the addition of a new entry to the scoreboard. Keep in mind that
+          every entry will not necessarily qualify as a high score. If the board is not yet full,
+          any new entry will be retained. Once the board is full, a new entry is only retained
+          if it is strictly better than one of the other scores, in particular, the last entry of the
+          scoreboard, which is the lowest of the high scores.
+               When a new score is considered, we begin by determining whether it qualiﬁes
+          as a high score. If so, we increase the count of active scores, n, unless the board
+          is already at full capacity. In that case, adding a new high score causes some other
+          entry to be dropped from the scoreboard, so the overall number of entries remains
+          the same.
+               To correctly place a new entry within the list, the ﬁnal task is to shift any in-
+          ferior scores one spot lower (with the least score being dropped entirely when the
+          scoreboard is full). This process is quite similar to the implementation of the insert
+          method of the list class, as described on pages 204–205. In the context of our score-
+          board, there is no need to shift any None references that remain near the end of the
+          array, so the process can proceed as diagrammed in Figure 5.19.
+                                   Jill  740
+                        Rob  750                  Anna 660       Jack   510
+           Mike 1105                    Paul  720       Rose 590
+               0          1        2         3        4      5        6       7        8        9
+          Figure 5.19: Adding a new GameEntry for Jill to the scoreboard. In order to make
+          room for the new reference, we have to shift the references for game entries with
+          smaller scores than the new one to the right by one cell. Then we can insert the new
+          entry with index 2.
+               To implement the ﬁnal stage, we begin by considering index j = self. n − 1,
+          which is the index at which the last GameEntry instance will reside, after complet-
+          ing the operation. Either j is the correct index for the newest entry, or one or more
+          immediately before it will have lesser scores. The while loop at line 34 checks the
+          compound condition, shifting references rightward and decrementing j, as long as
+          there is another entry at index j − 1 with a score less than the new score.

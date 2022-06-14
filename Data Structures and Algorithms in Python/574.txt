@@ -1,0 +1,16 @@
+12.3. Quick-Sort                                                                       553
+                        50  85    63   96                               50  85   63   96
+           31   45                                         31   45
+   17 24                                          17 24
+                    (g)                                             (h)
+                        50  85    63   96                               50  85   63   96
+           31   45                                         31   45
+   17                                             17 24
+       24
+                    (i)                                             (j)
+                        50  85    63   96                               50  85   63   96
+           31   45                                17  24   31   45
+  17  24
+                    (k)                                             (l)
+          Figure 12.11: Visualization of an execution of quick-sort. Note the concatenation
+          step performed in (k). (Continues in Figure 12.12.)

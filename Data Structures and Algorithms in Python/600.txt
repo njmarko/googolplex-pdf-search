@@ -1,0 +1,43 @@
+12.8. Exercises                                                                                 579
+          C-12.54 Show that randomized quick-sort runs in O(n log n) time with probability
+                  at least 1− 1/n, that is, with high probability, by answering the following:
+                     a. For each input element x, deﬁne Ci, j (x) to be a 0/1 random variable
+                        that is 1 if and only if element x is in j + 1 subproblems that belong
+                        to size group i. Argue why we need not deﬁne Ci, j for j > n.
+                     b. Let Xi, j be a 0/1 random variable that is 1 with probability 1/2 j ,
+                        independent of any other events, and let L = log4/3 n. Argue why
+                           i=0 ∑ j=0 Ci, j (x) ≤ ∑i=0 ∑ j=0 Xi, j .
+                        ∑L−1     n                L−1 n
+                     c. Show that the expected value of ∑L−1    i=0 ∑ j=0 Xi, j is (2 − 1/2 )L.
+                                                                      n                    n
+                     d. Show that the probability that ∑i=0 ∑ j=0 Xi, j > 4L is at most 1/n2 ,
+                                                             L      n
+                        using the Chernoff bound that states that if X is the sum of a ﬁnite
+                        number of independent 0/1 random variables with expected value
+                        μ > 0, then Pr(X > 2μ) < (4/e)−μ , where e = 2.71828128. . ..
+                     e. Argue why the previous claim proves randomized quick-sort runs in
+                        O(n log n) time with probability at least 1 − 1/n.
+          C-12.55 We can make the quick-select algorithm deterministic, by choosing the
+                  pivot of an n-element sequence as follows:
+                        Partition the set S into n/5 groups of size 5 each (except pos-
+                        sibly for one group). Sort each little set and identify the median
+                        element in this set. From this set of n/5 “baby” medians, ap-
+                        ply the selection algorithm recursively to ﬁnd the median of the
+                        baby medians. Use this element as the pivot and proceed as in
+                        the quick-select algorithm.
+                  Show that this deterministic quick-select algorithm runs in O(n) time by
+                  answering the following questions (please ignore ﬂoor and ceiling func-
+                  tions if that simpliﬁes the mathematics, for the asymptotics are the same
+                  either way):
+                     a. How many baby medians are less than or equal to the chosen pivot?
+                        How many are greater than or equal to the pivot?
+                     b. For each baby median less than or equal to the pivot, how many
+                        other elements are less than or equal to the pivot? Is the same true
+                        for those greater than or equal to the pivot?
+                     c. Argue why the method for ﬁnding the deterministic pivot and using
+                        it to partition S takes O(n) time.
+                     d. Based on these estimates, write a recurrence equation to bound the
+                        worst-case running time t(n) for this selection algorithm (note that in
+                        the worst case there are two recursive calls—one to ﬁnd the median
+                        of the baby medians and one to recur on the larger of L and G).
+                     e. Using this recurrence equation, show by induction that t(n) is O(n).

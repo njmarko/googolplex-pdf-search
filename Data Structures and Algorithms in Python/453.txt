@@ -1,0 +1,42 @@
+432                                      Chapter 10. Maps, Hash Tables, and Skip Lists
+     78   def ﬁnd ge(self, k):
+     79     ”””Return (key,value) pair with least key greater than or equal to k.”””
+     80     j = self. ﬁnd index(k, 0, len(self. table) − 1)              # j s key >= k
+     81     if j < len(self. table):
+     82        return (self. table[j]. key, self. table[j]. value)
+     83     else:
+     84        return None
+     85
+     86   def ﬁnd lt(self, k):
+     87     ”””Return (key,value) pair with greatest key strictly less than k.”””
+     88     j = self. ﬁnd index(k, 0, len(self. table) − 1)              # j s key >= k
+     89     if j > 0:
+     90        return (self. table[j−1]. key, self. table[j−1]. value) # Note use of j-1
+     91     else:
+     92        return None
+     93
+     94   def ﬁnd gt(self, k):
+     95     ”””Return (key,value) pair with least key strictly greater than k.”””
+     96     j = self. ﬁnd index(k, 0, len(self. table) − 1)              # j s key >= k
+     97     if j < len(self. table) and self. table[j]. key == k:
+     98        j += 1                                              # advanced past match
+     99     if j < len(self. table):
+    100        return (self. table[j]. key, self. table[j]. value)
+    101     else:
+    102        return None
+    103
+    104   def ﬁnd range(self, start, stop):
+    105     ”””Iterate all (key,value) pairs such that start <= key < stop.
+    106
+    107     If start is None, iteration begins with minimum key of map.
+    108     If stop is None, iteration continues through the maximum key of map.
+    109     ”””
+    110     if start is None:
+    111        j=0
+    112     else:
+    113        j = self. ﬁnd index(start, 0, len(self. table)−1)       # ﬁnd ﬁrst result
+    114     while j < len(self. table) and (stop is None or self. table[j]. key < stop):
+    115        yield (self. table[j]. key, self. table[j]. value)
+    116        j += 1
+        Code Fragment 10.10: An implementation of a SortedTableMap class (continued
+        from Code Fragments 10.9 and 10.10). We omit the ﬁnd le method due to space.

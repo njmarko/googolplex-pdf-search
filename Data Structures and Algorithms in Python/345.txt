@@ -1,0 +1,32 @@
+324                                                                     Chapter 8. Trees
+    Performance of the Linked Binary Tree Implementation
+    To summarize the efﬁciencies of the linked structure representation, we analyze the
+    running times of the LinkedBinaryTree methods, including derived methods that
+    are inherited from the Tree and BinaryTree classes:
+        • The len method, implemented in LinkedBinaryTree, uses an instance variable
+           storing the number of nodes of T and takes O(1) time. Method is empty,
+           inherited from Tree, relies on a single call to len and thus takes O(1) time.
+        • The accessor methods root, left, right, parent, and num children are imple-
+           mented directly in LinkedBinaryTree and take O(1) time. The sibling and
+           children methods are derived in BinaryTree based on a constant number of
+           calls to these other accessors, so they run in O(1) time as well.
+        • The is root and is leaf methods, from the Tree class, both run in O(1) time,
+           as is root calls root and then relies on equivalence testing of positions, while
+           is leaf calls left and right and veriﬁes that None is returned by both.
+        • Methods depth and height were each analyzed in Section 8.1.3. The depth
+           method at position p runs in O(d p + 1) time where d p is its depth; the height
+           method on the root of the tree runs in O(n) time.
+        • The various update methods add root, add left, add right, replace, delete,
+           and attach (that is, their nonpublic implementations) each run in O(1) time,
+           as they involve relinking only a constant number of nodes per operation.
+    Table 8.1 summarizes the performance of the linked structure implementation of a
+    binary tree.
+         Operation                                                     Running Time
+         len, is empty                                                 O(1)
+         root, parent, left, right, sibling, children, num children    O(1)
+         is root, is leaf                                              O(1)
+         depth(p)                                                      O(d p + 1)
+         height                                                        O(n)
+         add root, add left, add right, replace, delete, attach        O(1)
+    Table 8.1: Running times for the methods of an n-node binary tree implemented
+    with a linked structure. The space usage is O(n).

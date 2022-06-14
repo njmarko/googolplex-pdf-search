@@ -1,0 +1,29 @@
+2.4. Inheritance                                                                                      83
+          Python’s Exception Hierarchy
+           Another example of a rich inheritance hierarchy is the organization of various ex-
+           ception types in Python. We introduced many of those classes in Section 1.7, but
+           did not discuss their relationship with each other. Figure 2.5 illustrates a (small)
+           portion of that hierarchy. The BaseException class is the root of the entire hierar-
+           chy, while the more speciﬁc Exception class includes most of the error types that
+           we have discussed. Programmers are welcome to deﬁne their own special exception
+           classes to denote errors that may occur in the context of their application. Those
+           user-deﬁned exception types should be declared as subclasses of Exception.
+                                                   BaseException
+                             SystemExit              Exception          KeyboardInterrupt
+                  ValueError                        LookupError                      ArithmeticError
+                                        IndexError               KeyError           ZeroDivisionError
+                      Figure 2.5: A portion of Python’s hierarchy of exception types.
+       2.4.1 Extending the CreditCard Class
+           To demonstrate the mechanisms for inheritance in Python, we revisit the CreditCard
+           class of Section 2.3, implementing a subclass that, for lack of a better name, we
+           name PredatoryCreditCard. The new class will differ from the original in two
+           ways: (1) if an attempted charge is rejected because it would have exceeded the
+           credit limit, a $5 fee will be charged, and (2) there will be a mechanism for assess-
+           ing a monthly interest charge on the outstanding balance, based upon an Annual
+           Percentage Rate (APR) speciﬁed as a constructor parameter.
+               In accomplishing this goal, we demonstrate the techniques of specialization
+           and extension. To charge a fee for an invalid charge attempt, we override the
+           existing charge method, thereby specializing it to provide the new functionality
+           (although the new version takes advantage of a call to the overridden version). To
+           provide support for charging interest, we extend the class with a new method named
+           process month.

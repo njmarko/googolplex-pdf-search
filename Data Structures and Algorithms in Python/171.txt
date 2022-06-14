@@ -1,0 +1,36 @@
+150                                                                     Chapter 4. Recursion
+ 4.1    Illustrative Examples
+     4.1.1 The Factorial Function
+        To demonstrate the mechanics of recursion, we begin with a simple mathematical
+        example of computing the value of the factorial function. The factorial of a posi-
+        tive integer n, denoted n!, is deﬁned as the product of the integers from 1 to n. If
+        n = 0, then n! is deﬁned as 1 by convention. More formally, for any integer n ≥ 0,
+                              
+                                 1                                     if n = 0
+                         n! =
+                                 n · (n − 1) · (n − 2) · · · 3 · 2 · 1 if n ≥ 1.
+        For example, 5! = 5 · 4 · 3 · 2 · 1 = 120. The factorial function is important because
+        it is known to equal the number of ways in which n distinct items can be arranged
+        into a sequence, that is, the number of permutations of n items. For example, the
+        three characters a, b, and c can be arranged in 3! = 3 · 2 · 1 = 6 ways: abc, acb,
+        bac, bca, cab, and cba.
+              There is a natural recursive deﬁnition for the factorial function. To see this,
+        observe that 5! = 5 · (4 · 3 · 2 · 1) = 5 · 4!. More generally, for a positive integer n,
+        we can deﬁne n! to be n · (n − 1)!. This recursive deﬁnition can be formalized as
+                              
+                                 1                                     if n = 0
+                         n! =
+                                 n · (n − 1)!                          if n ≥ 1.
+              This deﬁnition is typical of many recursive deﬁnitions. First, it contains one
+        or more base cases, which are deﬁned nonrecursively in terms of ﬁxed quantities.
+        In this case, n = 0 is the base case. It also contains one or more recursive cases,
+        which are deﬁned by appealing to the deﬁnition of the function being deﬁned.
+        A Recursive Implementation of the Factorial Function
+        Recursion is not just a mathematical notation; we can use recursion to design a
+        Python implementation of a factorial function, as shown in Code Fragment 4.1.
+     1 def factorial(n):
+     2     if n == 0:
+     3        return 1
+     4     else:
+     5        return n factorial(n−1)
+               Code Fragment 4.1: A recursive implementation of the factorial function.

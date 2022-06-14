@@ -1,0 +1,48 @@
+Index                                                                                  741
+      element uniqueness problem, 135–136, 165   ﬂowchart, 19
+      elif keyword, 18                           Floyd, Robert, 400, 696
+      Empty exception class, 232, 242, 303       Floyd-Warshall algorithm, 652–654, 696
+      encapsulation, 58, 60                      for loop, 21
+      encryption, 216                            forest, 623
+      endpoints, 621                             formal parameter, 24
+      EOFError, 33, 37, 38                       fractal, 152
+      escape character, 10                       fragmentation of memory, 699
+      Euclidean norm, 53                         free list, 699
+      Euler tour of a graph, 686, 691            frozenset class, 7, 11, 446
+      Euler tour tree traversal, 341–347, 361    full binary tree, 311
+      EulerTour class, 342–345                   function, 23–28
+      event, 729                                       body, 23
+      except statement, 36–38                          built-in, 28
+      exception, 33–38, 83                             signature, 23
+            catching, 36–38
+            raising, 34–35                       game tree, 330, 361
+      Exception class, 33, 83, 232, 303          GameEntry class, 210
+      expected value, 729                        Gamma, Erich, 108
+      exponential function, 120–121, 172–173     garbage collection, 209, 245, 275, 700–
+      expression tree, 312, 348–351                          702
+      expressions, 12–17                               mark-sweep, 701, 702
+      ExpressionTree class, 348–351              Gauss, Carl, 118
+      external memory, 705–716, 719              gc module, 701
+      external-memory algorithm, 705–716         generator, 40–41, 79
+      external-memory sorting, 715–716           generator comprehension, 43, 209
+                                                 geometric progression, 90, 199
+      factorial function, 150–151, 161, 166–167, geometric sum, 121, 728
+                  726                            getsizeof function, 190, 192–194
+      factoring a number, 40–41                  global scope, 46, 96
+      factory method pattern, 479                Goldberg, Adele, 298
+      False, 7                                   Goldwasser, Michael, 55, 108
+      favorites list, 286–291                    Gonnet, Gaston, 400, 535, 580, 719
+      FavoritesList class, 287–288               Goodrich, Michael, 719
+      FavoritesListMTF class, 290, 399           grade-point average (GPA), 3, 26
+      Fibonacci heap, 667                        Graham, Ronald, 696
+      Fibonacci series, 41, 45, 90–91, 727       graph, 620–696
+      FIFO, 239, 363                                   abstract data type, 620–626
+      ﬁle proxy, 31–32                                 acyclic, 623
+      ﬁle system, 157–160, 302, 340                    breadth-ﬁrst search, 648–650
+      ﬁnally, 38                                       connected, 623, 638
+      ﬁrst-class object, 47                            data structures, 627–634
+      ﬁrst-ﬁt algorithm, 699                              adjacency list, 627, 630–631
+      ﬁrst-in, ﬁrst-out (FIFO), 239, 363                  adjacency map, 627, 632, 634
+      Flajolet, Philippe, 147                             adjacency matrix, 627, 633
+      ﬂoat class, 7, 8                                    edge list, 627–629
+      ﬂoor function, 122, 172, 726                     depth-ﬁrst search, 639–647

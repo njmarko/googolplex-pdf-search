@@ -1,0 +1,43 @@
+viii                                                                                    Preface
+            We delay treatment of object-oriented programming in Python until Chapter 2.
+        This chapter is useful for those new to Python, and for those who may be familiar
+        with Python, yet not with object-oriented programming.
+            In terms of mathematical background, we assume the reader is somewhat famil-
+        iar with topics from high-school mathematics. Even so, in Chapter 3, we discuss
+        the seven most-important functions for algorithm analysis. In fact, sections that use
+        something other than one of these seven functions are considered optional, and are
+        indicated with a star (). We give a summary of other useful mathematical facts,
+        including elementary probability, in Appendix B.
+     Relation to Computer Science Curriculum
+        To assist instructors in designing a course in the context of the IEEE/ACM 2013
+        Computing Curriculum, the following table describes curricular knowledge units
+        that are covered within this book.
+          Knowledge Unit                    Relevant Material
+          AL/Basic Analysis                 Chapter 3 and Sections 4.2 & 12.2.4
+          AL/Algorithmic Strategies         Sections 12.2.1, 13.2.1, 13.3, & 13.4.2
+          AL/Fundamental Data Structures    Sections 4.1.3, 5.5.2, 9.4.1, 9.3, 10.2, 11.1, 13.2,
+          and Algorithms                    Chapter 12 & much of Chapter 14
+                                            Sections 5.3, 10.4, 11.2 through 11.6, 12.3.1,
+          AL/Advanced Data Structures
+                                            13.5, 14.5.1, & 15.3
+          AR/Memory System Organization     Chapter 15
+          and Architecture
+          DS/Sets, Relations and Functions  Sections 10.5.1, 10.5.2, & 9.4
+          DS/Proof Techniques               Sections 3.4, 4.2, 5.3.2, 9.3.6, & 12.4.1
+          DS/Basics of Counting             Sections 2.4.2, 6.2.2, 12.2.4, 8.2.2 & Appendix B
+          DS/Graphs and Trees               Much of Chapters 8 and 14
+          DS/Discrete Probability           Sections 1.11.1, 10.2, 10.4.2, & 12.3.1
+                                            Much of the book, yet especially Chapter 2 and
+          PL/Object-Oriented Programming
+                                            Sections 7.4, 9.5.1, 10.1.3, & 11.2.1
+          PL/Functional Programming         Section 1.10
+          SDF/Algorithms and Design         Sections 2.1, 3.3, & 12.2.1
+          SDF/Fundamental Programming       Chapters 1 & 4
+          Concepts
+                                            Chapters 6 & 7, Appendix A, and Sections 1.2.1,
+          SDF/Fundamental Data Structures
+                                            5.2, 5.4, 9.1, & 10.1
+          SDF/Developmental Methods         Sections 1.7 & 2.2
+          SE/Software Design                Sections 2.1 & 2.1.3
+        Mapping IEEE/ACM 2013 Computing Curriculum knowledge units to coverage in
+        this book.

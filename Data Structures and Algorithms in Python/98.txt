@@ -1,0 +1,39 @@
+2.3. Class Deﬁnitions                                                                          77
+       2.3.3 Example: Multidimensional Vector Class
+           To demonstrate the use of operator overloading via special methods, we provide
+           an implementation of a Vector class, representing the coordinates of a vector in a
+           multidimensional space. For example, in a three-dimensional space, we might wish
+           to represent a vector with coordinates 5, −2, 3 . Although it might be tempting to
+           directly use a Python list to represent those coordinates, a list does not provide an
+           appropriate abstraction for a geometric vector. In particular, if using lists, the ex-
+           pression [5, −2, 3] + [1, 4, 2] results in the list [5, −2, 3, 1, 4, 2]. When working
+           with vectors, if u = 5, −2, 3 and v = 1, 4, 2 , one would expect the expression,
+           u + v, to return a three-dimensional vector with coordinates 6, 2, 5 .
+                We therefore deﬁne a Vector class, in Code Fragment 2.4, that provides a better
+           abstraction for the notion of a geometric vector. Internally, our vector relies upon
+           an instance of a list, named coords, as its storage mechanism. By keeping the
+           internal list encapsulated, we can enforce the desired public interface for instances
+           of our class. A demonstration of supported behaviors includes the following:
+           v = Vector(5)                     #   construct ﬁve-dimensional <0, 0, 0, 0, 0>
+           v[1] = 23                         #   <0, 23, 0, 0, 0> (based on use of setitem )
+           v[−1] = 45                        #   <0, 23, 0, 0, 45> (also via setitem )
+           print(v[4])                       #   print 45 (via getitem )
+           u=v+v                             #   <0, 46, 0, 0, 90> (via add )
+           print(u)                          #   print <0, 46, 0, 0, 90>
+           total = 0
+           for entry in v:                   # implicit iteration via     len  and   getitem
+             total += entry
+                We implement many of the behaviors by trivially invoking a similar behavior
+           on the underlying list of coordinates. However, our implementation of add
+           is customized. Assuming the two operands are vectors with the same length, this
+           method creates a new vector and sets the coordinates of the new vector to be equal
+           to the respective sum of the operands’ elements.
+                It is interesting to note that the class deﬁnition, as given in Code Fragment 2.4,
+           automatically supports the syntax u = v + [5, 3, 10, −2, 1], resulting in a new
+           vector that is the element-by-element “sum” of the ﬁrst vector and the list in-
+           stance. This is a result of Python’s polymorphism. Literally, “polymorphism”
+           means “many forms.” Although it is tempting to think of the other parameter of
+           our add method as another Vector instance, we never declared it as such.
+           Within the body, the only behaviors we rely on for parameter other is that it sup-
+           ports len(other) and access to other[j]. Therefore, our code executes when the
+           right-hand operand is a list of numbers (with matching length).

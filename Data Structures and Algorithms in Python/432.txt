@@ -1,0 +1,32 @@
+10.2. Hash Tables                                                                           411
+       10.2.1 Hash Functions
+          The goal of a hash function, h, is to map each key k to an integer in the range
+          [0, N − 1], where N is the capacity of the bucket array for a hash table. Equipped
+          with such a hash function, h, the main idea of this approach is to use the hash
+          function value, h(k), as an index into our bucket array, A, instead of the key k
+          (which may not be appropriate for direct use as an index). That is, we store the
+          item (k, v) in the bucket A[h(k)].
+               If there are two or more keys with the same hash value, then two different items
+          will be mapped to the same bucket in A. In this case, we say that a collision has
+          occurred. To be sure, there are ways of dealing with collisions, which we will
+          discuss later, but the best strategy is to try to avoid them in the ﬁrst place. We say
+          that a hash function is “good” if it maps the keys in our map so as to sufﬁciently
+          minimize collisions. For practical reasons, we also would like a hash function to
+          be fast and easy to compute.
+               It is common to view the evaluation of a hash function, h(k), as consisting of
+          two portions—a hash code that maps a key k to an integer, and a compression
+          function that maps the hash code to an integer within a range of indices, [0, N − 1],
+          for a bucket array. (See Figure 10.5.)
+                                             Arbitrary Objects
+                                                     hash code
+                                              . . . -2 -1 0 1 2 . . .
+                                           compression function
+                                           0 1 2 ...                  N-1
+          Figure 10.5: Two parts of a hash function: a hash code and a compression function.
+               The advantage of separating the hash function into two such components is that
+          the hash code portion of that computation is independent of a speciﬁc hash table
+          size. This allows the development of a general hash code for each object that can
+          be used for a hash table of any size; only the compression function depends upon
+          the table size. This is particularly convenient, because the underlying bucket array
+          for a hash table may be dynamically resized, depending on the number of items
+          currently stored in the map. (See Section 10.2.3.)

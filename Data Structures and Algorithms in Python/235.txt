@@ -1,0 +1,38 @@
+214                                                    Chapter 5. Array-Based Sequences
+    5.5.2 Sorting a Sequence
+       In the previous subsection, we considered an application for which we added an ob-
+       ject to a sequence at a given position while shifting other elements so as to keep the
+       previous order intact. In this section, we use a similar technique to solve the sorting
+       problem, that is, starting with an unordered sequence of elements and rearranging
+       them into nondecreasing order.
+       The Insertion-Sort Algorithm
+       We study several sorting algorithms in this book, most of which are described in
+       Chapter 12. As a warm-up, in this section we describe a nice, simple sorting al-
+       gorithm known as insertion-sort. The algorithm proceeds as follows for an array-
+       based sequence. We start with the ﬁrst element in the array. One element by itself
+       is already sorted. Then we consider the next element in the array. If it is smaller
+       than the ﬁrst, we swap them. Next we consider the third element in the array. We
+       swap it leftward until it is in its proper order with the ﬁrst two elements. We then
+       consider the fourth element, and swap it leftward until it is in the proper order with
+       the ﬁrst three. We continue in this manner with the ﬁfth element, the sixth, and so
+       on, until the whole array is sorted. We can express the insertion-sort algorithm in
+       pseudo-code, as shown in Code Fragment 5.9.
+       Algorithm InsertionSort(A):
+           Input: An array A of n comparable elements
+           Output: The array A with elements rearranged in nondecreasing order
+            for k from 1 to n − 1 do
+               Insert A[k] at its proper location within A[0], A[1], . . ., A[k].
+            Code Fragment 5.9: High-level description of the insertion-sort algorithm.
+            This is a simple, high-level description of insertion-sort. If we look back to
+       Code Fragment 5.8 of Section 5.5.1, we see that the task of inserting a new en-
+       try into the list of high scores is almost identical to the task of inserting a newly
+       considered element in insertion-sort (except that game scores were ordered from
+       high to low). We provide a Python implementation of insertion-sort in Code Frag-
+       ment 5.10, using an outer loop to consider each element in turn, and an inner
+       loop that moves a newly considered element to its proper location relative to the
+       (sorted) subarray of elements that are to its left. We illustrate an example run of the
+       insertion-sort algorithm in Figure 5.20.
+            The nested loops of insertion-sort lead to an O(n2 ) running time in the worst
+       case. The most work is done if the array is initially in reverse order. On the other
+       hand, if the initial array is nearly sorted or perfectly sorted, insertion-sort runs in
+       O(n) time because there are few or no iterations of the inner loop.

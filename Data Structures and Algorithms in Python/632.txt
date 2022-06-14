@@ -1,0 +1,22 @@
+13.5. Tries                                                                                      611
+              e              i                                  mi               nimize          ze
+            mize          nimize           ze        nimize            ze
+                                                       (a)
+                 7:8            1:2                        0:2                 2:8           6:8
+                      4:8       2:8         6:8      2:8        6:8
+                                           0   1  2   3   4   5    6    7
+                                           m   i  n   i   m   i    z    e
+                                                       (b)
+           Figure 13.14: (a) Sufﬁx trie T for the string X = "minimize". (b) Compact repre-
+           sentation of T , where pair j : k denotes slice X [ j : k] in the reference string.
+           Using a Suﬃx Trie
+           The sufﬁx trie T for a string X can be used to efﬁciently perform pattern-matching
+           queries on text X . Namely, we can determine whether a pattern P is a substring
+           of X by trying to trace a path associated with P in T . P is a substring of X if and
+           only if such a path can be traced. The search down the trie T assumes that nodes in
+           T store some additional information, with respect to the compact representation of
+           the sufﬁx trie:
+                  If node v has label ( j, k) and Y is the string of length y associated with
+                  the path from the root to v (included), then X [k − y : k] = Y .
+           This property ensures that we can easily compute the start index of the pattern in
+           the text when a match occurs.

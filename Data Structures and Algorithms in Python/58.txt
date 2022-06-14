@@ -1,0 +1,40 @@
+1.7. Exception Handling                                                                       37
+              Exception handling is particularly useful when working with user input, or
+          when reading from or writing to ﬁles, because such interactions are inherently less
+          predictable. In Section 1.6.2, we suggest the syntax, fp = open( sample.txt ),
+          for opening a ﬁle with read access. That command may raise an IOError for a vari-
+          ety of reasons, such as a non-existent ﬁle, or lack of sufﬁcient privilege for opening
+          a ﬁle. It is signiﬁcantly easier to attempt the command and catch the resulting error
+          than it is to accurately predict whether the command will succeed.
+              We continue by demonstrating a few other forms of the try-except syntax. Ex-
+          ceptions are objects that can be examined when caught. To do so, an identiﬁer must
+          be established with a syntax as follows:
+               try:
+                 fp = open( sample.txt )
+               except IOError as e:
+                 print( Unable to open the file: , e)
+          In this case, the name, e, denotes the instance of the exception that was thrown, and
+          printing it causes a detailed error message to be displayed (e.g., “ﬁle not found”).
+              A try-statement may handle more than one type of exception. For example,
+          consider the following command from Section 1.6.1:
+               age = int(input( Enter your age in years:                ))
+          This command could fail for a variety of reasons. The call to input will raise an
+          EOFError if the console input fails. If the call to input completes successfully, the
+          int constructor raises a ValueError if the user has not entered characters represent-
+          ing a valid integer. If we want to handle two or more types of errors in the same
+          way, we can use a single except-statement, as in the following example:
+               age = −1                           # an initially invalid choice
+               while age <= 0:
+                 try:
+                     age = int(input( Enter your age in years: ))
+                     if age <= 0:
+                        print( Your age must be positive )
+                 except (ValueError, EOFError):
+                     print( Invalid response )
+          We use the tuple, (ValueError, EOFError), to designate the types of errors that we
+          wish to catch with the except-clause. In this implementation, we catch either error,
+          print a response, and continue with another pass of the enclosing while loop. We
+          note that when an error is raised within the try-block, the remainder of that body
+          is immediately skipped. In this example, if the exception arises within the call to
+          input, or the subsequent call to the int constructor, the assignment to age never
+          occurs, nor the message about needing a positive value. Because the value of age

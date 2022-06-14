@@ -1,0 +1,42 @@
+164                                                                Chapter 4. Recursion
+         To formalize this argument, we can deﬁne the nesting level of each entry such
+    that the entry on which we begin has nesting level 0, entries stored directly within
+    it have nesting level 1, entries stored within those entries have nesting level 2, and
+    so on. We can prove by induction that there is exactly one recursive invocation of
+    disk usage upon each entry at nesting level k. As a base case, when k = 0, the only
+    recursive invocation made is the initial one. As the inductive step, once we know
+    there is exactly one recursive invocation for each entry at nesting level k, we can
+    claim that there is exactly one invocation for each entry e at nesting level k, made
+    within the for loop for the entry at level k that contains e.
+         Having established that there is one recursive call for each entry of the ﬁle
+    system, we return to the question of the overall computation time for the algorithm.
+    It would be great if we could argue that we spend O(1) time in any single invocation
+    of the function, but that is not the case. While there are a constant number of
+    steps reﬂect in the call to os.path.getsize to compute the disk usage directly at that
+    entry, when the entry is a directory, the body of the disk usage function includes a
+    for loop that iterates over all entries that are contained within that directory. In the
+    worst case, it is possible that one entry includes n − 1 others.
+         Based on this reasoning, we could conclude that there are O(n) recursive calls,
+    each of which runs in O(n) time, leading to an overall running time that is O(n2 ).
+    While this upper bound is technically true, it is not a tight upper bound. Remark-
+    ably, we can prove the stronger bound that the recursive algorithm for disk usage
+    completes in O(n) time! The weaker bound was pessimistic because it assumed
+    a worst-case number of entries for each directory. While it is possible that some
+    directories contain a number of entries proportional to n, they cannot all contain
+    that many. To prove the stronger claim, we choose to consider the overall number
+    of iterations of the for loop across all recursive calls. We claim there are precisely
+    n − 1 such iteration of that loop overall. We base this claim on the fact that each
+    iteration of that loop makes a recursive call to disk usage, and yet we have already
+    concluded that there are a total of n calls to disk usage (including the original call).
+    We therefore conclude that there are O(n) recursive calls, each of which uses O(1)
+    time outside the loop, and that the overall number of operations due to the loop
+    is O(n). Summing all of these bounds, the overall number of operations is O(n).
+         The argument we have made is more advanced than with the earlier examples
+    of recursion. The idea that we can sometimes get a tighter bound on a series of
+    operations by considering the cumulative effect, rather than assuming that each
+    achieves a worst case is a technique called amortization; we will see a further
+    example of such analysis in Section 5.3. Furthermore, a ﬁle system is an implicit
+    example of a data structure known as a tree, and our disk usage algorithm is really
+    a manifestation of a more general algorithm known as a tree traversal. Trees will
+    be the focus of Chapter 8, and our argument about the O(n) running time of the
+    disk usage algorithm will be generalized for tree traversals in Section 8.4.

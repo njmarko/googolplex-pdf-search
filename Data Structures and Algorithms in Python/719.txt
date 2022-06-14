@@ -1,0 +1,35 @@
+698                                         Chapter 15. Memory Management and B-Trees
+            Our study of data structures thus far has focused primarily upon the efﬁciency
+        of computations, as measured by the number of primitive operations that are exe-
+        cuted on a central processing unit (CPU). In practice, the performance of a com-
+        puter system is also greatly impacted by the management of the computer’s memory
+        systems. In our analysis of data structures, we have provided asymptotic bounds for
+        the overall amount of memory used by a data structure. In this chapter, we consider
+        more subtle issues involving the use of a computer’s memory system.
+            We ﬁrst discuss ways in which memory is allocated and deallocated during the
+        execution of a computer program, and the impact that this has on the program’s
+        performance. Second, we discuss the complexity of multilevel memory hierarchies
+        in today’s computer systems. Although we often abstract a computer’s memory
+        as consisting of a single pool of interchangeable locations, in practice, the data
+        used by an executing program is stored and transferred between a combination
+        of physical memories (e.g., CPU registers, caches, internal memory, and external
+        memory). We consider the use of classic data structures in the algorithms used to
+        manage memory, and how the use of memory hierarchies impacts the choice of
+        data structures and algorithms for classic problems such as searching and sorting.
+ 15.1     Memory Management
+        In order to implement any data structure on an actual computer, we need to use
+        computer memory. Computer memory is organized into a sequence of words, each
+        of which typically consists of 4, 8, or 16 bytes (depending on the computer). These
+        memory words are numbered from 0 to N − 1, where N is the number of mem-
+        ory words available to the computer. The number associated with each memory
+        word is known as its memory address. Thus, the memory in a computer can be
+        viewed as basically one giant array of memory words. For example, in Figure 5.1
+        of Section 5.2, we portrayed a section of the computer’s memory as follows:
+                44   45   46   47   48   49   50   51   52   53   54   55   56   57   58   59   60
+              21   21   21   21   21   21   21   21   21   21   21   21   21   21   21   21   21
+            In order to run programs and store information, the computer’s memory must
+        be managed so as to determine what data is stored in what memory cells. In this
+        section, we discuss the basics of memory management, most notably describing the
+        way in which memory is allocated to store new objects, the way in which portions
+        of memory are deallocated and reclaimed, when no longer needed, and the way in
+        which the Python interpreter uses memory in completing its tasks.

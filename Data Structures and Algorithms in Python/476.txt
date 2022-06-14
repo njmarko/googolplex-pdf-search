@@ -1,0 +1,40 @@
+10.6. Exercises                                                                            455
+          C-10.32 Perform experiments on our ChainHashMap and ProbeHashMap classes
+                  to measure its efﬁciency using random key sets and varying limits on the
+                  load factor (see Exercise R-10.15).
+          C-10.33 Our implementation of separate chaining in ChainHashMap conserves
+                  memory by representing empty buckets in the table as None, rather than
+                  as empty instances of a secondary structure. Because many of these buck-
+                  ets will hold a single item, a better optimization is to have those slots of
+                  the table directly reference the Item instance, and to reserve use of sec-
+                  ondary containers for buckets that have two or more items. Modify our
+                  implementation to provide this additional optimization.
+          C-10.34 Computing a hash code can be expensive, especially for lengthy keys. In
+                  our hash table implementations, we compute the hash code when ﬁrst in-
+                  serting an item, and recompute each item’s hash code each time we resize
+                  our table. Python’s dict class makes an interesting trade-off. The hash
+                  code is computed once, when an item is inserted, and the hash code is
+                  stored as an extra ﬁeld of the item composite, so that it need not be recom-
+                  puted. Reimplement our HashTableBase class to use such an approach.
+          C-10.35 Describe how to perform a removal from a hash table that uses linear
+                  probing to resolve collisions where we do not use a special marker to
+                  represent deleted elements. That is, we must rearrange the contents so that
+                  it appears that the removed entry was never inserted in the ﬁrst place.
+          C-10.36 The quadratic probing strategy has a clustering problem related to the way
+                  it looks for open slots. Namely, when a collision occurs at bucket h(k), it
+                  checks buckets A[(h(k) + i2 ) mod N], for i = 1, 2, . . . , N − 1.
+                      a. Show that i2 mod N will assume at most (N + 1)/2 distinct values,
+                         for N prime, as i ranges from 1 to N − 1. As a part of this justiﬁca-
+                         tion, note that i2 mod N = (N − i)2 mod N for all i.
+                      b. A better strategy is to choose a prime N such that N mod 4 = 3 and
+                         then to check the buckets A[(h(k) ± i2 ) mod N] as i ranges from 1
+                         to (N − 1)/2, alternating between plus and minus. Show that this
+                         alternate version is guaranteed to check every bucket in A.
+          C-10.37 Refactor our ProbeHashMap design so that the sequence of secondary
+                  probes for collision resolution can be more easily customized. Demon-
+                  strate your new framework by providing separate concrete subclasses for
+                  linear probing and quadratic probing.
+          C-10.38 Design a variation of binary search for performing the multimap opera-
+                  tion ﬁnd all(k) implemented with a sorted search table that includes du-
+                  plicates, and show that it runs in time O(s + log n), where n is the number
+                  of elements in the dictionary and s is the number of items with given key k.

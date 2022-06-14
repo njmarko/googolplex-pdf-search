@@ -1,0 +1,32 @@
+522                                                            Chapter 11. Search Trees
+    Case 3: Node y Is Red. (See Figure 11.40.)
+           Because y is red and Theavy has black depth at least 1, z must be black and the
+           two subtrees of y must each have a black root and a black depth equal to that
+           of Theavy . In this case, we perform a rotation about y and z, and then recolor y
+           black and z red. This denotes a reorientation of a 3-node in the corresponding
+           (2, 4) tree T  .
+           This does not immediately resolve the deﬁcit, as the new subtree of z is an old
+           subtree of y with black root y and black height equal to that of the original
+           Theavy . We reapply the algorithm to resolve the deﬁcit at z, knowing that the
+           new child y , that is the root of Theavy is now black, and therefore that either
+           Case 1 applies or Case 2 applies. Furthermore, the next application will be
+           the last, because Case 1 is always terminal and Case 2 will be terminal given
+           that z is red.
+                      z                                                  y
+             y         30                                             20        z
+              20                                                              30
+                                                                      y
+                              Tlight
+            Theavy                                                   Theavy         Tlight
+    Figure 11.40: A rotation and recoloring about red node y and black node z, assuming
+    a black deﬁcit at z. This amounts to a change of orientation in the corresponding
+    3-node of a (2, 4) tree. This operation does not affect the black depth of any paths
+    through this portion of the tree. Furthermore, because y was originally red, the
+    new subtree of z must have a black root y and must have black height equal to the
+    original Theavy . Therefore, a black deﬁcit remains at node z after the transformation.
+        In Figure 11.41, we show a sequence of deletions on a red-black tree. A dashed
+    edge in those ﬁgures, such as to the right of 7 in part (c), represents a branch with a
+    black deﬁciency that has not yet been resolved. We illustrate a Case 1 restructuring
+    in parts (c) and (d). We illustrate a Case 2 recoloring in parts (f ) and (g). Finally,
+    we show an example of a Case 3 rotation between parts (i) and (j), concluding with
+    a Case 2 recoloring in part (k).

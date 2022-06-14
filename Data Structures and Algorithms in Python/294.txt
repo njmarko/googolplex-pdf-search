@@ -1,0 +1,38 @@
+7.3. Doubly Linked Lists                                                                       273
+      7.3.1 Basic Implementation of a Doubly Linked List
+          We begin by providing a preliminary implementation of a doubly linked list, in the
+          form of a class named DoublyLinkedBase. We intentionally name the class with
+          a leading underscore because we do not intend for it to provide a coherent public
+          interface for general use. We will see that linked lists can support general insertions
+          and deletions in O(1) worst-case time, but only if the location of an operation
+          can be succinctly identiﬁed. With array-based sequences, an integer index was a
+          convenient means for describing a position within a sequence. However, an index
+          is not convenient for linked lists as there is no efﬁcient way to ﬁnd the jth element;
+          it would seem to require a traversal of a portion of the list.
+               When working with a linked list, the most direct way to describe the location
+          of an operation is by identifying a relevant node of the list. However, we prefer
+          to encapsulate the inner workings of our data structure to avoid having users di-
+          rectly access nodes of a list. In the remainder of this chapter, we will develop
+          two public classes that inherit from our DoublyLinkedBase class to provide more
+          coherent abstractions. Speciﬁcally, in Section 7.3.2, we provide a LinkedDeque
+          class that implements the double-ended queue ADT introduced in Section 6.3; that
+          class only supports operations at the ends of the queue, so there is no need for a
+          user to identify an interior position within the list. In Section 7.4, we introduce a
+          new PositionalList abstraction that provides a public interface that allows arbitrary
+          insertions and deletions from a list.
+               Our low-level DoublyLinkedBase class relies on the use of a nonpublic Node
+          class that is similar to that for a singly linked list, as given in Code Fragment 7.4,
+          except that the doubly linked version includes a prev attribute, in addition to the
+            next and element attributes, as shown in Code Fragment 7.11.
+             class Node:
+               ”””Lightweight, nonpublic class for storing a doubly linked node.”””
+                  slots = _element , _prev , _next # streamline memory
+               def init (self, element, prev, next):                  #  initialize node’s ﬁelds
+                 self. element = element                              #  user’s element
+                 self. prev = prev                                    #  previous node reference
+                 self. next = next                                    #  next node reference
+               Code Fragment 7.11: A Python Node class for use in a doubly linked list.
+               The remainder of our DoublyLinkedBase class is given in Code Fragment 7.12.
+          The constructor instantiates the two sentinel nodes and links them directly to each
+          other. We maintain a size member and provide public support for len and
+          is empty so that these behaviors can be directly inherited by the subclasses.

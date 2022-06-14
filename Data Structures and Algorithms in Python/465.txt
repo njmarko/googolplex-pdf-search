@@ -1,0 +1,40 @@
+444                                    Chapter 10. Maps, Hash Tables, and Skip Lists
+    Bounding the Height of a Skip List
+    Because the insertion step involves randomization, a more accurate analysis of skip
+    lists involves a bit of probability. At ﬁrst, this might seem like a major undertaking,
+    for a complete and thorough probabilistic analysis could require deep mathemat-
+    ics (and, indeed, there are several such deep analyses that have appeared in data
+    structures research literature). Fortunately, such an analysis is not necessary to un-
+    derstand the expected asymptotic behavior of skip lists. The informal and intuitive
+    probabilistic analysis we give below uses only basic concepts of probability theory.
+         Let us begin by determining the expected value of the height h of a skip list S
+    with n entries (assuming that we do not terminate insertions early). The probability
+    that a given entry has a tower of height i ≥ 1 is equal to the probability of getting i
+    consecutive heads when ﬂipping a coin, that is, this probability is 1/2i . Hence, the
+    probability Pi that level i has at least one position is at most
+                                                    n
+                                              Pi ≤     ,
+                                                   2i
+    for the probability that any one of n different events occurs is at most the sum of
+    the probabilities that each occurs.
+         The probability that the height h of S is larger than i is equal to the probability
+    that level i has at least one position, that is, it is no more than Pi . This means that h
+    is larger than, say, 3 log n with probability at most
+                                                       n
+                                     P3 log n ≤
+                                                   23 log n
+                                                    n        1
+                                               =     3
+                                                         = 2.
+                                                   n        n
+    For example, if n = 1000, this probability is a one-in-a-million long shot. More
+    generally, given a constant c > 1, h is larger than c log n with probability at most
+    1/nc−1 . That is, the probability that h is smaller than c log n is at least 1 − 1/nc−1 .
+    Thus, with high probability, the height h of S is O(log n).
+    Analyzing Search Time in a Skip List
+    Next, consider the running time of a search in skip list S, and recall that such a
+    search involves two nested while loops. The inner loop performs a scan forward on
+    a level of S as long as the next key is no greater than the search key k, and the outer
+    loop drops down to the next level and repeats the scan forward iteration. Since the
+    height h of S is O(log n) with high probability, the number of drop-down steps is
+    O(log n) with high probability.

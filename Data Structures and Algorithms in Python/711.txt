@@ -1,0 +1,41 @@
+690                                                   Chapter 14. Graph Algorithms
+    C-14.41 Our solution to reporting a path from u to v in Code Fragment 14.6 could
+            be made more efﬁcient in practice if the DFS process ended as soon as v
+            is discovered. Describe how to modify our code base to implement this
+            optimization.
+    C-14.42 Let G be an undirected graph G with n vertices and m edges. Describe
+            an O(n + m)-time algorithm for traversing each edge of G exactly once in
+            each direction.
+    C-14.43 Implement an algorithm that returns a cycle in a directed graph G,   if one
+            exists.
+    C-14.44 Write a function, components(g), for undirected graph g, that returns a
+            dictionary mapping each vertex to an integer that serves as an identiﬁer for
+            its connected component. That is, two vertices should be mapped to the
+            same identiﬁer if and only if they are in the same connected component.
+    C-14.45 Say that a maze is constructed correctly if there is one path from the start
+            to the ﬁnish, the entire maze is reachable from the start, and there are no
+            loops around any portions of the maze. Given a maze drawn in an n × n
+            grid, how can we determine if it is constructed correctly? What is the
+            running time of this algorithm?
+    C-14.46 Computer networks should avoid single points of failure, that is, network
+            vertices that can disconnect the network if they fail. We say an undi-
+            rected, connected graph G is biconnected if it contains no vertex whose
+            removal would divide G into two or more connected components. Give an
+            algorithm for adding at most n edges to a connected graph G, with n ≥ 3
+            vertices and m ≥ n − 1 edges, to guarantee that G is biconnected. Your
+            algorithm should run in O(n + m) time.
+    C-14.47 Explain why all nontree edges are cross edges, with respect to a BFS tree
+            constructed for an undirected graph.
+    C-14.48 Explain why there are no forward nontree edges with respect to a BFS tree
+            constructed for a directed graph.
+    C-14.49 Show that if T is a BFS tree produced for a connected graph G, then, for
+            each vertex v at level i, the path of T between s and v has i edges, and any
+            other path of G between s and v has at least i edges.
+    C-14.50 Justify Proposition 14.16.
+    C-14.51 Provide an implementation of the BFS algorithm that uses a FIFO queue,
+            rather than a level-by-level formulation, to manage vertices that have been
+            discovered until the time when their neighbors are considered.
+    C-14.52 A graph G is bipartite if its vertices can be partitioned into two sets X and
+            Y such that every edge in G has one end vertex in X and the other in Y .
+            Design and analyze an efﬁcient algorithm for determining if an undirected
+            graph G is bipartite (without knowing the sets X and Y in advance).

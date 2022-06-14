@@ -1,0 +1,39 @@
+592                                                            Chapter 13. Text Processing
+       Constructing the KMP Failure Function
+       To construct the failure function, we use the method shown in Code Fragment 13.4,
+       which is a “bootstrapping” process that compares the pattern to itself as in the KMP
+       algorithm. Each time we have two characters that match, we set f ( j) = k + 1. Note
+       that since we have j > k throughout the execution of the algorithm, f (k − 1) is
+       always well deﬁned when we need to use it.
+     1 def compute kmp fail(P):
+     2   ”””Utility that computes and returns KMP fail list.”””
+     3   m = len(P)
+     4   fail = [0] m                       # by default, presume overlap of 0 everywhere
+     5   j=1
+     6   k=0
+     7   while j < m:                       # compute f(j) during this pass, if nonzero
+     8      if P[j] == P[k]:                # k + 1 characters match thus far
+     9         fail[j] = k + 1
+    10         j += 1
+    11         k += 1
+    12      elif k > 0:                     # k follows a matching preﬁx
+    13         k = fail[k−1]
+    14      else:                           # no match found starting at j
+    15         j += 1
+    16   return fail
+       Code Fragment 13.4: An implementation of the compute kmp fail utility in sup-
+       port of the KMP pattern-matching algorithm. Note how the algorithm uses the
+       previous values of the failure function to efﬁciently compute new values.
+       Performance
+       Excluding the computation of the failure function, the running time of the KMP
+       algorithm is clearly proportional to the number of iterations of the while loop. For
+       the sake of the analysis, let us deﬁne s = j − k. Intuitively, s is the total amount by
+       which the pattern P has been shifted with respect to the text T . Note that throughout
+       the execution of the algorithm, we have s ≤ n. One of the following three cases
+       occurs at each iteration of the loop.
+           • If T [ j] = P[k], then j and k each increase by 1, and thus, s does not change.
+           • If T [ j] = P[k] and k > 0, then j does not change and s increases by at least 1,
+               since in this case s changes from j − k to j − f (k − 1), which is an addition
+               of k − f (k − 1), which is positive because f (k − 1) < k.
+           • If T [ j] = P[k] and k = 0, then j increases by 1 and s increases by 1, since k
+               does not change.

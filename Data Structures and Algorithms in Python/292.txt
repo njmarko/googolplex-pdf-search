@@ -1,0 +1,34 @@
+7.3. Doubly Linked Lists                                                                         271
+         Advantage of Using Sentinels
+          Although we could implement a doubly linked list without sentinel nodes (as we
+          did with our singly linked list in Section 7.1), the slight extra space devoted to the
+          sentinels greatly simpliﬁes the logic of our operations. Most notably, the header and
+          trailer nodes never change—only the nodes between them change. Furthermore,
+          we can treat all insertions in a uniﬁed manner, because a new node will always be
+          placed between a pair of existing nodes. In similar fashion, every element that is to
+          be deleted is guaranteed to be stored in a node that has neighbors on each side.
+               For contrast, look back at our LinkedQueue implementation from Section 7.1.2.
+          Its enqueue method, given in Code Fragment 7.8, adds a new node to the end of
+          the list. However, its implementation required a conditional to manage the special
+          case of inserting into an empty list. In the general case, the new node was linked
+          after the existing tail. But when adding to an empty list, there is no existing tail;
+          instead it is necessary to reassign self. head to reference the new node. The use of
+          a sentinel node in that implementation would eliminate the special case, as there
+          would always be an existing node (possibly the header) before a new node.
+         Inserting and Deleting with a Doubly Linked List
+          Every insertion into our doubly linked list representation will take place between
+          a pair of existing nodes, as diagrammed in Figure 7.11. For example, when a new
+          element is inserted at the front of the sequence, we will simply add the new node
+          between the header and the node that is currently after the header. (See Figure 7.12.)
+                      header                                                     trailer
+                                      BWI            JFK            SFO
+                                                     (a)
+              header                                                                     trailer
+                               BWI           JFK            PVD           SFO
+                                                     (b)
+              header                                                                     trailer
+                               BWI           JFK            PVD           SFO
+                                                     (c)
+          Figure 7.11: Adding an element to a doubly linked list with header and trailer sen-
+          tinels: (a) before the operation; (b) after creating the new node; (c) after linking the
+          neighbors to the new node.

@@ -1,0 +1,38 @@
+230                                              Chapter 6. Stacks, Queues, and Deques
+    6.1.1 The Stack Abstract Data Type
+       Stacks are the simplest of all data structures, yet they are also among the most
+       important. They are used in a host of different applications, and as a tool for many
+       more sophisticated data structures and algorithms. Formally, a stack is an abstract
+       data type (ADT) such that an instance S supports the following two methods:
+                    S.push(e): Add element e to the top of stack S.
+                       S.pop( ): Remove and return the top element from the stack S;
+                                   an error occurs if the stack is empty.
+       Additionally, let us deﬁne the following accessor methods for convenience:
+                       S.top( ): Return a reference to the top element of stack S, without
+                                   removing it; an error occurs if the stack is empty.
+                 S.is empty( ): Return True if stack S does not contain any elements.
+                         len(S): Return the number of elements in stack S; in Python, we
+                                   implement this with the special method len .
+       By convention, we assume that a newly created stack is empty, and that there is no
+       a priori bound on the capacity of the stack. Elements added to the stack can have
+       arbitrary type.
+       Example 6.3: The following table shows a series of stack operations and their
+       effects on an initially empty stack S of integers.
+                          Operation       Return Value      Stack Contents
+                           S.push(5)            –           [5]
+                           S.push(3)            –           [5, 3]
+                             len(S)             2           [5, 3]
+                            S.pop( )            3           [5]
+                         S.is empty( )        False         [5]
+                            S.pop( )            5           []
+                         S.is empty( )         True         []
+                            S.pop( )         “error”        []
+                           S.push(7)            –           [7]
+                           S.push(9)            –           [7, 9]
+                            S.top( )            9           [7, 9]
+                           S.push(4)            –           [7, 9, 4]
+                             len(S)             3           [7, 9, 4]
+                            S.pop( )            4           [7, 9]
+                           S.push(6)            –           [7, 9, 6]
+                           S.push(8)            –           [7, 9, 6, 8]
+                            S.pop( )            8           [7, 9, 6]

@@ -1,0 +1,36 @@
+716                                     Chapter 15. Memory Management and B-Trees
+    15.4.1 Multiway Merging
+       In a standard merge-sort (Section 12.2), the merge process combines two sorted
+       sequences into one by repeatedly taking the smaller of the items at the front of the
+       two respective lists. In a d-way merge, we repeatedly ﬁnd the smallest among the
+       items at the front of the d sequences and place it as the next element of the merged
+       sequence. We continue until all elements are included.
+            In the context of an external-memory sorting algorithm, if main memory has
+       size M and each block has size B, we can store up to M/B blocks within main
+       memory at any given time. We speciﬁcally choose d = (M/B) − 1 so that we can
+       afford to keep one block from each input sequence in main memory at any given
+       time, and to have one additional block to use as a buffer for the merged sequence.
+       (See Figure 15.5.)
+                                          12  24  26  34   41   49  50   57 60
+                                                           25   27  40   43 44  53   56
+          7    8  10  11       Q                  30  39   42   45  54   65
+                                          13  16  19  33   37   46  52   58 66  75
+                                              17  18  29   35   48  51   59 72  78   88
+       Figure 15.5: A d-way merge with d = 5 and B = 4. Blocks that currently reside in
+       main memory are shaded.
+            We maintain the smallest unprocessed element from each input sequence in
+       main memory, requesting the next block from a sequence when the preceding block
+       has been exhausted. Similarly, we use one block of internal memory to buffer the
+       merged sequence, ﬂushing that block to external memory when full. In this way,
+       the total number of transfers performed during a single d-way merge is O(n/B),
+       since we scan each block of list Si once, and we write out each block of the merged
+       list S once. In terms of computation time, choosing the smallest of d values can
+       trivially be performed using O(d) operations. If we are willing to devote O(d)
+       internal memory, we can maintain a priority queue identifying the smallest element
+       from each sequence, thereby performing each step of the merge in O(log d) time
+       by removing the minimum element and replacing it with the next element from the
+       same sequence. Hence, the internal time for the d-way merge is O(n log d).
+       Proposition 15.3: Given an array-based sequence S of n elements stored com-
+       pactly in external memory, we can sort S with O((n/B) log(n/B)/ log(M/B)) block
+       transfers and O(n log n) internal computations, where M is the size of the internal
+       memory and B is the size of a block.

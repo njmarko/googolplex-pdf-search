@@ -1,0 +1,39 @@
+626                                                           Chapter 14. Graph Algorithms
+       14.1.1 The Graph ADT
+          A graph is a collection of vertices and edges. We model the abstraction as a com-
+          bination of three data types: Vertex, Edge, and Graph. A Vertex is a lightweight
+          object that stores an arbitrary element provided by the user (e.g., an airport code);
+          we assume it supports a method, element( ), to retrieve the stored element. An
+          Edge also stores an associated object (e.g., a ﬂight number, travel distance, cost),
+          retrieved with the element( ) method. In addition, we assume that an Edge supports
+          the following methods:
+                     endpoints( ): Return a tuple (u, v) such that vertex u is the origin of
+                                      the edge and vertex v is the destination; for an undirected
+                                      graph, the orientation is arbitrary.
+                      opposite(v): Assuming vertex v is one endpoint of the edge (either
+                                      origin or destination), return the other endpoint.
+               The primary abstraction for a graph is the Graph ADT. We presume that a graph
+          can be either undirected or directed, with the designation declared upon construc-
+          tion; recall that a mixed graph can be represented as a directed graph, modeling
+          edge {u, v} as a pair of directed edges (u, v) and (v, u). The Graph ADT includes
+          the following methods:
+                  vertex count( ): Return the number of vertices of the graph.
+                        vertices( ): Return an iteration of all the vertices of the graph.
+                   edge count( ): Return the number of edges of the graph.
+                          edges( ): Return an iteration of all the edges of the graph.
+                   get edge(u,v): Return the edge from vertex u to vertex v, if one exists;
+                                      otherwise return None. For an undirected graph, there is
+                                      no difference between get edge(u,v) and get edge(v,u).
+          degree(v, out=True): For an undirected graph, return the number of edges inci-
+                                      dent to vertex v. For a directed graph, return the number
+                                      of outgoing (resp. incoming) edges incident to vertex v,
+                                      as designated by the optional parameter.
+  incident edges(v, out=True): Return an iteration of all edges incident to vertex v. In
+                                      the case of a directed graph, report outgoing edges by
+                                      default; report incoming edges if the optional parameter
+                                      is set to False.
+        insert vertex(x=None): Create and return a new Vertex storing element x.
+    insert edge(u, v, x=None): Create and return a new Edge from vertex u to vertex v,
+                                      storing element x (None by default).
+               remove vertex(v): Remove vertex v and all its incident edges from the graph.
+                 remove edge(e): Remove edge e from the graph.

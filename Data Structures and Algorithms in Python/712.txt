@@ -1,0 +1,44 @@
+14.8. Exercises                                                                                691
+          C-14.53 An Euler tour of a directed graph G      with n vertices and m edges is a
+                  cycle that traverses each edge of G  exactly once according to its direction.
+                                                 
+                  Such a tour always exists if G is connected and the in-degree equals the
+                  out-degree of each vertex in G. Describe an O(n + m)-time algorithm for
+                  ﬁnding an Euler tour of such a directed graph G.  
+          C-14.54 A company named RT&T has a network of n switching stations connected
+                  by m high-speed communication links. Each customer’s phone is directly
+                  connected to one station in his or her area. The engineers of RT&T have
+                  developed a prototype video-phone system that allows two customers to
+                  see each other during a phone call. In order to have acceptable image
+                  quality, however, the number of links used to transmit video signals be-
+                  tween the two parties cannot exceed 4. Suppose that RT&T’s network is
+                  represented by a graph. Design an efﬁcient algorithm that computes, for
+                  each station, the set of stations it can reach using no more than 4 links.
+          C-14.55 The time delay of a long-distance call can be determined by multiplying
+                  a small ﬁxed constant by the number of communication links on the tele-
+                  phone network between the caller and callee. Suppose the telephone net-
+                  work of a company named RT&T is a tree. The engineers of RT&T want
+                  to compute the maximum possible time delay that may be experienced in
+                  a long-distance call. Given a tree T , the diameter of T is the length of
+                  a longest path between two nodes of T . Give an efﬁcient algorithm for
+                  computing the diameter of T .
+          C-14.56 Tamarindo University and many other schools worldwide are doing a joint
+                  project on multimedia. A computer network is built to connect these
+                  schools using communication links that form a tree. The schools decide
+                  to install a ﬁle server at one of the schools to share data among all the
+                  schools. Since the transmission time on a link is dominated by the link
+                  setup and synchronization, the cost of a data transfer is proportional to the
+                  number of links used. Hence, it is desirable to choose a “central” location
+                  for the ﬁle server. Given a tree T and a node v of T , the eccentricity of v
+                  is the length of a longest path from v to any other node of T . A node of T
+                  with minimum eccentricity is called a center of T .
+                     a. Design an efﬁcient algorithm that, given an n-node tree T , computes
+                        a center of T .
+                     b. Is the center unique? If not, how many distinct centers can a tree
+                        have?
+          C-14.57 Say that an n-vertex directed acyclic graph G   is compact if there is some
+                                                       
+                  way of numbering the vertices of G with the integers from 0 to n − 1 such
+                        contains the edge (i, j) if and only if i < j, for all i, j in [0, n − 1].
+                  that G
+                  Give an O(n2 )-time algorithm for detecting if G   is compact.

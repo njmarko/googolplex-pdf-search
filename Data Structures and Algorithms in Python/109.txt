@@ -1,0 +1,38 @@
+88                                          Chapter 2. Object-Oriented Programming
+    1 class Progression:
+    2   ”””Iterator producing a generic progression.
+    3
+    4   Default iterator produces the whole numbers 0, 1, 2, ...
+    5   ”””
+    6
+    7   def init (self, start=0):
+    8     ”””Initialize current to the ﬁrst value of the progression.”””
+    9     self. current = start
+   10
+   11   def advance(self):
+   12     ”””Update self. current to a new value.
+   13
+   14     This should be overridden by a subclass to customize progression.
+   15
+   16     By convention, if current is set to None, this designates the
+   17     end of a ﬁnite progression.
+   18     ”””
+   19     self. current += 1
+   20
+   21   def next (self):
+   22     ”””Return the next element, or else raise StopIteration error.”””
+   23     if self. current is None:         # our convention to end a progression
+   24        raise StopIteration( )
+   25     else:
+   26        answer = self. current         # record current value to return
+   27        self. advance( )               # advance to prepare for next time
+   28        return answer                  # return the answer
+   29
+   30   def iter (self):
+   31     ”””By convention, an iterator must return itself as an iterator.”””
+   32     return self
+   33
+   34   def print progression(self, n):
+   35     ”””Print next n values of the progression.”””
+   36     print(     .join(str(next(self)) for j in range(n)))
+                   Code Fragment 2.8: A general numeric progression class.

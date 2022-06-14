@@ -1,0 +1,39 @@
+3.1. Experimental Studies                                                                    113
+      3.1.1 Moving Beyond Experimental Analysis
+          Our goal is to develop an approach to analyzing the efﬁciency of algorithms that:
+              1. Allows us to evaluate the relative efﬁciency of any two algorithms in a way
+                 that is independent of the hardware and software environment.
+              2. Is performed by studying a high-level description of the algorithm without
+                 need for implementation.
+              3. Takes into account all possible inputs.
+          Counting Primitive Operations
+          To analyze the running time of an algorithm without performing experiments, we
+          perform an analysis directly on a high-level description of the algorithm (either in
+          the form of an actual code fragment, or language-independent pseudo-code). We
+          deﬁne a set of primitive operations such as the following:
+              • Assigning an identiﬁer to an object
+              • Determining the object associated with an identiﬁer
+              • Performing an arithmetic operation (for example, adding two numbers)
+              • Comparing two numbers
+              • Accessing a single element of a Python list by index
+              • Calling a function (excluding operations executed within the function)
+              • Returning from a function.
+          Formally, a primitive operation corresponds to a low-level instruction with an exe-
+          cution time that is constant. Ideally, this might be the type of basic operation that is
+          executed by the hardware, although many of our primitive operations may be trans-
+          lated to a small number of instructions. Instead of trying to determine the speciﬁc
+          execution time of each primitive operation, we will simply count how many prim-
+          itive operations are executed, and use this number t as a measure of the running
+          time of the algorithm.
+               This operation count will correlate to an actual running time in a speciﬁc com-
+          puter, for each primitive operation corresponds to a constant number of instructions,
+          and there are only a ﬁxed number of primitive operations. The implicit assumption
+          in this approach is that the running times of different primitive operations will be
+          fairly similar. Thus, the number, t, of primitive operations an algorithm performs
+          will be proportional to the actual running time of that algorithm.
+          Measuring Operations as a Function of Input Size
+          To capture the order of growth of an algorithm’s running time, we will associate,
+          with each algorithm, a function f (n) that characterizes the number of primitive
+          operations that are performed as a function of the input size n. Section 3.2 will in-
+          troduce the seven most common functions that arise, and Section 3.3 will introduce
+          a mathematical framework for comparing functions to each other.

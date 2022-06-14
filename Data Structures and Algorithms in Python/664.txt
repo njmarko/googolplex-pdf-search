@@ -1,0 +1,39 @@
+14.3. Graph Traversals                                                                           643
+         Running Time of Depth-First Search
+          In terms of its running time, depth-ﬁrst search is an efﬁcient method for traversing
+          a graph. Note that DFS is called at most once on each vertex (since it gets marked
+          as visited), and therefore every edge is examined at most twice for an undirected
+          graph, once from each of its end vertices, and at most once in a directed graph,
+          from its origin vertex. If we let ns ≤ n be the number of vertices reachable from
+          a vertex s, and ms ≤ m be the number of incident edges to those vertices, a DFS
+          starting at s runs in O(ns + ms ) time, provided the following conditions are satisﬁed:
+              • The graph is represented by a data structure such that creating and iterating
+                 through the incident edges(v) takes O(deg(v)) time, and the e.opposite(v)
+                 method takes O(1) time. The adjacency list structure is one such structure,
+                 but the adjacency matrix structure is not.
+              • We have a way to “mark” a vertex or edge as explored, and to test if a vertex
+                 or edge has been explored in O(1) time. We discuss ways of implementing
+                 DFS to achieve this goal in the next section.
+              Given the assumptions above, we can solve a number of interesting problems.
+          Proposition 14.14: Let G be an undirected graph with n vertices and m edges. A
+          DFS traversal of G can be performed in O(n + m) time, and can be used to solve
+          the following problems in O(n + m) time:
+              • Computing a path between two given vertices of G, if one exists.
+              • Testing whether G is connected.
+              • Computing a spanning tree of G, if G is connected.
+              • Computing the connected components of G.
+              • Computing a cycle in G, or reporting that G has no cycles.
+          Proposition 14.15: Let G      be a directed graph with n vertices and m edges. A
+          DFS traversal of G   can be performed in O(n + m) time, and can be used to solve
+          the following problems in O(n + m) time:
+              • Computing a directed path between two given vertices of G        , if one exists.
+                                                     
+              • Computing the set of vertices of G that are reachable from a given vertex s.
+              • Testing whether G   is strongly connected.
+              • Computing a directed cycle in G     , or reporting that G
+                                                                          is acyclic.
+                                                           
+              • Computing the transitive closure of G (see Section 14.4).
+              The justiﬁcation of Propositions 14.14 and 14.15 is based on algorithms that
+          use slightly modiﬁed versions of the DFS algorithm as subroutines. We will explore
+          some of those extensions in the remainder of this section.

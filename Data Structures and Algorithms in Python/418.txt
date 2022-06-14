@@ -1,0 +1,38 @@
+9.6. Exercises                                                                                                                                                 397
+      Creativity
+            C-9.26 Show how to implement the stack ADT using only a priority queue and
+                            one additional integer instance variable.
+            C-9.27 Show how to implement the FIFO queue ADT using only a priority queue
+                            and one additional integer instance variable.
+            C-9.28 Professor Idle suggests the following solution to the previous problem.
+                            Whenever an item is inserted into the queue, it is assigned a key that is
+                            equal to the current size of the queue. Does such a strategy result in FIFO
+                            semantics? Prove that it is so or provide a counterexample.
+            C-9.29 Reimplement the SortedPriorityQueue using a Python list. Make sure to
+                            maintain remove min’s O(1) performance.
+            C-9.30 Give a nonrecursive implementation of the upheap method for the class
+                            HeapPriorityQueue.
+            C-9.31 Give a nonrecursive implementation of the downheap method for the
+                            class HeapPriorityQueue.
+            C-9.32 Assume that we are using a linked representation of a complete binary
+                            tree T , and an extra reference to the last node of that tree. Show how to
+                            update the reference to the last node after operations add or remove min
+                            in O(log n) time, where n is the current number of nodes of T . Be sure
+                            and handle all possible cases, as illustrated in Figure 9.12.
+            C-9.33 When using a linked-tree representation for a heap, an alternative method
+                            for ﬁnding the last node during an insertion in a heap T is to store, in the
+                            last node and each leaf node of T , a reference to the leaf node immedi-
+                            ately to its right (wrapping to the ﬁrst node in the next lower level for the
+                            rightmost leaf node). Show how to maintain such references in O(1) time
+                            per operation of the priority queue ADT assuming that T is implemented
+                            with a linked structure.
+                                                     (2,B)                                                                                 (4,C)
+                              (5,A)                                         (4,C)                                   (5,A)                                (6,Z)
+                  (15,K)                  (9,F)                 (7,Q)                  (6,Z)            (15,K)                  (9,F)              (7,Q)       (20,B)
+                                                                                                 w                                      w        z
+             (16,X)    (25,J)      (14,E)      (12,H)     (11,S)      (8,W)      (20,B)     (10,L) (16,X)    (25,J)      (14,E)      (12,H)
+         z
+                                                  (a)                                                                                  (b)
+           Figure 9.12: Updating the last node in a complete binary tree after operation add or
+           remove. Node w is the last node before operation add or after operation remove.
+           Node z is the last node after operation add or before operation remove.

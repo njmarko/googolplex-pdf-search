@@ -1,0 +1,39 @@
+194                                                  Chapter 5. Array-Based Sequences
+         In evaluating the results of the experiment, we draw attention to the ﬁrst line of
+    output from Code Fragment 5.2. We see that an empty list instance already requires
+    a certain number of bytes of memory (72 on our system). In fact, each object in
+    Python maintains some state, for example, a reference to denote the class to which
+    it belongs. Although we cannot directly access private instance variables for a list,
+    we can speculate that in some form it maintains state information akin to:
+                     n   The number of actual elements currently stored in the list.
+            capacity     The maximum number of elements that could be stored in the
+                         currently allocated array.
+                    A    The reference to the currently allocated array (initially None).
+         As soon as the ﬁrst element is inserted into the list, we detect a change in the
+    underlying size of the structure. In particular, we see the number of bytes jump
+    from 72 to 104, an increase of exactly 32 bytes. Our experiment was run on a
+    64-bit machine architecture, meaning that each memory address is a 64-bit number
+    (i.e., 8 bytes). We speculate that the increase of 32 bytes reﬂects the allocation of
+    an underlying array capable of storing four object references. This hypothesis is
+    consistent with the fact that we do not see any underlying change in the memory
+    usage after inserting the second, third, or fourth element into the list.
+         After the ﬁfth element has been added to the list, we see the memory usage jump
+    from 104 bytes to 136 bytes. If we assume the original base usage of 72 bytes for
+    the list, the total of 136 suggests an additional 64 = 8×8 bytes that provide capacity
+    for up to eight object references. Again, this is consistent with the experiment, as
+    the memory usage does not increase again until the ninth insertion. At that point,
+    the 200 bytes can be viewed as the original 72 plus an additional 128-byte array to
+    store 16 object references. The 17th insertion pushes the overall memory usage to
+    272 = 72 + 200 = 72 + 25 × 8, hence enough to store up to 25 element references.
+         Because a list is a referential structure, the result of getsizeof for a list instance
+    only includes the size for representing its primary structure; it does not account for
+    memory used by the objects that are elements of the list. In our experiment, we
+    repeatedly append None to the list, because we do not care about the contents, but
+    we could append any type of object without affecting the number of bytes reported
+    by getsizeof(data).
+         If we were to continue such an experiment for further iterations, we might try
+    to discern the pattern for how large of an array Python creates each time the ca-
+    pacity of the previous array is exhausted (see Exercises R-5.2 and C-5.13). Before
+    exploring the precise sequence of capacities used by Python, we continue in this
+    section by describing a general approach for implementing dynamic arrays and for
+    performing an asymptotic analysis of their performance.

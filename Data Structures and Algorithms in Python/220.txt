@@ -1,0 +1,30 @@
+5.3. Dynamic Arrays and Amortization                                                                                                                                   199
+         Geometric Increase in Capacity
+         Although the proof of Proposition 5.1 relies on the array being doubled each time
+         we expand, the O(1) amortized bound per operation can be proven for any geo-
+         metrically increasing progression of array sizes (see Section 2.4.2 for discussion of
+         geometric progressions). When choosing the geometric base, there exists a trade-
+         off between run-time efﬁciency and memory usage. With a base of 2 (i.e., doubling
+         the array), if the last insertion causes a resize event, the array essentially ends up
+         twice as large as it needs to be. If we instead increase the array by only 25% of
+         its current size (i.e., a geometric base of 1.25), we do not risk wasting as much
+         memory in the end, but there will be more intermediate resize events along the
+         way. Still it is possible to prove an O(1) amortized bound, using a constant factor
+         greater than the 3 cyber-dollars per operation used in the proof of Proposition 5.1
+         (see Exercise C-5.15). The key to the performance is that the amount of additional
+         space is proportional to the current size of the array.
+         Beware of Arithmetic Progression
+         To avoid reserving too much space at once, it might be tempting to implement a
+         dynamic array with a strategy in which a constant number of additional cells are
+         reserved each time an array is resized. Unfortunately, the overall performance of
+         such a strategy is signiﬁcantly worse. At an extreme, an increase of only one cell
+         causes each append operation to resize the array, leading to a familiar 1 + 2 + 3 +
+         · · · + n summation and Ω(n2 ) overall cost. Using increases of 2 or 3 at a time is
+         slightly better, as portrayed in Figure 5.13, but the overall cost remains quadratic.
+           primitive operations for an append                                            primitive operations for an append
+                                                1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16                                        1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+                                                     current number of elements                                                    current number of elements
+                             (a)                                  (b)
+         Figure 5.15: Running times of a series of append operations on a dynamic array
+         using arithmetic progression of sizes. (a) Assumes increase of 2 in size of the
+         array, while (b) assumes increase of 3.

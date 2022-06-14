@@ -1,0 +1,34 @@
+7.2. Circularly Linked Lists                                                                     267
+       7.2.1 Round-Robin Schedulers
+          To motivate the use of a circularly linked list, we consider a round-robin scheduler,
+          which iterates through a collection of elements in a circular fashion and “services”
+          each element by performing a given action on it. Such a scheduler is used, for
+          example, to fairly allocate a resource that must be shared by a collection of clients.
+          For instance, round-robin scheduling is often used to allocate slices of CPU time to
+          various applications running concurrently on a computer.
+               A round-robin scheduler could be implemented with the general queue ADT,
+          by repeatedly performing the following steps on queue Q (see Figure 7.9):
+              1. e = Q.dequeue()
+              2. Service element e
+              3. Q.enqueue(e)
+                                                   The Queue
+               1. Deque the                     2. Service the                      3. Enqueue the
+               next element                     next element                       serviced element
+                                                    Shared
+                                                    Service
+             Figure 7.9: The three iterative steps for round-robin scheduling using a queue.
+               If we use of the LinkedQueue class of Section 7.1.2 for such an application,
+          there is unnecessary effort in the combination of a dequeue operation followed soon
+          after by an enqueue of the same element. One node is removed from the list, with
+          appropriate adjustments to the head of the list and the size decremented, and then a
+          new node is created to reinsert at the tail of the list and the size is incremented.
+               If using a circularly linked list, the effective transfer of an item from the “head”
+          of the list to the “tail” of the list can be accomplished by advancing a reference
+          that marks the boundary of the queue. We will next provide an implementation
+          of a CircularQueue class that supports the entire queue ADT, together with an ad-
+          ditional method, rotate( ), that moves the ﬁrst element of the queue to the back.
+          (A similar method is supported by the deque class of Python’s collections module;
+          see Table 6.4.) With this operation, a round-robin schedule can more efﬁciently be
+          implemented by repeatedly performing the following steps:
+              1. Service element Q.front()
+              2. Q.rotate()

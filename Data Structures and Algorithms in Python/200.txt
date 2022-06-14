@@ -1,0 +1,39 @@
+4.6. Eliminating Tail Recursion                                                           179
+        1 def binary search iterative(data, target):
+        2   ”””Return True if target is found in the   given Python list.”””
+        3   low = 0
+        4   high = len(data)−1
+        5   while low <= high:
+        6      mid = (low + high) // 2
+        7      if target == data[mid]:                   # found a match
+        8         return True
+        9      elif target < data[mid]:
+      10          high = mid − 1                         # only consider values left of mid
+      11       else:
+      12          low = mid + 1                          # only consider values right of mid
+      13    return False                                 # loop ended without success
+                  Code Fragment 4.15: A nonrecursive implementation of binary search.
+          the target, or we narrow the range of the candidate subsequence. Where we made
+          the recursive call binary search(data, target, low, mid −1) in the original version,
+          we simply replace high = mid − 1 in our new version and then continue to the
+          next iteration of the loop. Our original base case condition of low > high has
+          simply been replaced by the opposite loop condition while low <= high. In our
+          new implementation, we return False to designate a failed search if the while loop
+          ends (that is, without having ever returned True from within).
+              We can similarly develop a nonrecursive implementation (Code Fragment 4.16)
+          of the original recursive reverse method of Code Fragment 4.10.
+        1 def reverse iterative(S):
+        2   ”””Reverse elements in sequence S.”””
+        3   start, stop = 0, len(S)
+        4   while start < stop − 1:
+        5      S[start], S[stop−1] = S[stop−1], S[start]        # swap ﬁrst and last
+        6      start, stop = start + 1, stop − 1                # narrow the range
+               Code Fragment 4.16: Reversing the elements of a sequence using iteration.
+              In this new version, we update the values start and stop during each pass of the
+          loop, exiting once we reach the case of having one or less elements in that range.
+              Many other linear recursions can be expressed quite efﬁciently with iteration,
+          even if they were not formally tail recursions. For example, there are trivial non-
+          recursive implementations for computing factorials, summing elements of a se-
+          quence, or computing Fibonacci numbers efﬁciently. In fact, our implementation
+          of a Fibonacci generator, from Section 1.8, produces each subsequent value in O(1)
+          time, and thus takes O(n) time to generate the nth entry in the series.

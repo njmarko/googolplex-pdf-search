@@ -1,0 +1,38 @@
+4.4. Further Examples of Recursion                                                                175
+       4.4.3 Multiple Recursion
+          Generalizing from binary recursion, we deﬁne multiple recursion as a process in
+          which a function may make more than two recursive calls. Our recursion for an-
+          alyzing the disk space usage of a ﬁle system (see Section 4.1.4) is an example of
+          multiple recursion, because the number of recursive calls made during one invoca-
+          tion was equal to the number of entries within a given directory of the ﬁle system.
+               Another common application of multiple recursion is when we want to enumer-
+          ate various conﬁgurations in order to solve a combinatorial puzzle. For example,
+          the following are all instances of what are known as summation puzzles:
+                                           pot + pan = bib
+                                           dog + cat = pig
+                                           boy + girl = baby
+          To solve such a puzzle, we need to assign a unique digit (that is, 0, 1, . . . , 9) to each
+          letter in the equation, in order to make the equation true. Typically, we solve such
+          a puzzle by using our human observations of the particular puzzle we are trying
+          to solve to eliminate conﬁgurations (that is, possible partial assignments of digits
+          to letters) until we can work though the feasible conﬁgurations left, testing for the
+          correctness of each one.
+               If the number of possible conﬁgurations is not too large, however, we can use
+          a computer to simply enumerate all the possibilities and test each one, without
+          employing any human observations. In addition, such an algorithm can use multiple
+          recursion to work through the conﬁgurations in a systematic way. We show pseudo-
+          code for such an algorithm in Code Fragment 4.14. To keep the description general
+          enough to be used with other puzzles, the algorithm enumerates and tests all k-
+          length sequences without repetitions of the elements of a given universe U . We
+          build the sequences of k elements by the following steps:
+              1. Recursively generating the sequences of k − 1 elements
+              2. Appending to each such sequence an element not already contained in it.
+          Throughout the execution of the algorithm, we use a set U to keep track of the
+          elements not contained in the current sequence, so that an element e has not been
+          used yet if and only if e is in U .
+               Another way to look at the algorithm of Code Fragment 4.14 is that it enumer-
+          ates every possible size-k ordered subset of U , and tests each subset for being a
+          possible solution to our puzzle.
+               For summation puzzles, U = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} and each position in the
+          sequence corresponds to a given letter. For example, the ﬁrst position could stand
+          for b, the second for o, the third for y, and so on.

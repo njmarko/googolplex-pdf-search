@@ -1,0 +1,35 @@
+4.3. Recursion Run Amok                                                                     167
+          An Eﬃcient Recursion for Computing Fibonacci Numbers
+          We were tempted into using the bad recursion formulation because of the way the
+          nth Fibonacci number, Fn , depends on the two previous values, Fn−2 and Fn−1 . But
+          notice that after computing Fn−2 , the call to compute Fn−1 requires its own recursive
+          call to compute Fn−2 , as it does not have knowledge of the value of Fn−2 that was
+          computed at the earlier level of recursion. That is duplicative work. Worse yet, both
+          of those calls will need to (re)compute the value of Fn−3 , as will the computation
+          of Fn−1 . This snowballing effect is what leads to the exponential running time of
+          bad recursion.
+                We can compute Fn much more efﬁciently using a recursion in which each invo-
+          cation makes only one recursive call. To do so, we need to redeﬁne the expectations
+          of the function. Rather than having the function return a single value, which is the
+          nth Fibonacci number, we deﬁne a recursive function that returns a pair of con-
+          secutive Fibonacci numbers (Fn , Fn−1 ), using the convention F−1 = 0. Although
+          it seems to be a greater burden to report two consecutive Fibonacci numbers in-
+          stead of one, passing this extra information from one level of the recursion to the
+          next makes it much easier to continue the process. (It allows us to avoid having
+          to recompute the second value that was already known within the recursion.) An
+          implementation based on this strategy is given in Code Fragment 4.8.
+       1 def good ﬁbonacci(n):
+       2     ”””Return pair of Fibonacci numbers, F(n) and F(n-1).”””
+       3     if n <= 1:
+       4        return (n,0)
+       5     else:
+       6        (a, b) = good ﬁbonacci(n−1)
+       7        return (a+b, a)
+            Code Fragment 4.8: Computing the nth Fibonacci number using linear recursion.
+                In terms of efﬁciency, the difference between the bad recursion and the good
+          recursion for this problem is like night and day. The bad ﬁbonacci function uses
+          exponential time. We claim that the execution of function good ﬁbonacci(n) takes
+          O(n) time. Each recursive call to good ﬁbonacci decreases the argument n by 1;
+          therefore, a recursion trace includes a series of n function calls. Because the nonre-
+          cursive work for each call uses constant time, the overall computation executes in
+          O(n) time.

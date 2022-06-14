@@ -1,0 +1,42 @@
+13.6. Exercises                                                                                 615
+          C-13.26 Modify the simpliﬁed Boyer-Moore algorithm presented in this chapter
+                  using ideas from the KMP algorithm so that it runs in O(n + m) time.
+          C-13.27 Design an efﬁcient algorithm for the matrix chain multiplication problem
+                  that outputs a fully parenthesized expression for how to multiply the ma-
+                  trices in the chain using the minimum number of operations.
+          C-13.28 A native Australian named Anatjari wishes to cross a desert carrying only
+                  a single water bottle. He has a map that marks all the watering holes along
+                  the way. Assuming he can walk k miles on one bottle of water, design an
+                  efﬁcient algorithm for determining where Anatjari should reﬁll his bottle
+                  in order to make as few stops as possible. Argue why your algorithm is
+                  correct.
+          C-13.29 Describe an efﬁcient greedy algorithm for making change for a speciﬁed
+                  value using a minimum number of coins, assuming there are four denomi-
+                  nations of coins (called quarters, dimes, nickels, and pennies), with values
+                  25, 10, 5, and 1, respectively. Argue why your algorithm is correct.
+          C-13.30 Give an example set of denominations of coins so that a greedy change-
+                  making algorithm will not use the minimum number of coins.
+          C-13.31 In the art gallery guarding problem we are given a line L that repre-
+                  sents a long hallway in an art gallery. We are also given a set X =
+                  {x0 , x1 , . . . , xn−1 } of real numbers that specify the positions of paintings
+                  in this hallway. Suppose that a single guard can protect all the paintings
+                  within distance at most 1 of his or her position (on both sides). Design
+                  an algorithm for ﬁnding a placement of guards that uses the minimum
+                  number of guards to guard all the paintings with positions in X .
+          C-13.32 Let P be a convex polygon, a triangulation of P is an addition of diag-
+                  onals connecting the vertices of P so that each interior face is a triangle.
+                  The weight of a triangulation is the sum of the lengths of the diagonals.
+                  Assuming that we can compute lengths and add and compare them in con-
+                  stant time, give an efﬁcient algorithm for computing a minimum-weight
+                  triangulation of P.
+          C-13.33 Let T be a text string of length n. Describe an O(n)-time method for
+                  ﬁnding the longest preﬁx of T that is a substring of the reversal of T .
+          C-13.34 Describe an efﬁcient algorithm to ﬁnd the longest palindrome that is a
+                  sufﬁx of a string T of length n. Recall that a palindrome is a string that is
+                  equal to its reversal. What is the running time of your method?
+          C-13.35 Given a sequence S = (x0 , x1 , . . . , xn−1 ) of numbers, describe an O(n2 )-
+                  time algorithm for ﬁnding a longest subsequence T = (xi0 , xi1 , . . . , xik−1 )
+                  of numbers, such that i j < i j+1 and xi j > xi j+1 . That is, T is a longest
+                  decreasing subsequence of S.
+          C-13.36 Give an efﬁcient algorithm for determining if a pattern P is a subsequence
+                  (not substring) of a text T . What is the running time of your algorithm?

@@ -1,0 +1,32 @@
+464                                                           Chapter 11. Search Trees
+    Analysis of Binary Tree Searching
+    The analysis of the worst-case running time of searching in a binary search tree
+    T is simple. Algorithm TreeSearch is recursive and executes a constant number
+    of primitive operations for each recursive call. Each recursive call of TreeSearch
+    is made on a child of the previous position. That is, TreeSearch is called on the
+    positions of a path of T that starts at the root and goes down one level at a time.
+    Thus, the number of such positions is bounded by h + 1, where h is the height of T .
+    In other words, since we spend O(1) time per position encountered in the search,
+    the overall search runs in O(h) time, where h is the height of the binary search
+    tree T . (See Figure 11.3.)
+             Height                                                   Time per level
+                                                                          O(1)
+                            Tree T:
+                                                                          O(1)
+                h
+                                                                          O(1)
+                                                              Total time: O(h)
+    Figure 11.3: Illustrating the running time of searching in a binary search tree. The
+    ﬁgure uses standard caricature of a binary search tree as a big triangle and a path
+    from the root as a zig-zag line.
+        In the context of the sorted map ADT, the search will be used as a subroutine
+    for implementing the getitem method, as well as for the setitem and
+       delitem methods, since each of these begins by trying to locate an existing
+    item with a given key. To implement sorted map operations such as ﬁnd lt and
+    ﬁnd gt, we will combine this search with traversal methods before and after. All
+    of these operations will run in worst-case O(h) time for a tree with height h. We
+    can use a variation of this technique to implement the ﬁnd range method in time
+    O(s + h), where s is the number of items reported (see Exercise C-11.34).
+        Admittedly, the height h of T can be as large as the number of entries, n, but we
+    expect that it is usually much smaller. Indeed, later in this chapter we show various
+    strategies to maintain an upper bound of O(log n) on the height of a search tree T .

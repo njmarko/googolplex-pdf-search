@@ -1,0 +1,35 @@
+5.4. Efﬁciency of Python’s Sequence Types                                                    205
+                               0   1    2        k              n−1
+            Figure 5.16: Creating room to insert a new element at index k of a dynamic array.
+           that process depends upon the index of the new element, and thus the number of
+           other elements that must be shifted. That loop copies the reference that had been
+           at index n − 1 to index n, then the reference that had been at index n − 2 to n − 1,
+           continuing until copying the reference that had been at index k to k + 1, as illus-
+           trated in Figure 5.16. Overall this leads to an amortized O(n − k + 1) performance
+           for inserting at index k.
+                When exploring the efﬁciency of Python’s append method in Section 5.3.3,
+           we performed an experiment that measured the average cost of repeated calls on
+           varying sizes of lists (see Code Fragment 5.4 and Table 5.2). We have repeated that
+           experiment with the insert method, trying three different access patterns:
+               • In the ﬁrst case, we repeatedly insert at the beginning of a list,
+                        for n in range(N):
+                          data.insert(0, None)
+               • In a second case, we repeatedly insert near the middle of a list,
+                        for n in range(N):
+                          data.insert(n // 2, None)
+               • In a third case, we repeatedly insert at the end of the list,
+                        for n in range(N):
+                          data.insert(n, None)
+           The results of our experiment are given in Table 5.5, reporting the average time per
+           operation (not the total time for the entire loop). As expected, we see that inserting
+           at the beginning of a list is most expensive, requiring linear time per operation.
+           Inserting at the middle requires about half the time as inserting at the beginning,
+           yet is still Ω(n) time. Inserting at the end displays O(1) behavior, akin to append.
+                                                              N
+                                         100   1,000   10,000 100,000        1,000,000
+                        k=0           0.482    0.765     4.014     36.643      351.590
+                        k = n // 2    0.451    0.577     2.191     17.873      175.383
+                        k=n           0.420    0.422     0.395       0.389       0.397
+           Table 5.5: Average running time of insert(k, val), measured in microseconds, as
+           observed over a sequence of N calls, starting with an empty list. We let n denote
+           the size of the current list (as opposed to the ﬁnal list).

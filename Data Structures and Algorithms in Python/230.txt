@@ -1,0 +1,41 @@
+5.4. Efﬁciency of Python’s Sequence Types                                                     209
+                While the preceding code fragment accomplishes the goal, it may be terribly
+           inefﬁcient. Because strings are immutable, the command, letters += c, would
+           presumably compute the concatenation, letters + c, as a new string instance and
+           then reassign the identiﬁer, letters, to that result. Constructing that new string
+           would require time proportional to its length. If the ﬁnal result has n characters, the
+           series of concatenations would take time proportional to the familiar sum 1 + 2 +
+           3 + · · · + n, and therefore O(n2 ) time.
+                Inefﬁcient code of this type is widespread in Python, perhaps because of the
+           somewhat natural appearance of the code, and mistaken presumptions about how
+           the += operator is evaluated with strings. Some later implementations of the
+           Python interpreter have developed an optimization to allow such code to complete
+           in linear time, but this is not guaranteed for all Python implementations. The op-
+           timization is as follows. The reason that a command, letters += c, causes a new
+           string instance to be created is that the original string must be left unchanged if
+           another variable in a program refers to that string. On the other hand, if Python
+           knew that there were no other references to the string in question, it could imple-
+           ment += more efﬁciently by directly mutating the string (as a dynamic array). As
+           it happens, the Python interpreter already maintains what are known as reference
+           counts for each object; this count is used in part to determine if an object can be
+           garbage collected. (See Section 15.1.2.) But in this context, it provides a means to
+           detect when no other references exist to a string, thereby allowing the optimization.
+                A more standard Python idiom to guarantee linear time composition of a string
+           is to use a temporary list to store individual pieces, and then to rely on the join
+           method of the str class to compose the ﬁnal result. Using this technique with our
+           previous example would appear as follows:
+                 temp = [ ]                                # start with empty list
+                 for c in document:
+                    if c.isalpha( ):
+                       temp.append(c)                      # append alphabetic character
+                 letters = .join(temp)                     # compose overall result
+           This approach is guaranteed to run in O(n) time. First, we note that the series of
+           up to n append calls will require a total of O(n) time, as per the deﬁnition of the
+           amortized cost of that operation. The ﬁnal call to join also guarantees that it takes
+           time that is linear in the ﬁnal length of the composed string.
+                As we discussed at the end of the previous section, we can further improve
+           the practical execution time by using a list comprehension syntax to build up the
+           temporary list, rather than by repeated calls to append. That solution appears as,
+                 letters =     .join([c for c in document if c.isalpha( )])
+           Better yet, we can entirely avoid the temporary list with a generator comprehension:
+                 letters =     .join(c for c in document if c.isalpha( ))

@@ -1,0 +1,41 @@
+656                                                        Chapter 14. Graph Algorithms
+                        1              4                               2             1
+                           A                B                             A              B
+             2                                           3
+               C                                           C
+                              D                                              D
+                     E        5       F                            E         4       F
+                    3                    6                        6                    5
+                          G                                              G
+                       7                                              7
+                               H   8                                          H  8
+                          (a)                                            (b)
+        Figure 14.12: Two topological orderings of the same acyclic directed graph.
+         We now argue the sufﬁciency of the condition (the “if” part). Suppose G             is
+    acyclic. We will give an algorithmic description of how to build a topological
+    ordering for G. Since G  is acyclic, G   must have a vertex with no incoming edges
+    (that is, with in-degree 0). Let v1 be such a vertex. Indeed, if v1 did not exist,
+    then in tracing a directed path from an arbitrary start vertex, we would eventually
+    encounter a previously visited vertex, thus contradicting the acyclicity of G.        If we
+                      
+    remove v1 from G, together with its outgoing edges, the resulting directed graph is
+    still acyclic. Hence, the resulting directed graph also has a vertex with no incoming
+    edges, and we let v2 be such a vertex. By repeating this process until the directed
+    graph becomes empty, we obtain an ordering v1 , . . . ,vn of the vertices of G.   Because
+                                                             then vi must be deleted before
+    of the construction above, if (vi , v j ) is an edge of G,
+    v j can be deleted, and thus, i < j. Therefore, v1 , . . . , vn is a topological ordering.
+         Proposition 14.21’s justiﬁcation suggests an algorithm for computing a topo-
+    logical ordering of a directed graph, which we call topological sorting. We present
+    a Python implementation of the technique in Code Fragment 14.11, and an example
+    execution of the algorithm in Figure 14.13. Our implementation uses a dictionary,
+    named incount, to map each vertex v to a counter that represents the current number
+    of incoming edges to v, excluding those coming from vertices that have previously
+    been added to the topological order. Technically, a Python dictionary provides O(1)
+    expected time access to entries, rather than worst-case time; as was the case with
+    our graph traversals, this could be converted to worst-case time if vertices could be
+    indexed from 0 to n − 1, or if we store the counter as an element of a vertex.
+         As a side effect, the topological sorting algorithm of Code Fragment 14.11
+    also tests whether the given directed graph G       is acyclic. Indeed, if the algorithm
+    terminates without ordering all the vertices, then the subgraph of the vertices that
+    have not been ordered must contain a directed cycle.

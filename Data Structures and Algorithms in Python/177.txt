@@ -1,0 +1,35 @@
+156                                                                 Chapter 4. Recursion
+            This algorithm is known as binary search. We give a Python implementation
+       in Code Fragment 4.3, and an illustration of the execution of the algorithm in Fig-
+       ure 4.5. Whereas sequential search runs in O(n) time, the more efﬁcient binary
+       search runs in O(log n) time. This is a signiﬁcant improvement, given that if n
+       is one billion, log n is only 30. (We defer our formal analysis of binary search’s
+       running time to Proposition 4.2 in Section 4.2.)
+     1 def binary search(data, target, low, high):
+     2   ”””Return True if target is found in indicated portion of a Python list.
+     3
+     4   The search only considers the portion from data[low] to data[high] inclusive.
+     5   ”””
+     6   if low > high:
+     7      return False                                    # interval is empty; no match
+     8   else:
+     9      mid = (low + high) // 2
+    10      if target == data[mid]:                         # found a match
+    11         return True
+    12      elif target < data[mid]:
+    13         # recur on the portion left of the middle
+    14         return binary search(data, target, low, mid − 1)
+    15      else:
+    16         # recur on the portion right of the middle
+    17         return binary search(data, target, mid + 1, high)
+              Code Fragment 4.3: An implementation of the binary search algorithm.
+                    0   1   2    3  4  5   6   7   8   9 10 11 12 13 14 15
+                    2   4   5    7  8  9 12 14 17 19 22 25 27 28 33 37
+                   low                        mid                             high
+                    2   4   5    7  8  9 12 14 17 19 22 25 27 28 33 37
+                                                  low          mid            high
+                    2   4   5    7  8  9 12 14 17 19 22 25 27 28 33 37
+                                                  low mid high
+                    2   4   5    7  8  9 12 14 17 19 22 25 27 28 33 37
+                                                     low=mid=high
+                     Figure 4.5: Example of a binary search for target value 22.

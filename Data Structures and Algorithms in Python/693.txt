@@ -1,0 +1,39 @@
+672                                                        Chapter 14. Graph Algorithms
+    14.7.1 Prim-Jarnı́k Algorithm
+       In the Prim-Jarnı́k algorithm, we grow a minimum spanning tree from a single
+       cluster starting from some “root” vertex s. The main idea is similar to that of
+       Dijkstra’s algorithm. We begin with some vertex s, deﬁning the initial “cloud” of
+       vertices C. Then, in each iteration, we choose a minimum-weight edge e = (u, v),
+       connecting a vertex u in the cloud C to a vertex v outside of C. The vertex v is
+       then brought into the cloud C and the process is repeated until a spanning tree is
+       formed. Again, the crucial fact about minimum spanning trees comes into play,
+       for by always choosing the smallest-weight edge joining a vertex inside C to one
+       outside C, we are assured of always adding a valid edge to the MST.
+           To efﬁciently implement this approach, we can take another cue from Dijkstra’s
+       algorithm. We maintain a label D[v] for each vertex v outside the cloud C, so that
+       D[v] stores the weight of the minimum observed edge for joining v to the cloud
+       C. (In Dijkstra’s algorithm, this label measured the full path length from starting
+       vertex s to v, including an edge (u, v).) These labels serve as keys in a priority
+       queue used to decide which vertex is next in line to join the cloud. We give the
+       pseudo-code in Code Fragment 14.15.
+       Algorithm PrimJarnik(G):
+           Input: An undirected, weighted, connected graph G with n vertices and m edges
+           Output: A minimum spanning tree T for G
+          Pick any vertex s of G
+          D[s] = 0
+          for each vertex v = s do
+             D[v] = ∞
+          Initialize T = ∅.
+          Initialize a priority queue Q with an entry (D[v], (v, None)) for each vertex v,
+          where D[v] is the key in the priority queue, and (v, None) is the associated value.
+          while Q is not empty do
+             (u, e) = value returned by Q.remove min()
+             Connect vertex u to T using edge e.
+             for each edge e = (u, v) such that v is in Q do
+                {check if edge (u, v) better connects v to T }
+                if w(u, v) < D[v] then
+                   D[v] = w(u, v)
+                   Change the key of vertex v in Q to D[v].
+                   Change the value of vertex v in Q to (v, e ).
+          return the tree T
+             Code Fragment 14.15: The Prim-Jarnı́k algorithm for the MST problem.

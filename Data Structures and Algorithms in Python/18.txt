@@ -1,0 +1,41 @@
+Contents                                                                               xvii
+         12 Sorting and Selection                                                      536
+            12.1 Why Study Sorting Algorithms? . . . . . . . . . . . .         . . . . 537
+            12.2 Merge-Sort . . . . . . . . . . . . . . . . . . . . . . . .    . . . . 538
+                 12.2.1 Divide-and-Conquer . . . . . . . . . . . . . . . .     . . . . 538
+                 12.2.2 Array-Based Implementation of Merge-Sort . . .         . . . . 543
+                 12.2.3 The Running Time of Merge-Sort . . . . . . . .         . . . . 544
+                 12.2.4 Merge-Sort and Recurrence Equations  . . . . .        . . . . 546
+                 12.2.5 Alternative Implementations of Merge-Sort . . .        . . . . 547
+            12.3 Quick-Sort . . . . . . . . . . . . . . . . . . . . . . . .    . . . . 550
+                 12.3.1 Randomized Quick-Sort . . . . . . . . . . . . . .      . . . . 557
+                 12.3.2 Additional Optimizations for Quick-Sort . . . . .      . . . . 559
+            12.4 Studying Sorting through an Algorithmic Lens . . .            . . . . 562
+                 12.4.1 Lower Bound for Sorting . . . . . . . . . . . . .      . . . . 562
+                 12.4.2 Linear-Time Sorting: Bucket-Sort and Radix-Sort        . . . . 564
+            12.5 Comparing Sorting Algorithms . . . . . . . . . . . . .        . . . . 567
+            12.6 Python’s Built-In Sorting Functions . . . . . . . . . .       . . . . 569
+                 12.6.1 Sorting According to a Key Function . . . . . . .      . . . . 569
+            12.7 Selection . . . . . . . . . . . . . . . . . . . . . . . . .   . . . . 571
+                 12.7.1 Prune-and-Search . . . . . . . . . . . . . . . . .     . . . . 571
+                 12.7.2 Randomized Quick-Select . . . . . . . . . . . . .      . . . . 572
+                 12.7.3 Analyzing Randomized Quick-Select . . . . . . .        . . . . 573
+            12.8 Exercises . . . . . . . . . . . . . . . . . . . . . . . . .   . . . . 574
+         13 Text Processing                                                            581
+            13.1 Abundance of Digitized Text . . . . . . . . .       . . . . . . . . . 582
+                 13.1.1 Notations for Strings and the Python str     Class . . . . . . 583
+            13.2 Pattern-Matching Algorithms . . . . . . . .         . . . . . . . . . 584
+                 13.2.1 Brute Force . . . . . . . . . . . . . . .    . . . . . . . . . 584
+                 13.2.2 The Boyer-Moore Algorithm . . . . . .        . . . . . . . . . 586
+                 13.2.3 The Knuth-Morris-Pratt Algorithm . . .       . . . . . . . . . 590
+            13.3 Dynamic Programming . . . . . . . . . . . .         . . . . . . . . . 594
+                 13.3.1 Matrix Chain-Product . . . . . . . . . .     . . . . . . . . . 594
+                 13.3.2 DNA and Text Sequence Alignment . .          . . . . . . . . . 597
+            13.4 Text Compression and the Greedy Method              . . . . . . . . . 601
+                 13.4.1 The Huﬀman Coding Algorithm . . . .          . . . . . . . . . 602
+                 13.4.2 The Greedy Method . . . . . . . . . . .      . . . . . . . . . 603
+            13.5 Tries . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 604
+                 13.5.1 Standard Tries . . . . . . . . . . . . . .   . . . . . . . . . 604
+                 13.5.2 Compressed Tries . . . . . . . . . . . .     . . . . . . . . . 608
+                 13.5.3 Suﬃx Tries . . . . . . . . . . . . . . .     . . . . . . . . . 610
+                 13.5.4 Search Engine Indexing . . . . . . . . .     . . . . . . . . . 612

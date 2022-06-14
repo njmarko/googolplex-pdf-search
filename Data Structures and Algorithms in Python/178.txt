@@ -1,0 +1,28 @@
+4.1. Illustrative Examples                                                                   157
+        4.1.4 File Systems
+            Modern operating systems deﬁne ﬁle-system directories (which are also sometimes
+            called “folders”) in a recursive way. Namely, a ﬁle system consists of a top-level
+            directory, and the contents of this directory consists of ﬁles and other directories,
+            which in turn can contain ﬁles and other directories, and so on. The operating
+            system allows directories to be nested arbitrarily deep (as long as there is enough
+            space in memory), although there must necessarily be some base directories that
+            contain only ﬁles, not further subdirectories. A representation of a portion of such
+            a ﬁle system is given in Figure 4.6.
+                                                  /user/rt/courses/
+                                  cs016/                                        cs252/
+                   grades                                                             grades
+                               homeworks/      programs/                 projects/
+                        hw1 hw2      hw3    pr1    pr2    pr3
+                                                                  papers/          demos/
+                                                             buylow    sellhigh    market
+                 Figure 4.6: A portion of a ﬁle system demonstrating a nested organization.
+                Given the recursive nature of the ﬁle-system representation, it should not come
+            as a surprise that many common behaviors of an operating system, such as copying
+            a directory or deleting a directory, are implemented with recursive algorithms. In
+            this section, we consider one such algorithm: computing the total disk usage for all
+            ﬁles and directories nested within a particular directory.
+                For illustration, Figure 4.7 portrays the disk space being used by all entries in
+            our sample ﬁle system. We differentiate between the immediate disk space used by
+            each entry and the cumulative disk space used by that entry and all nested features.
+            For example, the cs016 directory uses only 2K of immediate space, but a total of
+            249K of cumulative space.

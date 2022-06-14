@@ -1,0 +1,25 @@
+15.2. Memory Hierarchies and Caching                                                             709
+         Page Replacement Algorithms
+         Some of the better-known page replacement policies include the following (see
+         Figure 15.3):
+             • First-in, ﬁrst-out (FIFO): Evict the page that has been in the cache the
+                longest, that is, the page that was transferred to the cache furthest in the past.
+             • Least recently used (LRU): Evict the page whose last request occurred fur-
+                thest in the past.
+             In addition, we can consider a simple and purely random strategy:
+             • Random: Choose a page at random to evict from the cache.
+                                    New block                     Old block (chosen at random)
+                Random policy:
+                                   New block                      Old block (present longest)
+                FIFO policy:
+             insert time: 8:00am    7:48am 9:05am 7:10am      7:30am 10:10am 8:45am
+                                    New block                    Old block (least recently used)
+                LRU policy:
+               last used: 7:25am    8:12am 9:22am 6:50am      8:20am 10:02am 9:50am
+                 Figure 15.3: The random, FIFO, and LRU page replacement policies.
+             The random strategy is one of the easiest policies to implement, for it only re-
+         quires a random or pseudo-random number generator. The overhead involved in
+         implementing this policy is an O(1) additional amount of work per page replace-
+         ment. Moreover, there is no additional overhead for each page request, other than to
+         determine whether a page request is in the cache or not. Still, this policy makes no
+         attempt to take advantage of any temporal locality exhibited by a user’s browsing.

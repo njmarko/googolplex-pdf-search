@@ -1,0 +1,36 @@
+352                                                                           Chapter 8. Trees
+ 8.6    Exercises
+        For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+     Reinforcement
+          R-8.1 The following questions refer to the tree of Figure 8.3.
+                     a. Which node is the root?
+                     b. What are the internal nodes?
+                     c. How many descendants does node cs016/ have?
+                    d. How many ancestors does node cs016/ have?
+                     e. What are the siblings of node homeworks/?
+                     f. Which nodes are in the subtree rooted at node projects/?
+                    g. What is the depth of node papers/?
+                    h. What is the height of the tree?
+          R-8.2 Show a tree achieving the worst-case running time for algorithm depth.
+          R-8.3 Give a justiﬁcation of Proposition 8.4.
+          R-8.4 What is the running time of a call to T. height2(p) when called on a
+                  position p distinct from the root of T? (See Code Fragment 8.5.)
+          R-8.5 Describe an algorithm, relying only on the BinaryTree operations, that
+                  counts the number of leaves in a binary tree that are the left child of their
+                  respective parent.
+          R-8.6 Let T be an n-node binary tree that may be improper. Describe how to
+                  represent T by means of a proper binary tree T  with O(n) nodes.
+          R-8.7 What are the minimum and maximum number of internal and external
+                  nodes in an improper binary tree with n nodes?
+          R-8.8 Answer the following questions so as to justify Proposition 8.8.
+                     a. What is the minimum number of external nodes for a proper binary
+                        tree with height h? Justify your answer.
+                     b. What is the maximum number of external nodes for a proper binary
+                        tree with height h? Justify your answer.
+                     c. Let T be a proper binary tree with height h and n nodes. Show that
+                                             log(n + 1) − 1 ≤ h ≤ (n − 1)/2.
+                    d. For which values of n and h can the above lower and upper bounds
+                        on h be attained with equality?
+          R-8.9 Give a proof by induction of Proposition 8.9.
+         R-8.10 Give a direct implementation of the num children method within the class
+                  BinaryTree.

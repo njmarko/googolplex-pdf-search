@@ -1,0 +1,36 @@
+186                                                           Chapter 5. Array-Based Sequences
+          A group of related variables can be stored one after another in a contiguous
+      portion of the computer’s memory. We will denote such a representation as an
+      array. As a tangible example, a text string is stored as an ordered sequence of
+      individual characters. In Python, each character is represented using the Unicode
+      character set, and on most computing systems, Python internally represents each
+      Unicode character with 16 bits (i.e., 2 bytes). Therefore, a six-character string, such
+      as SAMPLE , would be stored in 12 consecutive bytes of memory, as diagrammed
+      in Figure 5.2.
+               44   45   46     47   48   49   50   51   52   53    54   55   56   57   58   59   60
+             21   21   21   21   21   21   21   21   21   21    21   21   21   21   21   21   21
+                            S        A         M          P         L         E
+                            0         1         2         3          4         5
+      Figure 5.2: A Python string embedded as an array of characters in the computer’s
+      memory. We assume that each Unicode character of the string requires two bytes
+      of memory. The numbers below the entries are indices into the string.
+          We describe this as an array of six characters, even though it requires 12 bytes
+      of memory. We will refer to each location within an array as a cell, and will use an
+      integer index to describe its location within the array, with cells numbered starting
+      with 0, 1, 2, and so on. For example, in Figure 5.2, the cell of the array with index 4
+      has contents L and is stored in bytes 2154 and 2155 of memory.
+           Each cell of an array must use the same number of bytes. This requirement is
+      what allows an arbitrary cell of the array to be accessed in constant time based on
+      its index. In particular, if one knows the memory address at which an array starts
+      (e.g., 2146 in Figure 5.2), the number of bytes per element (e.g., 2 for a Unicode
+      character), and a desired index within the array, the appropriate memory address
+      can be computed using the calculation, start + cellsize index. By this formula,
+      the cell at index 0 begins precisely at the start of the array, the cell at index 1 begins
+      precisely cellsize bytes beyond the start of the array, and so on. As an example,
+      cell 4 of Figure 5.2 begins at memory location 2146 + 2 · 4 = 2146 + 8 = 2154.
+          Of course, the arithmetic for calculating memory addresses within an array can
+      be handled automatically. Therefore, a programmer can envision a more typical
+      high-level abstraction of an array of characters as diagrammed in Figure 5.3.
+                                           S A M P L E
+                                           0    1    2    3     4    5
+         Figure 5.3: A higher-level abstraction for the string portrayed in Figure 5.2.

@@ -1,0 +1,40 @@
+14.6. Shortest Paths                                                                         669
+          Reconstructing the Shortest-Path Tree
+          Our pseudo-code description of Dijkstra’s algorithm in Code Fragment 14.12, and
+          our implementation in Code Fragment 14.13, computes the value d[v], for each ver-
+          tex v, that is the length of the shortest path from the source vertex s to v. However,
+          those forms of the algorithm do not explicitly compute the actual paths that achieve
+          those distances. The collection of all shortest paths emanating from source s can be
+          compactly represented by what is known as the shortest-path tree. The paths form
+          a rooted tree because if a shortest path from s to v passes through an intermediate
+          vertex u, it must begin with a shortest path from s to u.
+              In this section, we demonstrate that the shortest-path tree rooted at source s
+          can be reconstructed in O(n + m) time, given the set of d[v] values produced by
+          Dijkstra’s algorithm using s as the source. As we did when representing the DFS
+          and BFS trees, we will map each vertex v = s to a parent u (possibly, u = s), such
+          that u is the vertex immediately before v on a shortest path from s to v. If u is the
+          vertex just before v on the shortest path from s to v, it must be that
+                                            d[u] + w(u, v) = d[v].
+          Conversely, if the above equation is satisﬁed, then the shortest path from s to u,
+          followed by the edge (u, v) is a shortest path to v.
+              Our implementation in Code Fragment 14.14 reconstructs the tree based on this
+          logic, testing all incoming edges to each vertex v, looking for a (u, v) that satisﬁes
+          the key equation. The running time is O(n + m), as we consider each vertex and all
+          incoming edges to those vertices. (See Proposition 14.9.)
+       1 def shortest path tree(g, s, d):
+       2    ”””Reconstruct shortest-path tree rooted at vertex s, given distance map d.
+       3
+       4    Return tree as a map from each reachable vertex v (other than s) to the
+       5    edge e=(u,v) that is used to reach v from its parent u in the tree.
+       6    ”””
+       7    tree = { }
+       8    for v in d:
+       9       if v is not s:
+      10          for e in g.incident edges(v, False):           # consider INCOMING edges
+      11            u = e.opposite(v)
+      12            wgt = e.element( )
+      13            if d[v] == d[u] + wgt:
+      14               tree[v] = e                               # edge e is used to reach v
+      15    return tree
+          Code Fragment 14.14: Python function that reconstructs the shortest paths, based
+          on knowledge of the single-source distances.

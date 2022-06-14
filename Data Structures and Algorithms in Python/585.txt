@@ -1,0 +1,36 @@
+564                                                      Chapter 12. Sorting and Selection
+    12.4.2 Linear-Time Sorting: Bucket-Sort and Radix-Sort
+       In the previous section, we showed that Ω(n log n) time is necessary, in the worst
+       case, to sort an n-element sequence with a comparison-based sorting algorithm. A
+       natural question to ask, then, is whether there are other kinds of sorting algorithms
+       that can be designed to run asymptotically faster than O(n log n) time. Interest-
+       ingly, such algorithms exist, but they require special assumptions about the input
+       sequence to be sorted. Even so, such scenarios often arise in practice, such as when
+       sorting integers from a known range or sorting character strings, so discussing them
+       is worthwhile. In this section, we consider the problem of sorting a sequence of en-
+       tries, each a key-value pair, where the keys have a restricted type.
+       Bucket-Sort
+       Consider a sequence S of n entries whose keys are integers in the range [0, N − 1],
+       for some integer N ≥ 2, and suppose that S should be sorted according to the keys
+       of the entries. In this case, it is possible to sort S in O(n + N) time. It might seem
+       surprising, but this implies, for example, that if N is O(n), then we can sort S in
+       O(n) time. Of course, the crucial point is that, because of the restrictive assumption
+       about the format of the elements, we can avoid using comparisons.
+            The main idea is to use an algorithm called bucket-sort, which is not based on
+       comparisons, but on using keys as indices into a bucket array B that has cells in-
+       dexed from 0 to N − 1. An entry with key k is placed in the “bucket” B[k], which
+       itself is a sequence (of entries with key k). After inserting each entry of the input
+       sequence S into its bucket, we can put the entries back into S in sorted order by enu-
+       merating the contents of the buckets B[0], B[1], . . . , B[N − 1] in order. We describe
+       the bucket-sort algorithm in Code Fragment 12.7.
+       Algorithm bucketSort(S):
+           Input: Sequence S of entries with integer keys in the range [0, N − 1]
+           Output: Sequence S sorted in nondecreasing order of the keys
+            let B be an array of N sequences, each of which is initially empty
+            for each entry e in S do
+               k = the key of e
+               remove e from S and insert it at the end of bucket (sequence) B[k]
+            for i = 0 to N−1 do
+               for each entry e in sequence B[i] do
+                  remove e from B[i] and insert it at the end of S
+                                 Code Fragment 12.7: Bucket-sort.

@@ -1,0 +1,42 @@
+578                                                  Chapter 12. Sorting and Selection
+    C-12.42 Let S be a sequence of n elements on which a total order relation is de-
+            ﬁned. Recall that an inversion in S is a pair of elements x and y such
+            that x appears before y in S but x > y. Describe an algorithm running in
+            O(n log n) time for determining the number of inversions in S.
+    C-12.43 Let S be a sequence of n integers. Describe a method for printing out all
+            the pairs of inversions in S in O(n + k) time, where k is the number of such
+            inversions.
+    C-12.44 Let S be a random permutation of n distinct integers. Argue that the ex-
+            pected running time of insertion-sort on S is Ω(n2 ). (Hint: Note that half
+            of the elements ranked in the top half of a sorted version of S are expected
+            to be in the ﬁrst half of S.)
+    C-12.45 Let A and B be two sequences of n integers each. Given an integer m,
+            describe an O(n log n)-time algorithm for determining if there is an integer
+            a in A and an integer b in B such that m = a + b.
+    C-12.46 Given a set of n integers, describe and analyze a fast method for ﬁnding
+            the log n  integers closest to the median.
+    C-12.47 Bob has a set A of n nuts and a set B of n bolts, such that each nut in A
+            has a unique matching bolt in B. Unfortunately, the nuts in A all look the
+            same, and the bolts in B all look the same as well. The only kind of a
+            comparison that Bob can make is to take a nut-bolt pair (a, b), such that a
+            is in A and b is in B, and test it to see if the threads of a are larger, smaller,
+            or a perfect match with the threads of b. Describe and analyze an efﬁcient
+            algorithm for Bob to match up all of his nuts and bolts.
+    C-12.48 Our quick-select implementation can be made more space-efﬁcient by ini-
+            tially computing only the counts for sets L, E, and G, creating only the new
+            subset that will be needed for recursion. Implement such a version.
+    C-12.49 Describe an in-place version of the quick-select algorithm in pseudo-code,
+            assuming that you are allowed to modify the order of elements.
+    C-12.50 Show how to use a deterministic O(n)-time selection algorithm to sort a
+            sequence of n elements in O(n log n) worst-case time.
+    C-12.51 Given an unsorted sequence S of n comparable elements, and an integer k,
+            give an O(n log k) expected-time algorithm for ﬁnding the O(k) elements
+            that have rank n/k, 2 n/k, 3 n/k, and so on.
+    C-12.52 Space aliens have given us a function, alien split, that can take a sequence
+            S of n integers and partition S in O(n) time into sequences S1 , S2 , . . . , Sk of
+            size at most n/k each, such that the elements in Si are less than or equal
+            to every element in Si+1 , for i = 1, 2, . . . , k − 1, for a ﬁxed number, k < n.
+            Show how to use alien split to sort S in O(n log n/ log k) time.
+    C-12.53 Read documenation of the reverse keyword parameter of Python’s sorting
+            functions, and describe how the decorate-sort-undecorate paradigm could
+            be used to implement it, without assuming anything about the key type.

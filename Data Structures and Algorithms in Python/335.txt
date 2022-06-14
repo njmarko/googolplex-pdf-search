@@ -1,0 +1,39 @@
+314                                                                       Chapter 8. Trees
+     1 class BinaryTree(Tree):
+     2   ”””Abstract base class representing a binary tree structure.”””
+     3
+     4   # --------------------- additional abstract methods ---------------------
+     5   def left(self, p):
+     6     ”””Return a Position representing p s left child.
+     7
+     8     Return None if p does not have a left child.
+     9     ”””
+    10     raise NotImplementedError( must be implemented by subclass )
+    11
+    12   def right(self, p):
+    13     ”””Return a Position representing p s right child.
+    14
+    15     Return None if p does not have a right child.
+    16     ”””
+    17     raise NotImplementedError( must be implemented by subclass )
+    18
+    19   # ---------- concrete methods implemented in this class ----------
+    20   def sibling(self, p):
+    21     ”””Return a Position representing p s sibling (or None if no sibling).”””
+    22     parent = self.parent(p)
+    23     if parent is None:                          # p must be the root
+    24        return None                              # root has no sibling
+    25     else:
+    26        if p == self.left(parent):
+    27           return self.right(parent)             # possibly None
+    28        else:
+    29           return self.left(parent)              # possibly None
+    30
+    31   def children(self, p):
+    32     ”””Generate an iteration of Positions representing p s children.”””
+    33     if self.left(p) is not None:
+    34        yield self.left(p)
+    35     if self.right(p) is not None:
+    36        yield self.right(p)
+       Code Fragment 8.7: A BinaryTree abstract base class that extends the existing Tree
+       abstract base class from Code Fragments 8.1 and 8.2.

@@ -1,0 +1,34 @@
+64                                            Chapter 2. Object-Oriented Programming
+   2.2.2 Pseudo-Code
+      As an intermediate step before the implementation of a design, programmers are
+      often asked to describe algorithms in a way that is intended for human eyes only.
+      Such descriptions are called pseudo-code. Pseudo-code is not a computer program,
+      but is more structured than usual prose. It is a mixture of natural language and
+      high-level programming constructs that describe the main ideas behind a generic
+      implementation of a data structure or algorithm. Because pseudo-code is designed
+      for a human reader, not a computer, we can communicate high-level ideas, without
+      being burdened with low-level implementation details. At the same time, we should
+      not gloss over important steps. Like many forms of human communication, ﬁnding
+      the right balance is an important skill that is reﬁned through practice.
+          In this book, we rely on a pseudo-code style that we hope will be evident to
+      Python programmers, yet with a mix of mathematical notations and English prose.
+      For example, we might use the phrase “indicate an error” rather than a formal raise
+      statement. Following conventions of Python, we rely on indentation to indicate
+      the extent of control structures and on an indexing notation in which entries of a
+      sequence A with length n are indexed from A[0] to A[n − 1]. However, we choose
+      to enclose comments within curly braces { like these } in our pseudo-code, rather
+      than using Python’s # character.
+   2.2.3 Coding Style and Documentation
+      Programs should be made easy to read and understand. Good programmers should
+      therefore be mindful of their coding style, and develop a style that communicates
+      the important aspects of a program’s design for both humans and computers. Con-
+      ventions for coding style tend to vary between different programming communities.
+      The ofﬁcial Style Guide for Python Code is available online at
+                      http://www.python.org/dev/peps/pep-0008/
+      The main principles that we adopt are as follows:
+          • Python code blocks are typically indented by 4 spaces. However, to avoid
+             having our code fragments overrun the book’s margins, we use 2 spaces for
+             each level of indentation. It is strongly recommended that tabs be avoided, as
+             tabs are displayed with differing widths across systems, and tabs and spaces
+             are not viewed as identical by the Python interpreter. Many Python-aware
+             editors will automatically replace tabs with an appropriate number of spaces.

@@ -1,0 +1,40 @@
+15.2. Memory Hierarchies and Caching                                                        707
+         Caching and Blocking
+         Another justiﬁcation for the memory-access equality assumption is that operating
+         system designers have developed general mechanisms that allow most memory
+         accesses to be fast. These mechanisms are based on two important locality-of-
+         reference properties that most software possesses:
+             • Temporal locality: If a program accesses a certain memory location, then
+                there is increased likelihood that it accesses that same location again in the
+                near future. For example, it is common to use the value of a counter vari-
+                able in several different expressions, including one to increment the counter’s
+                value. In fact, a common adage among computer architects is that a program
+                spends 90 percent of its time in 10 percent of its code.
+             • Spatial locality: If a program accesses a certain memory location, then there
+                is increased likelihood that it soon accesses other locations that are near this
+                one. For example, a program using an array may be likely to access the
+                locations of this array in a sequential or near-sequential manner.
+         Computer scientists and engineers have performed extensive software proﬁling ex-
+         periments to justify the claim that most software possesses both of these kinds of
+         locality of reference. For example, a nested for loop used to repeatedly scan through
+         an array will exhibit both kinds of locality.
+              Temporal and spatial localities have, in turn, given rise to two fundamental
+         design choices for multilevel computer memory systems (which are present in the
+         interface between cache memory and internal memory, and also in the interface
+         between internal memory and external memory).
+              The ﬁrst design choice is called virtual memory. This concept consists of pro-
+         viding an address space as large as the capacity of the secondary-level memory, and
+         of transferring data located in the secondary level into the primary level, when they
+         are addressed. Virtual memory does not limit the programmer to the constraint of
+         the internal memory size. The concept of bringing data into primary memory is
+         called caching, and it is motivated by temporal locality. By bringing data into pri-
+         mary memory, we are hoping that it will be accessed again soon, and we will be
+         able to respond quickly to all the requests for this data that come in the near future.
+              The second design choice is motivated by spatial locality. Speciﬁcally, if data
+         stored at a secondary-level memory location  is accessed, then we bring into
+         primary-level memory a large block of contiguous locations that include the lo-
+         cation . (See Figure 15.2.) This concept is known as blocking, and it is motivated
+         by the expectation that other secondary-level memory locations close to  will soon
+         be accessed. In the interface between cache memory and internal memory, such
+         blocks are often called cache lines, and in the interface between internal memory
+         and external memory, such blocks are often called pages.

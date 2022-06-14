@@ -1,0 +1,38 @@
+182                                                                           Chapter 4. Recursion
+        C-4.21 Suppose you are given an n-element sequence, S, containing distinct in-
+                  tegers that are listed in increasing order. Given a number k, describe a
+                  recursive algorithm to ﬁnd two integers in S that sum to k, if such a pair
+                  exists. What is the running time of your algorithm?
+        C-4.22 Develop a nonrecursive implementation of the version of power from
+                  Code Fragment 4.12 that uses repeated squaring.
+    Projects
+         P-4.23 Implement a recursive function with signature ﬁnd(path, ﬁlename) that
+                  reports all entries of the ﬁle system rooted at the given path having the
+                  given ﬁle name.
+         P-4.24 Write a program for solving summation puzzles by enumerating and test-
+                  ing all possible conﬁgurations. Using your program, solve the three puz-
+                  zles given in Section 4.4.3.
+         P-4.25 Provide a nonrecursive implementation of the draw interval function for
+                  the English ruler project of Section 4.1.2. There should be precisely 2c − 1
+                  lines of output if c represents the length of the center tick. If incrementing
+                  a counter from 0 to 2c − 2, the number of dashes for each tick line should
+                  be exactly one more than the number of consecutive 1’s at the end of the
+                  binary representation of the counter.
+         P-4.26 Write a program that can solve instances of the Tower of Hanoi problem
+                  (from Exercise C-4.14).
+         P-4.27 Python’s os module provides a function with signature walk(path) that
+                  is a generator yielding the tuple (dirpath, dirnames, ﬁlenames) for each
+                  subdirectory of the directory identiﬁed by string path, such that string
+                  dirpath is the full path to the subdirectory, dirnames is a list of the names
+                  of the subdirectories within dirpath, and ﬁlenames is a list of the names
+                  of non-directory entries of dirpath. For example, when visiting the cs016
+                  subdirectory of the ﬁle system shown in Figure 4.6, the walk would yield
+                  ( /user/rt/courses/cs016 , [ homeworks , programs ], [ grades ]).
+                  Give your own implementation of such a walk function.
+ Chapter Notes
+       The use of recursion in programs belongs to the folkore of computer science (for example,
+       see the article of Dijkstra [36]). It is also at the heart of functional programming languages
+       (for example, see the classic book by Abelson, Sussman, and Sussman [1]). Interestingly,
+       binary search was ﬁrst published in 1946, but was not published in a fully correct form
+       until 1962. For further discussions on lessons learned, please see papers by Bentley [14]
+       and Lesuisse [68].

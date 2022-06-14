@@ -1,0 +1,38 @@
+11.5. (2,4) Trees                                                                              509
+           Analysis of Insertion in a (2,4) Tree
+            Because dmax is at most 4, the original search for the placement of new key k uses
+            O(1) time at each level, and thus O(log n) time overall, since the height of the tree
+            is O(log n) by Proposition 11.8.
+                  The modiﬁcations to a single node to insert a new key and child can be im-
+            plemented to run in O(1) time, as can a single split operation. The number of
+            cascading split operations is bounded by the height of the tree, and so that phase of
+            the insertion process also runs in O(log n) time. Therefore, the total time to perform
+            an insertion in a (2, 4) tree is O(log n).
+           Deletion
+            Let us now consider the removal of an item with key k from a (2, 4) tree T . We begin
+            such an operation by performing a search in T for an item with key k. Removing
+            an item from a (2, 4) tree can always be reduced to the case where the item to be
+            removed is stored at a node w whose children are external nodes. Suppose, for
+            instance, that the item with key k that we wish to remove is stored in the ith item
+            (ki , vi ) at a node z that has only internal-node children. In this case, we swap the
+            item (ki , vi ) with an appropriate item that is stored at a node w with external-node
+            children as follows (see Figure 11.28d):
+                 1. We ﬁnd the rightmost internal node w in the subtree rooted at the ith child of
+                      z, noting that the children of node w are all external nodes.
+                 2. We swap the item (ki , vi ) at z with the last item of w.
+            Once we ensure that the item to remove is stored at a node w with only external-
+            node children (because either it was already at w or we swapped it into w), we
+            simply remove the item from w and remove the ith external node of w.
+                  Removing an item (and a child) from a node w as described above preserves the
+            depth property, for we always remove an external child from a node w with only
+            external children. However, in removing such an external node, we may violate
+            the size property at w. Indeed, if w was previously a 2-node, then it becomes a
+            1-node with no items after the removal (Figure 11.28a and d), which is not allowed
+            in a (2, 4) tree. This type of violation of the size property is called an underﬂow
+            at node w. To remedy an underﬂow, we check whether an immediate sibling of w
+            is a 3-node or a 4-node. If we ﬁnd such a sibling s, then we perform a transfer
+            operation, in which we move a child of s to w, a key of s to the parent u of w and s,
+            and a key of u to w. (See Figure 11.28b and c.) If w has only one sibling, or if both
+            immediate siblings of w are 2-nodes, then we perform a fusion operation, in which
+            we merge w with a sibling, creating a new node w , and move a key from the parent
+            u of w to w . (See Figure 11.28e and f.)

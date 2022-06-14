@@ -1,0 +1,34 @@
+7.1. Singly Linked Lists                                                                     263
+      40     def pop(self):
+      41        ”””Remove and return the element from the top of the stack (i.e., LIFO).
+      42
+      43        Raise Empty exception if the stack is empty.
+      44        ”””
+      45        if self.is empty( ):
+      46           raise Empty( Stack is empty )
+      47        answer = self. head. element
+      48        self. head = self. head. next                  # bypass the former top node
+      49        self. size −= 1
+      50        return answer
+           Code Fragment 7.6: Implementation of a stack ADT using a singly linked list (con-
+           tinued from Code Fragment 7.5).
+                When implementing the top method, the goal is to return the element that is
+           at the top of the stack. When the stack is empty, we raise an Empty exception, as
+           originally deﬁned in Code Fragment 6.1 of Chapter 6. When the stack is nonempty,
+           self. head is a reference to the ﬁrst node of the linked list. The top element can be
+           identiﬁed as self. head. element.
+                Our implementation of pop essentially mirrors the pseudo-code given in Code
+           Fragment 7.3, except that we maintain a local reference to the element that is stored
+           at the node that is being removed, and we return that element to the caller of pop.
+                The analysis of our LinkedStack operations is given in Table 7.1. We see that
+           all of the methods complete in worst-case constant time. This is in contrast to the
+           amortized bounds for the ArrayStack that were given in Table 6.2.
+                                        Operation     Running Time
+                                          S.push(e)   O(1)
+                                            S.pop( )  O(1)
+                                            S.top( )  O(1)
+                                              len(S)  O(1)
+                                      S.is empty( )   O(1)
+           Table 7.1: Performance of our LinkedStack implementation. All bounds are worst-
+           case and our space usage is O(n), where n is the current number of elements in the
+           stack.

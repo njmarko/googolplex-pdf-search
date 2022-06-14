@@ -1,0 +1,37 @@
+524                                                          Chapter 11. Search Trees
+    Performance of Red-Black Trees
+    The asymptotic performance of a red-black tree is identical to that of an AVL tree
+    or a (2, 4) tree in terms of the sorted map ADT, with guaranteed logarithmic time
+    bounds for most operations. (See Table 11.2 for a summary of the AVL perfor-
+    mance.) The primary advantage of a red-black tree is that an insertion or deletion
+    requires only a constant number of restructuring operations. (This is in contrast
+    to AVL trees and (2, 4) trees, both of which require a logarithmic number of struc-
+    tural changes per map operation in the worst case.) That is, an insertion or deletion
+    in a red-black tree requires logarithmic time for a search, and may require a loga-
+    rithmic number of recoloring operations that cascade upward. Yet we show, in the
+    following propositions, that there are a constant number of rotations or restructure
+    operations for a single map operation.
+    Proposition 11.10: The insertion of an item in a red-black tree storing n items
+    can be done in O(log n) time and requires O(log n) recolorings and at most one
+    trinode restructuring.
+    Justiﬁcation: Recall that an insertion begins with a downward search, the cre-
+    ation of a new leaf node, and then a potential upward effort to remedy a double-red
+    violation. There may be logarithmically many recoloring operations due to an up-
+    ward cascading of Case 2 applications, but a single application of the Case 1 action
+    eliminates the double-red problem with a trinode restructuring. Therefore, at most
+    one restructuring operation is needed for a red-black tree insertion.
+    Proposition 11.11: The algorithm for deleting an item from a red-black tree with
+    n items takes O(log n) time and performs O(log n) recolorings and at most two
+    restructuring operations.
+    Justiﬁcation: A deletion begins with the standard binary search tree deletion
+    algorithm, which requires time proportional to the height of the tree; for red-black
+    trees, that height is O(log n). The subsequent rebalancing takes place along an
+    upward path from the parent of a deleted node.
+        We considered three cases to remedy a resulting black deﬁcit. Case 1 requires a
+    trinode restructuring operation, yet completes the process, so this case is applied at
+    most once. Case 2 may be applied logarithmically many times, but it only involves
+    a recoloring of up to two nodes per application. Case 3 requires a rotation, but this
+    case can only apply once, because if the rotation does not resolve the problem, the
+    very next action will be a terminal application of either Case 1 or Case 2.
+        In the worst case, there will be O(log n) recolorings from Case 2, a single rota-
+    tion from Case 3, and a trinode restructuring from Case 1.

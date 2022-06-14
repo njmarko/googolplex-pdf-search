@@ -1,0 +1,37 @@
+574                                                       Chapter 12. Sorting and Selection
+ 12.8    Exercises
+       For help with exercises, please visit the site, www.wiley.com/college/goodrich.
+    Reinforcement
+        R-12.1 Give a complete justiﬁcation of Proposition 12.1.
+        R-12.2 In the merge-sort tree shown in Figures 12.2 through 12.4, some edges are
+                 drawn as arrows. What is the meaning of a downward arrow? How about
+                 an upward arrow?
+        R-12.3 Show that the running time of the merge-sort algorithm on an n-element
+                 sequence is O(n log n), even when n is not a power of 2.
+        R-12.4 Is our array-based implementation of merge-sort given in Section 12.2.2
+                 stable? Explain why or why not.
+        R-12.5 Is our linked-list-based implementation of merge-sort given in Code Frag-
+                 ment 12.3 stable? Explain why or why not.
+        R-12.6 An algorithm that sorts key-value entries by key is said to be straggling
+                 if, any time two entries ei and e j have equal keys, but ei appears before e j
+                 in the input, then the algorithm places ei after e j in the output. Describe a
+                 change to the merge-sort algorithm in Section 12.2 to make it straggling.
+        R-12.7 Suppose we are given two n-element sorted sequences A and B each with
+                 distinct elements, but potentially some elements that are in both sequences.
+                 Describe an O(n)-time method for computing a sequence representing the
+                 union A ∪ B (with no duplicates) as a sorted sequence.
+        R-12.8 Suppose we modify the deterministic version of the quick-sort algorithm
+                 so that, instead of selecting the last element in an n-element sequence as
+                 the pivot, we choose the element at index n/2. What is the running time
+                 of this version of quick-sort on a sequence that is already sorted?
+        R-12.9 Consider a modiﬁcation of the deterministic version of the quick-sort al-
+                 gorithm where we choose the element at index n/2 as our pivot. De-
+                 scribe the kind of sequence that would cause this version of quick-sort to
+                 run in Ω(n2 ) time.
+      R-12.10 Show that the best-case running time of quick-sort on a sequence of size
+                 n with distinct elements is Ω(n log n).
+      R-12.11 Suppose function inplace quick sort is executed on a sequence with du-
+                 plicate elements. Prove that the algorithm still correctly sorts the input
+                 sequence. What happens in the partition step when there are elements
+                 equal to the pivot? What is the running time of the algorithm if all the
+                 input elements are equal?

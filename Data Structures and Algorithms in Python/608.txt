@@ -1,0 +1,37 @@
+13.2. Pattern-Matching Algorithms                                                            587
+                The example of Figure 13.2 is rather basic, because it only involves mismatches
+           with the last character of the pattern. More generally, when a match is found for
+           that last character, the algorithm continues by trying to extend the match with the
+           second-to-last character of the pattern in its current alignment. That process contin-
+           ues until either matching the entire pattern, or ﬁnding a mismatch at some interior
+           position of the pattern.
+                If a mismatch is found, and the mismatched character of the text does not occur
+           in the pattern, we shift the entire pattern beyond that location, as originally illus-
+           trated in Figure 13.2. If the mismatched character occurs elsewhere in the pattern,
+           we must consider two possible subcases depending on whether its last occurrence
+           is before or after the character of the pattern that was aligned with the mismatched.
+           Those two cases are illustrated in Figure 13.3.
+                          Text:   · ·  ·   · ·   ·  ·  ·  ·   · a  ·   ·    ·   · · · · · ·
+                                                                i              i
+                        Pattern:                    ·  a  ·   · b  ·
+                 (a)                                   j        k
+                                                                    m − ( j + 1)
+                                                              · a  ·   ·    b   ·
+                                                              j+1
+                          Text:   · ·  ·   · ·   ·  ·  ·  ·   · a  ·   ·    ·   · · · · · ·
+                                                                i     i
+                        Pattern:                    ·  ·  ·   · b  a
+                 (b)                                            k  j
+                                                                   m−k
+                                                       ·  ·   · ·  b   a
+                                                            k
+           Figure 13.3: Additional rules for the character-jump heuristic of the Boyer-Moore
+           algorithm. We let i represent the index of the mismatched character in the text, k
+           represent the corresponding index in the pattern, and j represent the index of the
+           last occurrence of T [i] within the pattern. We distinguish two cases: (a) j < k,
+           in which case we shift the pattern by k − j units, and thus, index i advances by
+           m − ( j + 1) units; (b) j > k, in which case we shift the pattern by one unit, and
+           index i advances by m − k units.
+                In the case of Figure 13.3(b), we slide the pattern only one unit. It would
+           be more productive to slide it rightward until ﬁnding another occurrence of mis-
+           matched character T [i] in the pattern, but we do not wish to take time to search for

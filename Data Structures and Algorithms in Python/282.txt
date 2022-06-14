@@ -1,0 +1,38 @@
+7.1. Singly Linked Lists                                                                        261
+       7.1.1 Implementing a Stack with a Singly Linked List
+           In this section, we demonstrate use of a singly linked list by providing a complete
+           Python implementation of the stack ADT (see Section 6.1). In designing such an
+           implementation, we need to decide whether to model the top of the stack at the head
+           or at the tail of the list. There is clearly a best choice here; we can efﬁciently insert
+           and delete elements in constant time only at the head. Since all stack operations
+           affect the top, we orient the top of the stack at the head of our list.
+                To represent individual nodes of the list, we develop a lightweight Node class.
+           This class will never be directly exposed to the user of our stack class, so we will
+           formally deﬁne it as a nonpublic, nested class of our eventual LinkedStack class
+           (see Section 2.5.1 for discussion of nested classes). The deﬁnition of the Node
+           class is shown in Code Fragment 7.4.
+             class Node:
+                ”””Lightweight, nonpublic class for storing a singly linked node.”””
+                   slots = _element , _next                         # streamline memory usage
+                def init (self, element, next):                     # initialize node’s ﬁelds
+                   self. element = element                          # reference to user’s element
+                   self. next = next                                # reference to next node
+                  Code Fragment 7.4: A lightweight Node class for a singly linked list.
+           A node has only two instance variables: element and next. We intentionally
+           deﬁne slots to streamline the memory usage (see page 99 of Section 2.5.1 for
+           discussion), because there may potentially be many node instances in a single list.
+           The constructor of the Node class is designed for our convenience, allowing us to
+           specify initial values for both ﬁelds of a newly created node.
+                A complete implementation of our LinkedStack class is given in Code Frag-
+           ments 7.5 and 7.6. Each stack instance maintains two variables. The head mem-
+           ber is a reference to the node at the head of the list (or None, if the stack is empty).
+           We keep track of the current number of elements with the size instance variable,
+           for otherwise we would be forced to traverse the entire list to count the number of
+           elements when reporting the size of the stack.
+                The implementation of push essentially mirrors the pseudo-code for insertion
+           at the head of a singly linked list as outlined in Code Fragment 7.1. When we push
+           a new element e onto the stack, we accomplish the necessary changes to the linked
+           structure by invoking the constructor of the Node class as follows:
+                self. head = self. Node(e, self. head)            # create and link a new node
+           Note that the next ﬁeld of the new node is set to the existing top node, and then
+           self. head is reassigned to the new node.

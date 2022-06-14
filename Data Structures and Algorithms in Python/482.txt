@@ -1,0 +1,38 @@
+11.1. Binary Search Trees                                                                      461
+       11.1.1 Navigating a Binary Search Tree
+          We begin by demonstrating that a binary search tree hierarchically represents the
+          sorted order of its keys. In particular, the structural property regarding the place-
+          ment of keys within a binary search tree assures the following important conse-
+          quence regarding an inorder traversal (Section 8.4.3) of the tree.
+          Proposition 11.1: An inorder traversal of a binary search tree visits positions in
+          increasing order of their keys.
+          Justiﬁcation: We prove this by induction on the size of a subtree. If a subtree
+          has at most one item, its keys are trivially visited in order. More generally, an
+          inorder traversal of a (sub)tree consists of a recursive traversal of the (possibly
+          empty) left subtree, followed by a visit of the root, and then a recursive traversal of
+          the (possibly empty) right subtree. By induction, a recursive inorder traversal of the
+          left subtree will produce an iteration of the keys in that subtree in increasing order.
+          Furthermore, by the binary search tree property, all keys in the left subtree have
+          keys strictly smaller than that of the root. Therefore, visiting the root just after that
+          subtree extends the increasing order of keys. Finally, by the search tree property,
+          all keys in the right subtree are strictly greater than the root, and by induction, an
+          inorder traversal of that subtree will visit those keys in increasing order.
+               Since an inorder traversal can be executed in linear time, a consequence of this
+          proposition is that we can produce a sorted iteration of the keys of a map in linear
+          time, when represented as a binary search tree.
+               Although an inorder traversal is typically expressed using a top-down recur-
+          sion, we can provide nonrecursive descriptions of operations that allow more ﬁne-
+          grained navigation among the positions of a binary search relative to the order of
+          their keys. Our generic binary tree ADT from Chapter 8 is deﬁned as a positional
+          structure, allowing direct navigation using methods such as parent(p), left(p), and
+          right(p). With a binary search tree, we can provide additional navigation based on
+          the natural order of the keys stored in the tree. In particular, we can support the
+          following methods, akin to those provided by a PositionalList (Section 7.4.1).
+             ﬁrst( ): Return the position containing the least key, or None if the tree is empty.
+              last( ): Return the position containing the greatest key, or None if empty tree.
+         before(p): Return the position containing the greatest key that is less than that of
+                       position p (i.e., the position that would be visited immediately before p
+                       in an inorder traversal), or None if p is the ﬁrst position.
+           after(p): Return the position containing the least key that is greater than that of
+                       position p (i.e., the position that would be visited immediately after p
+                       in an inorder traversal), or None if p is the last position.

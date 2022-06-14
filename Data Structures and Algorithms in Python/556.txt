@@ -1,0 +1,17 @@
+Chapter Notes                                                                                   535
+ Chapter Notes
+         Some of the data structures discussed in this chapter are extensively covered by Knuth
+         in his Sorting and Searching book [65], and by Mehlhorn in [76]. AVL trees are due to
+         Adel’son-Vel’skii and Landis [2], who invented this class of balanced search trees in 1962.
+         Binary search trees, AVL trees, and hashing are described in Knuth’s Sorting and Search-
+         ing [65] book. Average-height analyses for binary search trees can be found in the books by
+         Aho, Hopcroft, and Ullman [6] and Cormen, Leiserson, Rivest and Stein [29]. The hand-
+         book by Gonnet and Baeza-Yates [44] contains a number of theoretical and experimental
+         comparisons among map implementations. Aho, Hopcroft, and Ullman [5] discuss (2, 3)
+         trees, which are similar to (2, 4) trees. Red-black trees were deﬁned by Bayer [10]. Vari-
+         ations and interesting properties of red-black trees are presented in a paper by Guibas and
+         Sedgewick [48]. The reader interested in learning more about different balanced tree data
+         structures is referred to the books by Mehlhorn [76] and Tarjan [95], and the book chapter
+         by Mehlhorn and Tsakalidis [78]. Knuth [65] is excellent additional reading that includes
+         early approaches to balancing trees. Splay trees were invented by Sleator and Tarjan [89]
+         (see also [95]).
