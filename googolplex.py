@@ -7,7 +7,7 @@ from page_graph import Graph
 import re
 from stack import Stack
 from Heap import MaxHeap, Heap_node
-from didyoumean import didyoumean
+from didyoumean import didyoumean # pip install didyoumean.py
 
 
 class Bojanka:

@@ -12,7 +12,7 @@ from input_parser import parse_input, next_page_input, any_input_to_continue
 import os
 from Heap import MaxHeap, Heap_node
 from copy import deepcopy
-from fitz import fitz  # pip install pymupdf
+from fitz import fitz, PDF_ENCRYPT_KEEP  # pip install PyMuPDF
 import time, sys, random
 from parse_pdf import get_pdf_content
 
@@ -375,42 +375,43 @@ def clean_word(expression):
 def save_as_pdf(pages, search_query, phrase=False):
     exists = False
     try:
-        doc = fitz.open("topResults.pdf")
+        doc = fitz.Document("topResults.pdf")
         exists = True
     except:
-        doc = fitz.open()
-    doc.deletePageRange(0, -1)
-    try:
-        p = fitz.Point(50, 70)
-        search_query = clean_word(search_query)
-        highlight_words = search_query.split()
-        for page in pages:
-            pdf_page = doc.newPage()
-            pdf_page.insertText(p,  # bottom-left of 1st char
-                                page.get_content(),  # the text (honors '\n')
-                                fontname="helv",  # the default font
-                                fontsize=11,  # the default font size
-                                rotate=0,  # also available: 90, 180, 270
-                                )
-            if not phrase:
-                for word in highlight_words:
-                    word = word.strip()
-                    text_instances = pdf_page.searchFor(word)
-                    for instance in text_instances:
-                        pdf_page.addHighlightAnnot(instance)
-            else:
-                text_instances = pdf_page.searchFor(search_query)
+        doc = fitz.Document("")
+    # doc.deletePageRange(0, -1)
+    del doc[0:-1]
+    # try:
+    p = fitz.Point(50, 70)
+    search_query = clean_word(search_query)
+    highlight_words = search_query.split()
+    for page in pages:
+        pdf_page = doc.new_page()
+        pdf_page.insert_text(p,  # bottom-left of 1st char
+                            page.get_content(),  # the text (honors '\n')
+                            fontname="helv",  # the default font
+                            fontsize=11,  # the default font size
+                            rotate=0,  # also available: 90, 180, 270
+                            )
+        if not phrase:
+            for word in highlight_words:
+                word = word.strip()
+                text_instances = pdf_page.search_for(word)
                 for instance in text_instances:
-                    pdf_page.addHighlightAnnot(instance)
-
-        if exists:
-            doc.save("topResults.pdf", incremental=1)
+                    pdf_page.add_highlight_annot(instance)
         else:
-            doc.save("topResults.pdf", garbage=4, deflate=True, clean=True)
-        doc.close()
-    except:
-        print("Saving to pdf failed!")
-        return
+            text_instances = pdf_page.searchFor(search_query)
+            for instance in text_instances:
+                pdf_page.add_highlight_annot(instance)
+
+    if exists:
+        doc.save("topResults.pdf", incremental=1, encryption=PDF_ENCRYPT_KEEP)
+    else:
+        doc.save(f"topResults{search_query}.pdf", garbage=4, deflate=True, clean=True)
+    doc.close()
+    # except:
+    #     print("Saving to pdf failed!")
+    #     return
 
 
 def show_paginated_results(heap, search_query, tri):
