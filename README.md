@@ -25,8 +25,8 @@ Python program for searching pdf text, ranking the results and exporting highlig
     5.1. For linux
    ```virtualenv venv && source venv/bin/activate && pip install -r requirements.txt && python main.py```
 
-    5.1. For windows
-```virtualenv venv && venv\Scripts\activate && pip install -r requirements.txt && python main.py```
+    5.1. For windows (if using Powershell)
+```virtualenv venv; venv\Scripts\Activate; pip install -r requirements.txt; python main.py```
 
 ## Application screenshots
 
