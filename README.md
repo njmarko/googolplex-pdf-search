@@ -5,6 +5,29 @@ Python program for searching pdf text, ranking the results and exporting highlig
 - PyMuPDF
 - didyoumean.py
 
+## How to install and run the program
+
+1. Create a virtual environment in the project directory:
+```virtualenv venv```
+2. Activate the virtual environment:
+
+    2.1. For Windows:
+```venv\Scripts\activate```
+
+    2.2. For Linux:
+```source venv/bin/activate```
+3. Install the required libraries:
+```pip install -r requirements.txt```
+4. Run the program:
+```python main.py```
+5. All in one command:
+
+    5.1. For linux
+   ```virtualenv venv && source venv/bin/activate && pip install -r requirements.txt && python main.py```
+
+    5.1. For windows
+```virtualenv venv && venv\Scripts\activate && pip install -r requirements.txt && python main.py```
+
 ## Application screenshots
 
 <div align="center">
