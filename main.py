@@ -12,7 +12,8 @@ from input_parser import parse_input, next_page_input, any_input_to_continue
 import os
 from Heap import MaxHeap, Heap_node
 from copy import deepcopy
-from fitz import fitz, PDF_ENCRYPT_KEEP  # pip install PyMuPDF
+import fitz
+from fitz import PDF_ENCRYPT_KEEP  # pip install PyMuPDF
 import time, sys, random
 from parse_pdf import get_pdf_content
 

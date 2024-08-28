@@ -4,7 +4,7 @@ Author: Marko Njegomir sw-38-2018
 
 
 # import pdftotext
-from fitz import fitz
+import fitz
 
 
 # def get_pdf_content(file_path):
